@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="PT7-yJ-VUT">
+            <objects>
+                <windowController storyboardIdentifier="MainUI" id="7Yu-bl-Y3O" sceneMemberID="viewController">
+                    <window key="window" title="How Long Left" allowsToolTipsWhenApplicationIsInactive="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" frameAutosaveName="" tabbingIdentifier="EventUI" id="QEv-Ww-JeY">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="214" y="249" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <value key="minSize" type="size" width="450" height="235"/>
+                        <value key="maxSize" type="size" width="850" height="350"/>
+                        <connections>
+                            <outlet property="delegate" destination="7Yu-bl-Y3O" id="cfk-QC-e5s"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="dGa-Q3-YLb" kind="relationship" relationship="window.shadowedContentViewController" id="hzf-Ro-qe1"/>
+                    </connections>
+                </windowController>
+                <customObject id="tyc-xQ-qZV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961" y="-383"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="H0K-Xc-VZC">
+            <objects>
+                <viewController id="dGa-Q3-YLb" sceneMemberID="viewController">
+                    <view key="view" id="wx0-cZ-bC6">
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="bd8-dH-bfy">
+                                <rect key="frame" x="0.0" y="0.0" width="580" height="300"/>
+                                <connections>
+                                    <segue destination="pQq-Na-8f3" kind="embed" id="yAI-Tq-OfR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bd8-dH-bfy" secondAttribute="trailing" id="PZ8-vQ-XkH"/>
+                            <constraint firstItem="bd8-dH-bfy" firstAttribute="leading" secondItem="wx0-cZ-bC6" secondAttribute="leading" id="S8B-Pe-fxb"/>
+                            <constraint firstAttribute="bottom" secondItem="bd8-dH-bfy" secondAttribute="bottom" id="ehO-n7-qwP"/>
+                            <constraint firstItem="bd8-dH-bfy" firstAttribute="top" secondItem="wx0-cZ-bC6" secondAttribute="top" id="flb-wl-zPb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="UWC-5m-fKZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961" y="35"/>
+        </scene>
+        <!--EventUI Countdown View Controller-->
+        <scene sceneID="fMv-ET-2bC">
+            <objects>
+                <viewController id="udZ-Tf-Tob" customClass="EventUICountdownViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="OO0-Dl-sNw">
+                        <rect key="frame" x="0.0" y="0.0" width="586" height="290"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1jG-aa-Kbe">
+                                <rect key="frame" x="13" y="122" width="560" height="55"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="00:00" id="EcN-a1-oKb">
+                                    <font key="font" metaFont="systemLight" size="47"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ik4-AD-uvS">
+                                <rect key="frame" x="141" y="38" width="304" height="39"/>
+                                <subviews>
+                                    <stackView distribution="equalSpacing" orientation="vertical" alignment="centerX" spacing="-17" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5V-YO-gg9">
+                                        <rect key="frame" x="14" y="21" width="276" height="18"/>
+                                        <subviews>
+                                            <progressIndicator wantsLayer="YES" maxValue="100" doubleValue="68" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="nGv-Df-T2e">
+                                                <rect key="frame" x="0.0" y="-1" width="276" height="20"/>
+                                            </progressIndicator>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PO7-Z3-QeD">
+                                        <rect key="frame" x="135" y="0.0" width="34" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="68%" id="CPW-A8-10k">
+                                            <font key="font" size="14" name="HelveticaNeue"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="304" id="ug6-Vm-BHS"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-SE-h6i">
+                                <rect key="frame" x="222" y="179" width="143" height="33"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3XL-zI-xfp">
+                                        <rect key="frame" x="-2" y="0.0" width="147" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="iuo-Jf-K1N"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" alignment="center" title="Eventtttttttt" id="sD6-7u-Z9k">
+                                            <font key="font" metaFont="system" size="28"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="TH3-bG-qO2"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="1jG-aa-Kbe" secondAttribute="trailing" constant="15" id="1f6-vx-JEv"/>
+                            <constraint firstItem="9pe-SE-h6i" firstAttribute="centerX" secondItem="OO0-Dl-sNw" secondAttribute="centerX" id="Fb4-FG-3g2"/>
+                            <constraint firstAttribute="bottom" secondItem="Ik4-AD-uvS" secondAttribute="bottom" constant="38" id="Mdp-xX-uAr"/>
+                            <constraint firstItem="Ik4-AD-uvS" firstAttribute="centerX" secondItem="OO0-Dl-sNw" secondAttribute="centerX" id="Ytl-cG-AT7"/>
+                            <constraint firstItem="9pe-SE-h6i" firstAttribute="centerY" secondItem="OO0-Dl-sNw" secondAttribute="centerY" constant="-50" id="ZDf-mx-cTE"/>
+                            <constraint firstItem="1jG-aa-Kbe" firstAttribute="leading" relation="lessThanOrEqual" secondItem="OO0-Dl-sNw" secondAttribute="leading" constant="15" id="iIP-Th-3IJ"/>
+                            <constraint firstItem="1jG-aa-Kbe" firstAttribute="centerX" secondItem="OO0-Dl-sNw" secondAttribute="centerX" id="rUw-ih-jJ7"/>
+                            <constraint firstItem="1jG-aa-Kbe" firstAttribute="top" secondItem="9pe-SE-h6i" secondAttribute="bottom" constant="2" id="sga-6N-Oy0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="eventText" destination="3XL-zI-xfp" id="B0o-GB-rXI"/>
+                        <outlet property="percentLabel" destination="PO7-Z3-QeD" id="1oo-4S-yJP"/>
+                        <outlet property="progressBar" destination="nGv-Df-T2e" id="gZZ-RO-nIp"/>
+                        <outlet property="timerLabel" destination="1jG-aa-Kbe" id="cS7-7M-wrV"/>
+                    </connections>
+                </viewController>
+                <customObject id="Foa-8k-fqd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961" y="471"/>
+        </scene>
+        <!--EventUI Tab View Controller-->
+        <scene sceneID="0sf-sa-WeV">
+            <objects>
+                <customObject id="Rm8-y3-Nnm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <tabViewController tabStyle="unspecified" id="pQq-Na-8f3" customClass="EventUITabViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem id="faQ-E1-PCV"/>
+                        <tabViewItem id="pHX-PA-sj3"/>
+                    </tabViewItems>
+                    <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
+                    <tabView key="tabView" type="noTabsNoBorder" id="zuP-rK-Zme">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="pQq-Na-8f3" id="4z9-zn-yjB"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="zuP-rK-Zme" id="DLD-Ma-RCo"/>
+                        <segue destination="udZ-Tf-Tob" kind="relationship" relationship="tabItems" id="iM7-Lb-cuD"/>
+                        <segue destination="3zi-uJ-tnI" kind="relationship" relationship="tabItems" id="tdL-LH-8Yu"/>
+                    </connections>
+                </tabViewController>
+            </objects>
+            <point key="canvasLocation" x="388" y="471"/>
+        </scene>
+        <!--EventUI Done View Controller-->
+        <scene sceneID="Mgm-7o-etr">
+            <objects>
+                <viewController id="3zi-uJ-tnI" customClass="EventUIDoneViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fcp-53-Spj">
+                        <rect key="frame" x="0.0" y="0.0" width="586" height="290"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="14" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmR-6X-bHS">
+                                <rect key="frame" x="20" y="24" width="546" height="243"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tLb-Nn-cd0">
+                                        <rect key="frame" x="166" y="202" width="214" height="41"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Event is done" id="fxa-M6-KkU">
+                                            <font key="font" metaFont="systemMedium" size="35"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="DGx-2O-npP" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="153" y="34" width="241" height="154"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="241" id="3yG-b1-Grt"/>
+                                            <constraint firstAttribute="height" constant="154" id="jcD-aG-hhf"/>
+                                        </constraints>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-bh-QDA">
+                                        <rect key="frame" x="238" y="-7" width="70" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WPX-o2-qj3">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="closeClicked:" target="3zi-uJ-tnI" id="1vX-mQ-WjA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="LmR-6X-bHS" firstAttribute="leading" secondItem="fcp-53-Spj" secondAttribute="leading" constant="20" id="9EO-3k-nk2"/>
+                            <constraint firstItem="LmR-6X-bHS" firstAttribute="centerX" secondItem="fcp-53-Spj" secondAttribute="centerX" id="9RK-HY-CH9"/>
+                            <constraint firstAttribute="trailing" secondItem="LmR-6X-bHS" secondAttribute="trailing" constant="20" id="ZXs-ft-lsX"/>
+                            <constraint firstItem="LmR-6X-bHS" firstAttribute="centerY" secondItem="fcp-53-Spj" secondAttribute="centerY" id="vFI-PM-0Sb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneAnimation" destination="DGx-2O-npP" id="a4B-Hx-1Dg"/>
+                        <outlet property="eventLabel" destination="tLb-Nn-cd0" id="r53-ls-Js9"/>
+                    </connections>
+                </viewController>
+                <customObject id="V8J-o3-kFw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="907"/>
+        </scene>
+    </scenes>
+</document>

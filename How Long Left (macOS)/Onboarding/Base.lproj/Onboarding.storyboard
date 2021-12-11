@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="el2-xt-mYh">
+            <objects>
+                <windowController storyboardIdentifier="Onboard1" id="5fC-U9-eE6" customClass="OnboardingWindowController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="How Long Left" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="X93-Wb-NMJ">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="129" y="180" width="613" height="339"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <connections>
+                            <outlet property="delegate" destination="5fC-U9-eE6" id="zYW-F7-YwW"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="bPS-K0-WsW" kind="relationship" relationship="window.shadowedContentViewController" id="T24-IU-WDN"/>
+                    </connections>
+                </windowController>
+                <customObject id="LHC-7q-GLq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="54"/>
+        </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="3sZ-iS-5it">
+            <objects>
+                <viewController id="bPS-K0-WsW" customClass="OnboardingViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="5QN-QN-h9m">
+                        <rect key="frame" x="0.0" y="0.0" width="627" height="380"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="een-7Q-BvT">
+                                <rect key="frame" x="0.0" y="0.0" width="627" height="394"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7AY-aT-x4T">
+                                        <rect key="frame" x="53" y="72" width="520" height="18"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Continue with default settings or open Preferences to customize How Long Left." id="IbV-BF-O1J">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" id="4q4-bW-79a">
+                                        <rect key="frame" x="14" y="13" width="75" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="voI-Xm-V9f">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="continueClicked:" target="bPS-K0-WsW" id="sda-fp-2Kb"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3Se-i0-pS7">
+                                        <rect key="frame" x="59" y="293" width="509" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Welcome to How Long Left" id="9Q1-el-CjF">
+                                            <font key="font" metaFont="systemSemibold" size="42"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" id="xgE-p0-Qx8">
+                                        <rect key="frame" x="391" y="13" width="222" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Close and open Preferences..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="stY-2X-b2Y">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="preferencesClicked:" target="bPS-K0-WsW" id="yMG-2A-m9i"/>
+                                        </connections>
+                                    </button>
+                                    <box verticalHuggingPriority="750" boxType="separator" id="idH-F3-VDx">
+                                        <rect key="frame" x="20" y="57" width="587" height="5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </box>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="eWJ-bp-W7P">
+                                        <rect key="frame" x="222" y="105" width="183" height="177"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="gaI-AB-BKJ"/>
+                                    </imageView>
+                                </subviews>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="ABy-nQ-nni" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196.5" y="547"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="1024" height="1024"/>
+    </resources>
+</document>

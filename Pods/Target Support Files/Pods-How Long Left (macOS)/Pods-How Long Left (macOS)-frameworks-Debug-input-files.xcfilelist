@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-How Long Left (macOS)/Pods-How Long Left (macOS)-frameworks.sh
+${BUILT_PRODUCTS_DIR}/HotKey/HotKey.framework
+${BUILT_PRODUCTS_DIR}/Preferences/Preferences.framework
+${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

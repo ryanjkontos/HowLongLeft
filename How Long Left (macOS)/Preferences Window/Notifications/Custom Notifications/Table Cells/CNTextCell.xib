@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <tableCellView identifier="TextCell" id="1ne-r5-YIw" customClass="CNTextCell" customModule="How_Long_Left_Status_Item_macOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="17"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9hU-4F-bqm">
+                    <rect key="frame" x="3" y="1" width="124" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="fAD-XQ-XMa">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="9hU-4F-bqm" firstAttribute="centerY" secondItem="1ne-r5-YIw" secondAttribute="centerY" id="9j4-sO-Uyg"/>
+                <constraint firstAttribute="trailing" secondItem="9hU-4F-bqm" secondAttribute="trailing" constant="5" id="fh2-eI-DeP"/>
+                <constraint firstItem="9hU-4F-bqm" firstAttribute="leading" secondItem="1ne-r5-YIw" secondAttribute="leading" constant="5" id="qsQ-H6-uTH"/>
+            </constraints>
+            <connections>
+                <outlet property="label" destination="9hU-4F-bqm" id="0fs-Ct-MsK"/>
+            </connections>
+            <point key="canvasLocation" x="60" y="144"/>
+        </tableCellView>
+    </objects>
+</document>

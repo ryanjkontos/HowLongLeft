@@ -1,0 +1,15 @@
+
+/* Class = "NSTextFieldCell"; title = "Welcome to How Long Left"; ObjectID = "9Q1-el-CjF"; */
+"9Q1-el-CjF.title" = "Welcome to How Long Left";
+
+/* Class = "NSTextFieldCell"; title = "Continue with default settings or open Preferences to customize How Long Left."; ObjectID = "IbV-BF-O1J"; */
+"IbV-BF-O1J.title" = "Continue with default settings or open Preferences to customise the app.";
+
+/* Class = "NSWindow"; title = "How Long Left"; ObjectID = "X93-Wb-NMJ"; */
+"X93-Wb-NMJ.title" = "How Long Left";
+
+/* Class = "NSButtonCell"; title = "Close and open Preferences..."; ObjectID = "stY-2X-b2Y"; */
+"stY-2X-b2Y.title" = "Customise";
+
+/* Class = "NSButtonCell"; title = "Close"; ObjectID = "voI-Xm-V9f"; */
+"voI-Xm-V9f.title" = "Use Defaults";

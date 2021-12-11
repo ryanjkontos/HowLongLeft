@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HLLStoredEvent" representedClassName=".HLLStoredEvent" syncable="YES">
+        <attribute name="calendarIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="isHidden" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isNotificationsBlacklisted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isNotificationsWhitelisted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ProPurchase" representedClassName=".ProPurchase" syncable="YES">
+        <attribute name="purchaseID" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ProPurchase" positionX="-63" positionY="36" width="128" height="58"/>
+        <element name="HLLStoredEvent" positionX="-54" positionY="9" width="128" height="134"/>
+    </elements>
+</model>

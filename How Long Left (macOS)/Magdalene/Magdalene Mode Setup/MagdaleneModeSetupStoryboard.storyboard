@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="PT7-yJ-VUT">
+            <objects>
+                <windowController storyboardIdentifier="MagdaleneModeSetup" id="7Yu-bl-Y3O" sceneMemberID="viewController">
+                    <window key="window" title="How Long Left" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" deferred="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" frameAutosaveName="" id="QEv-Ww-JeY">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="214" y="249" width="612" height="342"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <value key="minSize" type="size" width="612" height="342"/>
+                        <value key="maxSize" type="size" width="612" height="342"/>
+                        <connections>
+                            <outlet property="delegate" destination="7Yu-bl-Y3O" id="cfk-QC-e5s"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="dGa-Q3-YLb" kind="relationship" relationship="window.shadowedContentViewController" id="hzf-Ro-qe1"/>
+                    </connections>
+                </windowController>
+                <customObject id="tyc-xQ-qZV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961" y="-383"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="H0K-Xc-VZC">
+            <objects>
+                <viewController id="dGa-Q3-YLb" sceneMemberID="viewController">
+                    <view key="view" id="wx0-cZ-bC6">
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="bd8-dH-bfy">
+                                <rect key="frame" x="0.0" y="0.0" width="580" height="300"/>
+                                <connections>
+                                    <segue destination="pQq-Na-8f3" kind="embed" id="yAI-Tq-OfR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bd8-dH-bfy" secondAttribute="trailing" id="PZ8-vQ-XkH"/>
+                            <constraint firstItem="bd8-dH-bfy" firstAttribute="leading" secondItem="wx0-cZ-bC6" secondAttribute="leading" id="S8B-Pe-fxb"/>
+                            <constraint firstAttribute="bottom" secondItem="bd8-dH-bfy" secondAttribute="bottom" id="ehO-n7-qwP"/>
+                            <constraint firstItem="bd8-dH-bfy" firstAttribute="top" secondItem="wx0-cZ-bC6" secondAttribute="top" id="flb-wl-zPb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="UWC-5m-fKZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="961" y="35"/>
+        </scene>
+        <!--Magdalene Mode Setup Intro View Controller-->
+        <scene sceneID="fMv-ET-2bC">
+            <objects>
+                <viewController id="udZ-Tf-Tob" customClass="MagdaleneModeSetupIntroViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="OO0-Dl-sNw">
+                        <rect key="frame" x="0.0" y="0.0" width="612" height="342"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cf8-G5-PCC">
+                                <rect key="frame" x="14" y="13" width="93" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="cJ0-Mg-gQH"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZFL-jt-8j1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="neverClicked:" target="udZ-Tf-Tob" id="oiH-pD-t3f"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rL-7h-k2R">
+                                <rect key="frame" x="122" y="20" width="369" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="365" id="n2N-DI-ldM"/>
+                                    <constraint firstAttribute="height" constant="30" id="vIj-Z2-9zW"/>
+                                </constraints>
+                                <textFieldCell key="cell" alignment="center" title="You're seeing this window because you've used How Long Left with your Magdalene timetable in the past." id="GuL-EV-tfT">
+                                    <font key="font" metaFont="toolTip"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abq-KG-FyN">
+                                <rect key="frame" x="42" y="109" width="528" height="124"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pk-E7-Z8V">
+                                        <rect key="frame" x="0.0" y="46" width="528" height="78"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w1G-6n-Iwa">
+                                                <rect key="frame" x="89" y="41" width="351" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="37" id="1C5-2y-fWg"/>
+                                                    <constraint firstAttribute="width" constant="347" id="CnW-oi-8or"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Download Your Timetable" id="wg5-Rd-5nQ">
+                                                    <font key="font" metaFont="system" size="30"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6c-DU-8Lu">
+                                                <rect key="frame" x="-2" y="0.0" width="532" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="528" id="7dy-ho-zne"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="YL7-Hd-gPA"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" alignment="center" title="To use your 2020 timetable with How Long Left, you'll need to download it from Compass. Click continue to get started." id="B53-fO-ljm">
+                                                    <font key="font" metaFont="menuBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V2z-C3-XfB">
+                                        <rect key="frame" x="218" y="-7" width="93" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="81" id="LZz-hr-I0Z"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XZx-LI-zw7">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="continueClicked:" target="udZ-Tf-Tob" id="lIw-io-6sW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k4R-k2-33V">
+                                <rect key="frame" x="505" y="13" width="93" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="p04-RP-ShW"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Not Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aw2-Le-cuQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="notNowClicked:" target="udZ-Tf-Tob" id="fgS-se-FCO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cf8-G5-PCC" secondAttribute="bottom" constant="20" id="Ieu-g2-Aly"/>
+                            <constraint firstItem="abq-KG-FyN" firstAttribute="centerY" secondItem="OO0-Dl-sNw" secondAttribute="centerY" id="KTk-2l-0aa"/>
+                            <constraint firstItem="1rL-7h-k2R" firstAttribute="centerX" secondItem="OO0-Dl-sNw" secondAttribute="centerX" id="MRJ-uZ-l8m"/>
+                            <constraint firstItem="abq-KG-FyN" firstAttribute="centerX" secondItem="OO0-Dl-sNw" secondAttribute="centerX" id="PjI-Z7-8Wk"/>
+                            <constraint firstItem="cf8-G5-PCC" firstAttribute="leading" secondItem="OO0-Dl-sNw" secondAttribute="leading" constant="20" id="R1E-rx-0nI"/>
+                            <constraint firstAttribute="bottom" secondItem="k4R-k2-33V" secondAttribute="bottom" constant="20" id="eZf-bz-CXf"/>
+                            <constraint firstAttribute="trailing" secondItem="k4R-k2-33V" secondAttribute="trailing" constant="20" id="gTD-ud-my0"/>
+                            <constraint firstAttribute="bottom" secondItem="1rL-7h-k2R" secondAttribute="bottom" constant="20" id="rJ0-oU-Pzx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="reasonLabel" destination="1rL-7h-k2R" id="dpf-BN-76D"/>
+                        <outlet property="titleLabel" destination="w1G-6n-Iwa" id="JYF-ZY-9Fp"/>
+                    </connections>
+                </viewController>
+                <customObject id="Foa-8k-fqd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="497"/>
+        </scene>
+        <!--Controllable Tab View-->
+        <scene sceneID="0sf-sa-WeV">
+            <objects>
+                <customObject id="Rm8-y3-Nnm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <tabViewController tabStyle="unspecified" id="pQq-Na-8f3" customClass="ControllableTabView" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem id="faQ-E1-PCV"/>
+                        <tabViewItem id="D4d-2K-ndJ"/>
+                        <tabViewItem id="1dg-X8-mzi"/>
+                    </tabViewItems>
+                    <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
+                    <tabView key="tabView" type="noTabsNoBorder" id="zuP-rK-Zme">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="pQq-Na-8f3" id="4z9-zn-yjB"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="zuP-rK-Zme" id="DLD-Ma-RCo"/>
+                        <segue destination="udZ-Tf-Tob" kind="relationship" relationship="tabItems" id="iM7-Lb-cuD"/>
+                        <segue destination="Kjb-bR-qW6" kind="relationship" relationship="tabItems" id="KC8-kP-YTb"/>
+                        <segue destination="Y4t-nd-C1u" kind="relationship" relationship="tabItems" id="sWo-Y9-Nnh"/>
+                    </connections>
+                </tabViewController>
+            </objects>
+            <point key="canvasLocation" x="388" y="471"/>
+        </scene>
+        <!--Magdalene Mode Setup Awaiting Setup View Controller-->
+        <scene sceneID="m9y-6a-53A">
+            <objects>
+                <viewController id="Kjb-bR-qW6" customClass="MagdaleneModeSetupAwaitingSetupViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="UNB-v8-3Kv">
+                        <rect key="frame" x="0.0" y="0.0" width="616" height="314"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EmE-Eb-Jiw">
+                                <rect key="frame" x="10" y="141" width="596" height="105"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91f-K8-ui9">
+                                        <rect key="frame" x="38" y="0.0" width="521" height="105"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Rz-03-Yiv">
+                                                <rect key="frame" x="-2" y="73" width="525" height="32"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Open Compass To Download Your Timetable" id="ges-Wv-B83">
+                                                    <font key="font" metaFont="system" size="27"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="qfI-X1-KZf">
+                                                <rect key="frame" x="252" y="39" width="16" height="16"/>
+                                            </progressIndicator>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfX-uw-OIF">
+                                                <rect key="frame" x="134" y="0.0" width="253" height="21"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JMb-uJ-dLw">
+                                                        <rect key="frame" x="-6" y="-7" width="133" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Open Compass" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2bR-Cn-qSA">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="openCompassClicked:" target="Kjb-bR-qW6" id="gvy-iK-Jd1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-tE-s1f">
+                                                        <rect key="frame" x="126" y="-7" width="133" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Instructions" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rXX-eY-J64">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="helpClicked:" target="Kjb-bR-qW6" id="RUY-QX-JfF"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hT5-Rh-ASD">
+                                <rect key="frame" x="56" y="20" width="504" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="PeK-iu-4nu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="rhW-AZ-RAy"/>
+                                </constraints>
+                                <textFieldCell key="cell" alignment="center" id="maX-Rq-Mc1">
+                                    <font key="font" size="14" name="SFProDisplay-Regular"/>
+                                    <string key="title">Important: When importing your timetable to the Calendar app, choose a more frequent Auto-refresh option than every day to ensure your timetable stays up-to-date with updates and room changes. "Every 15 minutes" is the reccomended option.</string>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hT5-Rh-ASD" secondAttribute="bottom" constant="20" id="PCY-RX-wsv"/>
+                            <constraint firstItem="hT5-Rh-ASD" firstAttribute="centerX" secondItem="UNB-v8-3Kv" secondAttribute="centerX" id="Pbn-kV-Tib"/>
+                            <constraint firstItem="EmE-Eb-Jiw" firstAttribute="leading" secondItem="UNB-v8-3Kv" secondAttribute="leading" constant="10" id="PcY-Ys-Ydb"/>
+                            <constraint firstItem="EmE-Eb-Jiw" firstAttribute="top" secondItem="UNB-v8-3Kv" secondAttribute="top" constant="68" id="Ygd-9b-xHc"/>
+                            <constraint firstAttribute="trailing" secondItem="EmE-Eb-Jiw" secondAttribute="trailing" constant="10" id="eiY-Gz-Zno"/>
+                            <constraint firstItem="EmE-Eb-Jiw" firstAttribute="centerX" secondItem="UNB-v8-3Kv" secondAttribute="centerX" id="qRG-fO-14y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="spinner" destination="qfI-X1-KZf" id="jxi-SQ-SI9"/>
+                    </connections>
+                </viewController>
+                <customObject id="CCN-ld-4rZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="914"/>
+        </scene>
+        <!--Magdalene Mode Setup Done View Controller-->
+        <scene sceneID="E2R-xq-DAO">
+            <objects>
+                <viewController id="Y4t-nd-C1u" customClass="MagdaleneModeSetupDoneViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="JCZ-An-gLT">
+                        <rect key="frame" x="0.0" y="0.0" width="612" height="342"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="30M-vN-bQ2">
+                                <rect key="frame" x="378" y="13" width="220" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open Magdalene Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hjq-TL-0FM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openMagdalenePreferencesClicked:" target="Y4t-nd-C1u" id="F20-MQ-iAB"/>
+                                </connections>
+                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDn-Ng-rqU">
+                                <rect key="frame" x="95" y="262" width="422" height="58"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7vM-q3-u5q">
+                                        <rect key="frame" x="30" y="24" width="363" height="34"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Magdalene Setup Complete!" id="qcy-5d-8HN">
+                                            <font key="font" metaFont="system" size="29"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEQ-pq-6Ph">
+                                        <rect key="frame" x="-2" y="0.0" width="426" height="17"/>
+                                        <textFieldCell key="cell" alignment="center" title="Magdalene Mode is enabled. You can configure it in Preferences." id="bue-25-w2Q">
+                                            <font key="font" metaFont="menuBar"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="r4t-xG-bfU" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="176" y="61" width="260" height="176"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="5kN-2C-fft"/>
+                                    <constraint firstAttribute="width" constant="260" id="Ihr-8o-sLg"/>
+                                </constraints>
+                            </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sf3-K3-msX">
+                                <rect key="frame" x="14" y="13" width="75" height="32"/>
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xqw-Wh-bcG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="doneButtonClicked:" target="Y4t-nd-C1u" id="tBJ-UO-vG4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="r4t-xG-bfU" firstAttribute="centerX" secondItem="JCZ-An-gLT" secondAttribute="centerX" id="2GE-hV-BSY"/>
+                            <constraint firstItem="kDn-Ng-rqU" firstAttribute="centerX" secondItem="JCZ-An-gLT" secondAttribute="centerX" id="8eJ-gr-Pu2"/>
+                            <constraint firstAttribute="trailing" secondItem="30M-vN-bQ2" secondAttribute="trailing" constant="20" id="G36-D6-ynK"/>
+                            <constraint firstAttribute="bottom" secondItem="Sf3-K3-msX" secondAttribute="bottom" constant="20" id="Y4f-QJ-kfv"/>
+                            <constraint firstItem="r4t-xG-bfU" firstAttribute="top" secondItem="kDn-Ng-rqU" secondAttribute="bottom" constant="25" id="c5L-zj-ZIA"/>
+                            <constraint firstItem="kDn-Ng-rqU" firstAttribute="top" secondItem="JCZ-An-gLT" secondAttribute="top" constant="22" id="ljt-pq-Oye"/>
+                            <constraint firstAttribute="bottom" secondItem="30M-vN-bQ2" secondAttribute="bottom" constant="20" id="vpP-01-HZu"/>
+                            <constraint firstItem="Sf3-K3-msX" firstAttribute="leading" secondItem="JCZ-An-gLT" secondAttribute="leading" constant="20" id="xvk-v1-7Xa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationView" destination="r4t-xG-bfU" id="jnA-Nu-hwy"/>
+                    </connections>
+                </viewController>
+                <customObject id="HQI-pY-Yaj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="1320"/>
+        </scene>
+    </scenes>
+</document>

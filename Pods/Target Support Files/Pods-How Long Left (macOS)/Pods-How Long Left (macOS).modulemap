@@ -1,0 +1,6 @@
+framework module Pods_How_Long_Left__macOS_ {
+  umbrella header "Pods-How Long Left (macOS)-umbrella.h"
+
+  export *
+  module * { export * }
+}

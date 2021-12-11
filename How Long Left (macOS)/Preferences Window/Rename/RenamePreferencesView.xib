@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="RenamePreferenceViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="autoPromptButton" destination="qTa-JS-LdY" id="dyR-4s-Igm"/>
+                <outlet property="launchButton" destination="ldt-OC-Gz2" id="163-E2-TYT"/>
+                <outlet property="spinner" destination="1mi-pS-Ubw" id="0l5-xV-Ag3"/>
+                <outlet property="view" destination="0CW-dO-GEY" id="7Fu-R4-NRj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="RenamePreferenceView" id="0CW-dO-GEY">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="174"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Yq0-fY-4uX">
+                    <rect key="frame" x="16" y="99" width="438" height="61"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="434" id="09h-HC-JFO"/>
+                        <constraint firstAttribute="height" constant="61" id="P8J-3g-pUX"/>
+                    </constraints>
+                    <textFieldCell key="cell" alignment="center" id="tUh-m4-s5f">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <string key="title"> Rename is a Magdalene Mode tool that modifies your calendar to shorten the titles of events to only the subject name instead of the long Compass format, and adds events for Lunch and Recess.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ldt-OC-Gz2">
+                    <rect key="frame" x="167" y="53" width="137" height="32"/>
+                    <buttonCell key="cell" type="push" title="Launch Rename" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p4R-kz-l4O">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="launchRenameClicked:" target="-2" id="oEf-ts-8JG"/>
+                    </connections>
+                </button>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1mi-pS-Ubw">
+                    <rect key="frame" x="227" y="62" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qTa-JS-LdY">
+                    <rect key="frame" x="128" y="18" width="215" height="18"/>
+                    <buttonCell key="cell" type="check" title="Prompt to rename automatically" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xir-S1-gN9">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="message"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="autoPromptClicked:" target="-2" id="MO0-zW-iPm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qTa-JS-LdY" secondAttribute="bottom" constant="20" id="55B-VV-7Mx"/>
+                <constraint firstItem="ldt-OC-Gz2" firstAttribute="centerX" secondItem="0CW-dO-GEY" secondAttribute="centerX" id="Lc0-3g-hSp"/>
+                <constraint firstItem="Yq0-fY-4uX" firstAttribute="top" secondItem="0CW-dO-GEY" secondAttribute="top" constant="14" id="SZ4-3r-aHb"/>
+                <constraint firstItem="Yq0-fY-4uX" firstAttribute="centerX" secondItem="0CW-dO-GEY" secondAttribute="centerX" id="hAz-mO-wjx"/>
+                <constraint firstItem="qTa-JS-LdY" firstAttribute="centerX" secondItem="0CW-dO-GEY" secondAttribute="centerX" id="t94-S9-9O7"/>
+                <constraint firstItem="qTa-JS-LdY" firstAttribute="top" secondItem="ldt-OC-Gz2" secondAttribute="bottom" constant="26" id="xkv-9n-He3"/>
+            </constraints>
+            <point key="canvasLocation" x="51" y="6"/>
+        </customView>
+    </objects>
+</document>

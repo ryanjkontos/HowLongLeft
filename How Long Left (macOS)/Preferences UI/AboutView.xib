@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="aboutViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="appIconButton" destination="v6r-5o-3Gb" id="x8y-Zl-2tU"/>
+                <outlet property="devLabel" destination="tuX-dt-PUv" id="AT1-yI-w9c"/>
+                <outlet property="nameLabel" destination="mBA-my-8ws" id="J8C-p6-PIh"/>
+                <outlet property="versionLabel" destination="H7h-9r-EPL" id="8Qz-JR-jWV"/>
+                <outlet property="view" destination="8Ck-Ze-rC9" id="emQ-YG-1lI"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="AboutView" id="8Ck-Ze-rC9">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="274"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tuX-dt-PUv">
+                    <rect key="frame" x="22" y="120" width="350" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Developed by Ryan Kontos in Sydney, Australia." id="KCj-gE-b9c">
+                        <font key="font" metaFont="cellTitle"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WL5-oH-8aE">
+                    <rect key="frame" x="142" y="96" width="110" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Written in Swift!" id="l2C-Iz-F58">
+                        <font key="font" metaFont="cellTitle"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="H7h-9r-EPL">
+                    <rect key="frame" x="137" y="144" width="119" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Version X" id="2Hf-VQ-GhC">
+                        <font key="font" metaFont="systemMedium" size="12"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="o6V-Ew-uVM">
+                    <rect key="frame" x="131" y="7" width="133" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A0c-ML-wNe">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="githubButtonClicked:" target="-2" id="mrk-j0-71c"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="01E-dt-27m">
+                    <rect key="frame" x="131" y="59" width="133" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Leave a Review" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KTD-DD-qTR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="writeReviewClicked:" target="-2" id="WoW-W4-mbE"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="KWs-4o-yVm">
+                    <rect key="frame" x="131" y="33" width="133" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Twitter" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6aZ-9s-x1r">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="twitterButtonClicked:" target="-2" id="FuU-rk-tn2"/>
+                    </connections>
+                </button>
+                <textField autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mBA-my-8ws">
+                    <rect key="frame" x="24" y="161" width="345" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="How Long Left" id="3Cr-91-WZ7">
+                        <font key="font" metaFont="systemMedium" size="15"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="v6r-5o-3Gb">
+                    <rect key="frame" x="157" y="182" width="81" height="81"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="logo" imagePosition="left" imageScaling="proportionallyDown" inset="2" id="H2o-CD-tAe">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="appIconClicked:" target="-2" id="s04-lg-zkk"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="33" y="-25"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="logo" width="1024" height="1024"/>
+    </resources>
+</document>

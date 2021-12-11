@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>DayRater.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>Event Renamer.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>HLLCore.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>How Long Left (Today iOS).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>How Long Left (iOS).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>How Long Left (macOS).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>How Long Left Helper.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
+		<key>How Long Left Intents.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>How Long Left IntentsUI.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>How Long Left Siri Intents.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>How Long Left Today Widget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
+		<key>How Long Left Widget (iOS).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>How Long Left Widget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>How Long Left Widget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>How Long Left macOS Today Widget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>HowLongLeftHelper.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>HowLongLeftMacWidget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Mac Widget Intents Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>Mac Widget List.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>Mac Widget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>Mac WidgetKitExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>MacWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>MacWidgetIntents.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>PageNav.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Watch App (Complication).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>WidgerCalendarSelectionInteny.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
+		</dict>
+		<key>Widget Intents Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>WidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
+		<key>WidgetIntentsExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>28</integer>
+		</dict>
+		<key>iOS How Long Left.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>iOS WIdget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>iOS WidgetKitExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>iOSWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>t.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
+		<key>watchOS How Long Left (Complication).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>watchOS How Long Left.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>BF1483D8255FB2190099FA0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF1646C122FC410600D07BC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF451E382518BB3D001F151B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF4988FC2733A14A00024295</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF55FF8A234C9F2700FD1DE9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF5D29542174679500AC1EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF5D296B2174688700AC1EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF6AD6BE2226731E00B62C0C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF794DE421787DED0076FA17</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF7DB4D223EA9B98003EDB47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFB3BD422526262B0022E882</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFBD92E72512349200CF5278</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFC0C4ED21FEB6EF00D041DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFC0C4F621FEB6EF00D041DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFE4771D274B91730016A725</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFEA0CE521788D0100FAF2F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFFB9499255FCAB300B58932</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

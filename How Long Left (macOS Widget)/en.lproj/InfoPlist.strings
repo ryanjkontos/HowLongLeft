@@ -1,0 +1,4 @@
+/* Display name and description for this extension. */
+"CFBundleDisplayName" = "How Long Left";
+"com.apple.notificationcenter.widget.description" = "How Long Left's Today Widget";
+

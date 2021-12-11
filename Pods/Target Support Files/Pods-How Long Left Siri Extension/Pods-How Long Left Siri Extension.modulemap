@@ -1,0 +1,6 @@
+framework module Pods_How_Long_Left_Siri_Extension {
+  umbrella header "Pods-How Long Left Siri Extension-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WidgetPreferenceViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="calendarColButton" destination="obF-2b-vjb" id="6NB-4v-7nZ"/>
+                <outlet property="colourInfoText" destination="SiA-xR-WKS" id="muB-v7-bfP"/>
+                <outlet property="hostingController" destination="lcr-84-wmQ" id="0n3-7O-XTe"/>
+                <outlet property="progressBarButton" destination="jiS-eL-gh6" id="R6w-Le-WoW"/>
+                <outlet property="selectedEventButton" destination="tUS-QF-TWg" id="d9T-JQ-Pw5"/>
+                <outlet property="themeMenu" destination="IZg-zQ-bZj" id="uJH-Qz-rg6"/>
+                <outlet property="updatingSpinner" destination="UhD-RL-IcO" id="O1U-ok-NBD"/>
+                <outlet property="updatingText" destination="IHB-bh-qLf" id="8Em-I4-4M1"/>
+                <outlet property="view" destination="0CW-dO-GEY" id="7Fu-R4-NRj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="WidgetPreferenceView" id="0CW-dO-GEY">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="278"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daY-7v-Xmc">
+                    <rect key="frame" x="353" y="20" width="127" height="16"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IHB-bh-qLf">
+                            <rect key="frame" x="-2" y="1" width="109" height="14"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Updating Widgets..." id="KPY-Ca-Gq8">
+                                <font key="font" metaFont="system" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="UhD-RL-IcO">
+                            <rect key="frame" x="111" y="0.0" width="16" height="16"/>
+                        </progressIndicator>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="21" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b12-Ra-lgh">
+                    <rect key="frame" x="29" y="39" width="443" height="212"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nU-lW-ESi">
+                            <rect key="frame" x="0.0" y="178" width="228" height="34"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jiS-eL-gh6">
+                                    <rect key="frame" x="-2" y="17" width="141" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show Progress Bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KAn-ax-hFJ">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="buttonClicked:" target="-2" id="kRT-ur-XyL"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="uOV-dx-7oM">
+                                    <rect key="frame" x="18" y="0.0" width="212" height="14"/>
+                                    <textFieldCell key="cell" title="Show a progress bar for current events." id="ycY-cA-ycp">
+                                        <font key="font" metaFont="message" size="11"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="uOV-dx-7oM" firstAttribute="leading" secondItem="5nU-lW-ESi" secondAttribute="leading" constant="20" id="vBl-Ln-2bC"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-JP-c2x">
+                            <rect key="frame" x="0.0" y="123" width="443" height="34"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="obF-2b-vjb">
+                                    <rect key="frame" x="-2" y="17" width="144" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Use Calendar Color" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nUg-37-FM5">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="buttonClicked:" target="-2" id="fJc-qX-m5i"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="SiA-xR-WKS">
+                                    <rect key="frame" x="18" y="0.0" width="427" height="14"/>
+                                    <textFieldCell key="cell" title="Use the color of an event's calendar to tint the countdown text and progress bar." id="7mR-Uz-p4G">
+                                        <font key="font" metaFont="message" size="11"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="SiA-xR-WKS" firstAttribute="leading" secondItem="fWo-JP-c2x" secondAttribute="leading" constant="20" id="2jW-h5-G4v"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQr-Wk-VpT">
+                            <rect key="frame" x="0.0" y="68" width="370" height="34"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUS-QF-TWg">
+                                    <rect key="frame" x="-2" y="17" width="154" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show Selected Event" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Iez-oO-Rbn">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="buttonClicked:" target="-2" id="YN3-hl-h8u"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ETF-pU-XPN">
+                                    <rect key="frame" x="18" y="0.0" width="354" height="14"/>
+                                    <textFieldCell key="cell" title="When an event is selected in How Long Left, show it in the Widget." id="1GT-Ik-vR7">
+                                        <font key="font" metaFont="message" size="11"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ETF-pU-XPN" firstAttribute="leading" secondItem="gQr-Wk-VpT" secondAttribute="leading" constant="20" id="HzA-rw-SJQ"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Exr-xr-KwB">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="47"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-l2-Yvc">
+                                    <rect key="frame" x="-2" y="31" width="93" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Widget Theme" id="V8l-wV-3Op">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IZg-zQ-bZj">
+                                    <rect key="frame" x="-3" y="-4" width="157" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="Mct-3b-Pkl"/>
+                                    </constraints>
+                                    <popUpButtonCell key="cell" type="push" title="System" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Kag-Mn-k6L" id="1bH-5c-l4n">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" id="l1G-Y9-HNK">
+                                            <items>
+                                                <menuItem title="System" state="on" id="Kag-Mn-k6L"/>
+                                                <menuItem title="Dark" id="Vnm-KM-iuM"/>
+                                                <menuItem title="Light" id="R6U-o3-9R1"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="themeChanged:" target="-2" id="n3z-vT-zGi"/>
+                                    </connections>
+                                </popUpButton>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="daY-7v-Xmc" secondAttribute="bottom" constant="20" id="IsE-Ez-6Uw"/>
+                <constraint firstItem="b12-Ra-lgh" firstAttribute="top" secondItem="0CW-dO-GEY" secondAttribute="top" constant="27" id="JJv-oN-00A"/>
+                <constraint firstAttribute="trailing" secondItem="daY-7v-Xmc" secondAttribute="trailing" constant="20" id="bWF-aw-FvB"/>
+                <constraint firstAttribute="bottom" secondItem="b12-Ra-lgh" secondAttribute="bottom" constant="39" id="gPa-Gy-UON"/>
+                <constraint firstItem="b12-Ra-lgh" firstAttribute="centerX" secondItem="0CW-dO-GEY" secondAttribute="centerX" id="zxQ-g3-i4N"/>
+            </constraints>
+            <point key="canvasLocation" x="48" y="58"/>
+        </customView>
+        <hostingController id="lcr-84-wmQ"/>
+        <userDefaultsController representsSharedInstance="YES" id="EdJ-JP-WCc"/>
+    </objects>
+</document>

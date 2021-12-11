@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15702" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lBG-tw-tR2">
+    <device id="watch42"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+    </dependencies>
+    <scenes>
+        <!--How Long Left-->
+        <scene sceneID="Czu-oA-YvT">
+            <objects>
+                <controller identifier="CurrentView" title="How Long Left" alwaysBounce="YES" id="lBG-tw-tR2" customClass="InterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" hidden="YES" text="Getting Events..." textAlignment="center" numberOfLines="0" id="1yz-y1-Oir">
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="system" pointSize="18"/>
+                        </label>
+                        <table alignment="center" spacing="6" id="iDl-47-6gP">
+                            <items>
+                                <tableRow identifier="PrimaryEventRow" id="tIg-b8-ol2" customClass="PrimaryEventRowController" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="153" alignment="left" id="NEq-Mw-Vm4">
+                                        <items>
+                                            <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="n9b-5t-JOY">
+                                                <items>
+                                                    <label width="1" height="37" alignment="center" verticalAlignment="center" text="Primary" textAlignment="center" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="suO-YH-Elk">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="30"/>
+                                                    </label>
+                                                    <label width="1" height="21" alignment="center" verticalAlignment="center" text="ends in" textAlignment="center" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="c3I-kl-03c">
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="18"/>
+                                                    </label>
+                                                    <label width="1" height="47" alignment="center" verticalAlignment="center" text="00:00" textAlignment="center" baselineAdjustment="alignCenters" minimumScaleFactor="0.0" id="gjz-gz-AZp">
+                                                        <accessibilityTraits key="accessibilityTraits" staticText="YES" updatesFrequently="YES"/>
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="30"/>
+                                                        <variation key="device=watch38mm">
+                                                            <fontDescription key="font" type="system" weight="semibold" pointSize="36"/>
+                                                        </variation>
+                                                        <variation key="device=watch40mm">
+                                                            <fontDescription key="font" type="system" weight="semibold" pointSize="38"/>
+                                                        </variation>
+                                                        <variation key="device=watch42mm">
+                                                            <fontDescription key="font" type="system" weight="semibold" pointSize="38"/>
+                                                        </variation>
+                                                        <variation key="device=watch44mm">
+                                                            <fontDescription key="font" type="system" weight="semibold" pointSize="40"/>
+                                                        </variation>
+                                                    </label>
+                                                    <label width="1" height="28" alignment="left" verticalAlignment="center" text="(Room: 10)" textAlignment="center" minimumScaleFactor="0.5" id="0r2-Kl-Af3">
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="countdownLabel" destination="gjz-gz-AZp" id="3K9-S5-qdK"/>
+                                        <outlet property="countdownTypeLabel" destination="c3I-kl-03c" id="j29-dY-LMn"/>
+                                        <outlet property="infoLabel" destination="0r2-Kl-Af3" id="dnO-ui-301"/>
+                                        <outlet property="titleLabel" destination="suO-YH-Elk" id="Kb8-ef-Tz7"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="CurrentEventRow" id="lXb-85-PJR" customClass="CurrentEventRowController" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="63" alignment="left" layout="vertical" spacing="0.0" id="gV6-8h-7yd">
+                                        <items>
+                                            <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="mop-D9-jAE">
+                                                <items>
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="Secondary ends in" minimumScaleFactor="0.5" id="W2z-Pf-ygZ">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="17"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <label width="1" alignment="left" verticalAlignment="center" text="00:00" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="ViJ-mK-Hvk">
+                                                <accessibilityTraits key="accessibilityTraits" staticText="YES" updatesFrequently="YES"/>
+                                                <fontDescription key="font" type="system" weight="medium" pointSize="27"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="countdownLabel" destination="ViJ-mK-Hvk" id="zip-vW-Bty"/>
+                                        <outlet property="titleLabel" destination="W2z-Pf-ygZ" id="mFN-Uk-ecR"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="UpcomingEventRow" id="8JU-dB-roJ" customClass="UpcomingEventRowController" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="54" alignment="left" layout="vertical" id="cvn-ZQ-2u8">
+                                        <items>
+                                            <group width="136" alignment="center" verticalAlignment="center" layout="vertical" spacing="2" id="kwG-XC-fx7">
+                                                <items>
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="Upcoming" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="oXU-eI-Fum">
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="19"/>
+                                                    </label>
+                                                    <label width="1" height="15" alignment="left" verticalAlignment="center" text="12:00am | Room: 10" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="GSw-41-glI">
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="13"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="infoLabel" destination="GSw-41-glI" id="6d4-Nj-5uG"/>
+                                        <outlet property="titleLabel" destination="oXU-eI-Fum" id="hdP-GV-qTP"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <button width="1" height="43" alignment="center" verticalAlignment="bottom" title="More Upcoming" id="uZ5-D0-lBV">
+                            <connections>
+                                <action selector="moreUpcomingButtonTapped" destination="lBG-tw-tR2" id="5p5-mm-xtT"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="eventsTable" destination="iDl-47-6gP" id="EDa-B7-xwZ"/>
+                        <outlet property="moreUpcomingButton" destination="uZ5-D0-lBV" id="Yqx-U6-OYM"/>
+                        <outlet property="noTableLabel" destination="1yz-y1-Oir" id="KeO-gE-zXn"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="108" y="-111"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="x8m-Tk-Mwo">
+            <objects>
+                <controller identifier="SettingsMain" title="Settings" alwaysBounce="YES" id="bNB-jX-zOS" customClass="SettingsListInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <table alignment="left" id="XfH-K8-b65">
+                            <items>
+                                <tableRow identifier="TypeRow" id="Qa9-B8-w6k" customClass="SettingsListRow" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="voc-mG-lsi">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="Preference" id="kH0-GE-a89"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="typeLabel" destination="kH0-GE-a89" id="kTQ-Xt-VY5"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <switch width="1" height="78" alignment="left" value="YES" title="Sync Preferences With iPhone" id="RNV-nl-e2G">
+                            <connections>
+                                <action selector="syncPreferencesClicked:" destination="bNB-jX-zOS" id="Eje-Br-TVn"/>
+                            </connections>
+                        </switch>
+                    </items>
+                    <connections>
+                        <outlet property="syncPreferencesButton" destination="RNV-nl-e2G" id="N6a-ee-DON"/>
+                        <outlet property="table" destination="XfH-K8-b65" id="UiX-ZG-ssJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="293" y="-178"/>
+        </scene>
+        <!--Calendars-->
+        <scene sceneID="n5r-H7-T1R">
+            <objects>
+                <controller identifier="CalendarList" title="Calendars" alwaysBounce="YES" id="yl3-uq-tdM" customClass="CalendarListInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <table alignment="left" id="w74-fM-Ihu">
+                            <items>
+                                <tableRow identifier="CalendarRow" selectable="NO" id="8NF-m6-ccJ" customClass="CalendarRow" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="CBJ-4j-Rtc">
+                                        <items>
+                                            <switch width="1" height="1" alignment="center" verticalAlignment="center" value="YES" title="Calendar" numberOfLines="1" minimumScaleFactor="0.90000000000000002" id="Xfp-Zy-m9e">
+                                                <connections>
+                                                    <action selector="toggled:" destination="8NF-m6-ccJ" id="6TN-Sf-df3"/>
+                                                </connections>
+                                            </switch>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="rowSwitch" destination="Xfp-Zy-m9e" id="ft5-SW-7M7"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label alignment="left" text="Events from enabled calendars will appear in How Long Left." baselineAdjustment="alignCenters" numberOfLines="0" id="tq3-aa-hxh">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <group width="1" height="7" alignment="left" id="yan-Aw-wmW"/>
+                        <switch width="1" height="56" alignment="left" value="YES" title="Use New Calendars" id="zI0-74-2av">
+                            <connections>
+                                <action selector="useNewCalendarsSwitched:" destination="yl3-uq-tdM" id="rY0-01-74j"/>
+                            </connections>
+                        </switch>
+                        <label alignment="left" text="Automatically enable new calendars as they are created." baselineAdjustment="alignCenters" numberOfLines="0" id="Iul-CM-b0I">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="w74-fM-Ihu" id="wO2-JN-dWj"/>
+                        <outlet property="useNewCalendarsSwitch" destination="zI0-74-2av" id="am2-IZ-HRa"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="478" y="-161"/>
+        </scene>
+        <!--Interface-->
+        <scene sceneID="W9h-0o-AoT">
+            <objects>
+                <controller identifier="InterfaceSettings" title="Interface" alwaysBounce="YES" id="Xcm-Lx-WVx" customClass="InterfaceSettingsInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <switch width="1" height="53" alignment="left" title="Large Countdown" id="zpT-Ey-Aky">
+                            <connections>
+                                <action selector="largeCountdownTapped:" destination="Xcm-Lx-WVx" id="feD-YZ-XRG"/>
+                            </connections>
+                        </switch>
+                        <label width="136" height="49" alignment="left" text="Show a large countdown at the top of the events table." baselineAdjustment="alignCenters" numberOfLines="0" id="amf-S4-0a5">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <group width="1" height="7" alignment="left" id="UI6-iO-kh7"/>
+                        <switch width="1" height="53" alignment="left" title="Show One Event Only" id="mU1-h8-ihA">
+                            <connections>
+                                <action selector="showOneEventTapped:" destination="Xcm-Lx-WVx" id="TgV-r1-axe"/>
+                            </connections>
+                        </switch>
+                        <label width="136" height="49" alignment="left" text="Show only the top event instead of a list of events." baselineAdjustment="alignCenters" numberOfLines="0" id="ScS-VY-wHe">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <group width="1" height="7" alignment="left" id="hba-bA-IDz"/>
+                        <switch width="1" height="75" alignment="left" title="Show Upcoming Events" id="X8o-7p-QEj">
+                            <connections>
+                                <action selector="showUpcomingTapped:" destination="Xcm-Lx-WVx" id="AEu-ob-FcI"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="78" alignment="left" title="Show Current Events First" id="m1f-lp-VcX">
+                            <connections>
+                                <action selector="showCurrentEventsFirstTapped:" destination="Xcm-Lx-WVx" id="Z3E-AT-BQ3"/>
+                            </connections>
+                        </switch>
+                        <label width="136" height="65" alignment="left" text="List current events above all upcoming events, instead of in chronological order." baselineAdjustment="alignCenters" numberOfLines="0" id="5Po-a7-K2a">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="largeCountdownButton" destination="zpT-Ey-Aky" id="q2F-rq-vwM"/>
+                        <outlet property="showCurrentFirstSwitch" destination="m1f-lp-VcX" id="F9d-GJ-8Ym"/>
+                        <outlet property="showOneEventSwitch" destination="mU1-h8-ihA" id="4iU-Z7-9Pt"/>
+                        <outlet property="showUpcomingSwitch" destination="X8o-7p-QEj" id="oXR-f7-b0H"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="714" y="-147.33333333333334"/>
+        </scene>
+        <!--General-->
+        <scene sceneID="fab-dI-ltb">
+            <objects>
+                <controller identifier="GeneralSettings" title="General" alwaysBounce="YES" id="QYC-aq-Zee" customClass="GeneralSettingsInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <group width="1" height="7" alignment="left" id="DW5-GJ-qEe"/>
+                        <label alignment="left" text="LOCATIONS" id="Y8S-dD-gum">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <switch width="1" height="54" alignment="left" value="YES" title="Show Event Locations" id="46w-uZ-7pW">
+                            <connections>
+                                <action selector="showLocationsToggled:" destination="QYC-aq-Zee" id="F1S-C1-V1w"/>
+                            </connections>
+                        </switch>
+                        <group width="1" height="7" alignment="left" id="0Ro-7o-b2d"/>
+                        <label alignment="left" text="ALL-DAY EVENTS" id="rr2-2q-sMC">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <switch width="1" height="54" alignment="left" value="YES" title="Show All-Day Events" id="M0p-hk-OIP">
+                            <connections>
+                                <action selector="showAllDayEventsToggled:" destination="QYC-aq-Zee" id="UJd-E1-7jm"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="72" alignment="left" value="YES" title="Include in Current Events" id="O60-Fz-PPc">
+                            <connections>
+                                <action selector="showAllDayEventsInCurrentToggled:" destination="QYC-aq-Zee" id="Sgd-Kh-ZHT"/>
+                            </connections>
+                        </switch>
+                        <group width="1" height="7" alignment="left" id="0X2-Bh-rWT"/>
+                        <label alignment="left" text="EVENT INFO VIEW" id="wNi-j0-ERc">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <switch width="1" height="72" alignment="left" value="YES" title="Show Following Occurences" id="5Jx-da-S9h">
+                            <connections>
+                                <action selector="showFollowingOccurencesToggled:" destination="QYC-aq-Zee" id="Uio-Gz-ZRB"/>
+                            </connections>
+                        </switch>
+                    </items>
+                    <connections>
+                        <outlet property="includeAllDayEventsInCurrentSwitch" destination="O60-Fz-PPc" id="gBb-VK-hkx"/>
+                        <outlet property="showAllDayEventsSwitch" destination="M0p-hk-OIP" id="qQ0-kR-Yvm"/>
+                        <outlet property="showEventLocationsSwitch" destination="46w-uZ-7pW" id="m8F-xv-a86"/>
+                        <outlet property="showFollowingOccurencesSwitch" destination="5Jx-da-S9h" id="2Jm-h5-N6z"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="944.15384615384619" y="-154.74358974358975"/>
+        </scene>
+        <!--Magdalene-->
+        <scene sceneID="JNV-i1-vv4">
+            <objects>
+                <controller identifier="MagdaleneSettings" title="Magdalene" alwaysBounce="YES" id="SCN-Bd-Ejb" customClass="MagdaleneSettingsInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <switch width="1" height="55" alignment="left" value="YES" title="Magdalene Mode" id="oWo-pu-4hG">
+                            <fontDescription key="font" type="system" pointSize="16"/>
+                            <variation key="device=watch38mm" height="54">
+                                <fontDescription key="font" type="system" pointSize="15"/>
+                            </variation>
+                            <variation key="device=watch40mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm" height="59">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="56">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                                <nil key="titleColor"/>
+                            </variation>
+                            <connections>
+                                <action selector="magdaleneModeSwitched:" destination="SCN-Bd-Ejb" id="GXV-0B-KE4"/>
+                            </connections>
+                        </switch>
+                        <label alignment="left" text="Enable features useful for Magdalene users. Tap for more info." baselineAdjustment="alignCenters" numberOfLines="0" id="Guo-B8-zQt">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="8Qb-F1-7jm"/>
+                            </gestureRecognizers>
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <group width="1" height="7" alignment="left" id="BJW-d3-ZLO"/>
+                        <separator alignment="left" id="ExM-Sv-Xxe">
+                            <color key="color" white="0.66666666666666663" alpha="0.54651738556338025" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </separator>
+                        <group width="1" height="7" alignment="left" id="tKb-fR-Zh3"/>
+                        <switch width="1" height="71" alignment="left" value="YES" title="Show Subject Names" id="J7e-Eq-usl">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="showSubjectNamesClicked:" destination="SCN-Bd-Ejb" id="RZI-Ve-sJJ"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="74" alignment="left" value="YES" title="Indicate Timetable Changes" id="diy-y1-P5C">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="indicateChangesClicked:" destination="SCN-Bd-Ejb" id="Jmg-Kq-8mZ"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="73" alignment="left" value="YES" title="Add Lunch, Recess &amp; Sport" id="oYW-df-iML">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="addBreaksSwitched:" destination="SCN-Bd-Ejb" id="srK-p4-cYL"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="42" alignment="left" value="YES" title="Show Terms" id="wKq-IT-FPB">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="showTermsSwitched:" destination="SCN-Bd-Ejb" id="GG7-DS-SYY"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="57" alignment="left" value="YES" title="Show School Holidays" id="5dh-pk-Je0">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="showSchoolHolidaysSwitched:" destination="SCN-Bd-Ejb" id="yFP-j1-pQ1"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" height="57" alignment="left" value="YES" title="Show Sport as &quot;Study&quot;" id="1QE-cG-PcB">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="showStudyAsSportSwitched:" destination="SCN-Bd-Ejb" id="0nZ-i1-rjq"/>
+                            </connections>
+                        </switch>
+                        <group width="1" height="7" alignment="left" id="0Ui-wx-pSb"/>
+                        <switch width="1" height="73" alignment="left" value="YES" title="Don't List Breaks &amp; Homeroom" id="tpZ-ek-GoX">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <variation key="device=watch38mm" height="67">
+                                <fontDescription key="font" type="system" pointSize="14"/>
+                            </variation>
+                            <variation key="device=watch40mm" widthAdjustment="0.0">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch42mm">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <variation key="device=watch44mm" height="60">
+                                <fontDescription key="font" type="system" pointSize="16"/>
+                            </variation>
+                            <connections>
+                                <action selector="hideBreaksAndHomeroomSwitched:" destination="SCN-Bd-Ejb" id="AbS-eX-Dkf"/>
+                            </connections>
+                        </switch>
+                        <label alignment="left" text="Hide breaks and homeroom in the upcoming events list. " baselineAdjustment="alignCenters" numberOfLines="0" id="mcY-Xi-5AM">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="N1I-bQ-BB0"/>
+                            </gestureRecognizers>
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <group width="1" height="7" alignment="left" id="ds5-54-367"/>
+                        <table alignment="left" id="lrk-NN-lsg"/>
+                    </items>
+                    <connections>
+                        <outlet property="addLunchAndRecessSwitch" destination="oYW-df-iML" id="CqP-9A-Cn4"/>
+                        <outlet property="breaksAndHomeroomSwitch" destination="tpZ-ek-GoX" id="SRb-F0-4kO"/>
+                        <outlet property="indicateTimetableChangesSwitch" destination="diy-y1-P5C" id="lo2-kI-o0r"/>
+                        <outlet property="magdaleneModeSwitch" destination="oWo-pu-4hG" id="GSr-5H-m4z"/>
+                        <outlet property="showSchoolHolidaysSwitch" destination="5dh-pk-Je0" id="LQL-dO-IQo"/>
+                        <outlet property="showSportAsStudySwitch" destination="1QE-cG-PcB" id="nTO-Jx-0Pa"/>
+                        <outlet property="showSubjectNamesSwitch" destination="J7e-Eq-usl" id="jwy-qm-boP"/>
+                        <outlet property="showTermsSwitch" destination="wKq-IT-FPB" id="7yK-eA-goe"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="455.94871794871796" y="396.23076923076928"/>
+        </scene>
+        <!--Complication-->
+        <scene sceneID="6DR-XO-XjT">
+            <objects>
+                <controller identifier="ComplicationSettingsView" title="Complication" id="daE-9J-D6l" customClass="ComplicationSettingsInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <switch width="1" height="46" alignment="left" value="YES" title="Show Events" id="L2G-Vo-wQT">
+                            <connections>
+                                <action selector="showEventsToggled:" destination="daE-9J-D6l" id="igO-UL-2sc"/>
+                            </connections>
+                        </switch>
+                        <label height="65" alignment="left" text="Show a countdown for the current or upcoming event on your watch face." baselineAdjustment="alignCenters" numberOfLines="0" id="wCp-vU-urK">
+                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="showEventsToggle" destination="L2G-Vo-wQT" id="bsJ-f3-sAq"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="714" y="282.89743589743591"/>
+        </scene>
+        <!--MoreUpcomingView-->
+        <scene sceneID="96h-Tp-w2i">
+            <objects>
+                <controller identifier="MoreUpcomingView" alwaysBounce="YES" id="FDB-9Q-Mgd" customClass="MUWeekListInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <table alignment="left" id="XVv-ws-0EB">
+                            <items>
+                                <tableRow identifier="DayRow" id="b19-sE-3yZ" customClass="DayRow" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="49" alignment="left" layout="vertical" spacing="1" id="zYq-kb-llp">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="Monday" id="VLt-0K-4za">
+                                                <fontDescription key="font" type="system" pointSize="17"/>
+                                            </label>
+                                            <label alignment="left" verticalAlignment="center" text="7 Events" id="YKR-QR-DLF">
+                                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                <fontDescription key="font" type="system" pointSize="13"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="mainLabel" destination="VLt-0K-4za" id="6ey-hg-ned"/>
+                                        <outlet property="secondaryLabel" destination="YKR-QR-DLF" id="cls-CA-tC3"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="XVv-ws-0EB" id="kZs-GQ-ht0"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-6" y="259"/>
+        </scene>
+        <!--EventInfoView-->
+        <scene sceneID="IVq-T8-f3q">
+            <objects>
+                <controller identifier="EventInfoView" alwaysBounce="YES" id="0eq-H4-AI6" customClass="EventInfoInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <table alignment="left" id="EVI-pS-Obd">
+                            <items>
+                                <tableRow identifier="CountdownRow" selectable="NO" id="DiN-Za-D9j" customClass="EventInfoCountdownTableRow" customModule="How_Long_Left_watchOS">
+                                    <group key="rootItem" width="1" height="63" alignment="left" layout="vertical" spacing="0.0" id="1IQ-YM-2QO">
+                                        <items>
+                                            <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="wpv-Qr-RYW">
+                                                <items>
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="Event ends in" minimumScaleFactor="0.5" id="WOL-SA-Bx4">
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="17"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <label width="1" height="31" alignment="left" verticalAlignment="center" text="00:00" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="FzI-uA-noM">
+                                                <fontDescription key="font" type="system" weight="medium" pointSize="27"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="countdownLabel" destination="FzI-uA-noM" id="v61-gd-dIb"/>
+                                        <outlet property="titleLabel" destination="WOL-SA-Bx4" id="BMr-ft-9b4"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <table alignment="left" id="eRs-ro-RlC">
+                            <items>
+                                <tableRow identifier="InfoCell" id="vRA-ze-A7s" customClass="EventInfoTableRow" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="52" alignment="left" layout="vertical" id="gcn-XA-FO5">
+                                        <items>
+                                            <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="1" id="6OU-Uo-0xe">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Start:" textAlignment="left" minimumScaleFactor="0.5" id="53j-76-6Ys">
+                                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                    </label>
+                                                    <label alignment="left" verticalAlignment="center" text="Today, 9:00am" textAlignment="left" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="VWK-nA-LeA">
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="17"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="infoLabel" destination="VWK-nA-LeA" id="6UM-Il-S3I"/>
+                                        <outlet property="titleLabel" destination="53j-76-6Ys" id="0od-sQ-4Bn"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="countdownTable" destination="EVI-pS-Obd" id="HWd-lO-kNS"/>
+                        <outlet property="infoTable" destination="eRs-ro-RlC" id="4k5-pa-Edz"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="254" y="265"/>
+        </scene>
+        <!--MUEventListView-->
+        <scene sceneID="pzJ-os-eMN">
+            <objects>
+                <controller identifier="MUEventListView" alwaysBounce="YES" id="rLu-e9-eBW" customClass="MUEventListInterfaceController" customModule="How_Long_Left_watchOS_Extension">
+                    <items>
+                        <table alignment="center" spacing="6" id="lMZ-71-Meo">
+                            <items>
+                                <tableRow identifier="MUEventRow" id="yrc-o8-x80" customClass="MUEventRow" customModule="How_Long_Left_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="50" alignment="left" layout="vertical" id="Bu3-cp-CUa">
+                                        <items>
+                                            <group width="136" alignment="center" verticalAlignment="center" layout="vertical" spacing="2" id="9Dv-XH-5Gd">
+                                                <items>
+                                                    <label width="1" alignment="left" text="Upcoming" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="ut0-UE-liS">
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="19"/>
+                                                    </label>
+                                                    <label width="1" height="15" alignment="left" text="12:00am | Room: 10" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="Ddx-UX-Quh">
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="13"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="infoLabel" destination="Ddx-UX-Quh" id="ixx-H8-Vru"/>
+                                        <outlet property="titleLabel" destination="ut0-UE-liS" id="RfB-Vm-jRY"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="lMZ-71-Meo" id="1g6-eN-6Ks"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-6" y="547"/>
+        </scene>
+    </scenes>
+</document>

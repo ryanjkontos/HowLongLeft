@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PurchaseProViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="buyButton" destination="uRm-mh-0RR" id="fcZ-oe-uEl"/>
+                <outlet property="desLabel" destination="yFP-tk-e3Y" id="bg1-8l-wtd"/>
+                <outlet property="nameLabel" destination="mBA-my-8ws" id="J8C-p6-PIh"/>
+                <outlet property="restoreButton" destination="CLc-P5-Vp9" id="XIX-Ww-LlP"/>
+                <outlet property="spinner" destination="tOW-IY-3lJ" id="r7N-JS-Yaj"/>
+                <outlet property="view" destination="8Ck-Ze-rC9" id="emQ-YG-1lI"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="PurchasePro" id="8Ck-Ze-rC9">
+            <rect key="frame" x="0.0" y="0.0" width="528" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="30" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJK-eZ-nSy">
+                    <rect key="frame" x="14" y="31" width="500" height="337"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="14" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93h-XO-LqW">
+                            <rect key="frame" x="0.0" y="75" width="500" height="262"/>
+                            <subviews>
+                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YiH-4p-ezB">
+                                    <rect key="frame" x="0.0" y="102" width="500" height="160"/>
+                                    <subviews>
+                                        <textField autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mBA-my-8ws">
+                                            <rect key="frame" x="126" y="126" width="249" height="34"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="How Long Left Pro" id="3Cr-91-WZ7">
+                                                <font key="font" metaFont="systemSemibold" size="29"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6TS-HP-6tO">
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="110"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="110" id="FEw-Of-51a"/>
+                                                <constraint firstAttribute="width" constant="500" id="ehN-b6-tbS"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ProIconGroup" id="xNL-Fv-34m"/>
+                                        </imageView>
+                                    </subviews>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                </stackView>
+                                <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-kf-krb">
+                                    <rect key="frame" x="25" y="0.0" width="450" height="88"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="yFP-tk-e3Y">
+                                            <rect key="frame" x="-2" y="24" width="454" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="450" id="fIo-qx-D59"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" alignment="center" id="Zxv-Fc-5P2">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Pro Mode is a one time purchase of $4.49 that enables several new features, including the ability to hide events, create custom notification triggers, drag events into the app from your calendar, set nicknames for your events, and more.</string>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="box-cp-bXH">
+                                            <rect key="frame" x="187" y="0.0" width="76" height="16"/>
+                                            <buttonCell key="cell" type="bevel" title="More Info..." bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="v57-R4-98u">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="systemMedium" size="13"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="ProButtonColour"/>
+                                            <connections>
+                                                <action selector="moreInfoClicked:" target="-2" id="kij-Al-OBy"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                </stackView>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="paj-C2-1Mp">
+                            <rect key="frame" x="195" y="0.0" width="110" height="45"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-mh-0RR">
+                                    <rect key="frame" x="-7" y="18" width="124" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="VOE-1C-isA"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="push" title="Buy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ygd-Iy-s3E">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="buyButtonClicked:" target="-2" id="iYw-PK-oyI"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CLc-P5-Vp9">
+                                    <rect key="frame" x="13" y="0.0" width="85" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="Tn2-dm-SCX"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="bevel" title="Restore" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="0el-HK-9Cc">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="restoreClicked:" target="-2" id="SuX-Av-3Ag"/>
+                                    </connections>
+                                </button>
+                                <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="tOW-IY-3lJ">
+                                    <rect key="frame" x="0.0" y="29" width="16" height="16"/>
+                                </progressIndicator>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="XFI-Gd-GX3"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="rJK-eZ-nSy" firstAttribute="centerX" secondItem="8Ck-Ze-rC9" secondAttribute="centerX" id="EhW-Pa-yEP"/>
+                <constraint firstAttribute="bottom" secondItem="rJK-eZ-nSy" secondAttribute="bottom" constant="31" id="U1I-R6-VPT"/>
+            </constraints>
+            <point key="canvasLocation" x="50" y="28.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="ProIconGroup" width="1300" height="300"/>
+        <namedColor name="ProButtonColour">
+            <color red="0.2630000114440918" green="0.59799998998641968" blue="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="zQn-cL-7ZF">
+            <objects>
+                <windowController storyboardIdentifier="SubjectSelectionWindowController" id="o1i-bY-PJO" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="NGf-q9-DHR">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="249" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <connections>
+                            <outlet property="delegate" destination="o1i-bY-PJO" id="P7l-nW-TgQ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="CbX-LV-5ga" kind="relationship" relationship="window.shadowedContentViewController" id="oQQ-2E-Be4"/>
+                    </connections>
+                </windowController>
+                <customObject id="S9g-3z-Ord" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="59"/>
+        </scene>
+        <!--Subject Selection View Controller-->
+        <scene sceneID="r4Y-Oq-LqM">
+            <objects>
+                <viewController id="CbX-LV-5ga" customClass="SubjectSelectionViewController" customModule="How_Long_Left__Beta__macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fvq-MQ-lMp">
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="410"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2v-Ah-Gsv">
+                                <rect key="frame" x="106" y="75" width="500" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" id="fdQ-Rv-TrH">
+                                    <rect key="frame" x="1" y="1" width="498" height="243"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="32" viewBased="YES" id="XTy-Km-v2Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="498" height="243"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="lastname" editable="NO" width="495" minWidth="40" maxWidth="1000" id="2eu-FM-VvL">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Calendars">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="EGV-3n-qoC">
+                                                        <font key="font" metaFont="system" size="10"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="localizedStandardCompare:" sortKey="lastname"/>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="SubjectCell" id="lGu-2L-hIr" userLabel="TableCellView" customClass="SubjectSelectionRow" customModule="How_Long_Left__Beta__macOS" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="495" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button verticalHuggingPriority="750" fixedFrame="YES" tag="99" translatesAutoresizingMaskIntoConstraints="NO" id="pjC-q0-fTh">
+                                                                    <rect key="frame" x="9" y="7" width="329" height="18"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="DQX-nJ-H7B">
+                                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="checkClicked:" target="lGu-2L-hIr" id="48y-Q3-uws"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="check" destination="pjC-q0-fTh" id="049-su-zgA"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cfp-O2-1ry">
+                                    <rect key="frame" x="1" y="212" width="403" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ILR-EI-646">
+                                    <rect key="frame" x="-30" y="17" width="15" height="135"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ct-aG-FLa">
+                                <rect key="frame" x="165" y="342" width="382" height="48"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TkR-sg-Dbw">
+                                        <rect key="frame" x="106" y="22" width="170" height="26"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Subject Selection" id="7pj-D1-oOf">
+                                            <font key="font" metaFont="system" size="22"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-GD-oCu">
+                                        <rect key="frame" x="-2" y="0.0" width="386" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Exams for the subjects you select will appear in How Long Left." id="APh-yh-4nD">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j6y-nQ-suy">
+                                <rect key="frame" x="104" y="10" width="504" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" alignment="center" title="Subject, Subject, and Subject are selected." id="Ypv-NA-BI1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="0ct-aG-FLa" firstAttribute="top" secondItem="fvq-MQ-lMp" secondAttribute="top" constant="20" id="E9N-Xd-awc"/>
+                            <constraint firstItem="0ct-aG-FLa" firstAttribute="centerX" secondItem="fvq-MQ-lMp" secondAttribute="centerX" id="SIe-WK-JyY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="selectionString" destination="j6y-nQ-suy" id="dHi-iS-Vh7"/>
+                        <outlet property="table" destination="XTy-Km-v2Q" id="ISi-a1-W3V"/>
+                    </connections>
+                </viewController>
+                <customObject id="lcX-QN-9Dw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="69"/>
+        </scene>
+    </scenes>
+</document>

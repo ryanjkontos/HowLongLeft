@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "idiom" : "watch",
+      "filename" : "CircFull40-2.png",
+      "screen-width" : "<=145",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "filename" : "CircFull40.png",
+      "screen-width" : ">161",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "filename" : "CircFull40-1.png",
+      "screen-width" : ">145",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "filename" : "GraphicCircular44mm.png",
+      "screen-width" : ">183",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "auto-scaling" : "auto"
+  }
+}

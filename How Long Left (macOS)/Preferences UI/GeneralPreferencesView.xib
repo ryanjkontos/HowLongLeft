@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferenceViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="launchAtLoginCheckbox" destination="uOS-Db-JpP" id="NFv-6f-gRv"/>
+                <outlet property="showLocationsCheckbox" destination="ZQ0-jm-Tcb" id="M2u-EX-LnF"/>
+                <outlet property="showNextEventCheckbox" destination="ufV-42-Lep" id="nc4-ja-Xz0"/>
+                <outlet property="showNextOccurCheckbox" destination="lJd-CV-sDd" id="gO6-lB-RWh"/>
+                <outlet property="showPercentageCheckbox" destination="mmQ-pg-kyX" id="SUN-pa-EHK"/>
+                <outlet property="showUpcomingEventsCheckbox" destination="mAe-D1-pFc" id="qE5-7Z-Qo9"/>
+                <outlet property="use24HourTime" destination="QxJ-zp-Abs" id="BiR-tG-pEg"/>
+                <outlet property="view" destination="0CW-dO-GEY" id="7Fu-R4-NRj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="GeneralPreferenceView" id="0CW-dO-GEY">
+            <rect key="frame" x="0.0" y="0.0" width="476" height="305"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="usu-m2-awY">
+                    <rect key="frame" x="27" y="207" width="4" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" id="OWg-fg-Zuh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="uOS-Db-JpP">
+                    <rect key="frame" x="36" y="269" width="119" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Launch at Login" bezelStyle="regularSquare" imagePosition="left" continuous="YES" state="on" inset="2" id="iJl-Fh-Q2p">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="launchAtLoginClicked:" target="-2" id="mo4-tA-Ial"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="veA-EV-e1d">
+                    <rect key="frame" x="55" y="254" width="355" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Launch How Long Left automatically when you log in to your Mac." id="RIy-vp-Jf9">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="ufV-42-Lep">
+                    <rect key="frame" x="36" y="229" width="122" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show next event" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jJJ-0K-ob4">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showNextEventClicked:" target="-2" id="Y5A-jg-Hpr"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wI0-08-jTT">
+                    <rect key="frame" x="55" y="214" width="385" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show information about the next event to start in the menu and in alerts." id="D6h-8L-c38">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="mAe-D1-pFc">
+                    <rect key="frame" x="36" y="189" width="214" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show upcoming week submenu" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xbs-WR-go2">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showUpcomingEventsClicked:" target="-2" id="TfH-90-puC"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QMa-H3-f9Z">
+                    <rect key="frame" x="55" y="172" width="327" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show a submenu containing all events within the next 7 days." id="tns-ED-Ch8">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="lJd-CV-sDd">
+                    <rect key="frame" x="36" y="150" width="159" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show next occurences" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wNe-0p-4Jt">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showNextOccursClicked:" target="-2" id="yaN-9L-Tgz"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kbe-9Q-qKL">
+                    <rect key="frame" x="55" y="135" width="329" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show information about the next occurence of current events." id="uyk-Y3-eQ1">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="ZQ0-jm-Tcb">
+                    <rect key="frame" x="36" y="73" width="151" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show event locations" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dpq-VW-cfN">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showLocationsClicked:" target="-2" id="db6-OH-9vV"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rsO-F6-VZ7">
+                    <rect key="frame" x="55" y="58" width="286" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show the location of events in the menu and in alerts." id="PrH-dO-bXz">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="mmQ-pg-kyX">
+                    <rect key="frame" x="36" y="111" width="241" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show percentage of event complete" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xLK-C3-CCk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showPercentageClicked:" target="-2" id="etE-R5-wMV"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="K66-Fd-2jL">
+                    <rect key="frame" x="55" y="96" width="327" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="This does not affect the percentage shown in the status item." id="2fO-bl-xiU">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="QxJ-zp-Abs">
+                    <rect key="frame" x="36" y="34" width="127" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Use 24 hour time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aSx-6n-cQW">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="use24HourTimeClicked:" target="-2" id="yVo-Wj-BCz"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AjV-Nn-EZD">
+                    <rect key="frame" x="55" y="19" width="423" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Use 24-hour time instead of 12-hour time." id="ZQ5-u2-AIs">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="31" y="155.5"/>
+        </customView>
+    </objects>
+</document>

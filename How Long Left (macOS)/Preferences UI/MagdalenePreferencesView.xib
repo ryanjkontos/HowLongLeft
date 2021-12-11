@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MagdalenePreferenceViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="adjustTimesButton" destination="mmQ-pg-kyX" id="VdV-ER-Y8Q"/>
+                <outlet property="countDownSchoolHolidaysButton" destination="CpK-La-TR4" id="6Oa-Zi-rae"/>
+                <outlet property="des1" destination="QMa-H3-f9Z" id="Ob3-2f-n0e"/>
+                <outlet property="des2" destination="K66-Fd-2jL" id="wFW-u9-l7a"/>
+                <outlet property="des3" destination="rsO-F6-VZ7" id="RCi-Uv-uN7"/>
+                <outlet property="des4" destination="cnO-2z-Wgs" id="Tuk-4p-MPe"/>
+                <outlet property="des5" destination="mJ4-LX-j3h" id="FFc-On-icQ"/>
+                <outlet property="des6" destination="rCF-rG-Vak" id="goM-2K-b9R"/>
+                <outlet property="des7" destination="c6T-zK-Bce" id="fRH-dS-2Zq"/>
+                <outlet property="edvalButtonButton" destination="9ww-ar-oA0" id="ucg-Sh-itz"/>
+                <outlet property="hideNonMagdaleneBreaksButton" destination="UVc-rc-5Dj" id="pcW-Ab-Uyn"/>
+                <outlet property="holidaysDateLabel" destination="kif-AK-YLE" id="0Y0-8G-kb4"/>
+                <outlet property="launchAtLoginCheckbox" destination="uOS-Db-JpP" id="NFv-6f-gRv"/>
+                <outlet property="magdaleneFeaturesButton" destination="uOS-Db-JpP" id="2LF-VX-ht6"/>
+                <outlet property="shortenTitlesButton" destination="mAe-D1-pFc" id="NZF-gU-ap2"/>
+                <outlet property="showBreaksButton" destination="ZQ0-jm-Tcb" id="XS0-QO-M7s"/>
+                <outlet property="showHolidaysInStatusItemButton" destination="1IW-0A-faU" id="44g-lx-0kD"/>
+                <outlet property="showHolidaysPercentageClicked" destination="9oR-y6-i5G" id="dxa-bP-qTU"/>
+                <outlet property="showLocationsCheckbox" destination="ZQ0-jm-Tcb" id="M2u-EX-LnF"/>
+                <outlet property="showPercentageCheckbox" destination="mmQ-pg-kyX" id="SUN-pa-EHK"/>
+                <outlet property="showUpcomingEventsCheckbox" destination="mAe-D1-pFc" id="qE5-7Z-Qo9"/>
+                <outlet property="view" destination="0CW-dO-GEY" id="7Fu-R4-NRj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="MagdalenePreferenceView" id="0CW-dO-GEY">
+            <rect key="frame" x="0.0" y="0.0" width="466" height="502"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="usu-m2-awY">
+                    <rect key="frame" x="18" y="158" width="4" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" id="OWg-fg-Zuh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="uOS-Db-JpP">
+                    <rect key="frame" x="26" y="467" width="145" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Magdalene Features" bezelStyle="regularSquare" imagePosition="left" continuous="YES" state="on" inset="2" id="iJl-Fh-Q2p">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="magdaleneFeaturesButtonClicked:" target="-2" id="qj6-On-uTF"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="veA-EV-e1d">
+                    <rect key="frame" x="45" y="452" width="355" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Allow Magdalene features to be enabled." id="RIy-vp-Jf9">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="ZQ0-jm-Tcb">
+                    <rect key="frame" x="26" y="301" width="100" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show Breaks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dpq-VW-cfN">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showBreaksButtonClicked:" target="-2" id="H5H-n7-H7z"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="mAe-D1-pFc">
+                    <rect key="frame" x="26" y="423" width="141" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Shorten event titles" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xbs-WR-go2">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="shortenTitlesButtonClicked:" target="-2" id="nQB-qL-2Yh"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QMa-H3-f9Z">
+                    <rect key="frame" x="45" y="394" width="355" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Shorten the long titles of calendar events downloaded from Sentral to just the subject name." id="tns-ED-Ch8">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rsO-F6-VZ7">
+                    <rect key="frame" x="45" y="273" width="355" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Include Recess and Lunch in How Long Left as if they were in your calendar." id="PrH-dO-bXz">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="UVc-rc-5Dj">
+                    <rect key="frame" x="26" y="246" width="200" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show Non-Magdalene events" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4qV-QI-fWt">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="hideNonMagdaleneEventsClicked:" target="-2" id="ErN-i9-wgI"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cnO-2z-Wgs">
+                    <rect key="frame" x="45" y="218" width="355" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show events that How Long Left is unable to match to a Magdalene period." id="zt5-pd-qkH">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="mmQ-pg-kyX">
+                    <rect key="frame" x="26" y="367" width="109" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Use Bell times" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xLK-C3-CCk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="adjustTimesButtonClicked:" target="-2" id="L53-FY-a5f"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="K66-Fd-2jL">
+                    <rect key="frame" x="45" y="325" width="355" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" id="2fO-bl-xiU">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">By default, the Sentral timetable doesn't take into account movement periods. Enabling this will allow How Long Left to use the correct bell times.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="CpK-La-TR4">
+                    <rect key="frame" x="26" y="147" width="156" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show School Holidays" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BfL-zT-Pd2">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showSchoolHolidaysButtonClicked:" target="-2" id="bL0-hB-xsR"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kif-AK-YLE">
+                    <rect key="frame" x="45" y="132" width="355" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show School Holidays in How Long Left." id="KCc-6o-BV6">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="1IW-0A-faU">
+                    <rect key="frame" x="26" y="105" width="241" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show School Holidays in status item" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Kzk-N8-Ffx">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showHolidaysInStatusItemClicked:" target="-2" id="ova-IX-eXw"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rCF-rG-Vak">
+                    <rect key="frame" x="45" y="77" width="355" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="When this is disabled, you can still view the school holidays count down via the main menu or hot key." id="N9G-VB-89m">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="9oR-y6-i5G">
+                    <rect key="frame" x="26" y="49" width="229" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show School Holidays percentage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NyA-J4-GDu">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showHolidaysPercentageClicked:" target="-2" id="zdB-d6-4Sx"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="c6T-zK-Bce">
+                    <rect key="frame" x="45" y="20" width="355" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Disable to hide the percentage of school holidays complete throughout the app." id="UIN-8T-JP5">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="9ww-ar-oA0">
+                    <rect key="frame" x="26" y="189" width="243" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show Edval Button in the main menu" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="PIf-UZ-xIk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="edvalButtonButtonClicked:" target="-2" id="kPd-C1-sbC"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mJ4-LX-j3h">
+                    <rect key="frame" x="45" y="160" width="355" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show a button to quickly launch Edval in the main menu." id="TIW-C1-1Rd">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="47" y="313"/>
+        </customView>
+    </objects>
+</document>

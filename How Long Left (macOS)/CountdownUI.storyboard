@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="cZh-Ti-Cne">
+            <objects>
+                <windowController storyboardIdentifier="CountdownUIWindow" id="OHf-QB-osE" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="FHF-Mb-1zU">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="249" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <connections>
+                            <outlet property="delegate" destination="OHf-QB-osE" id="2wE-w7-uht"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="PcY-fm-Ze9" kind="relationship" relationship="window.shadowedContentViewController" id="MzE-Sl-pcf"/>
+                    </connections>
+                </windowController>
+                <customObject id="hfs-Zi-QAd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8" y="153"/>
+        </scene>
+        <!--CountdownUI View Controller-->
+        <scene sceneID="BVe-qF-ca8">
+            <objects>
+                <viewController id="PcY-fm-Ze9" customClass="CountdownUIViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="oef-4x-u7h">
+                        <rect key="frame" x="0.0" y="0.0" width="624" height="351"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHY-Mv-ekX">
+                                <rect key="frame" x="248" y="232" width="129" height="29"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Title ends in" id="xWa-rZ-Cm6">
+                                    <font key="font" metaFont="system" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="BsZ-oF-N1U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8" y="637"/>
+        </scene>
+    </scenes>
+</document>

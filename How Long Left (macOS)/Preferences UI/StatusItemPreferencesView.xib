@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StatusItemPreferenceViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="des1" destination="0Q2-5z-Q8x" id="oov-cV-mKG"/>
+                <outlet property="des2" destination="tKK-Qp-ELy" id="Vmy-o3-oSx"/>
+                <outlet property="des3" destination="AsA-7j-GPE" id="Z5H-oc-nR6"/>
+                <outlet property="des4" destination="ikn-Ty-OWZ" id="0ma-rE-761"/>
+                <outlet property="des5" destination="6vf-oJ-zPL" id="QC6-Ky-39N"/>
+                <outlet property="doneAlertsCheckbox" destination="3gp-NQ-o7K" id="NtM-go-isL"/>
+                <outlet property="modeRadio_Minute" destination="hYO-Ao-Uad" id="yAx-Kb-0AM"/>
+                <outlet property="modeRadio_Off" destination="1ll-Wl-zhv" id="Lls-Du-iQD"/>
+                <outlet property="modeRadio_Timer" destination="Zc8-EB-gCA" id="cBT-Bl-Uiy"/>
+                <outlet property="previewIcon" destination="VhU-qf-mbx" id="vHw-dj-hzi"/>
+                <outlet property="showEndTimeCheckbox" destination="k3x-BH-Udg" id="LDI-C6-7h2"/>
+                <outlet property="showLeftTextCheckbox" destination="Oc7-su-D52" id="oGn-w3-0JG"/>
+                <outlet property="showPercentageCheckbox" destination="ULa-I5-d8A" id="mSE-KH-9Wp"/>
+                <outlet property="showTitleCheckbox" destination="PAO-gf-7Mt" id="4Vl-Ja-642"/>
+                <outlet property="statusItemPreviewText" destination="e2o-0a-FrK" id="7Hu-lh-w5s"/>
+                <outlet property="unitsLabel" destination="beP-Xx-s4v" id="2N2-X9-H4E"/>
+                <outlet property="unitsMenu" destination="R1B-k0-o5r" id="YHY-8c-I0O"/>
+                <outlet property="view" destination="0CW-dO-GEY" id="7Fu-R4-NRj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="GeneralPreferenceView" id="0CW-dO-GEY">
+            <rect key="frame" x="0.0" y="0.0" width="476" height="447"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="usu-m2-awY">
+                    <rect key="frame" x="18" y="170" width="4" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" id="OWg-fg-Zuh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Lgb-DR-6gf">
+                    <rect key="frame" x="213" y="346" width="49" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Mode:" id="pkx-Ku-Ivp">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button identifier="2" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1ll-Wl-zhv">
+                    <rect key="frame" x="152" y="321" width="42" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="radio" title="Off" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="atM-fr-zF7">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="modeRadioChanged:" target="-2" id="dar-B8-19t"/>
+                    </connections>
+                </button>
+                <button identifier="0" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Zc8-EB-gCA">
+                    <rect key="frame" x="199" y="321" width="57" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="radio" title="Timer" bezelStyle="regularSquare" imagePosition="left" inset="2" id="MEE-pr-hkI">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="modeRadioChanged:" target="-2" id="Y2V-6L-eOQ"/>
+                    </connections>
+                </button>
+                <button identifier="1" verticalHuggingPriority="750" id="hYO-Ao-Uad">
+                    <rect key="frame" x="261" y="321" width="64" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="radio" title="Minute" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="7lD-zB-bri">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="modeRadioChanged:" target="-2" id="Cja-V3-NxO"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="PAO-gf-7Mt">
+                    <rect key="frame" x="66" y="277" width="119" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show event title" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iAM-Zh-7A8">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showTitleClicked:" target="-2" id="sOU-TT-MA5"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="Oc7-su-D52">
+                    <rect key="frame" x="66" y="238" width="117" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show &quot;left&quot; text" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U3d-72-fIc">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showLeftText:" target="-2" id="5FQ-NX-lHK"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="ULa-I5-d8A">
+                    <rect key="frame" x="66" y="144" width="128" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show percentage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NQL-Z9-Fit">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showPercentageClicked:" target="-2" id="q4A-76-v1M"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0Q2-5z-Q8x">
+                    <rect key="frame" x="84" y="262" width="281" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show the title of the current event in the status item." id="MSA-X3-STc">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tKK-Qp-ELy">
+                    <rect key="frame" x="84" y="222" width="210" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show the word &quot;left&quot; in the status item." id="T4l-Na-Hj0">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AsA-7j-GPE">
+                    <rect key="frame" x="84" y="129" width="272" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show the percentage completed in the status item." id="h2f-YL-Iw3">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="beP-Xx-s4v">
+                    <rect key="frame" x="215" y="49" width="46" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Units:" id="HQo-05-Vz0">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" boxType="separator" id="Lc7-95-rJj">
+                    <rect key="frame" x="16" y="304" width="444" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <box verticalHuggingPriority="750" boxType="separator" id="j8I-PL-yfV">
+                    <rect key="frame" x="16" y="370" width="444" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <box verticalHuggingPriority="750" boxType="separator" id="PUV-qw-XPI">
+                    <rect key="frame" x="16" y="75" width="444" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Exu-hm-W0e">
+                    <rect key="frame" x="206" y="421" width="65" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Preview:" id="aKo-Em-NfF">
+                        <font key="font" metaFont="systemMedium" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="e2o-0a-FrK">
+                    <rect key="frame" x="-3" y="386" width="480" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Event: 59:59 left" id="pwt-6s-k7I">
+                        <font key="font" metaFont="systemSemibold" size="23"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VhU-qf-mbx">
+                    <rect key="frame" x="222" y="383" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MenuSI" id="Jcb-LU-7mc"/>
+                </imageView>
+                <button verticalHuggingPriority="750" id="3gp-NQ-o7K">
+                    <rect key="frame" x="66" y="106" width="92" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Done alerts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KrW-CK-Hct">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="doneAlertsClicked:" target="-2" id="JlK-Ng-BDy"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ikn-Ty-OWZ">
+                    <rect key="frame" x="84" y="91" width="238" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="Show when an event ends in the status item." id="D4Y-Bj-AVx">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="R1B-k0-o5r">
+                    <rect key="frame" x="122" y="15" width="235" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Use short units (hr, min)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="u44-1a-1Ew" id="OMF-dL-M4g">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="cGm-Wz-Xpb">
+                            <items>
+                                <menuItem title="Use short units (hr, min)" state="on" identifier="4" id="u44-1a-1Ew">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Use full units (hour, minute)" identifier="5" id="zng-ml-E5e"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="unitsClicked:" target="-2" id="GTv-2P-GVB"/>
+                    </connections>
+                </popUpButton>
+                <button verticalHuggingPriority="750" id="k3x-BH-Udg">
+                    <rect key="frame" x="66" y="198" width="112" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show end time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7Y-1M-lN3">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showEndTimeClicked:" target="-2" id="mt4-LL-Ac6"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6vf-oJ-zPL">
+                    <rect key="frame" x="84" y="167" width="272" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="If the current event ends today, show the end time in the status item." id="e63-3X-GDZ">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="25" y="236.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="MenuSI" width="100" height="100"/>
+    </resources>
+</document>

@@ -1,0 +1,28 @@
+PODS:
+  - HotKey (0.1.2)
+  - lottie-ios (3.1.9)
+  - Preferences (2.1.0)
+  - ReachabilitySwift (5.0.0)
+
+DEPENDENCIES:
+  - HotKey
+  - lottie-ios
+  - Preferences
+  - ReachabilitySwift
+
+SPEC REPOS:
+  trunk:
+    - HotKey
+    - lottie-ios
+    - Preferences
+    - ReachabilitySwift
+
+SPEC CHECKSUMS:
+  HotKey: ad59450195936c10992438c4210f673de5aee43e
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+  Preferences: 30977dcf556bdd7c625b5ea4f3fd67fd00d14c3c
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+
+PODFILE CHECKSUM: e83f7ecf92b3d95a79be3443f667084400c9bc41
+
+COCOAPODS: 1.9.3

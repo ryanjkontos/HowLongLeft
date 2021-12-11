@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="MCC-Pg-u4h">
+            <objects>
+                <windowController storyboardIdentifier="ProOnboardingWindowController" id="00l-i9-Nvh" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="osB-v7-uyX">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <rect key="contentRect" x="99" y="204" width="696" height="460"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <connections>
+                            <outlet property="delegate" destination="00l-i9-Nvh" id="TgQ-z8-JUY"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Epz-r2-Ijp" kind="relationship" relationship="window.shadowedContentViewController" id="0rd-sa-97W"/>
+                    </connections>
+                </windowController>
+                <customObject id="611-NH-kEX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70" y="-173"/>
+        </scene>
+        <!--Pro Onboarding View Controller-->
+        <scene sceneID="ElL-vx-9VW">
+            <objects>
+                <viewController id="Epz-r2-Ijp" customClass="ProOnboardingViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="HMb-V1-lMg">
+                        <rect key="frame" x="0.0" y="0.0" width="696" height="426"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="bzP-1C-fbY">
+                                <rect key="frame" x="-3" y="-4" width="702" height="102"/>
+                                <view key="contentView" id="qF9-kI-ehJ">
+                                    <rect key="frame" x="3" y="3" width="696" height="96"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOP-2P-Ow4">
+                                            <rect key="frame" x="333" y="35" width="0.0" height="0.0"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </stackView>
+                                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tHt-lS-Iya">
+                                            <rect key="frame" x="247" y="19" width="203" height="58"/>
+                                            <subviews>
+                                                <box boxType="custom" borderType="bezel" borderWidth="0.0" cornerRadius="6" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Yy1-Lv-1EO" customClass="PurchaseButton" customModule="How_Long_Left_macOS" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="29" width="203" height="29"/>
+                                                    <view key="contentView" id="Ars-OA-dkz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="203" height="29"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="asn-JM-ahg">
+                                                                <rect key="frame" x="81" y="8" width="42" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="$4.49" id="bDE-dT-rtX">
+                                                                    <font key="font" metaFont="system" size="13.5"/>
+                                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="asn-JM-ahg" firstAttribute="centerX" secondItem="Ars-OA-dkz" secondAttribute="centerX" id="OPE-Jo-FEf"/>
+                                                            <constraint firstItem="asn-JM-ahg" firstAttribute="centerY" secondItem="Ars-OA-dkz" secondAttribute="centerY" constant="-1" id="qYN-VJ-Jre"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="203" id="A0A-xj-RGv"/>
+                                                        <constraint firstAttribute="height" constant="29" id="Mzg-Op-ADa"/>
+                                                    </constraints>
+                                                    <color key="fillColor" name="ProButtonColour"/>
+                                                </box>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNx-I2-Dsc">
+                                                    <rect key="frame" x="49" y="0.0" width="106" height="16"/>
+                                                    <buttonCell key="cell" type="bevel" title="Restore Purchase" bezelStyle="regularSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="MiP-BJ-UBX">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="systemMedium" size="12"/>
+                                                    </buttonCell>
+                                                    <color key="contentTintColor" name="ProButtonColour"/>
+                                                    <connections>
+                                                        <action selector="restoreClicked:" target="Epz-r2-Ijp" id="mpO-5l-Mie"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="rN4-vU-Srs"/>
+                                </constraints>
+                            </box>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="23" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B97-Aw-x4v">
+                                <rect key="frame" x="73" y="122" width="550" height="290"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="1uM-Em-i87">
+                                        <rect key="frame" x="125" y="246" width="301" height="44"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="How Long Left Pro" id="YK2-7Y-c04">
+                                            <font key="font" size="37" name="SFProRounded-Medium"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pB-jC-BbK">
+                                        <rect key="frame" x="0.0" y="96" width="550" height="127"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="550" id="4Pq-fa-rBg"/>
+                                            <constraint firstAttribute="width" secondItem="8pB-jC-BbK" secondAttribute="height" multiplier="13:3" id="IwP-Nk-9YC"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ProIconGroup" id="Dry-KS-Req"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLR-Ho-Mec">
+                                        <rect key="frame" x="0.0" y="0.0" width="550" height="73"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="E7C-S9-lEp">
+                                                <rect key="frame" x="-2" y="25" width="554" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="550" id="Z7B-xT-sIc"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" alignment="center" id="p4j-PM-4wo">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">How Long Left Pro is a one time purchase of $4.49 that enables several new features, including the ability to hide events, create custom notification triggers, drag events into the app from your calendar, set nicknames for your events, widgets, and more.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EbA-9w-euA">
+                                                <rect key="frame" x="234" y="0.0" width="82" height="16"/>
+                                                <buttonCell key="cell" type="bevel" title="Learn More..." bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="fcr-WR-1bJ">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="systemMedium" size="12"/>
+                                                </buttonCell>
+                                                <color key="contentTintColor" name="ProButtonColour"/>
+                                                <connections>
+                                                    <action selector="learnMoreClicked:" target="Epz-r2-Ijp" id="I01-Z7-pSG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="B97-Aw-x4v" firstAttribute="centerX" secondItem="HMb-V1-lMg" secondAttribute="centerX" id="8Cm-aE-clH"/>
+                            <constraint firstItem="B97-Aw-x4v" firstAttribute="top" secondItem="HMb-V1-lMg" secondAttribute="top" constant="14" id="8K0-Jd-yJZ"/>
+                            <constraint firstAttribute="bottom" secondItem="bzP-1C-fbY" secondAttribute="bottom" id="Blb-Q2-8nv"/>
+                            <constraint firstItem="bzP-1C-fbY" firstAttribute="leading" secondItem="HMb-V1-lMg" secondAttribute="leading" id="E9v-1E-CAU"/>
+                            <constraint firstItem="bzP-1C-fbY" firstAttribute="top" secondItem="B97-Aw-x4v" secondAttribute="bottom" constant="26" id="bgK-h8-g8g"/>
+                            <constraint firstAttribute="trailing" secondItem="bzP-1C-fbY" secondAttribute="trailing" id="tIH-kW-Hi5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomBox" destination="bzP-1C-fbY" id="Te9-zM-o0u"/>
+                        <outlet property="buyButton" destination="asn-JM-ahg" id="vQS-2c-jmM"/>
+                        <outlet property="infoField" destination="E7C-S9-lEp" id="Ktt-sr-VAF"/>
+                        <outlet property="purchaseButton" destination="Yy1-Lv-1EO" id="Lvt-cI-HZl"/>
+                    </connections>
+                </viewController>
+                <customObject id="xEb-Ah-rlC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1608" y="-345"/>
+        </scene>
+        <!--Info View View Controller-->
+        <scene sceneID="Z6N-6h-eyx">
+            <objects>
+                <viewController id="763-6m-5Ed" customClass="InfoViewViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="b8p-4f-XzV">
+                        <rect key="frame" x="0.0" y="0.0" width="596" height="399"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1lJ-m4-0od">
+                                <rect key="frame" x="0.0" y="0.0" width="596" height="399"/>
+                                <clipView key="contentView" id="ozh-Zf-YqW">
+                                    <rect key="frame" x="0.0" y="0.0" width="596" height="399"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view id="4ox-bX-scB">
+                                            <rect key="frame" x="0.0" y="0.0" width="581" height="384"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="bxl-Iv-ipx">
+                                    <rect key="frame" x="-100" y="-100" width="348" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="82n-KS-hIM">
+                                    <rect key="frame" x="580" y="0.0" width="16" height="399"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="1lJ-m4-0od" secondAttribute="bottom" id="16a-Qu-x6n"/>
+                            <constraint firstItem="1lJ-m4-0od" firstAttribute="height" secondItem="b8p-4f-XzV" secondAttribute="height" id="1Oi-Uf-iFd"/>
+                            <constraint firstItem="1lJ-m4-0od" firstAttribute="width" secondItem="b8p-4f-XzV" secondAttribute="width" id="MDX-9H-MZf"/>
+                            <constraint firstItem="1lJ-m4-0od" firstAttribute="leading" secondItem="b8p-4f-XzV" secondAttribute="leading" id="WqO-4a-t8n"/>
+                            <constraint firstItem="1lJ-m4-0od" firstAttribute="top" secondItem="b8p-4f-XzV" secondAttribute="top" id="pDp-Lp-88g"/>
+                            <constraint firstAttribute="trailing" secondItem="1lJ-m4-0od" secondAttribute="trailing" id="wP7-8t-80f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoScrollView" destination="1lJ-m4-0od" id="5y1-A4-lM0"/>
+                    </connections>
+                </viewController>
+                <customObject id="A9K-DQ-uev" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639" y="707"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wUM-IZ-7dv">
+            <objects>
+                <viewController storyboardIdentifier="InfoContentView" id="sXW-rh-xd1" sceneMemberID="viewController">
+                    <view key="view" id="SP2-JV-5vH">
+                        <rect key="frame" x="0.0" y="0.0" width="596" height="944"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsi-sS-Ord">
+                                <rect key="frame" x="204" y="829" width="188" height="75"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-P1-qTf">
+                                        <rect key="frame" x="19" y="29" width="150" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="INA-Z9-GFL"/>
+                                            <constraint firstAttribute="width" constant="150" id="ypS-0B-lpN"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="ProGroupIconSmall" id="YcO-0p-Mjf"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-tH-k3i">
+                                        <rect key="frame" x="-2" y="0.0" width="192" height="27"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="How Long Left Pro" id="V3c-M0-l9G">
+                                            <font key="font" metaFont="systemMedium" size="23"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-0h-rYG">
+                                <rect key="frame" x="48" y="137" width="500" height="642"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cC9-4s-Fvk">
+                                        <rect key="frame" x="0.0" y="556" width="500" height="86"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V71-dU-tDN">
+                                                <rect key="frame" x="-2" y="69" width="195" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Custom Notification Triggers" id="rpE-ce-hbX">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P3W-el-X9u">
+                                                <rect key="frame" x="-2" y="0.0" width="504" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="t7u-EF-4X6"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" selectable="YES" id="JVq-Ld-CEi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">Enables the ability to custom notification triggers for your events, using three trigger types: Time until, Time remaining, and Percentage complete. For example, you could create a notification trigger that fires when an event is starting in 2 minutes. Currently you can not create event-specific triggers.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbQ-Zg-snK">
+                                        <rect key="frame" x="0.0" y="448" width="500" height="86"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q4k-MQ-LYb">
+                                                <rect key="frame" x="-2" y="69" width="221" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Widgets (Requires macOS 11.0+)" id="L22-7x-227">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WQa-fW-K5Q">
+                                                <rect key="frame" x="-2" y="0.0" width="504" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="v3J-Vb-xZ9"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" selectable="YES" id="ynO-5e-dNT">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">Enables you to add How Long Left widgets to your notification centre. There are currently 3 types of widgets supported: a widget that shows a countdown to current and upcoming events, a wiget that shows a list of upcoming events, and a widget that shows both a countdown and a list of upcoming events.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBH-97-Ygf">
+                                        <rect key="frame" x="0.0" y="340" width="500" height="86"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5ap-8e-6gd">
+                                                <rect key="frame" x="-2" y="69" width="88" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Event Hiding" id="ssJ-hY-jFB">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FIP-oE-LYI">
+                                                <rect key="frame" x="-2" y="0.0" width="504" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="vvh-gf-T96"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" selectable="YES" id="iK6-XT-eue">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">This feature allows you to prevent specific calendar events from appearing within How Long Left. This is useful for work or school calendars, for example, that may sometimes include events not relevant to you. This allows you to keep your How Long Left organised and focused.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-57-mec">
+                                        <rect key="frame" x="0.0" y="232" width="500" height="86"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z3r-dQ-0gV">
+                                                <rect key="frame" x="-2" y="69" width="132" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Pinning &amp; Dragging" id="tX3-ZM-UlE">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94d-D1-PIJ">
+                                                <rect key="frame" x="-2" y="0.0" width="504" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="D6z-eI-RPD"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" selectable="YES" id="w5h-ix-RBC">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">Event Pinning allows you to pin any event to the top of the app's main menu. This can be used to, for example, pin a countdown to an upcoming event at the top of the app. Dragging an event from the Calendar app on your Mac into the How Long Left status item will pin it.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezm-oT-DQY">
+                                        <rect key="frame" x="0.0" y="108" width="500" height="102"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0y4-Dk-Kep">
+                                                <rect key="frame" x="-2" y="85" width="128" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Event Status Items" id="5ta-bj-kn3">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-cE-NSd">
+                                                <rect key="frame" x="-2" y="0.0" width="504" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="hwf-Ng-W55"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" selectable="YES" id="svr-wC-FgI">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">Event Status Items are status items that appear in your menu bar and always display a countdown to a specific event. You can create as many event status items as you like, however please note that macOS automatically hides status items when there isn't enough room to fit them all. Event Status Items currently can only use the same display configuration as the main status item.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ZH-bf-BNR">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="86"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ivZ-wV-4dd">
+                                                <rect key="frame" x="-2" y="69" width="78" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Nicknames" id="LvK-Iq-lkf">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aUW-hY-3xd">
+                                                <rect key="frame" x="-2" y="0.0" width="504" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="500" id="R5c-D0-h3c"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" selectable="YES" id="hd0-sq-pzg">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">Nicknames are names for your events that you can set How Long Left to display in the place of the actual event name. This may be useful when using a work or school calendar that you are not able to modify. Nicknames are applied to every event with the same name as the event you create the nickname for.</string>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fsi-sS-Ord" firstAttribute="centerX" secondItem="SP2-JV-5vH" secondAttribute="centerX" id="37L-29-GBd"/>
+                            <constraint firstItem="fsi-sS-Ord" firstAttribute="top" secondItem="SP2-JV-5vH" secondAttribute="top" constant="40" id="5gz-YT-uGZ"/>
+                            <constraint firstItem="dRf-0h-rYG" firstAttribute="top" secondItem="fsi-sS-Ord" secondAttribute="bottom" constant="50" id="ntr-aD-PZY"/>
+                            <constraint firstItem="dRf-0h-rYG" firstAttribute="centerX" secondItem="SP2-JV-5vH" secondAttribute="centerX" id="yXg-Dl-Sj5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="zZM-dw-63s" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="696"/>
+        </scene>
+        <!--Info Container View Controller-->
+        <scene sceneID="ROg-Er-ZX2">
+            <objects>
+                <viewController storyboardIdentifier="InfoContainerView" id="P89-5f-tz7" customClass="InfoContainerViewController" customModule="How_Long_Left_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="mYd-Js-qE1">
+                        <rect key="frame" x="0.0" y="0.0" width="596" height="406"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="g3v-1c-Ier">
+                                <rect key="frame" x="0.0" y="0.0" width="596" height="406"/>
+                                <connections>
+                                    <segue destination="763-6m-5Ed" kind="embed" id="eB5-zL-cEZ"/>
+                                </connections>
+                            </containerView>
+                            <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="hpY-QJ-hW0">
+                                <rect key="frame" x="0.0" y="0.0" width="596" height="54"/>
+                                <subviews>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xg2-tB-ZIf">
+                                        <rect key="frame" x="265" y="10" width="66" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="icT-Xl-kwf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="doneClicked:" target="P89-5f-tz7" id="dTD-qA-yt0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Xg2-tB-ZIf" firstAttribute="centerY" secondItem="hpY-QJ-hW0" secondAttribute="centerY" id="4Ce-YH-g5k"/>
+                                    <constraint firstItem="Xg2-tB-ZIf" firstAttribute="centerX" secondItem="hpY-QJ-hW0" secondAttribute="centerX" id="cV1-vt-0lv"/>
+                                    <constraint firstAttribute="height" constant="54" id="qfh-q9-Vbf"/>
+                                </constraints>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hpY-QJ-hW0" secondAttribute="trailing" id="6CA-Cc-IfB"/>
+                            <constraint firstItem="g3v-1c-Ier" firstAttribute="top" secondItem="mYd-Js-qE1" secondAttribute="top" id="Rgx-FD-T2G"/>
+                            <constraint firstItem="hpY-QJ-hW0" firstAttribute="leading" secondItem="mYd-Js-qE1" secondAttribute="leading" id="TAU-7U-2J7"/>
+                            <constraint firstAttribute="bottom" secondItem="hpY-QJ-hW0" secondAttribute="bottom" id="V4q-Sc-DPC"/>
+                            <constraint firstAttribute="trailing" secondItem="g3v-1c-Ier" secondAttribute="trailing" id="bDD-Tp-hOF"/>
+                            <constraint firstAttribute="bottom" secondItem="g3v-1c-Ier" secondAttribute="bottom" id="hTX-Lj-mTm"/>
+                            <constraint firstItem="g3v-1c-Ier" firstAttribute="leading" secondItem="mYd-Js-qE1" secondAttribute="leading" id="hhb-zM-aZN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="Xg2-tB-ZIf" id="lGu-bL-Iw8"/>
+                    </connections>
+                </viewController>
+                <customObject id="tod-oQ-H8A" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="730"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ProGroupIconSmall" width="433" height="100"/>
+        <image name="ProIconGroup" width="1300" height="300"/>
+        <namedColor name="ProButtonColour">
+            <color red="0.2630000114440918" green="0.59799998998641968" blue="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
