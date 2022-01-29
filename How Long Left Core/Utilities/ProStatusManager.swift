@@ -15,7 +15,7 @@ class ProStatusManager {
         
         get {
         
-            return true
+          
             
             return self.hasPurchasedPro
             

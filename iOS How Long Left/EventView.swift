@@ -97,33 +97,21 @@ struct EventView: View {
                 EventEditView(event: selectionStateObject.event, showSheet: $showEditView)
                     .edgesIgnoringSafeArea(.all)
             })
-         /*   .introspectNavigationController(customize: { navigationController in
+            .introspectNavigationController(customize: { navigationController in
                 let appearance = UINavigationBarAppearance()
                 appearance.configureWithDefaultBackground()
                 navigationController.navigationBar.standardAppearance = appearance
                 navigationController.navigationBar.scrollEdgeAppearance = appearance
-            })*/
-           // .navigationTitle("\(selectionStateObject.event.title)")
+            })
+           .navigationTitle("\(selectionStateObject.event.title)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { eventViewEvent = nil }) {
                         
-                        
-                        ZStack {
-                            
-                            Circle()
-                                .foregroundColor(.secondary.opacity(0.4))
-                                .frame(width: 32, height: 32)
-                                
-                                .opacity(0.5)
-                            
-                            Image(systemName: "xmark")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 13.5, weight: .heavy, design: .rounded))
-                            
-                        }
-                        .padding(.top, 7)
+                      Text("Done")
+                            .fontWeight(.bold)
+                            .foregroundColor(.orange)
                         
                            
                     }

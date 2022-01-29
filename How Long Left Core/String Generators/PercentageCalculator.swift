@@ -64,6 +64,15 @@ class PercentageCalculator {
         
     }
     
+    func completionValue(for event: HLLEvent, at date: Date = Date()) -> Double {
+        
+        let secondsElapsed = date.timeIntervalSince(event.startDate)
+        let totalSeconds = event.endDate.timeIntervalSince(event.startDate)
+        
+        return Double(secondsElapsed/totalSeconds)
+        
+    }
+    
     
     
 }

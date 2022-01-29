@@ -16,9 +16,14 @@ class WidgetStateFetcher {
             return .notMigrated
         }
         
+        
+        #if os(macOS)
+        
         if ProStatusManager.shared.isPro == false {
             return .notPurchased
         }
+        
+        #endif
         
         if HLLEventSource.shared.access != .Granted {
             

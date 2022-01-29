@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct GroupURL {
     
     #if os(OSX)
     static var current = "5AMFX8X5ZN.howlongleft"
     #elseif os(watchOS)
-    
+    static var current = "group.com.ryankontos.How-Long-Left"
     #else
     static var current = "group.com.ryankontos.How-Long-Left"
     #endif
@@ -267,6 +268,27 @@ class HLLDefaults {
     
     struct complication {
         
+        static var latestTimeline: HLLTimeline.CodableTimeline? {
+            
+            get {
+               
+                guard let data = defaults.data(forKey: "ComplicationLatestTimeline") else { return nil }
+                
+                let decoder = JSONDecoder()
+                let decoded = try! decoder.decode(HLLTimeline.CodableTimeline.self, from: data)
+                return decoded
+                
+            }
+            
+            set {
+                
+                let encoder = JSONEncoder()
+                let encoded = try! encoder.encode(newValue)
+                
+                defaults.set(encoded, forKey: "ComplicationLatestTimeline")
+            }
+            
+        }
         
         static var largeCountdown: Bool {
             
@@ -359,6 +381,57 @@ class HLLDefaults {
                 set (to) {
                     
                     defaults.set(to, forKey: "overridenComplicationPurchasedStatus")
+                    
+                }
+            
+        }
+        
+        static var unitLabels: Bool {
+            
+                
+                get {
+                    
+                    return defaults.bool(forKey: "ComplicationUnitLabels")
+                    
+                }
+                
+                set (to) {
+                    
+                    defaults.set(to, forKey: "ComplicationUnitLabels")
+                    
+                }
+            
+        }
+        
+        static var showSeconds: Bool {
+            
+                
+                get {
+                    
+                    return defaults.bool(forKey: "ComplicationShowSeconds")
+                    
+                }
+                
+                set (to) {
+                    
+                    defaults.set(to, forKey: "ComplicationShowSeconds")
+                    
+                }
+            
+        }
+        
+        static var tintComplication: Bool {
+            
+                
+                get {
+                    
+                    return !defaults.bool(forKey: "ComplicationNoTint")
+                    
+                }
+                
+                set (to) {
+                    
+                    defaults.set(!to, forKey: "ComplicationNoTint")
                     
                 }
             
@@ -680,6 +753,24 @@ class HLLDefaults {
             
         }
         
+        
+        static var complicationEnabled: Bool {
+            
+            get {
+                
+                return defaults.bool(forKey: "WatchComplicationEnabled")
+                
+            }
+            
+            set (to) {
+                
+                defaults.set(to, forKey: "WatchComplicationEnabled")
+                
+            }
+            
+        }
+        
+        
         static var showUpcoming: Bool {
                    
                    get {
@@ -693,6 +784,50 @@ class HLLDefaults {
                        defaults.set(!to, forKey: "hideUpcomingWatch")
                        
                    }
+                   
+        }
+        
+        static var upcomingMode: WatchUpcomingEventsDisplayMode {
+            
+            get {
+                
+                return WatchUpcomingEventsDisplayMode(rawValue: defaults.integer(forKey: "WatchUpcomingMode"))!
+                
+            }
+            
+            set {
+                
+                defaults.set(newValue.rawValue, forKey: "WatchUpcomingMode")
+                
+            }
+            
+        }
+        
+        static var listOrderMode: WatchEventListOrderMode {
+            
+            get {
+                
+                return WatchEventListOrderMode(rawValue: defaults.integer(forKey: "WatchEventListOrderMode"))!
+                
+            }
+            
+            set {
+                
+                defaults.set(newValue.rawValue, forKey: "WatchEventListOrderMode")
+                
+            }
+            
+        }
+        
+        static var showCurrent: Bool {
+                   
+            get {
+                return !defaults.bool(forKey: "WatchHideCurrent")
+            }
+                   
+            set (to) {
+                defaults.set(!to, forKey: "WatchHideCurrent")
+            }
                    
         }
         
@@ -727,6 +862,40 @@ class HLLDefaults {
                    }
                    
         }
+        
+        static var showSeconds: Bool {
+                   
+                   get {
+                       
+                       return !defaults.bool(forKey: "WatchHideSeconds")
+                       
+                   }
+                   
+                   set (to) {
+                       
+                       defaults.set(!to, forKey: "WatchHideSeconds")
+                       
+                   }
+                   
+        }
+        
+        
+        static var showSecondsWristDown: Bool {
+                   
+                   get {
+                       
+                       return !defaults.bool(forKey: "WatchHideSecondsAlwaysOn")
+                       
+                   }
+                   
+                   set (to) {
+                       
+                       defaults.set(!to, forKey: "WatchHideSecondsAlwaysOn")
+                       
+                   }
+                   
+        }
+        
         
         static var syncPreferences: Bool {
                    
@@ -1227,6 +1396,7 @@ class HLLDefaults {
     }
     
     struct notifications {
+        
         
         static var enabled: Bool {
             
@@ -1796,6 +1966,51 @@ enum CountdownCardAppearance: Int, CaseIterable {
             return "Flat"
         case .plain:
             return "Plain"
+        }
+        
+    }
+    
+}
+
+enum WatchUpcomingEventsDisplayMode: Int, CaseIterable {
+    
+    case withDetail = 0
+    case withCountdown = 1
+    case off = 2
+    
+    
+    var displayName: String {
+        
+        switch self {
+        case .withDetail:
+            return "With Detail"
+        case .withCountdown:
+            return "With Countdown"
+        case .off:
+            return "Off"
+        }
+        
+    }
+    
+    
+}
+
+enum WatchEventListOrderMode: Int, CaseIterable {
+    
+    case chronological = 0
+    case currentFirst = 1
+    case upcomingFirst = 2
+    
+    var displayName: String {
+        
+        switch self {
+            
+        case .chronological:
+            return "Chronological"
+        case .currentFirst:
+            return "In Progress First"
+        case .upcomingFirst:
+            return "Upcoming First"
         }
         
     }

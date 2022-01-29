@@ -17,11 +17,12 @@ struct SettingsView: View {
 
     @State var hasSetInitalSelection = false
     
+    @State var nVc: UIViewController?
     
     @State var tableView: UITableView?
     
     let sections: [SettingsViewSection] = [
-        SettingsViewSection(rows: [.countdowns, .events, .calendars, .notifications, .appearance]),
+        SettingsViewSection(rows: [.countdowns, .events, .calendars]),
         SettingsViewSection(header:"Extensions", rows: [.widget, .complication, .siri])
     ]
     
@@ -62,7 +63,11 @@ struct SettingsView: View {
             }
             
         }
+        .introspectNavigationController(customize: { vc in
             
+            self.nVc = vc
+            
+        })
             
         .navigationBarTitle("Settings")
         .introspectTableView(customize: {
@@ -126,9 +131,9 @@ struct SettingsView: View {
             EnabledCalendarsView()
                 .environmentObject(calendarsManager)
         case .countdowns:
-            CountdownCardSettingsView()
+            CountdownViewSettings()
         case .notifications:
-            Text("Notifications")
+            NotificationProfileEditView(viewController: $nVc)
         case .siri:
             Text("Siri")
         case .widget:

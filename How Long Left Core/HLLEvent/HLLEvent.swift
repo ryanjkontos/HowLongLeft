@@ -183,9 +183,11 @@ struct HLLEvent: Equatable, Hashable, Identifiable {
         get {
  
         
+            #if os(iOS)
             if let manualColor = manualColor {
                 return manualColor
             }
+            #endif
             
             var returnColour = UIColor.black
             
@@ -243,22 +245,7 @@ struct HLLEvent: Equatable, Hashable, Identifiable {
         
         get {
         
-            var returnText = "end"
-            
-            if self.completionStatus == .upcoming {
-                
-                returnText = "start"
-            }
-            
-            
-            if !titleReferencesMultipleEvents {
-                
-                returnText += "s"
-                
-                
-            }
-            
-            return returnText
+            return countdownTypeString(at: Date())
             
         }
         
@@ -266,6 +253,26 @@ struct HLLEvent: Equatable, Hashable, Identifiable {
     }
     
     
+    func countdownTypeString(at date: Date) -> String {
+        
+        var returnText = "end"
+        
+        if self.completionStatus(at: date) == .upcoming {
+            
+            returnText = "start"
+        }
+        
+        
+        if !titleReferencesMultipleEvents {
+            
+            returnText += "s"
+            
+            
+        }
+        
+        return returnText
+        
+    }
     
     var countdownStringEnd: String {
         
@@ -595,13 +602,15 @@ struct HLLEvent: Equatable, Hashable, Identifiable {
         return title.truncated(limit: limit, position: .middle, leader: "...")
         
         
+        
     }
     
+   
     func completionStatus(at: Date) -> EventCompletionStatus {
         
         if self.startDate.timeIntervalSince(at) > 0 {
             return .upcoming
-        } else if self.endDate.timeIntervalSince(at) < 0 {
+        } else if self.endDate.timeIntervalSince(at) <= 0 {
             return .done
         } else {
             return .current

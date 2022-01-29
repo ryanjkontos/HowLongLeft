@@ -52,7 +52,11 @@ class SelectedEventManager: EventPoolUpdateObserver {
                 
             }
             
+            #if !os(watchOS)
+            
             WidgetUpdateHandler.shared?.updateWidget(force: true)
+            
+            #endif
             
             DispatchQueue.main.async {
                 self.observers.forEach({$0.selectedEventChanged()})

@@ -39,24 +39,8 @@ struct CountdownsParentView: View {
         .transition(.opacity)
         .animation(.easeInOut(duration: 0.15), value: eventSource.isEmpty)
 
-        .sheet(isPresented: $showSettings, onDismiss: { showSettings = false }, content: {
-            
-            CountdownViewSettings(showSheet: $showSettings)
-            
-        })
-       .toolbar(content: {
-            
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                
-                Button(action: { showSettings = true }, label: {
-                    
-                    Image(systemName: "gear")
-                    
-                })
-                
-            })
-            
-        })
+
+
 
         }
         .navigationViewStyle(.stack)

@@ -126,7 +126,7 @@ enum TimelineDictKey: String {
     
 }
 
-enum TimelineState: String {
+enum TimelineState: String, Codable {
     
     case normal = "normal"
     case noCalendarAccess = "noCalAccess"

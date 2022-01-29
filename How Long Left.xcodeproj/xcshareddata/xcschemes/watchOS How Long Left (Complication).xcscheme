@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFE4771D274B91730016A725"
-               BuildableName = "watchOS How Long Left.app"
+               BuildableName = "How Long Left.app"
                BlueprintName = "watchOS How Long Left"
                ReferencedContainer = "container:How Long Left.xcodeproj">
             </BuildableReference>
@@ -42,6 +42,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BF32BF1D27859324002B013D"
+               BuildableName = "How Long Left Tests.xctest"
+               BlueprintName = "How Long Left Tests"
+               ReferencedContainer = "container:How Long Left.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -60,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFE4771D274B91730016A725"
-            BuildableName = "watchOS How Long Left.app"
+            BuildableName = "How Long Left.app"
             BlueprintName = "watchOS How Long Left"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
@@ -78,7 +88,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFE4771D274B91730016A725"
-            BuildableName = "watchOS How Long Left.app"
+            BuildableName = "How Long Left.app"
             BlueprintName = "watchOS How Long Left"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>

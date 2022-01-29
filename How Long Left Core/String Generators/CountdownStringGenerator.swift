@@ -49,12 +49,16 @@ class CountdownStringGenerator {
         var secondsLeft = event.countdownDate(at: atDate).timeIntervalSince(atDate)
         secondsLeft.round(.down)
         
+        
+        
         if secondsLeft < 0 {
             secondsLeft = -1
         }
         
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
+        
+        
         
         if secondsLeft < 60 {
             

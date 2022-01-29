@@ -23,6 +23,16 @@
 		BF166B0623D9C3EA00509256 /* ActionableNSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF166B0523D9C3EA00509256 /* ActionableNSMenuItem.swift */; };
 		BF168A85255F7C9A00C1A598 /* MacWidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF168A84255F7C9A00C1A598 /* MacWidgetUpdateHandler.swift */; };
 		BF168A90255F7CED00C1A598 /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
+		BF17BF5D2785623D00865A93 /* CountdownSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17BF5C2785623D00865A93 /* CountdownSettingsView.swift */; };
+		BF17BF5F278566EB00865A93 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17BF5E278566EB00865A93 /* SettingsView.swift */; };
+		BF17CCA027A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BF17CCA127A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BF17CCA227A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BF17CCA327A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BF17CCA427A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BF17CCA527A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BF1960F0276A12FA0058E1CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1960EF276A12FA0058E1CA /* CustomTextField.swift */; };
+		BF1C9F6727993C76003EE109 /* ComplicationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */; };
 		BF1E75072444755500F04284 /* EventsPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1E75052444755500F04284 /* EventsPreferencesView.xib */; };
 		BF1E75082444755500F04284 /* EventsPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E75062444755500F04284 /* EventsPreferenceViewController.swift */; };
 		BF1E750B24449DD300F04284 /* EventTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E750924449DD200F04284 /* EventTableCell.swift */; };
@@ -42,6 +52,8 @@
 		BF20E97424A983E8007F2614 /* HLLStatusItemConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF20E97324A983E8007F2614 /* HLLStatusItemConfiguration.swift */; };
 		BF23D6CB23A1E1CE008E3BB7 /* DockIconVisibilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23D6CA23A1E1CE008E3BB7 /* DockIconVisibilityManager.swift */; };
 		BF23D6CD23A1E407008E3BB7 /* UtilityRunLoopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23D6CC23A1E407008E3BB7 /* UtilityRunLoopManager.swift */; };
+		BF26363F2766D07800A6EBB7 /* NotificationProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26363E2766D07800A6EBB7 /* NotificationProfileEditView.swift */; };
+		BF2636432766D3AA00A6EBB7 /* NotificationGroupsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2636422766D3AA00A6EBB7 /* NotificationGroupsStore.swift */; };
 		BF263B4925778BB300F93BE7 /* WidgetStateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */; };
 		BF263B4B25778BB300F93BE7 /* WidgetStateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */; };
 		BF263B4C25778BB300F93BE7 /* WidgetStateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */; };
@@ -54,6 +66,7 @@
 		BF2B3701255EDB9500CD5FB0 /* StatusItemUnitsFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B36FC255EDB9500CD5FB0 /* StatusItemUnitsFormat.swift */; };
 		BF2D18DC251CC93300EEDBC1 /* DateInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D18D6251CC93200EEDBC1 /* DateInterval.swift */; };
 		BF2D18DD251CC93300EEDBC1 /* DateInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D18D6251CC93200EEDBC1 /* DateInterval.swift */; };
+		BF2D47BD279455E200B35D25 /* ComplicationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D47BC279455E100B35D25 /* ComplicationIdentifier.swift */; };
 		BF2FB5172498A5DB00909F32 /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
 		BF2FB5182498A5DC00909F32 /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
 		BF2FB51E2498A5E100909F32 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
@@ -70,6 +83,11 @@
 		BF32B51F2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
 		BF32B5212498772E00B8F339 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B5202498772E00B8F339 /* DeviceInfo.swift */; };
 		BF32B52324989CAB00B8F339 /* ProValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B52224989CAB00B8F339 /* ProValidator.swift */; };
+		BF32BF192785930E002B013D /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */; };
+		BF32BF2127859324002B013D /* How_Long_Left_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32BF2027859324002B013D /* How_Long_Left_Tests.swift */; };
+		BF32BF272785933A002B013D /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */; };
+		BF32BF292785A3D6002B013D /* EventsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32BF282785A3D6002B013D /* EventsSettingsView.swift */; };
+		BF32C7CC2782E856003D9CE3 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32C7CB2782E856003D9CE3 /* EventView.swift */; };
 		BF36185C22DCDB0400D51765 /* EventUIWindowsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36185B22DCDB0400D51765 /* EventUIWindowsManager.swift */; };
 		BF3649AA274A54D600FD0D03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3649A9274A54D600FD0D03 /* AppDelegate.swift */; };
 		BF3649AC274A54DB00FD0D03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3649AB274A54DB00FD0D03 /* SceneDelegate.swift */; };
@@ -86,10 +104,14 @@
 		BF3BCD3323E0373000639D5F /* PastebinFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3BCD1D23E031C400639D5F /* PastebinFormats.swift */; };
 		BF3BCD3523E037EB00639D5F /* MagdaleneEventDataUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3BCD3423E037EB00639D5F /* MagdaleneEventDataUploader.swift */; };
 		BF3BE73521A103A9001AFBA8 /* MilestoneNotificationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3BE73421A103A9001AFBA8 /* MilestoneNotificationGenerator.swift */; };
+		BF3C329A27854BC9009303D0 /* EventOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C329927854BC9009303D0 /* EventOptionsView.swift */; };
+		BF3C329C27854EB8009303D0 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C329B27854EB8009303D0 /* EventInfoView.swift */; };
+		BF3C329E278552A8009303D0 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C329D278552A8009303D0 /* InfoCard.swift */; };
 		BF3C673723DC7C0500036D7A /* RNNeededEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C673623DC7C0500036D7A /* RNNeededEvaluator.swift */; };
 		BF3C673923DC838E00036D7A /* RNBackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3C673823DC838E00036D7A /* RNBackgroundManager.swift */; };
 		BF3CECE622C19C2600E0D060 /* RNUIDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CECE422C19C2600E0D060 /* RNUIDoneViewController.swift */; };
 		BF3D533923DB0E420053195A /* MagdaleneModeSetupPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3D533823DB0E420053195A /* MagdaleneModeSetupPresentationManager.swift */; };
+		BF3DF0DB2798326E00A4C49D /* ComplicationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3DF0DA2798326E00A4C49D /* ComplicationSheet.swift */; };
 		BF3E066622CB5C41002859D5 /* DoneAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = BF3E066522CB5C40002859D5 /* DoneAnimation.json */; };
 		BF3E6DF923DEB2F900722CBD /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3E6DF823DEB2F900722CBD /* StatusItemController.swift */; };
 		BF3E9F8C24F54157002A8E6A /* AppMenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3E9F8B24F54157002A8E6A /* AppMenuHandler.swift */; };
@@ -155,6 +177,7 @@
 		BF5FA20724C865320065CB17 /* AnimatedGradientViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FA20024C865320065CB17 /* AnimatedGradientViewAnimation.swift */; };
 		BF621F6022C9F7D000226E61 /* EventUIStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF621F5F22C9F7D000226E61 /* EventUIStoryboard.storyboard */; };
 		BF62E44624AC913200B7D61A /* HLLStatusItemContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62E44524AC913200B7D61A /* HLLStatusItemContent.swift */; };
+		BF632B9027A1193400C1A385 /* LargeCountdownComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF632B8F27A1193400C1A385 /* LargeCountdownComplicationView.swift */; };
 		BF634B8621BE94EB00C285AB /* CalendarPreferenceViewControllerNoAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF634B8521BE94EA00C285AB /* CalendarPreferenceViewControllerNoAccess.swift */; };
 		BF636ACE2508F578006A3DE0 /* HLLMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636ACD2508F578006A3DE0 /* HLLMenu.swift */; };
 		BF6495E121B2C79E006CB6DF /* CalendarPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6495E021B2C79D006CB6DF /* CalendarPreferencesView.xib */; };
@@ -230,6 +253,7 @@
 		BFA3FD1D23D41A3E009BA759 /* SchoolEventChangesMenuItemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3FD1C23D41A3E009BA759 /* SchoolEventChangesMenuItemGenerator.swift */; };
 		BFA3FD2023D456AF009BA759 /* MagdaleneModeSetupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA3FD1F23D456AF009BA759 /* MagdaleneModeSetupStoryboard.storyboard */; };
 		BFA577BE23CF155500BB4A4D /* PreferencePaneIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA577BD23CF155500BB4A4D /* PreferencePaneIdentifiers.swift */; };
+		BFA725E8277E9FE600F2A6EA /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA725E7277E9FE600F2A6EA /* CountdownCard.swift */; };
 		BFA8EE0B274DEE9E0099350D /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE0A274DEE9E0099350D /* IconCell.swift */; };
 		BFA8EE13274E02A00099350D /* ListButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE12274E02A00099350D /* ListButtonModifier.swift */; };
 		BFA8EE15274E49BF0099350D /* RoundedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE14274E49BF0099350D /* RoundedIcon.swift */; };
@@ -242,13 +266,15 @@
 		BFB01471244061B400BC9BDB /* HLLNTriggerAddError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0146A244061B300BC9BDB /* HLLNTriggerAddError.swift */; };
 		BFB01479244061D500BC9BDB /* HLLNNewTriggerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */; };
 		BFB0147A244061D500BC9BDB /* HLLNNewTriggerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */; };
-		BFB01482244062A300BC9BDB /* HLLNTriggerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0147C244062A300BC9BDB /* HLLNTriggerStore.swift */; };
-		BFB01483244062A300BC9BDB /* HLLNTriggerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0147C244062A300BC9BDB /* HLLNTriggerStore.swift */; };
 		BFB0148B244062F200BC9BDB /* HLLNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01485244062F200BC9BDB /* HLLNTrigger.swift */; };
 		BFB0148C244062F200BC9BDB /* HLLNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01485244062F200BC9BDB /* HLLNTrigger.swift */; };
+		BFB0829A2797B43C00EEBBA7 /* ComplicationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB082992797B43C00EEBBA7 /* ComplicationsSettingsView.swift */; };
+		BFB0829C27982BD800EEBBA7 /* ComplicationPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0829B27982BD800EEBBA7 /* ComplicationPurchaseView.swift */; };
+		BFB370C5279FC1520075632A /* ComplicationProviderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB370C4279FC1520075632A /* ComplicationProviderData.swift */; };
 		BFB4272A275C6C5B00D3E1BA /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB42729275C6C5B00D3E1BA /* CountdownCard.swift */; };
 		BFB5A6992231E64B0075182B /* DetailSubmenuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB5A6982231E64B0075182B /* DetailSubmenuGenerator.swift */; };
 		BFB6951224EBEB31006EA214 /* MainPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6951124EBEB31006EA214 /* MainPreferencesViewController.swift */; };
+		BFB78427278161B2004CC2F5 /* EventTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB78426278161B2004CC2F5 /* EventTimerView.swift */; };
 		BFB8EF7C223E10010023B322 /* MagdaleneWiFiCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8EF7B223E10000023B322 /* MagdaleneWiFiCheck.swift */; };
 		BFBC716E243EF2A600CAF298 /* HLLNTriggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */; };
 		BFBC716F243EF2A600CAF298 /* HLLNTriggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */; };
@@ -402,6 +428,7 @@
 		BFD5ED6824AA0336007DAF1D /* StatusItemMenuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5ED6724AA0336007DAF1D /* StatusItemMenuGenerator.swift */; };
 		BFD6BA3424650E4900F614DA /* ProInfoMenuTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD6BA3324650E4900F614DA /* ProInfoMenuTitleView.xib */; };
 		BFD6BA362465118F00F614DA /* ProInfoMenuTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6BA352465118F00F614DA /* ProInfoMenuTitleViewController.swift */; };
+		BFD6FD472768B4760089FD26 /* TriggerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6FD462768B4760089FD26 /* TriggerEditorView.swift */; };
 		BFD7A539255ED56000E7BCCB /* HLLHotKeyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A535255ED56000E7BCCB /* HLLHotKeyOption.swift */; };
 		BFD7A53A255ED56000E7BCCB /* HLLHotKeyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A535255ED56000E7BCCB /* HLLHotKeyOption.swift */; };
 		BFD7A554255ED58E00E7BCCB /* StatusItemMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A550255ED58D00E7BCCB /* StatusItemMode.swift */; };
@@ -496,13 +523,81 @@
 		BFE47730274B91740016A725 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4772F274B91740016A725 /* ComplicationController.swift */; };
 		BFE47732274B91740016A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE47731274B91740016A725 /* Assets.xcassets */; };
 		BFE47735274B91740016A725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE47734274B91740016A725 /* Preview Assets.xcassets */; };
-		BFE47739274B91740016A725 /* watchOS How Long Left.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BFE4771E274B91730016A725 /* watchOS How Long Left.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFE47739274B91740016A725 /* How Long Left.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BFE4771E274B91730016A725 /* How Long Left.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BFE47741274B93AC0016A725 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1059DF274B44B900486AE0 /* Store.swift */; };
 		BFE47742274B93B10016A725 /* ExtensionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF94009B274AA92200AB71E7 /* ExtensionType.swift */; };
 		BFE47743274B95C60016A725 /* StoreKitDebug.storekit in Resources */ = {isa = PBXBuildFile; fileRef = BF1059E3274B683800486AE0 /* StoreKitDebug.storekit */; };
 		BFE4B14E24F1334E00EB432A /* PreferencesGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4B14D24F1334E00EB432A /* PreferencesGlobals.swift */; };
+		BFE6ADF2278580D5003AAFF6 /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */; };
 		BFE87279275CC20D00059C47 /* CountdownCardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE87278275CC20D00059C47 /* CountdownCardSettingsView.swift */; };
 		BFE8727B275CC66100059C47 /* CountdownSectionOrderEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8727A275CC66100059C47 /* CountdownSectionOrderEditView.swift */; };
+		BFE8C2AC277F11A80026F0C2 /* CalendarDefaultsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981C23EE3A3D00BB3816 /* CalendarDefaultsModifier.swift */; };
+		BFE8C2AD277F11A80026F0C2 /* CalendarEventFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981D23EE3A3D00BB3816 /* CalendarEventFetcher.swift */; };
+		BFE8C2AE277F11A80026F0C2 /* HLLEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981E23EE3A3D00BB3816 /* HLLEventSource.swift */; };
+		BFE8C2AF277F11A80026F0C2 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981F23EE3A3D00BB3816 /* HLLEvent.swift */; };
+		BFE8C2B0277F11A80026F0C2 /* HLLEventRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D267224A972E000CFC8ED /* HLLEventRetriever.swift */; };
+		BFE8C2B1277F11A80026F0C2 /* DummyEventGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5084F3275B098900C1FC58 /* DummyEventGenerator.swift */; };
+		BFE8C2B2277F11A80026F0C2 /* HLLDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981723EE3A3D00BB3816 /* HLLDefaults.swift */; };
+		BFE8C2B3277F11A80026F0C2 /* HLLDefaultsTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981823EE3A3D00BB3816 /* HLLDefaultsTransfer.swift */; };
+		BFE8C2B4277F11A80026F0C2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981A23EE3A3D00BB3816 /* Date.swift */; };
+		BFE8C2B5277F11A80026F0C2 /* DateOfEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3149B922DDB3D7002BAF0D /* DateOfEvents.swift */; };
+		BFE8C2B6277F11A80026F0C2 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982123EE3A3D00BB3816 /* EventDate.swift */; };
+		BFE8C2B7277F11A80026F0C2 /* PercentageCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982323EE3A3D00BB3816 /* PercentageCalculator.swift */; };
+		BFE8C2B8277F11A80026F0C2 /* DurationStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982423EE3A3D00BB3816 /* DurationStringGenerator.swift */; };
+		BFE8C2B9277F11A80026F0C2 /* CountdownStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982523EE3A3D00BB3816 /* CountdownStringGenerator.swift */; };
+		BFE8C2BA277F11A80026F0C2 /* EventCompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982623EE3A3D00BB3816 /* EventCompletionStatus.swift */; };
+		BFE8C2BB277F11A80026F0C2 /* EventFetchPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982923EE3A3D00BB3816 /* EventFetchPeriod.swift */; };
+		BFE8C2BC277F11A80026F0C2 /* StatusItemEventMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89650B24EC05E00051024D /* StatusItemEventMode.swift */; };
+		BFE8C2BD277F11A80026F0C2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982B23EE3A3D00BB3816 /* String.swift */; };
+		BFE8C2BE277F11A80026F0C2 /* DateInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D18D6251CC93200EEDBC1 /* DateInterval.swift */; };
+		BFE8C2BF277F11A90026F0C2 /* CKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982C23EE3A3D00BB3816 /* CKError.swift */; };
+		BFE8C2C0277F11A90026F0C2 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982D23EE3A3D00BB3816 /* TimeInterval.swift */; };
+		BFE8C2C1277F11A90026F0C2 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982E23EE3A3D00BB3816 /* EKEvent.swift */; };
+		BFE8C2C2277F11A90026F0C2 /* HLLEventInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983823EE3A3D00BB3816 /* HLLEventInfoItem.swift */; };
+		BFE8C2C3277F11A90026F0C2 /* HLLEventInfoItemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983923EE3A3D00BB3816 /* HLLEventInfoItemGenerator.swift */; };
+		BFE8C2C4277F11A90026F0C2 /* HLLEventInfoItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983A23EE3A3D00BB3816 /* HLLEventInfoItemType.swift */; };
+		BFE8C2C5277F11A90026F0C2 /* HLLDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF356867247E576A00E531C7 /* HLLDataModel.xcdatamodeld */; };
+		BFE8C2C6277F11A90026F0C2 /* StatusItemUnitsFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B36FC255EDB9500CD5FB0 /* StatusItemUnitsFormat.swift */; };
+		BFE8C2C7277F11A90026F0C2 /* WidgetStateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */; };
+		BFE8C2C8277F11A90026F0C2 /* PercentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44002F2574D9350061ED6E /* PercentDateFetcher.swift */; };
+		BFE8C2C9277F11A90026F0C2 /* CalendarAccessState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A574255ED5F600E7BCCB /* CalendarAccessState.swift */; };
+		BFE8C2CA277F11A90026F0C2 /* SelectedEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A562255ED5A600E7BCCB /* SelectedEventManager.swift */; };
+		BFE8C2CB277F11A90026F0C2 /* StatusItemMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A550255ED58D00E7BCCB /* StatusItemMode.swift */; };
+		BFE8C2CC277F11A90026F0C2 /* HLLHotKeyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A535255ED56000E7BCCB /* HLLHotKeyOption.swift */; };
+		BFE8C2CD277F11A90026F0C2 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983C23EE3A3D00BB3816 /* Weekday.swift */; };
+		BFE8C2CE277F11A90026F0C2 /* NicknameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3EF9FA24F4CC6800173222 /* NicknameManager.swift */; };
+		BFE8C2CF277F11A90026F0C2 /* KeyDateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FA6DF24D0341B000B6CBE /* KeyDateHandler.swift */; };
+		BFE8C2D0277F11A90026F0C2 /* EventVisibiltyActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983D23EE3A3D00BB3816 /* EventVisibiltyActionHandler.swift */; };
+		BFE8C2D1277F11A90026F0C2 /* VisibilityString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983E23EE3A3D00BB3816 /* VisibilityString.swift */; };
+		BFE8C2D2277F11A90026F0C2 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983F23EE3A3D00BB3816 /* Version.swift */; };
+		BFE8C2D3277F11A90026F0C2 /* EventLocationIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984023EE3A3D00BB3816 /* EventLocationIndexer.swift */; };
+		BFE8C2D4277F11A90026F0C2 /* Pluraliser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984123EE3A3D00BB3816 /* Pluraliser.swift */; };
+		BFE8C2D5277F11A90026F0C2 /* EventTimeRemainingMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984223EE3A3D00BB3816 /* EventTimeRemainingMonitor.swift */; };
+		BFE8C2D6277F11A90026F0C2 /* FollowingOccurenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984323EE3A3D00BB3816 /* FollowingOccurenceStore.swift */; };
+		BFE8C2D7277F11A90026F0C2 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984423EE3A3D00BB3816 /* RepeatingTimer.swift */; };
+		BFE8C2D8277F11A90026F0C2 /* CountdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */; };
+		BFE8C2DA277F11A90026F0C2 /* CurrentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984523EE3A3D00BB3816 /* CurrentDateFetcher.swift */; };
+		BFE8C2DB277F11A90026F0C2 /* HLLCloudKitPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984723EE3A3D00BB3816 /* HLLCloudKitPreferences.swift */; };
+		BFE8C2DC277F11A90026F0C2 /* HLLCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986323EE3A3D00BB3816 /* HLLCountdownController.swift */; };
+		BFE8C2DD277F11A90026F0C2 /* HLLNotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986523EE3A3D00BB3816 /* HLLNotificationContent.swift */; };
+		BFE8C2DF277F11A90026F0C2 /* HLLNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01485244062F200BC9BDB /* HLLNTrigger.swift */; };
+		BFE8C2E0277F11A90026F0C2 /* HLLNTriggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */; };
+		BFE8C2E1277F11A90026F0C2 /* HLLNTriggerAddHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986623EE3A3D00BB3816 /* HLLNTriggerAddHandler.swift */; };
+		BFE8C2E2277F11A90026F0C2 /* HLLNNewTriggerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */; };
+		BFE8C2E3277F11A90026F0C2 /* HLLNTriggerAddError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0146A244061B300BC9BDB /* HLLNTriggerAddError.swift */; };
+		BFE8C2E6277F11A90026F0C2 /* HLLTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897024B2D37C0091F1DA /* HLLTimelineEntry.swift */; };
+		BFE8C2E7277F11A90026F0C2 /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
+		BFE8C2E8277F11A90026F0C2 /* HLLTimelineDifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */; };
+		BFE8C2EA277F11A90026F0C2 /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
+		BFE8C2EB277F11A90026F0C2 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
+		BFE8C2EC277F11A90026F0C2 /* HLLHiddenEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */; };
+		BFE8C2F1277F11A90026F0C2 /* UserGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA559A22D8829D00575230 /* UserGroup.swift */; };
+		BFE8C2F4277F12960026F0C2 /* HLLHiddenEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */; };
+		BFE8C2F5277F129A0026F0C2 /* HLLDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6AD9612500C90300035787 /* HLLDataModel.swift */; };
+		BFE8C2F6277F129B0026F0C2 /* HLLDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6AD9612500C90300035787 /* HLLDataModel.swift */; };
+		BFE8C2F7277F12E40026F0C2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE94A2258D36A0012BA81 /* UIColor.swift */; };
+		BFE8C2F9277F14930026F0C2 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8C2F8277F14930026F0C2 /* EventsListView.swift */; };
+		BFE8C2FB277F15C60026F0C2 /* EventsListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8C2FA277F15C60026F0C2 /* EventsListDataSource.swift */; };
 		BFE917612373AB0D00A66F40 /* MainMenuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE917602373AB0D00A66F40 /* MainMenuGenerator.swift */; };
 		BFE917632373BB3900A66F40 /* HLLStatusItemContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE917622373BB3900A66F40 /* HLLStatusItemContentGenerator.swift */; };
 		BFE917652373C18B00A66F40 /* HotKeyNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE917642373C18B00A66F40 /* HotKeyNotificationHandler.swift */; };
@@ -511,6 +606,9 @@
 		BFEA975F243DC46D000EA3DA /* CNSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA975E243DC46D000EA3DA /* CNSessionHandler.swift */; };
 		BFEC4FDC239DED2200EF8F6D /* LaunchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4FDB239DED2200EF8F6D /* LaunchFunctions.swift */; };
 		BFEC4FDE239DEF7300EF8F6D /* OnboardingWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEC4FDD239DEF7300EF8F6D /* OnboardingWindowManager.swift */; };
+		BFEE00C8277D74C400A51B37 /* MainEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE00C7277D74C400A51B37 /* MainEventCard.swift */; };
+		BFEE00CA277D76F600A51B37 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE00C9277D76F600A51B37 /* EventCard.swift */; };
+		BFEE00CC277D7E6600A51B37 /* SettingsButtonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE00CB277D7E6600A51B37 /* SettingsButtonCard.swift */; };
 		BFEE396221BD129F000106BD /* NotificationPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEE396121BD129F000106BD /* NotificationPreferencesView.xib */; };
 		BFEE396421BD152B000106BD /* NotificationPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE396321BD152B000106BD /* NotificationPreferencesViewController.swift */; };
 		BFEE67B8274519EE00810596 /* HLLAppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE67B7274519EE00810596 /* HLLAppTab.swift */; };
@@ -519,7 +617,14 @@
 		BFEE67C027453D5100810596 /* HeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE67BF27453D5100810596 /* HeaderText.swift */; };
 		BFEE67C2274540B100810596 /* CountdownCardContextMenuModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE67C1274540B100810596 /* CountdownCardContextMenuModifier.swift */; };
 		BFF3B13F27526C9500490A2C /* AnimatedGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3B13E27526C9500490A2C /* AnimatedGallery.swift */; };
+		BFF718042768657700AF2DE9 /* NotificationGroupEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF718032768657700AF2DE9 /* NotificationGroupEditorView.swift */; };
+		BFF7180627686A5100AF2DE9 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF7180527686A5100AF2DE9 /* TextFieldAlert.swift */; };
 		BFF847E7231E5D1E0075E733 /* EventVisibilityButtonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF847E6231E5D1E0075E733 /* EventVisibilityButtonsManager.swift */; };
+		BFF9197C2786B9CB0094BA79 /* EnabledCalendarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC531B6274668E8001DBA6E /* EnabledCalendarsView.swift */; };
+		BFF9197D2786B9EA0094BA79 /* EnabledCalendarsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC531B427466842001DBA6E /* EnabledCalendarsManager.swift */; };
+		BFF9197E2786F0B10094BA79 /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
+		BFF91980278702B90094BA79 /* ComplicationEntryGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */; };
+		BFF9198427871DFE0094BA79 /* CLKTextProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF9198327871DFE0094BA79 /* CLKTextProvider.m */; };
 		BFF9AAFC256F9E54003A0AA9 /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
 		BFF9AB04256F9E90003A0AA9 /* ProValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B52224989CAB00B8F339 /* ProValidator.swift */; };
 		BFF9AB0C256F9EAC003A0AA9 /* UpcomingWidgetParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB9597255FCEA600B58932 /* UpcomingWidgetParentView.swift */; };
@@ -598,26 +703,20 @@
 		BFFF605C273DFCED00C5EB1A /* FollowingOccurenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984323EE3A3D00BB3816 /* FollowingOccurenceStore.swift */; };
 		BFFF605D273DFCED00C5EB1A /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984423EE3A3D00BB3816 /* RepeatingTimer.swift */; };
 		BFFF605E273DFCED00C5EB1A /* CountdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */; };
-		BFFF605F273DFCED00C5EB1A /* ProStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46DD6E248D2939000AE42F /* ProStatusManager.swift */; };
 		BFFF6060273DFCED00C5EB1A /* CurrentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984523EE3A3D00BB3816 /* CurrentDateFetcher.swift */; };
 		BFFF6061273DFCED00C5EB1A /* HLLCloudKitPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984723EE3A3D00BB3816 /* HLLCloudKitPreferences.swift */; };
 		BFFF6062273DFCED00C5EB1A /* HLLCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986323EE3A3D00BB3816 /* HLLCountdownController.swift */; };
 		BFFF6063273DFCED00C5EB1A /* HLLNotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986523EE3A3D00BB3816 /* HLLNotificationContent.swift */; };
-		BFFF6064273DFCED00C5EB1A /* HLLNTriggerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0147C244062A300BC9BDB /* HLLNTriggerStore.swift */; };
 		BFFF6065273DFCED00C5EB1A /* HLLNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01485244062F200BC9BDB /* HLLNTrigger.swift */; };
 		BFFF6066273DFCED00C5EB1A /* HLLNTriggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */; };
 		BFFF6067273DFCED00C5EB1A /* HLLNTriggerAddHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986623EE3A3D00BB3816 /* HLLNTriggerAddHandler.swift */; };
 		BFFF6068273DFCED00C5EB1A /* HLLNNewTriggerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */; };
 		BFFF6069273DFCED00C5EB1A /* HLLNTriggerAddError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0146A244061B300BC9BDB /* HLLNTriggerAddError.swift */; };
-		BFFF606A273DFCED00C5EB1A /* HLLNNotificationContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986723EE3A3D00BB3816 /* HLLNNotificationContentGenerator.swift */; };
-		BFFF606B273DFCED00C5EB1A /* HLLNTriggerFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF54CD324CFD16D00D40490 /* HLLNTriggerFetcher.swift */; };
 		BFFF606C273DFCED00C5EB1A /* HLLTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897024B2D37C0091F1DA /* HLLTimelineEntry.swift */; };
 		BFFF606D273DFCED00C5EB1A /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
 		BFFF606E273DFCED00C5EB1A /* HLLTimelineDifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */; };
-		BFFF606F273DFCED00C5EB1A /* HLLDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6AD9612500C90300035787 /* HLLDataModel.swift */; };
 		BFFF6070273DFCED00C5EB1A /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
 		BFFF6071273DFCED00C5EB1A /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
-		BFFF6072273DFCED00C5EB1A /* HLLHiddenEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */; };
 		BFFF6077273DFCED00C5EB1A /* UserGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA559A22D8829D00575230 /* UserGroup.swift */; };
 		BFFF607A273DFE5C00C5EB1A /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
 		BFFF607B273DFE6300C5EB1A /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
@@ -640,6 +739,13 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		BF32BF2227859324002B013D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF5D294D2174679500AC1EB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF4988FC2733A14A00024295;
+			remoteInfo = "iOS How Long Left";
+		};
 		BFE47728274B91740016A725 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF5D294D2174679500AC1EB6 /* Project object */;
@@ -670,7 +776,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				BFE47739274B91740016A725 /* watchOS How Long Left.app in Embed Watch Content */,
+				BFE47739274B91740016A725 /* How Long Left.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,10 +841,15 @@
 		BF166B0323D988E800509256 /* MenuItemClosureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemClosureHandler.swift; sourceTree = "<group>"; };
 		BF166B0523D9C3EA00509256 /* ActionableNSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionableNSMenuItem.swift; sourceTree = "<group>"; };
 		BF168A84255F7C9A00C1A598 /* MacWidgetUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacWidgetUpdateHandler.swift; sourceTree = "<group>"; };
+		BF17BF5C2785623D00865A93 /* CountdownSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownSettingsView.swift; sourceTree = "<group>"; };
+		BF17BF5E278566EB00865A93 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLTimeline.swift; sourceTree = "<group>"; };
+		BF1960EF276A12FA0058E1CA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		BF1977942393A0E300EDEB02 /* InterfaceSettingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceSettingsInterfaceController.swift; sourceTree = "<group>"; };
 		BF19CF9322438AE90088B196 /* How Long Left (watchOS) Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "How Long Left (watchOS) Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF19CF9422438AEA0088B196 /* RelativeTextInterpolater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelativeTextInterpolater.h; sourceTree = "<group>"; };
 		BF19CF9522438AEA0088B196 /* RelativeTextInterpolater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelativeTextInterpolater.m; sourceTree = "<group>"; };
+		BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationIconView.swift; sourceTree = "<group>"; };
 		BF1E75052444755500F04284 /* EventsPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsPreferencesView.xib; sourceTree = "<group>"; };
 		BF1E75062444755500F04284 /* EventsPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsPreferenceViewController.swift; sourceTree = "<group>"; };
 		BF1E750924449DD200F04284 /* EventTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableCell.swift; sourceTree = "<group>"; };
@@ -754,6 +865,8 @@
 		BF20E97324A983E8007F2614 /* HLLStatusItemConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLStatusItemConfiguration.swift; sourceTree = "<group>"; };
 		BF23D6CA23A1E1CE008E3BB7 /* DockIconVisibilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockIconVisibilityManager.swift; sourceTree = "<group>"; };
 		BF23D6CC23A1E407008E3BB7 /* UtilityRunLoopManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityRunLoopManager.swift; sourceTree = "<group>"; };
+		BF26363E2766D07800A6EBB7 /* NotificationProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProfileEditView.swift; sourceTree = "<group>"; };
+		BF2636422766D3AA00A6EBB7 /* NotificationGroupsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupsStore.swift; sourceTree = "<group>"; };
 		BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetStateFetcher.swift; sourceTree = "<group>"; };
 		BF263B5725779F0200F93BE7 /* WidgetDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDisabledView.swift; sourceTree = "<group>"; };
 		BF2713D722BCE255006A4B37 /* RNUIConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNUIConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -761,6 +874,7 @@
 		BF2713DB22BD1EAF006A4B37 /* RNUIRenamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNUIRenamingViewController.swift; sourceTree = "<group>"; };
 		BF2B36FC255EDB9500CD5FB0 /* StatusItemUnitsFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemUnitsFormat.swift; sourceTree = "<group>"; };
 		BF2D18D6251CC93200EEDBC1 /* DateInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInterval.swift; sourceTree = "<group>"; };
+		BF2D47BC279455E100B35D25 /* ComplicationIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationIdentifier.swift; sourceTree = "<group>"; };
 		BF3149B522DD9A68002BAF0D /* UpcomingSoonMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSoonMenuGenerator.swift; sourceTree = "<group>"; };
 		BF3149B722DDAC8B002BAF0D /* UpcomingWeekMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingWeekMenuGenerator.swift; sourceTree = "<group>"; };
 		BF3149B922DDB3D7002BAF0D /* DateOfEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfEvents.swift; sourceTree = "<group>"; };
@@ -771,6 +885,10 @@
 		BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HLLHiddenEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BF32B5202498772E00B8F339 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		BF32B52224989CAB00B8F339 /* ProValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProValidator.swift; sourceTree = "<group>"; };
+		BF32BF1E27859324002B013D /* How Long Left Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "How Long Left Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF32BF2027859324002B013D /* How_Long_Left_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = How_Long_Left_Tests.swift; sourceTree = "<group>"; };
+		BF32BF282785A3D6002B013D /* EventsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSettingsView.swift; sourceTree = "<group>"; };
+		BF32C7CB2782E856003D9CE3 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		BF356868247E576A00E531C7 /* HLLDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HLLDataModel.xcdatamodel; sourceTree = "<group>"; };
 		BF36185B22DCDB0400D51765 /* EventUIWindowsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventUIWindowsManager.swift; path = "How Long Left (macOS)/EventUIWindowsManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF3649A9274A54D600FD0D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -785,12 +903,17 @@
 		BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUpdateHandler.swift; sourceTree = "<group>"; };
 		BF3AAB092267836E00EE06C4 /* HLLComplicationEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLComplicationEntry.swift; sourceTree = "<group>"; };
 		BF3AAB0B2267839100EE06C4 /* ComplicationUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationUpdateHandler.swift; sourceTree = "<group>"; };
+		BF3B9302277F20A100D499EF /* watchOS How Long Left WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watchOS How Long Left WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		BF3B9303277F20B900D499EF /* watchOS How Long Left.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watchOS How Long Left.entitlements"; sourceTree = "<group>"; };
 		BF3BCD1B23E031C300639D5F /* Pastr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pastr.h; sourceTree = "<group>"; };
 		BF3BCD1C23E031C300639D5F /* Pastr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pastr.swift; sourceTree = "<group>"; };
 		BF3BCD1D23E031C400639D5F /* PastebinFormats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastebinFormats.swift; sourceTree = "<group>"; };
 		BF3BCD2023E0326500639D5F /* TextUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUploader.swift; sourceTree = "<group>"; };
 		BF3BCD3423E037EB00639D5F /* MagdaleneEventDataUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagdaleneEventDataUploader.swift; sourceTree = "<group>"; };
 		BF3BE73421A103A9001AFBA8 /* MilestoneNotificationGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneNotificationGenerator.swift; sourceTree = "<group>"; };
+		BF3C329927854BC9009303D0 /* EventOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventOptionsView.swift; sourceTree = "<group>"; };
+		BF3C329B27854EB8009303D0 /* EventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoView.swift; sourceTree = "<group>"; };
+		BF3C329D278552A8009303D0 /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
 		BF3C673623DC7C0500036D7A /* RNNeededEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNNeededEvaluator.swift; sourceTree = "<group>"; };
 		BF3C673823DC838E00036D7A /* RNBackgroundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBackgroundManager.swift; sourceTree = "<group>"; };
 		BF3C8DBC236AA26B00CFDEFD /* InfoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemCell.swift; sourceTree = "<group>"; };
@@ -806,6 +929,7 @@
 		BF3CECE422C19C2600E0D060 /* RNUIDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNUIDoneViewController.swift; sourceTree = "<group>"; };
 		BF3D533823DB0E420053195A /* MagdaleneModeSetupPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagdaleneModeSetupPresentationManager.swift; sourceTree = "<group>"; };
 		BF3DB1472345EB86007D54A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BF3DF0DA2798326E00A4C49D /* ComplicationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationSheet.swift; sourceTree = "<group>"; };
 		BF3E066522CB5C40002859D5 /* DoneAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DoneAnimation.json; sourceTree = "<group>"; };
 		BF3E6DF823DEB2F900722CBD /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		BF3E9F8B24F54157002A8E6A /* AppMenuHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuHandler.swift; sourceTree = "<group>"; };
@@ -884,6 +1008,7 @@
 		BF621F6122C9FE9A00226E61 /* EventUICountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUICountdownViewController.swift; sourceTree = "<group>"; };
 		BF629488237A53EE0091B1F9 /* RenameIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameIntroViewController.swift; sourceTree = "<group>"; };
 		BF62E44524AC913200B7D61A /* HLLStatusItemContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLStatusItemContent.swift; sourceTree = "<group>"; };
+		BF632B8F27A1193400C1A385 /* LargeCountdownComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCountdownComplicationView.swift; sourceTree = "<group>"; };
 		BF634B8521BE94EA00C285AB /* CalendarPreferenceViewControllerNoAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPreferenceViewControllerNoAccess.swift; sourceTree = "<group>"; };
 		BF636ACD2508F578006A3DE0 /* HLLMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLMenu.swift; sourceTree = "<group>"; };
 		BF6495E021B2C79D006CB6DF /* CalendarPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarPreferencesView.xib; sourceTree = "<group>"; };
@@ -965,6 +1090,7 @@
 		BFA3FD1C23D41A3E009BA759 /* SchoolEventChangesMenuItemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolEventChangesMenuItemGenerator.swift; sourceTree = "<group>"; };
 		BFA3FD1F23D456AF009BA759 /* MagdaleneModeSetupStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MagdaleneModeSetupStoryboard.storyboard; sourceTree = "<group>"; };
 		BFA577BD23CF155500BB4A4D /* PreferencePaneIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencePaneIdentifiers.swift; sourceTree = "<group>"; };
+		BFA725E7277E9FE600F2A6EA /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
 		BFA8EE0A274DEE9E0099350D /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		BFA8EE12274E02A00099350D /* ListButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListButtonModifier.swift; sourceTree = "<group>"; };
 		BFA8EE14274E49BF0099350D /* RoundedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedIcon.swift; sourceTree = "<group>"; };
@@ -979,10 +1105,14 @@
 		BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLNNewTriggerRequest.swift; sourceTree = "<group>"; };
 		BFB0147C244062A300BC9BDB /* HLLNTriggerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLNTriggerStore.swift; sourceTree = "<group>"; usesTabs = 0; };
 		BFB01485244062F200BC9BDB /* HLLNTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLNTrigger.swift; sourceTree = "<group>"; };
+		BFB082992797B43C00EEBBA7 /* ComplicationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationsSettingsView.swift; sourceTree = "<group>"; };
+		BFB0829B27982BD800EEBBA7 /* ComplicationPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationPurchaseView.swift; sourceTree = "<group>"; };
 		BFB084B7235B125800670E42 /* MagdaleneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagdaleneTableViewController.swift; sourceTree = "<group>"; };
+		BFB370C4279FC1520075632A /* ComplicationProviderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationProviderData.swift; sourceTree = "<group>"; };
 		BFB42729275C6C5B00D3E1BA /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
 		BFB5A6982231E64B0075182B /* DetailSubmenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSubmenuGenerator.swift; sourceTree = "<group>"; };
 		BFB6951124EBEB31006EA214 /* MainPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPreferencesViewController.swift; path = ../MainPreferencesViewController.swift; sourceTree = "<group>"; };
+		BFB78426278161B2004CC2F5 /* EventTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimerView.swift; sourceTree = "<group>"; };
 		BFB8EF7B223E10000023B322 /* MagdaleneWiFiCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagdaleneWiFiCheck.swift; sourceTree = "<group>"; };
 		BFBEAFA223AC8FC600317A01 /* AppleWatchSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleWatchSettingsTableViewController.swift; sourceTree = "<group>"; };
 		BFBEC85B238B7EB300BBE877 /* MacEventNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEventNotificationScheduler.swift; sourceTree = "<group>"; };
@@ -1026,6 +1156,7 @@
 		BFD5ED6724AA0336007DAF1D /* StatusItemMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemMenuGenerator.swift; sourceTree = "<group>"; };
 		BFD6BA3324650E4900F614DA /* ProInfoMenuTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProInfoMenuTitleView.xib; sourceTree = "<group>"; };
 		BFD6BA352465118F00F614DA /* ProInfoMenuTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProInfoMenuTitleViewController.swift; sourceTree = "<group>"; };
+		BFD6FD462768B4760089FD26 /* TriggerEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerEditorView.swift; sourceTree = "<group>"; };
 		BFD7A535255ED56000E7BCCB /* HLLHotKeyOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLLHotKeyOption.swift; sourceTree = "<group>"; };
 		BFD7A550255ED58D00E7BCCB /* StatusItemMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemMode.swift; sourceTree = "<group>"; };
 		BFD7A562255ED5A600E7BCCB /* SelectedEventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedEventManager.swift; sourceTree = "<group>"; };
@@ -1080,7 +1211,7 @@
 		BFE1316B24D17360008723E2 /* SubjectRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubjectRow.swift; path = "How Long Left Core/Year 12 Exams/SubjectRow.swift"; sourceTree = SOURCE_ROOT; };
 		BFE1316D24D175EA008723E2 /* SubjectSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubjectSelectionViewController.swift; path = "How Long Left Core/Year 12 Exams/SubjectSelectionViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFE4460723CEED6500924F5D /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		BFE4771E274B91730016A725 /* watchOS How Long Left.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchOS How Long Left.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFE4771E274B91730016A725 /* How Long Left.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "How Long Left.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE47720274B91740016A725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchOS How Long Left WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE4772B274B91740016A725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -1090,8 +1221,11 @@
 		BFE47734274B91740016A725 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFE47736274B91740016A725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFE4B14D24F1334E00EB432A /* PreferencesGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesGlobals.swift; sourceTree = "<group>"; };
+		BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
 		BFE87278275CC20D00059C47 /* CountdownCardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCardSettingsView.swift; sourceTree = "<group>"; };
 		BFE8727A275CC66100059C47 /* CountdownSectionOrderEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownSectionOrderEditView.swift; sourceTree = "<group>"; };
+		BFE8C2F8277F14930026F0C2 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
+		BFE8C2FA277F15C60026F0C2 /* EventsListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListDataSource.swift; sourceTree = "<group>"; };
 		BFE917602373AB0D00A66F40 /* MainMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuGenerator.swift; sourceTree = "<group>"; };
 		BFE917622373BB3900A66F40 /* HLLStatusItemContentGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLStatusItemContentGenerator.swift; sourceTree = "<group>"; };
 		BFE917642373C18B00A66F40 /* HotKeyNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyNotificationHandler.swift; sourceTree = "<group>"; };
@@ -1103,6 +1237,9 @@
 		BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLNTriggerType.swift; sourceTree = "<group>"; };
 		BFEC4FDB239DED2200EF8F6D /* LaunchFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchFunctions.swift; sourceTree = "<group>"; };
 		BFEC4FDD239DEF7300EF8F6D /* OnboardingWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindowManager.swift; sourceTree = "<group>"; };
+		BFEE00C7277D74C400A51B37 /* MainEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEventCard.swift; sourceTree = "<group>"; };
+		BFEE00C9277D76F600A51B37 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		BFEE00CB277D7E6600A51B37 /* SettingsButtonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonCard.swift; sourceTree = "<group>"; };
 		BFEE396121BD129F000106BD /* NotificationPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationPreferencesView.xib; sourceTree = "<group>"; };
 		BFEE396321BD152B000106BD /* NotificationPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferencesViewController.swift; sourceTree = "<group>"; };
 		BFEE67B7274519EE00810596 /* HLLAppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLAppTab.swift; sourceTree = "<group>"; };
@@ -1117,9 +1254,15 @@
 		BFF05ED821E9DE4F0044F049 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFF3B13E27526C9500490A2C /* AnimatedGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGallery.swift; sourceTree = "<group>"; };
 		BFF54CD324CFD16D00D40490 /* HLLNTriggerFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLNTriggerFetcher.swift; sourceTree = "<group>"; };
+		BFF718032768657700AF2DE9 /* NotificationGroupEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupEditorView.swift; sourceTree = "<group>"; };
+		BFF7180527686A5100AF2DE9 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 		BFF7FEDC23B1F63A009330A7 /* ComplicationSettingsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationSettingsInterfaceController.swift; sourceTree = "<group>"; };
 		BFF847E6231E5D1E0075E733 /* EventVisibilityButtonsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVisibilityButtonsManager.swift; sourceTree = "<group>"; };
 		BFF8F56F23861E7900E6F91E /* GeneralSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsTableViewController.swift; sourceTree = "<group>"; };
+		BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationEntryGenerator.swift; sourceTree = "<group>"; };
+		BFF9198127871DDA0094BA79 /* CLKTextProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLKTextProvider.h; sourceTree = "<group>"; };
+		BFF9198227871DFD0094BA79 /* watchOS How Long Left WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "watchOS How Long Left WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		BFF9198327871DFE0094BA79 /* CLKTextProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLKTextProvider.m; sourceTree = "<group>"; };
 		BFF9AB24256FA170003A0AA9 /* DefaultMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenuView.swift; sourceTree = "<group>"; };
 		BFF9AB34256FB4F6003A0AA9 /* DefaultMenuListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenuListItem.swift; sourceTree = "<group>"; };
 		BFF9AB3D256FBECB003A0AA9 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
@@ -1151,6 +1294,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BF32BF1B27859324002B013D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF4988FA2733A14A00024295 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1272,6 +1422,20 @@
 			path = "Menu Item Utilities";
 			sourceTree = "<group>";
 		};
+		BF17BF5B2785621600865A93 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BF17BF5E278566EB00865A93 /* SettingsView.swift */,
+				BF17BF5C2785623D00865A93 /* CountdownSettingsView.swift */,
+				BF32BF282785A3D6002B013D /* EventsSettingsView.swift */,
+				BFB082992797B43C00EEBBA7 /* ComplicationsSettingsView.swift */,
+				BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */,
+				BFB0829B27982BD800EEBBA7 /* ComplicationPurchaseView.swift */,
+				BF3DF0DA2798326E00A4C49D /* ComplicationSheet.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BF1E75042444755500F04284 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -1291,9 +1455,21 @@
 				BF1FDFAA2743EAEC008CC754 /* CountdownsParentView.swift */,
 				BF7341382733A48000C9E339 /* CountdownsView.swift */,
 				BFEE67BF27453D5100810596 /* HeaderText.swift */,
-				BF825CE4274CBFF700CD91CD /* CountdownViewSettings.swift */,
 			);
 			path = CountdownsView;
+			sourceTree = "<group>";
+		};
+		BF26363D2766D06600A6EBB7 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				BF2636422766D3AA00A6EBB7 /* NotificationGroupsStore.swift */,
+				BF26363E2766D07800A6EBB7 /* NotificationProfileEditView.swift */,
+				BFF718032768657700AF2DE9 /* NotificationGroupEditorView.swift */,
+				BFD6FD462768B4760089FD26 /* TriggerEditorView.swift */,
+				BFF7180527686A5100AF2DE9 /* TextFieldAlert.swift */,
+				BF1960EF276A12FA0058E1CA /* CustomTextField.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		BF32B5152498759E00B8F339 /* Event Hiding */ = {
@@ -1305,6 +1481,14 @@
 				BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */,
 			);
 			path = "Event Hiding";
+			sourceTree = "<group>";
+		};
+		BF32BF1F27859324002B013D /* How Long Left Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BF32BF2027859324002B013D /* How_Long_Left_Tests.swift */,
+			);
+			path = "How Long Left Tests";
 			sourceTree = "<group>";
 		};
 		BF3921B82465719F00CFF635 /* Pro Info Menu */ = {
@@ -1327,6 +1511,39 @@
 				BF3BCD2023E0326500639D5F /* TextUploader.swift */,
 			);
 			name = Pastr;
+			sourceTree = "<group>";
+		};
+		BF3C329827854BB4009303D0 /* Event View */ = {
+			isa = PBXGroup;
+			children = (
+				BF32C7CB2782E856003D9CE3 /* EventView.swift */,
+				BF3C329927854BC9009303D0 /* EventOptionsView.swift */,
+				BFB78426278161B2004CC2F5 /* EventTimerView.swift */,
+				BF3C329B27854EB8009303D0 /* EventInfoView.swift */,
+				BF3C329D278552A8009303D0 /* InfoCard.swift */,
+			);
+			path = "Event View";
+			sourceTree = "<group>";
+		};
+		BF3C329F278559CC009303D0 /* Events List */ = {
+			isa = PBXGroup;
+			children = (
+				BFE8C2FA277F15C60026F0C2 /* EventsListDataSource.swift */,
+				BFE8C2F8277F14930026F0C2 /* EventsListView.swift */,
+				BF3C32A0278559D2009303D0 /* Cards */,
+			);
+			path = "Events List";
+			sourceTree = "<group>";
+		};
+		BF3C32A0278559D2009303D0 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				BFEE00C7277D74C400A51B37 /* MainEventCard.swift */,
+				BFA725E7277E9FE600F2A6EA /* CountdownCard.swift */,
+				BFEE00C9277D76F600A51B37 /* EventCard.swift */,
+				BFEE00CB277D7E6600A51B37 /* SettingsButtonCard.swift */,
+			);
+			path = Cards;
 			sourceTree = "<group>";
 		};
 		BF3CB2D2239273BE00A56F65 /* Notifications */ = {
@@ -1586,6 +1803,7 @@
 				BF4988FE2733A14A00024295 /* iOS How Long Left */,
 				BFE4771F274B91730016A725 /* watchOS How Long Left */,
 				BFE4772A274B91740016A725 /* watchOS How Long Left WatchKit Extension */,
+				BF32BF1F27859324002B013D /* How Long Left Tests */,
 				BF794DE621787DEE0076FA17 /* Frameworks */,
 				BF5D29562174679500AC1EB6 /* Products */,
 				299747B92BF2210E4B750944 /* Pods */,
@@ -1600,8 +1818,9 @@
 				BFC0C4F721FEB6EF00D041DA /* How Long Left Siri ExtensionUI.appex */,
 				BFFB949A255FCAB300B58932 /* HowLongLeftMacWidget.appex */,
 				BF4988FD2733A14A00024295 /* How Long Left.app */,
-				BFE4771E274B91730016A725 /* watchOS How Long Left.app */,
+				BFE4771E274B91730016A725 /* How Long Left.app */,
 				BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */,
+				BF32BF1E27859324002B013D /* How Long Left Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1848,6 +2067,7 @@
 			isa = PBXGroup;
 			children = (
 				BF96897024B2D37C0091F1DA /* HLLTimelineEntry.swift */,
+				BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */,
 				BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */,
 				BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */,
 			);
@@ -2346,6 +2566,7 @@
 		BFE4771F274B91730016A725 /* watchOS How Long Left */ = {
 			isa = PBXGroup;
 			children = (
+				BF3B9303277F20B900D499EF /* watchOS How Long Left.entitlements */,
 				BFE47720274B91740016A725 /* Assets.xcassets */,
 			);
 			path = "watchOS How Long Left";
@@ -2354,12 +2575,24 @@
 		BFE4772A274B91740016A725 /* watchOS How Long Left WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BF3B9302277F20A100D499EF /* watchOS How Long Left WatchKit Extension.entitlements */,
 				BFE4772B274B91740016A725 /* ContentView.swift */,
+				BF3C329F278559CC009303D0 /* Events List */,
+				BF3C329827854BB4009303D0 /* Event View */,
+				BF17BF5B2785621600865A93 /* Settings */,
 				BFE4772D274B91740016A725 /* How_Long_LeftApp.swift */,
 				BFE4772F274B91740016A725 /* ComplicationController.swift */,
+				BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */,
+				BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */,
+				BFB370C4279FC1520075632A /* ComplicationProviderData.swift */,
+				BF632B8F27A1193400C1A385 /* LargeCountdownComplicationView.swift */,
+				BF2D47BC279455E100B35D25 /* ComplicationIdentifier.swift */,
+				BFF9198127871DDA0094BA79 /* CLKTextProvider.h */,
+				BFF9198327871DFE0094BA79 /* CLKTextProvider.m */,
 				BFE47731274B91740016A725 /* Assets.xcassets */,
 				BFE47736274B91740016A725 /* Info.plist */,
 				BFE47733274B91740016A725 /* Preview Content */,
+				BFF9198227871DFD0094BA79 /* watchOS How Long Left WatchKit Extension-Bridging-Header.h */,
 			);
 			path = "watchOS How Long Left WatchKit Extension";
 			sourceTree = "<group>";
@@ -2397,12 +2630,14 @@
 		BFEE67BD27451B6900810596 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				BF26363D2766D06600A6EBB7 /* Notifications */,
 				BFEE67BB27451B1600810596 /* SettingsView.swift */,
 				BFF3B13E27526C9500490A2C /* AnimatedGallery.swift */,
 				BF84CDFE2750B8E000924C8E /* AppearanceSettings.swift */,
 				BFA8EE0A274DEE9E0099350D /* IconCell.swift */,
 				BFA8EE14274E49BF0099350D /* RoundedIcon.swift */,
 				BFA8EE12274E02A00099350D /* ListButtonModifier.swift */,
+				BF825CE4274CBFF700CD91CD /* CountdownViewSettings.swift */,
 				BFE8727A275CC66100059C47 /* CountdownSectionOrderEditView.swift */,
 				BFE87278275CC20D00059C47 /* CountdownCardSettingsView.swift */,
 				BFC531B427466842001DBA6E /* EnabledCalendarsManager.swift */,
@@ -2569,6 +2804,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BF32BF1D27859324002B013D /* How Long Left Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF32BF2427859325002B013D /* Build configuration list for PBXNativeTarget "How Long Left Tests" */;
+			buildPhases = (
+				BF32BF1A27859324002B013D /* Sources */,
+				BF32BF1B27859324002B013D /* Frameworks */,
+				BF32BF1C27859324002B013D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF32BF2327859324002B013D /* PBXTargetDependency */,
+			);
+			name = "How Long Left Tests";
+			productName = "How Long Left Tests";
+			productReference = BF32BF1E27859324002B013D /* How Long Left Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BF4988FC2733A14A00024295 /* iOS How Long Left */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF49890A2733A14C00024295 /* Build configuration list for PBXNativeTarget "iOS How Long Left" */;
@@ -2642,7 +2895,7 @@
 			);
 			name = "watchOS How Long Left";
 			productName = "watchOS How Long Left";
-			productReference = BFE4771E274B91730016A725 /* watchOS How Long Left.app */;
+			productReference = BFE4771E274B91730016A725 /* How Long Left.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		BFE47725274B91740016A725 /* watchOS How Long Left WatchKit Extension */ = {
@@ -2712,10 +2965,14 @@
 		BF5D294D2174679500AC1EB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Ryan Kontos";
 				TargetAttributes = {
+					BF32BF1D27859324002B013D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = BF4988FC2733A14A00024295;
+					};
 					BF4988FC2733A14A00024295 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -2754,6 +3011,7 @@
 					};
 					BFE47725274B91740016A725 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1320;
 					};
 					BFEA0CE521788D0100FAF2F1 = {
 						CreatedOnToolsVersion = 10.1;
@@ -2810,11 +3068,19 @@
 				BF4988FC2733A14A00024295 /* iOS How Long Left */,
 				BFE4771D274B91730016A725 /* watchOS How Long Left */,
 				BFE47725274B91740016A725 /* watchOS How Long Left WatchKit Extension */,
+				BF32BF1D27859324002B013D /* How Long Left Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BF32BF1C27859324002B013D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF4988FB2733A14A00024295 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2963,6 +3229,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BF32BF1A27859324002B013D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF9197E2786F0B10094BA79 /* HLLTimelineGenerator.swift in Sources */,
+				BF32BF2127859324002B013D /* How_Long_Left_Tests.swift in Sources */,
+				BF32BF272785933A002B013D /* WatchModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF4988F92733A14A00024295 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2973,12 +3249,16 @@
 				BF99C9F12743B785009B0B0E /* EventSource.swift in Sources */,
 				BFFF6035273DFCED00C5EB1A /* HLLEventSource.swift in Sources */,
 				BFEE67BC27451B1600810596 /* SettingsView.swift in Sources */,
+				BFD6FD472768B4760089FD26 /* TriggerEditorView.swift in Sources */,
 				BFFF6036273DFCED00C5EB1A /* HLLEvent.swift in Sources */,
 				BFFF6037273DFCED00C5EB1A /* HLLEventRetriever.swift in Sources */,
 				BFFF6038273DFCED00C5EB1A /* HLLDefaults.swift in Sources */,
+				BFF718042768657700AF2DE9 /* NotificationGroupEditorView.swift in Sources */,
+				BFE8C2F5277F129A0026F0C2 /* HLLDataModel.swift in Sources */,
 				BFFF6039273DFCED00C5EB1A /* HLLDefaultsTransfer.swift in Sources */,
 				BF727FDF2757A24100A9D2F8 /* ScrollViewIfNeeded.swift in Sources */,
 				BFFF603A273DFCED00C5EB1A /* Date.swift in Sources */,
+				BF2636432766D3AA00A6EBB7 /* NotificationGroupsStore.swift in Sources */,
 				BFA8EE13274E02A00099350D /* ListButtonModifier.swift in Sources */,
 				BFFF603B273DFCED00C5EB1A /* DateOfEvents.swift in Sources */,
 				BFFF603C273DFCED00C5EB1A /* EventDate.swift in Sources */,
@@ -2988,6 +3268,7 @@
 				BFEE67C027453D5100810596 /* HeaderText.swift in Sources */,
 				BF5F2C4F27488AA5007A56EF /* UpcomingEventSource.swift in Sources */,
 				BFFF6040273DFCED00C5EB1A /* EventCompletionStatus.swift in Sources */,
+				BF17CCA427A2DADA0075350D /* HLLTimeline.swift in Sources */,
 				BFFF6041273DFCED00C5EB1A /* EventFetchPeriod.swift in Sources */,
 				BFFF6042273DFCED00C5EB1A /* StatusItemEventMode.swift in Sources */,
 				BFFF6043273DFCED00C5EB1A /* String.swift in Sources */,
@@ -3007,6 +3288,7 @@
 				BF3F829E274910EA00A1CEC0 /* EventPinningManager.swift in Sources */,
 				BFFF604A273DFCED00C5EB1A /* HLLEventInfoItemType.swift in Sources */,
 				BFFF604B273DFCED00C5EB1A /* HLLDataModel.xcdatamodeld in Sources */,
+				BFE8C2F4277F12960026F0C2 /* HLLHiddenEventStore.swift in Sources */,
 				BFFF604C273DFCED00C5EB1A /* StatusItemUnitsFormat.swift in Sources */,
 				BFFF604D273DFCED00C5EB1A /* WidgetStateFetcher.swift in Sources */,
 				BFFF604E273DFCED00C5EB1A /* PercentDateFetcher.swift in Sources */,
@@ -3016,6 +3298,7 @@
 				BFA8EE15274E49BF0099350D /* RoundedIcon.swift in Sources */,
 				BFFF6050273DFCED00C5EB1A /* SelectedEventManager.swift in Sources */,
 				BFFF6051273DFCED00C5EB1A /* StatusItemMode.swift in Sources */,
+				BF32BF192785930E002B013D /* WatchModel.swift in Sources */,
 				BF5084F2275B06E600C1FC58 /* UpcomingEventListParentView.swift in Sources */,
 				BFFF6052273DFCED00C5EB1A /* HLLHotKeyOption.swift in Sources */,
 				BF1FDFAB2743EAEC008CC754 /* CountdownsParentView.swift in Sources */,
@@ -3041,31 +3324,28 @@
 				BFFF605D273DFCED00C5EB1A /* RepeatingTimer.swift in Sources */,
 				BFFF605E273DFCED00C5EB1A /* CountdownText.swift in Sources */,
 				BF825CE5274CBFF700CD91CD /* CountdownViewSettings.swift in Sources */,
-				BFFF605F273DFCED00C5EB1A /* ProStatusManager.swift in Sources */,
 				BFFF6060273DFCED00C5EB1A /* CurrentDateFetcher.swift in Sources */,
 				BFEE67C2274540B100810596 /* CountdownCardContextMenuModifier.swift in Sources */,
 				BFFF6061273DFCED00C5EB1A /* HLLCloudKitPreferences.swift in Sources */,
 				BFFF6062273DFCED00C5EB1A /* HLLCountdownController.swift in Sources */,
 				BFFF6063273DFCED00C5EB1A /* HLLNotificationContent.swift in Sources */,
-				BFFF6064273DFCED00C5EB1A /* HLLNTriggerStore.swift in Sources */,
+				BF1960F0276A12FA0058E1CA /* CustomTextField.swift in Sources */,
 				BFFF6065273DFCED00C5EB1A /* HLLNTrigger.swift in Sources */,
 				BFFF6066273DFCED00C5EB1A /* HLLNTriggerType.swift in Sources */,
 				BFFF6067273DFCED00C5EB1A /* HLLNTriggerAddHandler.swift in Sources */,
 				BFFF6068273DFCED00C5EB1A /* HLLNNewTriggerRequest.swift in Sources */,
 				BFFF6069273DFCED00C5EB1A /* HLLNTriggerAddError.swift in Sources */,
-				BFFF606A273DFCED00C5EB1A /* HLLNNotificationContentGenerator.swift in Sources */,
-				BFFF606B273DFCED00C5EB1A /* HLLNTriggerFetcher.swift in Sources */,
 				BF3649AA274A54D600FD0D03 /* AppDelegate.swift in Sources */,
 				BFFF606C273DFCED00C5EB1A /* HLLTimelineEntry.swift in Sources */,
 				BFEE67B8274519EE00810596 /* HLLAppTab.swift in Sources */,
 				BFFF606D273DFCED00C5EB1A /* HLLTimelineGenerator.swift in Sources */,
+				BF26363F2766D07800A6EBB7 /* NotificationProfileEditView.swift in Sources */,
 				BF3F82A22749531300A1CEC0 /* WelcomeView.swift in Sources */,
 				BFFF606E273DFCED00C5EB1A /* HLLTimelineDifHandler.swift in Sources */,
-				BFFF606F273DFCED00C5EB1A /* HLLDataModel.swift in Sources */,
 				BFFF6070273DFCED00C5EB1A /* HLLHiddenEvent+CoreDataClass.swift in Sources */,
 				BFFF6071273DFCED00C5EB1A /* HLLHiddenEvent+CoreDataProperties.swift in Sources */,
+				BFF7180627686A5100AF2DE9 /* TextFieldAlert.swift in Sources */,
 				BF9E40812754F04E00467346 /* ComplicationPurchaseView.swift in Sources */,
-				BFFF6072273DFCED00C5EB1A /* HLLHiddenEventStore.swift in Sources */,
 				BFFF6077273DFCED00C5EB1A /* UserGroup.swift in Sources */,
 				BF5084F4275B098900C1FC58 /* DummyEventGenerator.swift in Sources */,
 				BF7341372733A46500C9E339 /* TabBarContentView.swift in Sources */,
@@ -3090,7 +3370,6 @@
 				BFC9A40824C1D37300149818 /* CountdownText.swift in Sources */,
 				BF89651224EC0EA30051024D /* StatusItemEventMode.swift in Sources */,
 				BF71736724D23D7F00C78B67 /* ProPurchase+CoreDataClass.swift in Sources */,
-				BFB01482244062A300BC9BDB /* HLLNTriggerStore.swift in Sources */,
 				BFDE997D23EE3A3E00BB3816 /* EventLocationIndexer.swift in Sources */,
 				BFC4E70322101FAC00EE4A1F /* IntentHandler.swift in Sources */,
 				BF6AD9672500CA5C00035787 /* HLLDataModel.swift in Sources */,
@@ -3142,6 +3421,7 @@
 				BFDE9A6D23EE3A3E00BB3816 /* HLLNotificationContent.swift in Sources */,
 				BFDE999523EE3A3E00BB3816 /* FollowingOccurenceStore.swift in Sources */,
 				BFDE994D23EE3A3E00BB3816 /* HLLEventInfoItemGenerator.swift in Sources */,
+				BF17CCA227A2DADA0075350D /* HLLTimeline.swift in Sources */,
 				BFDE988D23EE3A3D00BB3816 /* CalendarDefaultsModifier.swift in Sources */,
 				BFDE998523EE3A3E00BB3816 /* Pluraliser.swift in Sources */,
 				BF3EB76724C1CF0A001B74C1 /* HLLEventRetriever.swift in Sources */,
@@ -3169,7 +3449,6 @@
 				BF3EFA0124F4D1C200173222 /* NicknameManager.swift in Sources */,
 				BFDE994E23EE3A3E00BB3816 /* HLLEventInfoItemGenerator.swift in Sources */,
 				BFFF1C1524D240F600695395 /* ProStatusManager.swift in Sources */,
-				BFB01483244062A300BC9BDB /* HLLNTriggerStore.swift in Sources */,
 				BFDE99AE23EE3A3E00BB3816 /* HLLCloudKitPreferences.swift in Sources */,
 				BF71736E24D23DA300C78B67 /* ProPurchase+CoreDataProperties.swift in Sources */,
 				BF2FB5182498A5DC00909F32 /* HLLHiddenEvent+CoreDataClass.swift in Sources */,
@@ -3186,6 +3465,7 @@
 				BF3BCD2D23E0372A00639D5F /* Pastr.swift in Sources */,
 				BFDE996623EE3A3E00BB3816 /* EventVisibiltyActionHandler.swift in Sources */,
 				BF9156942543B12000DA510B /* StatusItemMode.swift in Sources */,
+				BF17CCA327A2DADA0075350D /* HLLTimeline.swift in Sources */,
 				BF3BCD3323E0373000639D5F /* PastebinFormats.swift in Sources */,
 				BFDE98CE23EE3A3D00BB3816 /* CountdownStringGenerator.swift in Sources */,
 				BFDE9A6E23EE3A3E00BB3816 /* HLLNotificationContent.swift in Sources */,
@@ -3251,7 +3531,97 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE8C2AC277F11A80026F0C2 /* CalendarDefaultsModifier.swift in Sources */,
+				BFE8C2AD277F11A80026F0C2 /* CalendarEventFetcher.swift in Sources */,
+				BFE8C2AE277F11A80026F0C2 /* HLLEventSource.swift in Sources */,
+				BFE8C2AF277F11A80026F0C2 /* HLLEvent.swift in Sources */,
+				BFE8C2B0277F11A80026F0C2 /* HLLEventRetriever.swift in Sources */,
+				BFB0829A2797B43C00EEBBA7 /* ComplicationsSettingsView.swift in Sources */,
+				BFE8C2B1277F11A80026F0C2 /* DummyEventGenerator.swift in Sources */,
+				BFE8C2B2277F11A80026F0C2 /* HLLDefaults.swift in Sources */,
+				BFE8C2B3277F11A80026F0C2 /* HLLDefaultsTransfer.swift in Sources */,
+				BF3C329E278552A8009303D0 /* InfoCard.swift in Sources */,
+				BFE8C2B4277F11A80026F0C2 /* Date.swift in Sources */,
+				BFE8C2FB277F15C60026F0C2 /* EventsListDataSource.swift in Sources */,
+				BFE8C2B5277F11A80026F0C2 /* DateOfEvents.swift in Sources */,
+				BFE8C2B6277F11A80026F0C2 /* EventDate.swift in Sources */,
+				BFF9197C2786B9CB0094BA79 /* EnabledCalendarsView.swift in Sources */,
+				BFE8C2B7277F11A80026F0C2 /* PercentageCalculator.swift in Sources */,
+				BFE8C2B8277F11A80026F0C2 /* DurationStringGenerator.swift in Sources */,
+				BFB78427278161B2004CC2F5 /* EventTimerView.swift in Sources */,
+				BFE8C2F7277F12E40026F0C2 /* UIColor.swift in Sources */,
+				BFE8C2B9277F11A80026F0C2 /* CountdownStringGenerator.swift in Sources */,
+				BFE8C2BA277F11A80026F0C2 /* EventCompletionStatus.swift in Sources */,
+				BF2D47BD279455E200B35D25 /* ComplicationIdentifier.swift in Sources */,
+				BFE8C2BB277F11A80026F0C2 /* EventFetchPeriod.swift in Sources */,
+				BFE8C2BC277F11A80026F0C2 /* StatusItemEventMode.swift in Sources */,
+				BFE8C2BD277F11A80026F0C2 /* String.swift in Sources */,
+				BF17CCA527A2DADA0075350D /* HLLTimeline.swift in Sources */,
+				BF3DF0DB2798326E00A4C49D /* ComplicationSheet.swift in Sources */,
+				BFE8C2BE277F11A80026F0C2 /* DateInterval.swift in Sources */,
+				BFB370C5279FC1520075632A /* ComplicationProviderData.swift in Sources */,
+				BFE8C2BF277F11A90026F0C2 /* CKError.swift in Sources */,
+				BF32C7CC2782E856003D9CE3 /* EventView.swift in Sources */,
+				BF632B9027A1193400C1A385 /* LargeCountdownComplicationView.swift in Sources */,
+				BFE8C2C0277F11A90026F0C2 /* TimeInterval.swift in Sources */,
+				BFE8C2C1277F11A90026F0C2 /* EKEvent.swift in Sources */,
+				BFE8C2C2277F11A90026F0C2 /* HLLEventInfoItem.swift in Sources */,
+				BFE8C2C3277F11A90026F0C2 /* HLLEventInfoItemGenerator.swift in Sources */,
+				BFE8C2F6277F129B0026F0C2 /* HLLDataModel.swift in Sources */,
+				BF3C329C27854EB8009303D0 /* EventInfoView.swift in Sources */,
+				BFE8C2C4277F11A90026F0C2 /* HLLEventInfoItemType.swift in Sources */,
+				BFB0829C27982BD800EEBBA7 /* ComplicationPurchaseView.swift in Sources */,
+				BF32BF292785A3D6002B013D /* EventsSettingsView.swift in Sources */,
+				BFE8C2C5277F11A90026F0C2 /* HLLDataModel.xcdatamodeld in Sources */,
+				BFE8C2C6277F11A90026F0C2 /* StatusItemUnitsFormat.swift in Sources */,
+				BFE8C2C7277F11A90026F0C2 /* WidgetStateFetcher.swift in Sources */,
+				BFE8C2C8277F11A90026F0C2 /* PercentDateFetcher.swift in Sources */,
+				BFE8C2C9277F11A90026F0C2 /* CalendarAccessState.swift in Sources */,
+				BFE6ADF2278580D5003AAFF6 /* WatchModel.swift in Sources */,
+				BFE8C2CA277F11A90026F0C2 /* SelectedEventManager.swift in Sources */,
+				BFE8C2CB277F11A90026F0C2 /* StatusItemMode.swift in Sources */,
+				BFE8C2CC277F11A90026F0C2 /* HLLHotKeyOption.swift in Sources */,
+				BFE8C2CD277F11A90026F0C2 /* Weekday.swift in Sources */,
+				BFE8C2CE277F11A90026F0C2 /* NicknameManager.swift in Sources */,
+				BFE8C2CF277F11A90026F0C2 /* KeyDateHandler.swift in Sources */,
+				BFE8C2D0277F11A90026F0C2 /* EventVisibiltyActionHandler.swift in Sources */,
+				BFE8C2D1277F11A90026F0C2 /* VisibilityString.swift in Sources */,
+				BFE8C2D2277F11A90026F0C2 /* Version.swift in Sources */,
+				BFE8C2D3277F11A90026F0C2 /* EventLocationIndexer.swift in Sources */,
+				BFE8C2D4277F11A90026F0C2 /* Pluraliser.swift in Sources */,
+				BFF91980278702B90094BA79 /* ComplicationEntryGenerator.swift in Sources */,
+				BF17BF5F278566EB00865A93 /* SettingsView.swift in Sources */,
+				BFE8C2D5277F11A90026F0C2 /* EventTimeRemainingMonitor.swift in Sources */,
+				BFE8C2D6277F11A90026F0C2 /* FollowingOccurenceStore.swift in Sources */,
+				BFE8C2D7277F11A90026F0C2 /* RepeatingTimer.swift in Sources */,
+				BFE8C2D8277F11A90026F0C2 /* CountdownText.swift in Sources */,
+				BFE8C2DA277F11A90026F0C2 /* CurrentDateFetcher.swift in Sources */,
+				BFE8C2DB277F11A90026F0C2 /* HLLCloudKitPreferences.swift in Sources */,
+				BFE8C2DC277F11A90026F0C2 /* HLLCountdownController.swift in Sources */,
+				BFE8C2DD277F11A90026F0C2 /* HLLNotificationContent.swift in Sources */,
+				BFE8C2DF277F11A90026F0C2 /* HLLNTrigger.swift in Sources */,
+				BFE8C2E0277F11A90026F0C2 /* HLLNTriggerType.swift in Sources */,
+				BFE8C2E1277F11A90026F0C2 /* HLLNTriggerAddHandler.swift in Sources */,
+				BFE8C2E2277F11A90026F0C2 /* HLLNNewTriggerRequest.swift in Sources */,
+				BFE8C2E3277F11A90026F0C2 /* HLLNTriggerAddError.swift in Sources */,
+				BFE8C2E6277F11A90026F0C2 /* HLLTimelineEntry.swift in Sources */,
+				BFE8C2E7277F11A90026F0C2 /* HLLTimelineGenerator.swift in Sources */,
+				BFE8C2E8277F11A90026F0C2 /* HLLTimelineDifHandler.swift in Sources */,
+				BF3C329A27854BC9009303D0 /* EventOptionsView.swift in Sources */,
+				BFE8C2F9277F14930026F0C2 /* EventsListView.swift in Sources */,
+				BFF9198427871DFE0094BA79 /* CLKTextProvider.m in Sources */,
+				BFE8C2EA277F11A90026F0C2 /* HLLHiddenEvent+CoreDataClass.swift in Sources */,
+				BF17BF5D2785623D00865A93 /* CountdownSettingsView.swift in Sources */,
+				BFE8C2EB277F11A90026F0C2 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */,
+				BF1C9F6727993C76003EE109 /* ComplicationIconView.swift in Sources */,
+				BFE8C2EC277F11A90026F0C2 /* HLLHiddenEventStore.swift in Sources */,
+				BFE8C2F1277F11A90026F0C2 /* UserGroup.swift in Sources */,
 				BFE4772C274B91740016A725 /* ContentView.swift in Sources */,
+				BFA725E8277E9FE600F2A6EA /* CountdownCard.swift in Sources */,
+				BFEE00C8277D74C400A51B37 /* MainEventCard.swift in Sources */,
+				BFEE00CC277D7E6600A51B37 /* SettingsButtonCard.swift in Sources */,
+				BFEE00CA277D76F600A51B37 /* EventCard.swift in Sources */,
+				BFF9197D2786B9EA0094BA79 /* EnabledCalendarsManager.swift in Sources */,
 				BFE4772E274B91740016A725 /* How_Long_LeftApp.swift in Sources */,
 				BFE47730274B91740016A725 /* ComplicationController.swift in Sources */,
 				BFE47742274B93B10016A725 /* ExtensionType.swift in Sources */,
@@ -3306,6 +3676,7 @@
 				BFC72FF3256F9C45009F289E /* CountdownText.swift in Sources */,
 				BFC72FF4256F9C45009F289E /* ProStatusManager.swift in Sources */,
 				BFC72FF5256F9C45009F289E /* CurrentDateFetcher.swift in Sources */,
+				BF17CCA027A2DADA0075350D /* HLLTimeline.swift in Sources */,
 				BFC72FF6256F9C45009F289E /* HLLCloudKitPreferences.swift in Sources */,
 				BFF9AB3E256FBECB003A0AA9 /* ProgressRing.swift in Sources */,
 				BFC7300A256F9C45009F289E /* HLLCountdownController.swift in Sources */,
@@ -3480,6 +3851,7 @@
 				BFC73031256F9CAA009F289E /* HLLEventRetriever.swift in Sources */,
 				BFC73032256F9CAA009F289E /* HLLDefaults.swift in Sources */,
 				BF4400642574E9CA0061ED6E /* ProgressBar.swift in Sources */,
+				BF17CCA127A2DADA0075350D /* HLLTimeline.swift in Sources */,
 				BFC73033256F9CAA009F289E /* HLLDefaultsTransfer.swift in Sources */,
 				BFF9AB14256F9ED7003A0AA9 /* DeviceInfo.swift in Sources */,
 				BFC73034256F9CAA009F289E /* Date.swift in Sources */,
@@ -3562,6 +3934,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BF32BF2327859324002B013D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF4988FC2733A14A00024295 /* iOS How Long Left */;
+			targetProxy = BF32BF2227859324002B013D /* PBXContainerItemProxy */;
+		};
 		BFE47729274B91740016A725 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFE47725274B91740016A725 /* watchOS How Long Left WatchKit Extension */;
@@ -3569,6 +3946,7 @@
 		};
 		BFE47738274B91740016A725 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = BFE4771D274B91730016A725 /* watchOS How Long Left */;
 			targetProxy = BFE47737274B91740016A725 /* PBXContainerItemProxy */;
 		};
@@ -3615,6 +3993,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BF32BF2527859325002B013D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.How-Long-Left-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/How Long Left.app/How Long Left";
+			};
+			name = Debug;
+		};
+		BF32BF2627859325002B013D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.How-Long-Left-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/How Long Left.app/How Long Left";
+			};
+			name = Release;
+		};
 		BF4989082733A14C00024295 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3645,7 +4063,7 @@
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left";
 				PRODUCT_NAME = "How Long Left";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3682,7 +4100,7 @@
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left";
 				PRODUCT_NAME = "How Long Left";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3934,6 +4352,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left WatchKit Extension/watchOS How Long Left WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_ASSET_PATHS = "\"watchOS How Long Left WatchKit Extension/Preview Content\"";
@@ -3943,6 +4363,7 @@
 				INFOPLIST_FILE = "watchOS How Long Left WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "watchOS How Long Left WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = watchOS_How_Long_Left_WatchKit_Extension_Project.ComplicationController;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cal pleaseeee";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ryan Kontos. All rights reserved.";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3956,6 +4377,8 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "watchOS How Long Left WatchKit Extension/watchOS How Long Left WatchKit Extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 8.0;
@@ -3967,6 +4390,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left WatchKit Extension/watchOS How Long Left WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_ASSET_PATHS = "\"watchOS How Long Left WatchKit Extension/Preview Content\"";
@@ -3976,6 +4401,7 @@
 				INFOPLIST_FILE = "watchOS How Long Left WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "watchOS How Long Left WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = watchOS_How_Long_Left_WatchKit_Extension_Project.ComplicationController;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cal pleaseeee";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ryan Kontos. All rights reserved.";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3989,6 +4415,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "watchOS How Long Left WatchKit Extension/watchOS How Long Left WatchKit Extension-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 8.0;
@@ -4003,17 +4430,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left/watchOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = watchOS_How_Long_Left_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "watchOS How Long Left";
+				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ryankontos.How-Long-Left";
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "How Long Left";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4031,17 +4459,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left/watchOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = watchOS_How_Long_Left_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "watchOS How Long Left";
+				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ryankontos.How-Long-Left";
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "How Long Left";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4237,6 +4666,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BF32BF2427859325002B013D /* Build configuration list for PBXNativeTarget "How Long Left Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF32BF2527859325002B013D /* Debug */,
+				BF32BF2627859325002B013D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF49890A2733A14C00024295 /* Build configuration list for PBXNativeTarget "iOS How Long Left" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

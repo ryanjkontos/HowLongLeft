@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HLLTimelineGenerator {
     
@@ -18,9 +19,11 @@ class HLLTimelineGenerator {
         self.type = type
     }
     
-    func generateTimelineItems(fast: Bool = false, forState: TimelineState) -> HLLTimeline {
+    func generateTimelineItems(fast: Bool = false, percentages: Bool = false, forState: TimelineState) -> HLLTimeline {
         
-       
+        
+        
+        let sessionID = Date().formattedTime(seconds: true)
         
         var events = Array(HLLEventSource.shared.eventPool.filter({$0.isHidden == false}))
        
@@ -33,11 +36,12 @@ class HLLTimelineGenerator {
         
         if fast == false {
         
-        for event in events.prefix(6) {
+        for event in events.prefix(10) {
           
-            
-            entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 6))
-            
+            if percentages {
+                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 6))
+            }
+                
             entryDates.insert(event.startDate)
             entryDates.insert(event.endDate)
             
@@ -81,9 +85,12 @@ class HLLTimelineGenerator {
         
         for date in newDates {
         
-        entryDates.insert(date)
+            entryDates.insert(date)
             
         }
+        
+        
+        entryDates = Set(entryDates.sorted(by: { $0.compare($1) == .orderedAscending }))
         
         var returnItems = [HLLTimelineEntry]()
         
@@ -108,45 +115,10 @@ class HLLTimelineGenerator {
                 returnItems.append(entry)
                 
             }
-            
-          /*  if let current = getSoonestEndingEvent(at: date, from: events) {
-                
-                let next = getNextEventsToStart(after: current.startDate, from: events)
-                
-                //print("CompSim1: \(date.formattedDate()) \(date.formattedTime()): \(current.title), Next: \(String(describing: next?.title))")
-                
-                let entry = HLLTimelineEntry(date: date, event: current, nextEvents: next)
-                
-                if getSoonestEndingEvent(at: current.startDate.addingTimeInterval(600), from: events) != current {
-                    
-                    entry.switchToNext = false
-                    
-                }
-                
-                returnItems.append(entry)
-                dictOfAdded[date] = current
-                
-                
-                
-                
-            } else {
-                
-                let nextEv = getNextEventsToStart(after: date, from: events)
-                //print("CompSim2: \(date.formattedDate()) \(date.formattedTime()): No events are on")
-                returnItems.append(HLLTimelineEntry(date: date, event: nil, nextEvents: nextEv))
-                
-            } */
+
             
         }
-       
-      /*  if HLLEventSource.shared.getCurrentEvents().isEmpty == true {
-            
-            let nextEv = getNextEventsToStart(after: Date(), from: events)
-            
-            //print("CompSim5: \(Date().formattedDate()) \(Date().formattedTime()): No event is on, Next: \(nextEv?.title ?? "None")")
-            returnItems.append(HLLTimelineEntry(date: Date(), event: nil, nextEvents: nextEv))
-            
-        } */
+
         
         if returnItems.isEmpty == true {
             
@@ -160,8 +132,25 @@ class HLLTimelineGenerator {
         returnItems.sort(by: { $0.showAt.compare($1.showAt) == .orderedAscending })
 
             
+        var state = TimelineState.notPurchased
+        if HLLDefaults.watch.complicationEnabled {
+            state = .normal
+        }
         
-        let timeline = HLLTimeline(state: forState, entries: returnItems, includedEvents: events)
+        let timeline = HLLTimeline(state: state, entries: returnItems, includedEvents: events)
+        
+ 
+        for item in timeline.entries {
+            
+            if let event = item.event {
+                print("GeneratedTimeline \(sessionID): \(item.showAt.formattedTime(seconds: true)): \(event.title): \(event.startDate.formattedTime(seconds: true)) - \(event.endDate.formattedTime(seconds: true))")
+            } else {
+                print("GeneratedTimeline \(sessionID): \(item.showAt.formattedTime(seconds: true)): No Event")
+            }
+            
+            
+            
+        }
         
         return timeline
     }
@@ -196,17 +185,14 @@ class HLLTimelineGenerator {
     
     func getNextEventToStartOrEnd(at date: Date, from events: [HLLEvent]) -> HLLEvent? {
         
-        
-        
         var doSelected = false
         
-        if type == .widget {
             
             if HLLDefaults.widget.showSelected {
                 doSelected = true
             }
             
-        }
+        
         
         if doSelected {
         
@@ -254,20 +240,53 @@ class HLLTimelineGenerator {
         
     }
     
-}
 
-struct HLLTimeline {
     
-    internal init(state: TimelineState, entries: [HLLTimelineEntry], includedEvents: [HLLEvent]) {
-        self.entries = entries
-        self.state = state
-        self.includedEvents = includedEvents
+    func shouldUpdate() -> TimelineValidity {
+        
+        let timeline = generateTimelineItems(forState: .normal)
+        let codableInput = timeline.getCodableTimeline()
+        
+        guard let storedTimeline = HLLDefaults.complication.latestTimeline else { return .needsReloading }
+        
+        print("Comparing with stored timeline created \(Date().timeIntervalSince(storedTimeline.creationDate)) ago")
+        
+        if let lastEntry = codableInput.lastEntryDate {
+            
+            let time = lastEntry.timeIntervalSinceNow
+            print("Time til last entry: \(time)")
+            
+            if time < (44990) {
+                return .needsReloading
+            }
+            
+        } else {
+            return .needsReloading
+        }
+        
+        if timeline.state != storedTimeline.state { return .needsReloading }
+        
+        let filteredEntries = storedTimeline.codableEntries.filter({ $0.showAt >= codableInput.creationDate })
+        
+        for entry in filteredEntries {
+            
+            let eventFromInput = codableInput.eventBeingShownAt(date: entry.showAt)
+            if eventFromInput != entry.eventID {
+                return .needsReloading
+            }
+        }
+        
+        return .noUpdateNeeded
+        
     }
     
-    var state: TimelineState
-    
-    var includedEvents: [HLLEvent]
-    var entries: [HLLTimelineEntry]
+    enum TimelineValidity {
+        
+        case noUpdateNeeded
+        case needsReloading
+        case needsExtending
+        
+    }
     
 }
 

@@ -15,18 +15,21 @@ struct CountdownViewSettings: View {
     @ObservedObject var settingsObject = CountdownCardSettingsObject()
     
   
-    @Binding var showSheet: Bool
+   
     
     @State private var isEditable = true
     
     let stepperRange = 1...50
     
     var body: some View {
-        
-        NavigationView {
-        
+  
         List {
             
+            Section(content: {
+                
+                Toggle("Show Seconds", isOn: $settingsObject.showSeconds)
+                
+            }, header: {Text("Countdowns")})
             
             Section(content: {
                 
@@ -88,7 +91,7 @@ struct CountdownViewSettings: View {
          
         }
   
-        .toolbar(content: {
+      /*  .toolbar(content: {
             
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 
@@ -100,7 +103,7 @@ struct CountdownViewSettings: View {
                 
             })
             
-        })
+        }) */
         .animation(.default, value: settingsObject.showUpcoming)
         .animation(.default, value: settingsObject.showInProgress)
         
@@ -110,7 +113,7 @@ struct CountdownViewSettings: View {
         .environment(\.editMode, isEditable ? .constant(.active) : .constant(.inactive))
        
         
-        }
+        
         
     }
     
@@ -134,7 +137,7 @@ struct CountdownCardSettings_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            CountdownViewSettings(showSheet: .constant(true))
+            CountdownViewSettings()
                 
         }
         

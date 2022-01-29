@@ -84,8 +84,10 @@ class HLLEventSource {
                     
                 }
                 
+                self.eventStore = EKEventStore()
+                
                 self.eventStore.reset()
-                self.eventStore.refreshSourcesIfNecessary()
+               // self.eventStore.refreshSourcesIfNecessary()
                 
                 //print("CADB: Prevstate was \(prevState)")
                 
@@ -312,9 +314,13 @@ class HLLEventSource {
     
     func updateHiddenEvents() {
         
+        #if os(macOS)
+        
         if ProStatusManager.shared.isPro == false {
             return
         }
+        
+        #endif
          
          let ids = HLLHiddenEventStore.shared.hiddenEvents.compactMap({$0.identifier})
         
@@ -348,6 +354,7 @@ class HLLEventSource {
     }
     
     func getCalendars() -> [EKCalendar] {
+  
         let cals = eventStore.calendars(for: .event)
         print("\(cals) fetched")
         return cals
@@ -837,6 +844,8 @@ class HLLEventSource {
         events.sort(by: { $0.countdownDate.compare($1.countdownDate) == .orderedAscending })
         }
         
+        //print("Get timeline returning \(events.count) events")
+        
         return events
         
     }
@@ -1071,22 +1080,23 @@ public func first() -> T? {
 }
 
 public subscript(index: Int) -> T {
-    set {
-        self.accessQueue.async(flags:.barrier) {
-            self.array[index] = newValue
+    
+        set {
+            self.accessQueue.async(flags:.barrier) {
+                self.array[index] = newValue
+            }
+        }
+        get {
+            var element: T!
+            self.accessQueue.sync {
+                element = self.array[index]
+            }
+
+            return element
         }
     }
-    get {
-        var element: T!
-        self.accessQueue.sync {
-            element = self.array[index]
-        }
-
-        return element
-    }
+    
 }
-}
-
 
 extension Date {
     

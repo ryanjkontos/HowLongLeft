@@ -16,6 +16,16 @@ struct EnabledCalendarsView: View {
         
         List {
             
+            #if os(watchOS)
+    
+                Section {
+                    toggleAllButton
+                        .listItemTint(.orange.opacity(0.4))
+                        
+                }
+
+            #endif
+            
             Section(header: Text("Enabled Calendars"), footer: Text("Events from enabled calendars will appear in the app")) {
             
             ForEach($calendarsManager.allCalendars) { $calendar in
@@ -38,17 +48,7 @@ struct EnabledCalendarsView: View {
             
             Section(footer: Text("Enable new calendars automatically")) {
                 
-                Toggle(isOn: Binding(get: {
-                    
-                    return HLLDefaults.calendar.useNewCalendars
-                    
-                    
-                }, set: { value in
-                    
-                    
-                    HLLDefaults.calendar.useNewCalendars = value
-                    
-                }), label: {Text("Use New Calendars")})
+                Toggle(isOn: $calendarsManager.useNewCalendars, label: {Text("Use New Calendars")})
                 
             }
             
@@ -63,24 +63,61 @@ struct EnabledCalendarsView: View {
         .navigationTitle("Calendars")
         .toolbar(content: {
             
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    
-                    withAnimation {
-                        calendarsManager.toggleAll()
-                    }
-                    
-                    
-                    
-                }, label: {Text(calendarsManager.allEnabled ? "Deselect All" : "Select All").transition(.opacity)
-                    .animation(.none, value: calendarsManager.allEnabled)})
-                    
+            #if os(iOS)
+            
+            ToolbarItem(placement: .automatic) {
+                
+                 toggleAllButton
             }
+            
+            #endif
             
         })
         
         
     }
+    
+    var toggleAllButton: some View {
+        
+        Button(action: {
+            
+            withAnimation {
+                calendarsManager.toggleAll()
+            }
+            
+            
+            
+        }, label: {
+            
+            Group {
+            
+            #if os(watchOS)
+            
+            HStack {
+                Spacer()
+                toggleAllText
+                Spacer()
+            }
+            
+            
+            #else
+            
+                toggleAllText
+            
+            #endif
+                
+            }
+            
+            .transition(.opacity)
+            .animation(.none, value: calendarsManager.allEnabled)})
+        
+    }
+    
+    var toggleAllText: some View {
+        Text(calendarsManager.allEnabled ? "Disable All" : "Enable All")
+    }
+    
+    
 }
 
 struct EnabledCalendarsView_Previews: PreviewProvider {

@@ -7,13 +7,26 @@
 //
 
 import SwiftUI
+import ClockKit
 
 struct ContentView: View {
     
     var body: some View {
-        
 
-        Text("Hello, world!")
+        
+            EventsListView()
+            .onAppear(perform: {
+                
+                if let complications = CLKComplicationServer.sharedInstance().activeComplications {
+                    
+                    for complication in complications {
+                        CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
+                    }
+                    
+                }
+                
+                
+            })
         
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HLLTimelineEntry {
+struct HLLTimelineEntry {
     
     var showAt: Date
     var event: HLLEvent?
@@ -63,6 +63,19 @@ class HLLTimelineEntry {
             
         }
         
+        
+    }
+    
+    func getCodableEntry() -> CodableEntry {
+        
+        return CodableEntry(showAt: self.showAt, eventID: self.event?.persistentIdentifier)
+        
+    }
+    
+    struct CodableEntry: Codable {
+        
+        var showAt: Date
+        var eventID: String?
         
     }
     

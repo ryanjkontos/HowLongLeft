@@ -125,7 +125,8 @@ extension Date {
         return dateFormat.firstIndex(of: "a") == nil
     }
     
-    func formattedTime() -> String {
+    func formattedTime(seconds: Bool = false) -> String {
+        
         
         
         let dateFormatter  = DateFormatter()
@@ -134,6 +135,10 @@ extension Date {
             dateFormatter.dateFormat = "HH:mm"
         } else {
             dateFormatter.dateFormat = "h:mma"
+        }
+        
+        if seconds {
+            dateFormatter.dateFormat = "h:mm:ss"
         }
         
         return dateFormatter.string(from: self)

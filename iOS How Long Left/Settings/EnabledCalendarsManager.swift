@@ -32,6 +32,17 @@ class EnabledCalendarsManager: ObservableObject {
         
     }
     
+    var useNewCalendars: Bool = HLLDefaults.calendar.useNewCalendars {
+        
+        willSet {
+            
+            HLLDefaults.calendar.useNewCalendars = newValue
+            objectWillChange.send()
+            
+        }
+        
+    }
+    
     func update() {
         
         allCalendars = HLLEventSource.shared.getCalendars().map { IdentifiableCalendar(delegate: self, calendar: $0, enabled: $0.isToggled) }
@@ -57,6 +68,9 @@ class EnabledCalendarsManager: ObservableObject {
         update()
         
     }
+    
+    
+    
 }
 
 class IdentifiableCalendar: Identifiable {
