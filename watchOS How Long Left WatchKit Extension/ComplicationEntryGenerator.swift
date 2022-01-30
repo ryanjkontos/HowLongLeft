@@ -249,7 +249,48 @@ class ComplicationEntryGenerator {
     
     func generateNoEventComplicationTemplate(complication: CLKComplication) -> CLKComplicationTemplate? {
         
-        return nil
+        var template: CLKComplicationTemplate?
+        
+        switch complication.family {
+            
+        case .modularSmall:
+            return nil
+        case .modularLarge:
+            return nil
+        case .utilitarianSmall:
+            return nil
+        case .utilitarianSmallFlat:
+            return nil
+        case .utilitarianLarge:
+            return nil
+        case .circularSmall:
+            return nil
+        case .extraLarge:
+            return nil
+        case .graphicCorner:
+            return nil
+        case .graphicBezel:
+            return nil
+        case .graphicCircular:
+            
+            template = CLKComplicationTemplateGraphicCircularView(ComplicationIconView(isInGauge: false, isInXL: false, invertedForeground: false))
+            
+        case .graphicRectangular:
+            
+            let header = "How Long Left".simpleTextProvider()
+            header.tintColor = .orange
+            
+            let body1 = "No Event".simpleTextProvider()
+            
+            template = CLKComplicationTemplateGraphicRectangularStandardBody(headerTextProvider: header, body1TextProvider: body1)
+            
+        case .graphicExtraLarge:
+            return nil
+        @unknown default:
+            return nil
+        }
+        
+        return template
         
     }
     

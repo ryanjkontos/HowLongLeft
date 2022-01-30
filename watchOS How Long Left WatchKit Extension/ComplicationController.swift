@@ -75,28 +75,40 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     ]
 
     
-    static func updateComplications() {
+    static func updateComplications(forced: Bool) {
         
         let timeline = ComplicationController.timelineGen.generateTimelineItems(fast: false, percentages: false, forState: .normal)
         
-        ComplicationController.timeline = timeline
-        HLLDefaults.complication.latestTimeline = timeline.getCodableTimeline()
-        ComplicationController.updates += 1
-        print("Updating complication now: \(ComplicationController.updates)")
         
-        let state = ComplicationController.timelineGen.shouldUpdate()
+      
         
-        switch state {
-        case .noUpdateNeeded:
-            print("Not Updating Complication")
-        case .needsReloading:
-            print("Reloading Complication")
-            CLKComplicationServer.sharedInstance().activeComplications?.forEach({ CLKComplicationServer.sharedInstance().reloadTimeline(for: $0) })
-        case .needsExtending:
-            print("Extending Complication")
-            CLKComplicationServer.sharedInstance().activeComplications?.forEach({ CLKComplicationServer.sharedInstance().extendTimeline(for: $0) })
+        
+        
+        var state: HLLTimelineGenerator.TimelineValidity
+        if forced {
+            state = .needsReloading
+        } else {
+            state = ComplicationController.timelineGen.shouldUpdate()
         }
         
+       
+        if state != .noUpdateNeeded {
+            ComplicationController.timeline = timeline
+            HLLDefaults.complication.latestTimeline = timeline.getCodableTimeline()
+            
+            ComplicationController.updates += 1
+            print("Updating complication now: \(ComplicationController.updates)")
+            
+         //   let activeComplications = CLKComplicationServer.sharedInstance().activeComplications?.first!.
+            
+            CLKComplicationServer.sharedInstance().activeComplications?.forEach({ CLKComplicationServer.sharedInstance().reloadTimeline(for: $0) })
+            
+            
+            
+        }
+        
+            
+      
     }
     
     static func updateDescriptors() {
@@ -104,7 +116,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         CLKComplicationServer.sharedInstance().reloadComplicationDescriptors()
         
         Task {
-            ComplicationController.updateComplications()
+            ComplicationController.updateComplications(forced: false)
         }
         
     }

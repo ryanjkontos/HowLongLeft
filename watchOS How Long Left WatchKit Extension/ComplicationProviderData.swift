@@ -85,9 +85,9 @@ struct ComplicationProviderData {
             var style: CLKRelativeDateStyle
             
             if HLLDefaults.complication.showSeconds {
-                units = [.hour, .minute, .second]
+                units = [.hour, .minute, .second, .day]
             } else {
-                units = [.hour, .minute]
+                units = [.hour, .minute, .day]
             }
             
             if HLLDefaults.complication.unitLabels {

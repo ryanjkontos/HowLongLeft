@@ -275,7 +275,7 @@ class HLLDefaults {
                 guard let data = defaults.data(forKey: "ComplicationLatestTimeline") else { return nil }
                 
                 let decoder = JSONDecoder()
-                let decoded = try! decoder.decode(HLLTimeline.CodableTimeline.self, from: data)
+                let decoded = try? decoder.decode(HLLTimeline.CodableTimeline.self, from: data)
                 return decoded
                 
             }
@@ -845,6 +845,25 @@ class HLLDefaults {
                        
                    }
                    
+        }
+        
+        static var lastScheduledUpdateDate: Date? {
+            
+            get {
+                
+                return defaults.object(forKey: "WatchLastScheduledUpdateDate") as? Date
+                
+               
+            }
+            
+            set {
+               
+                defaults.set(newValue, forKey: "WatchLastScheduledUpdateDate")
+                
+                
+                
+            }
+            
         }
         
         static var showOneEvent: Bool {

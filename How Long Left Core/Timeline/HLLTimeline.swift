@@ -14,12 +14,14 @@ struct HLLTimeline {
     var includedEvents: [HLLEvent]
     var entries: [HLLTimelineEntry]
     var creationDate: Date
+   
     
-    internal init(state: TimelineState, entries: [HLLTimelineEntry], includedEvents: [HLLEvent]) {
+    internal init(state: TimelineState, entries: [HLLTimelineEntry], includedEvents: [HLLEvent], infoHash: String) {
         self.entries = entries
         self.state = state
         self.includedEvents = includedEvents
         self.creationDate = Date()
+       
     }
     
     func entriesAfterDate(_ date: Date?) -> [HLLTimelineEntry] {
@@ -33,7 +35,7 @@ struct HLLTimeline {
     }
     
     func getCodableTimeline() -> CodableTimeline {
-        return CodableTimeline(creationDate: creationDate, lastEntryDate: self.entries.last?.showAt, state: state, codableEntries: entries.compactMap({ $0.getCodableEntry() }))
+        return CodableTimeline(creationDate: creationDate, lastEntryDate: self.entries.last?.showAt, state: state, codableEntries: entries.compactMap({ $0.getCodableEntry() }), appVersion: Version.currentVersion)
     }
     
     struct CodableTimeline: Codable {
@@ -43,6 +45,12 @@ struct HLLTimeline {
         
         var state: TimelineState
         var codableEntries: [HLLTimelineEntry.CodableEntry]
+        
+        var appVersion: String
+        
+        var events: Set<String> {
+            return Set(codableEntries.map({($0.eventID ?? "No Event").MD5ifPossible}))
+        }
         
         func eventBeingShownAt(date: Date) -> String? {
             
@@ -55,6 +63,24 @@ struct HLLTimeline {
             }
             
             return nil
+        }
+        
+        func getEntryDictionary(after date: Date) -> [String:String] {
+            
+            var returnArray = [String:String]()
+            
+            for codableEntry in codableEntries {
+                
+                let seconds = Int(codableEntry.showAt.timeIntervalSince(date))
+                print("GED Seconds: \(seconds)")
+                if seconds > 0 {
+                    returnArray[String(Int(codableEntry.showAt.timeIntervalSinceReferenceDate) )] = (codableEntry.eventID ?? "No Event").MD5ifPossible
+                }
+                
+            }
+            
+            return returnArray
+            
         }
         
     }

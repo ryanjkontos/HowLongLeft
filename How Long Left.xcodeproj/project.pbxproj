@@ -189,6 +189,8 @@
 		BF71736C24D23DA200C78B67 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
 		BF71736E24D23DA300C78B67 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
 		BF727FDF2757A24100A9D2F8 /* ScrollViewIfNeeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF727FDE2757A24100A9D2F8 /* ScrollViewIfNeeded.swift */; };
+		BF72839F27A563DE00EA8AD8 /* ComplicationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72839E27A563DE00EA8AD8 /* ComplicationLogger.swift */; };
+		BF7283A127A56FC700EA8AD8 /* LoggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7283A027A56FC600EA8AD8 /* LoggerView.swift */; };
 		BF72C68D2395DF9100244F86 /* CustomNotificationPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2365222D4A4DA007B91E2 /* CustomNotificationPreferencesViewController.swift */; };
 		BF7341352733A44E00C9E339 /* SideBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7341342733A44E00C9E339 /* SideBarContentView.swift */; };
 		BF7341372733A46500C9E339 /* TabBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7341362733A46500C9E339 /* TabBarContentView.swift */; };
@@ -1018,6 +1020,8 @@
 		BF719907225454A00008814F /* How Long Left WatchKit Extension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "How Long Left WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		BF71C63C23854D6A00576A81 /* EventInfoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoViewPresenter.swift; sourceTree = "<group>"; };
 		BF727FDE2757A24100A9D2F8 /* ScrollViewIfNeeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewIfNeeded.swift; sourceTree = "<group>"; };
+		BF72839E27A563DE00EA8AD8 /* ComplicationLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationLogger.swift; sourceTree = "<group>"; };
+		BF7283A027A56FC600EA8AD8 /* LoggerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerView.swift; sourceTree = "<group>"; };
 		BF7341342733A44E00C9E339 /* SideBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarContentView.swift; sourceTree = "<group>"; };
 		BF7341362733A46500C9E339 /* TabBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContentView.swift; sourceTree = "<group>"; };
 		BF7341382733A48000C9E339 /* CountdownsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownsView.swift; sourceTree = "<group>"; };
@@ -1432,6 +1436,7 @@
 				BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */,
 				BFB0829B27982BD800EEBBA7 /* ComplicationPurchaseView.swift */,
 				BF3DF0DA2798326E00A4C49D /* ComplicationSheet.swift */,
+				BF7283A027A56FC600EA8AD8 /* LoggerView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2582,6 +2587,7 @@
 				BF17BF5B2785621600865A93 /* Settings */,
 				BFE4772D274B91740016A725 /* How_Long_LeftApp.swift */,
 				BFE4772F274B91740016A725 /* ComplicationController.swift */,
+				BF72839E27A563DE00EA8AD8 /* ComplicationLogger.swift */,
 				BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */,
 				BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */,
 				BFB370C4279FC1520075632A /* ComplicationProviderData.swift */,
@@ -3583,7 +3589,9 @@
 				BFE8C2CC277F11A90026F0C2 /* HLLHotKeyOption.swift in Sources */,
 				BFE8C2CD277F11A90026F0C2 /* Weekday.swift in Sources */,
 				BFE8C2CE277F11A90026F0C2 /* NicknameManager.swift in Sources */,
+				BF7283A127A56FC700EA8AD8 /* LoggerView.swift in Sources */,
 				BFE8C2CF277F11A90026F0C2 /* KeyDateHandler.swift in Sources */,
+				BF72839F27A563DE00EA8AD8 /* ComplicationLogger.swift in Sources */,
 				BFE8C2D0277F11A90026F0C2 /* EventVisibiltyActionHandler.swift in Sources */,
 				BFE8C2D1277F11A90026F0C2 /* VisibilityString.swift in Sources */,
 				BFE8C2D2277F11A90026F0C2 /* Version.swift in Sources */,

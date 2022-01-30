@@ -34,9 +34,14 @@ class HLLTimelineGenerator {
         
         entryDates.insert(Date())
         
+        let midnightTomorrow = Date().startOfDay().addDays(3)
+        
+        print("Midnight Tomorrow: \(midnightTomorrow.formattedDate()), \(midnightTomorrow.formattedTime())")
+        
         if fast == false {
         
-        for event in events.prefix(10) {
+            
+        for event in events {
           
             if percentages {
                 entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 6))
@@ -65,6 +70,8 @@ class HLLTimelineGenerator {
         var midnightedDates = [Date]()
         
         var newDates = [Date]()
+        
+        entryDates = entryDates.filter({ $0 < midnightTomorrow })
         
         for date in entryDates {
             
@@ -119,8 +126,11 @@ class HLLTimelineGenerator {
             
         }
 
+       // var empty = events.isEmpty
         
         if returnItems.isEmpty == true {
+            
+          //  empty = true
             
             let nextEv = getNextEventsToStart(after: Date(), from: events)
             
@@ -137,18 +147,31 @@ class HLLTimelineGenerator {
             state = .normal
         }
         
-        let timeline = HLLTimeline(state: state, entries: returnItems, includedEvents: events)
+        var timelineID = returnItems.reduce("", { result, entry in
+            
+            let string = "\(entry.showAt): \(entry.event?.infoIdentifier ?? "No Event")"
+            return "\(result), \(string)"
+            
+        })
+        
+        
+        timelineID += Version.currentVersion
+        
+        timelineID = timelineID.MD5ifPossible
+        
+        let timeline = HLLTimeline(state: state, entries: returnItems, includedEvents: events, infoHash: timelineID)
         
  
-        for item in timeline.entries {
+        print("Returning timeline with \(timeline.entries.count) entries")
+        
+        for entry in timeline.entries {
             
-            if let event = item.event {
-                print("GeneratedTimeline \(sessionID): \(item.showAt.formattedTime(seconds: true)): \(event.title): \(event.startDate.formattedTime(seconds: true)) - \(event.endDate.formattedTime(seconds: true))")
-            } else {
-                print("GeneratedTimeline \(sessionID): \(item.showAt.formattedTime(seconds: true)): No Event")
+            var statusString = ""
+            if let status = entry.event?.completionStatus(at: entry.showAt) {
+                statusString = status.debugDescription
             }
             
-            
+            print("Timeline Entry \(entry.showAt.formattedDate()) \(entry.showAt.formattedTime()), \(entry.event?.title ?? "No Event"), \(statusString)")
             
         }
         
@@ -245,38 +268,38 @@ class HLLTimelineGenerator {
     func shouldUpdate() -> TimelineValidity {
         
         let timeline = generateTimelineItems(forState: .normal)
-        let codableInput = timeline.getCodableTimeline()
+        let newTimeline = timeline.getCodableTimeline()
         
-        guard let storedTimeline = HLLDefaults.complication.latestTimeline else { return .needsReloading }
+        guard let currentTimeline = HLLDefaults.complication.latestTimeline else {
+            
+            print("Needs reloading because no stored timeline.")
+            return .needsReloading
+            
+        }
         
-        print("Comparing with stored timeline created \(Date().timeIntervalSince(storedTimeline.creationDate)) ago")
         
-        if let lastEntry = codableInput.lastEntryDate {
-            
-            let time = lastEntry.timeIntervalSinceNow
-            print("Time til last entry: \(time)")
-            
-            if time < (44990) {
-                return .needsReloading
-            }
-            
-        } else {
+        if newTimeline.events.isSubset(of: currentTimeline.events) == false {
+            print("Needs reloading because the old timeline did not contain events that the new one does")
+            return .needsReloading
+        }
+    
+        let date = newTimeline.creationDate
+    
+        
+        let newDict = newTimeline.getEntryDictionary(after: date)
+        let currentDict = currentTimeline.getEntryDictionary(after: date)
+        
+        
+        if newDict != currentDict {
+            print("Timeline dicts did not match, should reload.")
             return .needsReloading
         }
         
-        if timeline.state != storedTimeline.state { return .needsReloading }
-        
-        let filteredEntries = storedTimeline.codableEntries.filter({ $0.showAt >= codableInput.creationDate })
-        
-        for entry in filteredEntries {
-            
-            let eventFromInput = codableInput.eventBeingShownAt(date: entry.showAt)
-            if eventFromInput != entry.eventID {
-                return .needsReloading
-            }
-        }
+        print("Timeline dicts matched, no need to reload.")
         
         return .noUpdateNeeded
+        
+        
         
     }
     

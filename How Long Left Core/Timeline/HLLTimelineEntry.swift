@@ -68,7 +68,7 @@ struct HLLTimelineEntry {
     
     func getCodableEntry() -> CodableEntry {
         
-        return CodableEntry(showAt: self.showAt, eventID: self.event?.persistentIdentifier)
+        return CodableEntry(showAt: self.showAt, eventID: self.event?.infoIdentifier)
         
     }
     

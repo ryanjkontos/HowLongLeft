@@ -8,8 +8,22 @@
 
 import Foundation
 
-enum EventCompletionStatus {
+enum EventCompletionStatus: CustomDebugStringConvertible {
     case upcoming
     case current
     case done
+    
+    var debugDescription: String {
+        
+        switch self {
+        case .upcoming:
+            return "Upcoming"
+        case .current:
+            return "Current"
+        case .done:
+            return "Done"
+        }
+        
+    }
+    
 }

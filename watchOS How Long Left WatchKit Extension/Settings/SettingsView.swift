@@ -41,6 +41,14 @@ struct SettingsView: View {
                 
             })
             
+            NavigationLink(destination: { LoggerView()
+
+            }, label: {
+                
+                Text("Debug Log")
+                
+            })
+            
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Settings")

@@ -51,7 +51,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.watch.complicationEnabled = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications()
+            ComplicationController.updateComplications(forced: true)
                 
         }
         
@@ -63,7 +63,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.tintComplication = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications()
+            ComplicationController.updateComplications(forced: true)
                 
         }
         
@@ -75,7 +75,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.showSeconds = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications()
+            ComplicationController.updateComplications(forced: true)
                 
         }
         
@@ -87,7 +87,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.unitLabels = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications()
+            ComplicationController.updateComplications(forced: true)
                 
         }
         

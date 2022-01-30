@@ -106,8 +106,15 @@ extension String {
         return hash.map { String(format: "%02x", $0) }.joined()
     }
     
-    @available(OSX 10.15, *)
-    var MD5: String {
+
+    var MD5ifPossible: String {
+        
+        #if os(macOS)
+        if #unavailable(macOS 10.15) {
+          return
+        }
+        #endif
+        
             let computed = Insecure.MD5.hash(data: self.data(using: .utf8)!)
             return computed.map { String(format: "%02hhx", $0) }.joined()
     }
