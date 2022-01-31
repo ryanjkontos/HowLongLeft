@@ -150,20 +150,24 @@ class HLLTimelineGenerator {
             
             var newEntry = entry
             
-            guard let event = newEntry.event else { continue }
-            let secondDate = event.startDate.addingTimeInterval(showInfoFor)
-            
-            
-            
-            if newEntry.showAt.timeIntervalSince(event.startDate) < showInfoFor , event.completionStatus(at: secondDate) == .current, getNextEventToStartOrEnd(at: secondDate, from: events)?.persistentIdentifier == event.persistentIdentifier {
+            if let event = newEntry.event {
                 
-                var extraEntry = newEntry
-                extraEntry.showAt = secondDate
-                finalEntries.append(extraEntry)
+                let secondDate = event.startDate.addingTimeInterval(showInfoFor)
                 
-                newEntry.showInfoIfAvaliable = true
+                
+                
+                if newEntry.showAt.timeIntervalSince(event.startDate) < showInfoFor , event.completionStatus(at: secondDate) == .current, getNextEventToStartOrEnd(at: secondDate, from: events)?.persistentIdentifier == event.persistentIdentifier {
+                    
+                    var extraEntry = newEntry
+                    extraEntry.showAt = secondDate
+                    finalEntries.append(extraEntry)
+                    
+                    newEntry.showInfoIfAvaliable = true
+                    
+                }
                 
             }
+         
             
             finalEntries.append(newEntry)
             
