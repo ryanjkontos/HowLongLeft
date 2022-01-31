@@ -16,6 +16,7 @@ struct MainEventCard: View {
     var liveUpdates: Bool
     
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
     
     var date: Date
     
@@ -42,11 +43,33 @@ struct MainEventCard: View {
                 }
                 Spacer()
                 
+                VStack(alignment: .leading, spacing: 6) {
+                
                 Text("\(getTimerText())")
-                    
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                     .foregroundColor(Color(event.color))
                     .font(.system(size: 37, weight: .semibold, design: .rounded))
                     .monospacedDigit()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                   
+                    .multilineTextAlignment(.leading)
+                
+                    if event.completionStatus(at: date) == .current {
+                
+                            ProgressView(value: event.completionFraction(at: date))
+                                .tint(Color(event.color))
+                                .animation(.linear, value: event.completionFraction(at: date))
+                                .animation(.default, value: event.completionStatus(at: date))
+                                .transition(.opacity)
+                      
+                        
+                    }
+                        
+                    
+                        
+                
+                }
                 
             }
             Spacer()
