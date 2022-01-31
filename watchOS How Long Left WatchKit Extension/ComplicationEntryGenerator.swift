@@ -16,10 +16,10 @@ class ComplicationEntryGenerator {
         
         if let data = ComplicationProviderData(timelineEntry) {
             guard let template = generateComplicationTemplate(complication: complication, data: data) else { return nil }
-            return CLKComplicationTimelineEntry(date: timelineEntry.showAt, complicationTemplate: template)
+            return CLKComplicationTimelineEntry(date: timelineEntry.getAdjustedShowAt(), complicationTemplate: template)
         } else {
             guard let template = generateNoEventComplicationTemplate(complication: complication) else { return nil }
-            return CLKComplicationTimelineEntry(date: timelineEntry.showAt, complicationTemplate: template)
+            return CLKComplicationTimelineEntry(date: timelineEntry.getAdjustedShowAt(), complicationTemplate: template)
         }
         
     }

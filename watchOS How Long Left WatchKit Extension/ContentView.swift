@@ -13,8 +13,18 @@ struct ContentView: View {
     
     var body: some View {
 
+        Group {
+            
+            if HLLEventSource.shared.access == .Denied {
+                NoCalendarAccessView()
+            } else {
+                EventsListView()
+            }
+            
+        }
         
-            EventsListView()
+        
+            
             .onAppear(perform: {
                 
                 if let complications = CLKComplicationServer.sharedInstance().activeComplications {

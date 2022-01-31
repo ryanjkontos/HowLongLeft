@@ -70,7 +70,7 @@ extension Date {
         
         get {
             
-            if self.timeIntervalSince(CurrentDateFetcher.currentDate) > 0 {
+            if self.timeIntervalSince(CurrentDateFetcher.currentDate) > -1 {
                 return false
             } else {
                 return true

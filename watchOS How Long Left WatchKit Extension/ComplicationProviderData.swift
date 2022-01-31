@@ -61,7 +61,7 @@ struct ComplicationProviderData {
                 fullColorTint = tint
             }
             
-            let countdownDate = event.countdownDate(at: data.showAt)
+            let countdownDate = event.countdownDate(at: data.getAdjustedShowAt())
         
             
             var units: NSCalendar.Unit
@@ -81,7 +81,7 @@ struct ComplicationProviderData {
             
             timerProvider = CLKRelativeDateTextProvider(date: countdownDate, style: style, units: units)
             
-            switch event.completionStatus(at: data.showAt) {
+            switch event.completionStatus(at: data.getAdjustedShowAt()) {
                 case .upcoming:
                     fullTimerProvider = CLKTextProvider(byJoining: ["in".simpleTextProvider(), timerProvider], separator: " ")
                 case .current:

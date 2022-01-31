@@ -28,6 +28,16 @@ struct HLLTimelineEntry {
         
     }
     
+    func getAdjustedShowAt() -> Date {
+        
+        if showAt.hasOccured {
+            return Date()
+        }
+        
+        return showAt
+        
+    }
+    
     init(date: Date, event currentEvent: HLLEvent?, nextEvents: [HLLEvent] = [HLLEvent]()) {
         showAt = date
         event = currentEvent

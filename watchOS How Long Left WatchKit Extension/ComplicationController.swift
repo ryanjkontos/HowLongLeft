@@ -175,7 +175,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         
         if HLLDefaults.watch.complicationEnabled {
-            handler(ComplicationController.timeline.entries.last!.showAt)
+            handler(ComplicationController.timeline.entries.last!.getAdjustedShowAt())
         } else {
             handler(Date().addDays(365))
         }
@@ -199,7 +199,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
     
-        print("First entry is at: \(ComplicationController.timeline.entries.first!.showAt.formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
+        print("First entry is at: \(ComplicationController.timeline.entries.first!.getAdjustedShowAt().formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
         
         handler(timelineEntries(complication: complication, date: date, limit: limit))
     }

@@ -21,13 +21,13 @@ class HLLTimelineGenerator {
     
     func generateTimelineItems(fast: Bool = false, percentages: Bool = false, forState: TimelineState) -> HLLTimeline {
         
-        var events = Array(HLLEventSource.shared.eventPool.filter({$0.isHidden == false}))
+        var events = Array(HLLEventSource.shared.eventPool.filter({$0.isHidden == false})).filter({ $0.completionStatus != .done })
        
         events.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
         
         var entryDates = Set<Date>()
         
-        entryDates.insert(Date().addingTimeInterval(1))
+        
         
         let midnightTomorrow = Date().startOfDay().addDays(3)
         
@@ -87,20 +87,23 @@ class HLLTimelineGenerator {
         
         for date in newDates {
         
+            if date.timeIntervalSinceNow < -1 {
+                continue
+            }
+            
             entryDates.insert(date)
             
         }
         
         
+        entryDates.insert(Date().startOfDay())
         entryDates = Set(entryDates.sorted(by: { $0.compare($1) == .orderedAscending }))
         
         var tempEntries = [HLLTimelineEntry]()
         
         for date in entryDates {
             
-            if date.timeIntervalSinceNow < -1 {
-                continue
-            }
+            
             
             let next = getNextEventsToStart(after: date, from: events)
             
@@ -121,6 +124,8 @@ class HLLTimelineGenerator {
             
         }
 
+        
+        
        // var empty = events.isEmpty
         
         if tempEntries.isEmpty == true {
@@ -301,7 +306,8 @@ class HLLTimelineGenerator {
         let newDict = newTimeline.getEntryDictionary(after: date)
         let currentDict = currentTimeline.getEntryDictionary(after: date)
         
-        if newDict != currentDict {
+        
+        if !NSDictionary(dictionary: newDict).isEqual(to: currentDict) {
             print("Timeline dicts did not match, should reload.")
             return .needsReloading
         }

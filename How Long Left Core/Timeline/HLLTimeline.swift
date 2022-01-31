@@ -67,13 +67,7 @@ struct HLLTimeline {
             var returnArray = [String:String]()
             
             for codableEntry in codableEntries {
-                
-                let seconds = Int(codableEntry.showAt.timeIntervalSince(date))
-                print("GED Seconds: \(seconds)")
-                if seconds > 0 {
-                    returnArray[String(Int(codableEntry.showAt.timeIntervalSinceReferenceDate) )] = (codableEntry.eventID ?? "No Event").MD5ifPossible
-                }
-                
+                returnArray[String(Int(codableEntry.showAt.timeIntervalSinceReferenceDate) )] = (codableEntry.eventID ?? "No Event")
             }
             
             return returnArray
