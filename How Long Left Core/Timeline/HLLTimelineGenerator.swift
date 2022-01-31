@@ -11,7 +11,7 @@ import SwiftUI
 
 class HLLTimelineGenerator {
     
-    let percentDateFetcher = PercentDateFetcher()
+    private let percentDateFetcher = PercentDateFetcher()
     
     var type: TimelineType
     
@@ -21,18 +21,13 @@ class HLLTimelineGenerator {
     
     func generateTimelineItems(fast: Bool = false, percentages: Bool = false, forState: TimelineState) -> HLLTimeline {
         
-        
-        
-        let sessionID = Date().formattedTime(seconds: true)
-        
         var events = Array(HLLEventSource.shared.eventPool.filter({$0.isHidden == false}))
        
         events.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
         
         var entryDates = Set<Date>()
         
-        
-        entryDates.insert(Date())
+        entryDates.insert(Date().addingTimeInterval(1))
         
         let midnightTomorrow = Date().startOfDay().addDays(3)
         
@@ -99,7 +94,7 @@ class HLLTimelineGenerator {
         
         entryDates = Set(entryDates.sorted(by: { $0.compare($1) == .orderedAscending }))
         
-        var returnItems = [HLLTimelineEntry]()
+        var tempEntries = [HLLTimelineEntry]()
         
         for date in entryDates {
             
@@ -113,13 +108,13 @@ class HLLTimelineGenerator {
                 
                 
                 let entry = HLLTimelineEntry(date: date, event: event, nextEvents: next)
-                returnItems.append(entry)
+                tempEntries.append(entry)
                 dictOfAdded[date] = event
                 
             } else {
                 
                 let entry = HLLTimelineEntry(date: date, event: nil, nextEvents: next)
-                returnItems.append(entry)
+                tempEntries.append(entry)
                 
             }
 
@@ -128,18 +123,18 @@ class HLLTimelineGenerator {
 
        // var empty = events.isEmpty
         
-        if returnItems.isEmpty == true {
+        if tempEntries.isEmpty == true {
             
           //  empty = true
             
             let nextEv = getNextEventsToStart(after: Date(), from: events)
             
             //print("CompSim6: \(Date().formattedDate()) \(Date().formattedTime()): No event is on, Next: \(nextEv?.title ?? "None")")
-            returnItems.append(HLLTimelineEntry(date: Date(), event: nil, nextEvents: nextEv))
+            tempEntries.append(HLLTimelineEntry(date: Date(), event: nil, nextEvents: nextEv))
             HLLDefaults.defaults.set("returnItems empty", forKey: "ComplicationDebug")
         }
         
-        returnItems.sort(by: { $0.showAt.compare($1.showAt) == .orderedAscending })
+        
 
             
         var state = TimelineState.notPurchased
@@ -147,33 +142,40 @@ class HLLTimelineGenerator {
             state = .normal
         }
         
-        var timelineID = returnItems.reduce("", { result, entry in
+        var finalEntries = [HLLTimelineEntry]()
+        
+        let showInfoFor: Double = (1*60)
+        
+        for entry in tempEntries {
             
-            let string = "\(entry.showAt): \(entry.event?.infoIdentifier ?? "No Event")"
-            return "\(result), \(string)"
+            var newEntry = entry
             
-        })
+            guard let event = newEntry.event else { continue }
+            let secondDate = event.startDate.addingTimeInterval(showInfoFor)
+            
+            
+            
+            if newEntry.showAt.timeIntervalSince(event.startDate) < showInfoFor , event.completionStatus(at: secondDate) == .current, getNextEventToStartOrEnd(at: secondDate, from: events)?.persistentIdentifier == event.persistentIdentifier {
+                
+                var extraEntry = newEntry
+                extraEntry.showAt = secondDate
+                finalEntries.append(extraEntry)
+                
+                newEntry.showInfoIfAvaliable = true
+                
+            }
+            
+            finalEntries.append(newEntry)
+            
+        }
         
-        
-        timelineID += Version.currentVersion
-        
-        timelineID = timelineID.MD5ifPossible
-        
-        let timeline = HLLTimeline(state: state, entries: returnItems, includedEvents: events, infoHash: timelineID)
+        finalEntries.sort(by: { $0.showAt.compare($1.showAt) == .orderedAscending })
+        let timeline = HLLTimeline(state: state, entries: finalEntries, includedEvents: events)
         
  
         print("Returning timeline with \(timeline.entries.count) entries")
         
-        for entry in timeline.entries {
-            
-            var statusString = ""
-            if let status = entry.event?.completionStatus(at: entry.showAt) {
-                statusString = status.debugDescription
-            }
-            
-            print("Timeline Entry \(entry.showAt.formattedDate()) \(entry.showAt.formattedTime()), \(entry.event?.title ?? "No Event"), \(statusString)")
-            
-        }
+       
         
         return timeline
     }
@@ -271,12 +273,19 @@ class HLLTimelineGenerator {
         let newTimeline = timeline.getCodableTimeline()
         
         guard let currentTimeline = HLLDefaults.complication.latestTimeline else {
-            
             print("Needs reloading because no stored timeline.")
             return .needsReloading
-            
         }
         
+        if newTimeline.appVersion != currentTimeline.appVersion {
+            print("Needs reloading because app versions were different")
+            return .needsReloading
+        }
+        
+        if newTimeline.state != currentTimeline.state {
+            print("Needs reloading because states were different")
+            return .needsReloading
+        }
         
         if newTimeline.events.isSubset(of: currentTimeline.events) == false {
             print("Needs reloading because the old timeline did not contain events that the new one does")
@@ -284,11 +293,9 @@ class HLLTimelineGenerator {
         }
     
         let date = newTimeline.creationDate
-    
         
         let newDict = newTimeline.getEntryDictionary(after: date)
         let currentDict = currentTimeline.getEntryDictionary(after: date)
-        
         
         if newDict != currentDict {
             print("Timeline dicts did not match, should reload.")
@@ -298,7 +305,6 @@ class HLLTimelineGenerator {
         print("Timeline dicts matched, no need to reload.")
         
         return .noUpdateNeeded
-        
         
         
     }

@@ -99,7 +99,7 @@ class EventUICountdownViewController: NSViewController {
             
             self.timerLabel.textColor = currentEvent.nsColor
             
-            progressBar.doubleValue = currentEvent.completionFraction
+            progressBar.doubleValue = currentEvent.completionPercentage
             
             if currentEvent.completionFraction > 0, let percent = percentCalc.optionalCalculatePercentageDone(for: currentEvent) {
                 

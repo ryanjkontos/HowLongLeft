@@ -369,12 +369,19 @@ struct HLLEvent: Equatable, Hashable, Identifiable {
         
         get {
             
-            let secondsElapsed = CurrentDateFetcher.currentDate.timeIntervalSince(self.startDate)
-            let totalSeconds = self.endDate.timeIntervalSince(self.startDate)
-            return 100*secondsElapsed/totalSeconds
+            return completionFraction()
             
         }
     }
+    
+    func completionFraction(at date: Date = Date()) -> Double {
+        
+        let secondsElapsed = date.timeIntervalSince(self.startDate)
+        let totalSeconds = self.endDate.timeIntervalSince(self.startDate)
+        return secondsElapsed/totalSeconds
+        
+    }
+
     
     var completionStatus: EventCompletionStatus {
         

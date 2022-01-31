@@ -39,7 +39,7 @@ class ComplicationLogger {
             
         }
         
-        return logItems
+        return logItems.reversed()
         
     }
    

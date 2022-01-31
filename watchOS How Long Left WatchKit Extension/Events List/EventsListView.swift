@@ -83,7 +83,7 @@ struct EventsListView: View {
                     
                     if let events = dataSource.getEvents(at:  disappearDate ?? context.date) {
                         
-                        ForEach(Array(events.enumerated()), id: \.1) { index, event in
+                        ForEach(Array(events.enumerated()), id: \.1.persistentIdentifier) { index, event in
                             
                             
                             NavigationLink(tag: event.id, selection: $showEventView, destination: { EventView(event: event, openOnOptions: showOptions) }, label: {

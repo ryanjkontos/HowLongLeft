@@ -28,6 +28,12 @@ struct ComplicationIdentifier {
         
     }
     
+    enum UtilitarianSmallFlat: String {
+        
+        case countdown = "HLLComplication.utilitarianSmallFlat.countdown"
+        
+    }
+    
     enum GraphicExtraLarge: String {
         case progressRing = "HLLComplication.graphicXL.progressRing"
         case titleAndCountdown = "HLLComplication.graphicXL.eventTitleAndCountdown"

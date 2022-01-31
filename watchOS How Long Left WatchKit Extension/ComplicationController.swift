@@ -67,6 +67,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
         CLKComplicationDescriptor(identifier: ComplicationIdentifier.UtilitarianSmall.titleAndCountdown.rawValue, displayName: "Countdown", supportedFamilies: [CLKComplicationFamily.circularSmall]),
         
+        CLKComplicationDescriptor(identifier: ComplicationIdentifier.UtilitarianSmallFlat.countdown.rawValue, displayName: "Countdown", supportedFamilies: [CLKComplicationFamily.utilitarianSmallFlat]),
+        
+        
         CLKComplicationDescriptor(identifier: ComplicationIdentifier.ModularLarge.countdown.rawValue, displayName: "Countdown + Info", supportedFamilies: [CLKComplicationFamily.modularLarge]),
         
         CLKComplicationDescriptor(identifier: ComplicationIdentifier.ModularLarge.largeCountdown.rawValue, displayName: "Large Countdown", supportedFamilies: [CLKComplicationFamily.modularLarge]),
@@ -101,6 +104,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
          //   let activeComplications = CLKComplicationServer.sharedInstance().activeComplications?.first!.
             
+            ComplicationLogger.log("Reloading Complication")
             CLKComplicationServer.sharedInstance().activeComplications?.forEach({ CLKComplicationServer.sharedInstance().reloadTimeline(for: $0) })
             
             

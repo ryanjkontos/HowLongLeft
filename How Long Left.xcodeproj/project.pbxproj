@@ -428,6 +428,7 @@
 		BFD5ED6424A9F53F007DAF1D /* HLLStatusItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5ED6324A9F53F007DAF1D /* HLLStatusItemManager.swift */; };
 		BFD5ED6624A9F8CF007DAF1D /* EventStatusItemMenuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5ED6524A9F8CF007DAF1D /* EventStatusItemMenuGenerator.swift */; };
 		BFD5ED6824AA0336007DAF1D /* StatusItemMenuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5ED6724AA0336007DAF1D /* StatusItemMenuGenerator.swift */; };
+		BFD6087927A7B8F4007FCF9D /* NoCalendarAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6087827A7B8F4007FCF9D /* NoCalendarAccessView.swift */; };
 		BFD6BA3424650E4900F614DA /* ProInfoMenuTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD6BA3324650E4900F614DA /* ProInfoMenuTitleView.xib */; };
 		BFD6BA362465118F00F614DA /* ProInfoMenuTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6BA352465118F00F614DA /* ProInfoMenuTitleViewController.swift */; };
 		BFD6FD472768B4760089FD26 /* TriggerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6FD462768B4760089FD26 /* TriggerEditorView.swift */; };
@@ -1158,6 +1159,7 @@
 		BFD5ED6324A9F53F007DAF1D /* HLLStatusItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLStatusItemManager.swift; sourceTree = "<group>"; };
 		BFD5ED6524A9F8CF007DAF1D /* EventStatusItemMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatusItemMenuGenerator.swift; sourceTree = "<group>"; };
 		BFD5ED6724AA0336007DAF1D /* StatusItemMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemMenuGenerator.swift; sourceTree = "<group>"; };
+		BFD6087827A7B8F4007FCF9D /* NoCalendarAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCalendarAccessView.swift; sourceTree = "<group>"; };
 		BFD6BA3324650E4900F614DA /* ProInfoMenuTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProInfoMenuTitleView.xib; sourceTree = "<group>"; };
 		BFD6BA352465118F00F614DA /* ProInfoMenuTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProInfoMenuTitleViewController.swift; sourceTree = "<group>"; };
 		BFD6FD462768B4760089FD26 /* TriggerEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerEditorView.swift; sourceTree = "<group>"; };
@@ -1535,6 +1537,7 @@
 			children = (
 				BFE8C2FA277F15C60026F0C2 /* EventsListDataSource.swift */,
 				BFE8C2F8277F14930026F0C2 /* EventsListView.swift */,
+				BFD6087827A7B8F4007FCF9D /* NoCalendarAccessView.swift */,
 				BF3C32A0278559D2009303D0 /* Cards */,
 			);
 			path = "Events List";
@@ -3632,6 +3635,7 @@
 				BFF9197D2786B9EA0094BA79 /* EnabledCalendarsManager.swift in Sources */,
 				BFE4772E274B91740016A725 /* How_Long_LeftApp.swift in Sources */,
 				BFE47730274B91740016A725 /* ComplicationController.swift in Sources */,
+				BFD6087927A7B8F4007FCF9D /* NoCalendarAccessView.swift in Sources */,
 				BFE47742274B93B10016A725 /* ExtensionType.swift in Sources */,
 				BFE47741274B93AC0016A725 /* Store.swift in Sources */,
 			);
@@ -4379,7 +4383,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -4417,7 +4421,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -4447,7 +4451,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ryankontos.How-Long-Left";
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp";
 				PRODUCT_NAME = "How Long Left";
 				SDKROOT = watchos;
@@ -4476,7 +4480,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ryankontos.How-Long-Left";
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp";
 				PRODUCT_NAME = "How Long Left";
 				SDKROOT = watchos;

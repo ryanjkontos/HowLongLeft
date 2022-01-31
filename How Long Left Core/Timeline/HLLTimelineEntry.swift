@@ -15,6 +15,8 @@ struct HLLTimelineEntry {
     var nextEvents: [HLLEvent]
     var switchToNext = true
     
+    var showInfoIfAvaliable = false
+    
     var nextEvent: HLLEvent? {
         
         get {

@@ -41,7 +41,7 @@ class DefaultCurrentEventCell: UITableViewCell, CurrentEventCell {
             self.progressBarBottom.backgroundColor = self.event.uiColor.withAlphaComponent(0.25)
             
             let totalHeight = self.progressBarBottom.frame.size.height
-            var height = self.event.completionFraction/100
+            var height = self.event.completionFraction
             height *= Double(totalHeight)
         
             //print("Setting bar height for \(event.title) totalH: \(totalHeight)")
@@ -87,7 +87,7 @@ class DetailCurrentEventCell: UITableViewCell, CurrentEventCell {
         self.progressBarBottom.backgroundColor = self.event.uiColor.withAlphaComponent(0.25)
                        
         let totalHeight = self.progressBarBottom.frame.size.height
-        var height = self.event.completionFraction/100
+        var height = self.event.completionFraction
         height *= Double(totalHeight)
         self.progressBarHeight.constant = CGFloat(height)
                        

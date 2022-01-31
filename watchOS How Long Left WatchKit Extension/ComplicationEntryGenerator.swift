@@ -42,13 +42,17 @@ class ComplicationEntryGenerator {
                 template = CLKComplicationTemplateModularLargeTallBody(headerTextProvider: data.firstRowProvider, bodyTextProvider: data.timerProvider)
                 
             } else {
-                template = CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: data.firstRowProvider, body1TextProvider: data.timerProvider, body2TextProvider: data.countdownTimeProvider)
+                template = CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: data.firstRowProvider, body1TextProvider: data.timerProvider, body2TextProvider: data.infoTextProvider)
             }
           
         case .utilitarianSmall:
-            return nil
+            
+            template = CLKComplicationTemplateUtilitarianSmallFlat(textProvider: data.fullTimerProvider)
+            
         case .utilitarianSmallFlat:
-            return nil
+            
+            template = CLKComplicationTemplateUtilitarianSmallFlat(textProvider: data.fullTimerProvider)
+            
         case .utilitarianLarge:
             
             if let oneLine = data.titleAndCountdownProvider {
@@ -82,13 +86,9 @@ class ComplicationEntryGenerator {
             
             let complicationType = ComplicationIdentifier.GraphicCorner(rawValue: complication.identifier) ?? .progressRing
             
-            var timer: CLKTextProvider = data.timerProvider
+           
             
-            if let prefix = data.countdownPrefixTextProvider {
-                timer = CLKTextProvider(byJoining: [prefix, timer], separator: " ")
-            }
-            
-            let stackProvider = CLKComplicationTemplateGraphicCornerStackText(innerTextProvider: data.eventTitleProvider, outerTextProvider: timer)
+            let stackProvider = CLKComplicationTemplateGraphicCornerStackText(innerTextProvider: data.eventTitleProvider, outerTextProvider: data.fullTimerProvider)
             
             switch complicationType {
             case .progressRing:
@@ -189,20 +189,23 @@ class ComplicationEntryGenerator {
             
             let complicationType = ComplicationIdentifier.GraphicRectangular(rawValue: complication.identifier) ?? .progressBar
             
-            var secondRowProvider: CLKTextProvider = data.timerProvider
+            let secondRowProvider: CLKTextProvider = data.fullTimerProvider
             
-            if let prefixProvider = data.countdownPrefixTextProvider {
-                secondRowProvider = CLKTextProvider(byJoining: [prefixProvider, data.timerProvider], separator: " ")
+            var gaugeAllowed = true
+            if let underlying = data.underlyingTimelineEntry {
+                if underlying.showInfoIfAvaliable {
+                    gaugeAllowed = false
+                }
             }
-            
+        
             if complicationType == .largeCountdown {
                 
                 template = CLKComplicationTemplateGraphicRectangularLargeView(headerTextProvider: data.firstRowProvider, content: LargeCountdownComplicationView(provider: data.timerProvider))
                 
-            } else if let gaugeProvider = data.gaugeProvider, complicationType == .progressBar {
+            } else if let gaugeProvider = data.gaugeProvider, complicationType == .progressBar, gaugeAllowed {
                 template = CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: data.firstRowProvider, body1TextProvider: secondRowProvider, gaugeProvider: gaugeProvider)
             } else {
-                template = CLKComplicationTemplateGraphicRectangularStandardBody(headerTextProvider: data.firstRowProvider, body1TextProvider: secondRowProvider, body2TextProvider: data.countdownTimeProvider)
+                template = CLKComplicationTemplateGraphicRectangularStandardBody(headerTextProvider: data.firstRowProvider, body1TextProvider: secondRowProvider, body2TextProvider: data.infoTextProvider)
             }
             
             
@@ -315,9 +318,14 @@ class ComplicationEntryGenerator {
         case .extraLarge:
             return nil
         case .graphicCorner:
-            return nil
+            
+          
+            template = CLKComplicationTemplateGraphicCornerCircularView(ComplicationIconView(isInGauge: false, isInXL: false, invertedForeground: true, fullColorTint: .orange))
+            
         case .graphicBezel:
+            
             return nil
+            
         case .graphicCircular:
             
             template = CLKComplicationTemplateGraphicCircularView(ComplicationIconView(isInGauge: false, isInXL: false, invertedForeground: false))

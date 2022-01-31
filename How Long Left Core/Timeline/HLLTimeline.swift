@@ -14,9 +14,9 @@ struct HLLTimeline {
     var includedEvents: [HLLEvent]
     var entries: [HLLTimelineEntry]
     var creationDate: Date
-   
+
     
-    internal init(state: TimelineState, entries: [HLLTimelineEntry], includedEvents: [HLLEvent], infoHash: String) {
+    internal init(state: TimelineState, entries: [HLLTimelineEntry], includedEvents: [HLLEvent]) {
         self.entries = entries
         self.state = state
         self.includedEvents = includedEvents
@@ -26,11 +26,8 @@ struct HLLTimeline {
     
     func entriesAfterDate(_ date: Date?) -> [HLLTimelineEntry] {
         
-        if let date = date {
-            return self.entries.filter({ return Int($0.showAt.timeIntervalSince(date)) >= 0 })
-        } else {
-            return self.entries
-        }
+       
+        self.entries
         
     }
     

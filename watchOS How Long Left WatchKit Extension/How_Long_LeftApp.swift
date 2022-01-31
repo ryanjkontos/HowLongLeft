@@ -115,11 +115,11 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: nextRefreshDate, userInfo: userInfo, scheduledCompletion: { error in
              
             if let error = error {
-                ComplicationLogger.log("Error Scheduling Update: \(error.localizedDescription)")
+                //ComplicationLogger.log("Error Scheduling Update: \(error.localizedDescription)")
                 print("Error Scheduling Complication Update: \(error.localizedDescription)")
             } else {
                 print("Scheduled Complication Update")
-                ComplicationLogger.log("Scheduled update for \(nextRefreshDate.formattedTime(seconds: true))")
+               // ComplicationLogger.log("Scheduled update for \(nextRefreshDate.formattedTime(seconds: true))")
                 HLLDefaults.watch.lastScheduledUpdateDate = nextRefreshDate
             }
             
