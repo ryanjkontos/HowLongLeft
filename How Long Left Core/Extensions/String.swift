@@ -110,8 +110,8 @@ extension String {
     var MD5ifPossible: String {
         
         #if os(macOS)
-        if #unavailable(macOS 10.15) {
-          return
+        if #available(macOS 10.15, *) { } else {
+            return
         }
         #endif
         
