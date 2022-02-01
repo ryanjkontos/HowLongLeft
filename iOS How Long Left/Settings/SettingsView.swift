@@ -43,9 +43,11 @@ struct SettingsView: View {
                 Section(content: {
                     ForEach(section.rows, id: \.self) { row in
                         if let action = getRowAction(for: row) {
-                            NavigationLink(isActive: Binding(get: { return false }, set: { _ in
+                           /* NavigationLink(isActive: Binding(get: { return false }, set: { _ in
                                 action()
-                            }), destination: {EmptyView()}, label: { getRowView(for: row) })
+                            }), destination: {EmptyView()}, label: { getRowView(for: row) }) */
+                            
+                            Button(action: action, label: { getRowView(for: row)})
                                
                             
                         } else {
@@ -103,7 +105,7 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.large)
         .listStyle(.insetGrouped)
         .sheet(item: $sheetRow, onDismiss: { sheetRow = nil }, content: { rowType in
-            Text(rowType.rawValue)
+            getRowDestination(for: rowType)
         })
             
             
@@ -139,7 +141,7 @@ struct SettingsView: View {
         case .widget:
             Text("Widget")
         case .complication:
-            Text("Complication")
+            ComplicationPurchaseView()
         case .appearance:
             AppearanceSettings(appAppearance: .constant(.auto))
         }

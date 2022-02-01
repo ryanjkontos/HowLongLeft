@@ -93,7 +93,7 @@ class EventSource: ObservableObject {
             
             DispatchQueue.main.async {
             
-            print("ES Update")
+          //  print("ES Update")
                 self?.isEmpty = newArray.isEmpty
                 self?.eventSections = newArray
                 

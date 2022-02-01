@@ -959,6 +959,7 @@
 		BF4989012733A14A00024295 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF4989032733A14C00024295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF4989062733A14C00024295 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF4A058F27A8E05B0045B1AF /* watchOS-How-Long-Left-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "watchOS-How-Long-Left-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BF4ABBD922F849DA00E23B45 /* Rickroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Rickroll.swift; path = "How Long Left (macOS)/Utilities/Rickroll.swift"; sourceTree = SOURCE_ROOT; };
 		BF4AD6BF25792B4A006D9C8E /* WidgetPreferencesUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetPreferencesUI.swift; sourceTree = "<group>"; };
 		BF4AD6C825792B65006D9C8E /* WidgetPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WidgetPreferencesView.xib; sourceTree = "<group>"; };
@@ -2588,6 +2589,7 @@
 		BFE4771F274B91730016A725 /* watchOS How Long Left */ = {
 			isa = PBXGroup;
 			children = (
+				BF4A058F27A8E05B0045B1AF /* watchOS-How-Long-Left-Info.plist */,
 				BF3B9303277F20B900D499EF /* watchOS How Long Left.entitlements */,
 				BFE47720274B91740016A725 /* Assets.xcassets */,
 			);
@@ -4386,7 +4388,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "watchOS How Long Left WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = watchOS_How_Long_Left_WatchKit_Extension_Project.ComplicationController;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cal pleaseeee";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ryan Kontos. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4424,7 +4426,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "watchOS How Long Left WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = watchOS_How_Long_Left_WatchKit_Extension_Project.ComplicationController;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cal pleaseeee";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Ryan Kontos. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4458,6 +4460,7 @@
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = watchOS_How_Long_Left_WatchKit_Extension;
+				INFOPLIST_FILE = "watchOS-How-Long-Left-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -4488,6 +4491,7 @@
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = watchOS_How_Long_Left_WatchKit_Extension;
+				INFOPLIST_FILE = "watchOS-How-Long-Left-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

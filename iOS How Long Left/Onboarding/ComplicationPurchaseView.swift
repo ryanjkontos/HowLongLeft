@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ComplicationPurchaseView: View {
 
+    @ObservedObject var store = Store()
     
     var body: some View {
         
@@ -60,9 +61,22 @@ struct ComplicationPurchaseView: View {
             
             Spacer()
             
+            if store.purchasedExtenions.contains(.complication) == false {
+            
             VStack(spacing: 6.5) {
                 
-                NavigationLink(destination: { EmptyView() }, label: {
+                Button(action: {
+                    
+                    Task {
+                        
+                        if let complication = store.complicationProduct {
+                           let _ = try? await store.purchase(complication)
+                        }
+                        
+                    }
+                    
+                    
+                }, label: {
                     
                     Text("Purchase – $2.99")
                         .font(.headline)
@@ -75,7 +89,7 @@ struct ComplicationPurchaseView: View {
                 
                 .frame(height: 49, alignment: .center)
                 
-                NavigationLink(destination: { EmptyView() }, label: {
+                Button(action: { }, label: {
                     
                     Text("Not Now")
                         .font(.headline)
@@ -88,6 +102,12 @@ struct ComplicationPurchaseView: View {
                 
                 .frame(height: 49, alignment: .center)
                 
+                
+            }
+            
+            } else {
+                
+                Text("Already Purchased")
                 
             }
         

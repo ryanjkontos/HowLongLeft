@@ -22,6 +22,7 @@ struct IconCell: View {
             RoundedIcon(iconBackground: iconBackground, iconFill: iconFill, cornerRadius: 6, iconImageName: iconImageName, fontSize: 17)
                 .frame(width: 28, height: 28)
             Text(label)
+                .foregroundColor(Color(UIColor.label))
             
             Spacer()
         }

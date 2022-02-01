@@ -11,6 +11,8 @@ import Introspect
 
 struct ScrollViewIfNeeded: ViewModifier {
     
+    
+    
     var height: CGFloat
     
     func body(content: Content) -> some View {
@@ -58,7 +60,7 @@ struct TitleButtonPadding: ViewModifier {
     
     func getTopPadding(viewHeight height: CGFloat) -> CGFloat {
         
-        print("Height: \(height)")
+     //   print("Height: \(height)")
         
         if height < 400 {
             
@@ -76,7 +78,7 @@ struct TitleButtonPadding: ViewModifier {
     
     func getBottomPadding(viewHeight height: CGFloat) -> CGFloat {
         
-        print("Height: \(height)")
+      //  print("Height: \(height)")
         
         if height < 400 {
             

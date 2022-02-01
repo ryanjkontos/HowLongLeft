@@ -31,7 +31,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>How Long Left needs to access your calendar to get current and upcomings events so they can be displayed in the app. No data will be collected.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2020 Ryan Kontos. All rights reserved.</string>
+	<string>Copyright © 2022 Ryan Kontos. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
