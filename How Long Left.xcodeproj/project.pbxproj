@@ -32,7 +32,8 @@
 		BF17CCA427A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
 		BF17CCA527A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
 		BF1960F0276A12FA0058E1CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1960EF276A12FA0058E1CA /* CustomTextField.swift */; };
-		BF1BF13827A9429700D3F54C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = BF1BF13727A9429700D3F54C /* Communicator */; };
+		BF1BF13A27A952C400D3F54C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1BF13927A952C400D3F54C /* ExtensionDelegate.swift */; };
+		BF1BF13C27A959D000D3F54C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1BF13B27A959CF00D3F54C /* StoreKit.framework */; };
 		BF1C9F6727993C76003EE109 /* ComplicationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */; };
 		BF1E75072444755500F04284 /* EventsPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1E75052444755500F04284 /* EventsPreferencesView.xib */; };
 		BF1E75082444755500F04284 /* EventsPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E75062444755500F04284 /* EventsPreferenceViewController.swift */; };
@@ -146,9 +147,6 @@
 		BF4989022733A14A00024295 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4989012733A14A00024295 /* ContentView.swift */; };
 		BF4989042733A14C00024295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4989032733A14C00024295 /* Assets.xcassets */; };
 		BF4989072733A14C00024295 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4989062733A14C00024295 /* Preview Assets.xcassets */; };
-		BF4A059227A90F9A0045B1AF /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = BF4A059127A90F9A0045B1AF /* Communicator */; };
-		BF4A059627A90FE30045B1AF /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A059527A90FE30045B1AF /* CommunicationManager.swift */; };
-		BF4A059727A912440045B1AF /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A059527A90FE30045B1AF /* CommunicationManager.swift */; };
 		BF4A059927A912D50045B1AF /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A059827A912D50045B1AF /* DebugView.swift */; };
 		BF4ABBDA22F849DA00E23B45 /* Rickroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4ABBD922F849DA00E23B45 /* Rickroll.swift */; };
 		BF4AD65D2578A403006D9C8E /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
@@ -856,6 +854,8 @@
 		BF19CF9322438AE90088B196 /* How Long Left (watchOS) Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "How Long Left (watchOS) Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF19CF9422438AEA0088B196 /* RelativeTextInterpolater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelativeTextInterpolater.h; sourceTree = "<group>"; };
 		BF19CF9522438AEA0088B196 /* RelativeTextInterpolater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelativeTextInterpolater.m; sourceTree = "<group>"; };
+		BF1BF13927A952C400D3F54C /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		BF1BF13B27A959CF00D3F54C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationIconView.swift; sourceTree = "<group>"; };
 		BF1E75052444755500F04284 /* EventsPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsPreferencesView.xib; sourceTree = "<group>"; };
 		BF1E75062444755500F04284 /* EventsPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsPreferenceViewController.swift; sourceTree = "<group>"; };
@@ -1318,7 +1318,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1FDFB02744CAC9008CC754 /* Introspect in Frameworks */,
-				BF4A059227A90F9A0045B1AF /* Communicator in Frameworks */,
 				BFC6D2D3275FB3160050CFE0 /* BottomSheet in Frameworks */,
 				BF1059E2274B46BA00486AE0 /* StoreKit.framework in Frameworks */,
 			);
@@ -1342,7 +1341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1BF13827A9429700D3F54C /* Communicator in Frameworks */,
+				BF1BF13C27A959D000D3F54C /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2001,6 +2000,7 @@
 			isa = PBXGroup;
 			children = (
 				BF1059E1274B46BA00486AE0 /* StoreKit.framework */,
+				BF1BF13B27A959CF00D3F54C /* StoreKit.framework */,
 				BFFF6F0C2506742D00BF6054 /* WidgetKit.framework */,
 				BFFF6F0E2506742D00BF6054 /* SwiftUI.framework */,
 			);
@@ -2613,6 +2613,7 @@
 				BF3C329827854BB4009303D0 /* Event View */,
 				BF17BF5B2785621600865A93 /* Settings */,
 				BFE4772D274B91740016A725 /* How_Long_LeftApp.swift */,
+				BF1BF13927A952C400D3F54C /* ExtensionDelegate.swift */,
 				BFD9547027A821B000CE5AC6 /* Complication */,
 				BFF9198127871DDA0094BA79 /* CLKTextProvider.h */,
 				BFF9198327871DFE0094BA79 /* CLKTextProvider.m */,
@@ -2867,7 +2868,6 @@
 			packageProductDependencies = (
 				BF1FDFAF2744CAC9008CC754 /* Introspect */,
 				BFC6D2D2275FB3160050CFE0 /* BottomSheet */,
-				BF4A059127A90F9A0045B1AF /* Communicator */,
 			);
 			productName = "iOS How Long Left";
 			productReference = BF4988FD2733A14A00024295 /* How Long Left.app */;
@@ -2940,7 +2940,6 @@
 			);
 			name = "watchOS How Long Left WatchKit Extension";
 			packageProductDependencies = (
-				BF1BF13727A9429700D3F54C /* Communicator */,
 			);
 			productName = "watchOS How Long Left WatchKit Extension";
 			productReference = BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */;
@@ -3087,9 +3086,6 @@
 				BFCDE28926FD93690038CD56 /* XCRemoteSwiftPackageReference "HotKey" */,
 				BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				BFC6D2CF275FB27F0050CFE0 /* XCRemoteSwiftPackageReference "BottomSheet" */,
-				BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */,
-				BF1BF13327A9420700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */,
-				BF1BF13627A9429700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */,
 			);
 			productRefGroup = BF5D29562174679500AC1EB6 /* Products */;
 			projectDirPath = "";
@@ -3337,7 +3333,6 @@
 				BF1FDFAB2743EAEC008CC754 /* CountdownsParentView.swift in Sources */,
 				BFFF6053273DFCED00C5EB1A /* Weekday.swift in Sources */,
 				BF9659D82747EA38009273C5 /* UpcomingSubCard.swift in Sources */,
-				BF4A059627A90FE30045B1AF /* CommunicationManager.swift in Sources */,
 				BFFF6054273DFCED00C5EB1A /* NicknameManager.swift in Sources */,
 				BFE8727B275CC66100059C47 /* CountdownSectionOrderEditView.swift in Sources */,
 				BFFF6055273DFCED00C5EB1A /* KeyDateHandler.swift in Sources */,
@@ -3612,7 +3607,6 @@
 				BFE8C2C7277F11A90026F0C2 /* WidgetStateFetcher.swift in Sources */,
 				BFE8C2C8277F11A90026F0C2 /* PercentDateFetcher.swift in Sources */,
 				BFE8C2C9277F11A90026F0C2 /* CalendarAccessState.swift in Sources */,
-				BF4A059727A912440045B1AF /* CommunicationManager.swift in Sources */,
 				BFE6ADF2278580D5003AAFF6 /* WatchModel.swift in Sources */,
 				BFE8C2CA277F11A90026F0C2 /* SelectedEventManager.swift in Sources */,
 				BFE8C2CB277F11A90026F0C2 /* StatusItemMode.swift in Sources */,
@@ -3656,6 +3650,7 @@
 				BFE8C2F1277F11A90026F0C2 /* UserGroup.swift in Sources */,
 				BFE4772C274B91740016A725 /* ContentView.swift in Sources */,
 				BFA725E8277E9FE600F2A6EA /* CountdownCard.swift in Sources */,
+				BF1BF13A27A952C400D3F54C /* ExtensionDelegate.swift in Sources */,
 				BFEE00C8277D74C400A51B37 /* MainEventCard.swift in Sources */,
 				BFEE00CC277D7E6600A51B37 /* SettingsButtonCard.swift in Sources */,
 				BFEE00CA277D76F600A51B37 /* EventCard.swift in Sources */,
@@ -4795,36 +4790,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF1BF13327A9420700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KaneCheshire/Communicator";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		BF1BF13627A9429700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KaneCheshire/Communicator";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.1.3;
-			};
-		};
-		BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KaneCheshire/Communicator";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
 			};
 		};
 		BFC6D2CF275FB27F0050CFE0 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
@@ -4862,11 +4833,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF1BF13727A9429700D3F54C /* Communicator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF1BF13327A9420700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */;
-			productName = Communicator;
-		};
 		BF1FDFAD2744C9FF008CC754 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
@@ -4876,11 +4842,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
-		};
-		BF4A059127A90F9A0045B1AF /* Communicator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */;
-			productName = Communicator;
 		};
 		BFC6D2D0275FB27F0050CFE0 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;

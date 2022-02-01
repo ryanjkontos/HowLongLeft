@@ -14,8 +14,22 @@ struct ComplicationPurchaseView: View {
     
     var body: some View {
         
-        Text("Complication")
+        if store.complicationPurchased {
+            ComplicationsSettingsView()
+        } else {
+            Button(action: { triggerPurchase() }, label: { Text("Purchase Complication") })
+                .buttonStyle(.borderedProminent)
+                .tint(.orange)
+        }
+        
     }
+    
+    func triggerPurchase() {
+        Task {
+            await store.purchase(productFor: .complication)
+        }
+    }
+    
 }
 
 struct ComplicationPurchaseView_Previews: PreviewProvider {

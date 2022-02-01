@@ -12,7 +12,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let communicationManager = CommunicationManager()
+  //  let communicationManager = CommunicationManager()
     
     
     

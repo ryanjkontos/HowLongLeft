@@ -1909,6 +1909,42 @@ class HLLDefaults {
         
     }
     
+    struct premiumPurchases {
+        
+        static var complication: Bool {
+            
+            get {
+                
+                return HLLDefaults.defaults.bool(forKey: "PremiumPurchases.Complication")
+                
+            }
+            
+            set {
+                
+                HLLDefaults.defaults.set(newValue, forKey: "PremiumPurchases.Complication")
+                
+            }
+            
+        }
+        
+        static var widget: Bool {
+            
+            get {
+                
+                return HLLDefaults.defaults.bool(forKey: "PremiumPurchases.Widget")
+                
+            }
+            
+            set {
+                
+                HLLDefaults.defaults.set(newValue, forKey: "PremiumPurchases.Widget")
+                
+            }
+            
+        }
+        
+        
+    }
     
     
 }

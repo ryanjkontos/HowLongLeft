@@ -17,39 +17,24 @@ class Store: ObservableObject {
     
     static var shared = Store()
     
-    @Published var complicationProduct: Product?
-    @Published var widgetProduct: Product?
+    private var complicationProduct: Product?
+    private var widgetProduct: Product?
     
     @Published var widgetPurchased: Bool
     @Published var complicationPurchased: Bool
     
-    var updateListenerTask: Task<Void, Error>? = nil
-    
-    var products: [Product] {
-        
-        get {
-            
-            return [complicationProduct, widgetProduct].compactMap({$0})
-            
-        }
-        
-    }
-    
-    func productFor(_ type: ExtensionType) -> Product? {
-        
-        switch type {
-        case .complication:
-            return complicationProduct
-        case .widget:
-            return widgetProduct
-        }
-        
-    }
+    private var updateListenerTask: Task<Void, Error>? = nil
     
     init() {
         
-        widgetPurchased = false
-        complicationPurchased = false
+        var complication = HLLDefaults.premiumPurchases.complication
+        if HLLDefaults.defaults.string(forKey: "ComplicationHash") != nil {
+            HLLDefaults.defaults.set(nil, forKey: "ComplicationHash")
+            complication = true
+        }
+        
+        complicationPurchased = complication
+        widgetPurchased = HLLDefaults.premiumPurchases.widget
         
         updateListenerTask = listenForTransactions()
         
@@ -58,8 +43,6 @@ class Store: ObservableObject {
             await refreshPurchasedProducts()
         }
         
-       
-        
     }
     
     deinit {
@@ -67,7 +50,7 @@ class Store: ObservableObject {
     }
     
 
-    func listenForTransactions() -> Task<Void, Error> {
+    private func listenForTransactions() -> Task<Void, Error> {
         return Task.detached {
             //Iterate through any transactions which didn't come from a direct call to `purchase()`.
             for await result in Transaction.updates {
@@ -89,7 +72,7 @@ class Store: ObservableObject {
 
 
     @MainActor
-    func requestProducts() async {
+    private func requestProducts() async {
         do {
            
             let storeProducts = try await Product.products(for: ExtensionType.allCases.map({$0.rawValue}))
@@ -116,7 +99,26 @@ class Store: ObservableObject {
     }
     
     @MainActor
-    func purchase(_ product: Product) async throws -> Transaction? {
+    func purchase(productFor extensionType: ExtensionType) async {
+        
+
+   
+                
+                    switch extensionType {
+                    case .widget:
+                        if let widgetProduct = widgetProduct {
+                            let _ = try? await purchase(widgetProduct)
+                        }
+                    case .complication:
+                        if let complicationProduct = complicationProduct {
+                            let _ = try? await purchase(complicationProduct)
+                        }
+                    }
+        
+    }
+    
+    @MainActor
+   private func purchase(_ product: Product) async throws -> Transaction? {
         //Begin a purchase.
         
         let result = try await product.purchase()
@@ -138,7 +140,7 @@ class Store: ObservableObject {
         }
     }
     
-    func isPurchased(_ productIdentifier: String) async throws -> Bool {
+    private func isPurchased(_ productIdentifier: String) async throws -> Bool {
         //Get the most recent transaction receipt for this `productIdentifier`.
         guard let result = await Transaction.latest(for: productIdentifier) else {
             //If there is no latest transaction, the product has not been purchased.
@@ -147,16 +149,11 @@ class Store: ObservableObject {
 
         let transaction = try checkVerified(result)
 
-        //Ignore revoked transactions, they're no longer purchased.
-
-        //For subscriptions, a user can upgrade in the middle of their subscription period. The lower service
-        //tier will then have the `isUpgraded` flag set and there will be a new transaction for the higher service
-        //tier. Ignore the lower service tier transactions which have been upgraded.
         return transaction.revocationDate == nil && !transaction.isUpgraded
     }
 
 
-    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+    private func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         //Check if the transaction passes Storelit verification.
         switch result {
         case .unverified:
@@ -168,41 +165,49 @@ class Store: ObservableObject {
         }
     }
 
-
-    fileprivate func refreshPurchasedProducts() async {
-        //Iterate through all of the user's purchased products.
-        for await result in Transaction.currentEntitlements {
-            //Don't operate on this transaction if it's not verified.
-            if case .verified(let transaction) = result {
-                //Check the `productType` of the transaction and get the corresponding product from the store.
-                await checkTransaction(transaction)
-            }
-        }
+    
+    @MainActor
+    func refreshPurchasedProducts() async {
+        
+        await checkTransaction(complicationProduct)
+        await checkTransaction(widgetProduct)
 
     }
 
-    func checkTransaction(_ transaction: Transaction) async {
+    @MainActor
+    private func checkTransaction(_ product: Product?) async {
+        
+        guard let product = product else { return }
+        guard let type = ExtensionType(rawValue: product.id) else { return }
+        guard let result = await product.currentEntitlement, case .verified(let transaction) = result else {
+            setPurchased(type: type, false)
+            return
+        }
+        
+        print("Transaction type: \(transaction.productType)")
         
         switch transaction.productType {
         case .nonConsumable:
-            
-            
             let isPurchased = (try? await isPurchased(transaction.productID)) ?? false
-             
-            if let type = ExtensionType(rawValue: transaction.productID) {
-                
-                switch type {
-                case .widget:
-                    self.widgetPurchased = isPurchased
-                case .complication:
-                    self.complicationPurchased = isPurchased
-                }
-                
-            }
             
+            print("Is Purchased \(type): \(isPurchased)")
+            
+            setPurchased(type: type, isPurchased)
         default:
-            //This type of product isn't displayed in this view.
             break
+        }
+        
+    }
+    
+    private func setPurchased(type: ExtensionType, _ isPurchased: Bool) {
+        
+        switch type {
+        case .widget:
+            self.widgetPurchased = isPurchased
+            HLLDefaults.premiumPurchases.widget = isPurchased
+        case .complication:
+            self.complicationPurchased = isPurchased
+            HLLDefaults.premiumPurchases.complication = isPurchased
         }
         
     }
@@ -213,10 +218,4 @@ public enum StoreError: Error {
     case failedVerification
 }
 
-extension Transaction {
-    
-    var stillValid: Bool {
-        return self.revocationDate == nil && !self.isUpgraded
-    }
-    
-}
+

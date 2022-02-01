@@ -20,8 +20,8 @@
       "type" : "NonConsumable"
     },
     {
-      "displayPrice" : "0.99",
-      "familyShareable" : false,
+      "displayPrice" : "2.99",
+      "familyShareable" : true,
       "internalID" : "46A2F8F1",
       "localizations" : [
         {
@@ -43,6 +43,6 @@
   ],
   "version" : {
     "major" : 1,
-    "minor" : 1
+    "minor" : 2
   }
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Communicator
+
 
 class CommunicationManager {
     

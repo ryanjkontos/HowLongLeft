@@ -69,9 +69,7 @@ struct ComplicationPurchaseView: View {
                     
                     Task {
                         
-                        if let complication = store.complicationProduct {
-                           let _ = try? await store.purchase(complication)
-                        }
+                        await store.purchase(productFor: .complication)
                         
                     }
                     

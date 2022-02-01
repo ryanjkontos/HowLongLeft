@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import Communicator
+//import Communicator
 
 struct DebugView: View {
     var body: some View {
@@ -16,8 +16,8 @@ struct DebugView: View {
             
             Button(action: {
                 
-                let message = ImmediateMessage(identifier: "immediateMessage", content: ["messageKey": true])
-                Communicator.shared.send(message)
+               // let message = ImmediateMessage(identifier: "immediateMessage", content: ["messageKey": true])
+               // Communicator.shared.send(message)
                 
             }, label: {
                 
@@ -27,8 +27,8 @@ struct DebugView: View {
             
             Button(action: {
                 
-                let message = GuaranteedMessage(identifier: "guaranteedMessage", content: ["messageKey": true])
-                Communicator.shared.send(message)
+               // let message = GuaranteedMessage(identifier: "guaranteedMessage", content: ["messageKey": true])
+               // Communicator.shared.send(message)
                 
             }, label: {
                 
@@ -39,7 +39,7 @@ struct DebugView: View {
             Button(action: {
                 
          
-                let data: Content = ["ComplicationPurchased": true]
+               /* let data: Content = ["ComplicationPurchased": true]
                 
                 do {
                     
@@ -49,7 +49,7 @@ struct DebugView: View {
                     
                     print(error)
                     
-                }
+                }*/
                 
                
                 
