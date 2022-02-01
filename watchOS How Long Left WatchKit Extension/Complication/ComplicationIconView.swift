@@ -59,7 +59,7 @@ struct ComplicationIconView: View {
                 
                 Group {
                 
-                if let tint = fullColorTint {
+                if let _ = fullColorTint {
                     Color.white
                 } else {
                     LinearGradient(gradient: fullColorGradient, startPoint: .top, endPoint: .bottom)

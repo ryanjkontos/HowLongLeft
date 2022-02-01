@@ -2399,6 +2399,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BFD9547027A821B000CE5AC6 /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				BFE4772F274B91740016A725 /* ComplicationController.swift */,
+				BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */,
+				BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */,
+				BFB370C4279FC1520075632A /* ComplicationProviderData.swift */,
+				BF72839E27A563DE00EA8AD8 /* ComplicationLogger.swift */,
+				BF632B8F27A1193400C1A385 /* LargeCountdownComplicationView.swift */,
+				BF2D47BC279455E100B35D25 /* ComplicationIdentifier.swift */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
 		BFDE4A6121B5FF3400CD50BC /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -2589,13 +2603,7 @@
 				BF3C329827854BB4009303D0 /* Event View */,
 				BF17BF5B2785621600865A93 /* Settings */,
 				BFE4772D274B91740016A725 /* How_Long_LeftApp.swift */,
-				BFE4772F274B91740016A725 /* ComplicationController.swift */,
-				BF72839E27A563DE00EA8AD8 /* ComplicationLogger.swift */,
-				BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */,
-				BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */,
-				BFB370C4279FC1520075632A /* ComplicationProviderData.swift */,
-				BF632B8F27A1193400C1A385 /* LargeCountdownComplicationView.swift */,
-				BF2D47BC279455E100B35D25 /* ComplicationIdentifier.swift */,
+				BFD9547027A821B000CE5AC6 /* Complication */,
 				BFF9198127871DDA0094BA79 /* CLKTextProvider.h */,
 				BFF9198327871DFE0094BA79 /* CLKTextProvider.m */,
 				BFE47731274B91740016A725 /* Assets.xcassets */,
@@ -4386,7 +4394,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkit.extension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -4424,7 +4432,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkit.extension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -4455,7 +4463,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ryankontos.How-Long-Left";
 				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkit";
 				PRODUCT_NAME = "How Long Left";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -4485,7 +4493,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ryankontos.How-Long-Left";
 				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.watchkit";
 				PRODUCT_NAME = "How Long Left";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

@@ -14,6 +14,7 @@ struct EventsListView: View {
     
     var timelineStart: Date!
     
+    @EnvironmentObject var store: Store
    
     @State var showComplicationPopover = false
     
@@ -147,7 +148,9 @@ struct EventsListView: View {
                         
                     }
                     
-                    NavigationLink(destination: { SettingsView() }) {
+                    NavigationLink(destination: { SettingsView()
+                            .environmentObject(store)
+                    }) {
                     
                     SettingsButtonCard()
                         

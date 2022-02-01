@@ -62,6 +62,7 @@ class Store: ObservableObject {
         updateListenerTask?.cancel()
     }
     
+
     func listenForTransactions() -> Task<Void, Error> {
         return Task.detached {
             //Iterate through any transactions which didn't come from a direct call to `purchase()`.
@@ -70,7 +71,7 @@ class Store: ObservableObject {
                     let transaction = try self.checkVerified(result)
 
                     //Deliver content to the user.
-                    await self.updatePurchasedIdentifiers(transaction)
+                     self.updatePurchasedIdentifiers(transaction)
 
                     //Always finish a transaction.
                     await transaction.finish()
@@ -81,7 +82,8 @@ class Store: ObservableObject {
             }
         }
     }
-    
+
+
     @MainActor
     func requestProducts() async {
         do {
@@ -109,6 +111,7 @@ class Store: ObservableObject {
           
     }
     
+    @MainActor
     func purchase(_ product: Product) async throws -> Transaction? {
         //Begin a purchase.
         let result = try await product.purchase()
@@ -118,7 +121,7 @@ class Store: ObservableObject {
             let transaction = try checkVerified(verification)
 
             //Deliver content to the user.
-            await updatePurchasedIdentifiers(transaction)
+             updatePurchasedIdentifiers(transaction)
 
             //Always finish a transaction.
             await transaction.finish()
@@ -148,6 +151,7 @@ class Store: ObservableObject {
         return transaction.revocationDate == nil && !transaction.isUpgraded
     }
 
+
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         //Check if the transaction passes Storelit verification.
         switch result {
@@ -161,10 +165,16 @@ class Store: ObservableObject {
     }
     
     
-    @MainActor
-    func updatePurchasedIdentifiers(_ transaction: Transaction) async {
+    
+    
+
+
+    func updatePurchasedIdentifiers(_ transaction: Transaction) {
         
         print("Updating purchase ID")
+        
+        DispatchQueue.main.async {
+        
         
         if let extensionType = ExtensionType(rawValue: transaction.productID) {
             if transaction.revocationDate == nil {
@@ -172,15 +182,16 @@ class Store: ObservableObject {
                 
                 
                 
-                purchasedExtenions.insert(extensionType)
+                self.purchasedExtenions.insert(extensionType)
             } else {
                 //If the App Store has revoked this transaction, remove it from the list of `purchasedIdentifiers`.
-                purchasedExtenions.remove(extensionType)
+                self.purchasedExtenions.remove(extensionType)
             }
+            
+        }
         }
     }
-    
-    @MainActor
+
     fileprivate func refreshPurchasedProducts() async {
         //Iterate through all of the user's purchased products.
         for await result in Transaction.currentEntitlements {
@@ -189,7 +200,7 @@ class Store: ObservableObject {
                 //Check the `productType` of the transaction and get the corresponding product from the store.
                 switch transaction.productType {
                 case .nonConsumable:
-                    await updatePurchasedIdentifiers(transaction)
+                    updatePurchasedIdentifiers(transaction)
                 default:
                     //This type of product isn't displayed in this view.
                     break

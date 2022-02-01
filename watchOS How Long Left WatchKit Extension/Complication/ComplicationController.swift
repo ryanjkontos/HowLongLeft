@@ -75,6 +75,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         CLKComplicationDescriptor(identifier: ComplicationIdentifier.ModularLarge.largeCountdown.rawValue, displayName: "Large Countdown", supportedFamilies: [CLKComplicationFamily.modularLarge]),
         
         
+        CLKComplicationDescriptor(identifier: ComplicationIdentifier.ModularSmall.countdown.rawValue, displayName: "Countdown", supportedFamilies: [CLKComplicationFamily.modularSmall]),
+        
+        
     ]
 
     
@@ -137,19 +140,19 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func timelineEntries(complication: CLKComplication, date: Date?, limit: Int? = nil) -> [CLKComplicationTimelineEntry] {
         
-        if HLLDefaults.watch.complicationEnabled == false {
-            let template = entryGenerator.generateNotEnabledComplicationTemplate(complication: complication)
-            
-            var returnArray = [CLKComplicationTimelineEntry]()
-            if let template = template {
-                returnArray.append(CLKComplicationTimelineEntry(date: date ?? Date(), complicationTemplate: template))
-            }
-            
-            return returnArray
-            
+        var overrideTemplate: CLKComplicationTemplate?
+        
+        if HLLEventSource.shared.access == .Denied {
+            overrideTemplate = entryGenerator.generateNoCalendarAccessComplicationTemplate(complication: complication)
         }
         
-      
+        if HLLDefaults.watch.complicationEnabled == false {
+            overrideTemplate = entryGenerator.generateNotEnabledComplicationTemplate(complication: complication)
+        }
+       
+        if let template = overrideTemplate {
+            return [(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))]
+        }
         
         var timelineEntries = ComplicationController.timeline.entriesAfterDate(date)
         if let limit = limit {

@@ -11,32 +11,19 @@ import ClockKit
 
 struct ContentView: View {
     
+    @ObservedObject var store = Store()
+    
     var body: some View {
 
-        Group {
             
             if HLLEventSource.shared.access == .Denied {
                 NoCalendarAccessView()
             } else {
                 EventsListView()
+                    .environmentObject(store)
+                    
             }
             
-        }
-        
-        
-            
-            .onAppear(perform: {
-                
-                if let complications = CLKComplicationServer.sharedInstance().activeComplications {
-                    
-                    for complication in complications {
-                        CLKComplicationServer.sharedInstance().reloadTimeline(for: complication)
-                    }
-                    
-                }
-                
-                
-            })
         
     }
 }

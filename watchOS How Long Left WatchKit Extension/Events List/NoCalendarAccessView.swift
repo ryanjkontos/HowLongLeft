@@ -49,7 +49,9 @@ struct NoCalendarAccessView: View {
                     
                         
             }
-            .edgesIgnoringSafeArea(.all)
+            .navigationTitle("How Long Left")
+            .navigationBarTitleDisplayMode(.inline)
+            .edgesIgnoringSafeArea(.bottom)
             
             
       

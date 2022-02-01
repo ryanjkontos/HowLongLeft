@@ -18,7 +18,7 @@ class DummyEventGenerator {
     
     init() {
         
-        return
+      
         
         var start = Date()
         
@@ -39,7 +39,7 @@ class DummyEventGenerator {
             
         }
         
-        var upcomingStart = Date() + 20
+       
         
        /* for i in 1...amount {
             

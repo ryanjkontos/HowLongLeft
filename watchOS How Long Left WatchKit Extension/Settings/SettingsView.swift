@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @EnvironmentObject var store: Store
+    
     var body: some View {
         
         Form {
@@ -33,7 +36,8 @@ struct SettingsView: View {
                 
             })
             
-            NavigationLink(destination: { ComplicationsSettingsView()
+            NavigationLink(destination: { ComplicationPurchaseView()
+                    .environmentObject(store)
 
             }, label: {
                 
