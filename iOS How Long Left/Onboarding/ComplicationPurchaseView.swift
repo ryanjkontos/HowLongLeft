@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ComplicationPurchaseView: View {
 
-    @ObservedObject var store = Store()
+    @ObservedObject var store = Store.shared
     
     var body: some View {
         
@@ -61,7 +61,7 @@ struct ComplicationPurchaseView: View {
             
             Spacer()
             
-            if store.purchasedExtenions.contains(.complication) == false {
+            if store.complicationPurchased == false {
             
             VStack(spacing: 6.5) {
                 

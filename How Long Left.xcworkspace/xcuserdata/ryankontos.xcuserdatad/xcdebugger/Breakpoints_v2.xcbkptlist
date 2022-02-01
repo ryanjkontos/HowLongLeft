@@ -238,8 +238,8 @@
             filePath = "iOS How Long Left/Onboarding/Store.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "refreshPurchasedProducts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "iOS How Long Left/Onboarding/Store.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "refreshPurchasedProducts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -473,8 +473,8 @@
             filePath = "watchOS How Long Left WatchKit Extension/How_Long_LeftApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "scheduleNextComplicationUpdateTask()"
             landmarkType = "7">
          </BreakpointContent>

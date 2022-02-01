@@ -145,6 +145,11 @@
 		BF4989022733A14A00024295 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4989012733A14A00024295 /* ContentView.swift */; };
 		BF4989042733A14C00024295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4989032733A14C00024295 /* Assets.xcassets */; };
 		BF4989072733A14C00024295 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4989062733A14C00024295 /* Preview Assets.xcassets */; };
+		BF4A059227A90F9A0045B1AF /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = BF4A059127A90F9A0045B1AF /* Communicator */; };
+		BF4A059427A90FB10045B1AF /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = BF4A059327A90FB10045B1AF /* Communicator */; };
+		BF4A059627A90FE30045B1AF /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A059527A90FE30045B1AF /* CommunicationManager.swift */; };
+		BF4A059727A912440045B1AF /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A059527A90FE30045B1AF /* CommunicationManager.swift */; };
+		BF4A059927A912D50045B1AF /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A059827A912D50045B1AF /* DebugView.swift */; };
 		BF4ABBDA22F849DA00E23B45 /* Rickroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4ABBD922F849DA00E23B45 /* Rickroll.swift */; };
 		BF4AD65D2578A403006D9C8E /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
 		BF4AD65E2578A403006D9C8E /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
@@ -960,6 +965,8 @@
 		BF4989032733A14C00024295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF4989062733A14C00024295 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF4A058F27A8E05B0045B1AF /* watchOS-How-Long-Left-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "watchOS-How-Long-Left-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BF4A059527A90FE30045B1AF /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		BF4A059827A912D50045B1AF /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		BF4ABBD922F849DA00E23B45 /* Rickroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Rickroll.swift; path = "How Long Left (macOS)/Utilities/Rickroll.swift"; sourceTree = SOURCE_ROOT; };
 		BF4AD6BF25792B4A006D9C8E /* WidgetPreferencesUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetPreferencesUI.swift; sourceTree = "<group>"; };
 		BF4AD6C825792B65006D9C8E /* WidgetPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WidgetPreferencesView.xib; sourceTree = "<group>"; };
@@ -1313,6 +1320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1FDFB02744CAC9008CC754 /* Introspect in Frameworks */,
+				BF4A059227A90F9A0045B1AF /* Communicator in Frameworks */,
 				BFC6D2D3275FB3160050CFE0 /* BottomSheet in Frameworks */,
 				BF1059E2274B46BA00486AE0 /* StoreKit.framework in Frameworks */,
 			);
@@ -1336,6 +1344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4A059427A90FB10045B1AF /* Communicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1387,6 +1396,7 @@
 			children = (
 				BF3649A9274A54D600FD0D03 /* AppDelegate.swift */,
 				BF3649AB274A54DB00FD0D03 /* SceneDelegate.swift */,
+				BF4A059527A90FE30045B1AF /* CommunicationManager.swift */,
 				BF4989032733A14C00024295 /* Assets.xcassets */,
 			);
 			path = Support;
@@ -2661,6 +2671,7 @@
 				BFE87278275CC20D00059C47 /* CountdownCardSettingsView.swift */,
 				BFC531B427466842001DBA6E /* EnabledCalendarsManager.swift */,
 				BFC531B6274668E8001DBA6E /* EnabledCalendarsView.swift */,
+				BF4A059827A912D50045B1AF /* DebugView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2859,6 +2870,7 @@
 			packageProductDependencies = (
 				BF1FDFAF2744CAC9008CC754 /* Introspect */,
 				BFC6D2D2275FB3160050CFE0 /* BottomSheet */,
+				BF4A059127A90F9A0045B1AF /* Communicator */,
 			);
 			productName = "iOS How Long Left";
 			productReference = BF4988FD2733A14A00024295 /* How Long Left.app */;
@@ -2930,6 +2942,9 @@
 			dependencies = (
 			);
 			name = "watchOS How Long Left WatchKit Extension";
+			packageProductDependencies = (
+				BF4A059327A90FB10045B1AF /* Communicator */,
+			);
 			productName = "watchOS How Long Left WatchKit Extension";
 			productReference = BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -3075,6 +3090,7 @@
 				BFCDE28926FD93690038CD56 /* XCRemoteSwiftPackageReference "HotKey" */,
 				BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				BFC6D2CF275FB27F0050CFE0 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */,
 			);
 			productRefGroup = BF5D29562174679500AC1EB6 /* Products */;
 			projectDirPath = "";
@@ -3323,6 +3339,7 @@
 				BF1FDFAB2743EAEC008CC754 /* CountdownsParentView.swift in Sources */,
 				BFFF6053273DFCED00C5EB1A /* Weekday.swift in Sources */,
 				BF9659D82747EA38009273C5 /* UpcomingSubCard.swift in Sources */,
+				BF4A059627A90FE30045B1AF /* CommunicationManager.swift in Sources */,
 				BFFF6054273DFCED00C5EB1A /* NicknameManager.swift in Sources */,
 				BFE8727B275CC66100059C47 /* CountdownSectionOrderEditView.swift in Sources */,
 				BFFF6055273DFCED00C5EB1A /* KeyDateHandler.swift in Sources */,
@@ -3369,6 +3386,7 @@
 				BF5084F4275B098900C1FC58 /* DummyEventGenerator.swift in Sources */,
 				BF7341372733A46500C9E339 /* TabBarContentView.swift in Sources */,
 				BF1FDFB22744D193008CC754 /* OrientationInfo.swift in Sources */,
+				BF4A059927A912D50045B1AF /* DebugView.swift in Sources */,
 				BF4989022733A14A00024295 /* ContentView.swift in Sources */,
 				BF7341392733A48000C9E339 /* CountdownsView.swift in Sources */,
 				BF7341352733A44E00C9E339 /* SideBarContentView.swift in Sources */,
@@ -3596,6 +3614,7 @@
 				BFE8C2C7277F11A90026F0C2 /* WidgetStateFetcher.swift in Sources */,
 				BFE8C2C8277F11A90026F0C2 /* PercentDateFetcher.swift in Sources */,
 				BFE8C2C9277F11A90026F0C2 /* CalendarAccessState.swift in Sources */,
+				BF4A059727A912440045B1AF /* CommunicationManager.swift in Sources */,
 				BFE6ADF2278580D5003AAFF6 /* WatchModel.swift in Sources */,
 				BFE8C2CA277F11A90026F0C2 /* SelectedEventManager.swift in Sources */,
 				BFE8C2CB277F11A90026F0C2 /* StatusItemMode.swift in Sources */,
@@ -4077,7 +4096,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4115,7 +4134,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4786,6 +4805,14 @@
 				minimumVersion = 0.1.3;
 			};
 		};
+		BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KaneCheshire/Communicator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		BFC6D2CF275FB27F0050CFE0 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
@@ -4830,6 +4857,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		BF4A059127A90F9A0045B1AF /* Communicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */;
+			productName = Communicator;
+		};
+		BF4A059327A90FB10045B1AF /* Communicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */;
+			productName = Communicator;
 		};
 		BFC6D2D0275FB27F0050CFE0 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;

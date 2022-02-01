@@ -10,28 +10,11 @@ import SwiftUI
 
 struct ComplicationPurchaseView: View {
     
-    @EnvironmentObject var store: Store
+    @ObservedObject var store = Store.shared
     
     var body: some View {
         
-        if store.purchasedExtenions.contains(.complication) {
-            
-            Text("Complication Purcahsed")
-            
-        } else {
-        
-        Button(action: {
-            
-            Task {
-                
-               try? await store.purchase(store.complicationProduct!)
-                
-            }
-            
-        }, label: { Text("Purchase - \(store.complicationProduct?.displayPrice ?? "No Price")") })
-      
-        
-        }
+        Text("Complication")
     }
 }
 

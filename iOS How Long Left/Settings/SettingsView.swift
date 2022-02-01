@@ -23,7 +23,10 @@ struct SettingsView: View {
     
     let sections: [SettingsViewSection] = [
         SettingsViewSection(rows: [.countdowns, .events, .calendars]),
-        SettingsViewSection(header:"Extensions", rows: [.widget, .complication, .siri])
+        SettingsViewSection(header:"Extensions", rows: [.widget, .complication, .siri]),
+        SettingsViewSection(rows: [.debug]),
+
+        
     ]
     
     @Environment(\.horizontalSizeClass) var horizontalSize
@@ -144,6 +147,8 @@ struct SettingsView: View {
             ComplicationPurchaseView()
         case .appearance:
             AppearanceSettings(appAppearance: .constant(.auto))
+        case .debug:
+            DebugView()
         }
         
     }
@@ -168,6 +173,8 @@ struct SettingsView: View {
             IconCell(label: "Events", iconImageName: "calendar.day.timeline.trailing", iconBackground: .orange, iconFill: .white)
         case .appearance:
             IconCell(label: "Appearance", iconImageName: "paintbrush.pointed.fill", iconBackground: .orange, iconFill: .white)
+        case .debug:
+            IconCell(label: "Debug", iconImageName: "hammer.fill", iconBackground: .blue, iconFill: .white)
         }
         
     }
@@ -228,6 +235,7 @@ enum SettingsViewRow: String, Identifiable {
     case siri = "Siri"
     case widget = "Widget"
     case complication = "Complication"
+    case debug = "debug"
     
     
 }

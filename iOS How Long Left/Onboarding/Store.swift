@@ -15,14 +15,13 @@ typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 class Store: ObservableObject {
     
+    static var shared = Store()
+    
     @Published var complicationProduct: Product?
     @Published var widgetProduct: Product?
     
-    @Published private(set) var purchasedExtenions = Set<ExtensionType>()
-    
-    func hasPurchased(_ type: ExtensionType) -> Bool {
-        return purchasedExtenions.contains(type)
-    }
+    @Published var widgetPurchased: Bool
+    @Published var complicationPurchased: Bool
     
     var updateListenerTask: Task<Void, Error>? = nil
     
@@ -49,12 +48,17 @@ class Store: ObservableObject {
     
     init() {
         
+        widgetPurchased = false
+        complicationPurchased = false
+        
         updateListenerTask = listenForTransactions()
         
         Task {
             await requestProducts()
             await refreshPurchasedProducts()
         }
+        
+       
         
     }
     
@@ -71,7 +75,7 @@ class Store: ObservableObject {
                     let transaction = try self.checkVerified(result)
 
                     //Deliver content to the user.
-                     self.updatePurchasedIdentifiers(transaction)
+                     
 
                     //Always finish a transaction.
                     await transaction.finish()
@@ -114,17 +118,17 @@ class Store: ObservableObject {
     @MainActor
     func purchase(_ product: Product) async throws -> Transaction? {
         //Begin a purchase.
+        
         let result = try await product.purchase()
 
         switch result {
         case .success(let verification):
             let transaction = try checkVerified(verification)
 
-            //Deliver content to the user.
-             updatePurchasedIdentifiers(transaction)
-
             //Always finish a transaction.
             await transaction.finish()
+            
+            await refreshPurchasedProducts()
 
             return transaction
         case .userCancelled, .pending:
@@ -163,34 +167,7 @@ class Store: ObservableObject {
             return safe
         }
     }
-    
-    
-    
-    
 
-
-    func updatePurchasedIdentifiers(_ transaction: Transaction) {
-        
-        print("Updating purchase ID")
-        
-        DispatchQueue.main.async {
-        
-        
-        if let extensionType = ExtensionType(rawValue: transaction.productID) {
-            if transaction.revocationDate == nil {
-                //If the App Store has not revoked the transaction, add it to the list of `purchasedIdentifiers`.
-                
-                
-                
-                self.purchasedExtenions.insert(extensionType)
-            } else {
-                //If the App Store has revoked this transaction, remove it from the list of `purchasedIdentifiers`.
-                self.purchasedExtenions.remove(extensionType)
-            }
-            
-        }
-        }
-    }
 
     fileprivate func refreshPurchasedProducts() async {
         //Iterate through all of the user's purchased products.
@@ -198,21 +175,48 @@ class Store: ObservableObject {
             //Don't operate on this transaction if it's not verified.
             if case .verified(let transaction) = result {
                 //Check the `productType` of the transaction and get the corresponding product from the store.
-                switch transaction.productType {
-                case .nonConsumable:
-                    updatePurchasedIdentifiers(transaction)
-                default:
-                    //This type of product isn't displayed in this view.
-                    break
-                }
+                await checkTransaction(transaction)
             }
         }
 
     }
 
+    func checkTransaction(_ transaction: Transaction) async {
+        
+        switch transaction.productType {
+        case .nonConsumable:
+            
+            
+            let isPurchased = (try? await isPurchased(transaction.productID)) ?? false
+             
+            if let type = ExtensionType(rawValue: transaction.productID) {
+                
+                switch type {
+                case .widget:
+                    self.widgetPurchased = isPurchased
+                case .complication:
+                    self.complicationPurchased = isPurchased
+                }
+                
+            }
+            
+        default:
+            //This type of product isn't displayed in this view.
+            break
+        }
+        
+    }
     
 }
 
 public enum StoreError: Error {
     case failedVerification
+}
+
+extension Transaction {
+    
+    var stillValid: Bool {
+        return self.revocationDate == nil && !self.isUpgraded
+    }
+    
 }

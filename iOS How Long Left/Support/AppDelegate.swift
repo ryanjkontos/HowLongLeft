@@ -12,14 +12,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  
+    let communicationManager = CommunicationManager()
+    
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        Store.shared = Store()
+        
         HLLDefaults.general.showAllDay = true
         HLLEventSource.shared.updateEventPool()
         
+        print("ComplicationHash: \(HLLDefaults.defaults.string(forKey: "ComplicationHash") ?? "No Value")")
        
         return true
     }

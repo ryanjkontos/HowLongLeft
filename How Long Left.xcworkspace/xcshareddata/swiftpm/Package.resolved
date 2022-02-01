@@ -1,52 +1,59 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "BottomSheet",
-        "repositoryURL": "https://github.com/LucasMucGH/BottomSheet",
-        "state": {
-          "branch": null,
-          "revision": "953c9a53d05ed7b61ae50a476758a97b7291da0a",
-          "version": "2.4.0"
-        }
-      },
-      {
-        "package": "HotKey",
-        "repositoryURL": "https://github.com/soffes/HotKey",
-        "state": {
-          "branch": null,
-          "revision": "c13662730cb5bc28de4a799854bbb018a90649bf",
-          "version": "0.1.3"
-        }
-      },
-      {
-        "package": "LaunchAtLogin",
-        "repositoryURL": "https://github.com/sindresorhus/LaunchAtLogin",
-        "state": {
-          "branch": null,
-          "revision": "e8171b3e38a2816f579f58f3dac1522aa39efe41",
-          "version": "4.2.0"
-        }
-      },
-      {
-        "package": "Preferences",
-        "repositoryURL": "https://github.com/sindresorhus/Preferences",
-        "state": {
-          "branch": null,
-          "revision": "ffeaaad1def45d0625720dc1adae3789cd9c167d",
-          "version": "2.5.0"
-        }
-      },
-      {
-        "package": "Introspect",
-        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
-        "state": {
-          "branch": null,
-          "revision": "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-          "version": "0.1.3"
-        }
+  "pins" : [
+    {
+      "identity" : "bottomsheet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LucasMucGH/BottomSheet",
+      "state" : {
+        "revision" : "953c9a53d05ed7b61ae50a476758a97b7291da0a",
+        "version" : "2.4.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "communicator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/KaneCheshire/Communicator",
+      "state" : {
+        "revision" : "3d2b6c9f07902de7e87a5e9af2cff280de7981c9",
+        "version" : "4.1.0"
+      }
+    },
+    {
+      "identity" : "hotkey",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/soffes/HotKey",
+      "state" : {
+        "revision" : "c13662730cb5bc28de4a799854bbb018a90649bf",
+        "version" : "0.1.3"
+      }
+    },
+    {
+      "identity" : "launchatlogin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/LaunchAtLogin",
+      "state" : {
+        "revision" : "e8171b3e38a2816f579f58f3dac1522aa39efe41",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "preferences",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Preferences",
+      "state" : {
+        "revision" : "ffeaaad1def45d0625720dc1adae3789cd9c167d",
+        "version" : "2.5.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "state" : {
+        "revision" : "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
+        "version" : "0.1.3"
+      }
+    }
+  ],
+  "version" : 2
 }

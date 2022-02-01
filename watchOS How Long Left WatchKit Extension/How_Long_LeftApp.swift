@@ -15,6 +15,8 @@ struct How_Long_LeftApp: App {
     
     @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var delegate
     
+    let communicationManager = CommunicationManager()
+    
     let timelineGen = HLLTimelineGenerator(type: .complication)
     
     init() {
