@@ -624,7 +624,6 @@
 		BFEE67BC27451B1600810596 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE67BB27451B1600810596 /* SettingsView.swift */; };
 		BFEE67C027453D5100810596 /* HeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE67BF27453D5100810596 /* HeaderText.swift */; };
 		BFEE67C2274540B100810596 /* CountdownCardContextMenuModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE67C1274540B100810596 /* CountdownCardContextMenuModifier.swift */; };
-		BFF3B13F27526C9500490A2C /* AnimatedGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3B13E27526C9500490A2C /* AnimatedGallery.swift */; };
 		BFF718042768657700AF2DE9 /* NotificationGroupEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF718032768657700AF2DE9 /* NotificationGroupEditorView.swift */; };
 		BFF7180627686A5100AF2DE9 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF7180527686A5100AF2DE9 /* TextFieldAlert.swift */; };
 		BFF847E7231E5D1E0075E733 /* EventVisibilityButtonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF847E6231E5D1E0075E733 /* EventVisibilityButtonsManager.swift */; };
@@ -1266,7 +1265,6 @@
 		BFF05ED521E9DE4E0044F049 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFF05ED721E9DE4E0044F049 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../New Group/AppDelegate.swift"; sourceTree = "<group>"; };
 		BFF05ED821E9DE4F0044F049 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFF3B13E27526C9500490A2C /* AnimatedGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGallery.swift; sourceTree = "<group>"; };
 		BFF54CD324CFD16D00D40490 /* HLLNTriggerFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLNTriggerFetcher.swift; sourceTree = "<group>"; };
 		BFF718032768657700AF2DE9 /* NotificationGroupEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupEditorView.swift; sourceTree = "<group>"; };
 		BFF7180527686A5100AF2DE9 /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
@@ -2661,7 +2659,6 @@
 			children = (
 				BF26363D2766D06600A6EBB7 /* Notifications */,
 				BFEE67BB27451B1600810596 /* SettingsView.swift */,
-				BFF3B13E27526C9500490A2C /* AnimatedGallery.swift */,
 				BF84CDFE2750B8E000924C8E /* AppearanceSettings.swift */,
 				BFA8EE0A274DEE9E0099350D /* IconCell.swift */,
 				BFA8EE14274E49BF0099350D /* RoundedIcon.swift */,
@@ -3329,7 +3326,6 @@
 				BFFF604E273DFCED00C5EB1A /* PercentDateFetcher.swift in Sources */,
 				BFFF604F273DFCED00C5EB1A /* CalendarAccessState.swift in Sources */,
 				BF1059E0274B44B900486AE0 /* Store.swift in Sources */,
-				BFF3B13F27526C9500490A2C /* AnimatedGallery.swift in Sources */,
 				BFA8EE15274E49BF0099350D /* RoundedIcon.swift in Sources */,
 				BFFF6050273DFCED00C5EB1A /* SelectedEventManager.swift in Sources */,
 				BFFF6051273DFCED00C5EB1A /* StatusItemMode.swift in Sources */,

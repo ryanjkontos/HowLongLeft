@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LucasMucGH/BottomSheet",
       "state" : {
-        "revision" : "953c9a53d05ed7b61ae50a476758a97b7291da0a",
-        "version" : "2.4.0"
+        "revision" : "e72f137d71ba311e9e3f39b75ed4c0c2c97c8a98",
+        "version" : "2.6.0"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
       "state" : {
-        "revision" : "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-        "version" : "0.1.3"
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
       }
     }
   ],
