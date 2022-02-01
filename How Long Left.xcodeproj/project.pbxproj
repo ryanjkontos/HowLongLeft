@@ -32,6 +32,7 @@
 		BF17CCA427A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
 		BF17CCA527A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
 		BF1960F0276A12FA0058E1CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1960EF276A12FA0058E1CA /* CustomTextField.swift */; };
+		BF1BF13527A9420700D3F54C /* Communicator in Frameworks */ = {isa = PBXBuildFile; productRef = BF1BF13427A9420700D3F54C /* Communicator */; };
 		BF1C9F6727993C76003EE109 /* ComplicationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1C9F6627993C76003EE109 /* ComplicationIconView.swift */; };
 		BF1E75072444755500F04284 /* EventsPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1E75052444755500F04284 /* EventsPreferencesView.xib */; };
 		BF1E75082444755500F04284 /* EventsPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E75062444755500F04284 /* EventsPreferenceViewController.swift */; };
@@ -1343,6 +1344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4A059427A90FB10045B1AF /* Communicator in Frameworks */,
+				BF1BF13527A9420700D3F54C /* Communicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2941,6 +2943,7 @@
 			name = "watchOS How Long Left WatchKit Extension";
 			packageProductDependencies = (
 				BF4A059327A90FB10045B1AF /* Communicator */,
+				BF1BF13427A9420700D3F54C /* Communicator */,
 			);
 			productName = "watchOS How Long Left WatchKit Extension";
 			productReference = BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */;
@@ -3088,6 +3091,7 @@
 				BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				BFC6D2CF275FB27F0050CFE0 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				BF4A059027A90F9A0045B1AF /* XCRemoteSwiftPackageReference "Communicator" */,
+				BF1BF13327A9420700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */,
 			);
 			productRefGroup = BF5D29562174679500AC1EB6 /* Products */;
 			projectDirPath = "";
@@ -4793,6 +4797,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF1BF13327A9420700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KaneCheshire/Communicator";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -4844,6 +4856,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF1BF13427A9420700D3F54C /* Communicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1BF13327A9420700D3F54C /* XCRemoteSwiftPackageReference "Communicator" */;
+			productName = Communicator;
+		};
 		BF1FDFAD2744C9FF008CC754 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF1FDFAC2744C9FF008CC754 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
