@@ -118,6 +118,28 @@ class HLLDefaults {
     
     struct widget {
         
+        static var latestTimeline: HLLTimeline? {
+            
+            get {
+               
+                guard let data = defaults.data(forKey: "WidgetLatestTimeline") else { return nil }
+                
+                let decoder = JSONDecoder()
+                let decoded = try? decoder.decode(HLLTimeline.self, from: data)
+                return decoded
+                
+            }
+            
+            set {
+                
+                let encoder = JSONEncoder()
+                let encoded = try! encoder.encode(newValue)
+                
+                defaults.set(encoded, forKey: "WidgetLatestTimeline")
+            }
+            
+        }
+        
         static var theme: WidgetTheme {
             
             
@@ -268,14 +290,14 @@ class HLLDefaults {
     
     struct complication {
         
-        static var latestTimeline: HLLTimeline.CodableTimeline? {
+        static var latestTimeline: HLLTimeline? {
             
             get {
                
                 guard let data = defaults.data(forKey: "ComplicationLatestTimeline") else { return nil }
                 
                 let decoder = JSONDecoder()
-                let decoded = try? decoder.decode(HLLTimeline.CodableTimeline.self, from: data)
+                let decoded = try? decoder.decode(HLLTimeline.self, from: data)
                 return decoded
                 
             }

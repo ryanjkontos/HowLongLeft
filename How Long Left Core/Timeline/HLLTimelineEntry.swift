@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HLLTimelineEntry {
+struct HLLTimelineEntry: Codable {
     
     var showAt: Date
     var event: HLLEvent?
@@ -16,6 +16,10 @@ struct HLLTimelineEntry {
     var switchToNext = true
     
     var showInfoIfAvaliable = false
+    
+    var eventID: String? {
+        return event?.infoIdentifier
+    }
     
     var nextEvent: HLLEvent? {
         
@@ -78,17 +82,5 @@ struct HLLTimelineEntry {
         
     }
     
-    func getCodableEntry() -> CodableEntry {
-        
-        return CodableEntry(showAt: self.showAt, eventID: self.event?.infoIdentifier)
-        
-    }
-    
-    struct CodableEntry: Codable {
-        
-        var showAt: Date
-        var eventID: String?
-        
-    }
     
 }

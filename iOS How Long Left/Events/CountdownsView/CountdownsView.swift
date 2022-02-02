@@ -17,7 +17,6 @@ struct CountdownsView: View {
     @State var opacity = 0.0
     let gridItem = GridItem(.adaptive(minimum: 300, maximum: 800), spacing: 10, alignment: .leading)
    
-    
     @Binding var eventViewEvent: HLLEvent?
     
     @State var overlayEvent: HLLEvent?

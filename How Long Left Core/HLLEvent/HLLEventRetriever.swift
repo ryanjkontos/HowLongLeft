@@ -28,7 +28,7 @@ class HLLEventRetrieverPersistent: HLLEventRetriever {
             self.event = updatedEvent
         }
         
-        if self.event.isHidden {
+        if HLLHiddenEventStore.shared.hiddenEvents.contains(where: { $0.identifier == event.persistentIdentifier }) {
             return nil
         }
         

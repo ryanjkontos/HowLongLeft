@@ -17,7 +17,7 @@ struct ComplicationsSettingsView: View {
         Form {
             
             Section {
-                Toggle(isOn: $model.complicationEnabled, label: { Text("Enabled") })
+                Toggle(isOn: $model.complicationEnabled, label: { Text("Show Events") })
             }
             
             Section {

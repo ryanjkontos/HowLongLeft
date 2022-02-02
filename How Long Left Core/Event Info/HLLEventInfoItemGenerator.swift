@@ -105,24 +105,7 @@ class HLLEventInfoItemGenerator {
             if HLLDefaults.general.showNextOccurItems == false {
                 return nil
             }
-            
-            if let nextOccur = event.followingOccurence {
-            
-            var info = "\(nextOccur.startDate.userFriendlyRelativeString()), "
-            
-            if let period = nextOccur.period {
-                
-                info += "Period \(period)"
-                
-            } else {
-                
-                info += "\(nextOccur.startDate.formattedTime())"
-                
-            }
-                
-            infoString = info
-                
-            }
+
             
         case .countdown:
             

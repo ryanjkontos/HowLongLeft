@@ -13,7 +13,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     static let timelineGen = HLLTimelineGenerator(type: .complication)
     
-    static var timeline: HLLTimeline = ComplicationController.timelineGen.generateTimelineItems(fast: false, percentages: false, forState: .normal)
+    static var timeline: HLLTimeline = ComplicationController.timelineGen.generateHLLTimeline(fast: false, percentages: false, forState: .normal)
     
     static var updates = 0
     
@@ -83,7 +83,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     static func updateComplications(forced: Bool) {
         
-        let timeline = ComplicationController.timelineGen.generateTimelineItems(fast: false, percentages: false, forState: .normal)
+        let timeline = ComplicationController.timelineGen.generateHLLTimeline(fast: false, percentages: false, forState: .normal)
         
         
       
@@ -100,7 +100,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
        
         if state != .noUpdateNeeded {
             ComplicationController.timeline = timeline
-            HLLDefaults.complication.latestTimeline = timeline.getCodableTimeline()
+            HLLDefaults.complication.latestTimeline = timeline
             
             ComplicationController.updates += 1
             print("Updating complication now: \(ComplicationController.updates)")

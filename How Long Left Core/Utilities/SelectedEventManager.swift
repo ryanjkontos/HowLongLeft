@@ -54,7 +54,7 @@ class SelectedEventManager: EventPoolUpdateObserver {
             
             #if !os(watchOS)
             
-            WidgetUpdateHandler.shared?.updateWidget(force: true)
+            WidgetUpdateHandler.shared.updateWidget(force: true)
             
             #endif
             
@@ -128,23 +128,6 @@ class SelectedEventManager: EventPoolUpdateObserver {
             
         }
         
-        
-        if let refreshedEvent = SelectedEventManager.shared.selectedEvent?.getUpdatedInstance() {
-            
-            if refreshedEvent != SelectedEventManager.shared.selectedEvent {
-                
-                SelectedEventManager.shared.selectedEvent = refreshedEvent
-                
-            }
-            
-        } else {
-            
-            if SelectedEventManager.shared.selectedEvent != nil {
-                SelectedEventManager.shared.selectedEvent = nil
-            }
-            
-            
-        }
         
          
     }

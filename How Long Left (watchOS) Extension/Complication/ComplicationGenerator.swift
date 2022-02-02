@@ -17,7 +17,7 @@ class ComplicationContentsGenerator {
     func generateComplicationEntries(complication: CLKComplication) -> [CLKComplicationTimelineEntry] {
         
         var returnArray = [CLKComplicationTimelineEntry]()
-        let items = timelineGen.generateTimelineItems().entries
+        let items = timelineGen.generateHLLTimeline().entries
         ComplicationUpdateHandler.shared.didComplicationUpdate()
         
         if HLLDefaults.complication.complicationEnabled == false {

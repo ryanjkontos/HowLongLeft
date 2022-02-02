@@ -16,7 +16,7 @@ class CurrentEventRowController: NSObject, EventRow {
     @IBOutlet weak var countdownLabel: WKInterfaceLabel!
     
     var event: HLLEvent!
-    var rowCompletionStatus: EventCompletionStatus!
+    var rowCompletionStatus: HLLEvent.CompletionStatus!
     let countdownStringGenerator = CountdownStringGenerator()
     
     func setup(event: HLLEvent) {

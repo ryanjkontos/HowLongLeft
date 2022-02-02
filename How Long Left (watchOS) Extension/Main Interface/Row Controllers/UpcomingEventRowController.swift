@@ -16,7 +16,7 @@ class UpcomingEventRowController: NSObject, EventRow {
     @IBOutlet weak var infoLabel: WKInterfaceLabel!
     
     var event: HLLEvent!
-    var rowCompletionStatus: EventCompletionStatus!
+    var rowCompletionStatus: HLLEvent.CompletionStatus!
     
     func setup(event: HLLEvent) {
         

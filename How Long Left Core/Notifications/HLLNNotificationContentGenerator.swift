@@ -95,7 +95,7 @@ class HLLNNotificationContentGenerator {
                 let durationString = formatter.string(from: TimeInterval(secondsRemaining))!
                 
                     
-                let title = "\(event.truncatedTitle()) \(event.countdownStringEnd) in \(durationString)"
+                let title = "\(event.truncatedTitle()) ends in \(durationString)"
                     
                 content.title = title
                     
@@ -129,7 +129,7 @@ class HLLNNotificationContentGenerator {
                 let durationString = formatter.string(from: TimeInterval(secondsUntil))!
                                
                     
-                let title = "\(event.truncatedTitle()) \(event.countdownStringStart) in \(durationString)"
+                let title = "\(event.truncatedTitle()) starts in \(durationString)"
                     
                 content.title = title
   
@@ -194,11 +194,6 @@ class HLLNNotificationContentGenerator {
                 returnString += "starts next"
             }
             
-            if nextEvent.isMagdaleneBreak, let index = events.firstIndex(of: nextEvent), events.indices.contains(index+1) {
-                
-                locationEvent = events[index+1]
-                returnString += ", then \(locationEvent.title)"
-            }
             
             returnString += "."
             

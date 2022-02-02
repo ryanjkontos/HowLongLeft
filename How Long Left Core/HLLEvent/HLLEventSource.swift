@@ -80,7 +80,7 @@ class HLLEventSource {
                 
                 if let error = NSError {
                     
-                    print("Event pool error: \(error)")
+                    print("Cal access \(granted): \(error)")
                     
                 }
                 
@@ -268,7 +268,6 @@ class HLLEventSource {
                 
             if HLLDefaults.general.pinnedEventIdentifiers.contains(event.persistentIdentifier) {
                 
-                events[i].isPinned = true
                 events[i].isUserHideable = false
                 existingPinnedIDS.append(event.persistentIdentifier)
             }
@@ -326,7 +325,7 @@ class HLLEventSource {
         
         self.eventPool = eventPool.filter({ event in
                    
-                   if let ekID = event.EKEvent?.eventIdentifier {
+                   if let ekID = event.eventIdentifier {
                         
                         if ids.contains(ekID) { return false }
                                   
@@ -381,7 +380,7 @@ class HLLEventSource {
             
             if event.startDate.timeIntervalSince(end) < 0, event.endDate.timeIntervalSince(start) > 0 {
                 
-                if event.isHidden {
+                if HLLHiddenEventStore.shared.hiddenEvents.contains(where: { $0.identifier == event.persistentIdentifier }) {
                     
                     if !includeHidden {
                         
@@ -466,7 +465,7 @@ class HLLEventSource {
             
         for event in calendarEvents {
             
-            returnArray.append(HLLEvent(event: event))
+            returnArray.append(HLLEvent(event))
         }
         
         
@@ -486,7 +485,7 @@ class HLLEventSource {
             
             if let calEvent = eventStore.event(withIdentifier: identifier) {
                 
-                var event = HLLEvent(event: calEvent)
+                var event = HLLEvent(calEvent)
                 
                 event.isUserHideable = false
                 returnEvents.append(event)
@@ -515,7 +514,7 @@ class HLLEventSource {
     func eventStoreEvent(withIdentifier: String) -> HLLEvent? {
         
         if let event = eventStore.event(withIdentifier: withIdentifier) {
-            return HLLEvent(event: event)
+            return HLLEvent(event)
         }
         
         return nil
@@ -713,7 +712,7 @@ class HLLEventSource {
         
         for event in self.eventPool {
             
-            if event.completionStatus == .current && (!event.isHidden || includeHidden)  {
+            if event.completionStatus == .current && (!HLLHiddenEventStore.shared.isHidden(event: event) || includeHidden)  {
                 
   
                 if (includeSelected == false && event.isSelected) {
@@ -737,7 +736,6 @@ class HLLEventSource {
         var returnArray = [HLLEvent]()
         let current = getCurrentEvents(includeHidden: true)
         returnArray.append(contentsOf: current)
-        returnArray.append(contentsOf: eventPool.filter({$0.keepInTopShelf}))
         returnArray = Array(Set(returnArray)).sorted(by: { $0.countdownDate.compare($1.countdownDate) == .orderedAscending })
         
         if current.isEmpty {
@@ -983,6 +981,15 @@ class HLLEventSource {
         let end = start.addDays(7)
         
        return getArraysOfUpcomingEventsForDates(startDate: start, endDate: end, returnEmptyItems: returnEmptyItems)
+        
+    }
+    
+    func ekEvent(with id: String?) -> EKEvent? {
+        
+        if let id = id {
+            return self.eventStore.event(withIdentifier: id)
+        }
+        return nil
         
     }
     

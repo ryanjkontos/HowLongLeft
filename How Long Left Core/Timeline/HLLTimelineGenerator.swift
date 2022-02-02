@@ -13,15 +13,15 @@ class HLLTimelineGenerator {
     
     private let percentDateFetcher = PercentDateFetcher()
     
-    var type: TimelineType
+    var timelineType: TimelineType
     
     init(type: TimelineType) {
-        self.type = type
+        self.timelineType = type
     }
     
-    func generateTimelineItems(fast: Bool = false, percentages: Bool = false, forState: TimelineState) -> HLLTimeline {
+    func generateHLLTimeline(fast: Bool = false, percentages: Bool = false, forState: TimelineState = .normal) -> HLLTimeline {
         
-        var events = Array(HLLEventSource.shared.eventPool.filter({$0.isHidden == false})).filter({ $0.completionStatus != .done })
+        var events = Array(HLLEventSource.shared.eventPool.filter({HLLHiddenEventStore.shared.isHidden(event: $0) == false})).filter({ $0.completionStatus != .done })
        
         events.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
         
@@ -45,7 +45,7 @@ class HLLTimelineGenerator {
             entryDates.insert(event.startDate)
             entryDates.insert(event.endDate)
             
-            if event.completionStatus == .done || event.isHidden {
+            if event.completionStatus == .done || HLLHiddenEventStore.shared.isHidden(event: event) {
                 
                 if let index = events.firstIndex(of: event) {
                     
@@ -222,16 +222,19 @@ class HLLTimelineGenerator {
         var doSelected = false
         
             
-            if HLLDefaults.widget.showSelected {
-                doSelected = true
-            }
+        if HLLDefaults.widget.showSelected {
+            doSelected = true
+        }
             
-        
         
         if doSelected {
         
         if let selected = SelectedEventManager.shared.selectedEvent {
+            
+            print("Selected: \(selected)")
+            
             if selected.completionStatus(at: date) != .done {
+                print("Returning Selected: \(selected.title)")
                 return selected
             }
         }
@@ -278,10 +281,10 @@ class HLLTimelineGenerator {
     
     func shouldUpdate() -> TimelineValidity {
         
-        let timeline = generateTimelineItems(forState: .normal)
-        let newTimeline = timeline.getCodableTimeline()
+        let timeline = generateHLLTimeline(forState: .normal)
+        let newTimeline = timeline
         
-        guard let currentTimeline = HLLDefaults.complication.latestTimeline else {
+        guard let currentTimeline = getStoredTimeline() else {
             print("Needs reloading because no stored timeline.")
             return .needsReloading
         }
@@ -316,6 +319,17 @@ class HLLTimelineGenerator {
         
         return .noUpdateNeeded
         
+        
+    }
+    
+    func getStoredTimeline() -> HLLTimeline? {
+        
+        switch self.timelineType {
+            case .complication:
+                return HLLDefaults.complication.latestTimeline
+            case .widget:
+                return HLLDefaults.widget.latestTimeline
+        }
         
     }
     

@@ -12,7 +12,7 @@ import Foundation
 protocol EventRow {
     
     var event: HLLEvent! { get set }
-    var rowCompletionStatus: EventCompletionStatus! { get set }
+    var rowCompletionStatus: HLLEvent.CompletionStatus! { get set }
     
     func setup(event: HLLEvent)
     func updateRow()

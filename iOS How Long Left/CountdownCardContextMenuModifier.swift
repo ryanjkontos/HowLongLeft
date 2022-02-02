@@ -27,7 +27,7 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                             EventPinningManager.shared.pinEvent(event)
                         }
                         
-                        HLLEventSource.shared.updateEventPool()
+                       
                         
                     }
                     

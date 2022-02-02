@@ -17,8 +17,8 @@ class Store: ObservableObject {
     
     static var shared = Store()
     
-    private var complicationProduct: Product?
-    private var widgetProduct: Product?
+    var complicationProduct: Product?
+    var widgetProduct: Product?
     
     @Published var widgetPurchased: Bool
     @Published var complicationPurchased: Bool
@@ -209,6 +209,13 @@ class Store: ObservableObject {
             self.complicationPurchased = isPurchased
             HLLDefaults.premiumPurchases.complication = isPurchased
         }
+        
+    }
+    
+    func restore() async {
+        
+        try? await AppStore.sync()
+        await refreshPurchasedProducts()
         
     }
     

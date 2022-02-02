@@ -32,8 +32,6 @@ class EventSource: ObservableObject {
     @objc func update() {
         
         DispatchQueue.global(qos: .background).async { [weak self] in
-       
-            
         
         let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
         

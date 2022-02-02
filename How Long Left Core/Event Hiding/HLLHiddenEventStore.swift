@@ -45,6 +45,10 @@ class HLLHiddenEventStore {
         
     }
     
+    func isHidden(event: HLLEvent) -> Bool {
+        self.hiddenEvents.contains(where: { $0.identifier == event.persistentIdentifier })
+    }
+    
     func hideEvent(_ event: HLLEvent) {
         
         DispatchQueue.main.async {

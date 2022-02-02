@@ -13,7 +13,7 @@ extension EKEvent {
     
     func asHLLEvent() -> HLLEvent {
         
-        return HLLEvent(event: self)
+        return HLLEvent(self)
         
     }
     

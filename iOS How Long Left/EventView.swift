@@ -20,9 +20,6 @@ struct EventView: View {
     @State var selectionStateObject: SelectionStateObject
     
     
-    
-    
-    
     var body: some View {
         
         NavigationView {
@@ -82,7 +79,7 @@ struct EventView: View {
                     Text("Options")
                 })
                 
-                if selectionStateObject.event.EKEvent?.calendar.isImmutable == false {
+                if selectionStateObject.event.calendar?.isImmutable == false {
                 
                 Section {
                     Button(action: {showEditView.toggle()}, label: { Text("Edit") })
@@ -214,7 +211,7 @@ struct EventEditView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<EventEditView>) -> EKEventEditViewController {
         let controller = EKEventEditViewController()
-        controller.event = event.EKEvent
+        controller.event = event.ekEvent
         controller.editViewDelegate = context.coordinator
         controller.navigationBar.tintColor = .orange
         controller.view.tintColor = .orange

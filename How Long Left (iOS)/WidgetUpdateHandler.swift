@@ -13,10 +13,10 @@ import WidgetKit
 
 class WidgetUpdateHandler: EventPoolUpdateObserver {
     
-    let difHander = HLLTimelineDifHandler()
+    
     let widgetStateFetcher = WidgetStateFetcher()
     
-    static var shared: WidgetUpdateHandler!
+    static var shared: WidgetUpdateHandler = WidgetUpdateHandler()
     
     let timelineGen = HLLTimelineGenerator(type: .widget)
     
@@ -31,25 +31,20 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
     func updateWidget(force: Bool = false) {
 
         print("Checking widget update!")
-        
-        if #available(OSX 11, *) {
-        
-        
-        
-        let timeline = timelineGen.generateTimelineItems(fast: false, forState: widgetStateFetcher.getWidgetState())
-        
-        if difHander.shouldUpdateTo(newtimeline: timeline) || force == true {
+   
+            if timelineGen.shouldUpdate() == .needsReloading || force == true {
         
             print("Reloading Widgets...")
+                
+                HLLDefaults.widget.latestTimeline = timelineGen.generateHLLTimeline()
+                
             WidgetCenter.shared.reloadAllTimelines()
             
         } else {
             print("Not updating widget")
         }
             
-        } else {
-            print("Not upcoming widget bc os version")
-        }
+        
         
     }
     

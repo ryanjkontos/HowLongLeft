@@ -16,46 +16,87 @@ struct SettingsView: View {
         
         Form {
         
-        NavigationLink(destination: { CountdownSettingsView() }, label: {
+
             
-            Text("Countdowns")
-            
-        })
-            
-            NavigationLink(destination: { EventsSettingsView() }, label: {
+            NavigationLink(destination: { CountdownSettingsView() }, label: {
                 
-                Text("Events")
+                
+                getListLabel(rowName: "Countdowns", background: .blue, image: "hourglass", size: 13)
+                
                 
             })
+            
             
             NavigationLink(destination: { EnabledCalendarsView()
                     .environmentObject(EnabledCalendarsManager())
             }, label: {
                 
-                Text("Calendars")
+                
+                getListLabel(rowName: "Calendars", background: .red, image: "calendar", size: 12)
                 
             })
             
-            NavigationLink(destination: { ComplicationPurchaseView()
+     
+ 
+            
+            NavigationLink(destination: { EventsSettingsView() }, label: {
+                
+                getListLabel(rowName: "Events", background: .orange, image: "calendar.day.timeline.trailing", size: 10.5)
+                
+            })
+                
+
+
+            
+            NavigationLink(destination: { ComplicationParentView()
                     .environmentObject(store)
 
             }, label: {
                 
-                Text("Complication")
+                getListLabel(rowName: "Complication", background: .green, image: "watchface.applewatch.case", size: 13)
                 
             })
+                
+      
             
-            NavigationLink(destination: { LoggerView()
+            Section {
+                
+                NavigationLink(destination: { LoggerView()
 
-            }, label: {
+                }, label: {
+                    
+                    getListLabel(rowName: "Debug Log", background: .purple, image: "ant.fill", size: 11)
+                    
+                })
                 
-                Text("Debug Log")
-                
-            })
+            }
+            
+            
             
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Settings")
+        
+    }
+    
+    func getListLabel(rowName: String, background: Color, image: String, size: CGFloat) -> some View {
+        
+        HStack(spacing: 6) {
+           
+            Circle()
+                .frame(width: 20)
+                .foregroundColor(background)
+                .overlay {
+                    Image(systemName: image)
+                        .font(.system(size: size))
+                
+                        
+                }
+            
+            Text(rowName)
+            Spacer()
+            
+        }
         
     }
 }
@@ -63,5 +104,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(Store())
     }
 }

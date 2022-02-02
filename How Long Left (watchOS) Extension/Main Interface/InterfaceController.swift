@@ -82,7 +82,7 @@ class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, Defau
         print("WDB: Updating table")
         var fetchedEvents = HLLEventSource.shared.getTimeline(includeUpcoming: HLLDefaults.watch.showUpcoming, chronological: !HLLDefaults.watch.showCurrentFirst)
 
-        moreUpcomingButton.setHidden(fetchedEvents.filter({$0.completionStatus == EventCompletionStatus.Upcoming}).isEmpty)
+        moreUpcomingButton.setHidden(fetchedEvents.filter({$0.completionStatus == HLLEvent.CompletionStatus.Upcoming}).isEmpty)
         
              if fetchedEvents.isEmpty == false {
 

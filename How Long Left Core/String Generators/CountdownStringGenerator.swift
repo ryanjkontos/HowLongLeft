@@ -220,7 +220,7 @@ class CountdownStringGenerator {
         
         if HLLDefaults.statusItem.showTitle == true {
             
-            title = event.titleForStatusItem
+            title = titleForStatusItem(event: event)
             
             if let safeTitle = title {
                 returnString = "\(safeTitle): \(returnString)"
@@ -257,6 +257,26 @@ class CountdownStringGenerator {
         
         return returnString
         
+    }
+    
+    func titleForStatusItem(event: HLLEvent) -> String? {
+    
+            var returnValue: String?
+                
+            if HLLDefaults.statusItem.limitStatusItemTitle {
+                let limit = HLLDefaults.statusItem.statusItemTitleLimit
+                                   
+                if limit > 4 {
+                    returnValue = event.title.truncated(limit: limit)
+                }
+                    
+            } else {
+                returnValue = event.title
+            }
+                
+            return returnValue
+                
+    
     }
     
     enum EventDate {

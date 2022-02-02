@@ -61,47 +61,54 @@ struct ComplicationPurchaseView: View {
             
             Spacer()
             
-            if store.complicationPurchased == false {
+            if true {
             
-            VStack(spacing: 6.5) {
-                
-                Button(action: {
+                VStack(spacing: 20) {
+                    VStack(spacing: 6.5) {
                     
-                    Task {
+                    Button(action: {
                         
-                        await store.purchase(productFor: .complication)
+                        Task {
+                            
+                            await store.purchase(productFor: .complication)
+                            
+                        }
                         
+                        
+                    }, label: {
+                        
+                        Text("Purchase – $2.99")
+                            .font(.headline)
+                            .frame(maxWidth: 300)
+                        
+                    })
+                    .tint(.orange)
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    
+                    .frame(height: 49, alignment: .center)
+                    
+                        Button(action: { restore() }, label: {
+                        
+                        Text("Not Now")
+                            .font(.headline)
+                            .frame(maxWidth: 300)
+                        
+                    })
+                    .tint(.secondary)
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    
+                    .frame(height: 49, alignment: .center)
+                    
+                    
+                    
                     }
                     
+                    Button(action: { restore() }, label: { Text("Restore...") })
+                        .foregroundColor(.orange)
                     
-                }, label: {
-                    
-                    Text("Purchase – $2.99")
-                        .font(.headline)
-                        .frame(maxWidth: 300)
-                    
-                })
-                .tint(.orange)
-                .buttonStyle(.bordered)
-                .controlSize(.large)
-                
-                .frame(height: 49, alignment: .center)
-                
-                Button(action: { }, label: {
-                    
-                    Text("Not Now")
-                        .font(.headline)
-                        .frame(maxWidth: 300)
-                    
-                })
-                .tint(.secondary)
-                .buttonStyle(.bordered)
-                .controlSize(.large)
-                
-                .frame(height: 49, alignment: .center)
-                
-                
-            }
+                }
             
             } else {
                 
@@ -133,6 +140,17 @@ struct ComplicationPurchaseView: View {
         
     }
     
+    
+    func restore() {
+        
+        Task {
+            
+            await store.restore()
+            
+            
+        }
+        
+    }
  
     
 }

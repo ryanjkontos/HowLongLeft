@@ -42,7 +42,7 @@ class FollowingOccurenceStore {
                 
                 let difFromEvent = innerEvent.endDate.timeIntervalSince(outerEvent.startDate)
                 
-                if innerEvent.originalTitle == outerEvent.originalTitle, returnDict.keys.contains(innerEvent.persistentIdentifier) == false, dif < 0, innerEvent.startDate != outerEvent.startDate, innerEvent.endDate != outerEvent.endDate, difFromEvent < 0, outerEvent.completionStatus == .upcoming {
+                if innerEvent.title == outerEvent.title, returnDict.keys.contains(innerEvent.persistentIdentifier) == false, dif < 0, innerEvent.startDate != outerEvent.startDate, innerEvent.endDate != outerEvent.endDate, difFromEvent < 0, outerEvent.completionStatus == .upcoming {
                         returnDict[innerEvent.persistentIdentifier] = outerEvent
 
                 }

@@ -83,7 +83,7 @@ struct Provider: TimelineProvider {
         
         var state = TimelineState.normal
         
-        let timeline = gen.generateTimelineItems(fast: fast, forState: stateFetcher.getWidgetState())
+        let timeline = gen.generateHLLTimeline(fast: fast, forState: stateFetcher.getWidgetState())
         
         
         if isForPreview == false {

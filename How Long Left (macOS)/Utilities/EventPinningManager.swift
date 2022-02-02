@@ -24,7 +24,7 @@ class EventPinningManager {
             
             if let event = HLLEventSource.shared.eventStore.event(withIdentifier: identifier) {
                     
-                let hllEvent = HLLEvent(event: event)
+                let hllEvent = HLLEvent(event)
                 self.pinEvent(hllEvent)
                 
                
@@ -84,9 +84,7 @@ class EventPinningManager {
             HLLEventSource.shared.eventPool.append(event)
             
         }
-                       
-           
-        event.isPinned = true
+
         event.isUserHideable = false
             //SelectedEventManager.shared.selectedEvent = event
                        
@@ -108,8 +106,11 @@ class EventPinningManager {
             SelectedEventManager.shared.selectedEvent = nil
         }
         
+        print("Count at start: \(HLLDefaults.general.pinnedEventIdentifiers.count)")
+        
         HLLDefaults.general.pinnedEventIdentifiers.removeAll { $0 == event.persistentIdentifier }
                      
+        print("Count at end: \(HLLDefaults.general.pinnedEventIdentifiers.count)")
         
         HLLEventSource.shared.asyncUpdateEventPool()
         

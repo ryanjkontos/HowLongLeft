@@ -15,7 +15,7 @@ class PercentDateFetcher {
         
         var returnDates = Set<Date>()
         
-        let percentInterval = event.dateInterval.duration/100
+        let percentInterval = event.duration/100
         
         
         

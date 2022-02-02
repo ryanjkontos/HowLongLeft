@@ -62,11 +62,7 @@ struct EventsListView: View {
             dataSource.updates = false
             disappearDate = Date()
         }
-        .sheet(isPresented: $showComplicationPopover, onDismiss: nil, content: {
-            
-            ComplicationSheet(show: $showComplicationPopover)
-            
-        })
+
        
         
         
@@ -93,7 +89,7 @@ struct EventsListView: View {
                                 .drawingGroup()
                             })
                             
-                                
+                         
                                 
                                 .id("\(event.id) \(index == 0 && HLLDefaults.watch.largeCell)")
                                 .listRowBackground((index == 0 && HLLDefaults.watch.largeCell) ? Color.clear : nil)
@@ -131,6 +127,17 @@ struct EventsListView: View {
                                    
                                     
                                 })
+                            
+                            
+                        /*    if index == 0 {
+                            
+                            Text("4 Wally's Walk")
+                                .font(.system(size: 13))
+                                .foregroundColor(.secondary)
+                            
+                            } */
+                                
+                            
                         }
                         
                     } else {

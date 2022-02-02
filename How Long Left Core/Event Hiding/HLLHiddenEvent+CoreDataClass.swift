@@ -17,13 +17,13 @@ public class HLLStoredEvent: NSManagedObject {
         
         self.title = event.title
         
-        if let ekID = event.EKEvent?.eventIdentifier {
+        if let ekID = event.eventIdentifier {
            self.identifier = ekID
         } else {
             self.identifier = event.persistentIdentifier
         }
         
-        self.calendarIdentifier = event.EKEvent?.calendar?.calendarIdentifier
+        self.calendarIdentifier = event.calendarID
         self.endDate = event.endDate
         
     }
