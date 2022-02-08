@@ -76,6 +76,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Task {
             
+            await Store.shared.refreshPurchasedProducts()
+            
             WidgetUpdateHandler.shared.updateWidget()
             
         }

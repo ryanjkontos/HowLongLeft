@@ -12,7 +12,7 @@ import WidgetKit
 
 struct CountdownWidgetEventView: View {
     
-    var event: HLLEvent
+    var event: EventUIObject
     var displayDate: Date
     var barFraction: Double = 0.00
     
@@ -33,66 +33,48 @@ struct CountdownWidgetEventView: View {
     
     var body: some View {
         
-
-        VStack(alignment: .leading, spacing: spacing) {
-                    
-            Spacer()
-            
-                    VStack(alignment: .leading, spacing: 0) {
-                    
-                        HStack(spacing: 1) {
+        VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 1) {
+                    HStack(spacing: 1) {
                         
-                if event.isSelected, HLLDefaults.widget.showSelected {
+               
                             
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 14, weight: .semibold, design: .default))
-                                
-                }
-                            
-                    
-                Text(event.title)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-                    .foregroundColor(Color(.textColor))
-                    .font(Font.system(size: 20, weight: .semibold, design: .default))
+                        Text(event.title)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .font(Font.system(size: 23, weight: .semibold, design: .default))
                     
                         }
-                    .minimumScaleFactor(0.8)
-                Text("\(countdownText) in")
-                    .foregroundColor(Color(.systemGray))
-                    .font(Font.system(size: 15, weight: .semibold, design: .default))
+                        .minimumScaleFactor(0.8)
                     
-                    
-                    
+                        Text("\(event.countdownTypeString(at: displayDate)) in")
+                        .foregroundColor(Color(.systemGray))
+                        .font(Font.system(size: 16, weight: .medium, design: .default))
                 }
-            
-     
-                
-            VStack(spacing: 9) {
-                
-                Text(event.countdownDate(at: displayDate), style: .timer)
-                    .font(Font.system(size: 28, weight: .bold, design: .default).monospacedDigit())
-                        .foregroundColor(tintCol)
-                        //.shadow(radius: 0.1)
-                        .minimumScaleFactor(0.9)
-                        .lineLimit(1)
-                        .brightness(-0.05)
-                        
-                 
-                    
-                if showBar, HLLDefaults.widget.showProgressBar {
-                
-                    ProgressBar(percent: Double(percent), color: tintCol)
-                        .frame(height:9)
-                        //.shadow(radius: 0.1)
-                    
-                }
-               
-            }
             
             Spacer()
+     
+                VStack(alignment: .leading, spacing: 6) {
+                    
+                    Text(event.countdownDate(at: displayDate), style: .timer)
+                        .font(Font.system(size: 27, weight: .bold, design: .default).monospacedDigit())
+                            .foregroundColor(tintCol)
+                            .minimumScaleFactor(0.9)
+                            .lineLimit(1)
+                            .brightness(-0.05)
+                            
+                    if showBar, HLLDefaults.widget.showProgressBar {
+                        ProgressBar(percent: Double(percent), color: tintCol)
+                        
+                            .frame(height:9)
+                    }
+                   
+                }
+            
+           
 
         }.colorScheme(colorScheme)
+            .padding(.vertical, 16)
         
         
             
@@ -130,10 +112,10 @@ struct CountdownWidgetEventView: View {
         
         get {
             
-            let value = event.calc.calculateIntPercentDone(of: event, at: displayDate)
+            let value = PercentageCalculator().calculateIntPercentDone(of: event, at: displayDate)
   
             
-            print("Got percent value: \(value) for display date \(displayDate.formattedTime())")
+
             
             return value
             
@@ -192,27 +174,14 @@ struct CountdownWidgetEventView: View {
         return value
     }
     
-    var countdownText: String {
-        
-        get {
-            
-            let status = event.completionStatus(at: displayDate)
-            
-            if status == .upcoming {
-                return event.countdownStringStart
-            }
-            
-            return event.countdownStringEnd
-        }
-        
-    }
+
     
     
 }
 
 struct CountdownWidgetEventView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownWidgetEventView(event: .previewEvent(), displayDate: Date())
+        CountdownWidgetEventView(event: PreviewEvent.inProgressPreviewEvent(), displayDate: Date())
             .padding(.horizontal, 20)
             .modifier(HLLWidgetBackground())
             .previewContext(WidgetPreviewContext(family: .systemSmall))

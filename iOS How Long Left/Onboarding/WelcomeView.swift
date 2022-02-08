@@ -28,7 +28,7 @@ struct WelcomeView: View {
                 
                     Spacer()
                   
-                    NavigationLink(destination: { ComplicationPurchaseView().navigationBarHidden(true).environmentObject(store) }, label: {
+                    NavigationLink(destination: { ExtensionPurchaseView(type: .widget, presentSheet: .constant(true)).navigationBarHidden(true).environmentObject(store) }, label: {
                         
                         Text("Next")
                             .font(.headline)

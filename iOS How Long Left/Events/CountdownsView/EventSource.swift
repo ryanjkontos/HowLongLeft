@@ -30,8 +30,7 @@ class EventSource: ObservableObject {
     }
     
     @objc func update() {
-        
-        DispatchQueue.global(qos: .background).async { [weak self] in
+
         
         let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
         
@@ -86,25 +85,13 @@ class EventSource: ObservableObject {
             
         }
             
+            self.isEmpty = newArray.compactMap({ $0.events }).isEmpty
+            self.eventSections = newArray
+          
+        }
+        
+ 
      
-            if self?.eventSections != newArray {
-            
-            DispatchQueue.main.async {
-            
-          //  print("ES Update")
-                self?.isEmpty = newArray.isEmpty
-                self?.eventSections = newArray
-                
-            }
-        }
-        
-            
-            
-            
-        }
-        
-    }
-
     
 }
 

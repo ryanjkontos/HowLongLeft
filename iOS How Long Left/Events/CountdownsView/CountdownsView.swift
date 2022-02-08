@@ -30,7 +30,7 @@ struct CountdownsView: View {
                         Section(content: {
                             ForEach(section.events) { event in
                                 
-                              Button(action: { selectEvent(event: event) }, label: {
+                                NavigationLink(destination: { EventView(eventViewEvent: .constant(event), selectionStateObject: SelectionStateObject(event: event)) }, label: {
                                     
                                    CountdownCard(event: event)
                                       

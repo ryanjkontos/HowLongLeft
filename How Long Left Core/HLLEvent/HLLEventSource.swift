@@ -60,6 +60,8 @@ class HLLEventSource {
     
     init() {
         
+        HLLDefaults.general.showAllDay = false
+        
         print("Init es")
         
         eventPoolUpdateTimer = Timer(timeInterval: 600, target: self, selector: #selector(asyncUpdateEventPool), userInfo: nil, repeats: true)
@@ -355,7 +357,7 @@ class HLLEventSource {
     func getCalendars() -> [EKCalendar] {
   
         let cals = eventStore.calendars(for: .event)
-        print("\(cals) fetched")
+        //print("\(cals) fetched")
         return cals
     }
     

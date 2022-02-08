@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HLLTimelineEntry: Codable {
+struct HLLTimelineEntry: Codable, CustomDebugStringConvertible {
     
     var showAt: Date
     var event: HLLEvent?
@@ -79,6 +79,12 @@ struct HLLTimelineEntry: Codable {
             
         }
         
+        
+    }
+    
+    var debugDescription: String {
+        
+        return "HLLTimelineEntry \(showAt.formattedDate()), \(showAt.formattedTime()): \(event?.title ?? "No Event")"
         
     }
     

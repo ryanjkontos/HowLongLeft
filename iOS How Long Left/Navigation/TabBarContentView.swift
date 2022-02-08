@@ -34,7 +34,11 @@ struct TabBarContentView: View {
                     
                 })
             
-            SettingsView()
+            NavigationView {
+                SettingsView()
+                    .navigationTitle("Settings")
+            }
+                
                 .tabItem({
                     
                     Image(systemName: HLLAppTab.settings.imageName())

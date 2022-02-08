@@ -28,17 +28,21 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
         
     }
     
-    func updateWidget(force: Bool = false) {
+    func updateWidget(force: Bool = false, background: Bool = false) {
 
+        
         print("Checking widget update!")
    
             if timelineGen.shouldUpdate() == .needsReloading || force == true {
         
             print("Reloading Widgets...")
                 
-                HLLDefaults.widget.latestTimeline = timelineGen.generateHLLTimeline()
+                if background {
+                    let count = HLLDefaults.defaults.integer(forKey: "BGCausedWidgetUpdateCount")+1
+                    HLLDefaults.defaults.set(count, forKey: "BGCausedWidgetUpdateCount")
+                }
                 
-            WidgetCenter.shared.reloadAllTimelines()
+                WidgetCenter.shared.reloadAllTimelines()
             
         } else {
             print("Not updating widget")

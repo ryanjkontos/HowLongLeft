@@ -25,7 +25,7 @@ struct CountdownsParentView: View {
                 VStack(spacing: 5) {
                 
                 Text("No Countdowns")
-                    .foregroundColor(.secondary)
+                   .foregroundColor(.secondary)
                     
                 }
             } else {

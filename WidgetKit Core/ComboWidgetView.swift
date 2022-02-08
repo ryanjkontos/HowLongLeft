@@ -12,54 +12,43 @@ import WidgetKit
 
 struct ComboWidgetView: View {
     
-    var entry: HLLWidgetEntry
-    
+    var entry: HLLWidgetTimelineEntry
     
     var body: some View {
-        
-        getView()
-        
-    }
-    
-    func getView() -> AnyView {
         
         switch entry.state {
         
         case .normal:
             
-            return AnyView(GeometryReader { proxy in
+            GeometryReader { proxy in
                 
                 HStack(alignment: .center, spacing: 20) {
 
                     CountdownWidgetParentView(entry: entry)
-                    //.frame(width: proxy.size.width/2)
-                    //.background(Color.green)
-                        
-                    if !(entry.events.isEmpty && entry.event == nil) {
                     
-                        UpcomingListView(events: entry.events, showAt: entry.date)
-                   // .frame(width: proxy.size.width/2)
-                    //.background(Color.blue)
                     
-                        
-                    }
+                        UpcomingListView(events: entry.underlyingEntry.nextEvents, showAt: entry.date)
+               
+                 
             }
-                .frame(width: proxy.size.width, height: proxy.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .leading)
                 
             
                 
             }
-            .padding(.horizontal, 20))
+            .padding(.horizontal, 20)
             
         case .noCalendarAccess:
-            return AnyView(WidgetDisabledView(reason: .noCalAccess))
+           WidgetDisabledView(reason: .noCalAccess)
         case .notPurchased:
-            return AnyView(WidgetDisabledView(reason: .notPurchased))
+            WidgetDisabledView(reason: .notPurchased)
         case .notMigrated:
-            return AnyView(WidgetDisabledView(reason: .notMigrated))
+            WidgetDisabledView(reason: .notMigrated)
         }
         
     }
+    
+
 
     
 }

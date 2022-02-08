@@ -10,7 +10,7 @@ import Foundation
 import EventKit
 import UIKit
 
-class HLLEvent: Equatable, Hashable, Codable, Identifiable {
+class HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var title: String
     
@@ -36,7 +36,7 @@ class HLLEvent: Equatable, Hashable, Codable, Identifiable {
     
     var ekEvent: EKEvent? { HLLEventSource.shared.ekEvent(with: eventIdentifier) }
     
-    var color: UIColor { UIColor(cgColor: calendar?.cgColor ?? UIColor.orange.cgColor) }
+    var color: UIColor { UIColor(cgColor: calendar?.cgColor ?? UIColor.HLLOrange.cgColor) }
     
     var countdownDate: Date { countdownDate() }
     
@@ -133,4 +133,87 @@ class HLLEvent: Equatable, Hashable, Codable, Identifiable {
         case done
     }
 
+}
+
+protocol EventUIObject {
+    
+    var title: String { get }
+    
+    var startDate: Date { get }
+    
+    var endDate: Date { get }
+    
+    var color: UIColor { get }
+    
+    var id: String { get }
+    
+    var completionStatus: HLLEvent.CompletionStatus { get }
+    
+    func completionStatus(at date: Date) -> HLLEvent.CompletionStatus
+    
+    var countdownTypeString: String { get }
+    
+    var countdownDate: Date { get }
+    
+    func countdownDate(at: Date) -> Date
+    
+    func countdownTypeString(at date: Date) -> String
+    
+}
+
+class PreviewEvent: EventUIObject {
+    
+    internal init(title: String, startDate: Date, endDate: Date, color: UIColor, completionStatus: HLLEvent.CompletionStatus) {
+        self.title = title
+        self.startDate = startDate
+        self.endDate = endDate
+        self.color = color
+        self.completionStatus = completionStatus
+        self.id = UUID().uuidString
+    }
+    
+    
+    var title: String
+    
+    var startDate: Date
+    
+    var endDate: Date
+    
+    var color: UIColor
+    
+    var id: String
+    
+    var completionStatus: HLLEvent.CompletionStatus
+    
+    var countdownTypeString: String { countdownTypeString() }
+    
+    var countdownDate: Date { countdownDate() }
+    
+    func countdownDate(at: Date = Date()) -> Date { self.completionStatus() == HLLEvent.CompletionStatus.upcoming ? startDate : endDate }
+    
+    func countdownTypeString(at date: Date = Date()) -> String {
+        completionStatus(at: date) == .upcoming ? "starts" : "ends"
+    }
+    
+    func completionStatus(at date: Date = Date()) -> HLLEvent.CompletionStatus {
+        return completionStatus
+    }
+    
+    func completionFraction(at date: Date = Date()) -> Double {
+        return date.timeIntervalSince(startDate)/endDate.timeIntervalSince(startDate)
+    }
+    
+    static func inProgressPreviewEvent(title: String = "Event", minsStartedAgo: Int = 10, minsEndingIn: Int = 25, color: UIColor = .orange) -> PreviewEvent {
+        
+        return PreviewEvent(title: title, startDate: (Date() - TimeInterval(minsStartedAgo*60)), endDate: Date().addingTimeInterval(TimeInterval(minsEndingIn*60)), color: color, completionStatus: .current)
+        
+    }
+    
+    static func upcomingPreviewEvent(title: String = "Event", minsStartingIn: Int = 25, color: UIColor = .orange) -> PreviewEvent {
+        
+        return PreviewEvent(title: title, startDate: Date().addingTimeInterval(TimeInterval(minsStartingIn*60)), endDate: Date.distantFuture, color: color, completionStatus: .upcoming)
+        
+    }
+    
+    
 }

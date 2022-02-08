@@ -18,7 +18,7 @@ class DummyEventGenerator {
     
     init() {
         
-      
+      return
         
         var start = Date()
         

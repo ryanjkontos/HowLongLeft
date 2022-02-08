@@ -21,8 +21,7 @@ struct EventView: View {
     
     
     var body: some View {
-        
-        NavigationView {
+         
             GeometryReader { proxy in
             List {
                 
@@ -117,7 +116,7 @@ struct EventView: View {
                 
             }
 
-        }
+        
     }
     
   

@@ -13,7 +13,7 @@ import os
 
 struct UpcomingListView: View {
     
-    var events: [HLLEvent]
+    var events: [EventUIObject]
     var showAt: Date
   
     @Environment(\.colorScheme) var systemColorScheme: ColorScheme
@@ -31,12 +31,12 @@ struct UpcomingListView: View {
         return .light
     }
     
-    var limitedEvents: [HLLEvent] {
+    var limitedEvents: [EventUIObject] {
         
         get {
             
             
-            return Array(events.prefix(3))
+            return Array(events.filter({ $0.completionStatus(at: showAt) == .upcoming }).prefix(3))
             
         }
         
@@ -60,7 +60,7 @@ struct UpcomingListView: View {
             
                     
                     
-            ForEach(limitedEvents, id: \.self) { value in
+                    ForEach(limitedEvents, id: \.id) { value in
                 EventListItem(event: value, showAt: showAt)
                 
           
@@ -113,7 +113,7 @@ struct EventListItem: View {
         return .light
     }
     
-    var event: HLLEvent
+    var event: EventUIObject
     var showAt: Date
     
     let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "network")
@@ -138,7 +138,7 @@ struct EventListItem: View {
                 Text("\(event.title)")
                     .lineLimit(1)
                     .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(Color(.textColor))
+                    //.foregroundColor(Color(.textColor))
                   
                 VStack(alignment: .leading, spacing: 0) {
                     

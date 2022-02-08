@@ -38,8 +38,8 @@ class HLLTimelineGenerator {
             
         for event in events {
           
-            if percentages {
-                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 6))
+            if timelineType == .widget {
+                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 3))
             }
                 
             entryDates.insert(event.startDate)
@@ -220,25 +220,18 @@ class HLLTimelineGenerator {
     func getNextEventToStartOrEnd(at date: Date, from events: [HLLEvent]) -> HLLEvent? {
         
         var doSelected = false
-        
+        if HLLDefaults.widget.showSelected { doSelected = true }
             
-        if HLLDefaults.widget.showSelected {
-            doSelected = true
-        }
-            
-        
         if doSelected {
-        
-        if let selected = SelectedEventManager.shared.selectedEvent {
-            
-            print("Selected: \(selected)")
-            
-            if selected.completionStatus(at: date) != .done {
-                print("Returning Selected: \(selected.title)")
-                return selected
+            if let selected = SelectedEventManager.shared.selectedEvent {
+                
+                print("Selected: \(selected)")
+                
+                if selected.completionStatus(at: date) != .done {
+                    print("Returning Selected: \(selected.title)")
+                    return selected
+                }
             }
-        }
-            
         }
         
         var currentEvents = [HLLEvent]()
@@ -262,22 +255,14 @@ class HLLTimelineGenerator {
     func getNextEventsToStart(after date: Date, from events: [HLLEvent]) -> [HLLEvent] {
         
         var upcomingEvents = [HLLEvent]()
-        
         for event in events {
-            
             if event.startDate.timeIntervalSince(date) > 0, event.startDate != date {
-                
                 upcomingEvents.append(event)
-                
             }
         }
-        
         return upcomingEvents
         
-        
     }
-    
-
     
     func shouldUpdate() -> TimelineValidity {
         
@@ -334,11 +319,9 @@ class HLLTimelineGenerator {
     }
     
     enum TimelineValidity {
-        
         case noUpdateNeeded
         case needsReloading
         case needsExtending
-        
     }
     
 }

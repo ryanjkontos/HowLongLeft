@@ -46,7 +46,7 @@ class PercentageCalculator {
         
     }
     
-    func calculateIntPercentDone(of event: HLLEvent, at date: Date = CurrentDateFetcher.currentDate) -> Int {
+    func calculateIntPercentDone(of event: EventUIObject, at date: Date = CurrentDateFetcher.currentDate) -> Int {
         
         let secondsElapsed = date.timeIntervalSince(event.startDate)
         let totalSeconds = event.endDate.timeIntervalSince(event.startDate)

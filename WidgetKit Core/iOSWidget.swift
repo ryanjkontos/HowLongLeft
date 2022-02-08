@@ -11,148 +11,79 @@ import SwiftUI
 import Intents
 
 
-struct Provider: TimelineProvider {
+struct Provider: IntentTimelineProvider {
+
     
-    typealias Entry = HLLWidgetEntry
+    typealias Entry = HLLWidgetTimelineEntry
+    typealias Intent = ConfigurationIntent
     
-    let stateFetcher = WidgetStateFetcher()
-    let difHandler = HLLTimelineDifHandler()
+    let generator = HLLTimelineGenerator(type: .widget)
+    var timeline: HLLTimeline
     
     init() {
+        
+        while HLLEventSource.shared.access != .Granted { print("Waiting for access ") }
+        
         
         WidgetUpdateHandler.shared = WidgetUpdateHandler()
         ProStatusManager.shared = ProStatusManager()
         HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
         
+        timeline = generator.generateHLLTimeline()
+        
         
     }
     
-    func placeholder(in context: Context) -> HLLWidgetEntry {
-        HLLWidgetEntry(date: Date(), event: .previewEvent(), events: [HLLEvent](), family: context.family, state: .normal)
+    func placeholder(in context: Context) -> Entry {
+        return Entry(configuration: Intent(), underlyingEntry: HLLTimelineEntry(date: Date(), event: .previewEvent()))
     }
 
     
-    func getSnapshot(in context: Context, completion: @escaping (HLLWidgetEntry) -> ()) {
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Entry) -> ()) {
         
-        if context.isPreview {
-            
-            let entries = getEntries(context: context, fast: true, isForTimeline: false, isForPreview: true)
-            
-            if entries.first?.event != nil {
-                completion(entries.first!)
-            } else {
-                let entry = HLLWidgetEntry(date: Date(), event: .previewEvent(), events: [HLLEvent](), family: context.family, state: .normal)
-                completion(entry)
-                
-            }
-            
-            
-        } else {
-            
-            let entry = getEntries(context: context, fast: true, isForTimeline: false).first!
-            completion(entry)
-            
-        }
-        
-        
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        
-        ProStatusManager.shared.updateProStatus()
-        HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
+        let newTimeline = generator.generateHLLTimeline()
+        let entry = Entry(configuration: configuration, underlyingEntry: newTimeline.entries.first!)
+        completion(entry)
         
-        let entries = getEntries(context: context, fast: false, isForTimeline: true)
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        print("Reloading with entries: \(timeline.entries.count)")
-        completion(timeline)
         
     }
-    
-    
-    func getEntries(context: Context, fast: Bool, isForTimeline: Bool, isForPreview: Bool = false) -> [HLLWidgetEntry] {
-        
-        var entries: [HLLWidgetEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
+        var entries = [Entry]()
+        HLLEventSource.shared.updateEventPool()
+        let newTimeline = generator.generateHLLTimeline()
+        
+        HLLDefaults.widget.latestTimeline = newTimeline
+        
+        for entry in newTimeline.entries {
+            
+            entries.append(Entry(configuration: configuration, underlyingEntry: entry))
+            
+        }
 
-        
-        let gen = HLLTimelineGenerator(type: .widget)
-        
-        var state = TimelineState.normal
-        
-        let timeline = gen.generateHLLTimeline(fast: fast, forState: stateFetcher.getWidgetState())
-        
-        
-        if isForPreview == false {
-        
-            state = timeline.state
-        }
-        
-        if isForTimeline {
-            
-            difHandler.exportTimelineToDefaults(timeline: timeline, for: .widget)
-            
-        }
-        
-        let timelineItems = timeline.entries
-        
-        
-        
-        for item in timelineItems {
-            
-            var showEvent: HLLEvent?
-            if let event = item.event {
-                showEvent = event
-            } else {
-                showEvent = item.nextEvent
-            }
-            
-            let entry = HLLWidgetEntry(date: item.showAt, event: showEvent, events: item.nextEvents, family: context.family, state: state)
-            entries.append(entry)
-        }
-        
-    
-        
-        return entries
-        
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+         completion(timeline)
         
     }
     
     
 }
 
-struct HLLWidgetEntry: TimelineEntry {
-    internal init(date: Date, event: HLLEvent?, events: [HLLEvent], family: WidgetFamily, state: TimelineState) {
-        self.date = date
-        self.event = event
-        self.events = events
-        self.family = family
-        self.state = state
-        
-        if let uEvent = event {
-        
-            print("Init HLLWidgetEntry with \(uEvent) at \(date.formattedDate())")
-            
-        } else {
-            
-            print("Init HLLWidgetEntry with no event at \(date.formattedDate())")
-        }
-        
+struct HLLWidgetTimelineEntry: TimelineEntry {
+    
+    var date: Date {
+        return underlyingEntry.showAt
     }
     
+    let configuration: ConfigurationIntent
     
+    var state: TimelineState = .normal
     
+    var underlyingEntry: HLLTimelineEntry
     
-    let date: Date
-    
-    let state: TimelineState
-    
-    let event: HLLEvent?
-    let events: [HLLEvent]
-    let family: WidgetFamily
 }
 
 
@@ -170,7 +101,7 @@ struct CountdownWidget: Widget {
     let kind: String = "CountdownWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             
             CountdownWidgetParentView(entry: entry)
                 .padding(.horizontal, 20)
@@ -186,7 +117,7 @@ struct UpcomingListWidget: Widget {
     let kind: String = "UpcomingListWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             
             UpcomingWidgetParentView(entry: entry)
                 .modifier(HLLWidgetBackground())
@@ -202,7 +133,7 @@ struct CountdownAndUpcomingListWidget: Widget {
     let kind: String = "CountdownAndUpcomingListWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             ComboWidgetView(entry: entry)
                 .modifier(HLLWidgetBackground())
             

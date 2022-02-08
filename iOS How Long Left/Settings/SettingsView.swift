@@ -39,7 +39,7 @@ struct SettingsView: View {
     var body: some View {
         
         
-        NavigationView {
+        
         List {
             Section { EmptyView() }
             ForEach(sections, id: \.self) { section in
@@ -74,14 +74,14 @@ struct SettingsView: View {
             
         })
             
-        .navigationBarTitle("Settings")
+        //.navigationBarTitle("Settings")
         .introspectTableView(customize: {
             
             self.tableView = $0
             
         })
             
-        }
+        
  
         
 
@@ -129,6 +129,10 @@ struct SettingsView: View {
     
     @ViewBuilder func getRowDestination(for type: SettingsViewRow) -> some View {
         
+        let dismissBinding = Binding(get: { return true }, set: {  _ in
+            sheetRow = nil
+        })
+        
         switch type {
         case .events:
             Text("Events")
@@ -142,9 +146,9 @@ struct SettingsView: View {
         case .siri:
             Text("Siri")
         case .widget:
-            Text("Widget")
+            ExtensionPurchaseView(type: .widget, presentSheet: dismissBinding)
         case .complication:
-            ComplicationPurchaseView()
+            ExtensionPurchaseView(type: .complication, presentSheet: dismissBinding)
         case .appearance:
             AppearanceSettings(appAppearance: .constant(.auto))
         case .debug:

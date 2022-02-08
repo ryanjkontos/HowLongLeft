@@ -23,6 +23,19 @@ class Store: ObservableObject {
     @Published var widgetPurchased: Bool
     @Published var complicationPurchased: Bool
     
+    let complicationPurchasedOldVersionKey = "ComplicationPurchasedOldVersionKey"
+    
+    func extensionPurchased(oftype type: ExtensionType) -> Bool {
+        
+        switch type {
+        case .widget:
+            return widgetPurchased
+        case .complication:
+            return complicationPurchased
+        }
+        
+    }
+    
     private var updateListenerTask: Task<Void, Error>? = nil
     
     init() {
@@ -30,6 +43,7 @@ class Store: ObservableObject {
         var complication = HLLDefaults.premiumPurchases.complication
         if HLLDefaults.defaults.string(forKey: "ComplicationHash") != nil {
             HLLDefaults.defaults.set(nil, forKey: "ComplicationHash")
+            HLLDefaults.defaults.set(true, forKey: complicationPurchasedOldVersionKey)
             complication = true
         }
         
@@ -99,21 +113,24 @@ class Store: ObservableObject {
     }
     
     @MainActor
-    func purchase(productFor extensionType: ExtensionType) async {
+    func purchase(productFor extensionType: ExtensionType) async -> Bool {
         
 
-   
+        var transaction: Transaction?
                 
                     switch extensionType {
                     case .widget:
                         if let widgetProduct = widgetProduct {
-                            let _ = try? await purchase(widgetProduct)
+                            transaction = try? await purchase(widgetProduct)
                         }
                     case .complication:
                         if let complicationProduct = complicationProduct {
-                            let _ = try? await purchase(complicationProduct)
+                            transaction = try? await purchase(complicationProduct)
                         }
                     }
+        
+        
+        return transaction != nil
         
     }
     
@@ -140,16 +157,22 @@ class Store: ObservableObject {
         }
     }
     
-    private func isPurchased(_ productIdentifier: String) async throws -> Bool {
+    private func isPurchased(_ productIdentifier: String) async throws -> TransactionCheckResult {
         //Get the most recent transaction receipt for this `productIdentifier`.
         guard let result = await Transaction.latest(for: productIdentifier) else {
             //If there is no latest transaction, the product has not been purchased.
-            return false
+            return .unsureNo
         }
 
         let transaction = try checkVerified(result)
 
-        return transaction.revocationDate == nil && !transaction.isUpgraded
+        
+        
+        if transaction.revocationDate != nil {
+            return .revoked
+        }
+        
+        return .purchased
     }
 
 
@@ -180,15 +203,17 @@ class Store: ObservableObject {
         guard let product = product else { return }
         guard let type = ExtensionType(rawValue: product.id) else { return }
         guard let result = await product.currentEntitlement, case .verified(let transaction) = result else {
-            setPurchased(type: type, false)
+            setPurchased(type: type, .revoked)
             return
         }
+        
+        HLLDefaults.defaults.set(false, forKey: complicationPurchasedOldVersionKey)
         
         print("Transaction type: \(transaction.productType)")
         
         switch transaction.productType {
         case .nonConsumable:
-            let isPurchased = (try? await isPurchased(transaction.productID)) ?? false
+            let isPurchased = (try? await isPurchased(transaction.productID)) ?? .unsureNo
             
             print("Is Purchased \(type): \(isPurchased)")
             
@@ -199,16 +224,40 @@ class Store: ObservableObject {
         
     }
     
-    private func setPurchased(type: ExtensionType, _ isPurchased: Bool) {
+    private func setPurchased(type: ExtensionType, _ result: TransactionCheckResult) {
+        
+        var state: Bool
         
         switch type {
         case .widget:
-            self.widgetPurchased = isPurchased
-            HLLDefaults.premiumPurchases.widget = isPurchased
+            state = HLLDefaults.premiumPurchases.widget
         case .complication:
-            self.complicationPurchased = isPurchased
-            HLLDefaults.premiumPurchases.complication = isPurchased
+            state = HLLDefaults.premiumPurchases.complication
         }
+        
+        switch result {
+        case .purchased:
+            state = true
+        case .unsureNo:
+            break
+        case .revoked:
+            state = false
+        }
+        
+        switch type {
+        case .widget:
+            HLLDefaults.premiumPurchases.widget = state
+        case .complication:
+            
+            if HLLDefaults.defaults.bool(forKey: complicationPurchasedOldVersionKey) {
+                state = true
+            }
+            
+            HLLDefaults.premiumPurchases.complication = state
+        }
+        
+        self.widgetPurchased = HLLDefaults.premiumPurchases.widget
+        self.complicationPurchased = HLLDefaults.premiumPurchases.complication
         
     }
     
@@ -219,7 +268,15 @@ class Store: ObservableObject {
         
     }
     
+    enum TransactionCheckResult {
+        case purchased
+        case unsureNo
+        case revoked
+    }
+    
 }
+
+
 
 public enum StoreError: Error {
     case failedVerification

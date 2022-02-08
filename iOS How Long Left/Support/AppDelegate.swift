@@ -8,23 +8,32 @@
 
 import Foundation
 import UIKit
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   //  let communicationManager = CommunicationManager()
     
-    
+    let taskID = "com.ryankontos.How-Long-Left.widgetUpdateTask"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+       
+        
         Store.shared = Store()
         
         HLLDefaults.general.showAllDay = true
         HLLEventSource.shared.updateEventPool()
         
-        print("ComplicationHash: \(HLLDefaults.defaults.string(forKey: "ComplicationHash") ?? "No Value")")
+      // print("ComplicationHash: \(HLLDefaults.defaults.string(forKey: "ComplicationHash") ?? "No Value")")
+        
+        
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: self.taskID, using: nil) { task in
+                self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
+            }
+        
        
         return true
     }
@@ -42,6 +51,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        scheduleAppRefresh()
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        scheduleAppRefresh()
+    }
 
 
 }
+
+extension AppDelegate {
+    
+    func scheduleAppRefresh() {
+        
+        BGTaskScheduler.shared.cancelAllTaskRequests()
+        let request = BGAppRefreshTaskRequest(identifier: taskID)
+        request.earliestBeginDate = Date().addingTimeInterval(15*60)
+        
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
+            
+        
+    }
+    
+    func handleAppRefreshTask(task: BGAppRefreshTask) {
+
+        scheduleAppRefresh()
+        
+     
+        let count = HLLDefaults.defaults.integer(forKey: "BGCount")+1
+        HLLDefaults.defaults.set(count, forKey: "BGCount")
+        
+        WidgetUpdateHandler.shared.updateWidget(background: true)
+        
+        
+        
+        task.setTaskCompleted(success: true)
+        
+    }
+
+    
+}
+

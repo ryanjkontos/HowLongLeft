@@ -15,34 +15,19 @@ struct WidgetEventCountdownView: View {
         
         HStack(spacing: 5) {
         
+            VStack(alignment: .leading, spacing: -2) {
             
-         /*   RoundedRectangle(cornerRadius: 5, style: .circular)
-        .foregroundColor(.orange)
-        .frame(width: 3, height: 50)
-                
-            */
-            
-            
-        VStack(alignment: .leading, spacing: -2) {
-    
-        
-    Text("Event ends in")
-        .font(.system(size: 15, weight: .semibold, design: .default))
-    Text("00:00")
-        .font(.system(size: 25, weight: .medium, design: .default))
-        .foregroundColor(.orange)
-                
-        
-        
-        }
-        
-        
+                Text("Event ends in")
+                    .font(.system(size: 15, weight: .semibold, design: .default))
+                Text("00:00")
+                    .font(.system(size: 25, weight: .medium, design: .default))
+                    .foregroundColor(.orange)
+                    
+            }
             
             Spacer()
-        
-    }
+        }
 
-        
         
     }
     
