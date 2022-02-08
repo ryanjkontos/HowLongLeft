@@ -59,29 +59,31 @@ struct DebugView: View {
                 
             })
             
-        }
-        
-        Section(content: {
-            
-            HStack {
-                Text("Background Refreshes")
-                Spacer()
-                Text(String(HLLDefaults.defaults.integer(forKey: "BGCount")))
-                    .foregroundColor(.secondary)
-            }
-            
-            HStack {
+            Section(content: {
                 
                 HStack {
-                    Text("Background Widget Updates")
+                    Text("Background Refreshes")
                     Spacer()
-                    Text(String(HLLDefaults.defaults.integer(forKey: "BGCausedWidgetUpdateCount")))
+                    Text(String(HLLDefaults.defaults.integer(forKey: "BGCount")))
                         .foregroundColor(.secondary)
                 }
                 
-            }
+                HStack {
+                    
+                    HStack {
+                        Text("Background Widget Updates")
+                        Spacer()
+                        Text(String(HLLDefaults.defaults.integer(forKey: "BGCausedWidgetUpdateCount")))
+                            .foregroundColor(.secondary)
+                    }
+                    
+                }
+                
+            }, header: { Text("Background Tasks") })
             
-        }, header: { Text("Background Tasks") })
+        }
+        
+   
         
     }
 }
