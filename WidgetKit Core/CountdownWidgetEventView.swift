@@ -59,7 +59,7 @@ struct CountdownWidgetEventView: View {
                     Text(event.countdownDate(at: displayDate), style: .timer)
                         .font(Font.system(size: 27, weight: .bold, design: .default).monospacedDigit())
                             .foregroundColor(tintCol)
-                            .minimumScaleFactor(0.9)
+                            .minimumScaleFactor(0.3)
                             .lineLimit(1)
                             .brightness(-0.05)
                             
