@@ -139,14 +139,7 @@ class HLLTimelineGenerator {
             HLLDefaults.defaults.set("returnItems empty", forKey: "ComplicationDebug")
         }
         
-        
 
-            
-        var state = TimelineState.notPurchased
-        if HLLDefaults.watch.complicationEnabled {
-            state = .normal
-        }
-        
         var finalEntries = [HLLTimelineEntry]()
         
         let showInfoFor: Double = (1*60)
@@ -179,7 +172,7 @@ class HLLTimelineGenerator {
         }
         
         finalEntries.sort(by: { $0.showAt.compare($1.showAt) == .orderedAscending })
-        let timeline = HLLTimeline(state: state, entries: finalEntries, includedEvents: events)
+        let timeline = HLLTimeline(state: getTimelineState(), entries: finalEntries, includedEvents: events)
         
  
         print("Returning timeline with \(timeline.entries.count) entries")
@@ -315,6 +308,42 @@ class HLLTimelineGenerator {
             case .widget:
                 return HLLDefaults.widget.latestTimeline
         }
+        
+    }
+    
+    func getTimelineState() -> TimelineState {
+        
+        return .normal
+        
+        if HLLDefaults.appData.migratedCoreData == false {
+            return .notMigrated
+        }
+        
+        
+        #if os(macOS)
+        
+        if ProStatusManager.shared.isPro == false {
+            return .notPurchased
+        }
+        
+        #else
+        
+        switch timelineType {
+        case .widget:
+            if !Store.shared.widgetPurchased { return .notPurchased }
+        case .complication:
+            if !Store.shared.complicationPurchased { return .notPurchased }
+        }
+        
+        #endif
+        
+        if HLLEventSource.shared.access != .Granted {
+            
+            return .noCalendarAccess
+            
+        }
+        
+        return .normal
         
     }
     
