@@ -32,8 +32,8 @@ class HLLBackgroundTasks {
     }
     
     func handleAppRefreshTask(task: BGAppRefreshTask) {
-        scheduleAppRefresh()
         runBackgroundTasks()
+        scheduleAppRefresh()
         task.setTaskCompleted(success: true)
     }
     
