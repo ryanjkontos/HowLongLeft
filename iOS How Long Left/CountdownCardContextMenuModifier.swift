@@ -13,6 +13,8 @@ struct CountdownCardContextMenuModifier: ViewModifier {
     
     var event: HLLEvent
     
+    var reloadHandler: (() -> Void)
+    
     func body(content: Content) -> some View {
         content
             .contextMenu {
@@ -27,6 +29,8 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                             EventPinningManager.shared.pinEvent(event)
                         }
                         
+                    
+                        reloadHandler()
                        
                         
                     }
@@ -40,8 +44,14 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                 
                 Button(action: {
                     
-                    CalendarDefaultsModifier.shared.setDisabled(calendar: event.calendar!)
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    DispatchQueue.main.async {
+                    
+                        CalendarDefaultsModifier.shared.setDisabled(calendar: event.calendar!)
+                        HLLEventSource.shared.updateEventPool()
+                        
+                        reloadHandler()
+                        
+                    }
                     
                 }, label: {
                     

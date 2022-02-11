@@ -11,7 +11,7 @@ import Introspect
 
 struct UpcomingEventListView: View {
     
-    @Binding var items: [DateOfEvents]
+    @EnvironmentObject var eventSource: UpcomingEventSource
     
     let gridItem = GridItem(.adaptive(minimum: 250, maximum: 1000), spacing: 10, alignment: .center)
     
@@ -21,15 +21,15 @@ struct UpcomingEventListView: View {
         GeometryReader { proxy in
         ScrollView {
             LazyVGrid(columns: [gridItem], alignment: .center, spacing: 5) {
-                ForEach(items) { dateOfEvents in
+                ForEach(eventSource.events) { dateOfEvents in
                     Section(content: {
                         ForEach(dateOfEvents.events) { event in
-                            Button(action: { eventViewEvent = event }) {
+                            NavigationLink(destination: EventView(event: event)) {
                                 UpcomingSubCard(event: event)
                                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .circular))
                                     .frame(height: 50, alignment: .center)
                                     .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 12, style: .circular))
-                                    .modifier(CountdownCardContextMenuModifier(event: event))
+                                    .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
                                     
                                 }
                             //.id(event.infoIdentifier)
@@ -113,7 +113,8 @@ struct UpcomingEventListView: View {
 
 struct UpcomingEventListView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingEventListView(items: .constant(.init()), eventViewEvent: .constant(nil))
+        UpcomingEventListView(eventViewEvent: .constant(nil))
+            .environmentObject(UpcomingEventSource())
     }
 }
 

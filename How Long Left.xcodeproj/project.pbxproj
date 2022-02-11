@@ -1594,6 +1594,7 @@
 				BF99C9EA2743B785009B0B0E /* EventSource.swift */,
 				BF1FDFAA2743EAEC008CC754 /* CountdownsParentView.swift */,
 				BF7341382733A48000C9E339 /* CountdownsView.swift */,
+				BFB42729275C6C5B00D3E1BA /* CountdownCard.swift */,
 				BFEE67BF27453D5100810596 /* HeaderText.swift */,
 			);
 			path = CountdownsView;
@@ -1815,7 +1816,6 @@
 				BFEE67BE27451B7600810596 /* Navigation */,
 				BF3F829F274937E700A1CEC0 /* Events */,
 				BFD37D2F274758D900EADE56 /* EventView.swift */,
-				BFB42729275C6C5B00D3E1BA /* CountdownCard.swift */,
 				BFEE67C1274540B100810596 /* CountdownCardContextMenuModifier.swift */,
 				BF3F82A0274952F300A1CEC0 /* Onboarding */,
 				BFEE67BD27451B6900810596 /* Settings */,

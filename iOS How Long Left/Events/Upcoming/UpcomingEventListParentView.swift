@@ -29,7 +29,8 @@ struct UpcomingEventListParentView: View {
                         
                 }
             } else {
-                UpcomingEventListView(items: $eventSource.events, eventViewEvent: $eventViewEvent)
+                UpcomingEventListView( eventViewEvent: $eventViewEvent)
+                    .environmentObject(eventSource)
                     
             }
             

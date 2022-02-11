@@ -31,9 +31,7 @@ class EventSource: ObservableObject {
     
     @objc func update() {
 
-        
         let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
-        
         var current = [HLLEvent]()
         var upcoming = [HLLEvent]()
         
@@ -49,9 +47,7 @@ class EventSource: ObservableObject {
         upcoming.removeAll(where: { pinned.contains($0) })
         
         if HLLDefaults.countdownsTab.onlyEndingToday {
-            
             current.removeAll(where: {  $0.endDate.startOfDay() != Date().startOfDay() })
-            
         }
         
         let currentSection = EventSection(title: "In Progress", events: current)
@@ -61,37 +57,22 @@ class EventSource: ObservableObject {
         var newArray = [EventSection]()
         
         for sectionType in HLLDefaults.countdownsTab.sectionOrder {
-            
             switch sectionType {
             case .pinned:
-                
-                if !pinnedSection.isEmpty {
-                    newArray.append(pinnedSection)
-                }
-                
+                if !pinnedSection.isEmpty { newArray.append(pinnedSection) }
             case .inProgress:
-                
-                if !currentSection.isEmpty {
-                    newArray.append(currentSection)
-                }
-                
+                if !currentSection.isEmpty { newArray.append(currentSection) }
             case .upcoming:
-                
-                if !upcomingSection.isEmpty {
-                    newArray.append(upcomingSection)
-                }
-                
+                if !upcomingSection.isEmpty { newArray.append(upcomingSection) }
             }
-            
-        }
-            
-            self.isEmpty = newArray.compactMap({ $0.events }).isEmpty
-            self.eventSections = newArray
-          
         }
         
- 
-     
+        let isEmpty = newArray.compactMap({ $0.events }).isEmpty
+            
+        if self.isEmpty != isEmpty { self.isEmpty = isEmpty }
+        if self.eventSections != newArray { self.eventSections = newArray }
+            
+    }
     
 }
 

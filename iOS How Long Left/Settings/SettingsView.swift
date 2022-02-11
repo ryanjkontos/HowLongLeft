@@ -41,7 +41,7 @@ struct SettingsView: View {
         
         
         List {
-            Section { EmptyView() }
+          //  Section { EmptyView() }
             ForEach(sections, id: \.self) { section in
                 Section(content: {
                     ForEach(section.rows, id: \.self) { row in

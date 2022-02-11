@@ -35,7 +35,7 @@ struct ContentView: View {
         
         .sheet(item: $eventViewEvent, onDismiss: { eventViewEvent = nil }, content: { event in
             
-            EventView(eventViewEvent: $eventViewEvent, selectionStateObject: .init(event: event))
+            EventView(event: event)
             
         })
        .sheet(isPresented: $showOnboarding, content: {

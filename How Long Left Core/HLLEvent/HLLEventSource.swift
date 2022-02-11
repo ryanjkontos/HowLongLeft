@@ -803,7 +803,7 @@ class HLLEventSource {
     func getUpcomingEvents(limit: Int) -> [HLLEvent] {
         
         var allUpcoming = eventPool.filter({$0.completionStatus == .upcoming})
-        allUpcoming.sort(by: { $0.startDate.compare($1.startDate) == .orderedDescending })
+        allUpcoming.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
         return Array(allUpcoming.prefix(limit))
         
     }

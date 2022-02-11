@@ -68,6 +68,7 @@ class HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
         isAllDay = event.isAllDay
         location = event.location
         calendarID = event.calendar?.calendarIdentifier
+        eventIdentifier = event.eventIdentifier
     }
     
     init(title inputTitle: String, start inputStart: Date, end inputEnd: Date, location inputLocation: String?) {

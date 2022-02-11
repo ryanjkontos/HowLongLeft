@@ -108,7 +108,7 @@ struct CountdownViewSettings: View {
         .animation(.default, value: settingsObject.showInProgress)
         
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Options")
+        .navigationTitle("Countdowns")
        
         .environment(\.editMode, isEditable ? .constant(.active) : .constant(.inactive))
        

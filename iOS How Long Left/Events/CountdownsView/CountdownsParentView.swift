@@ -29,7 +29,7 @@ struct CountdownsParentView: View {
                     
                 }
             } else {
-                CountdownsView(sections: $eventSource.eventSections, eventViewEvent: $eventViewEvent)
+                CountdownsView(eventViewEvent: $eventViewEvent)
                     .environmentObject(eventSource)
             }
             

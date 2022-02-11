@@ -27,27 +27,9 @@ struct CountdownCard: View {
         
         ZStack {
         
-            switch style {
-            case .gradient:
-                LinearGradient(gradient: event.color.toGradient(0, 10), startPoint: .top, endPoint: .bottom)
-            case .transparent:
-                Color(uiColor: .systemBackground)
-                Color(uiColor: event.color)
-                    .opacity(0.65)
-            case .flat:
-                Color(uiColor: event.color)
-            case .plain:
-                
-                
-                
-                if colorScheme == .light {
-                    Color(uiColor: .systemBackground)
-                } else {
-                    Color(uiColor: .secondarySystemGroupedBackground)
-                }
-                
-                
-            }
+            Color(uiColor: .systemBackground)
+            Color(uiColor: event.color)
+                .opacity(0.6)
             
    
             HStack(spacing: 15) {
@@ -56,62 +38,53 @@ struct CountdownCard: View {
                 
                 VStack(alignment: .leading, spacing: 11) {
                     
-                    VStack(alignment: .leading, spacing: 1) {
+                    VStack(alignment: .leading, spacing: 0) {
                     
                         Text(event.title)
                             .lineLimit(1)
                             .truncationMode(.tail)
-                            .padding(.trailing, 20)
+                            .padding(.trailing, 13)
                         .foregroundColor(getTextColor())
-                        .font(.system(size: 25, weight: .medium, design: .default))
+                        .font(.system(size: 24, weight: .medium, design: .default))
+                        .opacity(0.9)
                      //   .shadow(radius: 6)
                         
                         Text(statusText)
                         
-                        .foregroundColor(getTextColor())
+                            .foregroundColor(.secondary)
                         .font(.system(size: 19, weight: .regular, design: .default))
+                        .opacity(1)
                        // .shadow(radius: 6)
                     
                     }
                   
-                        
-                    Text(timerText)
-                            .foregroundColor(getTextColor())
-                            .font(.system(size: 30, weight: .semibold, design: .default))
-                            //.shadow(radius: 6)
-                   
+            
                 }
                 
                
                 Spacer()
                 
-                
-                VStack {
-                    
-                    Circle()
-                        .stroke(getTextColor(), lineWidth: 5)
-                        .foregroundColor(.clear)
+                Text(timerText)
+                    .foregroundColor(.primary)
+                    .font(.system(size: 28, weight: .medium, design: .default))
+                        .opacity(0.8)
+                        .monospacedDigit()
                         
-                        .frame(width: 20, height: 20)
-                        .padding(.top, 20)
-                        .padding(.trailing, 20)
-                    
-                    Spacer()
-                    
-                    
-                }
+                        //.shadow(radius: 6)
+             
                 
             }
-            .padding(.vertical, 10)
-            .padding(.leading, 25)
+            .padding(.vertical, 0)
+            .padding(.leading, 19)
+            .padding(.trailing, 22)
                 
             
             
         }
-        
-        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .frame(height: 88)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
          
-         .frame(height: 126)
+         
         .drawingGroup()
         .onAppear(perform: {
             
@@ -141,11 +114,7 @@ struct CountdownCard: View {
     
     func getTextColor() -> Color {
         
-        if style == .plain && colorScheme == .light {
-            return .black
-        }
-        
-        return .white
+        .primary.opacity(0.93)
         
     }
         

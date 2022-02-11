@@ -15,10 +15,18 @@ struct EventView: View {
     
     @State var showEditView = false
     
-    @Binding var eventViewEvent: HLLEvent?
-    
     @State var selectionStateObject: SelectionStateObject
     
+    init(event: HLLEvent) {
+        
+        self.event = event
+        self.items = HLLEventInfoItemGenerator(event).getInfoItems(for: [.start, .end, .duration, .elapsed])
+        self.selectionStateObject = SelectionStateObject(event: event)
+        
+    }
+    
+    var items: [HLLEventInfoItem]
+    var event: HLLEvent
     
     var body: some View {
          
@@ -27,23 +35,21 @@ struct EventView: View {
                 
                 HStack(alignment: .center) {
                 
-                    Spacer()
+                   
                     
-                    CountdownCard(event: selectionStateObject.event)
-                        .frame(maxWidth: 425)
-                        .id(selectionStateObject.event.infoIdentifier)
+                    CountdownCard(event: event)
+                        //.frame(maxWidth: 425)
+                        .id(event.infoIdentifier)
                     
-                    Spacer()
+                   
                 }
-                
-                
                 
                 
                 .listRowBackground(Color.clear)
                 
                 Section(header: Text("Info")) {
                     
-                    ForEach(HLLEventInfoItemGenerator(selectionStateObject.event).getInfoItems(for: [.start, .end, .duration, .elapsed])) { item in
+                    ForEach(items) { item in
                         
                         HStack {
                             
@@ -78,30 +84,41 @@ struct EventView: View {
                     Text("Options")
                 })
                 
-                if selectionStateObject.event.calendar?.isImmutable == false {
+                if event.calendar?.isImmutable == false {
                 
                 Section {
-                    Button(action: {showEditView.toggle()}, label: { Text("Edit") })
+                    Button(action: {
+                        
+                        DispatchQueue.main.async {
+                            
+                            showEditView.toggle()
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }, label: { Text("Edit") })
                 }
                 .tint(.orange)
                     
                 }
             }
             .sheet(isPresented: $showEditView, onDismiss: {
-                selectionStateObject.update()
+                //selectionStateObject.update()
             }, content: {
-                EventEditView(event: selectionStateObject.event, showSheet: $showEditView)
-                    .edgesIgnoringSafeArea(.all)
+                EventEditView(event: event, showSheet: $showEditView)
+                    
             })
-            .introspectNavigationController(customize: { navigationController in
+           /* .introspectNavigationController(customize: { navigationController in
                 let appearance = UINavigationBarAppearance()
                 appearance.configureWithDefaultBackground()
                 navigationController.navigationBar.standardAppearance = appearance
                 navigationController.navigationBar.scrollEdgeAppearance = appearance
-            })
-           .navigationTitle("\(selectionStateObject.event.title)")
+            }) */
+           .navigationTitle("\(event.title)")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
+           /* .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { eventViewEvent = nil }) {
                         
@@ -112,7 +129,7 @@ struct EventView: View {
                            
                     }
                 }
-            }
+            } */
                 
             }
 
@@ -124,7 +141,7 @@ struct EventView: View {
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(eventViewEvent: .constant(.previewEvent()), selectionStateObject: .init(event: .previewEvent()))
+        EventView(event: .previewEvent())
     }
 }
 
@@ -212,8 +229,8 @@ struct EventEditView: UIViewControllerRepresentable {
         let controller = EKEventEditViewController()
         controller.event = event.ekEvent
         controller.editViewDelegate = context.coordinator
-        controller.navigationBar.tintColor = .orange
-        controller.view.tintColor = .orange
+        controller.navigationBar.tintColor = .systemOrange
+        controller.view.tintColor = .systemOrange
         controller.eventStore = HLLEventSource.shared.eventStore
         controller.view.backgroundColor = .systemGroupedBackground
         return controller

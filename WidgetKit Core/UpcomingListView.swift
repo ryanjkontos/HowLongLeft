@@ -59,9 +59,13 @@ struct UpcomingListView: View {
                 VStack(spacing: 6) {
             
                     
-                    
                     ForEach(limitedEvents, id: \.id) { value in
-                EventListItem(event: value, showAt: showAt)
+                       
+                        Link(destination: URL(string: "www.google.com")!) {
+                            EventListItem(event: value, showAt: showAt)
+                        }
+                        
+                        
                 
           
                     

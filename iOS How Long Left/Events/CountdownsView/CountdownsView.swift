@@ -13,7 +13,7 @@ import Introspect
 
 struct CountdownsView: View {
     
-    @Binding var sections: [EventSection]
+    @EnvironmentObject var eventSource: EventSource
     @State var opacity = 0.0
     let gridItem = GridItem(.adaptive(minimum: 300, maximum: 800), spacing: 10, alignment: .leading)
    
@@ -26,16 +26,16 @@ struct CountdownsView: View {
         
             ScrollView {
                 LazyVGrid(columns: [gridItem], spacing: 15) {
-                    ForEach(sections) { section in
+                    ForEach(eventSource.eventSections) { section in
                         Section(content: {
                             ForEach(section.events) { event in
                                 
-                                NavigationLink(destination: { EventView(eventViewEvent: .constant(event), selectionStateObject: SelectionStateObject(event: event)) }, label: {
+                                NavigationLink(destination: { EventView(event: event) }, label: {
                                     
                                    CountdownCard(event: event)
                                       
-                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                      .modifier(CountdownCardContextMenuModifier(event: event))
+                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                      .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
                                     
                                 })
                                 
@@ -54,7 +54,7 @@ struct CountdownsView: View {
                                     
                                    .id("\(event.persistentIdentifier)\(event.isPinned)")
                                     
-                                    .buttonStyle(SubtleRoundedPressButton(radius: 30, cornerStyle: .continuous))
+                                    .buttonStyle(SubtleRoundedPressButton(radius: 20, cornerStyle: .continuous))
                                     
                             }
                         }, header: {
@@ -68,21 +68,26 @@ struct CountdownsView: View {
                     }
                 }
                 .transition(.opacity)
-                .animation(.easeInOut(duration: 0.3), value: sections)
+                .animation(.easeInOut(duration: 0.3), value: eventSource.eventSections)
                 .opacity(opacity)
                 .onAppear {
                     if opacity != 0 { return }
                     withAnimation(.easeInOut(duration: 0.1)) { opacity = 1 }
                 }
                 .onDisappear {
-                    if sections.isEmpty { withAnimation(.easeInOut(duration: 0.1)) { opacity = 0 } }
+                    if eventSource.eventSections.isEmpty { withAnimation(.easeInOut(duration: 0.1)) { opacity = 0 } }
                 }
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
                 
             }
             .introspectScrollView(customize: { scrollView in
-                scrollView.backgroundColor = UIColor.systemGroupedBackground
+                scrollView.backgroundColor = UIColor.systemBackground
+            })
+            .introspectNavigationController(customize: {
+                
+                $0.navigationBar.barStyle = .default
+                
             })
             .edgesIgnoringSafeArea(.horizontal)
         
