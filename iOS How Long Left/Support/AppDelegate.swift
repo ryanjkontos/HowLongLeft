@@ -27,22 +27,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         HLLDefaults.general.showAllDay = true
         HLLEventSource.shared.updateEventPool()
         
-      // print("ComplicationHash: \(HLLDefaults.defaults.string(forKey: "ComplicationHash") ?? "No Value")")
-        
-        
-        if HLLDefaults.defaults.bool(forKey: "RegisteredWidgetTask") == false {
+
         
         let task = BGTaskScheduler.shared.register(forTaskWithIdentifier: HLLBackgroundTasks.widgetTaskID, using: nil) { task in
             HLLBackgroundTasks.shared.handleAppRefreshTask(task: task as! BGAppRefreshTask)
         }
-            
-            print("Task scheduled: \(task)")
-            
+           
+        if task {
             HLLDefaults.defaults.set(true, forKey: "RegisteredWidgetTask")
-            
         }
         
-       
+        print("Task scheduled: \(task)")
+            
+        
+            
         
         
         return true

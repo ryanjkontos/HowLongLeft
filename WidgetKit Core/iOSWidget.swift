@@ -63,9 +63,13 @@ struct Provider: IntentTimelineProvider {
             entries.append(Entry(configuration: configuration, underlyingEntry: entry))
             
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-         completion(timeline)
+        
+        var array = HLLDefaults.defaults.stringArray(forKey: "WidgetUpdates") ?? [String]()
+        array.append(String(Date().timeIntervalSinceReferenceDate))
+        HLLDefaults.defaults.set(array, forKey: "WidgetUpdates")
+        
+        let timeline = Timeline(entries: entries, policy: .after(Date().addingTimeInterval(30*60)))
+        completion(timeline)
         
     }
     

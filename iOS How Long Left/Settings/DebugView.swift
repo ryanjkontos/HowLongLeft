@@ -7,14 +7,27 @@
 //
 
 import SwiftUI
+import BackgroundTasks
 //import Communicator
 
 struct DebugView: View {
+
+
+    init() {
+        
+        let array = HLLDefaults.defaults.stringArray(forKey: "WidgetUpdates") ?? [String]()
+        widgetUpdates = array.map({ Date(timeIntervalSinceReferenceDate: TimeInterval(String($0))!) })
+        
+        
+    }
+    
+    @State var widgetUpdates: [Date]
+    
     var body: some View {
         
         Form {
             
-            Button(action: {
+         /*   Button(action: {
                 
                // let message = ImmediateMessage(identifier: "immediateMessage", content: ["messageKey": true])
                // Communicator.shared.send(message)
@@ -57,9 +70,11 @@ struct DebugView: View {
                 
                 Text("Sync Content")
                 
-            })
+            }) */
             
             Section(content: {
+                
+      
                 
                 HStack {
                     Text("Background Refreshes")
@@ -81,9 +96,87 @@ struct DebugView: View {
                 
             }, header: { Text("Background Tasks") })
             
+            
+            Section {
+                
+                NavigationLink(destination: { widgetUpdateList }) {
+                    
+                    Text("Widget Updates")
+                    
+                }
+                
+                
+            }
+            
         }
+ 
+        .navigationTitle("Debug")
         
    
+        
+    }
+    
+
+   
+    
+    var widgetUpdateList: some View {
+        
+        
+        List {
+            
+            ForEach(widgetUpdates.indices.reversed(), id: \.self, content: { index in
+                
+                let date = widgetUpdates[index]
+                
+                VStack(alignment: .leading) {
+                    
+                    Text("Update #\(index+1)")
+                        .font(.system(size: 18, weight: .bold, design: .default))
+                    
+                    Text("\(date.formattedDate()), \(date.formattedTime())")
+                        .foregroundColor(.secondary)
+                    
+                }
+                .padding(.vertical, 5)
+                
+                
+                
+                
+            })
+            
+            
+        }
+        .navigationTitle("Widget Updates")
+        .toolbar(content: {
+            
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                
+                Button(action: {
+                    
+                    DispatchQueue.main.async {
+                        
+                        
+                        withAnimation {
+                            
+                            HLLDefaults.defaults.set([String](), forKey: "WidgetUpdates")
+                        
+                        let array = HLLDefaults.defaults.stringArray(forKey: "WidgetUpdates") ?? [String]()
+                        widgetUpdates = array.map({ Date(timeIntervalSinceReferenceDate: TimeInterval(String($0))!) })
+                            
+                        }
+                    }
+                    
+                   
+                    
+                }, label: {
+                    
+                    Text("Delete All")
+                    
+                })
+                
+            })
+            
+        })
         
     }
 }

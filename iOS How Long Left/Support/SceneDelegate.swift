@@ -73,7 +73,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         
-        HLLBackgroundTasks.shared.scheduleAppRefresh()
+       // HLLBackgroundTasks.shared.scheduleAppRefresh()
         
         Task {
             
@@ -89,6 +89,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
+        
+        let operation = WidgetUpdateOperation()
+        operation.start()
         
         HLLBackgroundTasks.shared.scheduleAppRefresh()
         

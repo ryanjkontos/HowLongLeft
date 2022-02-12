@@ -60,6 +60,11 @@ class HLLEventSource {
     
     init() {
         
+      /* if let data = HLLDefaults.defaults.data(forKey: "EncodedEventPool"), let decoded = try? JSONDecoder().decode([HLLEvent].self, from: data) {
+            print("Using decoded events")
+            eventPool = decoded
+        } */
+        
         HLLDefaults.general.showAllDay = false
         
         print("Init es")
@@ -228,6 +233,10 @@ class HLLEventSource {
         add.append(contentsOf: dummyGen.events)
         
         self.eventPool = add
+        
+        if let encoded = try? JSONEncoder().encode(add) {
+            HLLDefaults.defaults.set(encoded, forKey: "EncodedEventPool")
+        }
         
         eventPoolUpdatingCounter -= 1
         HLLEventSource.updatingEventPool = false

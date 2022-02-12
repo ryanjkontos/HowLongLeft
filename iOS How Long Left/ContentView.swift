@@ -24,14 +24,28 @@ struct ContentView: View {
     
     @State var appearanceSetting = AppAppearance.auto
     
+    @State var insetBody = false
+    
+    let animation = Animation.easeInOut(duration: 0.3)
+    
     @ViewBuilder var body: some View {
+        
+        ZStack {
+            
+            content
+           
+        }
+        
+       
+    }
+    
+    @ViewBuilder var content: some View {
         
     
             
             TabBarContentView(eventViewEvent: $eventViewEvent)
                 .environmentObject(store)
             
-     
         
         .sheet(item: $eventViewEvent, onDismiss: { eventViewEvent = nil }, content: { event in
             
@@ -53,10 +67,10 @@ struct ContentView: View {
         .accentColor(.orange)
         .edgesIgnoringSafeArea(.all)
         
+      
           
        
     }
-    
     
     func getColorScheme() -> ColorScheme {
         
