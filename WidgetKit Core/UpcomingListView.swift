@@ -15,7 +15,9 @@ struct UpcomingListView: View {
     
     var events: [EventUIObject]
     var showAt: Date
-  
+
+    var isPreview = false
+    
     @Environment(\.colorScheme) var systemColorScheme: ColorScheme
     
     var colorScheme: ColorScheme {
@@ -61,9 +63,11 @@ struct UpcomingListView: View {
                     
                     ForEach(limitedEvents, id: \.id) { value in
                        
-                        Link(destination: URL(string: "www.google.com")!) {
+                        Link(destination: URL(string: "howlongleft://\( (value as? HLLEvent)?.persistentIdentifier ?? "null" )")!) {
                             EventListItem(event: value, showAt: showAt)
+                                
                         }
+                        .disabled(isPreview)
                         
                         
                 
@@ -140,9 +144,10 @@ struct EventListItem: View {
                 VStack(alignment: .leading, spacing: 0.2) {
                         
                 Text("\(event.title)")
+                        
                     .lineLimit(1)
                     .font(.system(size: 13, weight: .medium))
-                    //.foregroundColor(Color(.textColor))
+                    .foregroundColor(Color.primary)
                   
                 VStack(alignment: .leading, spacing: 0) {
                     

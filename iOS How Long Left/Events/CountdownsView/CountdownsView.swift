@@ -21,12 +21,25 @@ struct CountdownsView: View {
     
     @Binding var eventViewEvent: HLLEvent?
     
+    @Binding var launchEvent: HLLEvent?
+    
     @State var overlayEvent: HLLEvent?
+    
+    @State var eventView = false
+    
+ 
     
     var body: some View {
         
         
             ScrollView {
+                
+                NavigationLink(isActive: $eventView, destination: {
+                    
+                    Text("Dest")
+                    
+                }, label: { EmptyView() })
+                
                 LazyVGrid(columns: [gridItem], spacing: 15) {
                     ForEach(eventSource.eventSections) { section in
                         Section(content: {
@@ -36,27 +49,17 @@ struct CountdownsView: View {
                                     
                                    CountdownCard(event: event)
                                       
-                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
                                       .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
                                     
                                 })
                                 
+                                
                                     .clipped()
                                    
-                                
-                            /*   Button(action: { selectEvent(event: event) }, label: {
-                                    CountdownCard(event: event)
-                                        .frame(height: 120)
-                                        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                        .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                        .modifier(CountdownCardContextMenuModifier(event: event))
-                                        
-                                        
-                                    }) */
                                     
-                                   .id("\(event.persistentIdentifier)\(event.isPinned)")
                                     
-                                    .buttonStyle(SubtleRoundedPressButton(radius: 20, cornerStyle: .continuous))
+                                    .buttonStyle(SubtleRoundedPressButton(radius: 30, cornerStyle: .continuous))
                                     
                             }
                         }, header: {
@@ -83,6 +86,7 @@ struct CountdownsView: View {
                 .padding(.horizontal, 20)
                 
             }
+         
             .introspectScrollView(customize: { scrollView in
                 scrollView.backgroundColor = UIColor.systemBackground
             })

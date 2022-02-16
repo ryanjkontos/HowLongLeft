@@ -18,7 +18,7 @@ class DummyEventGenerator {
     
     init() {
         
-      return
+      
         
         var start = Date()
         
@@ -31,7 +31,7 @@ class DummyEventGenerator {
             
             
             date.addTimeInterval(30*300)
-            let event = HLLEvent(title: "Current \(i)", start: start, end: date, location: nil)
+            var event = HLLEvent(title: "Current \(i)", start: start, end: date, location: nil)
             event.calendarID = HLLEventSource.shared.getCalendars().randomElement()?.calendarIdentifier
             array.append(event)
             

@@ -47,7 +47,7 @@ class EventUIWindowsManager: NSObject, NSWindowDelegate {
         
         var id: String
         
-        if let ekID = event.EKEvent?.eventIdentifier {
+        if let ekID = event.ekEvent?.eventIdentifier {
             
             id = ekID
             

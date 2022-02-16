@@ -15,23 +15,27 @@ struct EventView: View {
     
     @State var showEditView = false
     
-    @State var selectionStateObject: SelectionStateObject
+    @ObservedObject var selectionStateObject: SelectionStateObject
     
     init(event: HLLEvent) {
-        
+        self.selectionStateObject = SelectionStateObject(event: event)
         self.event = event
         self.items = HLLEventInfoItemGenerator(event).getInfoItems(for: [.start, .end, .duration, .elapsed])
-        self.selectionStateObject = SelectionStateObject(event: event)
+        
         
     }
     
     var items: [HLLEventInfoItem]
     var event: HLLEvent
     
+   
+    
     var body: some View {
          
             GeometryReader { proxy in
             List {
+                
+             
                 
                 HStack(alignment: .center) {
                 
@@ -153,7 +157,7 @@ class SelectionStateObject: ObservableObject, EventPoolUpdateObserver {
     }
     
     
-    internal init(event: HLLEvent) {
+     init(event: HLLEvent) {
         
         
         

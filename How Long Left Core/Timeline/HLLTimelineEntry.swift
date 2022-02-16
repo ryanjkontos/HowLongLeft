@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HLLTimelineEntry: Codable, CustomDebugStringConvertible {
+struct HLLTimelineEntry: Codable, CustomDebugStringConvertible, Equatable {
     
     var showAt: Date
     var event: HLLEvent?

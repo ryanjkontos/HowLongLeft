@@ -42,7 +42,20 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
                     HLLDefaults.defaults.set(count, forKey: "BGCausedWidgetUpdateCount")
                 }
                 
-                WidgetCenter.shared.reloadAllTimelines()
+                #if os(macOS)
+                
+                
+                if #available(macOS 11, *) {
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+                
+                #else
+                
+                    WidgetCenter.shared.reloadAllTimelines()
+                
+                #endif
+                
+                
             
         } else {
             print("Not updating widget")

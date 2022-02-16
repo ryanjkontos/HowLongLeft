@@ -83,14 +83,14 @@ class DetailSubmenuGenerator {
             
                 counter += 1
                 
-            if let next = currentEvent?.followingOccurence {
+           /* if let next = currentEvent?.followingOccurence {
             
                 followingOccurences.append(next)
                 currentEvent = next
                 
             } else {
                 currentEvent = nil
-            }
+            } */
             
         }
             
@@ -124,13 +124,9 @@ class DetailSubmenuGenerator {
             for nextOccurEvent in followingOccurences {
                     
                 var text = nextOccurEvent.startDate.userFriendlyRelativeString()
-                    
-                if let period = nextOccurEvent.period {
-                    text += ", Period \(period)"
-                } else {
+            
                     text += ", \(nextOccurEvent.startDate.formattedTime())"
-                }
-                
+              
                 let moreFollowingOccurencesSubmenuItem = HLLMenuItem()
                 moreFollowingOccurencesSubmenuItem.title = text
                 

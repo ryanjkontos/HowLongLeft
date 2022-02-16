@@ -112,7 +112,11 @@ struct CountdownWidget: Widget {
                 .modifier(HLLWidgetBackground())
         }
         .configurationDisplayName("Countdown")
+        #if os(macOS)
         .description("Shows a countdown for a current or upcoming event. Requires How Long Left Pro.")
+        #else
+        .description("Shows a countdown for a current or upcoming event. Requires purchase.")
+        #endif
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
@@ -128,7 +132,11 @@ struct UpcomingListWidget: Widget {
             
         }
         .configurationDisplayName("Upcoming")
+        #if os(macOS)
         .description("Shows a list of upcoming events. Requires How Long Left Pro.")
+        #else
+        .description("Shows a list of upcoming events. Requires purchase.")
+        #endif
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
@@ -143,7 +151,11 @@ struct CountdownAndUpcomingListWidget: Widget {
             
         }
         .configurationDisplayName("Countdown & Upcoming")
+        #if os(macOS)
         .description("Shows an event countdown and a list of upcoming events. Requires How Long Left Pro.")
+        #else
+        .description("Shows an event countdown and a list of upcoming events. Requires purchase.")
+        #endif
         .supportedFamilies([.systemMedium])
     }
 }

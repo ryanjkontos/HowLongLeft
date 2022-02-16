@@ -13,6 +13,11 @@
 		BF008AB725776D3B00E8E56C /* HLLTimelineDifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */; };
 		BF01357122F30D500070E9C8 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01357022F30D500070E9C8 /* NSImage.swift */; };
 		BF0E68DF24430D190072D58A /* CNAlertEnterPercentageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E68DE24430D190072D58A /* CNAlertEnterPercentageViewController.swift */; };
+		BF0F7CC427B9565800A375BF /* DummyEventGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5084F3275B098900C1FC58 /* DummyEventGenerator.swift */; };
+		BF0F7CC527B9565A00A375BF /* DummyEventGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5084F3275B098900C1FC58 /* DummyEventGenerator.swift */; };
+		BF0F7CC827B9569000A375BF /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = BF0F7CC727B9569000A375BF /* Preferences */; };
+		BF0F7CCB27B956FF00A375BF /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = BF0F7CCA27B956FF00A375BF /* LaunchAtLogin */; };
+		BF0F7CCE27B9571C00A375BF /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = BF0F7CCD27B9571C00A375BF /* HotKey */; };
 		BF1059E0274B44B900486AE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1059DF274B44B900486AE0 /* Store.swift */; };
 		BF1059E2274B46BA00486AE0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1059E1274B46BA00486AE0 /* StoreKit.framework */; };
 		BF1059E4274B683800486AE0 /* StoreKitDebug.storekit in Resources */ = {isa = PBXBuildFile; fileRef = BF1059E3274B683800486AE0 /* StoreKitDebug.storekit */; };
@@ -290,7 +295,6 @@
 		BF80D16F2445A77E00FBB5A5 /* EventPinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80D16E2445A77D00FBB5A5 /* EventPinningManager.swift */; };
 		BF825CE5274CBFF700CD91CD /* CountdownViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF825CE4274CBFF700CD91CD /* CountdownViewSettings.swift */; };
 		BF84CDFF2750B8E000924C8E /* AppearanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84CDFE2750B8E000924C8E /* AppearanceSettings.swift */; };
-		BF872D7E27AA288100251348 /* MainEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE00C7277D74C400A51B37 /* MainEventCard.swift */; };
 		BF876A09220C0EEE007D2EFF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF876A08220C0EEE007D2EFF /* MainInterface.storyboard */; };
 		BF89651024EC0EA20051024D /* StatusItemEventMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89650B24EC05E00051024D /* StatusItemEventMode.swift */; };
 		BF89651224EC0EA30051024D /* StatusItemEventMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89650B24EC05E00051024D /* StatusItemEventMode.swift */; };
@@ -1475,6 +1479,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0F7CCE27B9571C00A375BF /* HotKey in Frameworks */,
+				BF0F7CCB27B956FF00A375BF /* LaunchAtLogin in Frameworks */,
+				BF0F7CC827B9569000A375BF /* Preferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3115,6 +3122,9 @@
 			);
 			name = "How Long Left (macOS)";
 			packageProductDependencies = (
+				BF0F7CC727B9569000A375BF /* Preferences */,
+				BF0F7CCA27B956FF00A375BF /* LaunchAtLogin */,
+				BF0F7CCD27B9571C00A375BF /* HotKey */,
 			);
 			productName = "How Long Left (macOS)";
 			productReference = BFEA0CE621788D0100FAF2F1 /* How Long Left.app */;
@@ -3233,6 +3243,9 @@
 			mainGroup = BF5D294C2174679500AC1EB6;
 			packageReferences = (
 				BFD140A527AA7F1200F8C02A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				BF0F7CC627B9569000A375BF /* XCRemoteSwiftPackageReference "Preferences" */,
+				BF0F7CC927B956FF00A375BF /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				BF0F7CCC27B9571C00A375BF /* XCRemoteSwiftPackageReference "HotKey" */,
 			);
 			productRefGroup = BF5D29562174679500AC1EB6 /* Products */;
 			projectDirPath = "";
@@ -3956,6 +3969,7 @@
 				BFC72FE9256F9C45009F289E /* Weekday.swift in Sources */,
 				BFC72FEA256F9C45009F289E /* NicknameManager.swift in Sources */,
 				BFC72FEB256F9C45009F289E /* KeyDateHandler.swift in Sources */,
+				BF0F7CC427B9565800A375BF /* DummyEventGenerator.swift in Sources */,
 				BFC72FEC256F9C45009F289E /* EventVisibiltyActionHandler.swift in Sources */,
 				BFC72FED256F9C45009F289E /* VisibilityString.swift in Sources */,
 				BFC72FEE256F9C45009F289E /* Version.swift in Sources */,
@@ -4104,7 +4118,6 @@
 				BFEE396421BD152B000106BD /* NotificationPreferencesViewController.swift in Sources */,
 				BFF9AB47256FCE5D003A0AA9 /* MenuContainerView.swift in Sources */,
 				BF168A85255F7C9A00C1A598 /* MacWidgetUpdateHandler.swift in Sources */,
-				BF872D7E27AA288100251348 /* MainEventCard.swift in Sources */,
 				BF62E44624AC913200B7D61A /* HLLStatusItemContent.swift in Sources */,
 				BF36185C22DCDB0400D51765 /* EventUIWindowsManager.swift in Sources */,
 				BFCB6A9F27B14A45004CA311 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */,
@@ -4185,6 +4198,7 @@
 				BFC73054256F9CAA009F289E /* RepeatingTimer.swift in Sources */,
 				BFC73055256F9CAA009F289E /* CountdownText.swift in Sources */,
 				BFC73056256F9CAA009F289E /* ProStatusManager.swift in Sources */,
+				BF0F7CC527B9565A00A375BF /* DummyEventGenerator.swift in Sources */,
 				BFC73057256F9CAA009F289E /* CurrentDateFetcher.swift in Sources */,
 				BFC73058256F9CAA009F289E /* HLLCloudKitPreferences.swift in Sources */,
 				BF4400382574DA990061ED6E /* PercentDateFetcher.swift in Sources */,
@@ -5129,6 +5143,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BF0F7CC627B9569000A375BF /* XCRemoteSwiftPackageReference "Preferences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Preferences";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BF0F7CC927B956FF00A375BF /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BF0F7CCC27B9571C00A375BF /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		BFD140A527AA7F1200F8C02A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -5140,6 +5178,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BF0F7CC727B9569000A375BF /* Preferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF0F7CC627B9569000A375BF /* XCRemoteSwiftPackageReference "Preferences" */;
+			productName = Preferences;
+		};
+		BF0F7CCA27B956FF00A375BF /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF0F7CC927B956FF00A375BF /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		BF0F7CCD27B9571C00A375BF /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF0F7CCC27B9571C00A375BF /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
 		BFD140A627AA7F1200F8C02A /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFD140A527AA7F1200F8C02A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;

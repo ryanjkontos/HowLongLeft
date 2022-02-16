@@ -11,6 +11,8 @@ import Foundation
 
 import Cocoa
 
+/*
+
 class SchoolEventChangesMenuItemGenerator {
     
     var changedEvents = [HLLEvent]()
@@ -121,3 +123,4 @@ class SchoolEventChangesMenuItemGenerator {
     
     
 }
+ */

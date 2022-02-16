@@ -99,6 +99,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        
+        if let url = URLContexts.first?.url {
+           handleLaunchURL(url)
+        }
+        
+        
+      
+    }
 
+    func handleLaunchURL(_ url: URL) {
+       
+        
+        if let scheme = url.scheme,
+                       scheme.localizedCaseInsensitiveCompare("howlongleft") == .orderedSame, let host = url.host {
+            
+            if let event = HLLEventSource.shared.eventPool.first(where: { $0.persistentIdentifier == host }) {
+                print("Got event from host")
+            }
+            
+        }
+        
+    }
+    
 }
 

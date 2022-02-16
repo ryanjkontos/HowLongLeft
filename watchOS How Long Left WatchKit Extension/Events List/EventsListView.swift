@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WatchKit
 
 struct EventsListView: View {
     
@@ -85,7 +86,7 @@ struct EventsListView: View {
                             
                             NavigationLink(tag: event.id, selection: $showEventView, destination: { EventView(event: event, openOnOptions: showOptions) }, label: {
                             
-                            getViewFor(event: event, at: index, height: geometry.size.height, live: context.cadence == .live, date: context.date)
+                                getViewFor(event: event, at: index, height: WKInterfaceDevice.current().screenBounds.size.height, live: context.cadence == .live, date: context.date)
                                 .drawingGroup()
                             })
                             
@@ -164,14 +165,20 @@ struct EventsListView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .listItemTint(.orange)
+                 
                     
                 }
+                
+                
+                
    
                 // .listStyle(.e)
   
                 
             }
+           
         }
+       
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle("How Long Left")
         
@@ -201,7 +208,7 @@ struct EventsListView: View {
         if listIndex == 0, HLLDefaults.watch.largeCell {
             MainEventCard(event: event, liveUpdates: true, date: date)
                 .padding(.bottom, 10)
-                .frame(height: event.isSelected ? height+5 : height-5)
+                .frame(height: event.isSelected ? height-45 : height*0.74)
         } else if event.completionStatus(at: date) == .current || HLLDefaults.watch.upcomingMode == .withCountdown {
             CountdownCard(event: event, liveUpdates: true, date: date)
         } else {

@@ -15,8 +15,6 @@ struct UpcomingSubCard: View {
     
     var body: some View {
         
-        
-        
         RoundedRectangle(cornerRadius: 12, style: .circular)
             .background(content: {Color(uiColor: .systemBackground)})
             .foregroundColor(Color(uiColor: event.color).opacity(0.2))
@@ -26,11 +24,9 @@ struct UpcomingSubCard: View {
                 HStack(spacing: 10) {
                     
                     Rectangle()
-                        
                         .foregroundColor(Color(uiColor: event.color))
                         .opacity(0.4)
                         .frame(width: 9)
-                    
                     
                     VStack(alignment: .leading, spacing: 1) {
                         
@@ -38,29 +34,17 @@ struct UpcomingSubCard: View {
                             .foregroundColor(Color(uiColor: UIColor.label))
                             .font(.system(size: 16, weight: .medium, design: .default))
                             
-                            
                         Text("\(event.startDate.formattedTime()) - \(event.endDate.formattedTime())")
                             .foregroundColor(Color(uiColor: UIColor.secondaryLabel))
                             .font(.system(size: 13, weight: .regular, design: .default))
-                            
-                            
-                        
                     }
-                    
-                    
                     Spacer()
-                    
                 }
-                
-                
-                
             }
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .circular))
             .clipped()
             .drawingGroup()
             
-  
-        
     }
 }
 

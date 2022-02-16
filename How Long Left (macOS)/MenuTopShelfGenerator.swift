@@ -17,7 +17,7 @@ class MenuTopShelfGenerator {
     let submenuGen = DetailSubmenuGenerator()
     let upcomingSectionGen = UpcomingSoonMenuGenerator()
     let upcomingWeekGen = UpcomingWeekMenuGenerator()
-    var schoolEventChangesMenuItemGenerator: SchoolEventChangesMenuItemGenerator!
+   
     var featuredItems = [NSMenuItem]()
     let quickMenuGen = QuickPreferencesSubmenuGenerator()
     

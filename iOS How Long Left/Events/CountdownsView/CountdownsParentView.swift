@@ -15,6 +15,8 @@ struct CountdownsParentView: View {
     
     @State var showSettings = false
     
+    @Binding var launchEvent: HLLEvent?
+    
     var body: some View {
         
         NavigationView {
@@ -29,7 +31,7 @@ struct CountdownsParentView: View {
                     
                 }
             } else {
-                CountdownsView(eventViewEvent: $eventViewEvent)
+                CountdownsView(eventViewEvent: $eventViewEvent, launchEvent: $launchEvent)
                     .environmentObject(eventSource)
             }
             
@@ -50,6 +52,6 @@ struct CountdownsParentView: View {
 
 struct InProgressParentView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownsParentView(eventViewEvent: .constant(nil))
+        CountdownsParentView(eventViewEvent: .constant(nil), launchEvent: .constant(nil))
     }
 }

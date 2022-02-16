@@ -8,9 +8,17 @@
 
 import Foundation
 import EventKit
+#if canImport(UIKit)
 import UIKit
+typealias SystemColor = UIColor
+#elseif canImport(AppKit)
+import AppKit
+typealias SystemColor = NSColor
+#endif
 
-class HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
+
+
+struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var title: String
     
@@ -36,7 +44,7 @@ class HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var ekEvent: EKEvent? { HLLEventSource.shared.ekEvent(with: eventIdentifier) }
     
-    var color: UIColor { UIColor(cgColor: calendar?.cgColor ?? UIColor.HLLOrange.cgColor) }
+    var color: SystemColor { calendar?.getColor() ?? .orange }
     
     var countdownDate: Date { countdownDate() }
     
@@ -55,6 +63,8 @@ class HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     var isPinned: Bool { HLLDefaults.general.pinnedEventIdentifiers.contains(where: { $0 == persistentIdentifier } ) }
     
     var countdownTypeString: String { countdownTypeString() }
+    
+    var followingOccurence: HLLEvent? { FollowingOccurenceStore.shared.nextOccurDictionary[persistentIdentifier] }
     
     var infoIdentifier: String { "\(title) \(startDate) \(endDate) \(calendarID ?? "nil") \(location ?? "nil")" }
     
@@ -108,10 +118,6 @@ class HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
         return title.truncated(limit: limit, position: .middle, leader: "...")
     }
     
-    static func == (lhs: HLLEvent, rhs: HLLEvent) -> Bool {
-        lhs.infoIdentifier == rhs.infoIdentifier && lhs.completionStatus == rhs.completionStatus
-    }
-    
     static func previewEvent() -> HLLEvent {
         HLLEvent(title: "Preview", start: Date(), end: Date().addingTimeInterval(45*60), location: nil)
     }
@@ -144,7 +150,7 @@ protocol EventUIObject {
     
     var endDate: Date { get }
     
-    var color: UIColor { get }
+    var color: SystemColor { get }
     
     var id: String { get }
     
@@ -164,7 +170,7 @@ protocol EventUIObject {
 
 class PreviewEvent: EventUIObject {
     
-    internal init(title: String, startDate: Date, endDate: Date, color: UIColor, completionStatus: HLLEvent.CompletionStatus) {
+    internal init(title: String, startDate: Date, endDate: Date, color: SystemColor, completionStatus: HLLEvent.CompletionStatus) {
         self.title = title
         self.startDate = startDate
         self.endDate = endDate
@@ -180,7 +186,7 @@ class PreviewEvent: EventUIObject {
     
     var endDate: Date
     
-    var color: UIColor
+    var color: SystemColor
     
     var id: String
     
@@ -204,17 +210,31 @@ class PreviewEvent: EventUIObject {
         return date.timeIntervalSince(startDate)/endDate.timeIntervalSince(startDate)
     }
     
-    static func inProgressPreviewEvent(title: String = "Event", minsStartedAgo: Int = 10, minsEndingIn: Int = 25, color: UIColor = .orange) -> PreviewEvent {
+    static func inProgressPreviewEvent(title: String = "Event", minsStartedAgo: Int = 10, minsEndingIn: Int = 25, color: SystemColor = .orange) -> PreviewEvent {
         
         return PreviewEvent(title: title, startDate: (Date() - TimeInterval(minsStartedAgo*60)), endDate: Date().addingTimeInterval(TimeInterval(minsEndingIn*60)), color: color, completionStatus: .current)
         
     }
     
-    static func upcomingPreviewEvent(title: String = "Event", minsStartingIn: Int = 25, color: UIColor = .orange) -> PreviewEvent {
+    static func upcomingPreviewEvent(title: String = "Event", minsStartingIn: Int = 25, color: SystemColor = .orange) -> PreviewEvent {
         
         return PreviewEvent(title: title, startDate: Date().addingTimeInterval(TimeInterval(minsStartingIn*60)), endDate: Date.distantFuture, color: color, completionStatus: .upcoming)
         
     }
     
+    
+}
+
+extension EKCalendar {
+    
+    func getColor() -> SystemColor {
+        #if os(macOS)
+        return self.color
+        #else
+        return UIColor(cgColor: self.cgColor)
+        #endif
+        
+        
+    }
     
 }

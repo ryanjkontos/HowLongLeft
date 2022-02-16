@@ -58,7 +58,7 @@ class HLLStatusItemContentGenerator {
             content.image = StatusItemGlobals.currentIcon
         case .event:
             content.alpha = StatusItemGlobals.inactiveAlpha
-            if let title = config.eventRetriver.retrieveEvent()?.titleForStatusItem {
+            if let event = config.eventRetriver.retrieveEvent(), let title = countdownStringGenerator.titleForStatusItem(event: event) {
                 content.text = title
             } else {
                 content.image = StatusItemGlobals.currentIcon
@@ -74,7 +74,7 @@ class HLLStatusItemContentGenerator {
         var content = HLLStatusItemContent()
         
         if event.completionStatus == .done {
-            content.text = event.titleForStatusItem
+            content.text = countdownStringGenerator.titleForStatusItem(event: event)
             content.alpha = StatusItemGlobals.inactiveAlpha
             return content
         }

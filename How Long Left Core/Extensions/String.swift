@@ -111,12 +111,16 @@ extension String {
         
         #if os(macOS)
         if #available(macOS 10.15, *) { } else {
-            return
+            return self
         }
+        #else
+        
+        let computed = Insecure.MD5.hash(data: self.data(using: .utf8)!)
+        return computed.map { String(format: "%02hhx", $0) }.joined()
+        
         #endif
         
-            let computed = Insecure.MD5.hash(data: self.data(using: .utf8)!)
-            return computed.map { String(format: "%02hhx", $0) }.joined()
+            return self
     }
     
 }

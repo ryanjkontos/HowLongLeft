@@ -39,7 +39,7 @@ class HLLTimelineGenerator {
         for event in events {
           
             if timelineType == .widget {
-                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 3))
+                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 1))
             }
                 
             entryDates.insert(event.startDate)
@@ -276,6 +276,8 @@ class HLLTimelineGenerator {
             print("Needs reloading because states were different")
             return .needsReloading
         }
+        
+        
         
         if newTimeline.events.isSubset(of: currentTimeline.events) == false {
             print("Needs reloading because the old timeline did not contain events that the new one does")

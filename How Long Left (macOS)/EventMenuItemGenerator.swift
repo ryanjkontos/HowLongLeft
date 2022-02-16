@@ -48,11 +48,7 @@ class EventMenuItemGenerator {
             
             var relativeDateText = event.startDate.userFriendlyRelativeString()
             
-            if let period = event.period {
-                
-                relativeDateText += ", Period \(period)"
-                
-            }
+        
             
             text = "\(title) (\(relativeDateText))"
         }

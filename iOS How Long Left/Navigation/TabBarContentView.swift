@@ -13,18 +13,22 @@ struct TabBarContentView: View {
     
     @Binding var eventViewEvent: HLLEvent?
     
+    @State var selection = 0
+    
+    @State var launchEvent: HLLEvent?
     
     var body: some View {
         
-        TabView {
+        TabView(selection: $selection) {
             
-            CountdownsParentView(eventViewEvent: $eventViewEvent)
+            CountdownsParentView(eventViewEvent: $eventViewEvent, launchEvent: $launchEvent)
                 .tabItem({
                     
                     Image(systemName: HLLAppTab.inProgress.imageName())
                     Text(HLLAppTab.inProgress.tabName())
                     
                 })
+                .tag(0)
             
             UpcomingEventListParentView(eventViewEvent: $eventViewEvent)
                 .tabItem({
@@ -33,6 +37,7 @@ struct TabBarContentView: View {
                     Text(HLLAppTab.upcoming.tabName())
                     
                 })
+                .tag(1)
             
             NavigationView {
                 SettingsView()
@@ -45,6 +50,7 @@ struct TabBarContentView: View {
                     Text(HLLAppTab.settings.tabName())
                     
                 })
+                .tag(2)
                 
             
         }
@@ -61,6 +67,17 @@ struct TabBarContentView: View {
     }
     
 
+    func handleLaunchEvent() {
+        
+        guard let event = launchEvent else { return }
+        
+        if event.completionStatus == .current {
+            selection = 0
+        } else {
+            selection = 1
+        }
+        
+    }
     
 }
 
