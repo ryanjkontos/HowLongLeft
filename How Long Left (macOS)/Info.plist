@@ -38,6 +38,7 @@
 	<string>NSApplication</string>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>HLLWidgetConfigurationIntent</string>
 		<string>WidgetKitIntentIntent</string>
 		<string>com.ryankontos.how-long-left.viewEventActivity</string>
 	</array>

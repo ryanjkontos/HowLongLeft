@@ -92,7 +92,7 @@ class WidgetUpdateOperation: Operation {
     override func main() {
         
         
-        WidgetUpdateHandler.shared.updateWidget(background: background)
+        WidgetUpdateHandler.shared.updateWidget(force: false, background: background)
         
     }
 }

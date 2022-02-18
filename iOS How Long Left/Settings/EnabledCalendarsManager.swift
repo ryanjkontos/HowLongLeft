@@ -11,16 +11,21 @@ import EventKit
 import Combine
 
 class EnabledCalendarsManager: ObservableObject {
-    
+
     @Published var allCalendars = [IdentifiableCalendar]()
     
     @Published private(set) var allEnabled = false
     
-    init() {
-        
+    fileprivate var toggleAction: ((EKCalendar, Bool) -> ())
+    fileprivate var toggledCheck: ((EKCalendar) -> (Bool))
+    
+    internal init(toggleAction: @escaping ((EKCalendar, Bool) -> ()), toggledCheck: @escaping ((EKCalendar) -> (Bool))) {
+        self.toggleAction = toggleAction
+        self.toggledCheck = toggledCheck
         
         update()
     }
+
     
     var enabledCount: Int {
         
@@ -32,20 +37,9 @@ class EnabledCalendarsManager: ObservableObject {
         
     }
     
-    var useNewCalendars: Bool = HLLDefaults.calendar.useNewCalendars {
-        
-        willSet {
-            
-            HLLDefaults.calendar.useNewCalendars = newValue
-            objectWillChange.send()
-            
-        }
-        
-    }
-    
     func update() {
         
-        allCalendars = HLLEventSource.shared.getCalendars().map { IdentifiableCalendar(delegate: self, calendar: $0, enabled: $0.isToggled) }
+        allCalendars = HLLEventSource.shared.getCalendars().map { IdentifiableCalendar(delegate: self, calendar: $0, enabled: toggledCheck($0)) }
         
         var allEnabled = true
         for cal in allCalendars {
@@ -91,12 +85,12 @@ class IdentifiableCalendar: Identifiable {
     var enabled: Bool = false {
         
         didSet {
-            CalendarDefaultsModifier.shared.setState(enabled: enabled, calendar: calendar)
+            
+            delegate.toggleAction(self.calendar, enabled)
+            
             delegate.update()
             
-            DispatchQueue.main.async {
-                HLLEventSource.shared.updateEventPool()
-            }
+
             
         }
     }
@@ -109,6 +103,23 @@ extension EKCalendar {
         get {
             return HLLDefaults.calendar.enabledCalendars.contains(where: {$0 == self.calendarIdentifier})
         }
+    }
+    
+}
+
+class AppEnabledCalendarsManager: EnabledCalendarsManager {
+    
+    
+    convenience init() {
+        
+        self.init(toggleAction: { (calendar, enabled) in
+            
+            CalendarDefaultsModifier.shared.setState(enabled: enabled, calendar: calendar)
+           
+            HLLEventSource.shared.asyncUpdateEventPool()
+            
+        }, toggledCheck: { $0.isToggled })
+        
     }
     
 }

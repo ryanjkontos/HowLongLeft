@@ -135,7 +135,11 @@ class HLLDefaults {
                 let encoder = JSONEncoder()
                 let encoded = try! encoder.encode(newValue)
                 
+                print("Set widget timeline")
+                
                 defaults.set(encoded, forKey: "WidgetLatestTimeline")
+                
+                
             }
             
         }
@@ -2017,11 +2021,26 @@ enum OldRoomNamesSetting: Int {
     
 }
 
-enum WidgetTheme: Int {
+enum WidgetTheme: Int, CaseIterable, Identifiable {
     
     case system = 0
     case light = 1
     case dark = 2
+    
+    var id: WidgetTheme { return self }
+    
+    var name: String {
+        
+        switch self {
+        case .system:
+            return "System"
+        case .light:
+            return "Light"
+        case .dark:
+            return "Dark"
+        }
+        
+    }
     
 }
 

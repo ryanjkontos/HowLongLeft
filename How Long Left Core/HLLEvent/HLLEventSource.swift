@@ -235,7 +235,7 @@ class HLLEventSource {
         self.eventPool = add
         
         if let encoded = try? JSONEncoder().encode(add) {
-            HLLDefaults.defaults.set(encoded, forKey: "EncodedEventPool")
+          //  HLLDefaults.defaults.set(encoded, forKey: "EncodedEventPool")
         }
         
         eventPoolUpdatingCounter -= 1

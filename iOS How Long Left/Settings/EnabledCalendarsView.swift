@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EnabledCalendarsView: View {
     
-    @EnvironmentObject var calendarsManager: EnabledCalendarsManager
+    @ObservedObject var calendarsManager = AppEnabledCalendarsManager()
     
     var body: some View {
         
@@ -48,7 +48,15 @@ struct EnabledCalendarsView: View {
             
             Section(footer: Text("Enable new calendars automatically")) {
                 
-                Toggle(isOn: $calendarsManager.useNewCalendars, label: {Text("Use New Calendars")})
+                Toggle(isOn: Binding(get: {
+                    
+                    return HLLDefaults.calendar.useNewCalendars
+                    
+                }, set: {
+                    HLLDefaults.calendar.useNewCalendars = $0
+                    
+                    
+                }), label: {Text("Use New Calendars")})
                 
             }
             

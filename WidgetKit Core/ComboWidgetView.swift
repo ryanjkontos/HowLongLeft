@@ -24,7 +24,7 @@ struct ComboWidgetView: View {
                 
                 HStack(alignment: .center, spacing: 20) {
 
-                    CountdownWidgetParentView(entry: entry)
+                    CountdownWidgetParentView(entry: entry, progressBarEnabled: true)
                     
                     
                         UpcomingListView(events: entry.underlyingEntry.nextEvents, showAt: entry.date)

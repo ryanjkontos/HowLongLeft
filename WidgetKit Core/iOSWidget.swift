@@ -13,12 +13,19 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
 
-    
     typealias Entry = HLLWidgetTimelineEntry
-    typealias Intent = ConfigurationIntent
     
-    let generator = HLLTimelineGenerator(type: .widget)
-    var timeline: HLLTimeline
+    #if os(iOS)
+    typealias Intent = HLLWidgetConfigurationIntent
+    #else
+    typealias Intent = ConfigurationIntent
+    #endif
+    
+    
+    let configStore = WidgetConfigurationStore()
+    var generator = HLLTimelineGenerator(type: .widget)
+
+    let storageManager = WidgetHLLTimelineStorageManager()
     
     init() {
         
@@ -30,7 +37,7 @@ struct Provider: IntentTimelineProvider {
         HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
         
-        timeline = generator.generateHLLTimeline()
+    
         
         
     }
@@ -40,9 +47,23 @@ struct Provider: IntentTimelineProvider {
     }
 
     
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Entry) -> ()) {
+    func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
+        
+        generator.reset()
+        
+        var config: HLLTimelineConfiguration?
+        
+        #if os(iOS)
+        
+        if let intentConfig = configuration.config {
+            config = configStore.getConfigFromIntent(intent: intentConfig)
+        }
+        
+        #endif
+        
         
         HLLEventSource.shared.updateEventPool()
+        generator.timelineConfiguration = config
         let newTimeline = generator.generateHLLTimeline()
         let entry = Entry(configuration: configuration, underlyingEntry: newTimeline.entries.first!)
         completion(entry)
@@ -50,13 +71,36 @@ struct Provider: IntentTimelineProvider {
         
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: Intent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
+        generator.reset()
+        
+        var config: HLLTimelineConfiguration?
+        
+        if configuration.useConfig?.boolValue ?? true {
+            
+            config = configStore.defaultGroup
+            
+            if let intentConfig = configuration.config, let match = configStore.getConfigFromIntent(intent: intentConfig) {
+                config = match
+            }
+            
+        } else {
+            
+            if let widgetEvent = configuration.enabledEvents {
+                generator.onlyShowEventID = widgetEvent.identifier
+            } else {
+                generator.onlyShowEventID = ""
+            }
+            
+        }
         
         var entries = [Entry]()
         HLLEventSource.shared.updateEventPool()
+        generator.timelineConfiguration = config
         let newTimeline = generator.generateHLLTimeline()
         
-        HLLDefaults.widget.latestTimeline = newTimeline
+        storageManager.saveTimeline(newTimeline, configID: config?.id)
         
         for entry in newTimeline.entries {
             
@@ -82,7 +126,7 @@ struct HLLWidgetTimelineEntry: TimelineEntry {
         return underlyingEntry.showAt
     }
     
-    let configuration: ConfigurationIntent
+    let configuration: Provider.Intent
     
     var state: TimelineState = .normal
     
@@ -105,9 +149,9 @@ struct CountdownWidget: Widget {
     let kind: String = "CountdownWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider()) { entry in
             
-            CountdownWidgetParentView(entry: entry)
+            CountdownWidgetParentView(entry: entry, progressBarEnabled: entry.configuration.ProgressBar?.boolValue ?? true)
                 .padding(.horizontal, 20)
                 .modifier(HLLWidgetBackground())
         }
@@ -125,7 +169,9 @@ struct UpcomingListWidget: Widget {
     let kind: String = "UpcomingListWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        
+        
+        IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider()) { entry in
             
             UpcomingWidgetParentView(entry: entry)
                 .modifier(HLLWidgetBackground())
@@ -145,7 +191,7 @@ struct CountdownAndUpcomingListWidget: Widget {
     let kind: String = "CountdownAndUpcomingListWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider()) { entry in
             ComboWidgetView(entry: entry)
                 .modifier(HLLWidgetBackground())
             

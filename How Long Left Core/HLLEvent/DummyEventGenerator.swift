@@ -12,13 +12,13 @@ class DummyEventGenerator {
     
     var events = [HLLEvent]()
     
-    let amount = 5
+    let amount = 50
     
     
     
     init() {
         
-      
+      return
         
         var start = Date()
         

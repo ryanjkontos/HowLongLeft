@@ -16,6 +16,8 @@ struct CountdownWidgetEventView: View {
     var displayDate: Date
     var barFraction: Double = 0.00
     
+    var barEnabled: Bool
+    
     @Environment(\.colorScheme) var systemColorScheme: ColorScheme
     
     var colorScheme: ColorScheme {
@@ -94,7 +96,9 @@ struct CountdownWidgetEventView: View {
         
         get {
             
-        
+            if !barEnabled {
+                return false
+            }
             
             if event.completionStatus(at: displayDate) == .current {
                 return true
@@ -181,7 +185,7 @@ struct CountdownWidgetEventView: View {
 
 struct CountdownWidgetEventView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownWidgetEventView(event: PreviewEvent.inProgressPreviewEvent(), displayDate: Date())
+        CountdownWidgetEventView(event: PreviewEvent.inProgressPreviewEvent(), displayDate: Date(), barEnabled: true)
             .padding(.horizontal, 20)
             .modifier(HLLWidgetBackground())
             .previewContext(WidgetPreviewContext(family: .systemSmall))

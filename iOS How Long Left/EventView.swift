@@ -18,6 +18,7 @@ struct EventView: View {
     @ObservedObject var selectionStateObject: SelectionStateObject
     
     init(event: HLLEvent) {
+      //  print("Init event view for \(event.title)")
         self.selectionStateObject = SelectionStateObject(event: event)
         self.event = event
         self.items = HLLEventInfoItemGenerator(event).getInfoItems(for: [.start, .end, .duration, .elapsed])
@@ -39,11 +40,17 @@ struct EventView: View {
                 
                 HStack(alignment: .center) {
                 
-                   
+                    HStack {
+                        Spacer()
+                        
+                        CountdownCard(event: event)
+                            .frame(maxWidth: 425)
+                            .id(event.infoIdentifier)
+                        
+                        Spacer()
+                    }
                     
-                    CountdownCard(event: event)
-                        //.frame(maxWidth: 425)
-                        .id(event.infoIdentifier)
+                    
                     
                    
                 }
@@ -63,8 +70,10 @@ struct EventView: View {
                                 .foregroundColor(.secondary)
                             
                         }
+                        .id(item.info)
                         
                     }
+                    
                     
                 }
                 
@@ -76,13 +85,6 @@ struct EventView: View {
                             .frame(width: 20)
                             .foregroundColor(.orange)
                         Text("Show in Pinned") })
-                        
-                    
-                    Toggle(isOn: $selectionStateObject.isSelected, label: {
-                        
-                        Image(systemName: "square.fill")
-                            .foregroundColor(.orange)
-                        Text("Show in Widget") })
                     
                 }, header: {
                     Text("Options")

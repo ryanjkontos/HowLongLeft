@@ -9,17 +9,19 @@
 import SwiftUI
 import Introspect
 
-struct ExtensionPurchaseView: View {
+struct ExtensionPurchaseView: View, Sendable {
 
     var type: ExtensionType
     
     @Binding var presentSheet: Bool
     
+    @State var purchasing = false
+    
     @ObservedObject var store = Store.shared
     
-    @State var upcomingEvents = [PreviewEvent.upcomingPreviewEvent(minsStartingIn: 60, color: .systemCyan), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 120, color: .systemGreen), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 180, color: .systemOrange)]
+    var upcomingEvents = [PreviewEvent.upcomingPreviewEvent(minsStartingIn: 60, color: .systemCyan), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 120, color: .systemGreen), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 180, color: .systemOrange)]
     
-    @State var current = PreviewEvent.inProgressPreviewEvent(color: .systemCyan)
+    var current = PreviewEvent.inProgressPreviewEvent(color: .systemCyan)
     
     
     init(type: ExtensionType, presentSheet: Binding<Bool>) {
@@ -76,41 +78,60 @@ struct ExtensionPurchaseView: View {
             getPreviewView()
             
             Spacer()
-            
+        
             if !store.extensionPurchased(oftype: type) {
             
                 VStack(spacing: 20) {
                     VStack(spacing: 6.5) {
-                    
-                    Button(action: {
                         
-                        Task {
+                        if purchasing {
                             
-                            let purchased = await store.purchase(productFor: type)
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                                .frame(height: 49, alignment: .center)
                             
-                            if purchased {
-                                DispatchQueue.main.async {
-                                    self.presentSheet = false
+                        } else {
+                            
+                            Button(action: {
+                                
+                                Task {
+                                    
+                                    purchasing = true
+                                    
+                                    let purchased = await store.purchase(productFor: type)
+                                    
+                                    
+                                    
+                                    if purchased {
+                                        DispatchQueue.main.async {
+                                            self.presentSheet = false
+                                        }
+                                    }
+                                    
+                                    purchasing = false
+                                    
                                 }
-                            }
+                                
+                                
+                            }, label: {
+                                
+                                Text("Purchase – $2.99")
+                                    .font(.headline)
+                                    .frame(maxWidth: 300)
+                                
+                            })
+                            .tint(.orange)
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
+                            .frame(height: 49, alignment: .center)
                             
                         }
                         
-                        
-                    }, label: {
-                        
-                        Text("Purchase – $2.99")
-                            .font(.headline)
-                            .frame(maxWidth: 300)
-                        
-                    })
-                    .tint(.orange)
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
+                
                     
-                    .frame(height: 49, alignment: .center)
                     
-                      
+                    
+                    
                     
                     }
                     
@@ -138,20 +159,50 @@ struct ExtensionPurchaseView: View {
             
         }
         
-        .titleButtonPadding(height: proxy.size.height)
+        //.titleButtonPadding(height: proxy.size.height)
         }
+            
+            .safeAreaInset(edge: .top, content: {
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: { presentSheet = false }) {
+                       
+                        Circle()
+                            .overlay {
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 16, weight: .bold, design: .default))
+                                    .foregroundColor(.gray)
+                            }
+                            .hoverEffect(.lift)
+                            .foregroundColor(Color(UIColor.secondarySystemFill))
+                            .frame(width: 32, height: 32, alignment: .center)
+                        
+                    }
+                    
+                    
+                }
+                .padding(.top, 20)
+                .padding(.trailing, 20)
+                
+                
+            })
             
         .frame(width: proxy.size.width, height: proxy.size.height)
        
         }
-        .background(.regularMaterial)
-        .introspectViewController(customize: { viewController in
+        .padding(.bottom, 20)
+        .background(Color(UIColor.systemGroupedBackground))
+        
+   
+      /*  .introspectViewController(customize: { viewController in
             
             viewController.view.backgroundColor = .clear
             //viewController.view.superview?.backgroundColor = .clear
             
         })
-        
+        */
     }
     
     @ViewBuilder func getPreviewView() -> some View {
@@ -159,7 +210,7 @@ struct ExtensionPurchaseView: View {
         switch type {
         case .widget:
 
-            WidgetsPreviewView(current: $current, upcomingEvents: $upcomingEvents)
+            WidgetsPreviewView(current: current, upcomingEvents: upcomingEvents)
                
             
         case .complication:
@@ -219,7 +270,7 @@ struct ExtensionPurchaseView: View {
         
         Task {
             
-            await store.restore()
+          //  await store.restore()
             
             
         }

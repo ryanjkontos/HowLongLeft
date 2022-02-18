@@ -15,6 +15,8 @@ struct CountdownWidgetParentView : View {
     
     let entry: HLLWidgetTimelineEntry
     
+    var progressBarEnabled: Bool
+    
     var body: some View {
         
         switch entry.state {
@@ -22,7 +24,7 @@ struct CountdownWidgetParentView : View {
         case .normal:
             
             if let unwrappedEvent = entry.underlyingEntry.event {
-                 CountdownWidgetEventView(event: unwrappedEvent, displayDate: entry.date)
+                CountdownWidgetEventView(event: unwrappedEvent, displayDate: entry.date, barEnabled: progressBarEnabled)
             } else {
                  CountdownWidgetNoEventView()
             }

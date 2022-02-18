@@ -8,27 +8,51 @@
 
 import SwiftUI
 import Introspect
+import WatchConnectivity
 
 struct SettingsView: View {
     
-    @ObservedObject var calendarsManager = EnabledCalendarsManager()
-    
     @State var sheetRow: SettingsViewRow?
-
+    
     @State var hasSetInitalSelection = false
     
     @State var nVc: UIViewController?
     
     @State var tableView: UITableView?
     
-    let sections: [SettingsViewSection] = [
-        SettingsViewSection(rows: [.countdowns, .events, .calendars]),
-        SettingsViewSection(header:"Extensions", rows: [.widget, .complication, .siri]),
-        SettingsViewSection(rows: [.debug]),
-
-        
-    ]
+    @State var complicationPurchased = false
     
+    @State var widgetPurchased = false
+    
+    var store = Store()
+    
+    var sections: [SettingsViewSection]
+    
+    var sheetRowBinding: Binding<Bool> {
+        Binding(get: { return sheetRow != nil }, set: { _ in sheetRow = nil })
+    }
+    
+    init() {
+        
+        sections = [SettingsViewSection(rows: [.countdowns, .events, .calendars])]
+        var extensionSection: [SettingsViewRow] = [.widget]
+        if WCSession.isSupported() { extensionSection.append(.complication) }
+        extensionSection.append(.siri)
+        sections.append(SettingsViewSection(header: "Extensions", rows: extensionSection))
+        sections.append(SettingsViewSection(rows: [.debug]))
+        
+        updatePurchases()
+        
+    }
+        
+    func updatePurchases() {
+    
+        
+        complicationPurchased = Store.shared.complicationPurchased
+        widgetPurchased = Store.shared.widgetPurchased
+        
+    }
+
     @Environment(\.horizontalSizeClass) var horizontalSize
     
     @State var selection: String?
@@ -37,8 +61,6 @@ struct SettingsView: View {
     @State var id = UUID()
     
     var body: some View {
-        
-        
         
         List {
           //  Section { EmptyView() }
@@ -51,6 +73,7 @@ struct SettingsView: View {
                             }), destination: {EmptyView()}, label: { getRowView(for: row) }) */
                             
                             Button(action: action, label: { getRowView(for: row)})
+                                .id(row)
                                
                             
                         } else {
@@ -68,7 +91,21 @@ struct SettingsView: View {
             }
             
         }
-        .introspectNavigationController(customize: { vc in
+        
+        .sheet(isPresented: sheetRowBinding, onDismiss: {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                updatePurchases()
+            }
+            
+        }, content: {
+            
+            getRowDestination(for: sheetRow!)
+            
+        })
+        
+      
+     /*   .introspectNavigationController(customize: { vc in
             
             self.nVc = vc
             
@@ -79,13 +116,14 @@ struct SettingsView: View {
             
             self.tableView = $0
             
-        })
-            
-        
- 
-        
+        }) */
+
 
         .onAppear() {
+            
+            print("On appear")
+            
+            updatePurchases()
             
             if hasSetInitalSelection == false {
                 hasSetInitalSelection = true
@@ -107,19 +145,28 @@ struct SettingsView: View {
         
         .navigationBarTitleDisplayMode(.large)
         .listStyle(.insetGrouped)
-        .sheet(item: $sheetRow, onDismiss: { sheetRow = nil }, content: { rowType in
-            getRowDestination(for: rowType)
-        })
-            
-            
+
         
     }
     
     func getRowAction(for type: SettingsViewRow) -> (() -> ())? {
         
-        
         if [SettingsViewRow.complication, .siri, .widget].contains(type) {
-            return { self.sheetRow = type }
+            
+            switch type {
+            case .widget:
+                if store.widgetPurchased { return nil }
+            case .complication:
+                if store.complicationPurchased { return nil }
+            default:
+                break
+            }
+            
+            return {
+                
+                self.sheetRow = type
+            
+            }
         }
         
         return nil
@@ -129,16 +176,12 @@ struct SettingsView: View {
     
     @ViewBuilder func getRowDestination(for type: SettingsViewRow) -> some View {
         
-        let dismissBinding = Binding(get: { return true }, set: {  _ in
-            sheetRow = nil
-        })
-        
         switch type {
         case .events:
             Text("Events")
         case .calendars:
             EnabledCalendarsView()
-                .environmentObject(calendarsManager)
+               
         case .countdowns:
             CountdownViewSettings()
         case .notifications:
@@ -146,9 +189,22 @@ struct SettingsView: View {
         case .siri:
             Text("Siri")
         case .widget:
-            ExtensionPurchaseView(type: .widget, presentSheet: dismissBinding)
+            
+            if widgetPurchased {
+               WidgetSettingsView()
+            } else {
+                ExtensionPurchaseView(type: .widget, presentSheet: sheetRowBinding)
+            }
+            
+            
         case .complication:
-            ExtensionPurchaseView(type: .complication, presentSheet: dismissBinding)
+            
+            if complicationPurchased {
+                Text("Complication Settings")
+            } else {
+                ExtensionPurchaseView(type: .complication, presentSheet: sheetRowBinding)
+            }
+            
         case .appearance:
             AppearanceSettings(appAppearance: .constant(.auto))
         case .debug:

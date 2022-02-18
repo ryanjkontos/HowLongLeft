@@ -69,7 +69,7 @@ struct TitleButtonPadding: ViewModifier {
         
         
         if height < 630 {
-            return 30
+            return 20
         }
         
         return 40

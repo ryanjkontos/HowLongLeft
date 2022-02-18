@@ -19,10 +19,35 @@ class HLLTimelineGenerator {
         self.timelineType = type
     }
     
+    var timelineConfiguration: HLLTimelineConfiguration?
+    var onlyShowEventID: String?
+    
+    private let widgetTimelineStorageManager = WidgetHLLTimelineStorageManager()
+    
+    func reset() {
+        
+        timelineConfiguration = nil
+        onlyShowEventID = nil
+    }
+    
     func generateHLLTimeline(fast: Bool = false, percentages: Bool = false, forState: TimelineState = .normal) -> HLLTimeline {
         
         var events = Array(HLLEventSource.shared.eventPool.filter({HLLHiddenEventStore.shared.isHidden(event: $0) == false})).filter({ $0.completionStatus != .done })
        
+        if let config = timelineConfiguration {
+            
+            if !config.useAllCalendars {
+                events = events.filter({ config.enabledCalendarIDs.contains($0.calendarID ?? "") })
+            }
+            
+        } else {
+            
+            if let onlyShowEventID = onlyShowEventID {
+                events = events.filter({ onlyShowEventID == $0.id })
+            }
+            
+        }
+        
         events.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
         
         var entryDates = Set<Date>()
@@ -39,7 +64,7 @@ class HLLTimelineGenerator {
         for event in events {
           
             if timelineType == .widget {
-                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 1))
+                entryDates.formUnion(percentDateFetcher.fetchPercentDates(for: event, every: 10))
             }
                 
             entryDates.insert(event.startDate)
@@ -231,15 +256,46 @@ class HLLTimelineGenerator {
         
         for event in events {
             
-            if event.completionStatus(at: date) != .done {
+            if event.completionStatus(at: date) == .done {
+                continue
+            }
+            
+            if let timelineConfiguration = timelineConfiguration {
                 
-                currentEvents.append(event)
+                if timelineConfiguration.showUpcoming == false {
+                    if event.completionStatus(at: date) == .upcoming {
+                        continue
+                    }
+                }
+                
+                if timelineConfiguration.showCurrent == false {
+                    if event.completionStatus(at: date) == .current {
+                        continue
+                    }
+                }
                 
             }
+            
+            
+            currentEvents.append(event)
+            
         }
         
         currentEvents.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
         
+        if let timelineConfiguration = timelineConfiguration {
+            
+            if timelineConfiguration.sortMode == .currentFirst {
+                
+                currentEvents.sort(by: { $0.completionStatus(at: date) == .current && $1.completionStatus(at: date) == .upcoming })
+            }
+            
+            if timelineConfiguration.sortMode == .upcomingFirst {
+                
+                currentEvents.sort(by: { $0.completionStatus(at: date) == .upcoming && $1.completionStatus(at: date) == .current })
+            }
+            
+        }
         
         return currentEvents.first
         
@@ -262,7 +318,7 @@ class HLLTimelineGenerator {
         let timeline = generateHLLTimeline(forState: .normal)
         let newTimeline = timeline
         
-        guard let currentTimeline = getStoredTimeline() else {
+        guard let currentTimeline = getStoredTimeline(withID: timelineConfiguration?.id) else {
             print("Needs reloading because no stored timeline.")
             return .needsReloading
         }
@@ -302,13 +358,14 @@ class HLLTimelineGenerator {
         
     }
     
-    func getStoredTimeline() -> HLLTimeline? {
+    func getStoredTimeline(withID id: String? = nil) -> HLLTimeline? {
+        
         
         switch self.timelineType {
             case .complication:
                 return HLLDefaults.complication.latestTimeline
             case .widget:
-                return HLLDefaults.widget.latestTimeline
+            return widgetTimelineStorageManager.getTimeline(withID: id)
         }
         
     }

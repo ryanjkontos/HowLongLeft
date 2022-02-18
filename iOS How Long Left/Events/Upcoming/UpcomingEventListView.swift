@@ -32,7 +32,8 @@ struct UpcomingEventListView: View {
                                     .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
                                     
                                 }
-                            //.id(event.infoIdentifier)
+                            .hoverEffect(.highlight)
+                            .id(event.infoIdentifier)
                             .buttonStyle(SubtleRoundedPressButton(radius: 12, cornerStyle: .circular))
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .circular))
                             
