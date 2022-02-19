@@ -20,7 +20,7 @@ struct ContentView: View {
     @State var showOnboarding = false
     @State var blur = false
     
-    @ObservedObject var store = Store()
+    @ObservedObject var store = Store.shared
     
     @State var appearanceSetting = AppAppearance.auto
     

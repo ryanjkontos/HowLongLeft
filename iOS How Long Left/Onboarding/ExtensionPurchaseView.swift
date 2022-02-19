@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Introspect
+import StoreKit
 
 struct ExtensionPurchaseView: View, Sendable {
 
@@ -97,10 +98,7 @@ struct ExtensionPurchaseView: View, Sendable {
                                 Task {
                                     
                                     purchasing = true
-                                    
                                     let purchased = await store.purchase(productFor: type)
-                                    
-                                    
                                     
                                     if purchased {
                                         DispatchQueue.main.async {
@@ -115,7 +113,7 @@ struct ExtensionPurchaseView: View, Sendable {
                                 
                             }, label: {
                                 
-                                Text("Purchase – $2.99")
+                                Text(getPurchaseString())
                                     .font(.headline)
                                     .frame(maxWidth: 300)
                                 
@@ -143,7 +141,7 @@ struct ExtensionPurchaseView: View, Sendable {
             
             } else {
                 
-                Text("Already Purchased")
+                EmptyView()
                 
             }
         
@@ -227,6 +225,24 @@ struct ExtensionPurchaseView: View, Sendable {
             
         }
         
+    }
+    
+    func getPurchaseString() -> String {
+        
+        var product: Product?
+        
+        switch type {
+        case .widget:
+            product = Store.shared.widgetProduct
+        case .complication:
+            product = Store.shared.complicationProduct
+        }
+        
+        if let product = product {
+            return "Purchase - \(product.displayPrice)"
+        }
+        
+        return "Purchase"
     }
     
     func getTitle() -> String {

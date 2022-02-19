@@ -29,7 +29,7 @@ struct WidgetConfigListView: View {
                 
                 Section(content: { EmptyView() }, header: { EmptyView() }, footer: {
                     
-                    Text("A Widget Configuration defines rules for how a widget chooses which event to display at a given time. You can create a configuration here, then apply it to a widget by long pressing it and selecting \"Edit Widget\".")
+                    Text("Create a widget configuration here, then apply it to a widget by long pressing it and selecting \"Edit Widget\".")
                     
                 })
                 
@@ -156,7 +156,7 @@ struct WidgetConfigListView: View {
             }
        
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitle("Widget Configurations")
+            .navigationBarTitle("Manage Configurations")
             
 
             

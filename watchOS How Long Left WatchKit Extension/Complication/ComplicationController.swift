@@ -85,11 +85,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
         let timeline = ComplicationController.timelineGen.generateHLLTimeline(fast: false, percentages: false, forState: .normal)
         
-        
-      
-        
-        
-        
         var state: HLLTimelineGenerator.TimelineValidity
         if forced {
             state = .needsReloading

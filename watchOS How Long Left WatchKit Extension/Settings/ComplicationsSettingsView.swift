@@ -12,23 +12,53 @@ struct ComplicationsSettingsView: View {
     
     @ObservedObject var model = ComplicationSettingsObject()
     
+    @State var sortMode: TimelineSortMode = .chronological
+    
     var body: some View {
         
         Form {
             
             Section {
-                Toggle(isOn: $model.complicationEnabled, label: { Text("Show Events") })
+                Toggle(isOn: $model.complicationEnabled.animation(), label: { Text("Show Events") })
             }
             
-            Section {
+            if model.complicationEnabled {
+            
+                Section("Events") {
+                    
+                    Toggle("Show In Progress Events", isOn: $model.config.showCurrent.animation())
+                    Toggle("Show Upcoming Events", isOn:  $model.config.showUpcoming.animation())
+                    
+                    
+                    
+                    
+                }
                 
-                Toggle(isOn: $model.showUnits, label: { Text("Show Time Units") })
-                Toggle(isOn: $model.showSeconds, label: { Text("Show Seconds") })
+                if model.config.showCurrent, model.config.showUpcoming {
                 
-                Toggle(isOn: $model.tint, label: { Text("Tint Complication") })
+                    Section("Prefer Showing") {
+                        
+                        Picker(selection: $model.config.sortMode.animation(), content: {
+                            ForEach(TimelineSortMode.allCases) { option in
+                                Text("\(option.name)")
+                            }
+                        }, label: { })
+                        .pickerStyle(.inline)
+                        
+                    }
+                    
+                }
+                
+                Section("Appearance") {
+                    
+                    Toggle(isOn: $model.showUnits, label: { Text("Show Time Units") })
+                    Toggle(isOn: $model.showSeconds, label: { Text("Show Seconds") })
+                    
+                    Toggle(isOn: $model.tint, label: { Text("Tint Complication") })
+                    
+                }
                 
             }
-            
             
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -45,6 +75,18 @@ struct ComplicationsSettingsView_Previews: PreviewProvider {
 
 class ComplicationSettingsObject: ObservableObject {
 
+    var config = ComplicatonConfigurationManager().getConfig() {
+        
+        willSet {
+            
+            ComplicatonConfigurationManager().saveConfig(newValue)
+            objectWillChange.send()
+            ComplicationController.updateComplications(forced: true)
+                
+        }
+        
+    }
+    
     var complicationEnabled: Bool = HLLDefaults.watch.complicationEnabled {
         
         willSet {

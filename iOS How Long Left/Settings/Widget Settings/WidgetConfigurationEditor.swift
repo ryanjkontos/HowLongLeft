@@ -71,7 +71,7 @@ struct WidgetConfigurationEditor: View {
 
                     Picker(selection: Binding(get: { model.config.sortMode }, set: { model.config.sortMode = $0 }), content: {
                             
-                            ForEach(WidgetSortOption.allCases) { option in
+                            ForEach(TimelineSortMode.allCases) { option in
                                 
                                 
                                     Text("\(option.name)")

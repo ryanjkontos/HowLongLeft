@@ -36,6 +36,8 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         
         Task {
             
+            Store.shared = Store()
+            
             await Store.shared.refreshPurchasedProducts()
             
         }

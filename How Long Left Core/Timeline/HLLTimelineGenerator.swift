@@ -32,6 +32,10 @@ class HLLTimelineGenerator {
     
     func generateHLLTimeline(fast: Bool = false, percentages: Bool = false, forState: TimelineState = .normal) -> HLLTimeline {
         
+        if timelineType == .complication {
+            timelineConfiguration = ComplicatonConfigurationManager().getConfig()
+        }
+        
         var events = Array(HLLEventSource.shared.eventPool.filter({HLLHiddenEventStore.shared.isHidden(event: $0) == false})).filter({ $0.completionStatus != .done })
        
         if let config = timelineConfiguration {

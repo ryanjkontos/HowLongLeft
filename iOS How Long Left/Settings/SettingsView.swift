@@ -24,7 +24,7 @@ struct SettingsView: View {
     
     @State var widgetPurchased = false
     
-    var store = Store()
+    var store = Store.shared
     
     var sections: [SettingsViewSection]
     
@@ -47,9 +47,16 @@ struct SettingsView: View {
         
     func updatePurchases() {
     
+        Task {
+            
+            await Store.shared.refreshPurchasedProducts()
+            
+            complicationPurchased = Store.shared.complicationPurchased
+            widgetPurchased = Store.shared.widgetPurchased
+            
+        }
         
-        complicationPurchased = Store.shared.complicationPurchased
-        widgetPurchased = Store.shared.widgetPurchased
+      
         
     }
 
@@ -94,7 +101,8 @@ struct SettingsView: View {
         
         .sheet(isPresented: sheetRowBinding, onDismiss: {
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                
                 updatePurchases()
             }
             
@@ -122,6 +130,9 @@ struct SettingsView: View {
         .onAppear() {
             
             print("On appear")
+            
+            complicationPurchased = Store.shared.complicationPurchased
+            widgetPurchased = Store.shared.widgetPurchased
             
             updatePurchases()
             
@@ -155,9 +166,9 @@ struct SettingsView: View {
             
             switch type {
             case .widget:
-                if store.widgetPurchased { return nil }
+                if widgetPurchased { return nil }
             case .complication:
-                if store.complicationPurchased { return nil }
+                if complicationPurchased { return nil }
             default:
                 break
             }

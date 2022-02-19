@@ -20,15 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-       
-        
         Store.shared = Store()
         
         HLLDefaults.general.showAllDay = true
         HLLEventSource.shared.updateEventPool()
-        
-
-        
+    
         let task = BGTaskScheduler.shared.register(forTaskWithIdentifier: HLLBackgroundTasks.widgetTaskID, using: nil) { task in
             HLLBackgroundTasks.shared.handleAppRefreshTask(task: task as! BGAppRefreshTask)
         }
@@ -39,10 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Task scheduled: \(task)")
             
-        
-            
-        
-        
         return true
     }
 

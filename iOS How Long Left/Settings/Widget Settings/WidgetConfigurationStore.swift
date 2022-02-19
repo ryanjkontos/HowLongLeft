@@ -152,7 +152,7 @@ struct HLLTimelineConfiguration: Equatable, Hashable, Codable, Identifiable {
     
     var enabledCalendarIDs = Set<String>()
     
-    var sortMode: WidgetSortOption = .chronological
+    var sortMode: TimelineSortMode = .chronological
     
     enum GroupType: Codable {
         
@@ -169,9 +169,9 @@ struct HLLTimelineConfiguration: Equatable, Hashable, Codable, Identifiable {
     
 }
 
-enum WidgetSortOption: CaseIterable, Identifiable, Codable {
+enum TimelineSortMode: CaseIterable, Identifiable, Codable {
     
-    var id: WidgetSortOption { return self }
+    var id: TimelineSortMode { return self }
     
     case chronological
     case currentFirst

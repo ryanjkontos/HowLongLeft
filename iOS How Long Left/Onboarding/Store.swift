@@ -15,7 +15,7 @@ typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 class Store: ObservableObject {
     
-    static var shared = Store()
+    static var shared: Store!
     
     var complicationProduct: Product?
     var widgetProduct: Product?

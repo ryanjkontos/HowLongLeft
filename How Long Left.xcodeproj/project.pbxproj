@@ -334,6 +334,15 @@
 		BF96897824B2D37C0091F1DA /* HLLTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897024B2D37C0091F1DA /* HLLTimelineEntry.swift */; };
 		BF96897F24B2D37C0091F1DA /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
 		BF96898024B2D37C0091F1DA /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
+		BF969C7827C0943200EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C7A27C0A2DA00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C7B27C0A2DB00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C7C27C0A2DB00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C7D27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C7E27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C7F27C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C8027C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BF969C8127C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF96EF7027A98C1F00717B3F /* WatchScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96EF6F27A98C1F00717B3F /* WatchScreenshotView.swift */; };
 		BF99A6DD23D53C6D0070D3C2 /* MagdaleneModeSetupIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99A6DC23D53C6D0070D3C2 /* MagdaleneModeSetupIntroViewController.swift */; };
 		BF99A6DF23D53EE70070D3C2 /* MagdaleneModeSetupAwaitingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99A6DE23D53EE70070D3C2 /* MagdaleneModeSetupAwaitingSetupViewController.swift */; };
@@ -1311,6 +1320,7 @@
 		BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLLTimelineGenerator.swift; sourceTree = "<group>"; };
 		BF96898224B2D3DC0091F1DA /* ComplicationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationGenerator.swift; sourceTree = "<group>"; };
 		BF968C9223B228D900BC2E54 /* WatchInterfaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInterfaceTableViewController.swift; sourceTree = "<group>"; };
+		BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicatonConfigurationManager.swift; sourceTree = "<group>"; };
 		BF96EF6F27A98C1F00717B3F /* WatchScreenshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchScreenshotView.swift; sourceTree = "<group>"; };
 		BF986108233F1D23007D866D /* EventInfoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoInterfaceController.swift; sourceTree = "<group>"; };
 		BF9927BC2335193D00E9C1E1 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -2378,6 +2388,7 @@
 				BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */,
 				BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */,
 				BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */,
+				BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -3610,6 +3621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF969C7F27C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFF9197E2786F0B10094BA79 /* HLLTimelineGenerator.swift in Sources */,
 				BF32BF2127859324002B013D /* How_Long_Left_Tests.swift in Sources */,
 				BF3AAB8727AA8A38006D9AC7 /* HLLEvent.swift in Sources */,
@@ -3637,6 +3649,7 @@
 				BFE8C2F5277F129A0026F0C2 /* HLLDataModel.swift in Sources */,
 				BFFF6039273DFCED00C5EB1A /* HLLDefaultsTransfer.swift in Sources */,
 				BF727FDF2757A24100A9D2F8 /* ScrollViewIfNeeded.swift in Sources */,
+				BF969C7E27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFFF603A273DFCED00C5EB1A /* Date.swift in Sources */,
 				BF2636432766D3AA00A6EBB7 /* NotificationGroupsStore.swift in Sources */,
 				BFA8EE13274E02A00099350D /* ListButtonModifier.swift in Sources */,
@@ -3819,6 +3832,7 @@
 				BF5102AD27AA571E00BFF2F6 /* HLLNTrigger.swift in Sources */,
 				BF5102AE27AA571E00BFF2F6 /* HLLNTriggerType.swift in Sources */,
 				BFCB6A9D27B149F4004CA311 /* CountdownWidgetParentView.swift in Sources */,
+				BF969C8027C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BF5102AF27AA571E00BFF2F6 /* HLLNTriggerAddHandler.swift in Sources */,
 				BFD8047927B361270091B22C /* ExtensionType.swift in Sources */,
 				BF5102B027AA571E00BFF2F6 /* HLLNNewTriggerRequest.swift in Sources */,
@@ -3869,6 +3883,7 @@
 				BFFD184A27BF41C20021D099 /* EKEvent.swift in Sources */,
 				BFFD184B27BF41C20021D099 /* HLLEventInfoItem.swift in Sources */,
 				BFFD184C27BF41C20021D099 /* HLLEventInfoItemGenerator.swift in Sources */,
+				BF969C8127C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFFD184D27BF41C20021D099 /* HLLEventInfoItemType.swift in Sources */,
 				BFFD184E27BF41C20021D099 /* HLLDataModel.xcdatamodeld in Sources */,
 				BFFD184F27BF41C20021D099 /* StatusItemUnitsFormat.swift in Sources */,
@@ -3931,6 +3946,7 @@
 			files = (
 				BFDE98F523EE3A3D00BB3816 /* CKError.swift in Sources */,
 				BF91C277235314D300572449 /* UIColor.swift in Sources */,
+				BF969C7B27C0A2DB00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFDE987523EE3A3D00BB3816 /* HLLDefaultsTransfer.swift in Sources */,
 				BFDE994523EE3A3D00BB3816 /* HLLEventInfoItem.swift in Sources */,
 				BF53D15C24E00BEE00951D65 /* HLLHiddenEventStore.swift in Sources */,
@@ -4032,6 +4048,7 @@
 				BFFD188327BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */,
 				BF17CCA327A2DADA0075350D /* HLLTimeline.swift in Sources */,
 				BF3BCD3323E0373000639D5F /* PastebinFormats.swift in Sources */,
+				BF969C7D27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BF3AAB8427AA8A36006D9AC7 /* HLLEvent.swift in Sources */,
 				BFDE98CE23EE3A3D00BB3816 /* CountdownStringGenerator.swift in Sources */,
 				BFDE9A6E23EE3A3E00BB3816 /* HLLNotificationContent.swift in Sources */,
@@ -4134,6 +4151,7 @@
 				BFE8C2C2277F11A90026F0C2 /* HLLEventInfoItem.swift in Sources */,
 				BFE8C2C3277F11A90026F0C2 /* HLLEventInfoItemGenerator.swift in Sources */,
 				BFE8C2F6277F129B0026F0C2 /* HLLDataModel.swift in Sources */,
+				BF969C7827C0943200EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BF3C329C27854EB8009303D0 /* EventInfoView.swift in Sources */,
 				BFE8C2C4277F11A90026F0C2 /* HLLEventInfoItemType.swift in Sources */,
 				BFB0829C27982BD800EEBBA7 /* ComplicationPurchaseView.swift in Sources */,
@@ -4282,6 +4300,7 @@
 				BFCD87D4244B1C440064C120 /* QuickPreferencesSubmenuGenerator.swift in Sources */,
 				BFFB182624C1D9D000C6EE9F /* EventUICountdownViewController.swift in Sources */,
 				BFDE998823EE3A3E00BB3816 /* EventTimeRemainingMonitor.swift in Sources */,
+				BF969C7A27C0A2DA00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFE917632373BB3900A66F40 /* HLLStatusItemContentGenerator.swift in Sources */,
 				BFFD188027BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */,
 				BFFA559522D83D9D00575230 /* NSMenuItemMaker.swift in Sources */,
@@ -4488,6 +4507,7 @@
 				BFC73077256F9CAB009F289E /* HLLNNotificationContentGenerator.swift in Sources */,
 				BFC73078256F9CAB009F289E /* HLLNTriggerFetcher.swift in Sources */,
 				BFC73079256F9CAB009F289E /* HLLTimelineEntry.swift in Sources */,
+				BF969C7C27C0A2DB00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFC7307A256F9CAB009F289E /* HLLTimelineGenerator.swift in Sources */,
 				BFF9AAFC256F9E54003A0AA9 /* ProPurchase+CoreDataClass.swift in Sources */,
 				BFF9AB0C256F9EAC003A0AA9 /* UpcomingWidgetParentView.swift in Sources */,

@@ -19,7 +19,7 @@ struct WidgetSettingsView: View {
         List {
            
             
-            Section {
+            Section( content: {
                 
                 NavigationLink(destination: {
                     
@@ -27,14 +27,14 @@ struct WidgetSettingsView: View {
                     
                 }, label: {
                     
-                    Text("Configurations")
+                    Text("Manage Configurations")
                     
                 })
                 
-            }
+            },header: { Text("Widget Configurations") } , footer: { Text("Use widget configurations to define rules for how your widgets should choose which event to count down at a given time.") })
             
             
-            Section("Appearance") {
+            Section("Widget Appearance") {
                     
                 Picker(selection: $model.manualAppearance, content: {
                     

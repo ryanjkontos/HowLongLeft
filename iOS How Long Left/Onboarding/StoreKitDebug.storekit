@@ -20,7 +20,7 @@
       "type" : "NonConsumable"
     },
     {
-      "displayPrice" : "2.99",
+      "displayPrice" : "999.9",
       "familyShareable" : true,
       "internalID" : "46A2F8F1",
       "localizations" : [
