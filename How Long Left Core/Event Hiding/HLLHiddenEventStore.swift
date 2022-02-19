@@ -9,10 +9,12 @@
 import Foundation
 import CoreData
 
-class HLLHiddenEventStore {
+class HLLHiddenEventStore: ObservableObject {
     
     static var shared = HLLHiddenEventStore()
     var hiddenEvents = [HLLStoredEvent]()
+    
+    //var equivalentHLLEvents
     
     var observers = [EventHidingObserver]()
     
@@ -26,8 +28,6 @@ class HLLHiddenEventStore {
     }
     
     func loadHiddenEventsFromDatabase() {
-        
-        DispatchQueue.main.async {
       
        var returnArray = [HLLStoredEvent]()
                
@@ -39,9 +39,11 @@ class HLLHiddenEventStore {
         
         self.hiddenEvents = returnArray
         
-        HLLEventSource.shared.updateHiddenEvents()
-            
+        DispatchQueue.main.async {
+            HLLEventSource.shared.updateHiddenEvents()
+            self.objectWillChange.send()
         }
+        
         
     }
     
@@ -58,22 +60,25 @@ class HLLHiddenEventStore {
         
         HLLDataModel.shared.save()
             
+            self.objectWillChange.send()
+            
         }
         
         DispatchQueue.main.async {
             self.observers.forEach({$0.eventWasHidden(event: event)})
         }
         
+       
+        
     }
     
     func unhideEvent(_ event: HLLStoredEvent) {
         
-        DispatchQueue.main.async {
+       
         
-        HLLDataModel.persistentContainer.viewContext.delete(event)
-        HLLDataModel.shared.save()
-            
-        }
+            HLLDataModel.persistentContainer.viewContext.delete(event)
+            HLLDataModel.shared.save()
+      
         
     }
     

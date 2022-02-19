@@ -189,7 +189,7 @@ struct SettingsView: View {
         
         switch type {
         case .events:
-            Text("Events")
+            EventsSettingsView()
         case .calendars:
             EnabledCalendarsView()
                

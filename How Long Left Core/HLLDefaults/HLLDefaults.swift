@@ -694,6 +694,7 @@ class HLLDefaults {
             
         }
         
+        
         static var useNextOccurList: Bool {
                  
                  get {
@@ -737,6 +738,24 @@ class HLLDefaults {
             set (to) {
                 
                 defaults.set(!to, forKey: "hideLocation")
+                
+            }
+            
+        }
+        
+        
+        
+        static var combineDoubles: Bool {
+            
+            get {
+                
+                return defaults.bool(forKey: "combineDoubleEvents")
+                
+            }
+            
+            set (to) {
+                
+                defaults.set(to, forKey: "combineDoubleEvents")
                 
             }
             

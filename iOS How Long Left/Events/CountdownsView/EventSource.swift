@@ -70,7 +70,7 @@ class EventSource: ObservableObject {
         let isEmpty = newArray.compactMap({ $0.events }).isEmpty
             
         if self.isEmpty != isEmpty { self.isEmpty = isEmpty }
-        if self.eventSections != newArray { self.eventSections = newArray }
+        if self.eventSections.map({$0.id}) != newArray.map({$0.id}) { self.eventSections = newArray }
             
     }
     

@@ -18,6 +18,16 @@ struct EventsSettingsView: View {
         
         Form {
         
+            Section {
+                
+                NavigationLink(destination: { HiddenEventsSettingsView() }, label: {
+                    
+                    Text("Hidden Events")
+                    
+                })
+                
+            }
+            
         Section(content: {
             
             Toggle(isOn: $settingsObject.showCurrent.animation(), label: {

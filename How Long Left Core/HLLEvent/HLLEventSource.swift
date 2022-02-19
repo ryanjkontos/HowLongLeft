@@ -40,7 +40,7 @@ class HLLEventSource {
     
     var saCals = [String]()
     
-
+    private let remover = DoubleEventRemover()
     
     let nicknameManager = NicknameManager()
     
@@ -232,11 +232,13 @@ class HLLEventSource {
         
         add.append(contentsOf: dummyGen.events)
         
+        add = remover.removeDoublesIn(events: add)
+        
         self.eventPool = add
         
-        if let encoded = try? JSONEncoder().encode(add) {
+        /*if let encoded = try? JSONEncoder().encode(add) {
           //  HLLDefaults.defaults.set(encoded, forKey: "EncodedEventPool")
-        }
+        } */
         
         eventPoolUpdatingCounter -= 1
         HLLEventSource.updatingEventPool = false
@@ -977,6 +979,20 @@ class HLLEventSource {
         
         if foundEvents == false {
             returnArray.removeAll()
+        }
+        
+        return returnArray
+        
+    }
+    
+    func getAllEventsGroupedByDate() -> [DateOfEvents] {
+        
+        let dict = Dictionary(grouping: eventPool, by: { $0.startDate.startOfDay() })
+        
+        var returnArray = [DateOfEvents]()
+        
+        for item in dict {
+            returnArray.append(DateOfEvents(date: item.key, events: item.value))
         }
         
         return returnArray

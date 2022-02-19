@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 //@objc(HLLHiddenEvent)
-public class HLLStoredEvent: NSManagedObject {
+public class HLLStoredEvent: NSManagedObject, Identifiable {
     
     func setup(from event: HLLEvent) {
         
@@ -27,5 +27,7 @@ public class HLLStoredEvent: NSManagedObject {
         self.endDate = event.endDate
         
     }
+    
+    public var id: String { return identifier ?? "" }
 
 }

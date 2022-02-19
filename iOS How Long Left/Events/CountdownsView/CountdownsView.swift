@@ -53,6 +53,7 @@ struct CountdownsView: View {
                                       .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
                                     
                                 })
+                                .id(event.infoIdentifier)
                                 .hoverEffect(.highlight)
                                 
                                     .clipped()

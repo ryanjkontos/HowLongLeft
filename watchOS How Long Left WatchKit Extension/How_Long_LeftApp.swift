@@ -27,7 +27,6 @@ struct How_Long_LeftApp: App {
         WindowGroup {
             NavigationView {
                 ContentView()
-                    
             }
             
         }

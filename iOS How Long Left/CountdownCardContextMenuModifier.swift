@@ -41,6 +41,23 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                     
                 })
                 
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        
+                    
+                        HLLHiddenEventStore.shared.hideEvent(event)
+                        
+                        reloadHandler()
+                       
+                        
+                    }
+                    
+                }, label: {
+                    Image(systemName: "eye.slash.fill")
+                    Text("Hide")
+                    
+                })
                 
                 Button(action: {
                     

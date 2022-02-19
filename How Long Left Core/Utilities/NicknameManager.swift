@@ -13,6 +13,10 @@ class NicknameManager {
     static var shared = NicknameManager()
     
     private var dictionaryKey = "Nicknames"
+    private var newDictionaryKey = "Nicknames"
+    
+    private let fullNicknameKey = "Full"
+    private let compactNicknameKey = "Compact"
     
     func addNicknames(for events: [HLLEvent]) -> [HLLEvent] {
         
@@ -73,6 +77,25 @@ class NicknameManager {
     
     private func saveNicknameDictionary(_ dictionary: [String:String]) {
         HLLDefaults.defaults.set(dictionary, forKey: dictionaryKey)
+    }
+    
+    func generateNicknameDict(nickname: String?, compactNickname: String?) -> [String:String] {
+        
+        var dict = [String:String]()
+        if let nickname = nickname { dict[fullNicknameKey] = nickname }
+        if let compactNickname = compactNickname { dict[compactNicknameKey] = compactNickname }
+        return dict
+        
+    }
+    
+    func migrateFromOldNicknameStorage() {
+        
+        guard let existingDictionary = HLLDefaults.defaults.dictionary(forKey: dictionaryKey) as? [String:String] else {
+            return
+        }
+        
+       
+        
     }
     
 }
