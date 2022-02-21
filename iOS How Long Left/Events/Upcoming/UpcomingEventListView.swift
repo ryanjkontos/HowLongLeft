@@ -17,6 +17,8 @@ struct UpcomingEventListView: View {
     
     @Binding var eventViewEvent: HLLEvent?
     
+    @State var nicknaming: HLLEvent?
+    
     var body: some View {
         GeometryReader { proxy in
         ScrollView {
@@ -29,7 +31,7 @@ struct UpcomingEventListView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .circular))
                                     .frame(height: 50, alignment: .center)
                                     .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 12, style: .circular))
-                                    .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
+                                    .modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
                                     
                                 }
                             .hoverEffect(.highlight)
@@ -94,6 +96,16 @@ struct UpcomingEventListView: View {
             
         }
         
+        .sheet(item: $nicknaming, onDismiss: nil, content: { event in
+            
+            NavigationView {
+                
+                NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil }))
+                    .tint(.orange)
+                
+            }
+            
+        })
     }
     
     func getRelativeString(numberOfDays: Int) -> String {

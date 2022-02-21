@@ -144,6 +144,8 @@
 		BF3F829E274910EA00A1CEC0 /* EventPinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF80D16E2445A77D00FBB5A5 /* EventPinningManager.swift */; };
 		BF3F82A22749531300A1CEC0 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F82A12749531300A1CEC0 /* WelcomeView.swift */; };
 		BF3F876222BCBE57002BA4CD /* RNUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3F876122BCBE57002BA4CD /* RNUI.storyboard */; };
+		BF43918527C24C7A003AE99F /* NicknamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E566327C22AFC00282388 /* NicknamesListView.swift */; };
+		BF43918627C24C7D003AE99F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
 		BF4400032573EE040061ED6E /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF44000B2573EEE80061ED6E /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF4400142573EEE90061ED6E /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
@@ -254,6 +256,7 @@
 		BF5ABA0E27BE2D600038F083 /* How Long Left Widget Intents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF5ABA0527BE2D600038F083 /* How Long Left Widget Intents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF5ABA1327BE2D7B0038F083 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF51026C27AA557700BFF2F6 /* iOS_Widget_How_Logn_Left.intentdefinition */; };
 		BF5AC4B022D7A25B00159498 /* EventUIDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5AC4AF22D7A25B00159498 /* EventUIDoneViewController.swift */; };
+		BF5E566427C22AFC00282388 /* NicknamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E566327C22AFC00282388 /* NicknamesListView.swift */; };
 		BF5ED91C27B2327B00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF5ED91D27B2327C00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF5ED91E27B2327C00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
@@ -365,15 +368,7 @@
 		BF969C9E27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9F27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969CA027C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
-		BF969CA227C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CA327C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CA427C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CA527C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
 		BF969CA627C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CA727C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CA827C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CA927C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
-		BF969CAA27C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
 		BF96EF7027A98C1F00717B3F /* WatchScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96EF6F27A98C1F00717B3F /* WatchScreenshotView.swift */; };
 		BF99A6DD23D53C6D0070D3C2 /* MagdaleneModeSetupIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99A6DC23D53C6D0070D3C2 /* MagdaleneModeSetupIntroViewController.swift */; };
 		BF99A6DF23D53EE70070D3C2 /* MagdaleneModeSetupAwaitingSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99A6DE23D53EE70070D3C2 /* MagdaleneModeSetupAwaitingSetupViewController.swift */; };
@@ -801,6 +796,8 @@
 		BFFB94CB255FCAED00B58932 /* CountdownWidgetParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF14833D255FB0690099FA0A /* CountdownWidgetParentView.swift */; };
 		BFFB94CC255FCAED00B58932 /* CountdownWidgetNoEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF148341255FB0690099FA0A /* CountdownWidgetNoEventView.swift */; };
 		BFFB956F255FCC3300B58932 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
+		BFFCC1C227C3468E000F4F58 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFCC1C127C3468E000F4F58 /* CloudKit.framework */; };
+		BFFCC1C427C346AF000F4F58 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFCC1C327C346AF000F4F58 /* CloudKit.framework */; };
 		BFFCCA1E238D064B00AC091A /* PreferencesWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCCA1C238D045600AC091A /* PreferencesWindowManager.swift */; };
 		BFFCCA20238D095800AC091A /* TerminationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCCA1F238D095800AC091A /* TerminationHandler.swift */; };
 		BFFD183227BF364F0021D099 /* WidgetConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679A27BE73D500F76BF9 /* WidgetConfigurationStore.swift */; };
@@ -1265,6 +1262,7 @@
 		BF5D29812174688F00AC1EB6 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		BF5D29832174689000AC1EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5D29852174689000AC1EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5E566327C22AFC00282388 /* NicknamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknamesListView.swift; sourceTree = "<group>"; };
 		BF5F2C4E27488AA5007A56EF /* UpcomingEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventSource.swift; sourceTree = "<group>"; };
 		BF5F945422DA013300AB9FF3 /* MenuPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPreferenceViewController.swift; sourceTree = "<group>"; };
 		BF5F945522DA013400AB9FF3 /* MenuPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuPreferencesView.xib; sourceTree = "<group>"; };
@@ -1567,6 +1565,8 @@
 		BFFB94A2255FCABD00B58932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFFB94A3255FCABD00B58932 /* Mac_WidgetKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mac_WidgetKit.entitlements; sourceTree = "<group>"; };
 		BFFB9597255FCEA600B58932 /* UpcomingWidgetParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingWidgetParentView.swift; sourceTree = "<group>"; };
+		BFFCC1C127C3468E000F4F58 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		BFFCC1C327C346AF000F4F58 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		BFFCCA1C238D045600AC091A /* PreferencesWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowManager.swift; sourceTree = "<group>"; };
 		BFFCCA1F238D095800AC091A /* TerminationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminationHandler.swift; sourceTree = "<group>"; };
 		BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHLLTimelineStorageManager.swift; sourceTree = "<group>"; };
@@ -1591,6 +1591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFCC1C227C3468E000F4F58 /* CloudKit.framework in Frameworks */,
 				BF1059E2274B46BA00486AE0 /* StoreKit.framework in Frameworks */,
 				BFD140A727AA7F1200F8C02A /* Introspect in Frameworks */,
 			);
@@ -1632,6 +1633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1BF13C27A959D000D3F54C /* StoreKit.framework in Frameworks */,
+				BFFCC1C427C346AF000F4F58 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2192,6 +2194,15 @@
 			path = "How Long Left (watchOS) Extension";
 			sourceTree = "<group>";
 		};
+		BF5E566227C22AE600282388 /* Nicknames */ = {
+			isa = PBXGroup;
+			children = (
+				BF5E566327C22AFC00282388 /* NicknamesListView.swift */,
+				BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */,
+			);
+			path = Nicknames;
+			sourceTree = "<group>";
+		};
 		BF5F944C22D9FD7500AB9FF3 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -2328,6 +2339,8 @@
 		BF794DE621787DEE0076FA17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFFCC1C327C346AF000F4F58 /* CloudKit.framework */,
+				BFFCC1C127C3468E000F4F58 /* CloudKit.framework */,
 				BF1059E1274B46BA00486AE0 /* StoreKit.framework */,
 				BF1BF13B27A959CF00D3F54C /* StoreKit.framework */,
 				BFFF6F0C2506742D00BF6054 /* WidgetKit.framework */,
@@ -3008,7 +3021,7 @@
 				BF969C8627C0B8E400EF4D4F /* EventsSettingsView.swift */,
 				BF969C8227C0B0A300EF4D4F /* HiddenEventsSettingsView.swift */,
 				BF969C8827C0C03C00EF4D4F /* EventPickerView.swift */,
-				BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */,
+				BF5E566227C22AE600282388 /* Nicknames */,
 				BF73679527BE55A600F76BF9 /* Widget Settings */,
 			);
 			path = Settings;
@@ -3660,7 +3673,6 @@
 				BF969C7F27C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
 				BFF9197E2786F0B10094BA79 /* HLLTimelineGenerator.swift in Sources */,
 				BF969C9427C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */,
-				BF969CA827C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BF969C9E27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */,
 				BF32BF2127859324002B013D /* How_Long_Left_Tests.swift in Sources */,
 				BF3AAB8727AA8A38006D9AC7 /* HLLEvent.swift in Sources */,
@@ -3692,6 +3704,7 @@
 				BFFF603A273DFCED00C5EB1A /* Date.swift in Sources */,
 				BF2636432766D3AA00A6EBB7 /* NotificationGroupsStore.swift in Sources */,
 				BFA8EE13274E02A00099350D /* ListButtonModifier.swift in Sources */,
+				BF5E566427C22AFC00282388 /* NicknamesListView.swift in Sources */,
 				BFD2C6BE27BD286F000A8168 /* WidgetSettingsView.swift in Sources */,
 				BFD8047B27B363150091B22C /* HLLBackgroundTasks.swift in Sources */,
 				BFFF603B273DFCED00C5EB1A /* DateOfEvents.swift in Sources */,
@@ -3829,7 +3842,6 @@
 				BF51028B27AA571E00BFF2F6 /* String.swift in Sources */,
 				BF51028C27AA571E00BFF2F6 /* DateInterval.swift in Sources */,
 				BF51028D27AA571E00BFF2F6 /* CKError.swift in Sources */,
-				BF969CA927C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BF51028E27AA571E00BFF2F6 /* TimeInterval.swift in Sources */,
 				BFCB6AA627B14C5D004CA311 /* UpcomingWidgetParentView.swift in Sources */,
 				BF51028F27AA571E00BFF2F6 /* EKEvent.swift in Sources */,
@@ -3916,7 +3928,6 @@
 				BFFD183D27BF41C20021D099 /* Date.swift in Sources */,
 				BFFD183E27BF41C20021D099 /* DateOfEvents.swift in Sources */,
 				BFFD183F27BF41C20021D099 /* EventDate.swift in Sources */,
-				BF969CAA27C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BFFD184027BF41C20021D099 /* PercentageCalculator.swift in Sources */,
 				BFFD184127BF41C20021D099 /* DurationStringGenerator.swift in Sources */,
 				BFFD184227BF41C20021D099 /* CountdownStringGenerator.swift in Sources */,
@@ -4003,7 +4014,6 @@
 				BF89651224EC0EA30051024D /* StatusItemEventMode.swift in Sources */,
 				BF71736724D23D7F00C78B67 /* ProPurchase+CoreDataClass.swift in Sources */,
 				BFDE997D23EE3A3E00BB3816 /* EventLocationIndexer.swift in Sources */,
-				BF969CA427C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BFC4E70322101FAC00EE4A1F /* IntentHandler.swift in Sources */,
 				BF6AD9672500CA5C00035787 /* HLLDataModel.swift in Sources */,
 				BFDE98ED23EE3A3D00BB3816 /* String.swift in Sources */,
@@ -4088,7 +4098,6 @@
 				BF4CE971247F3EAF0069ABC1 /* HLLDataModel.xcdatamodeld in Sources */,
 				BFDE997623EE3A3E00BB3816 /* Version.swift in Sources */,
 				BFD7A567255ED5A600E7BCCB /* SelectedEventManager.swift in Sources */,
-				BF969CA527C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BFDE98FE23EE3A3D00BB3816 /* TimeInterval.swift in Sources */,
 				BF2D18DD251CC93300EEDBC1 /* DateInterval.swift in Sources */,
 				BFDE990623EE3A3D00BB3816 /* EKEvent.swift in Sources */,
@@ -4213,10 +4222,10 @@
 				BFB0829C27982BD800EEBBA7 /* ComplicationPurchaseView.swift in Sources */,
 				BF32BF292785A3D6002B013D /* EventsSettingsView.swift in Sources */,
 				BFE8C2C5277F11A90026F0C2 /* HLLDataModel.xcdatamodeld in Sources */,
+				BF43918627C24C7D003AE99F /* NickNameEditorView.swift in Sources */,
 				BFE8C2C6277F11A90026F0C2 /* StatusItemUnitsFormat.swift in Sources */,
 				BFE8C2C7277F11A90026F0C2 /* WidgetStateFetcher.swift in Sources */,
 				BFE8C2C8277F11A90026F0C2 /* PercentDateFetcher.swift in Sources */,
-				BF969CA727C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BF96EF7027A98C1F00717B3F /* WatchScreenshotView.swift in Sources */,
 				BFE8C2C9277F11A90026F0C2 /* CalendarAccessState.swift in Sources */,
 				BFE6ADF2278580D5003AAFF6 /* WatchModel.swift in Sources */,
@@ -4266,6 +4275,7 @@
 				BFE4772C274B91740016A725 /* ContentView.swift in Sources */,
 				BFA725E8277E9FE600F2A6EA /* CountdownCard.swift in Sources */,
 				BF1BF13A27A952C400D3F54C /* ExtensionDelegate.swift in Sources */,
+				BF43918527C24C7A003AE99F /* NicknamesListView.swift in Sources */,
 				BFEE00C8277D74C400A51B37 /* MainEventCard.swift in Sources */,
 				BFEE00CC277D7E6600A51B37 /* SettingsButtonCard.swift in Sources */,
 				BFEE00CA277D76F600A51B37 /* EventCard.swift in Sources */,
@@ -4393,7 +4403,6 @@
 				BF46DD6D248B5E9C000AE42F /* ProPurchaseHandler.swift in Sources */,
 				BFC2864A243D78D8003D2807 /* CNAlertEnterTimeIntervalViewController.swift in Sources */,
 				BFEC4FDC239DED2200EF8F6D /* LaunchFunctions.swift in Sources */,
-				BF969CA227C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BF3BE73521A103A9001AFBA8 /* MilestoneNotificationGenerator.swift in Sources */,
 				BF7BB5AD22BE4923001D2E86 /* RNEvent.swift in Sources */,
 				BF538AFE249B8563004E2AF6 /* PurchaseProViewController.swift in Sources */,
@@ -4520,7 +4529,6 @@
 				BFC7303D256F9CAA009F289E /* String.swift in Sources */,
 				BF008AB725776D3B00E8E56C /* HLLTimelineDifHandler.swift in Sources */,
 				BF44FFF22573ED460061ED6E /* HLLOrange.swift in Sources */,
-				BF969CA327C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */,
 				BFC7303E256F9CAA009F289E /* DateInterval.swift in Sources */,
 				BFC7303F256F9CAA009F289E /* CKError.swift in Sources */,
 				BFC73040256F9CAA009F289E /* TimeInterval.swift in Sources */,

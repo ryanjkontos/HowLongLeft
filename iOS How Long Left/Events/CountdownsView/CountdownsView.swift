@@ -27,10 +27,9 @@ struct CountdownsView: View {
     
     @State var eventView = false
     
- 
+    @State var nicknaming: HLLEvent?
     
     var body: some View {
-        
         
             ScrollView {
                 
@@ -50,7 +49,7 @@ struct CountdownsView: View {
                                    CountdownCard(event: event)
                                       
                                       .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                      .modifier(CountdownCardContextMenuModifier(event: event, reloadHandler: { eventSource.update() }))
+                                      .modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
                                     
                                 })
                                 .id(event.infoIdentifier)
@@ -79,6 +78,7 @@ struct CountdownsView: View {
                 .onAppear {
                     if opacity != 0 { return }
                     withAnimation(.easeInOut(duration: 0.1)) { opacity = 1 }
+                    
                 }
                 .onDisappear {
                     if eventSource.eventSections.isEmpty { withAnimation(.easeInOut(duration: 0.1)) { opacity = 0 } }
@@ -99,6 +99,17 @@ struct CountdownsView: View {
             .edgesIgnoringSafeArea(.horizontal)
         
  
+            .sheet(item: $nicknaming, onDismiss: nil, content: { event in
+                
+                NavigationView {
+                    
+                    NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil }))
+                        .tint(.orange)
+                    
+                }
+                
+            })
+            
         .navigationBarTitleDisplayMode(.large)
    
     }

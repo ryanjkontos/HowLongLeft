@@ -158,7 +158,7 @@ class ProStatusManager {
           
         var returnArray = [ProPurchase]()
         
-        let managedContext = HLLDataModel.persistentContainer.viewContext
+        let managedContext = HLLDataModel.shared.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<ProPurchase> = ProPurchase.fetchRequest()
         if let items = try? managedContext.fetch(fetchRequest) {
             returnArray = items

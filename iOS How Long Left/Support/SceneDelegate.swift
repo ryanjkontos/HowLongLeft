@@ -83,6 +83,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             WidgetUpdateHandler.shared.updateConfigDict()
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            
+            NicknameManager.shared.loadNicknames()
+            
+        })
+        
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
@@ -93,6 +99,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         operation.start()
         
         HLLBackgroundTasks.shared.scheduleAppRefresh()
+        
+        NicknameManager.shared.loadNicknames()
         
        
         // Called as the scene transitions from the foreground to the background.

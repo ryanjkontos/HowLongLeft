@@ -13,6 +13,10 @@ struct EventsSettingsView: View {
         
         List {
             
+            NavigationLink(destination: { NicknamesListView() }, label: { Text("Nicknames") })
+            
+            NavigationLink(destination: { HiddenEventsSettingsView() }, label: { Text("Hidden Events") })
+            
             Section(content: {
                 
                 Toggle("Combine Subsequent Events", isOn: Binding(get: { HLLDefaults.general.combineDoubles }, set: {
@@ -22,7 +26,6 @@ struct EventsSettingsView: View {
                 
             }, footer: { Text("Combine groups of events that have the same title and occur immediately after each other as a single event.") })
             
-            NavigationLink(destination: { HiddenEventsSettingsView() }, label: { Text("Hidden Events") })
             
         }
         .navigationTitle("Events")

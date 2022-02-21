@@ -42,8 +42,7 @@ class HLLEventSource {
     
     private let remover = DoubleEventRemover()
     
-    let nicknameManager = NicknameManager()
-    
+   
 
     var eventPoolUpdateTimer: Timer!
     var eventPoolUpdateRequestedDuringCooldown = false
@@ -220,7 +219,7 @@ class HLLEventSource {
             
         
     
-        add = nicknameManager.addNicknames(for: add)
+        add = NicknameManager.shared.addNicknames(for: add)
         
         if HLLDefaults.general.showAllDay == false {
         

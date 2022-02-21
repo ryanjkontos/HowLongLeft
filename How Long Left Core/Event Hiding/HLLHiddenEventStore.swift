@@ -31,7 +31,7 @@ class HLLHiddenEventStore: ObservableObject {
       
        var returnArray = [HLLStoredEvent]()
                
-        let managedContext = HLLDataModel.persistentContainer.viewContext
+        let managedContext = HLLDataModel.shared.persistentContainer.viewContext
                let fetchRequest: NSFetchRequest<HLLStoredEvent> = HLLStoredEvent.fetchRequest()
                if let items = try? managedContext.fetch(fetchRequest) {
                    returnArray = items
@@ -55,7 +55,7 @@ class HLLHiddenEventStore: ObservableObject {
         
         DispatchQueue.main.async {
         
-        let record = NSEntityDescription.insertNewObject(forEntityName: "HLLStoredEvent", into: HLLDataModel.persistentContainer.viewContext) as! HLLStoredEvent
+        let record = NSEntityDescription.insertNewObject(forEntityName: "HLLStoredEvent", into: HLLDataModel.shared.persistentContainer.viewContext) as! HLLStoredEvent
         record.setup(from: event)
         
         HLLDataModel.shared.save()
@@ -76,7 +76,7 @@ class HLLHiddenEventStore: ObservableObject {
         
        
         
-            HLLDataModel.persistentContainer.viewContext.delete(event)
+            HLLDataModel.shared.persistentContainer.viewContext.delete(event)
             HLLDataModel.shared.save()
       
         

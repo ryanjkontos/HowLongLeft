@@ -21,7 +21,6 @@ struct HiddenEventsSettingsView: View {
         
         List {
             
-            if store.hiddenEvents.isEmpty == false {
     
                 Section(content: {
                     
@@ -61,6 +60,13 @@ struct HiddenEventsSettingsView: View {
                         
                     })
                     
+                    Button(action: { selectingEvent = true }, label: {
+                        
+                        Text("Hide Event")
+                        
+                    })
+                    
+                    
                 }, header: { Text("Hidden Events") }, footer: {
                     
                         #if os(watchOS)
@@ -70,57 +76,7 @@ struct HiddenEventsSettingsView: View {
                         #endif
                     
                 })
-                
-            }
-            
-            Section(content: {
-                
-                Button(action: { selectingEvent = true }, label: {
-                    
-                    Text("Hide Event")
-                    
-                })
-                
-            }, header: {
-                
-                if store.hiddenEvents.isEmpty {
-                    Text("Hidden Events")
-                } else {
-                    EmptyView()
-                }
-                
-            }, footer: {
-                
-                if store.hiddenEvents.isEmpty {
-                    #if os(watchOS)
-                    Text("These events will not appear anywhere in How Long Left, including the complication.")
-                    #else
-                        Text("These events will not appear anywhere in How Long Left, including the widget.")
-                    #endif
-                } else {
-                    EmptyView()
-                }
-                
-            })
-                 
-           /* if store.hiddenEvents.isEmpty == false {
-                
-                Button(role: .destructive, action: {
-                    
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            store.unhideEvents(store.hiddenEvents)
-                            store.loadHiddenEventsFromDatabase()
-                        }
-                    }
-                    
-                    
-                    
-                }, label: {
-                    Text("Unhide All Events")
-                })
-                
-            } */
+
             
         }
         .navigationBarTitleDisplayMode(.inline)

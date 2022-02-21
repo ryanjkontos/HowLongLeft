@@ -19,8 +19,50 @@ struct EventPickerView: View {
     }
     
     var body: some View {
-         
+        
         NavigationView {
+            
+            Group {
+               
+                if datesOfEvents.isEmpty {
+                    
+                    ZStack {
+                        
+                        #if os(iOS)
+                        Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)
+                        #endif
+                        
+                        Text("No Events")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                } else {
+                    list
+                }
+                
+            }
+            
+            .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Select Event")
+                .toolbar {
+                    
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(action: { eventSelectionHandler(nil) }, label: { Text("Cancel") })
+                    }
+             
+                }
+                
+            
+            .tint(.orange)
+            
+           
+            
+        }
+        
+    }
+    
+    var list: some View {
+         
             
             List {
                 
@@ -55,22 +97,12 @@ struct EventPickerView: View {
                 }
                 
             }
-            .navigationBarTitleDisplayMode(.inline)
+           
             #if os(iOS)
             .listStyle(.grouped)
-            .navigationTitle("Select Event")
+            
             #endif
         
-            .toolbar {
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: { eventSelectionHandler(nil) }, label: { Text("Cancel") })
-                }
-         
-            }
-            
-        }
-        .tint(.orange)
         
     }
 }

@@ -25,6 +25,14 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
     
     func applicationDidFinishLaunching() {
         
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            
+            NicknameManager.shared.loadNicknames()
+            
+        })
+        
        // ComplicationController.updateComplications(forced: true)
         
     }
@@ -39,6 +47,8 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
             Store.shared = Store()
             
             await Store.shared.refreshPurchasedProducts()
+            
+            NicknameManager.shared.loadNicknames()
             
         }
         

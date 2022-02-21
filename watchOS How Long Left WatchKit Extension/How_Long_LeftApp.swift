@@ -20,6 +20,7 @@ struct How_Long_LeftApp: App {
     let timelineGen = HLLTimelineGenerator(type: .complication)
     
     init() {
+        HLLDataModel.shared = HLLDataModel()
         HLLEventSource.shared.updateEventPool()
     }
     
