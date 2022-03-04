@@ -13,7 +13,7 @@ struct ComplicationProviderData {
     var underlyingTimelineEntry: HLLTimelineEntry?
     
     let eventTitleProvider: CLKSimpleTextProvider
-    let firstRowProvider: CLKSimpleTextProvider
+    var firstRowProvider: CLKSimpleTextProvider
     let timerProvider: CLKTextProvider
     let fullTimerProvider: CLKTextProvider
     let infoTextProvider: CLKTextProvider
@@ -81,11 +81,15 @@ struct ComplicationProviderData {
             
             timerProvider = CLKRelativeDateTextProvider(date: countdownDate, style: style, units: units)
             
+            firstRowProvider = CLKSimpleTextProvider(text: "\(event.title)")
+            
+            
             switch event.completionStatus(at: data.getAdjustedShowAt()) {
                 case .upcoming:
                     fullTimerProvider = CLKTextProvider(byJoining: ["in".simpleTextProvider(), timerProvider], separator: " ")
                 case .current:
-                    fullTimerProvider = CLKTextProvider(byJoining: [timerProvider], separator: " ")
+                    firstRowProvider = "\(event.title.truncated(limit: 12)) ends in".simpleTextProvider()
+                    fullTimerProvider = CLKTextProvider(byJoining: [timerProvider], separator: nil)
                 let tintArray = HLLDefaults.complication.tintComplication ? [event.color] : [UIColor(named: "HLLGradient1")!, UIColor(named: "HLLGradient2")!]
                 
                 gaugeProvider = CLKTimeIntervalGaugeProvider(style: .fill, gaugeColors: tintArray, gaugeColorLocations: nil, start: event.startDate, end: event.endDate)
@@ -96,13 +100,8 @@ struct ComplicationProviderData {
             
             eventTitleProvider = CLKSimpleTextProvider(text: "\(event.title)")
             eventTitleProvider.tintColor = tint
-            firstRowProvider = CLKSimpleTextProvider(text: "\(event.title)")
             firstRowProvider.tintColor = tint
-            
-
-         
-            
-        
+           
             if let location = event.location {
                 infoTextProvider = location.simpleTextProvider()
             } else {

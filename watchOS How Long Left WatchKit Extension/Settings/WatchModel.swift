@@ -28,14 +28,11 @@ class WatchModel {
         guard var modelName = modelString else { return true }
         modelName = modelName.replacingOccurrences(of: "Watch", with: "")
         let items = modelName.components(separatedBy: ",")
-         
-        if items.count == 2 {
-            guard let first = Int(items[0]) else { return true }
-            guard let second = Int(items[1]) else { return true }
-            if first < 5 { return false } // Exclude anything less than Series 5.
-            if first == 5, second > 4 { return false } // Exclude SE.
-        }
-        
+        guard items.count == 2 else { return true }
+        guard let first = Int(items[0]) else { return true }
+        guard let second = Int(items[1]) else { return true }
+        if first < 5 { return false } // Exclude anything less than Series 5.
+        if first == 5, second > 4 { return false } // Exclude SE.
         return true
         
     }

@@ -38,10 +38,7 @@ struct EventInfoView: View {
                     .padding(.top, 10)
                     .padding(.bottom, 20)
                 
-                    InfoCard(title: "Completion", info: "1%")
-                    
-                    InfoCard(title: "Location", info: "Event Cinemas")
-                    InfoCard(title: "Calendar", info: "Home")
+                   
                 
                     
                 }

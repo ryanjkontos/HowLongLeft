@@ -31,9 +31,10 @@ struct EventView: View {
             TabView(selection: $selection) {
                 EventOptionsView(event: event)
                     .tag(0)
-                EventTimerView(event: event)
-                    .tag(1)
+                
                 EventInfoView(event: event)
+                    .tag(1)
+                EventTimerView(event: event)
                     .tag(2)
             }
             .onAppear(perform: {

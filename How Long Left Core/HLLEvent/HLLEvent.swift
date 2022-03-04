@@ -108,7 +108,7 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
         return date.timeIntervalSince(startDate)/endDate.timeIntervalSince(startDate)
     }
     
-    func countdownDate(at: Date = Date()) -> Date { completionStatus() == .upcoming ? startDate : endDate }
+    func countdownDate(at: Date = Date()) -> Date { completionStatus(at: at) == .upcoming ? startDate : endDate }
     
     func countdownTypeString(at date: Date = Date()) -> String {
         completionStatus(at: date) == .upcoming ? "starts" : "ends"

@@ -11,7 +11,44 @@ import CoreData
 
 class HLLDataModel {
     
-    static var shared = HLLDataModel()
+    static var shared: HLLDataModel!
+    
+    init() {
+        
+     
+           
+        HLLDataModel.migrate()
+           
+           let persistentContainer = NSPersistentCloudKitContainer(name: HLLDataModel.databaseName)
+           let storeURL = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
+           let storeDescription = NSPersistentStoreDescription(url: storeURL)
+           
+           
+           let id = "iCloud.ryankontos.howlongleft"
+           let options = NSPersistentCloudKitContainerOptions(containerIdentifier: id)
+           storeDescription.cloudKitContainerOptions = options
+           
+           storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+           
+           persistentContainer.persistentStoreDescriptions = [storeDescription]
+           
+          
+           
+           persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+               
+            //   print("Store description: \(storeDescription)")
+               
+               
+           })
+           
+           persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+           persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+           
+        self.persistentContainer = persistentContainer
+           
+ 
+        
+    }
     
     static var databaseName = "HLLDataModel"
     
@@ -35,32 +72,7 @@ class HLLDataModel {
         
     }()
     
-    static var persistentContainer: NSPersistentContainer = {
-        
-        migrate()
-        
-        let persistentContainer = NSPersistentContainer(name: HLLDataModel.databaseName)
-        let storeURL = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
-        let storeDescription = NSPersistentStoreDescription(url: storeURL)
-        persistentContainer.persistentStoreDescriptions = [storeDescription]
-        
-        persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            
-         //   print("Store description: \(storeDescription)")
-            
-            if let error = error {
-                fatalError("Unresolved error \(error)")
-            }
-        })
-        
-      
-        
-        return persistentContainer
-        
-        
-        
-        
-    }()
+     var persistentContainer: NSPersistentCloudKitContainer
     
     
     class func migrate() {
@@ -104,8 +116,10 @@ class HLLDataModel {
     func save() {
         
         DispatchQueue.main.async {
-            try! HLLDataModel.persistentContainer.viewContext.save()
+            try! HLLDataModel.shared.persistentContainer.viewContext.save()
         }
+        
+        
         
     }
     

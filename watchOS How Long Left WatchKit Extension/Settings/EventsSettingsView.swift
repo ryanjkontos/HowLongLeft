@@ -18,6 +18,22 @@ struct EventsSettingsView: View {
         
         Form {
         
+            Section {
+                
+                NavigationLink(destination: { HiddenEventsSettingsView() }, label: {
+                    
+                    Text("Hidden Events")
+                    
+                })
+                
+                NavigationLink(destination: { NicknamesListView() }, label: {
+                    
+                    Text("Nicknames")
+                    
+                })
+                
+            }
+            
         Section(content: {
             
             Toggle(isOn: $settingsObject.showCurrent.animation(), label: {
@@ -46,6 +62,16 @@ struct EventsSettingsView: View {
             
             
         })
+            
+            Section(content: {
+                
+                Toggle("Combine Subsequent Events", isOn: Binding(get: { HLLDefaults.general.combineDoubles }, set: {
+                    HLLDefaults.general.combineDoubles = $0
+                    HLLEventSource.shared.asyncUpdateEventPool()
+                }))
+                
+            }, footer: { Text("Combine groups of events that have the same title and occur immediately after each other as a single event.") })
+            
         
     }
         .navigationTitle("Events")

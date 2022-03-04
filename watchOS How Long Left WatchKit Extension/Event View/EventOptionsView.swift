@@ -16,6 +16,8 @@ struct EventOptionsView: View {
     
     @ObservedObject var dataObject: EventOptionsViewObject
     
+    @State var nicknaming: HLLEvent?
+    
     var body: some View {
        
         List {
@@ -28,14 +30,20 @@ struct EventOptionsView: View {
                 Text("Hide")
             })
             
-            Button(action: {}, label: {
+            Button(action: { nicknaming = dataObject.event }, label: {
                 Text("Nickname")
             })
             
-            
-            
         }
         .navigationTitle("Options")
+        
+        .sheet(item: $nicknaming, onDismiss: nil, content: { event in
+                       
+            NavigationView {
+                NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil }))
+                    .tint(.orange)
+                }
+            })
         
     }
 }

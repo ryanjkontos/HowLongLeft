@@ -13,6 +13,8 @@ struct CountdownCardContextMenuModifier: ViewModifier {
     
     var event: HLLEvent
     
+    @Binding var nicknaming: HLLEvent?
+    
     var reloadHandler: (() -> Void)
     
     func body(content: Content) -> some View {
@@ -41,6 +43,41 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                     
                 })
                 
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        
+                    
+                        HLLHiddenEventStore.shared.hideEvent(event)
+                        
+                        reloadHandler()
+                       
+                        
+                    }
+                    
+                }, label: {
+                    Image(systemName: "eye.slash.fill")
+                    Text("Hide")
+                    
+                })
+                
+                Button(action: {
+                    
+                    DispatchQueue.main.async {
+                        nicknaming = event
+                    }
+                    
+                }, label: {
+                    
+                    if NicknameManager.shared.nicknameObjects.contains(where: { $0.originalName == event.originalTitle }) {
+                        Label(title: { Text("Manage Nickname") }, icon: { Image(systemName: "character.cursor.ibeam") })
+                    } else {
+                        Label(title: { Text("Set Nickname") }, icon: { Image(systemName: "character.cursor.ibeam") })
+                    }
+                    
+                    
+                    
+                })
                 
                 Button(action: {
                     

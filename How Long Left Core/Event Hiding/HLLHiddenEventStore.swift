@@ -9,10 +9,12 @@
 import Foundation
 import CoreData
 
-class HLLHiddenEventStore {
+class HLLHiddenEventStore: ObservableObject {
     
     static var shared = HLLHiddenEventStore()
     var hiddenEvents = [HLLStoredEvent]()
+    
+    //var equivalentHLLEvents
     
     var observers = [EventHidingObserver]()
     
@@ -26,12 +28,10 @@ class HLLHiddenEventStore {
     }
     
     func loadHiddenEventsFromDatabase() {
-        
-        DispatchQueue.main.async {
       
        var returnArray = [HLLStoredEvent]()
                
-        let managedContext = HLLDataModel.persistentContainer.viewContext
+        let managedContext = HLLDataModel.shared.persistentContainer.viewContext
                let fetchRequest: NSFetchRequest<HLLStoredEvent> = HLLStoredEvent.fetchRequest()
                if let items = try? managedContext.fetch(fetchRequest) {
                    returnArray = items
@@ -39,9 +39,11 @@ class HLLHiddenEventStore {
         
         self.hiddenEvents = returnArray
         
-        HLLEventSource.shared.updateHiddenEvents()
-            
+        DispatchQueue.main.async {
+            HLLEventSource.shared.updateHiddenEvents()
+            self.objectWillChange.send()
         }
+        
         
     }
     
@@ -53,10 +55,12 @@ class HLLHiddenEventStore {
         
         DispatchQueue.main.async {
         
-        let record = NSEntityDescription.insertNewObject(forEntityName: "HLLStoredEvent", into: HLLDataModel.persistentContainer.viewContext) as! HLLStoredEvent
+        let record = NSEntityDescription.insertNewObject(forEntityName: "HLLStoredEvent", into: HLLDataModel.shared.persistentContainer.viewContext) as! HLLStoredEvent
         record.setup(from: event)
         
         HLLDataModel.shared.save()
+            
+            self.objectWillChange.send()
             
         }
         
@@ -64,16 +68,17 @@ class HLLHiddenEventStore {
             self.observers.forEach({$0.eventWasHidden(event: event)})
         }
         
+       
+        
     }
     
     func unhideEvent(_ event: HLLStoredEvent) {
         
-        DispatchQueue.main.async {
+       
         
-        HLLDataModel.persistentContainer.viewContext.delete(event)
-        HLLDataModel.shared.save()
-            
-        }
+            HLLDataModel.shared.persistentContainer.viewContext.delete(event)
+            HLLDataModel.shared.save()
+      
         
     }
     
