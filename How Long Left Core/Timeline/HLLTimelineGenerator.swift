@@ -17,11 +17,22 @@ class HLLTimelineGenerator {
     
     init(type: TimelineType) {
         self.timelineType = type
+        
+        if HLLTimelineGenerator.doneReset {
+            return
+        }
+        
+        if ProcessInfo.processInfo.arguments.contains("ResetTimelineOnLaunch") {
+            HLLDefaults.complication.latestTimeline = nil
+        }
+        
     }
     
     var timelineConfiguration: HLLTimelineConfiguration?
     var onlyShowEventID: String?
     
+    static var doneReset = false
+
     private let widgetTimelineStorageManager = WidgetHLLTimelineStorageManager()
     
     func reset() {
@@ -318,6 +329,8 @@ class HLLTimelineGenerator {
     }
     
     func shouldUpdate() -> TimelineValidity {
+        
+        
         
         let timeline = generateHLLTimeline(forState: .normal)
         let newTimeline = timeline

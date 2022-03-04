@@ -33,8 +33,7 @@ struct NicknamesListView: View {
                             
                             HStack {
                                 
-                                Image(systemName: "arrow.down")
-                                    .foregroundColor(.primary)
+                             
                                 
                                 VStack(alignment: .leading) {
                                   
@@ -52,7 +51,8 @@ struct NicknamesListView: View {
                                 
                                 
                                 
-                               
+                                
+                                
                                 
                                 
                             }

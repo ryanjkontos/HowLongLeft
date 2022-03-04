@@ -29,8 +29,9 @@ struct Provider: IntentTimelineProvider {
     
     init() {
         
-        while HLLEventSource.shared.access != .Granted { print("Waiting for access ") }
+        //HLLDataModel.shared = HLLDataModel()
         
+        while HLLEventSource.shared.access != .Granted { print("Waiting for access ") }
         
         WidgetUpdateHandler.shared = WidgetUpdateHandler()
         ProStatusManager.shared = ProStatusManager()

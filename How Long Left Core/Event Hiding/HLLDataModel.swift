@@ -11,30 +11,26 @@ import CoreData
 
 class HLLDataModel {
     
-    static var shared: HLLDataModel!
+    static var shared = HLLDataModel()
     
     init() {
-        
-     
            
         HLLDataModel.migrate()
            
-           let persistentContainer = NSPersistentCloudKitContainer(name: HLLDataModel.databaseName)
-           let storeURL = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
-           let storeDescription = NSPersistentStoreDescription(url: storeURL)
+        let persistentContainer = NSPersistentCloudKitContainer(name: HLLDataModel.databaseName)
+        let storeURL = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
+        let storeDescription = NSPersistentStoreDescription(url: storeURL)
            
            
-           let id = "iCloud.ryankontos.howlongleft"
-           let options = NSPersistentCloudKitContainerOptions(containerIdentifier: id)
-           storeDescription.cloudKitContainerOptions = options
+        let id = "iCloud.ryankontos.howlongleft"
+        let options = NSPersistentCloudKitContainerOptions(containerIdentifier: id)
+        storeDescription.cloudKitContainerOptions = options
            
-           storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
            
-           persistentContainer.persistentStoreDescriptions = [storeDescription]
+        persistentContainer.persistentStoreDescriptions = [storeDescription]
            
-          
-           
-           persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
                
             //   print("Store description: \(storeDescription)")
                

@@ -803,13 +803,13 @@ class HLLDefaults {
             
             get {
                 
-                return defaults.bool(forKey: "WatchComplicationEnabled")
+                return !defaults.bool(forKey: "WatchComplicationDisabled")
                 
             }
             
             set (to) {
                 
-                defaults.set(to, forKey: "WatchComplicationEnabled")
+                defaults.set(!to, forKey: "WatchComplicationDisabled")
                 
             }
             

@@ -63,7 +63,7 @@ struct EventsListView: View {
             dataSource.updates = false
             disappearDate = Date()
         }
-
+   
        
         
         
@@ -83,61 +83,18 @@ struct EventsListView: View {
                         
                         ForEach(Array(events.enumerated()), id: \.1.persistentIdentifier) { index, event in
                             
-                            
                             NavigationLink(tag: event.id, selection: $showEventView, destination: { EventView(event: event, openOnOptions: showOptions) }, label: {
                             
                                 getViewFor(event: event, at: index, height: WKInterfaceDevice.current().screenBounds.size.height, live: context.cadence == .live, date: context.date)
                                 .drawingGroup()
                             })
-                            
-                         
-                                
-                                .id("\(event.id) \(index == 0 && HLLDefaults.watch.largeCell)")
                                 .listRowBackground((index == 0 && HLLDefaults.watch.largeCell) ? Color.clear : nil)
+                                .id("\(event.infoIdentifier) \(event.completionStatus(at: context.date)) \(index == 0 && HLLDefaults.watch.largeCell)")
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                                    
-                                    Button(action: {
-                                        
-                                        DispatchQueue.global().asyncAfter(deadline: .now() + 0.21) {
-                                            
-                                            SelectedEventManager.shared.toggleSelection(for: event)
-                                        
-                                        }
-                                            
-                                        }) {
-                                            Label("Pin", systemImage: event.isSelected ? "pin.slash.fill" : "pin.fill")
-                                        
-                                    }
-                                        .tint(Color("PinnedGold"))
-                                    
-                                    Button(action: {
-                                        
-                                        DispatchQueue.global().asyncAfter(deadline: .now() + 0.21) {
-                                        
-                                        showOptions = true
-                                        showEventView = event.id
-                                            
-                                        } }) {
-                                        
-                                        Label("Options", systemImage: "ellipsis.circle")
-                                        
-                                    }
-                                        .tint(.blue)
-                                    
-                                    
-                                   
-                                    
+                                    getSwipeActions(event: event)
                                 })
                             
-                            
-                        /*    if index == 0 {
-                            
-                            Text("4 Wally's Walk")
-                                .font(.system(size: 13))
-                                .foregroundColor(.secondary)
-                            
-                            } */
-                                
+                         
                             
                         }
                         
@@ -168,12 +125,8 @@ struct EventsListView: View {
                  
                     
                 }
-                
-                
-                
-   
-                // .listStyle(.e)
-  
+                .listStyle(.plain)
+
                 
             }
            
@@ -207,8 +160,6 @@ struct EventsListView: View {
         
         if listIndex == 0, HLLDefaults.watch.largeCell {
             MainEventCard(event: event, liveUpdates: true, date: date)
-                .padding(.bottom, 10)
-                .frame(height: event.isSelected ? height-45 : height*0.74)
         } else if event.completionStatus(at: date) == .current || HLLDefaults.watch.upcomingMode == .withCountdown {
             CountdownCard(event: event, liveUpdates: true, date: date)
         } else {
@@ -238,6 +189,45 @@ struct EventsListView: View {
         var comps = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: Date())
         comps.second = 0
         return calendar.date(from: comps)!
+        
+    }
+    
+    func getSwipeActions(event: HLLEvent) -> some View {
+        
+        Group {
+            
+            Button(action: {
+                
+                DispatchQueue.global().asyncAfter(deadline: .now() + 0.21) {
+                    
+                    SelectedEventManager.shared.toggleSelection(for: event)
+                
+                }
+                    
+                }) {
+                    Label("Pin", systemImage: event.isSelected ? "pin.slash.fill" : "pin.fill")
+                
+            }
+                .tint(Color("PinnedGold"))
+            
+            Button(action: {
+                
+                DispatchQueue.global().asyncAfter(deadline: .now() + 0.21) {
+                
+                showOptions = true
+                showEventView = event.id
+                    
+                } }) {
+                
+                Label("Options", systemImage: "ellipsis.circle")
+                
+            }
+                .tint(.blue)
+            
+            
+           
+            
+        }
         
     }
     

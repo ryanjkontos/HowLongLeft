@@ -76,6 +76,16 @@
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "ResetTimelineOnLaunch"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "EnableDummyEvents"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <StoreKitConfigurationFileReference
          identifier = "../iOS How Long Left/Onboarding/StoreKitDebug.storekit">
       </StoreKitConfigurationFileReference>

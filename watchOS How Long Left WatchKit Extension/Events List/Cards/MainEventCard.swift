@@ -22,52 +22,73 @@ struct MainEventCard: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 40) {
                 VStack(alignment: .leading) {
                     
                     if event.isSelected {
                     
-                    Text("PINNED")
-                        .foregroundColor(Color("PinnedGold"))
-                        .font(.system(size: 15, weight: .medium, design: .rounded))
+                        Text("PINNED")
+                            .foregroundColor(Color("PinnedGold"))
+                            .font(.system(size: 15, weight: .medium, design: .rounded))
                         
                     }
                     
                     Text("\(event.title)")
-                        .font(.system(size: 32, weight: .medium, design: .rounded))
+                        .font(.system(size: .watchDynamic(size38mm: 29, size40mm: 30, size41mm: 29, size42mm: 35, size44mm: 33, size45mm: 33), weight: .medium, design: .rounded))
                         .minimumScaleFactor(0.6)
                         .lineLimit(1)
                     Text("\(event.countdownTypeString) in")
                         .foregroundColor(.secondary)
                         .font(.system(size: 19, weight: .regular, design: .rounded))
                 }
-                Spacer()
+               
                 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 2) {
                 
+                    VStack(spacing: 3) {
+                    
                 Text("\(getTimerText())")
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .foregroundColor(Color(event.color))
-                    .font(.system(size: 37, weight: .semibold, design: .rounded))
+                    .font(.system(size: .watchDynamic(size38mm: 29, size40mm: 31, size41mm: 32, size42mm: 33, size44mm: 35, size45mm: 37), weight: .semibold, design: .rounded))
                     .monospacedDigit()
                     .frame(maxWidth: .infinity, alignment: .leading)
                    
                     .multilineTextAlignment(.leading)
                 
-                    if event.completionStatus(at: date) == .current {
-                
+                        if event.completionStatus(at: date) == .current {
+                    
                             ProgressView(value: event.completionFraction(at: date))
                                 .tint(Color(event.color))
                                 .animation(.linear, value: event.completionFraction(at: date))
                                 .animation(.default, value: event.completionStatus(at: date))
                                 .transition(.opacity)
-                      
+                            
+                        }
                         
                     }
-                        
+               
                     
+                    if let location = event.location {
                         
+                        VStack(alignment: .center) {
+                           
+                            Divider()
+                            
+                            Text(location)
+                                .foregroundColor(.secondary)
+                                .lineLimit(1)
+                                .font(.system(size: 15, weight: .regular, design: .default))
+                                
+                                .minimumScaleFactor(0.6)
+                            
+                            Divider()
+                            
+                        }
+                      //  .padding(.top, 7)
+                        
+                    }
                 
                 }
                 

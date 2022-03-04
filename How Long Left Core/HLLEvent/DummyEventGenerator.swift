@@ -18,7 +18,11 @@ class DummyEventGenerator {
     
     init() {
         
-      return
+        if !ProcessInfo.processInfo.arguments.contains("EnableDummyEvents") {
+            return
+        }
+        
+    //  return
         
         var start = Date()
         
@@ -33,6 +37,9 @@ class DummyEventGenerator {
             date.addTimeInterval(30*300)
             var event = HLLEvent(title: "Current \(i)", start: start, end: date, location: nil)
             event.calendarID = HLLEventSource.shared.getCalendars().randomElement()?.calendarIdentifier
+            
+            event.location = "5 Wally's Walk 103"
+            
             array.append(event)
             
             start.addTimeInterval(60*120)

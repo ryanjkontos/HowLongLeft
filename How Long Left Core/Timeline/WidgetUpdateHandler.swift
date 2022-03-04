@@ -18,7 +18,7 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
     
     static var shared: WidgetUpdateHandler = WidgetUpdateHandler()
     
-    let timelineGen = HLLTimelineGenerator(type: .widget)
+    var timelineGen = HLLTimelineGenerator(type: .widget)
     
     let configStore = WidgetConfigurationStore()
     
@@ -46,7 +46,10 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
         
         for config in enabledConfigs {
             
-            timelineGen.timelineConfiguration = config
+            let newGen  = HLLTimelineGenerator(type: timelineGen.timelineType)
+            newGen.timelineConfiguration = config
+            
+            timelineGen = newGen
             if timelineGen.shouldUpdate() == .needsReloading {
         
             print("Reloading Widgets...")
@@ -133,7 +136,12 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
     }
     
     func eventPoolUpdated() {
-        updateWidget()
+        
+        DispatchQueue.main.async {
+            self.updateWidget()
+        }
+        
+       
         
     }
     

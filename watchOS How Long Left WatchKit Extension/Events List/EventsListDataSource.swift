@@ -103,7 +103,7 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
         var current = [HLLEvent]()
         
         if !(HLLDefaults.watch.upcomingMode == .off) {
-            upcoming = all.filter({ $0.completionStatus(at: date) == .upcoming })
+            upcoming = all.filter({ event in event.completionStatus(at: date) == .upcoming && event.startDate.startOfDay() == date.startOfDay() })
             upcoming.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
         }
         

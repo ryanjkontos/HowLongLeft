@@ -55,28 +55,40 @@ struct EventTimerView: View {
                 }
                     .overlay {
                         
-                        VStack(spacing: 3) {
-                            
-                            Text("\(event.title)")
-                                .font(.system(size: 18, weight: .regular, design: .default))
-                                .foregroundColor(.secondary)
-                                .minimumScaleFactor(0.5)
-                                .lineLimit(1)
-                            
-                            VStack {
-                            
-                                if event.completionStatus(at: timelineDate) == .upcoming {
-                                    Text("starts in")
-                                        .font(.system(size: 13, weight: .regular, design: .default))
-                                        .foregroundColor(.secondary)
-                                        .lineLimit(1)
+                        VStack(spacing: 6) {
+                            VStack(spacing: 2) {
+                                
+                                Text("\(event.title)")
+                                    .font(.system(size: 18, weight: .regular, design: .default))
+                                    .foregroundColor(.secondary)
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(1)
+                                
+                                VStack {
+                                
+                                    if event.completionStatus(at: timelineDate) == .upcoming {
+                                        Text("starts in")
+                                            .font(.system(size: 13, weight: .regular, design: .default))
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(1)
+                                    }
+                                    
+                                Text(getTimerText(at: timelineDate))
+                                    .font(.system(size: 35, weight: .regular, design: .default))
+                                    .monospacedDigit()
+                                    .minimumScaleFactor(0.4)
+                                    .lineLimit(1)
+                                    
                                 }
                                 
-                            Text(getTimerText(at: timelineDate))
-                                .font(.system(size: 35, weight: .regular, design: .default))
-                                .monospacedDigit()
-                                .minimumScaleFactor(0.4)
-                                .lineLimit(1)
+                               
+                                
+                            }
+                            
+                            if event.completionStatus(at: timelineDate) == .current {
+                            
+                                Text("\(calc.calculatePercentageDone(for: event, at: timelineDate))")
+                                .foregroundColor(.secondary)
                                 
                             }
                             
