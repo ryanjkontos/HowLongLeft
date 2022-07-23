@@ -94,8 +94,6 @@
 		BF32B5212498772E00B8F339 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B5202498772E00B8F339 /* DeviceInfo.swift */; };
 		BF32B52324989CAB00B8F339 /* ProValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B52224989CAB00B8F339 /* ProValidator.swift */; };
 		BF32BF192785930E002B013D /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */; };
-		BF32BF2127859324002B013D /* How_Long_Left_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32BF2027859324002B013D /* How_Long_Left_Tests.swift */; };
-		BF32BF272785933A002B013D /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6ADF1278580D5003AAFF6 /* WatchModel.swift */; };
 		BF32BF292785A3D6002B013D /* EventsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32BF282785A3D6002B013D /* EventsSettingsView.swift */; };
 		BF32C7CC2782E856003D9CE3 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32C7CB2782E856003D9CE3 /* EventView.swift */; };
 		BF36185C22DCDB0400D51765 /* EventUIWindowsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36185B22DCDB0400D51765 /* EventUIWindowsManager.swift */; };
@@ -109,7 +107,6 @@
 		BF3AAB8427AA8A36006D9AC7 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
 		BF3AAB8527AA8A37006D9AC7 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
 		BF3AAB8627AA8A37006D9AC7 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
-		BF3AAB8727AA8A38006D9AC7 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
 		BF3AAB8827AA8A39006D9AC7 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
 		BF3BCD1E23E031C400639D5F /* Pastr.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3BCD1C23E031C300639D5F /* Pastr.swift */; };
 		BF3BCD1F23E031C400639D5F /* PastebinFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3BCD1D23E031C400639D5F /* PastebinFormats.swift */; };
@@ -273,7 +270,6 @@
 		BF5ED91C27B2327B00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF5ED91D27B2327C00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF5ED91E27B2327C00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
-		BF5ED91F27B2327D00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
 		BF5F2C4F27488AA5007A56EF /* UpcomingEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F2C4E27488AA5007A56EF /* UpcomingEventSource.swift */; };
 		BF5F945622DA013400AB9FF3 /* MenuPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F945422DA013300AB9FF3 /* MenuPreferenceViewController.swift */; };
 		BF5F945722DA013400AB9FF3 /* MenuPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5F945522DA013400AB9FF3 /* MenuPreferencesView.xib */; };
@@ -357,7 +353,6 @@
 		BF969C7C27C0A2DB00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C7D27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C7E27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
-		BF969C7F27C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C8027C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C8127C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C8327C0B0A300EF4D4F /* HiddenEventsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8227C0B0A300EF4D4F /* HiddenEventsSettingsView.swift */; };
@@ -371,7 +366,6 @@
 		BF969C9127C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9227C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9327C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
-		BF969C9427C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9527C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9627C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9827C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
@@ -380,7 +374,6 @@
 		BF969C9B27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9C27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9D27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
-		BF969C9E27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9F27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969CA027C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969CA627C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
@@ -794,7 +787,6 @@
 		BFF847E7231E5D1E0075E733 /* EventVisibilityButtonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF847E6231E5D1E0075E733 /* EventVisibilityButtonsManager.swift */; };
 		BFF9197C2786B9CB0094BA79 /* EnabledCalendarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC531B6274668E8001DBA6E /* EnabledCalendarsView.swift */; };
 		BFF9197D2786B9EA0094BA79 /* EnabledCalendarsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC531B427466842001DBA6E /* EnabledCalendarsManager.swift */; };
-		BFF9197E2786F0B10094BA79 /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
 		BFF91980278702B90094BA79 /* ComplicationEntryGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9197F278702B90094BA79 /* ComplicationEntryGenerator.swift */; };
 		BFF9198427871DFE0094BA79 /* CLKTextProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF9198327871DFE0094BA79 /* CLKTextProvider.m */; };
 		BFF9AAFC256F9E54003A0AA9 /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
@@ -996,13 +988,6 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		BF32BF2227859324002B013D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF5D294D2174679500AC1EB6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF4988FC2733A14A00024295;
-			remoteInfo = "iOS How Long Left";
-		};
 		BF51027227AA557700BFF2F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF5D294D2174679500AC1EB6 /* Project object */;
@@ -1175,7 +1160,6 @@
 		BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HLLHiddenEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BF32B5202498772E00B8F339 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		BF32B52224989CAB00B8F339 /* ProValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProValidator.swift; sourceTree = "<group>"; };
-		BF32BF1E27859324002B013D /* How Long Left Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "How Long Left Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF32BF2027859324002B013D /* How_Long_Left_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = How_Long_Left_Tests.swift; sourceTree = "<group>"; };
 		BF32BF282785A3D6002B013D /* EventsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSettingsView.swift; sourceTree = "<group>"; };
 		BF32C7CB2782E856003D9CE3 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
@@ -1615,13 +1599,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BF32BF1B27859324002B013D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BF4988FA2733A14A00024295 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2191,7 +2168,6 @@
 				BF4988FD2733A14A00024295 /* How Long Left.app */,
 				BFE4771E274B91730016A725 /* How Long Left.app */,
 				BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */,
-				BF32BF1E27859324002B013D /* How Long Left Tests.xctest */,
 				BF51026627AA557700BFF2F6 /* iOS Widget How Logn LeftExtension.appex */,
 				BF5ABA0527BE2D600038F083 /* How Long Left Widget Intents.appex */,
 			);
@@ -3222,24 +3198,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF32BF1D27859324002B013D /* How Long Left Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF32BF2427859325002B013D /* Build configuration list for PBXNativeTarget "How Long Left Tests" */;
-			buildPhases = (
-				BF32BF1A27859324002B013D /* Sources */,
-				BF32BF1B27859324002B013D /* Frameworks */,
-				BF32BF1C27859324002B013D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF32BF2327859324002B013D /* PBXTargetDependency */,
-			);
-			name = "How Long Left Tests";
-			productName = "How Long Left Tests";
-			productReference = BF32BF1E27859324002B013D /* How Long Left Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		BF4988FC2733A14A00024295 /* iOS How Long Left */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF49890A2733A14C00024295 /* Build configuration list for PBXNativeTarget "iOS How Long Left" */;
@@ -3425,10 +3383,6 @@
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Ryan Kontos";
 				TargetAttributes = {
-					BF32BF1D27859324002B013D = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = BF4988FC2733A14A00024295;
-					};
 					BF4988FC2733A14A00024295 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -3530,7 +3484,6 @@
 				BF4988FC2733A14A00024295 /* iOS How Long Left */,
 				BFE4771D274B91730016A725 /* watchOS How Long Left */,
 				BFE47725274B91740016A725 /* watchOS How Long Left WatchKit Extension */,
-				BF32BF1D27859324002B013D /* How Long Left Tests */,
 				BF51026527AA557700BFF2F6 /* iOS Widget How Logn LeftExtension */,
 				BF5ABA0427BE2D600038F083 /* How Long Left Widget Intents */,
 			);
@@ -3538,14 +3491,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BF32BF1C27859324002B013D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF5ED91F27B2327D00DFD93F /* Colours.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BF4988FB2733A14A00024295 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3712,20 +3657,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BF32BF1A27859324002B013D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF969C7F27C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
-				BFF9197E2786F0B10094BA79 /* HLLTimelineGenerator.swift in Sources */,
-				BF969C9427C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */,
-				BF969C9E27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */,
-				BF32BF2127859324002B013D /* How_Long_Left_Tests.swift in Sources */,
-				BF3AAB8727AA8A38006D9AC7 /* HLLEvent.swift in Sources */,
-				BF32BF272785933A002B013D /* WatchModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BF4988F92733A14A00024295 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4676,11 +4607,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BF32BF2327859324002B013D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF4988FC2733A14A00024295 /* iOS How Long Left */;
-			targetProxy = BF32BF2227859324002B013D /* PBXContainerItemProxy */;
-		};
 		BF51027327AA557700BFF2F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF51026527AA557700BFF2F6 /* iOS Widget How Logn LeftExtension */;
@@ -4745,46 +4671,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BF32BF2527859325002B013D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.How-Long-Left-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/How Long Left.app/How Long Left";
-			};
-			name = Debug;
-		};
-		BF32BF2627859325002B013D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ryankontos.How-Long-Left-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/How Long Left.app/How Long Left";
-			};
-			name = Release;
-		};
 		BF4989082733A14C00024295 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5552,15 +5438,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF32BF2427859325002B013D /* Build configuration list for PBXNativeTarget "How Long Left Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF32BF2527859325002B013D /* Debug */,
-				BF32BF2627859325002B013D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		BF49890A2733A14C00024295 /* Build configuration list for PBXNativeTarget "iOS How Long Left" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
