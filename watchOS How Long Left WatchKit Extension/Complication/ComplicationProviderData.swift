@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ClockKit
 
 struct ComplicationProviderData {
     
@@ -86,6 +87,7 @@ struct ComplicationProviderData {
             
             switch event.completionStatus(at: data.getAdjustedShowAt()) {
                 case .upcoming:
+                    
                     fullTimerProvider = CLKTextProvider(byJoining: ["in".simpleTextProvider(), timerProvider], separator: " ")
                 case .current:
                     firstRowProvider = "\(event.title.truncated(limit: 12)) ends in".simpleTextProvider()

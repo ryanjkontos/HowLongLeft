@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         print("Task scheduled: \(task)")
+        
+        EventLocationStore.shared = EventLocationStore()
             
         return true
     }

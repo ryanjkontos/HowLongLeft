@@ -24,7 +24,7 @@ class HLLEventInfoItemGenerator {
     private let percentageCalculator = PercentageCalculator()
     private let countdwonStringGenerator = CountdownStringGenerator()
     
-    func getInfoItem(for type: HLLEventInfoItemType) -> HLLEventInfoItem? {
+    func getInfoItem(for type: HLLEventInfoItemType, at date: Date = Date()) -> HLLEventInfoItem? {
         
         var titleString: String?
         var infoString: String?
@@ -33,9 +33,9 @@ class HLLEventInfoItemGenerator {
             
         case .completion:
         
-            if event.completionStatus == .current {
+            if event.completionStatus(at: date) == .current {
             titleString = "Completion"
-            infoString = percentageCalculator.calculatePercentageDone(for: event)
+            infoString = percentageCalculator.calculatePercentageDone(for: event, at: date)
             }
             
         case .location:
@@ -46,13 +46,12 @@ class HLLEventInfoItemGenerator {
                 
                 infoString = location
 
-                
             }
             
         case .start:
             
            titleString = "Start"
-           if event.completionStatus != .upcoming {
+           if event.completionStatus(at: date) != .upcoming {
                 titleString = "Started"
            }
            
@@ -61,7 +60,7 @@ class HLLEventInfoItemGenerator {
         case .end:
             
             titleString = "End"
-            if event.completionStatus == .done {
+            if event.completionStatus(at: date) == .done {
                 titleString = "Ended"
             }
             
@@ -69,20 +68,20 @@ class HLLEventInfoItemGenerator {
             
         case .elapsed:
         
-            if event.completionStatus == .current {
+            if event.completionStatus(at: date) == .current {
             
-                    titleString = "Elapsed"
-                    let secondsSinceStart = CurrentDateFetcher.currentDate.timeIntervalSince(event.startDate)
+                    titleString = "Since Start"
+                    let secondsSinceStart = date.timeIntervalSince(event.startDate)
                     infoString = durationStringGenerator.generateDurationString(for: secondsSinceStart)
                     
                 }
                 
-                if event.completionStatus == .done {
+                if event.completionStatus(at: date) == .done {
                     
-                    titleString = "Finshed"
+                    titleString = "Since End"
                     let secondsSinceEnd = CurrentDateFetcher.currentDate.timeIntervalSince(event.endDate)
                     let duration = durationStringGenerator.generateDurationString(for: secondsSinceEnd)
-                    infoString = "\(duration) ago"
+                    infoString = "\(duration)"
                     
                 }
             
@@ -109,13 +108,27 @@ class HLLEventInfoItemGenerator {
             
         case .countdown:
             
-            if event.completionStatus != .done {
+            if event.completionStatus(at: date) != .done {
             
             titleString = "\(event.countdownTypeString.capitalizingFirstLetter()) in"
-            infoString = countdwonStringGenerator.generatePositionalCountdown(event: event)
+            infoString = countdwonStringGenerator.generatePositionalCountdown(event: event, at: date)
                 
             }
    
+        case .status:
+            
+            titleString = "Status"
+            
+            switch event.completionStatus(at: date) {
+                
+            case .upcoming:
+                infoString = "Upcoming"
+            case .current:
+                infoString = "In Progress"
+            case .done:
+                infoString = "Completed"
+            }
+            
         }
         
         if let title = titleString, let info = infoString {
@@ -126,13 +139,13 @@ class HLLEventInfoItemGenerator {
         
     }
     
-    func getInfoItems(for types: [HLLEventInfoItemType]) -> [HLLEventInfoItem] {
+    func getInfoItems(for types: [HLLEventInfoItemType], at date: Date = Date()) -> [HLLEventInfoItem] {
         
         var returnArray = [HLLEventInfoItem]()
         
         for type in types {
             
-            if let item = getInfoItem(for: type) {
+            if let item = getInfoItem(for: type, at: date) {
                
                 returnArray.append(item)
                 

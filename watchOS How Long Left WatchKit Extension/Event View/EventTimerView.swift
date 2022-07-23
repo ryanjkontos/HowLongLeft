@@ -26,10 +26,12 @@ struct EventTimerView: View {
         if scenePhase == .active {
             TimelineView(.animation) { context in
                 getContent(timelineDate: context.date)
+                    
             }
         } else {
             TimelineView(.periodic(from: Date(), by: 1)) { context in
                 getContent(timelineDate: context.date)
+                    
             }
         }
 
@@ -61,7 +63,7 @@ struct EventTimerView: View {
                                 Text("\(event.title)")
                                     .font(.system(size: 18, weight: .regular, design: .default))
                                     .foregroundColor(.secondary)
-                                    .minimumScaleFactor(0.5)
+                                    .minimumScaleFactor(0.7)
                                     .lineLimit(1)
                                 
                                 VStack {
@@ -76,8 +78,8 @@ struct EventTimerView: View {
                                 Text(getTimerText(at: timelineDate))
                                     .font(.system(size: 35, weight: .regular, design: .default))
                                     .monospacedDigit()
-                                    .minimumScaleFactor(0.4)
                                     .lineLimit(1)
+                                    .minimumScaleFactor(0.4)
                                     
                                 }
                                 
@@ -88,12 +90,16 @@ struct EventTimerView: View {
                             if event.completionStatus(at: timelineDate) == .current {
                             
                                 Text("\(calc.calculatePercentageDone(for: event, at: timelineDate))")
+                                    .monospacedDigit()
                                 .foregroundColor(.secondary)
+                                //.minimumScaleFactor(0.5)
+                                .font(.system(size: 15, weight: .regular, design: .default))
                                 
                             }
                             
                         }
-                        .padding(.all, 35)
+                        .padding(.all, 30)
+                        .animation(.easeInOut, value: timelineDate)
                         
                     }
                     
@@ -102,6 +108,7 @@ struct EventTimerView: View {
                     .padding(.bottom, 10)
             
             }
+            
             
     }
     

@@ -25,7 +25,9 @@ class HLLEventInfoItem: Equatable, Identifiable {
     }
     
     static func == (lhs: HLLEventInfoItem, rhs: HLLEventInfoItem) -> Bool {
-        return lhs.type == rhs.type
+        return lhs.type == rhs.type && lhs.info == rhs.info
     }
+    
+  
     
 }

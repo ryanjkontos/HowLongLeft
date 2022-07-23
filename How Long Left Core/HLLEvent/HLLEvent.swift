@@ -60,7 +60,10 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var isSelected: Bool { SelectedEventManager.shared.selectedEvent == self }
     
-    var isPinned: Bool { HLLDefaults.general.pinnedEventIdentifiers.contains(where: { $0 == persistentIdentifier } ) }
+    var isPinned: Bool {
+        HLLDefaults.general.pinnedEventIdentifiers.contains(where: { $0 == persistentIdentifier
+            
+        } ) }
     
     var countdownTypeString: String { countdownTypeString() }
     
@@ -105,7 +108,10 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     }
     
     func completionFraction(at date: Date = Date()) -> Double {
-        return date.timeIntervalSince(startDate)/endDate.timeIntervalSince(startDate)
+        let v = date.timeIntervalSince(startDate)/endDate.timeIntervalSince(startDate)
+        if v < 0 { return 0 }
+        if v > 1 { return 1 }
+        return v
     }
     
     func countdownDate(at: Date = Date()) -> Date { completionStatus(at: at) == .upcoming ? startDate : endDate }
@@ -121,6 +127,12 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     static func previewEvent() -> HLLEvent {
         HLLEvent(title: "Preview", start: Date(), end: Date().addingTimeInterval(45*60), location: nil)
     }
+    
+    static func previewUpcomingEvent() -> HLLEvent {
+        HLLEvent(title: "Upcoming", start: Date().addingTimeInterval(600), end: Date().addingTimeInterval(45*60), location: nil)
+    }
+    
+    
     
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
     
@@ -152,6 +164,8 @@ protocol EventUIObject {
     
     var color: SystemColor { get }
     
+    var location: String? { get }
+    
     var id: String { get }
     
     var completionStatus: HLLEvent.CompletionStatus { get }
@@ -170,7 +184,7 @@ protocol EventUIObject {
 
 class PreviewEvent: EventUIObject {
     
-    internal init(title: String, startDate: Date, endDate: Date, color: SystemColor, completionStatus: HLLEvent.CompletionStatus) {
+    internal init(title: String, startDate: Date, endDate: Date, color: SystemColor, completionStatus: HLLEvent.CompletionStatus, location: String? = nil) {
         self.title = title
         self.startDate = startDate
         self.endDate = endDate
@@ -185,6 +199,8 @@ class PreviewEvent: EventUIObject {
     var startDate: Date
     
     var endDate: Date
+    
+    var location: String?
     
     var color: SystemColor
     
@@ -237,4 +253,10 @@ extension EKCalendar {
         
     }
     
+}
+
+extension Comparable {
+    func clamped(to limits: ClosedRange<Self>) -> Self {
+        return min(max(self, limits.lowerBound), limits.upperBound)
+    }
 }

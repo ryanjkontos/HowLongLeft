@@ -14,8 +14,6 @@ struct CountdownSettingsView: View {
     
     @ObservedObject var settingsObject = WatchCountdownSettingsObject()
     
-    
-    
     var body: some View {
         
         Form {
@@ -26,15 +24,23 @@ struct CountdownSettingsView: View {
                     Text("Show Large Countdown")
                 })
                 
-                Toggle(isOn: $settingsObject.showSeconds.animation(), label: {
-                    Text("Show Seconds")
-                })
-            
+                if settingsObject.largeHeader {
+                
+                    Toggle(isOn: $settingsObject.largeHeaderLocation, label: { Text("Show Location") })
+                    
+                }
  
                 
             })
             
             
+            Section {
+                
+                Toggle(isOn: $settingsObject.showSeconds.animation(), label: {
+                    Text("Show Seconds")
+                })
+                
+            }
             
             
         }
@@ -69,6 +75,17 @@ class WatchCountdownSettingsObject: ObservableObject {
         willSet {
             
             HLLDefaults.watch.showSeconds = newValue
+            objectWillChange.send()
+            
+        }
+        
+    }
+    
+    var largeHeaderLocation: Bool = HLLDefaults.watch.largeHeaderLocation {
+        
+        willSet {
+            
+            HLLDefaults.watch.largeHeaderLocation = newValue
             objectWillChange.send()
             
         }

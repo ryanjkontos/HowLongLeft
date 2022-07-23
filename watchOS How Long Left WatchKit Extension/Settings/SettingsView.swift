@@ -12,6 +12,8 @@ struct SettingsView: View {
     
     @EnvironmentObject var store: Store
     
+    @Binding var open: Bool
+    
     var body: some View {
         
         Form {
@@ -76,6 +78,24 @@ struct SettingsView: View {
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Settings")
+        .toolbar(content: {
+            
+            ToolbarItem(placement: .cancellationAction, content: {
+                
+                Button(action: {
+                    
+                    open = false
+                    
+                }, label: {
+                    
+                    Text("Close")
+                    
+                })
+                
+            })
+            
+            
+        })
         
     }
     
@@ -94,6 +114,8 @@ struct SettingsView: View {
                 }
             
             Text(rowName)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
             Spacer()
             
         }
@@ -103,7 +125,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(open: .constant(true))
             .environmentObject(Store())
     }
 }

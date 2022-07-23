@@ -58,7 +58,7 @@ class ProStatusManager {
         
         #if os(OSX)
         
-        let context = HLLDataModel.persistentContainer.viewContext
+            let context = HLLDataModel.shared.persistentContainer.viewContext
         
             for purchase in self.fetchProPurchase() {
             

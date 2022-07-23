@@ -36,5 +36,11 @@ extension CGFloat {
         
     }
     
+    static func watchDyanamic(legacy: CGFloat, modern: CGFloat) -> CGFloat {
+        
+        return watchDynamic(size38mm: legacy, size40mm: modern, size41mm: modern, size42mm: legacy, size44mm: modern, size45mm: modern)
+        
+    }
+    
     
 }

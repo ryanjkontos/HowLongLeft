@@ -42,8 +42,8 @@ struct ExtensionPurchaseView: View, Sendable {
                 
         VStack {
             
-            VStack(spacing: 15) {
-                VStack(spacing: 5) {
+            VStack(spacing: 20) {
+                VStack(spacing: 2.5) {
                   
                     Text(getTitle())
                         .font(.system(size: 35, weight: .bold, design: .default))
@@ -175,7 +175,7 @@ struct ExtensionPurchaseView: View, Sendable {
                             }
                             .hoverEffect(.lift)
                             .foregroundColor(Color(UIColor.secondarySystemFill))
-                            .frame(width: 32, height: 32, alignment: .center)
+                            .frame(width: 29, height: 29, alignment: .center)
                         
                     }
                     

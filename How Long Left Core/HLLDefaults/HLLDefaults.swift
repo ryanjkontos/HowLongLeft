@@ -977,6 +977,22 @@ class HLLDefaults {
                    
         }
         
+        static var largeHeaderLocation: Bool {
+                   
+                   get {
+                       
+                       return !defaults.bool(forKey: "largeHeaderLocation")
+                       
+                   }
+                   
+                   set (to) {
+                       
+                       defaults.set(!to, forKey: "largeHeaderLocation")
+                       
+                   }
+                   
+        }
+        
     }
     
     struct menu {

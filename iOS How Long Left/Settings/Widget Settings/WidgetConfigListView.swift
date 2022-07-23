@@ -156,7 +156,7 @@ struct WidgetConfigListView: View {
             }
        
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitle("Manage Configurations")
+            .navigationBarTitle("Widget Configurations")
             
 
             

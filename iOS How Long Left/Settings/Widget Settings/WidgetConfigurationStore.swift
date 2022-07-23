@@ -9,6 +9,7 @@
 import Foundation
 import EventKit
 
+@available(macOS 10.15, *)
 class WidgetConfigurationStore: ObservableObject {
 
     static var defaultsKey = "WidgetConfigurationsbee"
@@ -131,6 +132,9 @@ class WidgetConfigurationStore: ObservableObject {
     
     
 }
+
+// MARK: WidgetGroup
+
 
 // MARK: WidgetGroup
 

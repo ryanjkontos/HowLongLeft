@@ -120,7 +120,7 @@ extension String {
         
         #endif
         
-            return self
+        return self
     }
     
 }

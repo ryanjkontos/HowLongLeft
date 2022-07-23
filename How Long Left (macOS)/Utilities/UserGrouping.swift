@@ -9,7 +9,7 @@
 import Foundation
 
 
-
+/*
 class UserGrouping {
     
     static let shared = UserGrouping()
@@ -76,3 +76,4 @@ class GroupableUser {
     }
     
 }
+*/

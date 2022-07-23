@@ -25,7 +25,7 @@ class EventSource: ObservableObject {
         
         HLLEventSource.shared.addEventPoolObserver(self)
         update()
-        timer = Timer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        timer = Timer(timeInterval: 5, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .common)
     }
     

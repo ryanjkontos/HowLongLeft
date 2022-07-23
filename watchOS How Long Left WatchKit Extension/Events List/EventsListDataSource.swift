@@ -15,7 +15,7 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
     
     var updates = true
     
-    @Published var neverUpdated = true
+    @Published var neverUpdated = false
     
     @Published var events = [HLLEvent]()
     
@@ -45,12 +45,7 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             return
         }
         
-        withAnimation {
-        
-            neverUpdated = HLLEventSource.shared.neverUpdatedEventPool
-            
-        }
-        
+       
         let newEvents = getEvents(at: Date()) ?? [HLLEvent]()
         
         if events != newEvents {
@@ -58,11 +53,10 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             DispatchQueue.main.async {
                 
                 withAnimation {
-                
-                self.events = newEvents
-                
-                self.objectWillChange.send()
+                    self.events = newEvents
+                    self.objectWillChange.send()
                 }
+                
             }
             
         }
@@ -103,7 +97,7 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
         var current = [HLLEvent]()
         
         if !(HLLDefaults.watch.upcomingMode == .off) {
-            upcoming = all.filter({ event in event.completionStatus(at: date) == .upcoming && event.startDate.startOfDay() == date.startOfDay() })
+            upcoming = HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents(date: date)
             upcoming.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
         }
         

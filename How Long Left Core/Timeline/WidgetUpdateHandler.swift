@@ -101,37 +101,39 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
         
         var dict = [String: Int]()
         
-        WidgetCenter.shared.getCurrentConfigurations({ (result) in
-            
-            switch result {
+        if #available(macOS 11, *) {
+            WidgetCenter.shared.getCurrentConfigurations({ (result) in
                 
-            case .success(let info):
+                switch result {
                     
-                for item in info {
+                case .success(let info):
                     
-                    print(item)
-                    
-                    if let config = item.id.configuration as? HLLWidgetConfigurationIntent, let widgetConfig = config.config, let id = widgetConfig.identifier {
+                    for item in info {
                         
-                        print("Kind: \(item.kind)")
+                        print(item)
                         
-                        if let value = dict[id] {
-                            dict[id] = value + 1
-                        } else {
-                            dict[id] = 1
+                        if let config = item.id.configuration as? HLLWidgetConfigurationIntent, let widgetConfig = config.config, let id = widgetConfig.identifier {
+                            
+                            print("Kind: \(item.kind)")
+                            
+                            if let value = dict[id] {
+                                dict[id] = value + 1
+                            } else {
+                                dict[id] = 1
+                            }
+                            
                         }
                         
                     }
                     
-                }
-                
-                completion(dict)
-                
+                    completion(dict)
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
-                
-            }
-        })
+                    
+                }
+            })
+        }
         
     }
     

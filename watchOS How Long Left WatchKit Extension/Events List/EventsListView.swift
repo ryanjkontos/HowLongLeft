@@ -25,8 +25,13 @@ struct EventsListView: View {
     
     @State var showEventView: String?
     
-
+    @State var showSettings = false
+    @State var sheetEvent: HLLEvent?
+    
     @State var showOptions = false
+    
+  //  @State var location = false
+ //   @State var bar = false
     
     let loadDate = Date()
     
@@ -64,6 +69,18 @@ struct EventsListView: View {
             disappearDate = Date()
         }
    
+        .sheet(item: $sheetEvent) { event in
+            
+            EventView(event: event, openOnOptions: false, open: $sheetEvent)
+            
+        }
+        
+        .sheet(isPresented: $showSettings) {
+            NavigationView{
+            SettingsView(open: $showSettings)
+                .environmentObject(store)
+            }
+        }
        
         
         
@@ -83,18 +100,22 @@ struct EventsListView: View {
                         
                         ForEach(Array(events.enumerated()), id: \.1.persistentIdentifier) { index, event in
                             
-                            NavigationLink(tag: event.id, selection: $showEventView, destination: { EventView(event: event, openOnOptions: showOptions) }, label: {
-                            
+                            Button(action: {
+                                
+                                sheetEvent = event
+                                
+                            }, label: {
+                                
                                 getViewFor(event: event, at: index, height: WKInterfaceDevice.current().screenBounds.size.height, live: context.cadence == .live, date: context.date)
                                 .drawingGroup()
+                                
                             })
+                            
                                 .listRowBackground((index == 0 && HLLDefaults.watch.largeCell) ? Color.clear : nil)
                                 .id("\(event.infoIdentifier) \(event.completionStatus(at: context.date)) \(index == 0 && HLLDefaults.watch.largeCell)")
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                                     getSwipeActions(event: event)
                                 })
-                            
-                         
                             
                         }
                         
@@ -113,15 +134,24 @@ struct EventsListView: View {
                         
                     }
                     
-                    NavigationLink(destination: { SettingsView()
-                            .environmentObject(store)
-                    }) {
                     
-                    SettingsButtonCard()
+                    Button(action: {
                         
-                    }
-                    .buttonStyle(.borderedProminent)
+                        showSettings = true
+                        
+                    }, label: {
+                        
+                        
+                        SettingsButtonCard()
+                            
+                    })
                     .listItemTint(.orange)
+            
+                   
+                    
+                    /*
+                    Toggle(isOn: $bar, label: { Text("Show Bar") })
+                    Toggle(isOn: $location, label: { Text("Show Location") }) */
                  
                     
                 }
@@ -160,6 +190,7 @@ struct EventsListView: View {
         
         if listIndex == 0, HLLDefaults.watch.largeCell {
             MainEventCard(event: event, liveUpdates: true, date: date)
+                .frame(height: height*CGFloat.watchDyanamic(legacy: 0.83, modern: 0.79))
         } else if event.completionStatus(at: date) == .current || HLLDefaults.watch.upcomingMode == .withCountdown {
             CountdownCard(event: event, liveUpdates: true, date: date)
         } else {
@@ -196,21 +227,9 @@ struct EventsListView: View {
         
         Group {
             
-            Button(action: {
-                
-                DispatchQueue.global().asyncAfter(deadline: .now() + 0.21) {
-                    
-                    SelectedEventManager.shared.toggleSelection(for: event)
-                
-                }
-                    
-                }) {
-                    Label("Pin", systemImage: event.isSelected ? "pin.slash.fill" : "pin.fill")
-                
-            }
-                .tint(Color("PinnedGold"))
+       
             
-            Button(action: {
+        /*    Button(action: {
                 
                 DispatchQueue.global().asyncAfter(deadline: .now() + 0.21) {
                 
@@ -222,7 +241,23 @@ struct EventsListView: View {
                 Label("Options", systemImage: "ellipsis.circle")
                 
             }
-                .tint(.blue)
+                .tint(.blue) */
+            
+            Button(action: {
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.21) {
+                    
+                    withAnimation {
+                        SelectedEventManager.shared.toggleSelection(for: event)
+                    }
+                
+                }
+                    
+                }) {
+                    Label("Pin", systemImage: event.isSelected ? "pin.slash.fill" : "pin.fill")
+                
+            }
+                .tint(Color("PinnedGold"))
             
             
            
@@ -236,5 +271,7 @@ struct EventsListView: View {
 struct EventsListView_Previews: PreviewProvider {
     static var previews: some View {
         EventsListView()
+            .environmentObject(Store())
+            .previewAllWatches()
     }
 }

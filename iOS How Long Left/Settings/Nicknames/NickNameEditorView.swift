@@ -17,6 +17,7 @@ struct NickNameEditorView: View {
     
     @Binding var presenting: Bool
     
+    
     @State var name = ""
     @State var nickname = ""
     
@@ -49,13 +50,28 @@ struct NickNameEditorView: View {
             Section("Events Named:") {
                 TextField("Event Name", text: $name)
                 #if os(iOS)
-                    //.introspectTextField(customize: { $0.becomeFirstResponder() })
+                    .introspectTextField(customize: {
+                        
+                        if name.isEmpty {
+                            $0.becomeFirstResponder()
+                        }
+                        
+                    })
                 #endif
                 
             }
             
             Section(content: {
                 TextField("Nickname", text: $nickname)
+                #if os(iOS)
+                    .introspectTextField(customize: {
+                        
+                        if name.isEmpty == false {
+                            $0.becomeFirstResponder()
+                        }
+                        
+                    })
+                #endif
             }, header: { Text("Should Appear in How Long Left As:")})
             
             if preExisting {

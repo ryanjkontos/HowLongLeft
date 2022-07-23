@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         ProStatusManager.shared = ProStatusManager()
         HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
-        WidgetUpdateHandler.shared = WidgetUpdateHandler()
+        //WidgetUpdateHandler.shared = WidgetUpdateHandler()
         
         DispatchQueue.main.async {
            

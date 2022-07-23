@@ -54,7 +54,7 @@ class SelectedEventManager: EventPoolUpdateObserver {
             
             #if !os(watchOS)
             
-            WidgetUpdateHandler.shared.updateWidget(force: true)
+            //WidgetUpdateHandler.shared.updateWidget(force: true)
             
             #endif
             

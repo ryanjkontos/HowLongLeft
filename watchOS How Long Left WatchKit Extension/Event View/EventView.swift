@@ -17,13 +17,15 @@ struct EventView: View {
     
     @State var selection: Int = 1
         
-    
+    @Binding var open: HLLEvent?
     
     @Environment(\.scenePhase) private var scenePhase
     
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     
     var body: some View {
+        
+        Group {
         
         if openOnOptions {
             EventOptionsView(event: event)
@@ -48,14 +50,32 @@ struct EventView: View {
             })
             
         }
+            
         
-        
+        }
+        .toolbar(content: {
+            
+            ToolbarItem(placement: .cancellationAction, content: {
+                
+                Button(action: {
+                    
+                    open = nil
+                    
+                }, label: {
+                    
+                    Text("Close")
+                    
+                })
+                
+            })
+            
+        })
 
     }
 }
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(event: .previewEvent(), openOnOptions: false)
+        EventView(event: .previewEvent(), openOnOptions: false, open: .constant(nil))
     }
 }

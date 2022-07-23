@@ -22,6 +22,7 @@ struct How_Long_LeftApp: App {
     init() {
         HLLDataModel.shared = HLLDataModel()
         HLLEventSource.shared.updateEventPool()
+        EventLocationStore.shared = EventLocationStore()
     }
     
     var body: some Scene {

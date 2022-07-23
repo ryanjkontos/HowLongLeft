@@ -10,6 +10,7 @@ import Foundation
 
 enum HLLEventInfoItemType: String, CaseIterable {
     
+    case status
     case countdown
     case completion
     case location

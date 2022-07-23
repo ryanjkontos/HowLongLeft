@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainEventCard: View {
     
-    var event: HLLEvent
+    @State var event: HLLEvent
     var gen = CountdownStringGenerator()
     
     var liveUpdates: Bool
@@ -18,12 +18,15 @@ struct MainEventCard: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     
+    
+    
     var date: Date
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 40) {
-                VStack(alignment: .leading) {
+
+            VStack(alignment: .leading) {
+                
+                VStack(alignment: .leading, spacing: 0) {
                     
                     if event.isSelected {
                     
@@ -34,67 +37,78 @@ struct MainEventCard: View {
                     }
                     
                     Text("\(event.title)")
-                        .font(.system(size: .watchDynamic(size38mm: 29, size40mm: 30, size41mm: 29, size42mm: 35, size44mm: 33, size45mm: 33), weight: .medium, design: .rounded))
-                        .minimumScaleFactor(0.6)
+                        .font(.system(size: 29, weight: .medium, design: .rounded))
+                        .minimumScaleFactor(0.8)
                         .lineLimit(1)
+                        //.background(.blue)
+                       // .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
                     Text("\(event.countdownTypeString) in")
                         .foregroundColor(.secondary)
-                        .font(.system(size: 19, weight: .regular, design: .rounded))
+                        .font(.system(size: 18, weight: .medium, design: .rounded))
                 }
                
+                //.frame(maxWidth: .infinity, alignment: .leading)
                 
-                VStack(alignment: .leading, spacing: 2) {
+                Spacer()
                 
-                    VStack(spacing: 3) {
+                VStack(alignment: .leading, spacing: 0) {
+                
+                    VStack(alignment: .leading ,spacing: 0) {
                     
                 Text("\(getTimerText())")
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .foregroundColor(Color(event.color))
-                    .font(.system(size: .watchDynamic(size38mm: 29, size40mm: 31, size41mm: 32, size42mm: 33, size44mm: 35, size45mm: 37), weight: .semibold, design: .rounded))
+                    .font(.system(size: 32, weight: .semibold, design: .rounded))
                     .monospacedDigit()
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                //.frame(maxWidth: .infinity, alignment: .leading)
                    
                     .multilineTextAlignment(.leading)
                 
-                        if event.completionStatus(at: date) == .current {
-                    
-                            ProgressView(value: event.completionFraction(at: date))
-                                .tint(Color(event.color))
-                                .animation(.linear, value: event.completionFraction(at: date))
-                                .animation(.default, value: event.completionStatus(at: date))
-                                .transition(.opacity)
+                        VStack(alignment: .leading ,spacing: 5) {
                             
-                        }
-                        
-                    }
-               
-                    
-                    if let location = event.location {
-                        
-                        VStack(alignment: .center) {
-                           
-                            Divider()
                             
-                            Text(location)
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
-                                .font(.system(size: 15, weight: .regular, design: .default))
+                            
+                            if event.completionStatus(at: date) == .current {
+                        
+                                ProgressView(value: event.completionFraction(at: date))
+                                    .tint(Color(event.color))
+                                    .animation(.linear, value: event.completionFraction(at: date))
+                                    .animation(.default, value: event.completionStatus(at: date))
+                                    .transition(.opacity)
                                 
-                                .minimumScaleFactor(0.6)
+                            }
+                           
                             
-                            Divider()
+                        
+                       
+                            if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
+                            
+                            VStack(alignment: .leading, spacing: 1) {
+              
+                                Text("\(loc)")
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                                    .font(.system(size: 14, weight: .regular, design: .default))
+                                    
+                                    .minimumScaleFactor(0.6)
+                                
+                            }
                             
                         }
-                      //  .padding(.top, 7)
-                        
-                    }
+                            
+                            
+                        }
+                        .padding(.vertical, 5)
+                            
+                        }
                 
                 }
                 
             }
-            Spacer()
-        }
+            //.padding(.bottom, 5)
+        
         
     }
     
@@ -114,6 +128,56 @@ struct MainEventCard: View {
 
 struct MainEventCard_Previews: PreviewProvider {
     static var previews: some View {
-        MainEventCard(event: .previewEvent(), liveUpdates: false, date: .init())
+        
+        NavigationView {
+        
+        GeometryReader { proxy in
+        
+        ScrollView {
+            MainEventCard(event: .previewUpcomingEvent(), liveUpdates: false, date: .init())
+                .frame(height: proxy.size.height)
+            
+        }
+            
+            
+        }
+            
+        }
+        
+        .previewAllWatches()
+            
+            
+    }
+}
+
+
+struct PreviewAllWatches: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .previewDevice("Apple Watch Series 3 - 38mm")
+            .previewDisplayName("38mm")
+        content
+            .previewDevice("Apple Watch Series 3 - 42mm")
+            .previewDisplayName("42mm")
+        content
+            .previewDevice("Apple Watch Series 6 - 40mm")
+            .previewDisplayName("40mm")
+        content
+            .previewDevice("Apple Watch Series 6 - 44mm")
+            .previewDisplayName("44mm")
+        content
+            .previewDevice("Apple Watch Series 7 - 41mm")
+            .previewDisplayName("41mm")
+        content
+            .previewDevice("Apple Watch Series 7 - 45mm")
+            .previewDisplayName("45mm")
+        
+        
+    }
+}
+
+extension View {
+    func previewAllWatches() -> some View {
+        modifier(PreviewAllWatches())
     }
 }

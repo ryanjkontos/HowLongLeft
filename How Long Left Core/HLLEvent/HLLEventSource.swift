@@ -860,12 +860,12 @@ class HLLEventSource {
         
     }
 
-    func getUpcomingEventsFromNextDayWithEvents(includeStarted: Bool = false) -> [HLLEvent] {
+    func getUpcomingEventsFromNextDayWithEvents(includeStarted: Bool = false, date: Date = Date()) -> [HLLEvent] {
         
         var upEvents = [HLLEvent]()
         var returnEvents = [HLLEvent]()
         
-        var comp: DateComponents = NSCalendar.current.dateComponents([.year, .month, .day], from: CurrentDateFetcher.currentDate)
+        var comp: DateComponents = NSCalendar.current.dateComponents([.year, .month, .day], from: date)
         comp.timeZone = TimeZone.current
         var loopStart = NSCalendar.current.date(from: comp)!
         var loopEnd = Calendar.current.date(byAdding: .day, value: 1, to: loopStart)
@@ -877,7 +877,7 @@ class HLLEventSource {
             
             for event in upEvents {
                 
-                if event.startDate.timeIntervalSince(CurrentDateFetcher.currentDate) > 0 || includeStarted == true, event.startDate.startOfDay() == loopStart.startOfDay() {
+                if event.startDate.timeIntervalSince(date) > 0 || includeStarted == true, event.startDate.startOfDay() == loopStart.startOfDay() {
                     
                     notStarted.append(event)
                     

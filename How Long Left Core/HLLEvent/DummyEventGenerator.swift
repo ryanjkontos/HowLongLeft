@@ -11,10 +11,7 @@ import Foundation
 class DummyEventGenerator {
     
     var events = [HLLEvent]()
-    
     let amount = 50
-    
-    
     
     init() {
         
@@ -29,7 +26,7 @@ class DummyEventGenerator {
         var array = [HLLEvent]()
         var date = start
         
-        array.append(HLLEvent(title: "Ending Soon", start: start, end: start.addingTimeInterval(13), location: nil))
+        array.append(HLLEvent(title: "Ending Soon", start: start, end: start.addingTimeInterval(5), location: nil))
         
         for i in 1...amount {
             
@@ -38,7 +35,7 @@ class DummyEventGenerator {
             var event = HLLEvent(title: "Current \(i)", start: start, end: date, location: nil)
             event.calendarID = HLLEventSource.shared.getCalendars().randomElement()?.calendarIdentifier
             
-            event.location = "5 Wally's Walk 103"
+            event.location = "23 George Bransby Circuit, Harrington Park"
             
             array.append(event)
             

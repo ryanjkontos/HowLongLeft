@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RelativeTextInterpolater.h"
+#import "CLKTextProvider.h"
 
 @implementation CLKTextProvider (MultiColorPatch)
 

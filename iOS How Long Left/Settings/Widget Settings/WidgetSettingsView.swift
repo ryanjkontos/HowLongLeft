@@ -19,19 +19,7 @@ struct WidgetSettingsView: View {
         List {
            
             
-            Section( content: {
-                
-                NavigationLink(destination: {
-                    
-                    WidgetConfigListView().environmentObject(WidgetConfigurationStore())
-                    
-                }, label: {
-                    
-                    Text("Manage Configurations")
-                    
-                })
-                
-            },header: { Text("Widget Configurations") } , footer: { Text("Use widget configurations to define rules for how your widgets should choose which event to count down at a given time.") })
+          
             
             
             Section("Widget Appearance") {
@@ -46,6 +34,20 @@ struct WidgetSettingsView: View {
                 .pickerStyle(.inline)
                 
             }
+            
+            Section( content: {
+                
+                NavigationLink(destination: {
+                    
+                    WidgetConfigListView().environmentObject(WidgetConfigurationStore())
+                    
+                }, label: {
+                    
+                    Text("Widget Configurations")
+                    
+                })
+                
+            },header: { Text("Advanced") } , footer: { Text("Use widget configurations to define rules for how your widgets should choose which event to display at a given time.") })
            
             
         }

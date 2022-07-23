@@ -29,6 +29,8 @@ struct CountdownsView: View {
     
     @State var nicknaming: HLLEvent?
     
+    @State var id = 0
+    
     var body: some View {
         
             ScrollView {
@@ -47,12 +49,15 @@ struct CountdownsView: View {
                                 NavigationLink(destination: { EventView(event: event) }, label: {
                                     
                                    CountdownCard(event: event)
-                                      
-                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                      .modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
                                     
+                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
+                                      
+                                      
                                 })
-                                .id(event.infoIdentifier)
+                                
+                            
+                                .modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
+                                //.id("\(event.id)")
                                 .hoverEffect(.highlight)
                                 
                                     .clipped()
@@ -82,6 +87,15 @@ struct CountdownsView: View {
                 }
                 .onDisappear {
                     if eventSource.eventSections.isEmpty { withAnimation(.easeInOut(duration: 0.1)) { opacity = 0 } }
+                }
+                .onChange(of: eventSource.eventSections) { data in
+                    
+                    DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.async {
+                            id += 1
+                        }
+                    }
+                    
                 }
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
@@ -186,3 +200,4 @@ struct ListItem: Identifiable, Hashable {
     var color: Color
     
 }
+

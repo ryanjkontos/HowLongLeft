@@ -12,18 +12,27 @@ import Intents
 
 
 struct Provider: IntentTimelineProvider {
-
-    typealias Entry = HLLWidgetTimelineEntry
     
-    #if os(iOS)
-    typealias Intent = HLLWidgetConfigurationIntent
-    #else
-    typealias Intent = ConfigurationIntent
+    #if os(watchOS)
+    
+    func recommendations() -> [IntentRecommendation<HLLWidgetConfigurationIntent>] {
+        return [IntentRecommendation(intent: HLLWidgetConfigurationIntent.init(), description: "Default Configuration")]
+    }
+    
+    
     #endif
     
     
+    
+    typealias Entry = HLLWidgetTimelineEntry
+    
+
+    typealias Intent = HLLWidgetConfigurationIntent
+  
+    
+    
     let configStore = WidgetConfigurationStore()
-    var generator = HLLTimelineGenerator(type: .widget)
+    var generator: HLLTimelineGenerator
 
     let storageManager = WidgetHLLTimelineStorageManager()
     
@@ -31,10 +40,21 @@ struct Provider: IntentTimelineProvider {
         
         //HLLDataModel.shared = HLLDataModel()
         
+        #if os(watchOS)
+            generator = HLLTimelineGenerator(type: .complication)
+        #else
+            generator = HLLTimelineGenerator(type: .widget)
+        #endif
+        
         while HLLEventSource.shared.access != .Granted { print("Waiting for access ") }
+        
+        #if os(iOS)
         
         WidgetUpdateHandler.shared = WidgetUpdateHandler()
         ProStatusManager.shared = ProStatusManager()
+        
+        #endif
+        
         HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
         
@@ -140,11 +160,46 @@ struct HLLWidgetTimelineEntry: TimelineEntry {
 @main
 struct HLLWidgets: WidgetBundle {
    var body: some Widget {
-    CountdownWidget()
-    UpcomingListWidget()
-    CountdownAndUpcomingListWidget()
+       
+       #if os(iOS)
+       
+       CountdownWidget()
+       UpcomingListWidget()
+       CountdownAndUpcomingListWidget()
+       
+       
+       #endif
+       
+
+       
+       
    }
 }
+
+
+
+/*struct CountdownComplication: Widget {
+    
+   
+    
+    let kind: String = "CountdownComplication"
+    
+    var body: some WidgetConfiguration {
+        
+        IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider(), content: { entry in
+            
+            MultilineComplicationView(event: entry.underlyingEntry.event)
+            
+        })
+        .description("Shows an overview of your game status")
+        .configurationDisplayName("Countdown")
+        .supportedFamilies([.accessoryRectangular])
+        
+    }
+    
+} */
+
+#if os(iOS)
 
 struct CountdownWidget: Widget {
     let kind: String = "CountdownWidget"
@@ -213,3 +268,5 @@ struct CountdownAndUpcomingListWidget: Widget {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }*/
+
+#endif
