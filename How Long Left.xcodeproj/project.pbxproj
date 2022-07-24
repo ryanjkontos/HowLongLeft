@@ -260,11 +260,6 @@
 		BF58AD732883BC2500EB444A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58AD6E2883BC2500EB444A /* Array.swift */; };
 		BF58AD742883BC2500EB444A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58AD6E2883BC2500EB444A /* Array.swift */; };
 		BF58AD752883BC2500EB444A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58AD6E2883BC2500EB444A /* Array.swift */; };
-		BF58AD762883BC2500EB444A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58AD6E2883BC2500EB444A /* Array.swift */; };
-		BF5ABA0727BE2D600038F083 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5ABA0627BE2D600038F083 /* Intents.framework */; };
-		BF5ABA0A27BE2D600038F083 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5ABA0927BE2D600038F083 /* IntentHandler.swift */; };
-		BF5ABA0E27BE2D600038F083 /* How Long Left Widget Intents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF5ABA0527BE2D600038F083 /* How Long Left Widget Intents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BF5ABA1327BE2D7B0038F083 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF51026C27AA557700BFF2F6 /* iOS_Widget_How_Logn_Left.intentdefinition */; };
 		BF5AC4B022D7A25B00159498 /* EventUIDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5AC4AF22D7A25B00159498 /* EventUIDoneViewController.swift */; };
 		BF5E566427C22AFC00282388 /* NicknamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E566327C22AFC00282388 /* NicknamesListView.swift */; };
 		BF5ED91C27B2327B00DFD93F /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
@@ -354,7 +349,6 @@
 		BF969C7D27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C7E27C0A2DC00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C8027C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
-		BF969C8127C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
 		BF969C8327C0B0A300EF4D4F /* HiddenEventsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8227C0B0A300EF4D4F /* HiddenEventsSettingsView.swift */; };
 		BF969C8727C0B8E400EF4D4F /* EventsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8627C0B8E400EF4D4F /* EventsSettingsView.swift */; };
 		BF969C8927C0C03C00EF4D4F /* EventPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8827C0C03C00EF4D4F /* EventPickerView.swift */; };
@@ -367,7 +361,6 @@
 		BF969C9227C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9327C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9527C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
-		BF969C9627C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
 		BF969C9827C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9927C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9A27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
@@ -375,7 +368,6 @@
 		BF969C9C27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9D27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969C9F27C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
-		BF969CA027C0EBB100EF4D4F /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
 		BF969CA627C0F77E00EF4D4F /* NickNameEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969CA127C0F77E00EF4D4F /* NickNameEditorView.swift */; };
 		BF96EF7027A98C1F00717B3F /* WatchScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96EF6F27A98C1F00717B3F /* WatchScreenshotView.swift */; };
 		BF99A6DD23D53C6D0070D3C2 /* MagdaleneModeSetupIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99A6DC23D53C6D0070D3C2 /* MagdaleneModeSetupIntroViewController.swift */; };
@@ -401,7 +393,6 @@
 		BFA5780F2883106F00250A3A /* LiveEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5780A2883106F00250A3A /* LiveEventInfo.swift */; };
 		BFA578102883106F00250A3A /* LiveEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5780A2883106F00250A3A /* LiveEventInfo.swift */; };
 		BFA578112883106F00250A3A /* LiveEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5780A2883106F00250A3A /* LiveEventInfo.swift */; };
-		BFA578122883106F00250A3A /* LiveEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5780A2883106F00250A3A /* LiveEventInfo.swift */; };
 		BFA5781428831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA5781528831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA5781628831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
@@ -409,7 +400,6 @@
 		BFA5781828831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA5781928831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA5781A28831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
-		BFA5781B28831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA725E8277E9FE600F2A6EA /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA725E7277E9FE600F2A6EA /* CountdownCard.swift */; };
 		BFA8EE0B274DEE9E0099350D /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE0A274DEE9E0099350D /* IconCell.swift */; };
 		BFA8EE13274E02A00099350D /* ListButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE12274E02A00099350D /* ListButtonModifier.swift */; };
@@ -568,6 +558,89 @@
 		BFC73088256F9CAB009F289E /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
 		BFC73089256F9CAB009F289E /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
 		BFC7308A256F9CAB009F289E /* HLLHiddenEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */; };
+		BFC763D1288D83D60021B391 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5ABA0627BE2D600038F083 /* Intents.framework */; };
+		BFC763D8288D83D60021B391 /* iOS Widget Intents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC763D0288D83D60021B391 /* iOS Widget Intents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFC763DD288D841E0021B391 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5ABA0927BE2D600038F083 /* IntentHandler.swift */; };
+		BFC763DE288D84B30021B391 /* CalendarDefaultsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981C23EE3A3D00BB3816 /* CalendarDefaultsModifier.swift */; };
+		BFC763DF288D84B30021B391 /* CalendarEventFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981D23EE3A3D00BB3816 /* CalendarEventFetcher.swift */; };
+		BFC763E0288D84B30021B391 /* HLLEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981E23EE3A3D00BB3816 /* HLLEventSource.swift */; };
+		BFC763E1288D84B30021B391 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
+		BFC763E2288D84B30021B391 /* HLLEventRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D267224A972E000CFC8ED /* HLLEventRetriever.swift */; };
+		BFC763E3288D84B30021B391 /* DummyEventGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5084F3275B098900C1FC58 /* DummyEventGenerator.swift */; };
+		BFC763E4288D84B30021B391 /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
+		BFC763E5288D84B30021B391 /* HLLDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981723EE3A3D00BB3816 /* HLLDefaults.swift */; };
+		BFC763E6288D84B30021B391 /* HLLDefaultsTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981823EE3A3D00BB3816 /* HLLDefaultsTransfer.swift */; };
+		BFC763E7288D84B30021B391 /* DefaultsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C9727C0EBB100EF4D4F /* DefaultsObject.swift */; };
+		BFC763E8288D84B30021B391 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981A23EE3A3D00BB3816 /* Date.swift */; };
+		BFC763E9288D84B30021B391 /* DateOfEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3149B922DDB3D7002BAF0D /* DateOfEvents.swift */; };
+		BFC763EA288D84B30021B391 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982123EE3A3D00BB3816 /* EventDate.swift */; };
+		BFC763EB288D84B30021B391 /* PercentageCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982323EE3A3D00BB3816 /* PercentageCalculator.swift */; };
+		BFC763EC288D84B30021B391 /* DurationStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982423EE3A3D00BB3816 /* DurationStringGenerator.swift */; };
+		BFC763ED288D84B30021B391 /* CountdownStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982523EE3A3D00BB3816 /* CountdownStringGenerator.swift */; };
+		BFC763EE288D84B30021B391 /* EventCompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982623EE3A3D00BB3816 /* EventCompletionStatus.swift */; };
+		BFC763EF288D84B30021B391 /* EventFetchPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982923EE3A3D00BB3816 /* EventFetchPeriod.swift */; };
+		BFC763F0288D84B30021B391 /* StatusItemEventMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89650B24EC05E00051024D /* StatusItemEventMode.swift */; };
+		BFC763F1288D84B30021B391 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982B23EE3A3D00BB3816 /* String.swift */; };
+		BFC763F2288D84B30021B391 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58AD6E2883BC2500EB444A /* Array.swift */; };
+		BFC763F3288D84B30021B391 /* DateInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D18D6251CC93200EEDBC1 /* DateInterval.swift */; };
+		BFC763F4288D84B30021B391 /* CKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982C23EE3A3D00BB3816 /* CKError.swift */; };
+		BFC763F5288D84B30021B391 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982D23EE3A3D00BB3816 /* TimeInterval.swift */; };
+		BFC763F6288D84B30021B391 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982E23EE3A3D00BB3816 /* EKEvent.swift */; };
+		BFC763F7288D84B30021B391 /* HLLEventInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983823EE3A3D00BB3816 /* HLLEventInfoItem.swift */; };
+		BFC763F8288D84B30021B391 /* HLLEventInfoItemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983923EE3A3D00BB3816 /* HLLEventInfoItemGenerator.swift */; };
+		BFC763F9288D84B30021B391 /* HLLEventInfoItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983A23EE3A3D00BB3816 /* HLLEventInfoItemType.swift */; };
+		BFC763FA288D84B30021B391 /* LiveEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5780A2883106F00250A3A /* LiveEventInfo.swift */; };
+		BFC763FB288D84B30021B391 /* HLLDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF356867247E576A00E531C7 /* HLLDataModel.xcdatamodeld */; };
+		BFC763FC288D84B30021B391 /* StatusItemUnitsFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B36FC255EDB9500CD5FB0 /* StatusItemUnitsFormat.swift */; };
+		BFC763FD288D84B30021B391 /* DoubleEventRemover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C8D27C0E2A900EF4D4F /* DoubleEventRemover.swift */; };
+		BFC763FE288D84B30021B391 /* WidgetStateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */; };
+		BFC763FF288D84B30021B391 /* PercentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44002F2574D9350061ED6E /* PercentDateFetcher.swift */; };
+		BFC76400288D84B30021B391 /* CalendarAccessState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A574255ED5F600E7BCCB /* CalendarAccessState.swift */; };
+		BFC76401288D84B30021B391 /* SelectedEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A562255ED5A600E7BCCB /* SelectedEventManager.swift */; };
+		BFC76402288D84B30021B391 /* StatusItemMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A550255ED58D00E7BCCB /* StatusItemMode.swift */; };
+		BFC76403288D84B30021B391 /* HLLHotKeyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A535255ED56000E7BCCB /* HLLHotKeyOption.swift */; };
+		BFC76404288D84B30021B391 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983C23EE3A3D00BB3816 /* Weekday.swift */; };
+		BFC76405288D84B30021B391 /* NicknameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3EF9FA24F4CC6800173222 /* NicknameManager.swift */; };
+		BFC76406288D84B30021B391 /* KeyDateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FA6DF24D0341B000B6CBE /* KeyDateHandler.swift */; };
+		BFC76407288D84B30021B391 /* EventVisibiltyActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983D23EE3A3D00BB3816 /* EventVisibiltyActionHandler.swift */; };
+		BFC76408288D84B30021B391 /* VisibilityString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983E23EE3A3D00BB3816 /* VisibilityString.swift */; };
+		BFC76409288D84B30021B391 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983F23EE3A3D00BB3816 /* Version.swift */; };
+		BFC7640A288D84B30021B391 /* EventLocationIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984023EE3A3D00BB3816 /* EventLocationIndexer.swift */; };
+		BFC7640B288D84B30021B391 /* Pluraliser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984123EE3A3D00BB3816 /* Pluraliser.swift */; };
+		BFC7640C288D84B30021B391 /* EventTimeRemainingMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984223EE3A3D00BB3816 /* EventTimeRemainingMonitor.swift */; };
+		BFC7640D288D84B30021B391 /* FollowingOccurenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984323EE3A3D00BB3816 /* FollowingOccurenceStore.swift */; };
+		BFC7640E288D84B30021B391 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984423EE3A3D00BB3816 /* RepeatingTimer.swift */; };
+		BFC7640F288D84B30021B391 /* CountdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */; };
+		BFC76410288D84B30021B391 /* ProStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46DD6E248D2939000AE42F /* ProStatusManager.swift */; };
+		BFC76411288D84B30021B391 /* CurrentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984523EE3A3D00BB3816 /* CurrentDateFetcher.swift */; };
+		BFC76412288D84B30021B391 /* HLLCloudKitPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984723EE3A3D00BB3816 /* HLLCloudKitPreferences.swift */; };
+		BFC76413288D84B30021B391 /* HLLCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986323EE3A3D00BB3816 /* HLLCountdownController.swift */; };
+		BFC76414288D84B30021B391 /* HLLNotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986523EE3A3D00BB3816 /* HLLNotificationContent.swift */; };
+		BFC76415288D84B30021B391 /* HLLNTriggerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0147C244062A300BC9BDB /* HLLNTriggerStore.swift */; };
+		BFC76416288D84B30021B391 /* HLLNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01485244062F200BC9BDB /* HLLNTrigger.swift */; };
+		BFC76417288D84B30021B391 /* HLLNTriggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */; };
+		BFC76418288D84B30021B391 /* HLLNTriggerAddHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986623EE3A3D00BB3816 /* HLLNTriggerAddHandler.swift */; };
+		BFC76419288D84B30021B391 /* HLLNNewTriggerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */; };
+		BFC7641A288D84B30021B391 /* HLLNTriggerAddError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0146A244061B300BC9BDB /* HLLNTriggerAddError.swift */; };
+		BFC7641B288D84B30021B391 /* HLLNNotificationContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986723EE3A3D00BB3816 /* HLLNNotificationContentGenerator.swift */; };
+		BFC7641C288D84B30021B391 /* HLLNTriggerFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF54CD324CFD16D00D40490 /* HLLNTriggerFetcher.swift */; };
+		BFC7641D288D84B30021B391 /* HLLTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897024B2D37C0091F1DA /* HLLTimelineEntry.swift */; };
+		BFC7641E288D84B30021B391 /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
+		BFC7641F288D84B30021B391 /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
+		BFC76420288D84B30021B391 /* HLLTimelineDifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */; };
+		BFC76421288D84B30021B391 /* WidgetHLLTimelineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */; };
+		BFC76422288D84B30021B391 /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
+		BFC76423288D84B30021B391 /* ComplicatonConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF969C7727C0943200EF4D4F /* ComplicatonConfigurationManager.swift */; };
+		BFC76424288D84B30021B391 /* HLLDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6AD9612500C90300035787 /* HLLDataModel.swift */; };
+		BFC76425288D84B30021B391 /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
+		BFC76426288D84B30021B391 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
+		BFC76427288D84B30021B391 /* HLLHiddenEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */; };
+		BFC76428288D84C10021B391 /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
+		BFC76429288D84CA0021B391 /* WidgetConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679A27BE73D500F76BF9 /* WidgetConfigurationStore.swift */; };
+		BFC7642A288D84DB0021B391 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1059DF274B44B900486AE0 /* Store.swift */; };
+		BFC7642B288D84E20021B391 /* ExtensionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF94009B274AA92200AB71E7 /* ExtensionType.swift */; };
+		BFC7642C288D84F80021B391 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF51026C27AA557700BFF2F6 /* iOS_Widget_How_Logn_Left.intentdefinition */; };
+		BFC7642D288D850D0021B391 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
 		BFC9A40324C1D26400149818 /* MacNotificationDeliveryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9A40224C1D26300149818 /* MacNotificationDeliveryHandler.swift */; };
 		BFC9A40824C1D37300149818 /* CountdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */; };
 		BFC9A40924C1D37400149818 /* CountdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */; };
@@ -821,80 +894,7 @@
 		BFFCC1C427C346AF000F4F58 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFCC1C327C346AF000F4F58 /* CloudKit.framework */; };
 		BFFCCA1E238D064B00AC091A /* PreferencesWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCCA1C238D045600AC091A /* PreferencesWindowManager.swift */; };
 		BFFCCA20238D095800AC091A /* TerminationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCCA1F238D095800AC091A /* TerminationHandler.swift */; };
-		BFFD183227BF364F0021D099 /* WidgetConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679A27BE73D500F76BF9 /* WidgetConfigurationStore.swift */; };
 		BFFD183327BF36500021D099 /* WidgetConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679A27BE73D500F76BF9 /* WidgetConfigurationStore.swift */; };
-		BFFD183427BF419A0021D099 /* HLLDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981723EE3A3D00BB3816 /* HLLDefaults.swift */; };
-		BFFD183527BF41AC0021D099 /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
-		BFFD183627BF41C20021D099 /* CalendarDefaultsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981C23EE3A3D00BB3816 /* CalendarDefaultsModifier.swift */; };
-		BFFD183727BF41C20021D099 /* CalendarEventFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981D23EE3A3D00BB3816 /* CalendarEventFetcher.swift */; };
-		BFFD183827BF41C20021D099 /* HLLEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981E23EE3A3D00BB3816 /* HLLEventSource.swift */; };
-		BFFD183927BF41C20021D099 /* HLLEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3AAB8027AA89F3006D9AC7 /* HLLEvent.swift */; };
-		BFFD183A27BF41C20021D099 /* HLLEventRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D267224A972E000CFC8ED /* HLLEventRetriever.swift */; };
-		BFFD183B27BF41C20021D099 /* DummyEventGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5084F3275B098900C1FC58 /* DummyEventGenerator.swift */; };
-		BFFD183C27BF41C20021D099 /* HLLDefaultsTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981823EE3A3D00BB3816 /* HLLDefaultsTransfer.swift */; };
-		BFFD183D27BF41C20021D099 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE981A23EE3A3D00BB3816 /* Date.swift */; };
-		BFFD183E27BF41C20021D099 /* DateOfEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3149B922DDB3D7002BAF0D /* DateOfEvents.swift */; };
-		BFFD183F27BF41C20021D099 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982123EE3A3D00BB3816 /* EventDate.swift */; };
-		BFFD184027BF41C20021D099 /* PercentageCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982323EE3A3D00BB3816 /* PercentageCalculator.swift */; };
-		BFFD184127BF41C20021D099 /* DurationStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982423EE3A3D00BB3816 /* DurationStringGenerator.swift */; };
-		BFFD184227BF41C20021D099 /* CountdownStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982523EE3A3D00BB3816 /* CountdownStringGenerator.swift */; };
-		BFFD184327BF41C20021D099 /* EventCompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982623EE3A3D00BB3816 /* EventCompletionStatus.swift */; };
-		BFFD184427BF41C20021D099 /* EventFetchPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982923EE3A3D00BB3816 /* EventFetchPeriod.swift */; };
-		BFFD184527BF41C20021D099 /* StatusItemEventMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89650B24EC05E00051024D /* StatusItemEventMode.swift */; };
-		BFFD184627BF41C20021D099 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982B23EE3A3D00BB3816 /* String.swift */; };
-		BFFD184727BF41C20021D099 /* DateInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D18D6251CC93200EEDBC1 /* DateInterval.swift */; };
-		BFFD184827BF41C20021D099 /* CKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982C23EE3A3D00BB3816 /* CKError.swift */; };
-		BFFD184927BF41C20021D099 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982D23EE3A3D00BB3816 /* TimeInterval.swift */; };
-		BFFD184A27BF41C20021D099 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE982E23EE3A3D00BB3816 /* EKEvent.swift */; };
-		BFFD184B27BF41C20021D099 /* HLLEventInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983823EE3A3D00BB3816 /* HLLEventInfoItem.swift */; };
-		BFFD184C27BF41C20021D099 /* HLLEventInfoItemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983923EE3A3D00BB3816 /* HLLEventInfoItemGenerator.swift */; };
-		BFFD184D27BF41C20021D099 /* HLLEventInfoItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983A23EE3A3D00BB3816 /* HLLEventInfoItemType.swift */; };
-		BFFD184E27BF41C20021D099 /* HLLDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF356867247E576A00E531C7 /* HLLDataModel.xcdatamodeld */; };
-		BFFD184F27BF41C20021D099 /* StatusItemUnitsFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B36FC255EDB9500CD5FB0 /* StatusItemUnitsFormat.swift */; };
-		BFFD185027BF41C20021D099 /* WidgetStateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF263B4825778BB300F93BE7 /* WidgetStateFetcher.swift */; };
-		BFFD185127BF41C20021D099 /* PercentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44002F2574D9350061ED6E /* PercentDateFetcher.swift */; };
-		BFFD185227BF41C20021D099 /* CalendarAccessState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A574255ED5F600E7BCCB /* CalendarAccessState.swift */; };
-		BFFD185327BF41C20021D099 /* SelectedEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A562255ED5A600E7BCCB /* SelectedEventManager.swift */; };
-		BFFD185427BF41C20021D099 /* StatusItemMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A550255ED58D00E7BCCB /* StatusItemMode.swift */; };
-		BFFD185527BF41C20021D099 /* HLLHotKeyOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD7A535255ED56000E7BCCB /* HLLHotKeyOption.swift */; };
-		BFFD185627BF41C20021D099 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983C23EE3A3D00BB3816 /* Weekday.swift */; };
-		BFFD185727BF41C20021D099 /* NicknameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3EF9FA24F4CC6800173222 /* NicknameManager.swift */; };
-		BFFD185827BF41C20021D099 /* KeyDateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FA6DF24D0341B000B6CBE /* KeyDateHandler.swift */; };
-		BFFD185927BF41C20021D099 /* EventVisibiltyActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983D23EE3A3D00BB3816 /* EventVisibiltyActionHandler.swift */; };
-		BFFD185A27BF41C20021D099 /* VisibilityString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983E23EE3A3D00BB3816 /* VisibilityString.swift */; };
-		BFFD185B27BF41C20021D099 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE983F23EE3A3D00BB3816 /* Version.swift */; };
-		BFFD185C27BF41C20021D099 /* EventLocationIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984023EE3A3D00BB3816 /* EventLocationIndexer.swift */; };
-		BFFD185D27BF41C20021D099 /* Pluraliser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984123EE3A3D00BB3816 /* Pluraliser.swift */; };
-		BFFD185E27BF41C20021D099 /* EventTimeRemainingMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984223EE3A3D00BB3816 /* EventTimeRemainingMonitor.swift */; };
-		BFFD185F27BF41C20021D099 /* FollowingOccurenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984323EE3A3D00BB3816 /* FollowingOccurenceStore.swift */; };
-		BFFD186027BF41C20021D099 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984423EE3A3D00BB3816 /* RepeatingTimer.swift */; };
-		BFFD186127BF41C20021D099 /* CountdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */; };
-		BFFD186227BF41C20021D099 /* ProStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46DD6E248D2939000AE42F /* ProStatusManager.swift */; };
-		BFFD186327BF41C20021D099 /* CurrentDateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984523EE3A3D00BB3816 /* CurrentDateFetcher.swift */; };
-		BFFD186427BF41C20021D099 /* HLLCloudKitPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984723EE3A3D00BB3816 /* HLLCloudKitPreferences.swift */; };
-		BFFD186527BF41C20021D099 /* HLLCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986323EE3A3D00BB3816 /* HLLCountdownController.swift */; };
-		BFFD186627BF41C20021D099 /* HLLNotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986523EE3A3D00BB3816 /* HLLNotificationContent.swift */; };
-		BFFD186727BF41C20021D099 /* HLLNTriggerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0147C244062A300BC9BDB /* HLLNTriggerStore.swift */; };
-		BFFD186827BF41C20021D099 /* HLLNTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01485244062F200BC9BDB /* HLLNTrigger.swift */; };
-		BFFD186927BF41C20021D099 /* HLLNTriggerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA9760243DC4AF000EA3DA /* HLLNTriggerType.swift */; };
-		BFFD186A27BF41C20021D099 /* HLLNTriggerAddHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986623EE3A3D00BB3816 /* HLLNTriggerAddHandler.swift */; };
-		BFFD186B27BF41C20021D099 /* HLLNNewTriggerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB01473244061D500BC9BDB /* HLLNNewTriggerRequest.swift */; };
-		BFFD186C27BF41C20021D099 /* HLLNTriggerAddError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0146A244061B300BC9BDB /* HLLNTriggerAddError.swift */; };
-		BFFD186D27BF41C20021D099 /* HLLNNotificationContentGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE986723EE3A3D00BB3816 /* HLLNNotificationContentGenerator.swift */; };
-		BFFD186E27BF41C20021D099 /* HLLNTriggerFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF54CD324CFD16D00D40490 /* HLLNTriggerFetcher.swift */; };
-		BFFD186F27BF41C20021D099 /* HLLTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897024B2D37C0091F1DA /* HLLTimelineEntry.swift */; };
-		BFFD187027BF41C20021D099 /* HLLTimelineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96897124B2D37C0091F1DA /* HLLTimelineGenerator.swift */; };
-		BFFD187127BF41C20021D099 /* HLLTimelineDifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF008AB025776D3B00E8E56C /* HLLTimelineDifHandler.swift */; };
-		BFFD187227BF41C20021D099 /* HLLDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6AD9612500C90300035787 /* HLLDataModel.swift */; };
-		BFFD187327BF41C20021D099 /* HLLHiddenEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51C2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift */; };
-		BFFD187427BF41C20021D099 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
-		BFFD187527BF41C20021D099 /* HLLHiddenEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51B2498765200B8F339 /* HLLHiddenEventStore.swift */; };
-		BFFD187627BF41C20021D099 /* Colours.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = BF4400022573EE040061ED6E /* Colours.xcassets */; };
-		BFFD187827BF41D50021D099 /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
-		BFFD187927BF41DD0021D099 /* WidgetUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A70FE2513924600D19342 /* WidgetUpdateHandler.swift */; };
-		BFFD187A27BF41E90021D099 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
-		BFFD187B27BF41EF0021D099 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1059DF274B44B900486AE0 /* Store.swift */; };
-		BFFD187C27BF41F60021D099 /* ExtensionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF94009B274AA92200AB71E7 /* ExtensionType.swift */; };
 		BFFD187D27BF6A740021D099 /* WidgetConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679A27BE73D500F76BF9 /* WidgetConfigurationStore.swift */; };
 		BFFD187E27BF6A8D0021D099 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF51026C27AA557700BFF2F6 /* iOS_Widget_How_Logn_Left.intentdefinition */; };
 		BFFD188027BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */; };
@@ -904,7 +904,6 @@
 		BFFD188427BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */; };
 		BFFD188527BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */; };
 		BFFD188627BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */; };
-		BFFD188727BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD187F27BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift */; };
 		BFFE8B89236D7F4D0081D980 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFE8B88236D7F4D0081D980 /* Onboarding.storyboard */; };
 		BFFEA0E722BDD76000363360 /* RNDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFEA0E622BDD76000363360 /* RNDataStore.swift */; };
 		BFFEA15722BDEABE00363360 /* RNProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFEA15622BDEABE00363360 /* RNProcess.swift */; };
@@ -995,12 +994,12 @@
 			remoteGlobalIDString = BF51026527AA557700BFF2F6;
 			remoteInfo = "iOS Widget How Logn LeftExtension";
 		};
-		BF5ABA0C27BE2D600038F083 /* PBXContainerItemProxy */ = {
+		BFC763D6288D83D60021B391 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF5D294D2174679500AC1EB6 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BF5ABA0427BE2D600038F083;
-			remoteInfo = "How Long Left Widget Intents";
+			remoteGlobalIDString = BFC763CF288D83D60021B391;
+			remoteInfo = "iOS Widget Intents";
 		};
 		BFE47728274B91740016A725 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1032,7 +1031,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				BF5ABA0E27BE2D600038F083 /* How Long Left Widget Intents.appex in Embed App Extensions */,
+				BFC763D8288D83D60021B391 /* iOS Widget Intents.appex in Embed App Extensions */,
 				BF51027427AA557700BFF2F6 /* iOS Widget How Logn LeftExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -1261,7 +1260,6 @@
 		BF57E84C21ABC4EA00B021DD /* MenuControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControllerProtocol.swift; sourceTree = "<group>"; };
 		BF5887D0233F80CB00A976A2 /* EventInfoTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTableRow.swift; sourceTree = "<group>"; };
 		BF58AD6E2883BC2500EB444A /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		BF5ABA0527BE2D600038F083 /* How Long Left Widget Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "How Long Left Widget Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5ABA0627BE2D600038F083 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BF5ABA0927BE2D600038F083 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		BF5ABA0B27BE2D600038F083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1442,6 +1440,9 @@
 		BFC531B427466842001DBA6E /* EnabledCalendarsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledCalendarsManager.swift; sourceTree = "<group>"; };
 		BFC531B6274668E8001DBA6E /* EnabledCalendarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledCalendarsView.swift; sourceTree = "<group>"; };
 		BFC63E6424F94950002821C9 /* ProInfoStringGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProInfoStringGenerator.swift; sourceTree = "<group>"; };
+		BFC763D0288D83D60021B391 /* iOS Widget Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iOS Widget Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC763D5288D83D60021B391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFC763D9288D83D60021B391 /* iOS Widget Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Widget Intents.entitlements"; sourceTree = "<group>"; };
 		BFC962CB221C0BEF00FA4C59 /* EventInfoViewRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoViewRows.swift; sourceTree = "<group>"; };
 		BFC9A40224C1D26300149818 /* MacNotificationDeliveryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNotificationDeliveryHandler.swift; sourceTree = "<group>"; };
 		BFCAF89222FC1EAE00D81B48 /* CountdownText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownText.swift; sourceTree = "<group>"; };
@@ -1619,14 +1620,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF5ABA0227BE2D600038F083 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF5ABA0727BE2D600038F083 /* Intents.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFC0C4EB21FEB6EF00D041DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1638,6 +1631,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFC763CD288D83D60021B391 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC763D1288D83D60021B391 /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2071,7 +2072,6 @@
 			isa = PBXGroup;
 			children = (
 				BF5ABA0F27BE2D600038F083 /* How Long Left Widget Intents.entitlements */,
-				BF5ABA0927BE2D600038F083 /* IntentHandler.swift */,
 				BF5ABA0B27BE2D600038F083 /* Info.plist */,
 			);
 			path = "How Long Left Widget Intents";
@@ -2152,6 +2152,7 @@
 				BF14833A255FB0690099FA0A /* WidgetKit Core */,
 				BF51026927AA557700BFF2F6 /* iOS Widget How Logn Left */,
 				BF5ABA0827BE2D600038F083 /* How Long Left Widget Intents */,
+				BFC763D2288D83D60021B391 /* iOS Widget Intents */,
 				BF794DE621787DEE0076FA17 /* Frameworks */,
 				BF5D29562174679500AC1EB6 /* Products */,
 				299747B92BF2210E4B750944 /* Pods */,
@@ -2169,7 +2170,7 @@
 				BFE4771E274B91730016A725 /* How Long Left.app */,
 				BFE47726274B91740016A725 /* watchOS How Long Left WatchKit Extension.appex */,
 				BF51026627AA557700BFF2F6 /* iOS Widget How Logn LeftExtension.appex */,
-				BF5ABA0527BE2D600038F083 /* How Long Left Widget Intents.appex */,
+				BFC763D0288D83D60021B391 /* iOS Widget Intents.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2664,6 +2665,16 @@
 				BF19CF9322438AE90088B196 /* How Long Left (watchOS) Extension-Bridging-Header.h */,
 			);
 			path = Complication;
+			sourceTree = "<group>";
+		};
+		BFC763D2288D83D60021B391 /* iOS Widget Intents */ = {
+			isa = PBXGroup;
+			children = (
+				BFC763D9288D83D60021B391 /* iOS Widget Intents.entitlements */,
+				BF5ABA0927BE2D600038F083 /* IntentHandler.swift */,
+				BFC763D5288D83D60021B391 /* Info.plist */,
+			);
+			path = "iOS Widget Intents";
 			sourceTree = "<group>";
 		};
 		BFCD6D8A234F514900DCABE3 /* Delegates */ = {
@@ -3213,7 +3224,7 @@
 			dependencies = (
 				BFE47738274B91740016A725 /* PBXTargetDependency */,
 				BF51027327AA557700BFF2F6 /* PBXTargetDependency */,
-				BF5ABA0D27BE2D600038F083 /* PBXTargetDependency */,
+				BFC763D7288D83D60021B391 /* PBXTargetDependency */,
 			);
 			name = "iOS How Long Left";
 			packageProductDependencies = (
@@ -3239,23 +3250,6 @@
 			name = "iOS Widget How Logn LeftExtension";
 			productName = "iOS Widget How Logn LeftExtension";
 			productReference = BF51026627AA557700BFF2F6 /* iOS Widget How Logn LeftExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		BF5ABA0427BE2D600038F083 /* How Long Left Widget Intents */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF5ABA1027BE2D600038F083 /* Build configuration list for PBXNativeTarget "How Long Left Widget Intents" */;
-			buildPhases = (
-				BF5ABA0127BE2D600038F083 /* Sources */,
-				BF5ABA0227BE2D600038F083 /* Frameworks */,
-				BF5ABA0327BE2D600038F083 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "How Long Left Widget Intents";
-			productName = "How Long Left Widget Intents";
-			productReference = BF5ABA0527BE2D600038F083 /* How Long Left Widget Intents.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		BFC0C4ED21FEB6EF00D041DA /* How Long Left Siri Extension */ = {
@@ -3292,6 +3286,23 @@
 			name = "How Long Left Siri ExtensionUI";
 			productName = "How Long Left Siri ExtensionUI";
 			productReference = BFC0C4F721FEB6EF00D041DA /* How Long Left Siri ExtensionUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		BFC763CF288D83D60021B391 /* iOS Widget Intents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFC763DA288D83D60021B391 /* Build configuration list for PBXNativeTarget "iOS Widget Intents" */;
+			buildPhases = (
+				BFC763CC288D83D60021B391 /* Sources */,
+				BFC763CD288D83D60021B391 /* Frameworks */,
+				BFC763CE288D83D60021B391 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Widget Intents";
+			productName = "iOS Widget Intents";
+			productReference = BFC763D0288D83D60021B391 /* iOS Widget Intents.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		BFE4771D274B91730016A725 /* watchOS How Long Left */ = {
@@ -3379,7 +3390,7 @@
 		BF5D294D2174679500AC1EB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Ryan Kontos";
 				TargetAttributes = {
@@ -3387,9 +3398,6 @@
 						CreatedOnToolsVersion = 13.1;
 					};
 					BF51026527AA557700BFF2F6 = {
-						CreatedOnToolsVersion = 13.3;
-					};
-					BF5ABA0427BE2D600038F083 = {
 						CreatedOnToolsVersion = 13.3;
 					};
 					BFC0C4ED21FEB6EF00D041DA = {
@@ -3421,6 +3429,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					BFC763CF288D83D60021B391 = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 					BFE4771D274B91730016A725 = {
 						CreatedOnToolsVersion = 13.1;
@@ -3485,7 +3496,7 @@
 				BFE4771D274B91730016A725 /* watchOS How Long Left */,
 				BFE47725274B91740016A725 /* watchOS How Long Left WatchKit Extension */,
 				BF51026527AA557700BFF2F6 /* iOS Widget How Logn LeftExtension */,
-				BF5ABA0427BE2D600038F083 /* How Long Left Widget Intents */,
+				BFC763CF288D83D60021B391 /* iOS Widget Intents */,
 			);
 		};
 /* End PBXProject section */
@@ -3511,13 +3522,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF5ABA0327BE2D600038F083 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFC0C4EC21FEB6EF00D041DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3532,6 +3536,13 @@
 			files = (
 				BF876A09220C0EEE007D2EFF /* MainInterface.storyboard in Resources */,
 				BF4400152573EEEA0061ED6E /* Colours.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFC763CE288D83D60021B391 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3897,95 +3908,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF5ABA0127BE2D600038F083 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFFD183627BF41C20021D099 /* CalendarDefaultsModifier.swift in Sources */,
-				BFFD183727BF41C20021D099 /* CalendarEventFetcher.swift in Sources */,
-				BFFD187A27BF41E90021D099 /* ProPurchase+CoreDataProperties.swift in Sources */,
-				BFFD183827BF41C20021D099 /* HLLEventSource.swift in Sources */,
-				BFFD183927BF41C20021D099 /* HLLEvent.swift in Sources */,
-				BFFD183A27BF41C20021D099 /* HLLEventRetriever.swift in Sources */,
-				BFFD183B27BF41C20021D099 /* DummyEventGenerator.swift in Sources */,
-				BFFD183C27BF41C20021D099 /* HLLDefaultsTransfer.swift in Sources */,
-				BFFD183D27BF41C20021D099 /* Date.swift in Sources */,
-				BFFD183E27BF41C20021D099 /* DateOfEvents.swift in Sources */,
-				BFFD183F27BF41C20021D099 /* EventDate.swift in Sources */,
-				BFFD184027BF41C20021D099 /* PercentageCalculator.swift in Sources */,
-				BFFD184127BF41C20021D099 /* DurationStringGenerator.swift in Sources */,
-				BFFD184227BF41C20021D099 /* CountdownStringGenerator.swift in Sources */,
-				BFFD184327BF41C20021D099 /* EventCompletionStatus.swift in Sources */,
-				BF58AD762883BC2500EB444A /* Array.swift in Sources */,
-				BFFD184427BF41C20021D099 /* EventFetchPeriod.swift in Sources */,
-				BFFD184527BF41C20021D099 /* StatusItemEventMode.swift in Sources */,
-				BFFD184627BF41C20021D099 /* String.swift in Sources */,
-				BFFD184727BF41C20021D099 /* DateInterval.swift in Sources */,
-				BFFD184827BF41C20021D099 /* CKError.swift in Sources */,
-				BFFD184927BF41C20021D099 /* TimeInterval.swift in Sources */,
-				BFFD184A27BF41C20021D099 /* EKEvent.swift in Sources */,
-				BFFD184B27BF41C20021D099 /* HLLEventInfoItem.swift in Sources */,
-				BFFD184C27BF41C20021D099 /* HLLEventInfoItemGenerator.swift in Sources */,
-				BF969C8127C0A2DE00EF4D4F /* ComplicatonConfigurationManager.swift in Sources */,
-				BFFD184D27BF41C20021D099 /* HLLEventInfoItemType.swift in Sources */,
-				BFFD184E27BF41C20021D099 /* HLLDataModel.xcdatamodeld in Sources */,
-				BFFD184F27BF41C20021D099 /* StatusItemUnitsFormat.swift in Sources */,
-				BFFD185027BF41C20021D099 /* WidgetStateFetcher.swift in Sources */,
-				BFFD185127BF41C20021D099 /* PercentDateFetcher.swift in Sources */,
-				BFFD185227BF41C20021D099 /* CalendarAccessState.swift in Sources */,
-				BFFD187B27BF41EF0021D099 /* Store.swift in Sources */,
-				BFFD185327BF41C20021D099 /* SelectedEventManager.swift in Sources */,
-				BFFD188727BFA1B70021D099 /* WidgetHLLTimelineStorageManager.swift in Sources */,
-				BFFD185427BF41C20021D099 /* StatusItemMode.swift in Sources */,
-				BFFD187C27BF41F60021D099 /* ExtensionType.swift in Sources */,
-				BFFD185527BF41C20021D099 /* HLLHotKeyOption.swift in Sources */,
-				BFFD185627BF41C20021D099 /* Weekday.swift in Sources */,
-				BFFD185727BF41C20021D099 /* NicknameManager.swift in Sources */,
-				BFFD187827BF41D50021D099 /* ProPurchase+CoreDataClass.swift in Sources */,
-				BFFD185827BF41C20021D099 /* KeyDateHandler.swift in Sources */,
-				BFA5781B28831CFD00250A3A /* EventLocationStore.swift in Sources */,
-				BFFD185927BF41C20021D099 /* EventVisibiltyActionHandler.swift in Sources */,
-				BFFD185A27BF41C20021D099 /* VisibilityString.swift in Sources */,
-				BFFD185B27BF41C20021D099 /* Version.swift in Sources */,
-				BF969C9627C0E2A900EF4D4F /* DoubleEventRemover.swift in Sources */,
-				BFFD185C27BF41C20021D099 /* EventLocationIndexer.swift in Sources */,
-				BFFD185D27BF41C20021D099 /* Pluraliser.swift in Sources */,
-				BFFD185E27BF41C20021D099 /* EventTimeRemainingMonitor.swift in Sources */,
-				BFFD185F27BF41C20021D099 /* FollowingOccurenceStore.swift in Sources */,
-				BFFD187927BF41DD0021D099 /* WidgetUpdateHandler.swift in Sources */,
-				BFFD186027BF41C20021D099 /* RepeatingTimer.swift in Sources */,
-				BFFD186127BF41C20021D099 /* CountdownText.swift in Sources */,
-				BFFD186227BF41C20021D099 /* ProStatusManager.swift in Sources */,
-				BFFD186327BF41C20021D099 /* CurrentDateFetcher.swift in Sources */,
-				BFFD186427BF41C20021D099 /* HLLCloudKitPreferences.swift in Sources */,
-				BFFD186527BF41C20021D099 /* HLLCountdownController.swift in Sources */,
-				BFFD186627BF41C20021D099 /* HLLNotificationContent.swift in Sources */,
-				BFFD186727BF41C20021D099 /* HLLNTriggerStore.swift in Sources */,
-				BF969CA027C0EBB100EF4D4F /* DefaultsObject.swift in Sources */,
-				BFFD186827BF41C20021D099 /* HLLNTrigger.swift in Sources */,
-				BFA578122883106F00250A3A /* LiveEventInfo.swift in Sources */,
-				BFFD186927BF41C20021D099 /* HLLNTriggerType.swift in Sources */,
-				BFFD186A27BF41C20021D099 /* HLLNTriggerAddHandler.swift in Sources */,
-				BFFD186B27BF41C20021D099 /* HLLNNewTriggerRequest.swift in Sources */,
-				BFFD186C27BF41C20021D099 /* HLLNTriggerAddError.swift in Sources */,
-				BFFD186D27BF41C20021D099 /* HLLNNotificationContentGenerator.swift in Sources */,
-				BFFD186E27BF41C20021D099 /* HLLNTriggerFetcher.swift in Sources */,
-				BFFD186F27BF41C20021D099 /* HLLTimelineEntry.swift in Sources */,
-				BFFD187027BF41C20021D099 /* HLLTimelineGenerator.swift in Sources */,
-				BFFD187127BF41C20021D099 /* HLLTimelineDifHandler.swift in Sources */,
-				BFFD187227BF41C20021D099 /* HLLDataModel.swift in Sources */,
-				BFFD187327BF41C20021D099 /* HLLHiddenEvent+CoreDataClass.swift in Sources */,
-				BFFD187427BF41C20021D099 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */,
-				BFFD187527BF41C20021D099 /* HLLHiddenEventStore.swift in Sources */,
-				BFFD187627BF41C20021D099 /* Colours.xcassets in Sources */,
-				BFFD183527BF41AC0021D099 /* HLLTimeline.swift in Sources */,
-				BFFD183427BF419A0021D099 /* HLLDefaults.swift in Sources */,
-				BFFD183227BF364F0021D099 /* WidgetConfigurationStore.swift in Sources */,
-				BF5ABA1327BE2D7B0038F083 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */,
-				BF5ABA0A27BE2D600038F083 /* IntentHandler.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFC0C4EA21FEB6EF00D041DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4160,6 +4082,94 @@
 				BFC0C51121FEB71800D041DA /* HLLIntents.intentdefinition in Sources */,
 				BF1FA6DB24CFD3FA000B6CBE /* HLLNTriggerFetcher.swift in Sources */,
 				BF3BCD2723E0372400639D5F /* TextUploader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFC763CC288D83D60021B391 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC763DE288D84B30021B391 /* CalendarDefaultsModifier.swift in Sources */,
+				BFC763DF288D84B30021B391 /* CalendarEventFetcher.swift in Sources */,
+				BFC763E0288D84B30021B391 /* HLLEventSource.swift in Sources */,
+				BFC76429288D84CA0021B391 /* WidgetConfigurationStore.swift in Sources */,
+				BFC763E1288D84B30021B391 /* HLLEvent.swift in Sources */,
+				BFC763E2288D84B30021B391 /* HLLEventRetriever.swift in Sources */,
+				BFC7642D288D850D0021B391 /* ProPurchase+CoreDataProperties.swift in Sources */,
+				BFC763E3288D84B30021B391 /* DummyEventGenerator.swift in Sources */,
+				BFC763E4288D84B30021B391 /* EventLocationStore.swift in Sources */,
+				BFC763E5288D84B30021B391 /* HLLDefaults.swift in Sources */,
+				BFC763E6288D84B30021B391 /* HLLDefaultsTransfer.swift in Sources */,
+				BFC763E7288D84B30021B391 /* DefaultsObject.swift in Sources */,
+				BFC76428288D84C10021B391 /* ProPurchase+CoreDataClass.swift in Sources */,
+				BFC763E8288D84B30021B391 /* Date.swift in Sources */,
+				BFC763E9288D84B30021B391 /* DateOfEvents.swift in Sources */,
+				BFC763EA288D84B30021B391 /* EventDate.swift in Sources */,
+				BFC763EB288D84B30021B391 /* PercentageCalculator.swift in Sources */,
+				BFC763EC288D84B30021B391 /* DurationStringGenerator.swift in Sources */,
+				BFC763ED288D84B30021B391 /* CountdownStringGenerator.swift in Sources */,
+				BFC763EE288D84B30021B391 /* EventCompletionStatus.swift in Sources */,
+				BFC763EF288D84B30021B391 /* EventFetchPeriod.swift in Sources */,
+				BFC763F0288D84B30021B391 /* StatusItemEventMode.swift in Sources */,
+				BFC763F1288D84B30021B391 /* String.swift in Sources */,
+				BFC763F2288D84B30021B391 /* Array.swift in Sources */,
+				BFC763F3288D84B30021B391 /* DateInterval.swift in Sources */,
+				BFC763F4288D84B30021B391 /* CKError.swift in Sources */,
+				BFC763F5288D84B30021B391 /* TimeInterval.swift in Sources */,
+				BFC763F6288D84B30021B391 /* EKEvent.swift in Sources */,
+				BFC763F7288D84B30021B391 /* HLLEventInfoItem.swift in Sources */,
+				BFC763F8288D84B30021B391 /* HLLEventInfoItemGenerator.swift in Sources */,
+				BFC763F9288D84B30021B391 /* HLLEventInfoItemType.swift in Sources */,
+				BFC763FA288D84B30021B391 /* LiveEventInfo.swift in Sources */,
+				BFC763FB288D84B30021B391 /* HLLDataModel.xcdatamodeld in Sources */,
+				BFC763FC288D84B30021B391 /* StatusItemUnitsFormat.swift in Sources */,
+				BFC7642B288D84E20021B391 /* ExtensionType.swift in Sources */,
+				BFC7642A288D84DB0021B391 /* Store.swift in Sources */,
+				BFC763FD288D84B30021B391 /* DoubleEventRemover.swift in Sources */,
+				BFC763FE288D84B30021B391 /* WidgetStateFetcher.swift in Sources */,
+				BFC763FF288D84B30021B391 /* PercentDateFetcher.swift in Sources */,
+				BFC7642C288D84F80021B391 /* iOS_Widget_How_Logn_Left.intentdefinition in Sources */,
+				BFC76400288D84B30021B391 /* CalendarAccessState.swift in Sources */,
+				BFC76401288D84B30021B391 /* SelectedEventManager.swift in Sources */,
+				BFC76402288D84B30021B391 /* StatusItemMode.swift in Sources */,
+				BFC76403288D84B30021B391 /* HLLHotKeyOption.swift in Sources */,
+				BFC76404288D84B30021B391 /* Weekday.swift in Sources */,
+				BFC76405288D84B30021B391 /* NicknameManager.swift in Sources */,
+				BFC76406288D84B30021B391 /* KeyDateHandler.swift in Sources */,
+				BFC76407288D84B30021B391 /* EventVisibiltyActionHandler.swift in Sources */,
+				BFC76408288D84B30021B391 /* VisibilityString.swift in Sources */,
+				BFC76409288D84B30021B391 /* Version.swift in Sources */,
+				BFC7640A288D84B30021B391 /* EventLocationIndexer.swift in Sources */,
+				BFC7640B288D84B30021B391 /* Pluraliser.swift in Sources */,
+				BFC7640C288D84B30021B391 /* EventTimeRemainingMonitor.swift in Sources */,
+				BFC7640D288D84B30021B391 /* FollowingOccurenceStore.swift in Sources */,
+				BFC7640E288D84B30021B391 /* RepeatingTimer.swift in Sources */,
+				BFC7640F288D84B30021B391 /* CountdownText.swift in Sources */,
+				BFC76410288D84B30021B391 /* ProStatusManager.swift in Sources */,
+				BFC76411288D84B30021B391 /* CurrentDateFetcher.swift in Sources */,
+				BFC76412288D84B30021B391 /* HLLCloudKitPreferences.swift in Sources */,
+				BFC76413288D84B30021B391 /* HLLCountdownController.swift in Sources */,
+				BFC76414288D84B30021B391 /* HLLNotificationContent.swift in Sources */,
+				BFC76415288D84B30021B391 /* HLLNTriggerStore.swift in Sources */,
+				BFC76416288D84B30021B391 /* HLLNTrigger.swift in Sources */,
+				BFC76417288D84B30021B391 /* HLLNTriggerType.swift in Sources */,
+				BFC76418288D84B30021B391 /* HLLNTriggerAddHandler.swift in Sources */,
+				BFC76419288D84B30021B391 /* HLLNNewTriggerRequest.swift in Sources */,
+				BFC7641A288D84B30021B391 /* HLLNTriggerAddError.swift in Sources */,
+				BFC7641B288D84B30021B391 /* HLLNNotificationContentGenerator.swift in Sources */,
+				BFC7641C288D84B30021B391 /* HLLNTriggerFetcher.swift in Sources */,
+				BFC7641D288D84B30021B391 /* HLLTimelineEntry.swift in Sources */,
+				BFC7641E288D84B30021B391 /* HLLTimeline.swift in Sources */,
+				BFC7641F288D84B30021B391 /* HLLTimelineGenerator.swift in Sources */,
+				BFC76420288D84B30021B391 /* HLLTimelineDifHandler.swift in Sources */,
+				BFC76421288D84B30021B391 /* WidgetHLLTimelineStorageManager.swift in Sources */,
+				BFC76422288D84B30021B391 /* WidgetUpdateHandler.swift in Sources */,
+				BFC76423288D84B30021B391 /* ComplicatonConfigurationManager.swift in Sources */,
+				BFC76424288D84B30021B391 /* HLLDataModel.swift in Sources */,
+				BFC76425288D84B30021B391 /* HLLHiddenEvent+CoreDataClass.swift in Sources */,
+				BFC76426288D84B30021B391 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */,
+				BFC76427288D84B30021B391 /* HLLHiddenEventStore.swift in Sources */,
+				BFC763DD288D841E0021B391 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4612,10 +4622,10 @@
 			target = BF51026527AA557700BFF2F6 /* iOS Widget How Logn LeftExtension */;
 			targetProxy = BF51027227AA557700BFF2F6 /* PBXContainerItemProxy */;
 		};
-		BF5ABA0D27BE2D600038F083 /* PBXTargetDependency */ = {
+		BFC763D7288D83D60021B391 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF5ABA0427BE2D600038F083 /* How Long Left Widget Intents */;
-			targetProxy = BF5ABA0C27BE2D600038F083 /* PBXContainerItemProxy */;
+			target = BFC763CF288D83D60021B391 /* iOS Widget Intents */;
+			targetProxy = BFC763D6288D83D60021B391 /* PBXContainerItemProxy */;
 		};
 		BFE47729274B91740016A725 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4681,7 +4691,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOS How Long Left/iOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_ASSET_PATHS = "\"iOS How Long Left/Preview Content\"";
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
@@ -4720,7 +4730,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOS How Long Left/iOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_ASSET_PATHS = "\"iOS How Long Left/Preview Content\"";
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
@@ -4757,7 +4767,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOS Widget How Logn LeftExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 226;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4790,7 +4800,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOS Widget How Logn LeftExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 226;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4806,66 +4816,6 @@
 				);
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.iOS-Widget-How-Logn-Left";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		BF5ABA1127BE2D600038F083 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = "How Long Left Widget Intents/How Long Left Widget Intents.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "How Long Left Widget Intents/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left Widget Intents";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.How-Long-Left-Widget-Intents";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		BF5ABA1227BE2D600038F083 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = "How Long Left Widget Intents/How Long Left Widget Intents.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "How Long Left Widget Intents/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left Widget Intents";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.How-Long-Left-Widget-Intents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -5115,6 +5065,66 @@
 			};
 			name = Release;
 		};
+		BFC763DB288D83D60021B391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "iOS Widget Intents/iOS Widget Intents.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS Widget Intents/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "iOS Widget Intents";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.iOS-Widget-Intents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFC763DC288D83D60021B391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "iOS Widget Intents/iOS Widget Intents.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS Widget Intents/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "iOS Widget Intents";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ryankontos.How-Long-Left.iOS-Widget-Intents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BFE4773B274B91740016A725 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5123,7 +5133,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left WatchKit Extension/watchOS How Long Left WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_ASSET_PATHS = "\"watchOS How Long Left WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
@@ -5161,7 +5171,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left WatchKit Extension/watchOS How Long Left WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_ASSET_PATHS = "\"watchOS How Long Left WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
@@ -5200,7 +5210,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left/watchOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = watchOS_How_Long_Left_WatchKit_Extension;
@@ -5231,7 +5241,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "watchOS How Long Left/watchOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = watchOS_How_Long_Left_WatchKit_Extension;
@@ -5456,15 +5466,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF5ABA1027BE2D600038F083 /* Build configuration list for PBXNativeTarget "How Long Left Widget Intents" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF5ABA1127BE2D600038F083 /* Debug */,
-				BF5ABA1227BE2D600038F083 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		BF5D29502174679500AC1EB6 /* Build configuration list for PBXProject "How Long Left" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5488,6 +5489,15 @@
 			buildConfigurations = (
 				BFC0C50A21FEB6EF00D041DA /* Debug */,
 				BFC0C50B21FEB6EF00D041DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFC763DA288D83D60021B391 /* Build configuration list for PBXNativeTarget "iOS Widget Intents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFC763DB288D83D60021B391 /* Debug */,
+				BFC763DC288D83D60021B391 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

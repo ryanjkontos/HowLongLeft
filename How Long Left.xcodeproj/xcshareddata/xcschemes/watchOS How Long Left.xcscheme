@@ -64,8 +64,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/How Long Left">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFE4771D274B91730016A725"
@@ -73,7 +75,7 @@
             BlueprintName = "watchOS How Long Left"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "ResetTimelineOnLaunch"
@@ -94,8 +96,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/How Long Left">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFE4771D274B91730016A725"
@@ -103,7 +107,16 @@
             BlueprintName = "watchOS How Long Left"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "BFE4771D274B91730016A725"
+            BuildableName = "How Long Left.app"
+            BlueprintName = "watchOS How Long Left"
+            ReferencedContainer = "container:How Long Left.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
