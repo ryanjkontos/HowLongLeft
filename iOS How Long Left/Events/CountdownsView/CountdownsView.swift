@@ -31,41 +31,41 @@ struct CountdownsView: View {
     
     @State var id = 0
     
+    @State var activeEvent: HLLEvent?
+    
     var body: some View {
         
+        ScrollViewReader { reader in
+            
             ScrollView {
-                
-                NavigationLink(isActive: $eventView, destination: {
-                    
-                    Text("Dest")
-                    
-                }, label: { EmptyView() })
                 
                 LazyVGrid(columns: [gridItem], spacing: 15) {
                     ForEach(eventSource.eventSections) { section in
                         Section(content: {
                             ForEach(section.events) { event in
                                 
-                                NavigationLink(destination: { EventView(event: event) }, label: {
-                                    
-                                   CountdownCard(event: event)
-                                    
-                                      .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                      
-                                      
-                                })
                                 
-                            
-                                .modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
-                                //.id("\(event.id)")
+                                
+                                NavigationLink(destination: EventView(event: event)) {
+                                    
+                                    
+                                    CountdownCardRepresentor(event: event, nicknaming: $nicknaming, eventSource: eventSource)
+                                        .frame(height: 123)
+                                    //.drawingGroup()
+                                        .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 30, style: .continuous))
+                                    
+                                }
+                                .id(event.persistentIdentifier)
+                                
+                                
+                                
+                                //.modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
+                                
                                 .hoverEffect(.highlight)
                                 
-                                    .clipped()
-                                   
-                                    
-                                    
-                                    .buttonStyle(SubtleRoundedPressButton(radius: 30, cornerStyle: .continuous))
-                                    
+                                //  .clipped()
+                                .buttonStyle(SubtleRoundedPressButton(radius: 30, cornerStyle: .continuous))
+                                
                             }
                         }, header: {
                             HStack {
@@ -73,19 +73,29 @@ struct CountdownsView: View {
                                 Spacer()
                             }
                         })
-                            .id(section.title)
-                            
+                        .id(section.title)
+                        
                     }
                 }
-                .transition(.opacity)
+                .transition(.identity)
                 .animation(.easeInOut(duration: 0.3), value: eventSource.eventSections)
-                .opacity(opacity)
+                
+                //.opacity(opacity)
                 .onAppear {
-                    if opacity != 0 { return }
-                    withAnimation(.easeInOut(duration: 0.1)) { opacity = 1 }
+                    
+                    
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        eventSource.allowUpdates = true
+                        eventSource.update()
+                    }
+                    
+                    //  if opacity != 0 { return }
+                    // withAnimation(.easeInOut(duration: 0.1)) { opacity = 1 }
                     
                 }
                 .onDisappear {
+                    eventSource.allowUpdates = false
                     if eventSource.eventSections.isEmpty { withAnimation(.easeInOut(duration: 0.1)) { opacity = 0 } }
                 }
                 .onChange(of: eventSource.eventSections) { data in
@@ -101,27 +111,44 @@ struct CountdownsView: View {
                 .padding(.horizontal, 20)
                 
             }
-         
+            
+            
             .introspectScrollView(customize: { scrollView in
                 scrollView.backgroundColor = UIColor.systemBackground
             })
+            
+            .onReceive(SelectedTabManager.shared.reselected, perform: { _ in
+                
+                withAnimation {
+                    
+                    if let date = eventSource.eventSections.first?.title {
+                        reader.scrollTo(date)
+                    }
+                    
+                    
+                }
+            })
+            
+        }
             .introspectNavigationController(customize: {
                 
                 $0.navigationBar.barStyle = .default
-                
+            
+                $0.navigationBar.prefersLargeTitles = true
+                $0.navigationItem.largeTitleDisplayMode = .always
             })
-            .edgesIgnoringSafeArea(.horizontal)
+            
+            
+          //  .edgesIgnoringSafeArea(.horizontal)
         
- 
-            .sheet(item: $nicknaming, onDismiss: nil, content: { event in
+        .sheet(item: $nicknaming, onDismiss: nil, content: { event in
+                       
+            NavigationView {
                 
-                NavigationView {
-                    
-                    NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil }))
-                        .tint(.orange)
-                    
+                NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil
+                }))
+                    .tint(.orange)
                 }
-                
             })
             
         .navigationBarTitleDisplayMode(.large)

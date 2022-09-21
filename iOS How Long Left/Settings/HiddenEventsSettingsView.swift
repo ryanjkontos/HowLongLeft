@@ -44,21 +44,38 @@ struct HiddenEventsSettingsView: View {
                             }
                             
                         }
+                        .swipeActions(content: {
+                            
+                            Button(action: {
+                                
+                                withAnimation {
+
+                                    store.unhideEvent(storedEvent)
+                                    //store.loadHiddenEventsFromDatabase()
+                                    
+                                    
+                                }
+                                
+                            }, label: {
+                                
+                                Text("Unhide")
+                                
+                                
+                            })
+                            .tint(.red)
+                            
+                            
+                        })
                             
                     })
-                    .onDelete(perform: { index in
+                    
+             
+                    
+                   /* .onDelete(perform: { index in
                         
-                        withAnimation {
-                          
-                            if store.hiddenEvents.indices.contains(index.first!) {
-                                let event = store.hiddenEvents[index.first!]
-                                store.unhideEvent(event)
-                                store.loadHiddenEventsFromDatabase()
-                            }
-                            
-                        }
                         
-                    })
+                        
+                    }) */
                     
                     Button(action: { selectingEvent = true }, label: {
                         
@@ -79,6 +96,7 @@ struct HiddenEventsSettingsView: View {
 
             
         }
+        .animation(.easeInOut(duration: 0.5), value: store.hiddenEvents)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Hidden Events")
 
@@ -88,7 +106,7 @@ struct HiddenEventsSettingsView: View {
                 
                 
                     withAnimation {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         
                         store.unhideEvent(eventToUnhide!)
                         store.loadHiddenEventsFromDatabase()
@@ -100,6 +118,7 @@ struct HiddenEventsSettingsView: View {
             Button(role: .cancel, action: {}, label: { Text("Cancel") })
             
         }
+      
         
         .sheet(isPresented: $selectingEvent) {
             
@@ -113,7 +132,27 @@ struct HiddenEventsSettingsView: View {
             
         }
         
+        .toolbar(content: {
+            
+            ToolbarItem(placement: .automatic, content: {
+                
+                Button(action: {
+                    
+                  
+                        store.unhideEvents(store.hiddenEvents)
+                    
+                    
+                }, label: {
+                    Text("Unhide All")
+                })
+                .disabled(store.hiddenEvents.isEmpty)
+                
+            })
+            
+        })
+        
     }
+        
     
     func getUnhideAlertText() -> String {
         
@@ -128,6 +167,8 @@ struct HiddenEventsSettingsView: View {
 
 struct HiddenEventsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        HiddenEventsSettingsView()
+        NavigationView {
+            HiddenEventsSettingsView()
+        }
     }
 }

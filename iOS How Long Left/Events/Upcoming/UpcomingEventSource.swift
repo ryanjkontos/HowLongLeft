@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class UpcomingEventSource: ObservableObject {
+class UpcomingEventSource: ObservableObject, EventSourceProtocol {
 
     @Published var events = [DateOfEvents]()
     
@@ -21,7 +21,12 @@ class UpcomingEventSource: ObservableObject {
         }
     }
     
+    var allowUpdates = true
+    
+    
     init() {
+        
+        print("Init UES")
         
         HLLEventSource.shared.addEventPoolObserver(self)
         
@@ -30,7 +35,7 @@ class UpcomingEventSource: ObservableObject {
         RunLoop.main.add(timer, forMode: .common)
     }
     
-    @objc func update() {
+    @objc func update(force: Bool = false) {
         
       //  print("UES Updating")
  
@@ -43,6 +48,9 @@ class UpcomingEventSource: ObservableObject {
             self.events = newEvents
         }
         
+        if force {
+            self.objectWillChange.send()
+        }
     
     }
 

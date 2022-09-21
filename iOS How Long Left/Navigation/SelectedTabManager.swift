@@ -11,11 +11,14 @@ import Combine
 
 class SelectedTabManager: ObservableObject {
     
+    static var shared = SelectedTabManager()
+    
     let reselected = PassthroughSubject<Void, Never>()
     
     @Published var selectedTab: HLLAppTab = .inProgress
     
-    @Published var selectedIndex = 0 {
+    var selectedIndex = 0 {
+        
         didSet {
             
             if oldValue != selectedIndex {

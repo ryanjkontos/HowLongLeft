@@ -13,11 +13,19 @@ struct EventsSettingsView: View {
         
         List {
             
-            NavigationLink(destination: { NicknamesListView() }, label: { Text("Nicknames") })
+            Section {
+                
+                
+                Toggle("Show All-Day Events", isOn: Binding(get: { HLLDefaults.general.combineDoubles }, set: {
+                    HLLDefaults.general.combineDoubles = $0
+                    HLLEventSource.shared.asyncUpdateEventPool()
+                }))
+                
+            }
             
-            NavigationLink(destination: { HiddenEventsSettingsView() }, label: { Text("Hidden Events") })
             
             Section(content: {
+              
                 
                 Toggle("Combine Subsequent Events", isOn: Binding(get: { HLLDefaults.general.combineDoubles }, set: {
                     HLLDefaults.general.combineDoubles = $0
@@ -26,6 +34,13 @@ struct EventsSettingsView: View {
                 
             }, footer: { Text("Combine groups of events that have the same title and occur immediately after each other as a single event.") })
             
+         /*   Section {
+                
+                NavigationLink(destination: { NicknamesListView() }, label: { Text("Manage Nicknames") })
+                
+                NavigationLink(destination: { HiddenEventsSettingsView() }, label: { Text("Manage Hidden Events") })
+                
+            } */
             
         }
         .navigationTitle("Events")
@@ -36,6 +51,8 @@ struct EventsSettingsView: View {
 
 struct EventsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        EventsSettingsView()
+        NavigationView {
+            EventsSettingsView()
+        }
     }
 }

@@ -18,12 +18,14 @@ struct ExtensionPurchaseView: View, Sendable {
     
     @State var purchasing = false
     
-    @ObservedObject var store = Store.shared
+
+    @ObservedObject var store = Store()
     
     var upcomingEvents = [PreviewEvent.upcomingPreviewEvent(minsStartingIn: 60, color: .systemCyan), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 120, color: .systemGreen), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 180, color: .systemOrange)]
     
     var current = PreviewEvent.inProgressPreviewEvent(color: .systemCyan)
     
+    @State var vc: UIViewController?
     
     init(type: ExtensionType, presentSheet: Binding<Bool>) {
         
@@ -32,6 +34,8 @@ struct ExtensionPurchaseView: View, Sendable {
         
         UIPageControl.appearance().currentPageIndicatorTintColor = .label.withAlphaComponent(0.99)
         UIPageControl.appearance().pageIndicatorTintColor = .label.withAlphaComponent(0.3)
+        
+
         
     }
     
@@ -165,17 +169,13 @@ struct ExtensionPurchaseView: View, Sendable {
                 HStack {
                     Spacer()
                     
-                    Button(action: { presentSheet = false }) {
+                    Button(action: { presentSheet = false
+                        
+                        vc?.dismiss(animated: true)
+                        
+                    }) {
                        
-                        Circle()
-                            .overlay {
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 16, weight: .bold, design: .default))
-                                    .foregroundColor(.gray)
-                            }
-                            .hoverEffect(.lift)
-                            .foregroundColor(Color(UIColor.secondarySystemFill))
-                            .frame(width: 29, height: 29, alignment: .center)
+                       CircleXButtonView()
                         
                     }
                     
@@ -194,13 +194,12 @@ struct ExtensionPurchaseView: View, Sendable {
         .background(Color(UIColor.systemGroupedBackground))
         
    
-      /*  .introspectViewController(customize: { viewController in
+        .introspectViewController(customize: { viewController in
             
-            viewController.view.backgroundColor = .clear
-            //viewController.view.superview?.backgroundColor = .clear
+            vc = viewController
             
         })
-        */
+        
     }
     
     @ViewBuilder func getPreviewView() -> some View {
@@ -220,6 +219,7 @@ struct ExtensionPurchaseView: View, Sendable {
                 .aspectRatio(contentMode: .fit)
                 .shadow(radius: 5)
                 .padding(.vertical, 15)
+                //.matchedGeometryEffect(id: "W1", in: ExtensionPurchaseParentView.animation)
                 
             
             
@@ -233,9 +233,9 @@ struct ExtensionPurchaseView: View, Sendable {
         
         switch type {
         case .widget:
-            product = Store.shared.widgetProduct
+            product = store.widgetProduct
         case .complication:
-            product = Store.shared.complicationProduct
+            product = store.complicationProduct
         }
         
         if let product = product {

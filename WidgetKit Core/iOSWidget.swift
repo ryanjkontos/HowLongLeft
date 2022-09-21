@@ -9,15 +9,16 @@
 import WidgetKit
 import SwiftUI
 import Intents
+//import ActivityKit
 
 
 struct Provider: IntentTimelineProvider {
     
     #if os(watchOS)
     
-    func recommendations() -> [IntentRecommendation<HLLWidgetConfigurationIntent>] {
+   /* func recommendations() -> [IntentRecommendation<HLLWidgetConfigurationIntent>] {
         return [IntentRecommendation(intent: HLLWidgetConfigurationIntent.init(), description: "Default Configuration")]
-    }
+    } */
     
     
     #endif
@@ -40,11 +41,14 @@ struct Provider: IntentTimelineProvider {
         
         //HLLDataModel.shared = HLLDataModel()
         
+        
+        
         #if os(watchOS)
             generator = HLLTimelineGenerator(type: .complication)
         #else
             generator = HLLTimelineGenerator(type: .widget)
         #endif
+        
         
         while HLLEventSource.shared.access != .Granted { print("Waiting for access ") }
         
@@ -168,6 +172,10 @@ struct HLLWidgets: WidgetBundle {
        CountdownAndUpcomingListWidget()
        
        
+      // LiveEventActivityWidget()
+       
+    //   CountdownComplication()
+       
        #endif
        
 
@@ -178,7 +186,8 @@ struct HLLWidgets: WidgetBundle {
 
 
 
-/*struct CountdownComplication: Widget {
+/*@available(iOSApplicationExtension 16.0, *)
+struct CountdownComplication: Widget {
     
    
     
@@ -188,10 +197,10 @@ struct HLLWidgets: WidgetBundle {
         
         IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider(), content: { entry in
             
-            MultilineComplicationView(event: entry.underlyingEntry.event)
+            MultilineComplicationView(event: entry.underlyingEntry.event, date: entry.date)
             
         })
-        .description("Shows an overview of your game status")
+        .description("Shows a countdown for a current or upcoming event.")
         .configurationDisplayName("Countdown")
         .supportedFamilies([.accessoryRectangular])
         
@@ -206,6 +215,8 @@ struct CountdownWidget: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider()) { entry in
+            
+          //  CountdownsListWidget()
             
             CountdownWidgetParentView(entry: entry, progressBarEnabled: entry.configuration.ProgressBar?.boolValue ?? true)
                 .padding(.horizontal, 20)
@@ -262,11 +273,56 @@ struct CountdownAndUpcomingListWidget: Widget {
     }
 }
 
+
+/*@available(iOSApplicationExtension 16.0, *)
+struct LiveEventActivityWidget: Widget {
+    var body: some WidgetConfiguration {
+        
+        ActivityConfiguration<LiveEventAttributes> { context in
+            
+            CountdownWidgetEventView(event: context.attributes.event, displayDate: Date(), barEnabled: false)
+                .padding(.horizontal, 20)
+                .activityBackgroundTint(Color(#colorLiteral(red: 0.07201712472, green: 0.07201712472, blue: 0.07201712472, alpha: 1)))
+            
+        } dynamicIsland: { context in
+            
+            DynamicIsland(expanded: {
+               
+                DynamicIslandExpandedRegion(.center) {
+                    
+                    Text("Event ends in 10:00")
+                    
+                }
+                
+            }, compactLeading: {
+                
+                Circle()
+                    .foregroundColor(.red)
+                
+            }, compactTrailing: {
+                
+                Circle()
+                    .foregroundColor(.orange)
+                
+            }, minimal: {
+                
+                Circle()
+                    .foregroundColor(.yellow)
+                
+            })
+        }
+        
+      
+    }
+} */
+
 /*struct iOSWidget_Previews: PreviewProvider {
     static var previews: some View {
         iOSWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-}*/
-
+}
+*/
 #endif
+
+

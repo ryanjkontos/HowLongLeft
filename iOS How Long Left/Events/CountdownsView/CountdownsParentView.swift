@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CountdownsParentView: View {
     
@@ -17,11 +18,13 @@ struct CountdownsParentView: View {
     
     @Binding var launchEvent: HLLEvent?
     
+    @State var navigationController: UINavigationController?
+    
     var body: some View {
         
         NavigationView {
         
-        ZStack {
+        Group {
         
             if eventSource.isEmpty {
                 VStack(spacing: 5) {
@@ -33,18 +36,36 @@ struct CountdownsParentView: View {
             } else {
                 CountdownsView(eventViewEvent: $eventViewEvent, launchEvent: $launchEvent)
                     .environmentObject(eventSource)
+                
             }
             
         }
+    
         .navigationViewStyle(.stack)
-        .navigationTitle("Countdowns")
+       
         .transition(.opacity)
         .animation(.easeInOut(duration: 0.15), value: eventSource.isEmpty)
-
-
-
-
+        
+        .navigationBarTitleDisplayMode(.large)
+            
+        .navigationTitle("Countdowns")
+            
+        .introspectNavigationController { nc in
+                self.navigationController = nc
         }
+            
+        .onReceive(SelectedTabManager.shared.reselected, perform: { _ in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+            let body = self.body
+            
+         
+            
+        })
+            
+        }
+      
         .navigationViewStyle(.stack)
         
     }

@@ -108,7 +108,16 @@ struct NickNameEditorView: View {
         .toolbar {
             
             ToolbarItem(placement: .cancellationAction) {
-                Button(action: { presenting = false }, label: { Text("Cancel") })
+                Button(action: {
+                    
+                    DispatchQueue.main.async {
+                        
+                        presenting = false
+                        
+                    }
+                    
+                    
+                }, label: { Text("Cancel") })
             }
             
             ToolbarItem(placement: .confirmationAction) {

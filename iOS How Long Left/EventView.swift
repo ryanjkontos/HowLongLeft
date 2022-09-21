@@ -15,44 +15,44 @@ struct EventView: View {
     
     @State var showEditView = false
     
-    @ObservedObject var selectionStateObject: SelectionStateObject
+    @State var nicknaming: HLLEvent?
+    
+    @ObservedObject var data: EventOptionsViewObject
+    
+    static var eventViewTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     init(event: HLLEvent) {
       //  print("Init event view for \(event.title)")
-        self.selectionStateObject = SelectionStateObject(event: event)
+       
         self.event = event
-        self.items = HLLEventInfoItemGenerator(event).getInfoItems(for: [.start, .end, .duration, .elapsed])
         
+        self.data = EventOptionsViewObject(event)
         
     }
     
-    var items: [HLLEventInfoItem]
+    @State var items = [HLLEventInfoItem]()
     var event: HLLEvent
     
    
-    
     var body: some View {
          
-            GeometryReader { proxy in
             List {
                 
+                VStack(alignment: .center) {
              
-                
-                HStack(alignment: .center) {
-                
                     HStack {
                         Spacer()
                         
-                        CountdownCard(event: event)
-                            .frame(maxWidth: 425)
+                        CountdownCardRepresentor(event: event, enableContextMenu: false, nicknaming: $nicknaming, eventSource: nil)
+                            .frame(maxWidth: 550)
+                            .frame(height: 123)
                             .id(event.infoIdentifier)
+                            //.layoutPriority(1)
                         
                         Spacer()
                     }
                     
-                    
-                    
-                   
+                 
                 }
                 
                 
@@ -79,42 +79,43 @@ struct EventView: View {
                 
                 Section(content: {
                     
-                    Toggle(isOn: $selectionStateObject.isPinned, label: {
-                        
-                        Image(systemName: "pin.fill")
-                            .frame(width: 20)
-                            .foregroundColor(.orange)
-                        Text("Show in Pinned") })
+                    EventOptionsButtonsView(nicknaming: $nicknaming, presenting: .constant(false))
+                        .environmentObject(data)
+                    
                     
                 }, header: {
                     Text("Options")
                 })
                 
-                if event.calendar?.isImmutable == false {
-                
-                Section {
-                    Button(action: {
-                        
-                        DispatchQueue.main.async {
-                            
-                            showEditView.toggle()
-                            
-                        }
-                        
-                        
-                        
-                        
-                    }, label: { Text("Edit") })
-                }
-                .tint(.orange)
-                    
-                }
+        
             }
             .sheet(isPresented: $showEditView, onDismiss: {
                 //selectionStateObject.update()
             }, content: {
                 EventEditView(event: event, showSheet: $showEditView)
                     
+            })
+        
+            .onReceive(EventView.eventViewTimer) { _ in
+                
+               update()
+                
+                
+            }
+                
+            .onAppear() {
+                update()
+            }
+        
+            .sheet(item: $nicknaming, content: { event in
+                
+                NavigationView {
+                    
+                    NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil }))
+                        .tint(.orange)
+                    
+                }
+                
             })
            /* .introspectNavigationController(customize: { navigationController in
                 let appearance = UINavigationBarAppearance()
@@ -137,8 +138,16 @@ struct EventView: View {
                 }
             } */
                 
-            }
+            
 
+    }
+    
+    func update() {
+        
+        let newItems = HLLEventInfoItemGenerator(event).getInfoItems(for: [.start, .end, .duration, .elapsed])
+        if newItems != self.items {
+            self.items = newItems
+        }
         
     }
     

@@ -19,6 +19,7 @@ struct CountdownCardContextMenuModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .id(UUID())
             .contextMenu {
                 
                 Button(action: {
@@ -72,7 +73,7 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                     if NicknameManager.shared.nicknameObjects.contains(where: { $0.originalName == event.originalTitle }) {
                         Label(title: { Text("Manage Nickname") }, icon: { Image(systemName: "character.cursor.ibeam") })
                     } else {
-                        Label(title: { Text("Set Nickname") }, icon: { Image(systemName: "character.cursor.ibeam") })
+                        Label(title: { Text("Add Nickname") }, icon: { Image(systemName: "character.cursor.ibeam") })
                     }
                     
                     

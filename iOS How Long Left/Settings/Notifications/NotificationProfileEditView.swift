@@ -14,7 +14,7 @@ struct NotificationProfileEditView: View {
     
     @State var activeGroupID: String?
     
-    @Binding var viewController: UIViewController!
+    @Binding var viewController: UINavigationController!
     
     @State var navigationController: UINavigationController?
     

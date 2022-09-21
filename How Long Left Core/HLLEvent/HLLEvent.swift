@@ -69,7 +69,7 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var followingOccurence: HLLEvent? { FollowingOccurenceStore.shared.nextOccurDictionary[persistentIdentifier] }
     
-    var infoIdentifier: String { "\(title) \(startDate) \(endDate) \(calendarID ?? "nil") \(location ?? "nil")" }
+    var infoIdentifier: String { "\(originalTitle) \(startDate) \(endDate) \(calendarID ?? "nil") \(location ?? "nil")" }
     
     var id: String { persistentIdentifier }
     
@@ -97,9 +97,11 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     func completionStatus(at date: Date = Date()) -> CompletionStatus {
         
+        
+        let endInterval = endDate.timeIntervalSince(date)
         if startDate.timeIntervalSince(date) > 0 {
             return .upcoming
-        } else if endDate.timeIntervalSince(date) <= 0 {
+        } else if endInterval <= 0 {
             return .done
         } else {
             return .current
@@ -117,7 +119,16 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     func countdownDate(at: Date = Date()) -> Date { completionStatus(at: at) == .upcoming ? startDate : endDate }
     
     func countdownTypeString(at date: Date = Date()) -> String {
-        completionStatus(at: date) == .upcoming ? "starts" : "ends"
+        switch completionStatus(at: date) {
+            
+        case .upcoming:
+            return "starts in"
+        case .current:
+            return "ends in"
+        case .done:
+            return "ends in"
+        }
+        
     }
     
     func truncatedTitle(_ limit: Int = 20) -> String {
@@ -132,7 +143,15 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
         HLLEvent(title: "Upcoming", start: Date().addingTimeInterval(600), end: Date().addingTimeInterval(45*60), location: nil)
     }
     
-    
+    var userActivity: NSUserActivity {
+        /** Create an 'NSUserActivity' from the photo model.
+            Note: This is used to create a second scene as an inspector.
+        */
+        let userActivity = NSUserActivity(activityType: UserActivity.viewEventKey)
+        userActivity.userInfo = ["EventID": persistentIdentifier]
+        userActivity.targetContentIdentifier = persistentIdentifier
+        return userActivity
+    }
     
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
     
@@ -237,6 +256,8 @@ class PreviewEvent: EventUIObject {
         return PreviewEvent(title: title, startDate: Date().addingTimeInterval(TimeInterval(minsStartingIn*60)), endDate: Date.distantFuture, color: color, completionStatus: .upcoming)
         
     }
+    
+   
     
     
 }

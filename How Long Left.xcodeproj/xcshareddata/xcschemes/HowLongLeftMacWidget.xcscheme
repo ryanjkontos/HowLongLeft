@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFEA0CE521788D0100FAF2F1"
-               BuildableName = "How Long Left.app"
+               BuildableName = "How Long Left Mac.app"
                BlueprintName = "How Long Left (macOS)"
                ReferencedContainer = "container:How Long Left.xcodeproj">
             </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFEA0CE521788D0100FAF2F1"
-            BuildableName = "How Long Left.app"
+            BuildableName = "How Long Left Mac.app"
             BlueprintName = "How Long Left (macOS)"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
@@ -102,13 +102,14 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFEA0CE521788D0100FAF2F1"
-            BuildableName = "How Long Left.app"
+            BuildableName = "How Long Left Mac.app"
             BlueprintName = "How Long Left (macOS)"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>

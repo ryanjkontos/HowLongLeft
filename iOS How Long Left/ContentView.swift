@@ -11,8 +11,8 @@ import Introspect
 
 struct ContentView: View {
 
-    @ObservedObject var orientationInfo = OrientationInfo()
-    @ObservedObject var selectionController = SelectedTabManager()
+ //   @ObservedObject var orientationInfo = OrientationInfo()
+  //  @ObservedObject var selectionController = SelectedTabManager()
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -20,57 +20,46 @@ struct ContentView: View {
     @State var showOnboarding = false
     @State var blur = false
     
-    @ObservedObject var store = Store.shared
+   // @ObservedObject var store = Store.shared
+    
+   
     
     @State var appearanceSetting = AppAppearance.auto
     
     @State var insetBody = false
     
     let animation = Animation.easeInOut(duration: 0.3)
-    
-    @ViewBuilder var body: some View {
+    var body: some View {
         
-        ZStack {
-            
-            content
-           
+        TabBarContentView(eventViewEvent: $eventViewEvent)
+           // .environmentObject(store)
+        
+    
+    .sheet(item: $eventViewEvent, onDismiss: { eventViewEvent = nil }, content: { event in
+        
+        EventView(event: event)
+        
+    })
+   .sheet(isPresented: $showOnboarding, content: {
+        
+        NavigationView {
+            WelcomeView()
+             //   .environmentObject(store)
         }
-        
        
-    }
-    
-    @ViewBuilder var content: some View {
-        
-    
-            
-            TabBarContentView(eventViewEvent: $eventViewEvent)
-                .environmentObject(store)
-            
-        
-        .sheet(item: $eventViewEvent, onDismiss: { eventViewEvent = nil }, content: { event in
-            
-            EventView(event: event)
-            
-        })
-       .sheet(isPresented: $showOnboarding, content: {
-            
-            NavigationView {
-                WelcomeView()
-                    .environmentObject(store)
-            }
-           
-            .environment(\.colorScheme, getColorScheme())
-            
-        })
         .environment(\.colorScheme, getColorScheme())
-        .environmentObject(selectionController)
-        .accentColor(.orange)
-        .edgesIgnoringSafeArea(.all)
         
-      
-          
-       
+    })
+  
+    .environment(\.colorScheme, getColorScheme())
+   
+    .accentColor(.orange)
+    .edgesIgnoringSafeArea(.all)
+    
+  
     }
+    
+
     
     func getColorScheme() -> ColorScheme {
         
@@ -100,3 +89,4 @@ enum AppAppearance: String, CaseIterable {
     case dark = "Dark"
     
 }
+

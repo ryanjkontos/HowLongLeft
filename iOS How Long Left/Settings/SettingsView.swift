@@ -16,13 +16,13 @@ struct SettingsView: View {
     
     @State var hasSetInitalSelection = false
     
-    @State var nVc: UIViewController?
-    
     @State var tableView: UITableView?
     
     @State var complicationPurchased = false
     
-    @State var widgetPurchased = false
+    @State var widgetPurchased = true
+    
+    @State var navigationController: UINavigationController?
     
     var store = Store.shared
     
@@ -35,6 +35,9 @@ struct SettingsView: View {
     init() {
         
         sections = [SettingsViewSection(rows: [.countdowns, .events, .calendars])]
+        
+        sections.append(.init(rows: [.nicknames, .hidden]))
+        
         var extensionSection: [SettingsViewRow] = [.widget]
         if WCSession.isSupported() { extensionSection.append(.complication) }
         extensionSection.append(.siri)
@@ -52,7 +55,7 @@ struct SettingsView: View {
             await Store.shared.refreshPurchasedProducts()
             
             complicationPurchased = Store.shared.complicationPurchased
-            widgetPurchased = Store.shared.widgetPurchased
+            //widgetPurchased = Store.shared.widgetPurchased
             
         }
         
@@ -63,7 +66,7 @@ struct SettingsView: View {
     @Environment(\.horizontalSizeClass) var horizontalSize
     
     @State var selection: String?
-    @State var cells = [String:UITableViewCell]()
+
     
     @State var id = UUID()
     
@@ -75,12 +78,12 @@ struct SettingsView: View {
                 Section(content: {
                     ForEach(section.rows, id: \.self) { row in
                         if let action = getRowAction(for: row) {
-                           /* NavigationLink(isActive: Binding(get: { return false }, set: { _ in
+                           NavigationLink(isActive: Binding(get: { return false }, set: { _ in
                                 action()
-                            }), destination: {EmptyView()}, label: { getRowView(for: row) }) */
+                            }), destination: {EmptyView()}, label: { getRowView(for: row) })
                             
-                            Button(action: action, label: { getRowView(for: row)})
-                                .id(row)
+                           // Button(action: action, label: { getRowView(for: row)})
+                             //   .id(row)
                                
                             
                         } else {
@@ -112,7 +115,16 @@ struct SettingsView: View {
             
         })
         
-      
+        .introspectNavigationController { nc in
+                self.navigationController = nc
+        }
+            
+        .onReceive(SelectedTabManager.shared.reselected, perform: { _ in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        })
+        
      /*   .introspectNavigationController(customize: { vc in
             
             self.nVc = vc
@@ -132,7 +144,7 @@ struct SettingsView: View {
             print("On appear")
             
             complicationPurchased = Store.shared.complicationPurchased
-            widgetPurchased = Store.shared.widgetPurchased
+          //  widgetPurchased = Store.shared.widgetPurchased
             
             updatePurchases()
             
@@ -148,9 +160,7 @@ struct SettingsView: View {
             }
             
             
-            for cell in cells.values {
-                cell.accessoryType = .disclosureIndicator
-            }
+        
         }
         
         
@@ -196,7 +206,7 @@ struct SettingsView: View {
         case .countdowns:
             CountdownViewSettings()
         case .notifications:
-            NotificationProfileEditView(viewController: $nVc)
+            NotificationProfileEditView(viewController: $navigationController)
         case .siri:
             Text("Siri")
         case .widget:
@@ -213,13 +223,17 @@ struct SettingsView: View {
             if complicationPurchased {
                 Text("Complication Settings")
             } else {
-                ExtensionPurchaseView(type: .complication, presentSheet: sheetRowBinding)
+                ExtensionPurchaseParentView()
             }
             
         case .appearance:
             AppearanceSettings(appAppearance: .constant(.auto))
         case .debug:
             DebugView()
+        case .nicknames:
+            NicknamesListView()
+        case .hidden:
+            HiddenEventsSettingsView()
         }
         
     }
@@ -246,6 +260,10 @@ struct SettingsView: View {
             IconCell(label: "Appearance", iconImageName: "paintbrush.pointed.fill", iconBackground: .orange, iconFill: .white)
         case .debug:
             IconCell(label: "Debug", iconImageName: "hammer.fill", iconBackground: .blue, iconFill: .white)
+        case .nicknames:
+            IconCell(label: "Nicknames", iconImageName: "character.cursor.ibeam", iconBackground: .orange, iconFill: .white)
+        case .hidden:
+            IconCell(label: "Hidden Events", iconImageName: "eye.slash.fill", iconBackground: .orange, iconFill: .white)
         }
         
     }
@@ -307,6 +325,8 @@ enum SettingsViewRow: String, Identifiable {
     case widget = "Widget"
     case complication = "Complication"
     case debug = "debug"
+    case nicknames = "Nicknames"
+    case hidden = "Hidden Events"
     
     
 }

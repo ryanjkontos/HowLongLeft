@@ -110,7 +110,7 @@ class HLLEventInfoItemGenerator {
             
             if event.completionStatus(at: date) != .done {
             
-            titleString = "\(event.countdownTypeString.capitalizingFirstLetter()) in"
+            titleString = "\(event.countdownTypeString.capitalizingFirstLetter())"
             infoString = countdwonStringGenerator.generatePositionalCountdown(event: event, at: date)
                 
             }

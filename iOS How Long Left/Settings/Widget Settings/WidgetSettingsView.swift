@@ -17,10 +17,8 @@ struct WidgetSettingsView: View {
     var body: some View {
         
         List {
+            
            
-            
-          
-            
             
             Section("Widget Appearance") {
                     
@@ -35,7 +33,9 @@ struct WidgetSettingsView: View {
                 
             }
             
-            Section( content: {
+            
+            
+         /*   Section(content: {
                 
                 NavigationLink(destination: {
                     
@@ -47,12 +47,12 @@ struct WidgetSettingsView: View {
                     
                 })
                 
-            },header: { Text("Advanced") } , footer: { Text("Use widget configurations to define rules for how your widgets should choose which event to display at a given time.") })
+            },header: { Text("Advanced") } , footer: { Text("Use widget configurations to define rules for how your widgets should choose which event to display at a given time.") }) */
            
             
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("Widget")
+       // .navigationTitle("Widget")
         .navigationBarTitleDisplayMode(.inline)
         
     }

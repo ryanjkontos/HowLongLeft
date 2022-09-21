@@ -25,11 +25,11 @@ struct CountdownViewSettings: View {
   
         List {
             
-            Section(content: {
+         /*   Section(content: {
                 
                 Toggle("Show Seconds", isOn: $settingsObject.showSeconds)
                 
-            }, header: {Text("Countdowns")})
+            }, header: {Text("Countdowns")}) */
             
             Section(content: {
                 

@@ -42,6 +42,7 @@ struct CountdownWidgetEventView: View {
                
                             
                         Text(event.title)
+                            //.foregroundColor(.black)
                             .lineLimit(1)
                             .truncationMode(.tail)
                             .font(Font.system(size: 23, weight: .semibold, design: .default))
@@ -49,7 +50,7 @@ struct CountdownWidgetEventView: View {
                         }
                         .minimumScaleFactor(0.8)
                     
-                        Text("\(event.countdownTypeString(at: displayDate)) in")
+                        Text("\(event.countdownTypeString(at: displayDate))")
                         .foregroundColor(Color(.systemGray))
                         .font(Font.system(size: 16, weight: .medium, design: .default))
                 }

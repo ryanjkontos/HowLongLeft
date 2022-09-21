@@ -15,23 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFBD92E72512349200CF5278"
+               BlueprintIdentifier = "BFE1D36528A0D7C400B210D5"
                BuildableName = "iOSWidgetExtension.appex"
                BlueprintName = "iOSWidgetExtension"
-               ReferencedContainer = "container:How Long Left.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF5D29542174679500AC1EB6"
-               BuildableName = "How Long Left.app"
-               BlueprintName = "How Long Left (iOS)"
                ReferencedContainer = "container:How Long Left.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,21 +48,12 @@
          BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BFBD92E72512349200CF5278"
+            BlueprintIdentifier = "BFE1D36528A0D7C400B210D5"
             BuildableName = "iOSWidgetExtension.appex"
             BlueprintName = "iOSWidgetExtension"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF5D29542174679500AC1EB6"
-            BuildableName = "How Long Left.app"
-            BlueprintName = "How Long Left (iOS)"
-            ReferencedContainer = "container:How Long Left.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetKind"
@@ -101,17 +78,17 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF5D29542174679500AC1EB6"
-            BuildableName = "How Long Left.app"
-            BlueprintName = "How Long Left (iOS)"
+            BlueprintIdentifier = "BFE1D36528A0D7C400B210D5"
+            BuildableName = "iOSWidgetExtension.appex"
+            BlueprintName = "iOSWidgetExtension"
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

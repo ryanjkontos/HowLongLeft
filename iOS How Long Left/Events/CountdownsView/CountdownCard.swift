@@ -10,18 +10,20 @@ import SwiftUI
 
 struct CountdownCard: View {
     
-    static var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+  //  static var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var event: HLLEvent
     
-    @State var timerText: String = ""
+  
     @State var statusText: String = ""
     
     @State var visible = false
     
-    @State var style = HLLDefaults.countdownsTab.cardAppearance
+    @State var style = CountdownCardAppearance.gradient
     
     @Environment(\.colorScheme) var colorScheme
+    
+
     
     var body: some View {
         
@@ -29,7 +31,7 @@ struct CountdownCard: View {
         
             switch style {
             case .gradient:
-                LinearGradient(gradient: event.color.toGradient(0, 10), startPoint: .top, endPoint: .bottom).opacity(0.9)
+                LinearGradient(gradient: event.color.toGradient(0, 10), startPoint: .top, endPoint: .bottom)
             case .transparent:
                 Color(uiColor: .systemBackground)
                 Color(uiColor: event.color)
@@ -49,62 +51,69 @@ struct CountdownCard: View {
                 
             }
             
-   
-            HStack(spacing: 15) {
+           
                 
-               
                 
-                VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 15) {
                     
-                    VStack(alignment: .leading, spacing: 0) {
                     
-                        Text(event.title)
-                            .lineLimit(1)
-                            .truncationMode(.tail)
-                            .padding(.trailing, 20)
-                        .foregroundColor(getTextColor())
-                        .font(.system(size: 25, weight: .medium, design: .default))
-                     //   .shadow(radius: 6)
-                        
-                        Text(statusText)
-                        
-                        .foregroundColor(getTextColor())
-                        .font(.system(size: 19, weight: .regular, design: .default))
-                       // .shadow(radius: 6)
                     
-                    }
-                  
+                    VStack(alignment: .leading, spacing: 12) {
                         
-                    Text(timerText)
+                        VStack(alignment: .leading, spacing: 0) {
+                            
+                            Text(event.title)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .padding(.trailing, 20)
+                                .foregroundColor(getTextColor())
+                                .font(.system(size: 25, weight: .medium, design: .default))
+                            //   .shadow(radius: 6)
+                            
+                            Text(getStatusText(date: Date()))
+                            
+                                .foregroundColor(getTextColor())
+                                .font(.system(size: 19, weight: .regular, design: .default))
+                            // .shadow(radius: 6)
+                            
+                        }
+                        
+                        
+                        
+                        Text(getCountdown(date: Date()))
                             .foregroundColor(getTextColor())
                             .font(.system(size: 28, weight: .medium, design: .default))
-                            //.shadow(radius: 6)
+                        //.shadow(radius: 6)
                             .monospacedDigit()
-                   
-                }
-                
-               
-                Spacer()
-                
-                
+                        
+                        
+                        
+                        
+                        
+                    }
                     
-                VStack {
                     
-                    Circle()
-                        .stroke(lineWidth: 4.5)
-                        .foregroundColor(.white)
-                        .frame(width: 20, height: 20, alignment: .center)
-                    
-                        .padding(.trailing, 25)
-                        .padding(.top, 10)
                     Spacer()
                     
+                    
+                    
+                    VStack {
+                        
+                        Circle()
+                            .stroke(lineWidth: 4.5)
+                            .foregroundColor(.white)
+                            .frame(width: 20, height: 20, alignment: .center)
+                        
+                            .padding(.trailing, 25)
+                            .padding(.top, 10)
+                        Spacer()
+                        
+                    }
+                    
+                    
                 }
-                
-                
-            }
-            .padding(.vertical, 10)
-            .padding(.leading, 25)
+                .padding(.vertical, 10)
+                .padding(.leading, 25)
                 
             
             
@@ -113,24 +122,17 @@ struct CountdownCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
          
         .frame(height: 123)
-        .drawingGroup()
+        //.drawingGroup()
         .onAppear(perform: {
             
-            style = HLLDefaults.countdownsTab.cardAppearance
+          //  style = HLLDefaults.countdownsTab.cardAppearance
             
-            visible = true })
-        .onDisappear(perform: { visible = false })
-        .onReceive(CountdownCard.timer, perform: { _ in
+          //  visible = true
             
-            if !visible {
-                return
-            }
-            
-            let date = Date()
-            timerText = getCountdown(date: date)
-            statusText = getStatusText(date: date)
             
         })
+       // .onDisappear(perform: { visible = false })
+   
             
             
              

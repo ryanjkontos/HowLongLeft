@@ -369,11 +369,11 @@ class CountdownStringGenerator {
         
         if event.endDate.startOfDay() == CurrentDateFetcher.currentDate.startOfDay(), showEndTime == true {
             
-            mainText = "\(title) \(event.countdownTypeString) in \(countdownText), at \(event.endDate.formattedTime())."
+            mainText = "\(title) \(event.countdownTypeString) \(countdownText), at \(event.endDate.formattedTime())."
             
         } else {
             
-            mainText = "\(title) \(event.countdownTypeString) in \(countdownText)."
+            mainText = "\(title) \(event.countdownTypeString) \(countdownText)."
             
         }
         

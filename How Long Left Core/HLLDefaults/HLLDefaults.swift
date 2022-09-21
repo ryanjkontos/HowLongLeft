@@ -25,13 +25,17 @@ class HLLDefaults {
 
     static var shared = HLLDefaults()
     
-    #if os(OSX)
+    static var defaults = UserDefaults.init(suiteName: "group.com.ryankontos.How-Long-Left")!
+    
+   /* #if targetEnvironment(macCatalyst)
+    static var defaults = UserDefaults.init(suiteName: "5AMFX8X5ZN.howlongleft")!
+    #elseif os(OSX)
     static var defaults = UserDefaults.init(suiteName: GroupURL.current)!
     #elseif os(watchOS)
     static var defaults = UserDefaults.standard
     #else
     static var defaults = UserDefaults(suiteName: GroupURL.current)!
-    #endif
+    #endif */
     
    
     
@@ -786,13 +790,13 @@ class HLLDefaults {
             
             get {
                 
-                return !defaults.bool(forKey: "noLargeCell")
+                return defaults.bool(forKey: "WatchLargeHeader")
                 
             }
             
             set (to) {
                 
-                defaults.set(!to, forKey: "noLargeCell")
+                defaults.set(to, forKey: "WatchLargeHeader")
                 
             }
             
@@ -2128,9 +2132,9 @@ enum WatchUpcomingEventsDisplayMode: Int, CaseIterable {
 
 enum WatchEventListOrderMode: Int, CaseIterable {
     
-    case chronological = 0
-    case currentFirst = 1
-    case upcomingFirst = 2
+    case chronological = 2
+    case currentFirst = 0
+    case upcomingFirst = 1
     
     var displayName: String {
         

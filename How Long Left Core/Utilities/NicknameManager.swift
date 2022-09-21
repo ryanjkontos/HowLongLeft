@@ -44,6 +44,8 @@ class NicknameManager: ObservableObject {
         
         self.entities = returnArray
         
+     
+        
         DispatchQueue.main.async {
             
             if self.nicknameObjects != oldNicknameObjects {
@@ -105,6 +107,8 @@ class NicknameManager: ObservableObject {
             
             HLLDataModel.shared.save()
             self.objectWillChange.send()
+            
+            HLLEventSource.shared.asyncUpdateEventPool()
             
         }
         
@@ -296,7 +300,7 @@ class NicknameObject: ObservableObject, Identifiable, Equatable {
     
     static func getObject(for event: HLLEvent) -> NicknameObject {
         
-        let store = NicknameManager()
+        let store = NicknameManager.shared
         
         if let item = store.nicknameObjects.first(where: { $0.originalName == event.originalTitle }) {
             return item

@@ -60,6 +60,12 @@
             ReferencedContainer = "container:How Long Left.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "EnableDummyEvents"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <StoreKitConfigurationFileReference
          identifier = "../iOS How Long Left/Onboarding/StoreKitDebug.storekit">
       </StoreKitConfigurationFileReference>

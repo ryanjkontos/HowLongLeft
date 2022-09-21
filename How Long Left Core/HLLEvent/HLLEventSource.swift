@@ -219,7 +219,7 @@ class HLLEventSource {
             
         
     
-        add = NicknameManager.shared.addNicknames(for: add)
+        
         
         if HLLDefaults.general.showAllDay == false {
         
@@ -233,6 +233,8 @@ class HLLEventSource {
         
         add = remover.removeDoublesIn(events: add)
         
+        add = NicknameManager.shared.addNicknames(for: add)
+        
         self.eventPool = add
         
         /*if let encoded = try? JSONEncoder().encode(add) {
@@ -244,6 +246,8 @@ class HLLEventSource {
         
         
         updateHiddenEvents()
+        
+        
            
         let prevNeverUpdated = neverUpdatedEventPool
         

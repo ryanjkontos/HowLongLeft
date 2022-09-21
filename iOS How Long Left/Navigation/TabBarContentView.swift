@@ -10,16 +10,17 @@ import SwiftUI
 
 struct TabBarContentView: View {
 
-    
     @Binding var eventViewEvent: HLLEvent?
-    
-    @State var selection = 0
     
     @State var launchEvent: HLLEvent?
     
     var body: some View {
         
-        TabView(selection: $selection) {
+        TabView(selection: Binding(get: {
+            return SelectedTabManager.shared.selectedIndex
+        }, set: {
+            SelectedTabManager.shared.selectedIndex = $0
+        })) {
             
             CountdownsParentView(eventViewEvent: $eventViewEvent, launchEvent: $launchEvent)
                 .tabItem({
@@ -54,6 +55,7 @@ struct TabBarContentView: View {
                 
             
         }
+ 
         .introspectTabBarController(customize: { controller in
             
             
@@ -67,19 +69,20 @@ struct TabBarContentView: View {
     }
     
 
-    func handleLaunchEvent() {
+  /*  func handleLaunchEvent() {
         
         guard let event = launchEvent else { return }
         
         if event.completionStatus == .current {
-            selection = 0
+            selectedTabObject.selection = 0
         } else {
-            selection = 1
+            selectedTabObject.selection = 1
         }
         
-    }
+    } */
     
 }
+
 
 struct TabBarContentView_Previews: PreviewProvider {
     static var previews: some View {

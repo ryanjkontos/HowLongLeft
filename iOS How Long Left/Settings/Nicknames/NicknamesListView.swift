@@ -14,8 +14,6 @@ struct NicknamesListView: View {
     
     @State var activeObject: NicknameObject?
     
-   
-    
     @State var showDeleteButton = false
     
     @State var createDefault = false
@@ -132,16 +130,8 @@ struct NicknamesListView: View {
                     
      
             }
-            .sheet(item: $activeObject, onDismiss: { store.loadNicknames() }, content: { object in
-                
-                NavigationView {
-                    NickNameEditorView(object, store: store, presenting: Binding(get: { return activeObject != nil }, set: { _ in activeObject = nil }))
-                        .tint(.orange)
-                }
-                
-                
-            })
-           
+        
+            .animation(.easeInOut(duration: 0.5), value: store.nicknameObjects)
       
         
             .onAppear() {
@@ -154,7 +144,23 @@ struct NicknamesListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle("Nicknames")
             
-
+        
+        .sheet(item: $activeObject, onDismiss: nil, content: { obj in
+                       
+            NavigationView {
+                
+                NickNameEditorView(obj, store: NicknameManager.shared, presenting: Binding(get: {
+                    
+                    return activeObject != nil
+                    
+                }, set: { _ in
+                    
+                    activeObject = nil
+                    
+                }))
+                    .tint(.orange)
+                }
+            })
             
 
     }

@@ -20,13 +20,13 @@ class EventLocationStore: ObservableObject {
     
     init() {
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+       // HLLEventSource.shared.addEventPoolObserver(self)
         
     }
     
     private func processEvents(events: [HLLEvent]) async {
         
-        var changesMade = false
+      /*  var changesMade = false
         
         for event in events {
             
@@ -62,7 +62,7 @@ class EventLocationStore: ObservableObject {
         
         if changesMade {
             objectWillChange.send()
-        }
+        } */
         
     }
     

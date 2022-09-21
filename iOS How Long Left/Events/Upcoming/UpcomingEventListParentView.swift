@@ -7,11 +7,14 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct UpcomingEventListParentView: View {
     
     @ObservedObject var eventSource = UpcomingEventSource()
     @Binding var eventViewEvent: HLLEvent?
+    
+    @State var navigationController: UINavigationController?
     
     var body: some View {
         
@@ -19,15 +22,16 @@ struct UpcomingEventListParentView: View {
         
         ZStack {
         
+            let _ = print(UpcomingEventListParentView._printChanges())
+            
             if eventSource.isEmpty {
+                
                 VStack(spacing: 5) {
                 
                 Text("No Events")
                     .foregroundColor(.secondary)
-                    
-                   
-                        
                 }
+                
             } else {
                 UpcomingEventListView( eventViewEvent: $eventViewEvent)
                     .environmentObject(eventSource)
@@ -35,11 +39,20 @@ struct UpcomingEventListParentView: View {
             }
             
         }
+            
         .navigationTitle("Upcoming")
         .navigationViewStyle(.stack)
         .transition(.opacity)
         .animation(.easeInOut(duration: 0.15), value: eventSource.events.isEmpty)
-        
+        .introspectNavigationController { nc in
+                self.navigationController = nc
+        }
+            
+        .onReceive(SelectedTabManager.shared.reselected, perform: { _ in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        })
             
     }
         .navigationViewStyle(.stack)

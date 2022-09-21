@@ -96,6 +96,8 @@ class HLLHiddenEventStore: ObservableObject {
 
     func updateHiddenEvents(from events: [HLLEvent]) {
         
+        removeEndedEvents()
+        
         let hiddenEventItems = hiddenEvents
         
         for event in events {

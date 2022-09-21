@@ -109,6 +109,7 @@ extension EKCalendar {
 
 class AppEnabledCalendarsManager: EnabledCalendarsManager {
     
+    static var shared = AppEnabledCalendarsManager()
     
     convenience init() {
         

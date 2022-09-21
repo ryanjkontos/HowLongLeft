@@ -19,93 +19,120 @@ struct UpcomingEventListView: View {
     
     @State var nicknaming: HLLEvent?
     
+    @State var scrollView: UIScrollView?
+    
+    @State var proxy: ScrollViewProxy?
+    
     var body: some View {
-        GeometryReader { proxy in
-        ScrollView {
-            LazyVGrid(columns: [gridItem], alignment: .center, spacing: 5) {
-                ForEach(eventSource.events) { dateOfEvents in
-                    Section(content: {
-                        ForEach(dateOfEvents.events) { event in
-                            NavigationLink(destination: EventView(event: event)) {
-                                UpcomingSubCard(event: event)
-                                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .circular))
-                                    .frame(height: 50, alignment: .center)
-                                    .contentShape(.contextMenuPreview,RoundedRectangle(cornerRadius: 12, style: .circular))
-                                    .modifier(CountdownCardContextMenuModifier(event: event, nicknaming: $nicknaming, reloadHandler: { eventSource.update() }))
+
+        ScrollViewReader { reader in
+        
+            
+            ScrollView {
+                LazyVGrid(columns: [gridItem], alignment: .center, spacing: 5) {
+                    ForEach(eventSource.events) { dateOfEvents in
+                        Section(content: {
+                            ForEach(dateOfEvents.events) { event in
+                                NavigationLink(destination: EventView(event: event)) {
+                                    
+                                    UpcomingCellRepresentor(event: event, nicknaming: $nicknaming)
+                                    
+                                    
+                                        .frame(height: 50, alignment: .center)
                                     
                                 }
-                            .hoverEffect(.highlight)
-                            .id(event.infoIdentifier)
-                            .buttonStyle(SubtleRoundedPressButton(radius: 12, cornerStyle: .circular))
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .circular))
-                            
-                        }
-                        
-                    }, header: {
-                        
-                        HStack {
-                            VStack(spacing: 0) {
                                 
-                                Text(dateOfEvents.date.shortDayName())
-                                    .font(.system(size: 12, weight: .bold, design: .default))
-                                    .foregroundColor(.red)
-                                Text(dateOfEvents.date.dayNumber())
-                                    .font(.system(size: 30, weight: .light, design: .default))
-                                    .foregroundColor(Color(uiColor: UIColor.label))
-                            }
-                            
-                            Spacer()
-                            
-                            VStack {
-                            
-                                Spacer()
+                                .hoverEffect(.highlight)
                                 
-                            Text(getRelativeString(numberOfDays: dateOfEvents.date.daysUntil()))
-                                .foregroundColor(.secondary)
-                            
-                                Spacer()
+                                
                                 
                             }
                             
+                        }, header: {
                             
-                        }
-                        .padding(.top, 5)
-                        .padding(.bottom, 5)
-                        .padding(.horizontal, 10)
+                            HStack {
+                                VStack(spacing: 0) {
+                                    
+                                    Text(dateOfEvents.date.shortDayName())
+                                        .font(.system(size: 12, weight: .bold, design: .default))
+                                        .foregroundColor(.red)
+                                    Text(dateOfEvents.date.dayNumber())
+                                        .font(.system(size: 30, weight: .light, design: .default))
+                                        .foregroundColor(Color(uiColor: UIColor.label))
+                                }
+                                .drawingGroup()
+                                
+                                Spacer()
+                                
+                                VStack {
+                                    
+                                    Spacer()
+                                    
+                                    Text(getRelativeString(numberOfDays: dateOfEvents.date.daysUntil()))
+                                        .foregroundColor(.secondary)
+                                    
+                                    Spacer()
+                                    
+                                }
+                                
+                                
+                            }
+                            .id(dateOfEvents.date)
+                            .padding(.top, 5)
+                            .padding(.bottom, 5)
+                            .padding(.horizontal, 10)
+                            .drawingGroup()
                             
-                    })
+                        })
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+                .padding(.bottom, 40)
+                
             }
-        }
-            .padding(.horizontal, proxy.safeAreaInsets.leading+20)
-            .padding(.top, 10)
-            .padding(.bottom, 40)
-            
-            
+            .onReceive(SelectedTabManager.shared.reselected, perform: { _ in
+                
+                withAnimation {
+                    
+                    if let date = eventSource.events.first?.date {
+                        reader.scrollTo(date)
+                    }
+                    
+                    
+                }
+                
+               
+                
+                
+            })
         }
        
         
         .introspectScrollView(customize: { scrollView in
             
-            scrollView.backgroundColor = .systemBackground
+            self.scrollView = scrollView
+            
+           // scrollView.backgroundColor = .systemBackground
             
         })
-        .edgesIgnoringSafeArea(.horizontal)
+        
+       
+       // .edgesIgnoringSafeArea(.horizontal)
         
         
         .navigationBarTitleDisplayMode(.large)
             
-        }
-        
         .sheet(item: $nicknaming, onDismiss: nil, content: { event in
-            
+                       
             NavigationView {
                 
-                NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil }))
+                NickNameEditorView(NicknameObject.getObject(for: event), store: NicknameManager.shared, presenting: Binding(get: { return nicknaming != nil }, set: { _ in nicknaming = nil
+                }))
                     .tint(.orange)
-                
-            }
-            
-        })
+                }
+            })
+     
     }
     
     func getRelativeString(numberOfDays: Int) -> String {

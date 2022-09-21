@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EnabledCalendarsView: View {
     
-    @ObservedObject var calendarsManager = AppEnabledCalendarsManager()
+    @ObservedObject var calendarsManager = AppEnabledCalendarsManager.shared
     
     var body: some View {
         
@@ -92,8 +92,6 @@ struct EnabledCalendarsView: View {
             withAnimation {
                 calendarsManager.toggleAll()
             }
-            
-            
             
         }, label: {
             

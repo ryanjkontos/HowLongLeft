@@ -15,11 +15,11 @@ class DummyEventGenerator {
     
     init() {
         
-        if !ProcessInfo.processInfo.arguments.contains("EnableDummyEvents") {
+       /* if !ProcessInfo.processInfo.arguments.contains("EnableDummyEvents") {
             return
-        }
+        } */
         
-    //  return
+
         
         var start = Date()
         
@@ -32,10 +32,10 @@ class DummyEventGenerator {
             
             
             date.addTimeInterval(30*300)
-            var event = HLLEvent(title: "Current \(i)", start: start, end: date, location: nil)
+            var event = HLLEvent(title: "Event \(i)", start: start, end: date, location: nil)
             event.calendarID = HLLEventSource.shared.getCalendars().randomElement()?.calendarIdentifier
             
-            event.location = "23 George Bransby Circuit, Harrington Park"
+            event.location = "Room: 23"
             
             array.append(event)
             
