@@ -1129,7 +1129,7 @@
 		BF51026C27AA557700BFF2F6 /* iOS_Widget_How_Logn_Left.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iOS_Widget_How_Logn_Left.intentdefinition; sourceTree = "<group>"; };
 		BF51026D27AA557700BFF2F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../iOS Widget How Logn Left/Assets.xcassets"; sourceTree = "<group>"; };
 		BF51026F27AA557700BFF2F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../iOS Widget How Logn Left/Info.plist"; sourceTree = "<group>"; };
-		BF51027527AA557700BFF2F6 /* iOS Widget How Logn LeftExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Widget How Logn LeftExtension.entitlements"; sourceTree = "<group>"; };
+		BF51027527AA557700BFF2F6 /* iOSWidgetExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSWidgetExt.entitlements; sourceTree = "<group>"; };
 		BF52D4C3235B2A5B00914BC4 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		BF52D4C5235B2AE700914BC4 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		BF538AFD249B8563004E2AF6 /* PurchaseProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseProViewController.swift; sourceTree = "<group>"; };
@@ -1424,7 +1424,6 @@
 		BFE1D36628A0D7C400B210D5 /* iOSWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE1D36D28A0D7C400B210D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFE1D36F28A0D7C400B210D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFE1D37528A0D7C400B210D5 /* iOSWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSWidgetExtension.entitlements; sourceTree = "<group>"; };
 		BFE4460723CEED6500924F5D /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BFE4602C28944A570074C84B /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		BFE4602E28944BB70074C84B /* EventContextMenuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextMenuGenerator.swift; sourceTree = "<group>"; };
@@ -2111,6 +2110,7 @@
 				BFFB949D255FCAB400B58932 /* Mac WidgetKit */,
 				BF14833A255FB0690099FA0A /* WidgetKit Core */,
 				BFE1D36928A0D7C400B210D5 /* iOSWidget */,
+				BF3B12C228904B4F00154493 /* How Long Left iOS App */,
 				BFD3D04E28A0D93B009A774E /* iOSWidget Intents */,
 				BFD3D04728A0D889009A774E /* Old */,
 				BF3652B928A29B0300668462 /* How Long Left watch App */,
@@ -2708,9 +2708,6 @@
 		BFD3D04728A0D889009A774E /* Old */ = {
 			isa = PBXGroup;
 			children = (
-				BF3B12C228904B4F00154493 /* How Long Left iOS App */,
-				BFE1D37528A0D7C400B210D5 /* iOSWidgetExtension.entitlements */,
-				BF51027527AA557700BFF2F6 /* iOS Widget How Logn LeftExtension.entitlements */,
 				BF32BF1F27859324002B013D /* How Long Left Tests */,
 				BFF05ECF21E9DE4E0044F049 /* How Long Left (iOS) */,
 				BF5D296D2174688800AC1EB6 /* How Long Left (watchOS) */,
@@ -2965,6 +2962,7 @@
 		BFE1D36928A0D7C400B210D5 /* iOSWidget */ = {
 			isa = PBXGroup;
 			children = (
+				BF51027527AA557700BFF2F6 /* iOSWidgetExt.entitlements */,
 				BF51026C27AA557700BFF2F6 /* iOS_Widget_How_Logn_Left.intentdefinition */,
 				BF51026D27AA557700BFF2F6 /* Assets.xcassets */,
 				BF51026F27AA557700BFF2F6 /* Info.plist */,
@@ -3443,13 +3441,13 @@
 			projectRoot = "";
 			targets = (
 				BFEA0CE521788D0100FAF2F1 /* How Long Left (macOS) */,
+				BF4988FC2733A14A00024295 /* iOS How Long Left */,
 				BFFB9499255FCAB300B58932 /* HowLongLeftMacWidget */,
 				BFB51CFC28A01D8E00808C8D /* HLLAppKitBundle */,
 				BFE1D36528A0D7C400B210D5 /* iOSWidgetExtension */,
 				BFD3D04B28A0D93B009A774E /* iOSWidget Intents */,
 				BF3652B728A29B0300668462 /* How Long Left watch App */,
 				BF3652BF28A29B0400668462 /* How Long Left watch App WatchKit Extension */,
-				BF4988FC2733A14A00024295 /* iOS How Long Left */,
 			);
 		};
 /* End PBXProject section */
@@ -4882,7 +4880,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = iOSWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOSWidget/iOSWidgetExt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
@@ -4913,7 +4911,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = iOSWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOSWidget/iOSWidgetExt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 226;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
