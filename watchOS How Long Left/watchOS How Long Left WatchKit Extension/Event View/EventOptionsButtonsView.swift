@@ -24,6 +24,8 @@ struct EventOptionsButtonsView: View {
                 dataObject.update()
                 
             }, label: {
+                
+                
                 Text("\(dataObject.isPinned ? "Unpin" : "Pin")")
                 
             })

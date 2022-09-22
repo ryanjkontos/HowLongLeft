@@ -108,10 +108,10 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             current.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
         }
         
-        if let pinned = SelectedEventManager.shared.selectedEvent {
-            current.removeAll(where: { $0 == pinned })
-            upcoming.removeAll(where: { $0 == pinned })
-        }
+        let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
+        current.removeAll(where: { pinned.contains($0) })
+        upcoming.removeAll(where: { pinned.contains($0) })
+        
         
         switch HLLDefaults.watch.listOrderMode {
             
@@ -147,8 +147,8 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             
         }
         
-        if let pinned = SelectedEventManager.shared.selectedEvent {
-            returnArray.insert(TitledEventGroup(title: "Pinned", events: [pinned]), at: 0)
+        if !pinned.isEmpty {
+            returnArray.insert(TitledEventGroup(title: "Pinned", events: pinned), at: 0)
         }
         
         if !returnArray.isEmpty {

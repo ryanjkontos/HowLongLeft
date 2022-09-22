@@ -149,7 +149,7 @@ struct EventsListView: View {
                             .listItemTint((index == 0 && sectionIndex == 0 && HLLDefaults.watch.largeCell) ? Color.clear : Color(uiColor: event.color).opacity(0.25))
                             
                             .id("\(event.infoIdentifier) \(event.completionStatus(at: date)) \(index == 0 && HLLDefaults.watch.largeCell) \(HLLDefaults.watch.largeHeaderLocation)")
-                            .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                                 getSwipeActions(event: event)
                             })
                             
@@ -164,6 +164,9 @@ struct EventsListView: View {
                             Text(title)
                                 .padding(.bottom, 1)
                                 .foregroundColor(group.title == "Pinned" ? Color("PinnedGold") : nil)
+                            
+                                .font(Font.system(size: 14, weight: (group.title == "Pinned" ? .semibold : .regular), design: .default))
+                               
                         } else {
                             EmptyView()
                         }
@@ -278,13 +281,13 @@ struct EventsListView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.21) {
                     
                     withAnimation {
-                        SelectedEventManager.shared.toggleSelection(for: event)
+                        EventPinningManager.shared.togglePinned(event)
                     }
                 
                 }
                     
                 }) {
-                    Label("Pin", systemImage: event.isSelected ? "pin.slash.fill" : "pin.fill")
+                    Label("Pin", systemImage: event.isPinned ? "pin.slash.fill" : "pin.fill")
                 
             }
                 .tint(Color("PinnedGold"))

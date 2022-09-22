@@ -28,7 +28,7 @@ struct MainEventCard: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     
-                    if event.isSelected {
+                    if event.isPinned {
                     
                         Text("PINNED")
                             .foregroundColor(Color("PinnedGold"))

@@ -21,7 +21,6 @@ struct HiddenEventsSettingsView: View {
         
         List {
             
-    
                 Section(content: {
                     
                     ForEach(store.hiddenEvents, content: { storedEvent in
@@ -38,8 +37,14 @@ struct HiddenEventsSettingsView: View {
                                 Text(storedEvent.title!)
                                     .foregroundColor(.primary)
                                 
-                                Text(storedEvent.endDate!.formattedTime())
-                                    .foregroundColor(.secondary)
+                                if let date = storedEvent.startDate {
+                                    
+                                    Text("\(date.formattedDate()), \(date.formattedTime())")
+                                        .foregroundColor(.secondary)
+                                    
+                                }
+                                
+                              
                                 
                             }
                             
@@ -50,8 +55,12 @@ struct HiddenEventsSettingsView: View {
                                 
                                 withAnimation {
 
-                                    store.unhideEvent(storedEvent)
-                                    //store.loadHiddenEventsFromDatabase()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        
+                                        store.unhideEvent(storedEvent)
+                                        //store.loadHiddenEventsFromDatabase()
+                                        
+                                    }
                                     
                                     
                                 }
@@ -115,7 +124,8 @@ struct HiddenEventsSettingsView: View {
                 
                 
             }, label: { Text("Unhide") })
-            Button(role: .cancel, action: {}, label: { Text("Cancel") })
+            Button(role: .cancel, action: {}, label: { Text("Cancel")  })
+               
             
         }
       
@@ -138,8 +148,11 @@ struct HiddenEventsSettingsView: View {
                 
                 Button(action: {
                     
-                  
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        
                         store.unhideEvents(store.hiddenEvents)
+                        
+                    }
                     
                     
                 }, label: {

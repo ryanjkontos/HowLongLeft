@@ -171,22 +171,23 @@ struct HLLWidgets: WidgetBundle {
        UpcomingListWidget()
        CountdownAndUpcomingListWidget()
        
+      
+        CountdownComplication()
        
-      // LiveEventActivityWidget()
        
-    //   CountdownComplication()
-       
+   
        #endif
-       
-
        
        
    }
+    
+    
+    
 }
 
 
 
-/*@available(iOSApplicationExtension 16.0, *)
+@available(iOSApplicationExtension 16.0, *)
 struct CountdownComplication: Widget {
     
    
@@ -205,8 +206,8 @@ struct CountdownComplication: Widget {
         .supportedFamilies([.accessoryRectangular])
         
     }
-    
-} */
+
+}
 
 #if os(iOS)
 

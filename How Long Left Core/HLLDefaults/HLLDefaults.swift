@@ -790,13 +790,13 @@ class HLLDefaults {
             
             get {
                 
-                return defaults.bool(forKey: "WatchLargeHeader")
+                return defaults.bool(forKey: "WatchFirstEventLarge")
                 
             }
             
             set (to) {
                 
-                defaults.set(to, forKey: "WatchLargeHeader")
+                defaults.set(to, forKey: "WatchFirstEventLarge")
                 
             }
             
@@ -856,13 +856,13 @@ class HLLDefaults {
             
             get {
                 
-                return WatchEventListOrderMode(rawValue: defaults.integer(forKey: "WatchEventListOrderMode"))!
+                return WatchEventListOrderMode(rawValue: defaults.integer(forKey: "WatchListOrderMode"))!
                 
             }
             
             set {
                 
-                defaults.set(newValue.rawValue, forKey: "WatchEventListOrderMode")
+                defaults.set(newValue.rawValue, forKey: "WatchListOrderMode")
                 
             }
             

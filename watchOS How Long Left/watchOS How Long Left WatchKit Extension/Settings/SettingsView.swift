@@ -21,43 +21,65 @@ struct SettingsView: View {
             NavigationLink(destination: { CountdownSettingsView() }, label: {
                 
                 
-                getListLabel(rowName: "Countdowns", background: .blue, image: "hourglass", size: 13)
+                getListLabel(rowName: "Countdowns", foreground: .white , background: .orange, image: "hourglass", size: 13)
                 
                 
             })
             
+            
+       
+     
+ 
+            
+            NavigationLink(destination: { EventsSettingsView() }, label: {
+                
+                getListLabel(rowName: "Events", foreground: .white , background: .orange, image: "calendar.day.timeline.trailing", size: 10.5)
+                
+            })
             
             NavigationLink(destination: { EnabledCalendarsView()
                     .environmentObject(AppEnabledCalendarsManager.shared)
             }, label: {
                 
                 
-                getListLabel(rowName: "Calendars", background: .red, image: "calendar", size: 12)
+                getListLabel(rowName: "Calendars", foreground: .white , background: .orange, image: "calendar", size: 12)
                 
             })
             
-     
- 
+                
             
-            NavigationLink(destination: { EventsSettingsView() }, label: {
+            Section {
                 
-                getListLabel(rowName: "Events", background: .orange, image: "calendar.day.timeline.trailing", size: 10.5)
+                NavigationLink(destination: { NicknamesListView() }, label: {
+                    
+                    getListLabel(rowName: "Nicknames", foreground: .white , background: .orange, image: "character.cursor.ibeam", size: 10.5)
+                    
+                })
                 
-            })
+                NavigationLink(destination: { HiddenEventsSettingsView() }, label: {
+                    
+                    getListLabel(rowName: "Hidden Events", foreground: .white , background: .orange, image: "eye.slash.fill", size: 10.5)
+                    
+                })
                 
+            }
 
 
+            Section {
+                
+                NavigationLink(destination: { ComplicationParentView()
+                        .environmentObject(store)
+
+                }, label: {
+                    
+                    getListLabel(rowName: "Complication", foreground: .orange , background: .white, image: "watchface.applewatch.case", size: 13)
+                    
+                })
+                
+            }
             
-            NavigationLink(destination: { ComplicationParentView()
-                    .environmentObject(store)
-
-            }, label: {
-                
-                getListLabel(rowName: "Complication", background: .green, image: "watchface.applewatch.case", size: 13)
-                
-            })
-                
-      
+            
+         
             
             Section {
                 
@@ -65,7 +87,7 @@ struct SettingsView: View {
 
                 }, label: {
                     
-                    getListLabel(rowName: "Debug Log", background: .purple, image: "ant.fill", size: 11)
+                    getListLabel(rowName: "Debug Log", foreground: .white ,background: .purple, image: "ant.fill", size: 11)
                     
                 })
                 
@@ -97,7 +119,7 @@ struct SettingsView: View {
         
     }
     
-    func getListLabel(rowName: String, background: Color, image: String, size: CGFloat) -> some View {
+    func getListLabel(rowName: String, foreground: Color, background: Color, image: String, size: CGFloat) -> some View {
         
         HStack(spacing: 6) {
            
@@ -107,13 +129,14 @@ struct SettingsView: View {
                 .overlay {
                     Image(systemName: image)
                         .font(.system(size: size))
-                
+                        .foregroundColor(foreground)
                         
                 }
             
             Text(rowName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
+                
             Spacer()
             
         }

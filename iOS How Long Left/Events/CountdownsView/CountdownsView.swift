@@ -78,7 +78,7 @@ struct CountdownsView: View {
                     }
                 }
                 .transition(.identity)
-                .animation(.easeInOut(duration: 0.3), value: eventSource.eventSections)
+                .animation(.easeInOut(duration: 0.25), value: eventSource.eventSections)
                 
                 //.opacity(opacity)
                 .onAppear {

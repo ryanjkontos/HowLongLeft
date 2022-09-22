@@ -19,6 +19,7 @@ extension HLLStoredEvent {
 
     @NSManaged public var calendarIdentifier: String?
     @NSManaged public var endDate: Date?
+    @NSManaged public var startDate: Date?
     @NSManaged public var identifier: String?
     @NSManaged public var title: String?
 

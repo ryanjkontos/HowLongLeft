@@ -25,6 +25,7 @@ public class HLLStoredEvent: NSManagedObject, Identifiable {
         
         self.calendarIdentifier = event.calendarID
         self.endDate = event.endDate
+        self.startDate = event.startDate
         
     }
     

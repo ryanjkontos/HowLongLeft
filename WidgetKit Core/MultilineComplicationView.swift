@@ -8,7 +8,8 @@
 
 import SwiftUI
 import WidgetKit
-/*
+
+@available(iOSApplicationExtension 16.0, *)
 struct MultilineComplicationView: View {
     
     var event: HLLEvent?
@@ -18,19 +19,26 @@ struct MultilineComplicationView: View {
     var body: some View {
         
         if let event = event {
-           
-            VStack(alignment: .leading) {
-                Text("\(event.title)")
-                    .fontWeight(.bold)
-                Text("\(event.countdownTypeString(at: date)) in ") + Text(event.countdownDate(at: date), style: .timer)
-                
-                Gauge(value: event.completionFraction(at: date), label: {
+         
+            HStack(alignment: .top, spacing: 0) {
+                VStack(alignment: .leading) {
+                   
+                    Text(event.title)
+                        .font(.headline)
+                        .widgetAccentable()
+                    Text("Ends in")
                     
-                })
-                
-                
+                    
+                    Gauge(value: 0.5, label: {
+                        
+                       
+                        
+                    })
+                    
+                }.frame(maxWidth: .infinity, alignment: .leading)
+               
             }
-            
+          
         } else {
             
             VStack {
@@ -50,10 +58,11 @@ struct MultilineComplicationView: View {
 }
 
 
+@available(iOSApplicationExtension 16.0, *)
 struct MultilineComplicationView_Previews: PreviewProvider {
     static var previews: some View {
         MultilineComplicationView(event: .previewEvent(), date: Date())
             .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
     }
 }
-*/
+

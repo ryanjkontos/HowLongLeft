@@ -19,12 +19,7 @@ class EventContextMenuGenerator {
         
         let pin = UIAction(title: "\(event.isPinned ? "Unpin":"Pin")", image: UIImage(systemName: "\(event.isPinned ? "pin.slash.fill":"pin.fill")")) { action in
              
-            if event.isPinned {
-                EventPinningManager.shared.unpinEvent(event)
-                
-            } else {
-                EventPinningManager.shared.pinEvent(event)
-            }
+            EventPinningManager.shared.togglePinned(event)
             
             HLLEventSource.shared.updateEventPool()
             coordinator?.updateEventSource()

@@ -16,8 +16,8 @@ struct EventsSettingsView: View {
             Section {
                 
                 
-                Toggle("Show All-Day Events", isOn: Binding(get: { HLLDefaults.general.combineDoubles }, set: {
-                    HLLDefaults.general.combineDoubles = $0
+                Toggle("Show All-Day Events", isOn: Binding(get: { HLLDefaults.general.showAllDay }, set: {
+                    HLLDefaults.general.showAllDay = $0
                     HLLEventSource.shared.asyncUpdateEventPool()
                 }))
                 

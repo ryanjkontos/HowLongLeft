@@ -118,6 +118,16 @@ class EventPinningManager {
         
     }
     
+    func togglePinned(_ event: HLLEvent) {
+        
+        if event.isPinned {
+            unpinEvent(event)
+        } else {
+            pinEvent(event)
+        }
+        
+    }
+    
 }
 
 

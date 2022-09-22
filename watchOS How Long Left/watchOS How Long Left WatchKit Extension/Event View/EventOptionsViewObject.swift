@@ -21,13 +21,13 @@ class EventOptionsViewObject: ObservableObject {
         
         get {
             
-            return event.isSelected
+            return event.isPinned
             
         }
         
         set {
         
-            SelectedEventManager.shared.setSelection(newValue, for: event)
+            EventPinningManager.shared.togglePinned(event)
             self.objectWillChange.send()
             
         }
