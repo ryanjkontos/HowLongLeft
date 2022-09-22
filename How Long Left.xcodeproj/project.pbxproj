@@ -4455,7 +4455,7 @@
 				INFOPLIST_FILE = "How Long Left watch App WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left watch";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = How_Long_Left_watch_App_WatchKit_Extension_Project.ComplicationController;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Event access please";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "How Long Left needs access to your calendars to display your events. No data will be collected.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4491,7 +4491,7 @@
 				INFOPLIST_FILE = "How Long Left watch App WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left watch";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = How_Long_Left_watch_App_WatchKit_Extension_Project.ComplicationController;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Event access please";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "How Long Left needs access to your calendars to display your events. No data will be collected.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Ryan Kontos. All rights reserved.";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4584,7 +4584,7 @@
 				INFOPLIST_FILE = "iOS How Long Left/iOS-How-Long-Left-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = Cal;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "How Long Left needs access to your calendars to display your events. No data will be collected.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "NO UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -4622,7 +4622,7 @@
 				INFOPLIST_FILE = "iOS How Long Left/iOS-How-Long-Left-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = Cal;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "How Long Left needs access to your calendars to display your events. No data will be collected.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "NO UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";

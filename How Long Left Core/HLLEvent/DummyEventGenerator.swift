@@ -15,11 +15,14 @@ class DummyEventGenerator {
     
     init() {
         
-       /* if !ProcessInfo.processInfo.arguments.contains("EnableDummyEvents") {
+        if !ProcessInfo.processInfo.arguments.contains("EnableDummyEvents") {
             return
-        } */
+        }
         
 
+        
+        return
+        
         
         var start = Date()
         
