@@ -195,7 +195,7 @@ extension CountdownsViewController {
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection in
             let contentSize = layoutEnvironment.container.effectiveContentSize
             let columns = self.getColumns(from: contentSize.width)
-            let spacing = CGFloat(10)
+            let spacing = CGFloat(15)
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
