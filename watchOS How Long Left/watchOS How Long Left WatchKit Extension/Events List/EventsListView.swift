@@ -180,6 +180,9 @@ struct EventsListView: View {
                 
             } else {
                 
+                
+                
+                
                 HStack {
                     Spacer()
                     Text("No Events")
@@ -189,7 +192,7 @@ struct EventsListView: View {
                 
                 
                     .listRowPlatterColor(.clear)
-                    //.frame(height: geometry.size.height-40)
+                    .frame(height: WKInterfaceDevice.current().screenBounds.size.height-120)
                 
             }
             

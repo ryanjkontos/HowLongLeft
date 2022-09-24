@@ -8,7 +8,6 @@
 
 import Foundation
 import AppKit
-import Dynamic
 
 extension NSWindow {
     @objc func AirQuality_makeKeyAndOrderFront(_ sender: Any) {

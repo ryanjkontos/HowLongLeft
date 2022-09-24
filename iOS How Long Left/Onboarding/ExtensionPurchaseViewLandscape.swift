@@ -8,12 +8,17 @@
 
 import SwiftUI
 import Introspect
+import StoreKit
 
 struct ExtensionPurchaseViewLandscape: View {
     
     @State var vc: UIViewController?
     
+    var type: ExtensionType
     
+    var upcomingEvents = [PreviewEvent.upcomingPreviewEvent(minsStartingIn: 60, color: .systemCyan), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 120, color: .systemGreen), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 180, color: .systemOrange)]
+    
+    var current = PreviewEvent.inProgressPreviewEvent(color: .systemCyan)
     
     var body: some View {
         
@@ -21,7 +26,6 @@ struct ExtensionPurchaseViewLandscape: View {
             
             HStack {
                 
-               
                
                 VStack {
                     
@@ -38,31 +42,37 @@ struct ExtensionPurchaseViewLandscape: View {
                
                 
             }
-          extensionPreviewView
             
+          getPreviewView()
            
             
         }
         .padding(.top)
         .padding(.horizontal, 40)
-        .background {
+       
+        .overlay {
             
-        }
-       // .edgesIgnoringSafeArea(.bottom)
-      /*  .safeAreaInset(edge: .trailing, content: {
-            
-            HStack {
+            VStack {
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        vc?.dismiss(animated: true)
+                    }, label: {
+                        CircleXButtonView()
+                            .padding(.top, 25)
+                            .padding(.trailing, 25)
+                    })
+                    
+                }
+                
                 Spacer()
-                Button(action: {
-                    vc?.dismiss(animated: true)
-                }, label: {
-                    CircleXButtonView()
-                })
                 
             }
-           
+            .edgesIgnoringSafeArea(.all)
             
-        }) */
+        }
+       
         .introspectViewController(customize: { viewController in
             
             vc = viewController
@@ -72,30 +82,45 @@ struct ExtensionPurchaseViewLandscape: View {
         
     }
     
-    var extensionPreviewView: some View {
+    @ViewBuilder func getPreviewView() -> some View {
         
-        Image("W1")
-            .resizable()
-            .scaledToFit()
-            .shadow(radius: 5)
-            .padding(.vertical, 20)
+        switch type {
+        case .widget:
+
+            WidgetsPreviewView(current: current, upcomingEvents: upcomingEvents)
+               
             
+        case .complication:
+            
+            Image("W1")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 185)
+                .aspectRatio(contentMode: .fit)
+                .shadow(radius: 5)
+                .padding(.vertical, 15)
+                //.matchedGeometryEffect(id: "W1", in: ExtensionPurchaseParentView.animation)
+                
+            
+            
+        }
         
     }
     
     var infoHeader: some View {
         
-        VStack(spacing: 15) {
+        VStack(alignment: .center, spacing: 10) {
             
-            Text("Watch Complication")
+            Text(getTitle())
                 .font(.system(size: 41, weight: .bold, design: .default))
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
+                .multilineTextAlignment(.center)
             
-            Text("How Long Left, on your Apple Watch face.")
+            Text(getDescription())
                 .foregroundColor(.secondary)
                 .font(.system(size: 19, weight: .regular, design: .default))
-            
+                .multilineTextAlignment(.center)
         }
         
     }
@@ -120,7 +145,7 @@ struct ExtensionPurchaseViewLandscape: View {
                         
                     }, label: {
                         
-                        Text("Buy")
+                        Text(getPurchaseString())
                             .font(.headline)
                             .frame(maxWidth: 300)
                         
@@ -151,10 +176,52 @@ struct ExtensionPurchaseViewLandscape: View {
         }
         
     }
+    
+    func getTitle() -> String {
+        
+        switch type {
+        case .widget:
+            return "Home Screen Widget"
+        case .complication:
+            return "Watch Complication"
+        }
+        
+    }
+    
+    func getDescription() -> String {
+        
+        switch type {
+        case .widget:
+            return "How Long Left, on your Home Screen."
+        case .complication:
+            return "How Long Left, on your Apple Watch face."
+        }
+        
+    }
+    
+    
+    func getPurchaseString() -> String {
+        
+        var product: Product?
+        
+        switch type {
+        case .widget:
+            product = Store.shared.widgetProduct
+        case .complication:
+            product = Store.shared.complicationProduct
+        }
+        
+        if let product = product {
+            return "Purchase - \(product.displayPrice)"
+        }
+        
+        return "Purchase"
+    }
+    
 }
 
 struct ExtensionPurchaseViewLandscape_Previews: PreviewProvider {
     static var previews: some View {
-        ExtensionPurchaseViewLandscape()
+        ExtensionPurchaseViewLandscape(type: .complication)
     }
 }

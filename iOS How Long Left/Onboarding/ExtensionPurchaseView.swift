@@ -233,9 +233,9 @@ struct ExtensionPurchaseView: View, Sendable {
         
         switch type {
         case .widget:
-            product = store.widgetProduct
+            product = Store.shared.widgetProduct
         case .complication:
-            product = store.complicationProduct
+            product = Store.shared.complicationProduct
         }
         
         if let product = product {

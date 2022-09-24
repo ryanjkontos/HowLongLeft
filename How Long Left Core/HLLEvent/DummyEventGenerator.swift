@@ -21,9 +21,6 @@ class DummyEventGenerator {
         
 
         
-        return
-        
-        
         var start = Date()
         
         var array = [HLLEvent]()

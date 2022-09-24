@@ -95,37 +95,36 @@ class NicknameManager: ObservableObject {
     
     func saveNicknameObject(_ object: NicknameObject) {
         
-        DispatchQueue.main.async {
-            
-            if let existing = self.entities.first(where: { $0.originalName == object.originalName }) {
-                existing.nickname = object.nickname
-            } else {
-                let entity = NSEntityDescription.insertNewObject(forEntityName: "NicknameEntity", into: HLLDataModel.shared.persistentContainer.viewContext) as! NicknameEntity
-                entity.originalName = object.originalName
-                entity.nickname = object.nickname
-            }
-            
-            HLLDataModel.shared.save()
-            self.objectWillChange.send()
-            
-            HLLEventSource.shared.asyncUpdateEventPool()
-            
+
+        if let existing = self.entities.first(where: { $0.originalName == object.originalName }) {
+            existing.nickname = object.nickname
+        } else {
+            let entity = NSEntityDescription.insertNewObject(forEntityName: "NicknameEntity", into: HLLDataModel.shared.persistentContainer.viewContext) as! NicknameEntity
+            entity.originalName = object.originalName
+            entity.nickname = object.nickname
         }
-        
+            
+        loadNicknames()
+        HLLDataModel.shared.save()
+        HLLEventSource.shared.updateEventPool()
+        self.objectWillChange.send()
         
     }
-    
 
     func deleteNicknameObject(_ object: NicknameObject) {
         
         if let existing = self.entities.first(where: { $0.originalName == object.originalName }) {
             HLLDataModel.shared.persistentContainer.viewContext.delete(existing)
             HLLDataModel.shared.save()
+            loadNicknames()
+           
         }
         
     }
 
-
+    func deleteNicknameObjects(_ objects: [NicknameObject]) {
+        objects.forEach({ deleteNicknameObject($0) })
+    }
     
     @objc func contextSaved() {
         

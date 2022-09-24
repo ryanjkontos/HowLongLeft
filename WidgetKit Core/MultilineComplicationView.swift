@@ -8,7 +8,7 @@
 
 import SwiftUI
 import WidgetKit
-
+/*
 @available(iOSApplicationExtension 16.0, *)
 struct MultilineComplicationView: View {
     
@@ -66,3 +66,4 @@ struct MultilineComplicationView_Previews: PreviewProvider {
     }
 }
 
+*/

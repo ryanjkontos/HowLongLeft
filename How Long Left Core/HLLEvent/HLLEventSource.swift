@@ -64,7 +64,7 @@ class HLLEventSource {
             eventPool = decoded
         } */
         
-        HLLDefaults.general.showAllDay = false
+       // HLLDefaults.general.showAllDay = false
         
         print("Init es")
         
@@ -205,7 +205,7 @@ class HLLEventSource {
             FollowingOccurenceStore.shared.updateNextOccurenceDictionary(events: add)
         
  
-            HLLHiddenEventStore.shared.updateHiddenEvents(from: add)
+            HLLStoredEventManager.shared.updateStoredEvents(from: add)
             
             var key = [Date]()
             
@@ -235,7 +235,7 @@ class HLLEventSource {
         
         add = NicknameManager.shared.addNicknames(for: add)
         
-        self.eventPool = add
+        self.eventPool = Array(Set(add))
         
         /*if let encoded = try? JSONEncoder().encode(add) {
           //  HLLDefaults.defaults.set(encoded, forKey: "EncodedEventPool")
@@ -337,7 +337,7 @@ class HLLEventSource {
         
         #endif
          
-         let ids = HLLHiddenEventStore.shared.hiddenEvents.compactMap({$0.identifier})
+         let ids = HLLStoredEventManager.shared.hiddenEvents.compactMap({$0.identifier})
         
         self.eventPool = eventPool.filter({ event in
                    
@@ -376,7 +376,7 @@ class HLLEventSource {
     }
     
     func getCalendarIDS() -> [String] {
-        return getCalendars().map { $0.calendarIdentifier }
+        return getCalendars().map { $0.title }
         
     }
     
@@ -396,7 +396,7 @@ class HLLEventSource {
             
             if event.startDate.timeIntervalSince(end) < 0, event.endDate.timeIntervalSince(start) > 0 {
                 
-                if HLLHiddenEventStore.shared.hiddenEvents.contains(where: { $0.identifier == event.persistentIdentifier }) {
+                if HLLStoredEventManager.shared.hiddenEvents.contains(where: { $0.identifier == event.persistentIdentifier }) {
                     
                     if !includeHidden {
                         
@@ -477,9 +477,15 @@ class HLLEventSource {
             
         calendarEvents = eventStore.events(matching: predicate)
 
-     
+        var targets = [EKEvent]()
+        
+        
             
         for event in calendarEvents {
+            
+            if event.title == "Systems Programming" {
+                targets.append(event)
+            }
             
             returnArray.append(HLLEvent(event))
         }
@@ -728,7 +734,7 @@ class HLLEventSource {
         
         for event in self.eventPool {
             
-            if event.completionStatus == .current && (!HLLHiddenEventStore.shared.isHidden(event: event) || includeHidden)  {
+            if event.completionStatus == .current && (!HLLStoredEventManager.shared.isHidden(event: event) || includeHidden)  {
                 
   
                 if (includeSelected == false && event.isSelected) {
@@ -988,7 +994,15 @@ class HLLEventSource {
         
     }
     
-    func getAllEventsGroupedByDate() -> [DateOfEvents] {
+    func getAllEventsGroupedByDate(_ excludeIDs: [String]? = nil) -> [DateOfEvents] {
+        
+        var events = eventPool
+        
+        if let excludeIDs = excludeIDs {
+            events.removeAll(where: { event in
+                excludeIDs.contains(event.persistentIdentifier)
+            })
+        }
         
         let dict = Dictionary(grouping: eventPool, by: { $0.startDate.startOfDay() })
         
@@ -997,6 +1011,8 @@ class HLLEventSource {
         for item in dict {
             returnArray.append(DateOfEvents(date: item.key, events: item.value))
         }
+        
+        returnArray = returnArray.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
         
         return returnArray
         

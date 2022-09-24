@@ -21,9 +21,7 @@ class EventChangeMonitor {
     private var statusDict = [HLLEvent: HLLEvent.CompletionStatus]()
     
     init() {
-        
         setupTimer()
-        
     }
     
     func addObserver(_ newObserver: EventChangeObserver) {
@@ -38,23 +36,22 @@ class EventChangeMonitor {
         
         if (prev != current) || statusDict != generateStatusDict(current) {
             
-           // print("Current and previous mismatch")
+            print("Current and previous mismatch")
             
-            observers.forEach({ observer in
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                
+                
+                self.observers.forEach({ observer in
+                    
                     observer.eventsChanged()
-                }
-            })
-            
-            timer?.invalidate()
-            
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) {
-                self.setupTimer()
+                    
+                })
+                
+                
+             
+                self.statusDict = self.generateStatusDict(current)
+                self.previousEventPool = current
             }
-            
-            statusDict = generateStatusDict(current)
-            previousEventPool = current
-            
         } else {
            // print("Current and previous match")
         }
@@ -80,15 +77,15 @@ class EventChangeMonitor {
         
         
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.main.async {
             let timer = Timer(timeInterval: 1, repeats: true) { _ in
-                DispatchQueue.global(qos: .background).async {
+                
                     self.run()
-                }
+                
             }
-            let runLoop = RunLoop.current
+            let runLoop = RunLoop.main
             runLoop.add(timer, forMode: .common)
-            runLoop.run()
+            self.run()
         }
         
     }

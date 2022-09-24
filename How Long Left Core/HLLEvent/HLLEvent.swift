@@ -61,9 +61,9 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     var isSelected: Bool { SelectedEventManager.shared.selectedEvent == self }
     
     var isPinned: Bool {
-        HLLDefaults.general.pinnedEventIdentifiers.contains(where: { $0 == persistentIdentifier
-            
-        } ) }
+        //HLLDefaults.general.pinnedEventIdentifiers.contains(where: { $0 == persistentIdentifier})
+        HLLStoredEventManager.shared.isPinned(event: self)
+    }
     
     var countdownTypeString: String { countdownTypeString() }
     
@@ -71,7 +71,7 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var infoIdentifier: String { "\(originalTitle) \(startDate) \(endDate) \(calendarID ?? "nil") \(location ?? "nil")" }
     
-    var id: String { persistentIdentifier }
+    var id: String { infoIdentifier }
     
     init(_ event: EKEvent) {
         title = event.title
@@ -81,7 +81,9 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
         isAllDay = event.isAllDay
         location = event.location
         calendarID = event.calendar?.calendarIdentifier
-        eventIdentifier = event.eventIdentifier
+        if event.hasRecurrenceRules == false {
+            eventIdentifier = event.eventIdentifier
+        }
     }
     
     init(title inputTitle: String, start inputStart: Date, end inputEnd: Date, location inputLocation: String?) {
@@ -144,9 +146,6 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     }
     
     var userActivity: NSUserActivity {
-        /** Create an 'NSUserActivity' from the photo model.
-            Note: This is used to create a second scene as an inspector.
-        */
         let userActivity = NSUserActivity(activityType: UserActivity.viewEventKey)
         userActivity.userInfo = ["EventID": persistentIdentifier]
         userActivity.targetContentIdentifier = persistentIdentifier

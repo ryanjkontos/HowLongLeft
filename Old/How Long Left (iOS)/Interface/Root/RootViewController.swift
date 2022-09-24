@@ -125,9 +125,9 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
         let settings = storyboard.instantiateViewController(withIdentifier: "SettingsView") as! SettingsTableViewController
               
                
-        self.currentVC = UINavigationController(rootViewController: current)
-        self.upcomingVC = UINavigationController(rootViewController: upcoming)
-        self.settingsVC = UINavigationController(rootViewController: settings)
+        self.currentVC = HLLNavigationController(rootViewController: current)
+        self.upcomingVC = HLLNavigationController(rootViewController: upcoming)
+        self.settingsVC = HLLNavigationController(rootViewController: settings)
                
         let currentImage = UIImage(named: "CountdownGylph")
         let upcomingImage = UIImage(named: "UpcomingEventsGlyph")
@@ -664,6 +664,3 @@ enum TabBarPage: Int {
     
 }
 
-protocol ScrollUpDelegate {
-    func scrollUp()
-}

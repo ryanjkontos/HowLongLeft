@@ -11,24 +11,9 @@ import Foundation
 import CoreData
 
 //@objc(HLLHiddenEvent)
-public class HLLStoredEvent: NSManagedObject, Identifiable {
+/*public class HLLStoredEvent: NSManagedObject, Identifiable {
     
-    func setup(from event: HLLEvent) {
-        
-        self.title = event.title
-        
-        if let ekID = event.eventIdentifier {
-           self.identifier = ekID
-        } else {
-            self.identifier = event.persistentIdentifier
-        }
-        
-        self.calendarIdentifier = event.calendarID
-        self.endDate = event.endDate
-        self.startDate = event.startDate
-        
-    }
-    
-    public var id: String { return identifier ?? "" }
+
 
 }
+*/

@@ -26,8 +26,6 @@ class EventPinningManager {
                     
                 let hllEvent = HLLEvent(event)
                 self.pinEvent(hllEvent)
-                
-               
                     
             } else {
                 
@@ -72,7 +70,10 @@ class EventPinningManager {
     
     func pinEvent(_ inputEvent: HLLEvent) {
         
-        print("Pinning \(inputEvent.title)")
+        HLLStoredEventManager.shared.pinEvent(inputEvent)
+        HLLEventSource.shared.asyncUpdateEventPool()
+        
+      /*  print("Pinning \(inputEvent.title)")
         
         var event = inputEvent
         
@@ -94,14 +95,14 @@ class EventPinningManager {
             HLLDefaults.general.pinnedEventIdentifiers.append(inputEvent.persistentIdentifier)
             }
                        
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.asyncUpdateEventPool() */
         
         
         }
     
     func unpinEvent(_ event: HLLEvent) {
 
-        print("Unpinning \(event.title)")
+      /*  print("Unpinning \(event.title)")
         
         if SelectedEventManager.shared.selectedEvent == event {
             SelectedEventManager.shared.selectedEvent = nil
@@ -111,8 +112,9 @@ class EventPinningManager {
         
         HLLDefaults.general.pinnedEventIdentifiers.removeAll { $0 == event.persistentIdentifier }
                      
-        print("Count at end: \(HLLDefaults.general.pinnedEventIdentifiers.count)")
+        print("Count at end: \(HLLDefaults.general.pinnedEventIdentifiers.count)") */
         
+        HLLStoredEventManager.shared.unpinEvent(event)
         HLLEventSource.shared.asyncUpdateEventPool()
         
         

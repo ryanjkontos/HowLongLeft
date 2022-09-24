@@ -72,11 +72,11 @@ import CoreData
             let upcomingImage = UIImage(named: "UpcomingEventsGlyph")
             let settingsImage = UIImage(named: "SettingsGlyph")
             
-            let currentNavigationController = UINavigationController(rootViewController: currentViewController)
+            let currentNavigationController = HLLNavigationController(rootViewController: currentViewController)
         
-            let upcomingNavigationController = UINavigationController(rootViewController: upcomingViewController)
+            let upcomingNavigationController = HLLNavigationController(rootViewController: upcomingViewController)
                
-            let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+            let settingsNavigationController = HLLNavigationController(rootViewController: settingsViewController)
             
             currentNavigationController.tabBarItem = UITabBarItem(title: "Current", image: currentImage, selectedImage: currentImage)
             

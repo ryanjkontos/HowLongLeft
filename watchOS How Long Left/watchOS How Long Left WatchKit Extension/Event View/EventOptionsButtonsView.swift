@@ -34,7 +34,7 @@ struct EventOptionsButtonsView: View {
             
             Button(action: {
                 
-                HLLHiddenEventStore.shared.hideEvent(dataObject.event)
+                HLLStoredEventManager.shared.hideEvent(dataObject.event)
                 
                 self.presenting = false
                 

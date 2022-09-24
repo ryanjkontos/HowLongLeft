@@ -10,13 +10,21 @@ import SwiftUI
 
 struct ExtensionPurchaseParentView: View {
     
-    @Namespace static var animation
+    var type: ExtensionType
     
     var body: some View {
         
-        
-        
-            ExtensionPurchaseView(type: .complication, presentSheet: .constant(false))
+        GeometryReader { proxy in
+            
+            if proxy.size.width > proxy.size.height {
+                ExtensionPurchaseViewLandscape(type: type)
+            } else {
+                ExtensionPurchaseView(type: type, presentSheet: .constant(false))
+            }
+            
+            
+            
+        }
            
          
     }
@@ -24,6 +32,6 @@ struct ExtensionPurchaseParentView: View {
 
 struct ExtensionPurchaseParentView_Previews: PreviewProvider {
     static var previews: some View {
-        ExtensionPurchaseParentView()
+        ExtensionPurchaseParentView(type: .complication)
     }
 }

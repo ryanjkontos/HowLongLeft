@@ -1955,7 +1955,7 @@ class HLLDefaults {
                    
                    get {
                        
-                       if let array =  defaults.stringArray(forKey: "CountdownTabSectionOrder") {
+                       if let array =  defaults.array(forKey: "CountdownTabSectionOrdering") as? [Int] {
                            return array.map({ return CountdownTabSection(rawValue: $0)! })
                        }
                        
@@ -1965,7 +1965,7 @@ class HLLDefaults {
                    
                    set (to) {
                        
-                       defaults.set(to.map({$0.rawValue}), forKey: "CountdownTabSectionOrder")
+                       defaults.set(to.map({$0.rawValue}), forKey: "CountdownTabSectionOrdering")
                        
                    }
                    
@@ -2014,11 +2014,23 @@ class HLLDefaults {
     
 }
 
-enum CountdownTabSection: String {
+enum CountdownTabSection: Int {
     
-    case pinned = "Pinned"
-    case inProgress = "In Progress"
-    case upcoming = "Upcoming"
+    case pinned
+    case inProgress
+    case upcoming
+    
+    var displayString: String {
+        
+        switch self {
+        case .pinned:
+            return "Pinned"
+        case .inProgress:
+            return "In-Progress"
+        case .upcoming:
+            return "Upcoming"
+        }
+    }
     
 }
 

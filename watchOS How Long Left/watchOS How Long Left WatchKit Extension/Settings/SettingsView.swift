@@ -50,15 +50,22 @@ struct SettingsView: View {
             
             Section {
                 
-                NavigationLink(destination: { NicknamesListView() }, label: {
+                
+                NavigationLink(destination: { PinnedEventsSettingsView() }, label: {
                     
-                    getListLabel(rowName: "Nicknames", foreground: .white , background: .orange, image: "character.cursor.ibeam", size: 10.5)
+                    getListLabel(rowName: "Pinned Events", foreground: .white , background: .orange, image: "pin.fill", size: 10.5)
                     
                 })
                 
                 NavigationLink(destination: { HiddenEventsSettingsView() }, label: {
                     
                     getListLabel(rowName: "Hidden Events", foreground: .white , background: .orange, image: "eye.slash.fill", size: 10.5)
+                    
+                })
+                
+                NavigationLink(destination: { NicknamesListView() }, label: {
+                    
+                    getListLabel(rowName: "Nicknames", foreground: .white , background: .orange, image: "character.cursor.ibeam", size: 10.5)
                     
                 })
                 

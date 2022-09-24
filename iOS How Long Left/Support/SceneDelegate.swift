@@ -25,13 +25,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        // let contentView = ContentView()
 
              // Use a UIHostingController as window root view controller.
+        
         if let windowScene = scene as? UIWindowScene {
+            
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            
+            window.tintColor = .systemOrange
+            
+            window.rootViewController = HLLSplitViewController(style: .doubleColumn)
+           
+            
             self.window = window
+            
+            
             window.makeKeyAndVisible()
         }
-        
         Task {
         
             let _ = HLLTimelineGenerator(type: .complication).generateHLLTimeline(forState: .normal)

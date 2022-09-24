@@ -13,14 +13,24 @@ import CoreData
 
 extension HLLStoredEvent {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<HLLStoredEvent> {
-        return NSFetchRequest<HLLStoredEvent>(entityName: "HLLStoredEvent")
-    }
 
-    @NSManaged public var calendarIdentifier: String?
-    @NSManaged public var endDate: Date?
-    @NSManaged public var startDate: Date?
-    @NSManaged public var identifier: String?
-    @NSManaged public var title: String?
+
+    func setup(from event: HLLEvent) {
+        
+        self.title = event.title
+        
+        if let ekID = event.eventIdentifier {
+           self.identifier = ekID
+        } else {
+            self.identifier = event.persistentIdentifier
+        }
+        
+        self.calendarIdentifier = event.calendarID
+        self.endDate = event.endDate
+        self.startDate = event.startDate
+        
+    }
+    
+    public var id: String { return identifier ?? "" }
 
 }

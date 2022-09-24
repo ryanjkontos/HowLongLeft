@@ -59,7 +59,7 @@ struct Provider: IntentTimelineProvider {
         
         #endif
         
-        HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
+        HLLStoredEventManager.shared.loadStoredEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
         
     
@@ -172,7 +172,7 @@ struct HLLWidgets: WidgetBundle {
        CountdownAndUpcomingListWidget()
        
       
-        CountdownComplication()
+       // CountdownComplication()
        
        
    
@@ -187,7 +187,7 @@ struct HLLWidgets: WidgetBundle {
 
 
 
-@available(iOSApplicationExtension 16.0, *)
+/*@available(iOSApplicationExtension 16.0, *)
 struct CountdownComplication: Widget {
     
    
@@ -207,7 +207,7 @@ struct CountdownComplication: Widget {
         
     }
 
-}
+} */
 
 #if os(iOS)
 

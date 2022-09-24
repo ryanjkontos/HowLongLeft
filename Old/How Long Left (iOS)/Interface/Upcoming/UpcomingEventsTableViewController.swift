@@ -236,7 +236,7 @@ class UpcomingEventsTableViewController: UIViewController, UITableViewDelegate, 
                 
                 if push == false {
                     
-                    let nav = UINavigationController(rootViewController: viewController)
+                    let nav = HLLNavigationController(rootViewController: viewController)
                     nav.navigationBar.isHidden = true
                     split.viewControllers = [self, nav]
                     

@@ -51,7 +51,7 @@ class HLLTimelineGenerator {
         
         #endif
         
-        var events = Array(HLLEventSource.shared.eventPool.filter({HLLHiddenEventStore.shared.isHidden(event: $0) == false})).filter({ $0.completionStatus != .done })
+        var events = Array(HLLEventSource.shared.eventPool.filter({HLLStoredEventManager.shared.isHidden(event: $0) == false})).filter({ $0.completionStatus != .done })
        
         if let config = timelineConfiguration {
             
@@ -89,7 +89,7 @@ class HLLTimelineGenerator {
             entryDates.insert(event.startDate)
             entryDates.insert(event.endDate)
             
-            if event.completionStatus == .done || HLLHiddenEventStore.shared.isHidden(event: event) {
+            if event.completionStatus == .done || HLLStoredEventManager.shared.isHidden(event: event) {
                 
                 if let index = events.firstIndex(of: event) {
                     

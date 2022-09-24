@@ -21,7 +21,6 @@ class HLLDataModel {
         let storeURL = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
            
-           
         let id = "iCloud.ryankontos.howlongleft"
         
         let options = NSPersistentCloudKitContainerOptions(containerIdentifier: id)
