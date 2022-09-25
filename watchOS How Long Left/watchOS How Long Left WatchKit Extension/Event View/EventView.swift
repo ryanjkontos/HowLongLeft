@@ -13,11 +13,13 @@ struct EventView: View {
     
     var event: HLLEvent
     
-    var openOnOptions: Bool
+    
     
     @State var selection: Int = 0
         
     @Binding var open: HLLEvent?
+    
+    var showToolbar: Bool
     
     @Environment(\.scenePhase) private var scenePhase
     
@@ -42,7 +44,7 @@ struct EventView: View {
 
             TabView(selection: $selection) {
                 
-                EventInfoView(event: event, presenting: passPresentingBinding, scrollToOptions: openOnOptions)
+                EventInfoView(event: event, presenting: passPresentingBinding)
                     .tag(0)
                 EventTimerView(event: event)
                     .tag(1)
@@ -53,15 +55,19 @@ struct EventView: View {
             
             ToolbarItem(placement: .cancellationAction, content: {
                 
-                Button(action: {
+                if showToolbar {
                     
-                    open = nil
+                    Button(action: {
+                        
+                        open = nil
+                        
+                    }, label: {
+                        
+                        Text("Done")
+                        
+                    })
                     
-                }, label: {
-                    
-                    Text("Close")
-                    
-                })
+                }
                 
             })
             
@@ -72,6 +78,6 @@ struct EventView: View {
 
 struct EventView_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(event: .previewEvent(), openOnOptions: false, open: .constant(nil))
+        EventView(event: .previewEvent(), open: .constant(nil), showToolbar: true)
     }
 }

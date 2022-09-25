@@ -13,8 +13,6 @@ struct CountdownCard: View {
     var event: HLLEvent
     var gen = CountdownStringGenerator()
     
-    var liveUpdates: Bool
-    
     var date: Date
     
     @Environment(\.scenePhase) private var scenePhase
@@ -63,7 +61,7 @@ struct CountdownCard: View {
     
     func getTimerText() -> String {
         
-        var showSeconds = liveUpdates
+        var showSeconds = true
         
         if HLLDefaults.watch.showSeconds == false {
             showSeconds = false
@@ -76,6 +74,6 @@ struct CountdownCard: View {
 
 struct CountdownCard_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownCard(event: .previewEvent(), liveUpdates: true, date: Date())
+        CountdownCard(event: .previewEvent(), date: Date())
     }
 }

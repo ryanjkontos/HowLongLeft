@@ -115,7 +115,7 @@ struct SettingsView: View {
                     
                 }, label: {
                     
-                    Text("Close")
+                    Text("Done")
                     
                 })
                 

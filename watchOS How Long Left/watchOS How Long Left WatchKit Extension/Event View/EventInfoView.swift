@@ -22,10 +22,8 @@ struct EventInfoView: View {
     
     let gen = CountdownStringGenerator()
     
-    var scrollToOptions: Bool
     
-    
-    init(event inputEvent: HLLEvent, presenting: Binding<Bool>, scrollToOptions: Bool) {
+    init(event inputEvent: HLLEvent, presenting: Binding<Bool>) {
        
         self.info = LiveEventInfo(event: inputEvent, configuration: [.location, .start, .end, .duration, .calendar])
      
@@ -33,7 +31,7 @@ struct EventInfoView: View {
         
         _presenting = presenting
         
-        self.scrollToOptions = scrollToOptions
+
     }
     
     var body: some View {
@@ -201,7 +199,7 @@ struct EventInfoView: View {
 struct EventInfoView_Previews: PreviewProvider {
     static var previews: some View {
             NavigationView {
-                EventInfoView(event: .previewEvent(), presenting: .constant(false), scrollToOptions: false)
+                EventInfoView(event: .previewEvent(), presenting: .constant(false))
             }
         
     }

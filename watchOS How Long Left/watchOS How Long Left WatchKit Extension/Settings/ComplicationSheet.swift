@@ -18,7 +18,7 @@ struct ComplicationSheet: View {
                 
                 ToolbarItem(placement: .cancellationAction, content: {
                     
-                    Button(action: { show = false }, label: { Text("Close") })
+                    Button(action: { show = false }, label: { Text("Done") })
                     
                 })
                 

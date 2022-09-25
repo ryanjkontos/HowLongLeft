@@ -30,6 +30,8 @@ struct EventsListView: View {
     
     @State var showOptions = false
     
+    @State var showMore = false
+    
   //  @State var location = false
  //   @State var bar = false
     
@@ -71,7 +73,7 @@ struct EventsListView: View {
    
         .sheet(item: $sheetEvent) { event in
             
-            EventView(event: event, openOnOptions: showOptions, open: $sheetEvent)
+            EventView(event: event, open: $sheetEvent, showToolbar: true)
             
         }
         
@@ -79,6 +81,12 @@ struct EventsListView: View {
             NavigationView{
             SettingsView(open: $showSettings)
                 .environmentObject(store)
+            }
+        }
+        
+        .sheet(isPresented: $showMore) {
+            NavigationView{
+                MoreEventsList(openSheet: $showMore)
             }
         }
        
@@ -164,7 +172,27 @@ struct EventsListView: View {
                             */
                            
                             
+                            
                         }
+                        
+                        if sectionIndex == groups.count-1 {
+                            
+                            Button(action: {
+                                
+                                showMore.toggle()
+                                
+                            }, label: {
+                                
+                                HStack {
+                                    Spacer()
+                                    Text("More Events...")
+                                    Spacer()
+                                }
+                                
+                            })
+                            
+                        }
+                        
                         
                     }, header: {
                         
@@ -187,6 +215,9 @@ struct EventsListView: View {
                 }
                 
                 .animation(Animation.easeInOut(duration: 0.5), value: groups)
+                
+                
+               
                 
             } else {
                 
@@ -239,7 +270,7 @@ struct EventsListView: View {
             MainEventCard(event: event, liveUpdates: true, date: date)
                 .frame(height: height*CGFloat.watchDyanamic(legacy: 0.83, modern: 0.79))
         } else if event.completionStatus(at: date) == .current || HLLDefaults.watch.upcomingMode == .withCountdown {
-            CountdownCard(event: event, liveUpdates: true, date: date)
+            CountdownCard(event: event,date: date)
                 
         } else {
             EventCard(event: event, liveUpdates: true)

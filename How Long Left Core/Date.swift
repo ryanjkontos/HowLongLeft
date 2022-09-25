@@ -82,7 +82,9 @@ extension Date {
     
     func daysUntil(at date: Date = Date()) -> Int {
         
-        return Int(self.startOfDay().timeIntervalSince(date.startOfDay()))/60/60/24
+        let cal = Calendar.current
+        
+        return cal.numberOfDaysBetween(date, and: self)
         
     }
     

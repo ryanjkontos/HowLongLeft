@@ -694,7 +694,7 @@ class HLLEventSource {
         }
         
         if HLLDefaults.statusItem.eventMode == .upcomingOnly {
-            return getUpcomingEventsFromNextDayWithEvents().first
+            return getUpcomingEventsFromNextDayWithEvents().1.first
         }
         
         let current = getCurrentEvents(includeHidden: false).first
@@ -703,7 +703,7 @@ class HLLEventSource {
             return current
         }
           
-        let upcoming = getUpcomingEventsFromNextDayWithEvents().first
+        let upcoming = getUpcomingEventsFromNextDayWithEvents().1.first
         
         let merged = [current, upcoming].compactMap({return $0})
         
@@ -816,7 +816,7 @@ class HLLEventSource {
     
     func getNextUpcomingEvent() -> HLLEvent? {
         
-        return getUpcomingEventsFromNextDayWithEvents().first
+        return getUpcomingEventsFromNextDayWithEvents().1.first
         
     }
     
@@ -857,7 +857,7 @@ class HLLEventSource {
         events.append(contentsOf: getCurrentEvents(includeHidden: true))
         
         if includeUpcoming {
-        events.append(contentsOf: getUpcomingEventsFromNextDayWithEvents(includeStarted: false))
+            events.append(contentsOf: getUpcomingEventsFromNextDayWithEvents(includeStarted: false).1)
         }
          
         if chronological {
@@ -870,7 +870,7 @@ class HLLEventSource {
         
     }
 
-    func getUpcomingEventsFromNextDayWithEvents(includeStarted: Bool = false, date: Date = Date()) -> [HLLEvent] {
+    func getUpcomingEventsFromNextDayWithEvents(includeStarted: Bool = false, date: Date = Date()) -> (Date, [HLLEvent]) {
         
         var upEvents = [HLLEvent]()
         var returnEvents = [HLLEvent]()
@@ -908,7 +908,7 @@ class HLLEventSource {
         }
       
         
-        return returnEvents.sorted(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
+        return (loopStart.startOfDay(), returnEvents.sorted(by: { $0.startDate.compare($1.startDate) == .orderedAscending }))
         
     }
     

@@ -91,15 +91,15 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
         }
         
         var returnArray = [TitledEventGroup]()
-        var all = HLLEventSource.shared.eventPool
+        let all = HLLEventSource.shared.eventPool.filter({$0.completionStatus(at: date) != .done})
         
-       
+        let upcomingData =  HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents(date: date)
        
         var upcoming = [HLLEvent]()
         var current = [HLLEvent]()
         
         if !(HLLDefaults.watch.upcomingMode == .off) {
-            upcoming = HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents(date: date)
+            upcoming = upcomingData.1
             upcoming.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
         }
         
@@ -108,10 +108,13 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             current.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
         }
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
+        var pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
         current.removeAll(where: { pinned.contains($0) })
         upcoming.removeAll(where: { pinned.contains($0) })
         
+        //pinned.removeAll(where: {$0.completionStatus(at: date) == .done})
+        
+        let upcomingText = upcomingData.0.userFriendlyRelativeString(at: date)
         
         switch HLLDefaults.watch.listOrderMode {
             
@@ -125,6 +128,8 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             
             returnArray.append(TitledEventGroup(events: chronoArray))
             
+
+            
         case .currentFirst:
             
             if !current.isEmpty {
@@ -132,13 +137,13 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             }
             
             if !upcoming.isEmpty {
-                returnArray.append(TitledEventGroup(title: "Upcoming", events: upcoming))
+                returnArray.append(TitledEventGroup(title: "Upcoming \(upcomingText)", events: upcoming))
             }
             
         case .upcomingFirst:
             
             if !upcoming.isEmpty {
-                returnArray.append(TitledEventGroup(title: "Upcoming", events: upcoming))
+                returnArray.append(TitledEventGroup(title: "Upcoming \(upcomingText)", events: upcoming))
             }
             
             if !current.isEmpty {
