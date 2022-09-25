@@ -67,7 +67,7 @@ struct EventOptionsButtonsView: View {
                 
                 VStack(alignment: .leading) {
                    
-                    Text("Disable Calendar")
+                    Text("Hide Calendar")
                     
                     
                 }

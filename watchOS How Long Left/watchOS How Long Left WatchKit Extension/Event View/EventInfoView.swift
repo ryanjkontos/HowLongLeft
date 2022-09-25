@@ -111,13 +111,18 @@ struct EventInfoView: View {
                     }))
                         .tint(.orange)
                     }
+                .onDisappear {
+                    dataObject.update()
+                }
+                
+                
                 })
             
             
         }
         .onAppear {
             
-            dataObject.update()
+            //
             
         }
                 

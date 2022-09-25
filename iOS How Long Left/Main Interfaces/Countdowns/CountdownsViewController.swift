@@ -457,6 +457,10 @@ extension CountdownsViewController: EventChangeObserver {
 }
 
 extension CountdownsViewController: EventContextMenuDelegate {
+    func closeEventView(event: HLLEvent) {
+        return
+    }
+    
     
     func nicknameEvent(event: HLLEvent) {
         let object = NicknameObject.getObject(for: event)
@@ -473,7 +477,17 @@ extension CountdownsViewController: ScrollUpDelegate {
     
     
     func scrollUp() {
-        collectionView.setContentOffset(CGPoint(x: 0, y: -biggestTopSafeAreaInset), animated: true)
+        
+        if let c = self.navigationController?.viewControllers.count, c > 1 {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        
+        let offset = CGPoint(
+                x: -collectionView.adjustedContentInset.left,
+                y: -collectionView.adjustedContentInset.top)
+        
+        collectionView.setContentOffset(offset, animated: true)
     }
     
  

@@ -113,11 +113,11 @@ class CountdownCellView: RepesentedEventView {
         timerLabel.textColor = .white
         timerLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 28, weight: .medium)
         
-        /*timerLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
+        timerLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
         timerLabel.layer.shadowOpacity = CountdownCellView.shadowOpacity
         timerLabel.layer.shadowRadius = CountdownCellView.shadowRadius
         timerLabel.layer.shadowColor = UIColor.black.cgColor
-        timerLabel.layer.shouldRasterize = true*/
+        timerLabel.layer.shouldRasterize = true
         
         
         addSubview(timerLabel)

@@ -32,6 +32,8 @@ class EventContextMenuGenerator {
             
             HLLStoredEventManager.shared.hideEvent(event)
             
+            delegate?.closeEventView(event: event)
+            
         }
         
         items.append(hide)
@@ -48,14 +50,17 @@ class EventContextMenuGenerator {
         
         items.append(nickname)
         
-        let disable = UIAction(title: "Disable Calendar", subtitle: event.calendar?.title,image: UIImage(systemName: "calendar")) { action in
+        let disable = UIAction(title: "Hide Calendar", subtitle: event.calendar?.title,image: UIImage(systemName: "calendar")) { action in
             
                 
                 CalendarDefaultsModifier.shared.setDisabled(calendar: event.calendar!)
+                delegate?.closeEventView(event: event)
                 HLLEventSource.shared.updateEventPool()
             
             
         }
+        
+        
         
         items.append(disable)
 

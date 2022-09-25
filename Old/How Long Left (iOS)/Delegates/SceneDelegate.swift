@@ -77,7 +77,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
        
        
-        WidgetUpdateHandler.shared.updateWidget()
+     //   WidgetUpdateHandler.shared.updateWidget()
        
         
         // Called when the scene has moved from an inactive state to an active state.

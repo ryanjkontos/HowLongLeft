@@ -170,8 +170,10 @@ extension SidebarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.section == 0 else { return }
         
-        (tabController as? HLLTabViewController)?.switchToTab(HLLAppTab(rawValue: indexPath.row)!)
+        let controller = tabController as! HLLTabViewController
         
+        controller.switchToTab(HLLAppTab(rawValue: indexPath.row)!)
+        let _ = controller.shouldSelect(newIndex: indexPath.row)
         //splitViewController?.setViewController(secondaryViewControllers[indexPath.row], for: .secondary)
     }
 

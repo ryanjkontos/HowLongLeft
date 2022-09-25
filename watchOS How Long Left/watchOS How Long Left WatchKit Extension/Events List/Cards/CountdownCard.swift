@@ -25,11 +25,12 @@ struct CountdownCard: View {
             
             VStack(alignment: .leading, spacing: 0) {
   
-
-                    Text("\(event.title) \(event.countdownTypeString)")
+                HStack(spacing:0) {
+                    Text("\(event.title)")
+                        .truncationMode(.middle)
                         .layoutPriority(0)
-              
-                .truncationMode(.head)
+                    Text(" \(event.countdownTypeString)")
+                }
                 .font(.system(size: 16, weight: .regular, design: .rounded))
                 .lineLimit(1)
                 .foregroundColor(.primary)

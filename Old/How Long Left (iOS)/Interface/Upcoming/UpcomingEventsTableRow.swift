@@ -47,7 +47,7 @@ class UpcomingEventsTableRow: UITableViewCell {
         
         if var location = rowEvent.location {
             
-            if location.contains(text: "Room: "), rowEvent.roomChange != nil {
+           /* if location.contains(text: "Room: "), rowEvent.roomChange != nil {
                                
                 if let justRoom = location.components(separatedBy: "Room: ").last {
                     
@@ -55,25 +55,25 @@ class UpcomingEventsTableRow: UITableViewCell {
                     
                 }
                 
-            }
+            } */
                                    
             
             infoText = "\(location)"
             locationLabel.isHidden = false
             
-            if let period = rowEvent.period {
+            /*if let period = rowEvent.period {
                 
                 infoText = "\(infoText!) - Period \(period)"
                 locationLabel.isHidden = false
                 
-            }
+            } */
             
-        } else if let period = rowEvent.period {
+        } else /* if let period = rowEvent.period {
                 
                 infoText = "Period \(period)"
                 locationLabel.isHidden = false
                 
-            } else {
+            } else*/ {
                 
                 locationLabel.isHidden = true
                 
@@ -84,7 +84,7 @@ class UpcomingEventsTableRow: UITableViewCell {
             
         
         
-        calColBAr.backgroundColor = event.uiColor
+        calColBAr.backgroundColor = event.color
         
         if event.isAllDay {
             

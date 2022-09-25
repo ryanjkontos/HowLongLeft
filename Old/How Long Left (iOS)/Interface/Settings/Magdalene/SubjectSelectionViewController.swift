@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/*
 class SubjectSelectionUIViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var table: UITableView!
@@ -52,3 +52,4 @@ class SubjectSelectionUIViewController: UIViewController, UITableViewDataSource,
     */
 
 }
+*/

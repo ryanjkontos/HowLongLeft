@@ -59,10 +59,10 @@ class SettingsTableViewController: UITableViewController, DefaultsTransferObserv
         
         //#endif
         
-        if SchoolAnalyser.privSchoolMode == .Magdalene {
+       /* if SchoolAnalyser.privSchoolMode == .Magdalene {
         tempSections.append([.Magdalene])
         tempSectionFooters.append("Manage features specific to Magdalene users.")
-        }
+        } */
         
         #if DEBUG
         
@@ -201,9 +201,9 @@ class SettingsTableViewController: UITableViewController, DefaultsTransferObserv
             }
             
             var status = "Disabled"
-            if SchoolAnalyser.schoolMode == .Magdalene {
+           /* if SchoolAnalyser.schoolMode == .Magdalene {
                 status = "Enabled"
-            }
+            } */
             
             cell.detail = status
             
@@ -279,7 +279,8 @@ class SettingsTableViewController: UITableViewController, DefaultsTransferObserv
         case .Notifications:
             returnView = NotificationConfigurationTableViewController(style: tableViewType)
         case .Magdalene:
-            returnView = MagdaleneTableViewController(style: tableViewType)
+            break
+           // returnView = MagdaleneTableViewController(style: tableViewType)
         case .SiriAndWidget:
             returnView = SiriAndWidgetTableViewController(style: tableViewType)
         case .AppleWatch:
@@ -363,14 +364,14 @@ extension SettingsTableViewController {
             
             var title = "Disable Magdalene Mode"
             var imageTitle = "xmark.circle"
-            if HLLDefaults.magdalene.manuallyDisabled {
+           /* if HLLDefaults.magdalene.manuallyDisabled {
                 title = "Enable Magdalene Mode"
                 imageTitle = "checkmark.circle"
-            }
+            } */
             
             let action = UIAction(title: title, image: UIImage(systemName: imageTitle), identifier: nil, discoverabilityTitle: nil, state: .off, handler: { _ in
                 
-                HLLDefaults.magdalene.manuallyDisabled = !HLLDefaults.magdalene.manuallyDisabled
+               // HLLDefaults.magdalene.manuallyDisabled = !HLLDefaults.magdalene.manuallyDisabled
                 HLLEventSource.shared.asyncUpdateEventPool()
 
             })

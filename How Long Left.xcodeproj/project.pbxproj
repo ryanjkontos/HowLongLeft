@@ -351,6 +351,7 @@
 		BFA5781428831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA5781528831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BFA5781828831CFD00250A3A /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
+		BFA8AE0228E051E3007B0018 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE94A2258D36A0012BA81 /* UIColor.swift */; };
 		BFA8EE0B274DEE9E0099350D /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE0A274DEE9E0099350D /* IconCell.swift */; };
 		BFA8EE13274E02A00099350D /* ListButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE12274E02A00099350D /* ListButtonModifier.swift */; };
 		BFA8EE15274E49BF0099350D /* RoundedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA8EE14274E49BF0099350D /* RoundedIcon.swift */; };
@@ -1317,6 +1318,15 @@
 		BFA5780A2883106F00250A3A /* LiveEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventInfo.swift; sourceTree = "<group>"; };
 		BFA5781328831CFD00250A3A /* EventLocationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationStore.swift; sourceTree = "<group>"; };
 		BFA725E7277E9FE600F2A6EA /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
+		BFA8AD7D28E0464E007B0018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFA8AD7F28E0464E007B0018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BFA8AD8128E0464E007B0018 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFA8AD8428E0464E007B0018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFA8AD8628E0464F007B0018 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFA8AD8928E0464F007B0018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BFA8AD8B28E0464F007B0018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFA8ADD028E046F7007B0018 /* OG iOS App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OG iOS App.entitlements"; sourceTree = "<group>"; };
+		BFA8ADF628E04A6D007B0018 /* SchoolAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAnalyzer.swift; sourceTree = "<group>"; };
 		BFA8EE0A274DEE9E0099350D /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		BFA8EE12274E02A00099350D /* ListButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListButtonModifier.swift; sourceTree = "<group>"; };
 		BFA8EE14274E49BF0099350D /* RoundedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedIcon.swift; sourceTree = "<group>"; };
@@ -2141,6 +2151,7 @@
 				BFD3D04728A0D889009A774E /* Old */,
 				BF3652B928A29B0300668462 /* How Long Left watch App */,
 				BF3652C428A29B0400668462 /* How Long Left watch App WatchKit Extension */,
+				BFA8AD7C28E0464E007B0018 /* OG iOS App */,
 				BF794DE621787DEE0076FA17 /* Frameworks */,
 				BF5D29562174679500AC1EB6 /* Products */,
 				299747B92BF2210E4B750944 /* Pods */,
@@ -2502,6 +2513,21 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		BFA8AD7C28E0464E007B0018 /* OG iOS App */ = {
+			isa = PBXGroup;
+			children = (
+				BFA8ADD028E046F7007B0018 /* OG iOS App.entitlements */,
+				BFA8AD7D28E0464E007B0018 /* AppDelegate.swift */,
+				BFA8AD7F28E0464E007B0018 /* SceneDelegate.swift */,
+				BFA8AD8128E0464E007B0018 /* ViewController.swift */,
+				BFA8AD8328E0464E007B0018 /* Main.storyboard */,
+				BFA8AD8628E0464F007B0018 /* Assets.xcassets */,
+				BFA8AD8828E0464F007B0018 /* LaunchScreen.storyboard */,
+				BFA8AD8B28E0464F007B0018 /* Info.plist */,
+			);
+			path = "OG iOS App";
+			sourceTree = "<group>";
+		};
 		BFADC11F2358432E00298C58 /* Settings Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -2682,7 +2708,6 @@
 			isa = PBXGroup;
 			children = (
 				BFD0EDE028DD8F0000A3D8D3 /* EventTableViewController.swift */,
-				BFEE67C1274540B100810596 /* CountdownCardContextMenuModifier.swift */,
 				BFAE0E0528DE080A00BD2D1F /* EventContextMenuDelegate.swift */,
 				BFE4602E28944BB70074C84B /* EventContextMenuGenerator.swift */,
 			);
@@ -2772,6 +2797,7 @@
 		BFD0EDE928DDBC0400A3D8D3 /* SwiftUI Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				BFEE67C1274540B100810596 /* CountdownCardContextMenuModifier.swift */,
 				BF4989012733A14A00024295 /* ContentView.swift */,
 				BF5F2C4E27488AA5007A56EF /* UpcomingEventSource.swift */,
 				BF5084F1275B06E600C1FC58 /* UpcomingEventListParentView.swift */,
@@ -2957,6 +2983,7 @@
 				BFA5781328831CFD00250A3A /* EventLocationStore.swift */,
 				BF3A49F22891A5DC00FFB115 /* EventChangesMonitor.swift */,
 				BF42C28028D6F18100FB4070 /* TitledEventGroup.swift */,
+				BFA8ADF628E04A6D007B0018 /* SchoolAnalyzer.swift */,
 			);
 			path = HLLEvent;
 			sourceTree = "<group>";
@@ -3468,7 +3495,7 @@
 		BF5D294D2174679500AC1EB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Ryan Kontos";
 				TargetAttributes = {
@@ -3672,6 +3699,7 @@
 				BF36530928A29BBD00668462 /* EventLocationStore.swift in Sources */,
 				BF36530A28A29BBD00668462 /* EventChangesMonitor.swift in Sources */,
 				BF36535628A29CCC00668462 /* HiddenEventsSettingsView.swift in Sources */,
+				BFA8AE0228E051E3007B0018 /* UIColor.swift in Sources */,
 				BF36530B28A29BBD00668462 /* HLLDefaultsTransfer.swift in Sources */,
 				BF36530C28A29BBD00668462 /* DefaultsObject.swift in Sources */,
 				BF42C28228D6F18600FB4070 /* TitledEventGroup.swift in Sources */,
@@ -4546,6 +4574,22 @@
 				BF5D296F2174688800AC1EB6 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		BFA8AD8328E0464E007B0018 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFA8AD8428E0464E007B0018 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFA8AD8828E0464F007B0018 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFA8AD8928E0464F007B0018 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		BFEA0CEC21788D0B00FAF2F1 /* MainMenu.xib */ = {

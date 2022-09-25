@@ -145,14 +145,24 @@ struct EventsListView: View {
                                 
                                     .drawingGroup()
                                 
+                                
                             })
+                            
                             .listItemTint((index == 0 && sectionIndex == 0 && HLLDefaults.watch.largeCell) ? Color.clear : Color(uiColor: event.color).opacity(0.25))
                             
                             .id("\(event.infoIdentifier) \(event.completionStatus(at: date)) \(index == 0 && HLLDefaults.watch.largeCell) \(HLLDefaults.watch.largeHeaderLocation)")
                             .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                                 getSwipeActions(event: event)
                             })
-                            
+                          /*  .listRowBackground(
+                                
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill( LinearGradient(gradient: event.color.toGradient(0, 10), startPoint: .top, endPoint: .bottom))
+                                
+                               .opacity(0.9)
+                            )
+                            */
+                           
                             
                         }
                         
@@ -230,6 +240,7 @@ struct EventsListView: View {
                 .frame(height: height*CGFloat.watchDyanamic(legacy: 0.83, modern: 0.79))
         } else if event.completionStatus(at: date) == .current || HLLDefaults.watch.upcomingMode == .withCountdown {
             CountdownCard(event: event, liveUpdates: true, date: date)
+                
         } else {
             EventCard(event: event, liveUpdates: true)
         }

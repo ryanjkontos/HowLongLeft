@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-
+/*
 class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, DefaultsTransferObserver {
     
     var sections = [MagdalenePreferencesSection]()
@@ -360,3 +360,4 @@ enum MagdalenePreferencesSection {
     case AppleWatch
     
 }
+*/

@@ -75,7 +75,7 @@ class SwitchCell: UITableViewCell {
             
             if self.triggersDefaultsTransferOnToggle {
                 DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 0.5) {
-                    HLLDefaultsTransfer.shared.userModifiedPrferences()
+                    //HLLDefaultsTransfer.shared.userModifiedPrferences()
                 }
             }
             

@@ -34,7 +34,7 @@ class VoiceShortcutStatusChecker: NSObject {
         
         if #available(iOS 12.0, *) {
             
-            if let shortcutIntent = INShortcut(intent: HowLongLeftIntent()) {
+           /* if let shortcutIntent = INShortcut(intent: HowLongLeftIntent()) {
                 
                 let voiceShortcuts = INVoiceShortcutCenter.shared
                 voiceShortcuts.getAllVoiceShortcuts(completion: { shortcuts, error in
@@ -87,7 +87,7 @@ class VoiceShortcutStatusChecker: NSObject {
                     
                 })
                 
-            }
+            } */
         }
         
         #endif

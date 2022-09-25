@@ -29,7 +29,7 @@ class CalendarSelectTableViewController: UITableViewController, DefaultsTransfer
     override func viewDidLoad() {
         
         self.navigationItem.title = "Calendars"
-        HLLDefaultsTransfer.shared.addTransferObserver(self)
+      //  HLLDefaultsTransfer.shared.addTransferObserver(self)
         HLLEventSource.shared.addEventPoolObserver(self)
         super.viewDidLoad()
         tableView.delegate = self
@@ -86,7 +86,7 @@ class CalendarSelectTableViewController: UITableViewController, DefaultsTransfer
             self.updateToggles()
             
             
-            HLLDefaultsTransfer.shared.userModifiedPrferences()
+         //   HLLDefaultsTransfer.shared.userModifiedPrferences()
             
         }
         

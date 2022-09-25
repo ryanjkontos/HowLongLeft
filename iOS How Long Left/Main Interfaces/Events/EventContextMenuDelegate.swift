@@ -11,5 +11,6 @@ import Foundation
 protocol EventContextMenuDelegate {
     
     func nicknameEvent(event: HLLEvent)
+    func closeEventView(event: HLLEvent)
     
 }

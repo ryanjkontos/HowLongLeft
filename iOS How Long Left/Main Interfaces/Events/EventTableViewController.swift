@@ -251,6 +251,14 @@ class EventTableViewController: UITableViewController {
 }
 
 extension EventTableViewController: EventContextMenuDelegate {
+    func closeEventView(event: HLLEvent) {
+        
+        if self.event == event {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+    }
+    
     
     func nicknameEvent(event: HLLEvent) {
         

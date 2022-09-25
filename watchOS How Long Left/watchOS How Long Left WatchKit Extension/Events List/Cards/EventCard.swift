@@ -23,6 +23,7 @@ struct EventCard: View {
                 .font(.system(size: 16, weight: .medium, design: .rounded))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
+                .truncationMode(.middle)
             
             if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
                 Text(loc)

@@ -25,7 +25,7 @@ class SettingsMainTableViewController: UITableViewController, ScrollUpDelegate, 
     
     let defaults = HLLDefaults.defaults
     var tableSections = [Int:SettingsSection]()
-    let schoolAnalyser = SchoolAnalyser()
+   // let schoolAnalyser = SchoolAnalyser()
     var genedSections: Int {
         
         get {
@@ -296,7 +296,7 @@ class SettingsMainTableViewController: UITableViewController, ScrollUpDelegate, 
             #if !targetEnvironment(macCatalyst)
             
             if #available(iOS 12.0, *) {
-                if let shortcut = INShortcut(intent: HowLongLeftIntent()) {
+             /*   if let shortcut = INShortcut(intent: HowLongLeftIntent()) {
                     
                     shortcut.intent?.suggestedInvocationPhrase = "How Long Left"
                     
@@ -350,7 +350,7 @@ class SettingsMainTableViewController: UITableViewController, ScrollUpDelegate, 
                     }
                     
                     
-                }
+                } */
                 
                 
                 

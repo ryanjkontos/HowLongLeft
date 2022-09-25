@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import EventKit
 import UIKit
 
 class HLLEventUniversalMenuItemGenerator {
@@ -18,7 +18,7 @@ class HLLEventUniversalMenuItemGenerator {
         
         var mainItems = [UniversalMenuItem]()
         
-        if let calendarEvent = event.EKEvent {
+        if let calendarEvent = event.ekEvent {
             
             if calendarEvent.calendar.allowsContentModifications {
             
@@ -66,7 +66,7 @@ class HLLEventUniversalMenuItemGenerator {
             
             mainItems.append(disableCalendarItem)
             
-            if let period = event.period, period == "S" {
+         /*   if let period = event.period, period == "S" {
                 
                 var title = "Show Sport as Study"
                 var imageTitle = "book"
@@ -85,7 +85,7 @@ class HLLEventUniversalMenuItemGenerator {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
                     
-                    HLLDefaults.magdalene.showSportAsStudy = !HLLDefaults.magdalene.showSportAsStudy
+                    //HLLDefaults.magdalene.showSportAsStudy = !HLLDefaults.magdalene.showSportAsStudy
                     HLLDefaultsTransfer.shared.userModifiedPrferences()
                     HLLEventSource.shared.asyncUpdateEventPool()
                         
@@ -95,11 +95,11 @@ class HLLEventUniversalMenuItemGenerator {
                 
                 mainItems.append(sportAsStudyItem)
                 
-            }
+            } */
             
         }
         
-        if let visibilityString = event.visibilityString {
+     /*   if let visibilityString = event.visibilityString {
                 
             var visibilityItem = UniversalMenuItem(title: visibilityString.rawValue)
             
@@ -118,7 +118,7 @@ class HLLEventUniversalMenuItemGenerator {
             
             mainItems.append(visibilityItem)
                    
-        }
+        } */
               
         returnArray.append(mainItems)
         

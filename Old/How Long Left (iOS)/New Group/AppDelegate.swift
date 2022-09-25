@@ -17,7 +17,7 @@ import CoreData
  
 
     
-     let nameConversionsDownloader = NameConversionsDownloader()
+ //    let nameConversionsDownloader = NameConversionsDownloader()
     
     let taskID = "com.ryankontos.How-Long-Left.refresh"
     
@@ -31,12 +31,12 @@ import CoreData
         
         DispatchQueue.main.async {
         
-        WidgetUpdateHandler.shared = WidgetUpdateHandler()
+       // WidgetUpdateHandler.shared = WidgetUpdateHandler()
             
         UNUserNotificationCenter.current().delegate = self
         application.registerForRemoteNotifications()
         WatchSessionManager.sharedManager.startSession()
-            self.nameConversionsDownloader.downloadNames()
+          //  self.nameConversionsDownloader.downloadNames()
             
         }
         
@@ -120,7 +120,7 @@ import CoreData
     
     func runBackgroundTasks() {
         
-        nameConversionsDownloader.downloadNames()
+      //  nameConversionsDownloader.downloadNames()
         
            notoGen.scheduleNotificationsForUpcomingEvents()
            UNUserNotificationCenter.current().removeAllDeliveredNotifications()

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
 import UIKit
 
 class EventInfoViewGenerator {
@@ -16,13 +15,13 @@ class EventInfoViewGenerator {
     
     func generateEventInfoView(for event: HLLEvent, isFollowingOccurence: Bool = false) -> UIViewController {
         
-        /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let view = storyboard.instantiateViewController(withIdentifier: "EventInfoView") as! EventInfoViewController
         view.isFollowingOccurence = isFollowingOccurence
-        view.event = event*/
+        view.event = event
         
         
-        let view = UIHostingController(rootView: EventInfoView(event: event))
+       // let view = UIHostingController(rootView: EventInfoView(event: event))
         
         return view
         

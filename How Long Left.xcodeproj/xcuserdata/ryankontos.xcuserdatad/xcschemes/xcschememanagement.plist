@@ -186,6 +186,11 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>OG iOS App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>PageNav.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -315,6 +320,11 @@
 			<true/>
 		</dict>
 		<key>BF7DB4D223EA9B98003EDB47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFA8AD7A28E0464E007B0018</key>
 		<dict>
 			<key>primary</key>
 			<true/>

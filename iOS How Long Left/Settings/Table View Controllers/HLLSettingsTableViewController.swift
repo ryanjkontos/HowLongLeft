@@ -68,6 +68,9 @@ class HLLSettingsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         interactiveDeselect(animated: animated)
         
+        
+        
+        
     }
     
     func interactiveDeselect(animated: Bool) {
@@ -316,7 +319,17 @@ extension HLLSettingsTableViewController: ScrollUpDelegate {
     
     
     func scrollUp() {
-        tableView.setContentOffset(CGPoint(x: 0, y: -biggestTopSafeAreaInset), animated: true)
+        
+        if let c = self.navigationController?.viewControllers.count, c > 1 {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        
+        let offset = CGPoint(
+                x: -tableView.adjustedContentInset.left,
+                y: -tableView.adjustedContentInset.top)
+        
+        tableView.setContentOffset(offset, animated: true)
     }
     
  

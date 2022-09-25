@@ -24,7 +24,7 @@ class TimerCell: UITableViewCell {
         
         mainLabel.font = UIFont.monospacedDigitSystemFont(ofSize: mainLabel.font.pointSize, weight: .medium)
         
-        mainLabel.textColor = event.uiColor
+        mainLabel.textColor = event.color
         
         mainLabel.layer.shadowColor = UIColor.black.cgColor
         mainLabel.layer.shadowRadius = 3.0
@@ -49,7 +49,7 @@ class TimerCell: UITableViewCell {
         
         func updateTimer() {
             
-            if event.completionStatus != .Done {
+            if event.completionStatus != .done {
             
                 topLabel.text = "\(event.truncatedTitle(15)) \(event.countdownTypeString)"
                 let countdownString = self.timerStringGenerator.generatePositionalCountdown(event: event)

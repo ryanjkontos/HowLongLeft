@@ -115,10 +115,10 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
         var newSections = [[HLLEventInfoItem]]()
         
         newSections.append(infoItemGenerator.getInfoItems(for: [.completion]))
-        newSections.append(infoItemGenerator.getInfoItems(for: [.location, .oldLocationName, .originalLocation]))
-        newSections.append(infoItemGenerator.getInfoItems(for: [.start, .end, .period]))
+        newSections.append(infoItemGenerator.getInfoItems(for: [.location, /*.oldLocationName, .originalLocation*/]))
+        newSections.append(infoItemGenerator.getInfoItems(for: [.start, .end, /*.period*/]))
         newSections.append(infoItemGenerator.getInfoItems(for: [.elapsed, .duration]))
-        newSections.append(infoItemGenerator.getInfoItems(for: [.teacher]))
+        //newSections.append(infoItemGenerator.getInfoItems(for: [.teacher]))
         if HLLDefaults.general.showNextOccurItems {
         newSections.append(infoItemGenerator.getInfoItems(for: [.nextOccurence]))
         }
@@ -177,7 +177,7 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
   
         
         
-            if self.event.completionStatus == .Done {
+            if self.event.completionStatus == .done {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     

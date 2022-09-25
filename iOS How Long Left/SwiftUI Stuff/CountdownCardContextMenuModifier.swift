@@ -96,7 +96,7 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                     HStack {
                     
                     Image(systemName: "calendar")
-                    Text("Disable Calendar")
+                    Text("Hide Calendar")
                         
                     }
                     

@@ -105,7 +105,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
     var dataSource: HLLEventSource?
 
     static var hasLaunched = false
-    let schoolAnalyser = SchoolAnalyser()
+   // let schoolAnalyser = SchoolAnalyser()
     
     func setNavigationBar() {
         let screenSize: CGRect = UIScreen.main.bounds
@@ -389,11 +389,11 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
                 
                 switch event.completionStatus {
                     
-                case .Upcoming:
+                case .upcoming:
                     self.setSelectedPage(to: .Upcoming)
-                case .Current:
+                case .current:
                     self.setSelectedPage(to: .Current)
-                case .Done:
+                case .done:
                     self.setSelectedPage(to: .Current)
                 }
                 
@@ -467,13 +467,13 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
             
             switch event.completionStatus {
                 
-            case .Upcoming:
+            case .upcoming:
                 self.setSelectedPage(to: .Upcoming)
                 isValid = true
-            case .Current:
+            case .current:
                 self.setSelectedPage(to: .Current)
                 isValid = true
-            case .Done:
+            case .done:
                 isValid = true
                 self.setSelectedPage(to: .Current)
             }
@@ -615,7 +615,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
             self.viewControllers = [self.currentVC, self.upcomingVC, self.settingsVC]
         
             
-            let currentIsEmpty = HLLEventSource.shared.getCurrentEvents(includeHidden: true).filter({$0.isHidden == false}).isEmpty
+            let currentIsEmpty = HLLEventSource.shared.getCurrentEvents(includeHidden: true).isEmpty
                    let upcomingIsEmpty = HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents().isEmpty
                    
                    if RootViewController.hasLaunched == false {

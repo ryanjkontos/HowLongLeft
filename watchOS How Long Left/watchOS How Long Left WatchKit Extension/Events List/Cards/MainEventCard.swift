@@ -43,6 +43,7 @@ struct MainEventCard: View {
                         //.background(.blue)
                        // .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
+                        .truncationMode(.middle)
                     Text("\(event.countdownTypeString)")
                         .foregroundColor(.secondary)
                         .font(.system(size: 18, weight: .medium, design: .rounded))

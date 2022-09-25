@@ -91,11 +91,17 @@ class HLLTabViewController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
+        let newIndex = Int(self.viewControllers!.firstIndex(of: viewController)!)
+        return shouldSelect(newIndex: newIndex)
+        
+        
+    }
     
-        let newIndex = Int((tabBar.items?.firstIndex(of: item)!)!)
+   
+    func shouldSelect(newIndex: Int) -> Bool {
+       
         
         let selectedTab =  HLLAppTab(rawValue: newIndex)!
         
@@ -105,9 +111,14 @@ class HLLTabViewController: UITabBarController, UITabBarControllerDelegate {
             DispatchQueue.main.async {
                 self.scrollToTopFor(index: newIndex)
             }
+            self.currentIndex = newIndex
+            return false
+            
         }
         
         self.currentIndex = newIndex
+        return true
+        
         
     }
     
@@ -115,7 +126,7 @@ class HLLTabViewController: UITabBarController, UITabBarControllerDelegate {
         
        
         
-        guard var vc = (self.viewControllers?[index].children.first! as? ScrollUpDelegate) else { return }
+        guard let vc = (self.viewControllers?[index].children.first! as? ScrollUpDelegate) else { return }
         vc.scrollUp()
         
         
