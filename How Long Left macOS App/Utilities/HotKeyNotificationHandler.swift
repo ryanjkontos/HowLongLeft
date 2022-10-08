@@ -31,7 +31,7 @@ class HotKeyNotificationHandler {
         let notification = NSUserNotification()
         notification.identifier = ""
         
-        body = upcomingEventStringGenerator.generateNextEventString(upcomingEvents: HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents())
+            body = upcomingEventStringGenerator.generateNextEventString(upcomingEvents: HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents().1)
         
         if let event = HLLEventSource.shared.getPrimaryEvent() {
             

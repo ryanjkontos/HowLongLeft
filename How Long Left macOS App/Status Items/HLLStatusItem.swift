@@ -23,7 +23,7 @@ class HLLStatusItem {
     var override = false
     
     var menu = NSMenu()
-    var contentGen = HLLStatusItemContentGenerator()
+    var contentGen: HLLStatusItemContentGenerator
        
     var currentContent: HLLStatusItemContent?
     
@@ -39,8 +39,10 @@ class HLLStatusItem {
          
       //  print("Creating status item with config: \(configuration)")
     
+        
         self.configuration = configuration
         
+        self.contentGen = HLLStatusItemContentGenerator(configuration: configuration)
         
         if configuration.type == .event {
             self.statusItem?.autosaveName = self.configuration.eventRetriver.retrieveEvent()?.persistentIdentifier
@@ -193,7 +195,7 @@ class HLLStatusItem {
  
     func updateContent() {
         
-        let content = self.contentGen.getStatusItemContent(for: configuration)
+        let content = self.contentGen.getStatusItemContent()
         
         if let currentContent = currentContent {
             if currentContent == content {

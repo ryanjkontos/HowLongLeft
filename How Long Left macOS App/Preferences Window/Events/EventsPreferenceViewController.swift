@@ -40,7 +40,7 @@ final class EventsPreferenceViewController: NSViewController, PreferencePane, NS
         
      //   askCheckbox.state = HLLDefaults.general.askToHide.controlStateValue
         
-        HLLHiddenEventStore.shared.observers.append(self)
+        HLLStoredEventManager.shared.observers.append(self)
         HLLEventSource.shared.addEventPoolObserver(self)
         let textCell = NSNib(nibNamed: "EventTableCell", bundle: Bundle.main)
         table.register(textCell, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EventTableCell"))
@@ -63,7 +63,7 @@ final class EventsPreferenceViewController: NSViewController, PreferencePane, NS
     func getEvents() {
         
     
-        self.events = HLLHiddenEventStore.shared.hiddenEvents
+        self.events = HLLStoredEventManager.shared.hiddenEvents
         
     }
     
@@ -95,7 +95,7 @@ final class EventsPreferenceViewController: NSViewController, PreferencePane, NS
         
         for index in selected {
             
-            HLLHiddenEventStore.shared.unhideEvent(events[index])
+            HLLStoredEventManager.shared.unhideEvent(events[index])
             
         }
         

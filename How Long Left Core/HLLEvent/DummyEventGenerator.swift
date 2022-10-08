@@ -20,7 +20,6 @@ class DummyEventGenerator {
         }
         
 
-        
         var start = Date()
         
         var array = [HLLEvent]()
@@ -32,7 +31,7 @@ class DummyEventGenerator {
             
             
             date.addTimeInterval(30*300)
-            var event = HLLEvent(title: "Event \(i)", start: start, end: date, location: nil)
+            var event = HLLEvent(title: "Compulsory Weekly Submission: Week 9 problems submission box is due \(i)", start: start, end: date, location: nil)
             event.calendarID = HLLEventSource.shared.getCalendars().randomElement()?.calendarIdentifier
             
             event.location = "Room: 23"

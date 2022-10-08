@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func applicationWillFinishLaunching(_ notification: Notification) {
  
         ProStatusManager.shared = ProStatusManager()
-        HLLHiddenEventStore.shared.loadHiddenEventsFromDatabase()
+        HLLStoredEventManager.shared.loadStoredEventsFromDatabase()
         HLLEventSource.shared.updateEventPool()
         //WidgetUpdateHandler.shared = WidgetUpdateHandler()
         

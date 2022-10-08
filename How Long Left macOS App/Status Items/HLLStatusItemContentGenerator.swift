@@ -12,9 +12,18 @@ import Foundation
 class HLLStatusItemContentGenerator {
    
     
+    var event: HLLEvent?
+    
     let countdownStringGenerator = CountdownStringGenerator()
 
-    func getStatusItemContent(for configuration: HLLStatusItemConfiguration) -> HLLStatusItemContent {
+    var configuration: HLLStatusItemConfiguration
+    
+    init(configuration: HLLStatusItemConfiguration) {
+        self.configuration = configuration
+        self.event = configuration.eventRetriver.retrieveEvent()
+    }
+    
+    func getStatusItemContent() -> HLLStatusItemContent {
         
         var returnContent: HLLStatusItemContent
     
@@ -24,7 +33,7 @@ class HLLStatusItemContentGenerator {
             return content
         }
         
-        if let event = configuration.eventRetriver.retrieveEvent() {
+        if let event = self.event {
             returnContent = generateEventCountdownContent(for: event)
         } else {
             returnContent = generateNoEventContent(config: configuration)
@@ -34,11 +43,13 @@ class HLLStatusItemContentGenerator {
             returnContent = generateNoEventContent(config: configuration, inactive: true)
         }
         
-       /* if HLLEventSource.shared.updating {
-            returnContent.alpha = StatusItemGlobals.inactiveAlpha
-        }*/
-        
         return returnContent
+        
+    }
+    
+    func updateEvent() {
+        
+        self.event = configuration.eventRetriver.retrieveEvent()
         
     }
     

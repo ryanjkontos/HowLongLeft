@@ -150,10 +150,12 @@ struct EventInfoView: View {
                             
                         }
                         
-                        VStack(alignment: .leading, spacing: 2) {
+                        VStack(alignment: .leading, spacing: 3) {
                             
                             Text("\(dataObject.event.title)")
-                            
+                                .truncationMode(.middle)
+                                .lineLimit(4)
+                                .minimumScaleFactor(0.5)
                                 .foregroundColor(.white)
                                 .font(.system(size: 19, weight: .medium, design: .default))
                             Text(getTimerText(at: at))

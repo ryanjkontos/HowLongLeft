@@ -39,7 +39,7 @@ class HLLStatusItemManager {
         
         DispatchQueue.main.async {
         
-        HLLHiddenEventStore.shared.observers.append(self)
+            HLLStoredEventManager.shared.observers.append(self)
         self.createStatusItems()
             
         }

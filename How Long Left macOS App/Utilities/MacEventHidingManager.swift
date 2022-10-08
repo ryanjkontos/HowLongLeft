@@ -44,7 +44,7 @@ class MacEventHidingManager {
 
         if hideEvent {
         
-        HLLHiddenEventStore.shared.hideEvent(event)
+            HLLStoredEventManager.shared.hideEvent(event)
             
         }
         

@@ -47,31 +47,27 @@ class HLLStatusItemUpdateHandler {
         
         setActiveMode(shouldUseActiveTimerMode())
         
+       
+            
+            if let delegate = self.delegate {
+                for statusItem in delegate.allStatusItems {
+                    statusItem.contentGen.updateEvent()
+                }
+            }
+       
         
     }
     
     
-    
     @objc func activeUpdate() {
         
-     //   print("Active update")
         
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-        
-        if let delegate = self.delegate {
-        
-            for statusItem in delegate.allStatusItems {
-                
-                statusItem.updateContent()
-                
-                
+            if let delegate = self.delegate {
+                for statusItem in delegate.allStatusItems {
+                    statusItem.updateContent()
+                }
             }
             
-            }
-            
-        }
-        
     }
     
     func setActiveMode(_ to: Bool) {
@@ -81,15 +77,16 @@ class HLLStatusItemUpdateHandler {
             
             if self.activeTimer == nil {
             
-                DispatchQueue.global(qos: .userInteractive).async {
+                DispatchQueue.main.async {
                 
                     
                     let date = Calendar.current.date(bySetting: .nanosecond, value: 0, of: Date())!
                     
-                    let active = Timer(fireAt: date, interval: 0.1, target: self, selector: #selector(self.activeUpdate), userInfo: nil, repeats: true)
-            RunLoop.main.add(active, forMode: .common)
-            self.activeTimer = active
-                    
+                    let active = Timer(fireAt: date, interval: 1, target: self, selector: #selector(self.activeUpdate), userInfo: nil, repeats: true)
+                    active.tolerance = 0
+                    RunLoop.main.add(active, forMode: .common)
+                    self.activeTimer = active
+                
                     self.activeUpdate()
                     
                 }
@@ -191,6 +188,7 @@ class HLLStatusItemUpdateHandler {
 extension HLLStatusItemUpdateHandler: EventPoolUpdateObserver {
     
     func eventPoolUpdated() {
+        mainUpdate()
         activeUpdate()
     }
     

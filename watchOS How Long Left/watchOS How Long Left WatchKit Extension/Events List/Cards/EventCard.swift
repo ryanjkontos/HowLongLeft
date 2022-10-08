@@ -20,9 +20,9 @@ struct EventCard: View {
             
             Text("\(event.title)")
                 .foregroundColor(.white)
-                .font(.system(size: 16, weight: .medium, design: .rounded))
+                .font(.system(size: 17, weight: .medium, design: .rounded))
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
+                .minimumScaleFactor(1)
                 .truncationMode(.middle)
             
             if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
@@ -30,7 +30,7 @@ struct EventCard: View {
                     .foregroundColor(.secondary)
                     .font(.system(size: 14, weight: .medium, design: .rounded))
                     .lineLimit(1)
-                    //.minimumScaleFactor(0.5)
+                    
             }
             
             Text("\(event.startDate.formattedTime())-\(event.endDate.formattedTime())")
@@ -44,7 +44,7 @@ struct EventCard: View {
             
         }
         
-        .padding(.vertical, 4)
+        .padding(.vertical, 5)
         
     }
 }
