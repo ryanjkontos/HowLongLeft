@@ -93,6 +93,7 @@ struct MainEventCard: View {
                                     .lineLimit(1)
                                     .font(.system(size: 14, weight: .regular, design: .default))
                                     .padding(.leading, 3)
+                                    .padding(.top, 3)
                                     .minimumScaleFactor(1)
                                 
                             }

@@ -16,35 +16,38 @@ struct EventCard: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 1) {
+        VStack(alignment: .leading, spacing: 5) {
             
-            Text("\(event.title)")
-                .foregroundColor(.white)
-                .font(.system(size: 17, weight: .medium, design: .rounded))
-                .lineLimit(1)
-                .minimumScaleFactor(1)
-                .truncationMode(.middle)
-            
-            if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
-                Text(loc)
+            VStack(alignment: .leading, spacing: 3) {
+                
+                Text("\(event.startDate.formattedTime())-\(event.endDate.formattedTime())")
                     .foregroundColor(.secondary)
                     .font(.system(size: 14, weight: .medium, design: .rounded))
                     .lineLimit(1)
-                    
+                    .minimumScaleFactor(0.5)
+                
+                Text("\(event.title)")
+                    .foregroundColor(.white)
+                    .font(.system(size: 17, weight: .medium, design: .rounded))
+                    .lineLimit(2)
+                    .minimumScaleFactor(1)
+                    .truncationMode(.middle)
+                
             }
             
-            Text("\(event.startDate.formattedTime())-\(event.endDate.formattedTime())")
-                .foregroundColor(.secondary)
-                .font(.system(size: 14, weight: .medium, design: .rounded))
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-            
-         
-           
+                
+                if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
+                    Text(loc)
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                        .lineLimit(1)
+                    
+                }
+        
             
         }
         
-        .padding(.vertical, 5)
+        .padding(.vertical, 8)
         
     }
 }

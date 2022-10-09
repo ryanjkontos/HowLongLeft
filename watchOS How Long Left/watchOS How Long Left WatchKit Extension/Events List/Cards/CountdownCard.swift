@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Marquee
 
 struct CountdownCard: View {
     
@@ -19,11 +20,13 @@ struct CountdownCard: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 1) {
+        VStack(alignment: .leading, spacing: 4) {
             
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 3) {
   
-                HStack(spacing:0) {
+                
+                
+                HStack(alignment: .bottom, spacing:0 ) {
                     Text("\(event.title)")
                         .truncationMode(.middle)
                         .layoutPriority(0)
@@ -55,7 +58,7 @@ struct CountdownCard: View {
             }
             
         }
-        .padding(.vertical, 6)
+        .padding(.vertical, 7)
         
     }
     

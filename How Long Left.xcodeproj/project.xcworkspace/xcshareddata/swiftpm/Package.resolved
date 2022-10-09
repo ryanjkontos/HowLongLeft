@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "marquee",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftUIKit/Marquee",
+      "state" : {
+        "revision" : "69d7b7c6c34ed41d9299cfa8406f91f529c4fef3",
+        "version" : "0.3.0"
+      }
+    },
+    {
       "identity" : "preferences",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/Preferences",

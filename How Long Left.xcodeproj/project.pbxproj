@@ -35,6 +35,8 @@
 		BF17CCA127A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
 		BF17CCA427A2DADA0075350D /* HLLTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17CC9F27A2DADA0075350D /* HLLTimeline.swift */; };
 		BF1960F0276A12FA0058E1CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1960EF276A12FA0058E1CA /* CustomTextField.swift */; };
+		BF1A0D2528F2AF7100F9A360 /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = BF1A0D2428F2AF7100F9A360 /* Marquee */; };
+		BF1A0D2728F2AFCB00F9A360 /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = BF1A0D2628F2AFCB00F9A360 /* Marquee */; };
 		BF1FA6DE24D0334D000B6CBE /* HLLStatusItemUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FA6DD24D0334D000B6CBE /* HLLStatusItemUpdateHandler.swift */; };
 		BF1FDFAB2743EAEC008CC754 /* CountdownsParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FDFAA2743EAEC008CC754 /* CountdownsParentView.swift */; };
 		BF1FDFB22744D193008CC754 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FDFB12744D193008CC754 /* OrientationInfo.swift */; };
@@ -1580,6 +1582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5D48B528A29E5800BE1A94 /* CloudKit.framework in Frameworks */,
+				BF1A0D2728F2AFCB00F9A360 /* Marquee in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1587,6 +1590,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1A0D2528F2AF7100F9A360 /* Marquee in Frameworks */,
 				BFFCC1C227C3468E000F4F58 /* CloudKit.framework in Frameworks */,
 				BFD140A727AA7F1200F8C02A /* Introspect in Frameworks */,
 			);
@@ -3375,6 +3379,9 @@
 			dependencies = (
 			);
 			name = "How Long Left watch App WatchKit Extension";
+			packageProductDependencies = (
+				BF1A0D2628F2AFCB00F9A360 /* Marquee */,
+			);
 			productName = "How Long Left watch App WatchKit Extension";
 			productReference = BF3652C028A29B0400668462 /* How Long Left watch App WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -3399,6 +3406,7 @@
 			name = "iOS How Long Left";
 			packageProductDependencies = (
 				BFD140A627AA7F1200F8C02A /* Introspect */,
+				BF1A0D2428F2AF7100F9A360 /* Marquee */,
 			);
 			productName = "iOS How Long Left";
 			productReference = BF4988FD2733A14A00024295 /* How Long Left.app */;
@@ -3568,6 +3576,7 @@
 				BF0F7CC627B9569000A375BF /* XCRemoteSwiftPackageReference "Preferences" */,
 				BF0F7CC927B956FF00A375BF /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				BF0F7CCC27B9571C00A375BF /* XCRemoteSwiftPackageReference "HotKey" */,
+				BF1A0D2328F2AF7100F9A360 /* XCRemoteSwiftPackageReference "Marquee" */,
 			);
 			productRefGroup = BF5D29562174679500AC1EB6 /* Products */;
 			projectDirPath = "";
@@ -5434,6 +5443,14 @@
 				kind = branch;
 			};
 		};
+		BF1A0D2328F2AF7100F9A360 /* XCRemoteSwiftPackageReference "Marquee" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIKit/Marquee";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		BFD140A527AA7F1200F8C02A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -5459,6 +5476,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF0F7CCC27B9571C00A375BF /* XCRemoteSwiftPackageReference "HotKey" */;
 			productName = HotKey;
+		};
+		BF1A0D2428F2AF7100F9A360 /* Marquee */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1A0D2328F2AF7100F9A360 /* XCRemoteSwiftPackageReference "Marquee" */;
+			productName = Marquee;
+		};
+		BF1A0D2628F2AFCB00F9A360 /* Marquee */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1A0D2328F2AF7100F9A360 /* XCRemoteSwiftPackageReference "Marquee" */;
+			productName = Marquee;
 		};
 		BFD140A627AA7F1200F8C02A /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
