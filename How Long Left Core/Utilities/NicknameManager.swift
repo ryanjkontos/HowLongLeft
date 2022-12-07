@@ -23,10 +23,20 @@ class NicknameManager: ObservableObject {
     
     init() {
         
-     
-        NotificationCenter.default.addObserver(self, selector: #selector(contextSaved), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
-        
-        loadNicknames()
+        DispatchQueue.main.async { [self] in
+            
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(type(of: self).contextSaved),
+                name: .NSPersistentStoreRemoteChange,
+                object: self
+            )
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(contextSaved), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
+            loadNicknames()
+            
+        }
+            
+      
         
     }
     
@@ -49,12 +59,13 @@ class NicknameManager: ObservableObject {
         DispatchQueue.main.async {
             
             if self.nicknameObjects != oldNicknameObjects {
-                HLLEventSource.shared.asyncUpdateEventPool()
+               // HLLEventSource.shared.updateEventsAsync()
             }
             
             self.objectWillChange.send()
         }
         
+        // print("Nicknames loaded!")
         
     }
     
@@ -106,7 +117,7 @@ class NicknameManager: ObservableObject {
             
         loadNicknames()
         HLLDataModel.shared.save()
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         self.objectWillChange.send()
         
     }
@@ -130,8 +141,9 @@ class NicknameManager: ObservableObject {
         
         DispatchQueue.main.async {
             
+            // print("Cloud context saved!!")
             self.loadNicknames()
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
             
         }
@@ -139,8 +151,8 @@ class NicknameManager: ObservableObject {
     }
     
 }
-
-/*class NicknameManager: ObservableObject {
+/*
+class NicknameManager: ObservableObject {
     
     static var shared = NicknameManager()
     
@@ -189,7 +201,7 @@ class NicknameManager: ObservableObject {
     func setNickname(_ nickname: String?, compactNickname: String? = nil ,for event: HLLEvent) {
         
         let object = NicknameObject(event.originalTitle, nickname: nickname, compactNickname: compactNickname)
-        HLLNicknameStore.shared.saveNicknameObject(object)
+        saveNicknameObject(object)
         
         loadNicknames()
     }
@@ -230,6 +242,11 @@ class NicknameManager: ObservableObject {
         
     }
     
+    func deleteNicknameObjects(_ objects: [NicknameObject]) {
+        
+        objects.forEach({ deleteNicknameObject($0) })
+        
+    }
     
     func deleteNicknameObject(_ object: NicknameObject) {
         
@@ -237,7 +254,7 @@ class NicknameManager: ObservableObject {
         dictionary[object.originalName] = nil
         saveNicknameDictionary(dictionary)
         loadNicknames()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
         
     }
     
@@ -247,7 +264,7 @@ class NicknameManager: ObservableObject {
         dictionary[object.originalName] = generateNicknameDict(nickname: object.nickname, compactNickname: object.compactNickname)
         saveNicknameDictionary(dictionary)
         loadNicknames()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
         
     }
     
@@ -282,7 +299,7 @@ class NicknameManager: ObservableObject {
         
     }
     
-} */
+}*/
 
 class NicknameObject: ObservableObject, Identifiable, Equatable {
     
@@ -316,3 +333,4 @@ class NicknameObject: ObservableObject, Identifiable, Equatable {
     
   
 }
+

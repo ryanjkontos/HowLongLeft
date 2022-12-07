@@ -37,6 +37,19 @@ extension UIColor {
         
     }
     
+    #if os(iOS)
+    
+    convenience init(_ color: UIColor, dark: UIColor) {
+        
+        self.init(dynamicProvider: { traits in
+            return traits.userInterfaceStyle == .dark ? dark : color
+        })
+        
+       
+    }
+    
+    #endif
+    
     func HLLCalendarGradient() -> [UIColor] {
         
         return [self.lighter(by: 13)!, self.darker(by: 10)!]

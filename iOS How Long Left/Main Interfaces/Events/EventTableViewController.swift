@@ -10,7 +10,7 @@ import UIKit
 
 class EventTableViewController: UITableViewController {
     
-    var card: CountdownCellView!
+    var card = CountdownCellView()
     
     var event: HLLEvent!
     
@@ -20,6 +20,9 @@ class EventTableViewController: UITableViewController {
     
     var timer: Timer?
 
+    var dupCard: CountdownCellView?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,14 +32,25 @@ class EventTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     
-        self.navigationItem.title = event.title
+
+   
+       // self.navigationItem.title = event.title
         self.navigationItem.largeTitleDisplayMode = .never
         
+
+    
+    
+        
         let eventView = UIView()
-        eventView.frame.size.height = 180
+        eventView.frame.size.height = 200
         //eventView.backgroundColor = .systemBlue
         
-        card = CountdownCellView()
+        
+        
+    //    self.view.backgroundColor = HLLColors.backgroundColor
+     //   self.tableView.backgroundColor = HLLColors.backgroundColor
+        
+       // card = CountdownCellView()
         card.configure()
         card.configureForEvent(event: event)
         menu = EventContextMenuGenerator.shared.getContextMenu(for: event, delegate: self)
@@ -93,6 +107,7 @@ class EventTableViewController: UITableViewController {
     }
 
     
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         timer?.invalidate()
@@ -122,6 +137,7 @@ class EventTableViewController: UITableViewController {
             return "Options"
         }
     }
+    
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,6 +170,8 @@ class EventTableViewController: UITableViewController {
         }
         
 
+ //       cell.backgroundColor = HLLColors.groupedCell
+       
         
         return cell
     }
@@ -187,6 +205,8 @@ class EventTableViewController: UITableViewController {
         return 30
     }
 
+  
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

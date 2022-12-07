@@ -763,13 +763,13 @@ class ComplicationContentsGenerator {
     func getTimelineStartDate() -> Date? {
         
         
-        return HLLEventSource.shared.eventPool.first?.startDate
+        return HLLEventSource.shared.events.first?.startDate
         
     }
     
     func getTimelineEndDate() -> Date? {
         
-        return HLLEventSource.shared.eventPool.last?.startDate
+        return HLLEventSource.shared.events.last?.startDate
         
     }
     

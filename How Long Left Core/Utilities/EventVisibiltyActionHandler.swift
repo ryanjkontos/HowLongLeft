@@ -28,7 +28,7 @@ class EventVisibiltyActionHandler {
             HLLDefaults.magdalene.showHSC = false
         }
         
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         
     }
     

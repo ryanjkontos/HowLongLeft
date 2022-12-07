@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManageEventsTableViewController: UITableViewController {
+class ManageEventsTableViewController: HLLAppearenceTableViewController {
 
     var events = [HLLStoredEvent]()
     
@@ -75,7 +75,7 @@ class ManageEventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        //cell.backgroundColor = HLLColors.groupedCell
         
         if indexPath.row != 0 {
             
@@ -138,7 +138,7 @@ class ManageEventsTableViewController: UITableViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     
                     guard let event = event else { return }
-                    print("Picker got \(event.title)")
+                    // print("Picker got \(event.title)")
                     self.dataSource.addAction(event: event)
                     self.update()
                     

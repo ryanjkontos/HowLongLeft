@@ -17,7 +17,7 @@ class IntentHandler: INExtension, HLLWidgetConfigurationIntentHandling {
         
         super.init()
         
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         
     }
     
@@ -61,7 +61,7 @@ class IntentHandler: INExtension, HLLWidgetConfigurationIntentHandling {
     
     func provideEnabledEventsOptionsCollection(for intent: HLLWidgetConfigurationIntent, searchTerm: String?, with completion: @escaping (INObjectCollection<WidgetEvent>?, Error?) -> Void) {
         
-        let events = HLLEventSource.shared.eventPool
+        let events = HLLEventSource.shared.events
         
         var items = [WidgetEvent]()
         

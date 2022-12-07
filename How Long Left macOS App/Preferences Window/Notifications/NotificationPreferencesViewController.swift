@@ -53,7 +53,7 @@ final class NotificationPreferenceViewController: NSViewController, PreferencePa
         let milestones = HLLNTriggerFetcher.shared.getTimeRemainingTriggers()
         let percentageMilestones = HLLNTriggerFetcher.shared.getPercentageTriggers()
         
-      //  print(milestones)
+      //  // print(milestones)
         
         if milestones.contains(600) {
             

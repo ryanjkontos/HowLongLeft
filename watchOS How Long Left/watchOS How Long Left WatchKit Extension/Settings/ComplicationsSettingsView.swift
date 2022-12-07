@@ -19,48 +19,71 @@ struct ComplicationsSettingsView: View {
         Form {
             
             Section {
-                Toggle(isOn: $model.complicationEnabled.animation(), label: { Text("Show Events") })
+                
+                ComplicationDisabledHeader()
+                    //.padding(.top, 20)
+                    //.padding(.bottom, 40)
+                    .listItemTint(.clear)
+                
             }
             
-            if model.complicationEnabled {
             
-                Section("Events") {
-                    
-                    Toggle("Show In Progress Events", isOn: $model.config.showCurrent.animation())
-                    Toggle("Show Upcoming Events", isOn:  $model.config.showUpcoming.animation())
-                    
-                    
-                    
-                    
-                }
+            Group {
                 
-                if model.config.showCurrent, model.config.showUpcoming {
+                Section(content: {
+                    Toggle(isOn: $model.complicationEnabled.animation(), label: { Text("Show Events") })
+                }, footer: {
+                    
+                    Text("You have not purchased the complication, so the options in this menu are disabled.")
+                    
+                })
+                .disabled(true)
                 
-                    Section("Prefer Showing") {
+                if model.complicationEnabled {
+                    
+                    Section("Events") {
                         
-                        Picker(selection: $model.config.sortMode.animation(), content: {
-                            ForEach(TimelineSortMode.allCases) { option in
-                                Text("\(option.name)")
-                            }
-                        }, label: { })
-                        .pickerStyle(.inline)
+                        Toggle("Show In Progress Events", isOn: $model.config.showCurrent.animation())
+                        Toggle("Show Upcoming Events", isOn:  $model.config.showUpcoming.animation())
+                        
+                        
+                        
+                        
+                    }
+                    .disabled(true)
+                    
+                    if model.config.showCurrent, model.config.showUpcoming {
+                        
+                        Section("Prefer Showing") {
+                            
+                            Picker(selection: $model.config.sortMode.animation(), content: {
+                                ForEach(TimelineSortMode.allCases) { option in
+                                    Text("\(option.name)")
+                                }
+                            }, label: { })
+                            .pickerStyle(.inline)
+                            
+                        }
+                        
+                    }
+                    
+                    Section("Appearance") {
+                        
+                        Toggle(isOn: $model.showUnits, label: { Text("Show Time Units") })
+                        Toggle(isOn: $model.showSeconds, label: { Text("Show Seconds") })
+                        
+                        Toggle(isOn: $model.tint, label: { Text("Tint Complication") })
                         
                     }
                     
                 }
                 
-                Section("Appearance") {
-                    
-                    Toggle(isOn: $model.showUnits, label: { Text("Show Time Units") })
-                    Toggle(isOn: $model.showSeconds, label: { Text("Show Seconds") })
-                    
-                    Toggle(isOn: $model.tint, label: { Text("Tint Complication") })
-                    
-                }
                 
             }
+            .disabled(true)
             
         }
+        
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Complication")
         

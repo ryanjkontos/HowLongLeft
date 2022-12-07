@@ -13,6 +13,10 @@ struct CountdownSettingsView: View {
     let model = WatchModel()
     
     @ObservedObject var settingsObject = WatchCountdownSettingsObject()
+   
+    @State var currentValue: Int = HLLDefaults.watch.currentLimit
+    @State var upcomingValue: Int = HLLDefaults.watch.upcomingLimit
+    
     
     var body: some View {
         
@@ -21,25 +25,20 @@ struct CountdownSettingsView: View {
             Section(content: {
                 
                 Toggle(isOn: $settingsObject.largeHeader, label: {
-                    Text("Show First Event Large")
+                    Text("Show First Event Full Screen")
                 })
-                
                 
                 Toggle(isOn: $settingsObject.largeHeaderLocation, label: { Text("Show Locations") })
-                    
+                Toggle(isOn: $settingsObject.percentages, label: { Text("Show Percentage Done") })
+                Toggle(isOn: $settingsObject.showSeconds.animation(), label: { Text("Show Seconds") })
 
+            }, header: {
+                Text("Event Cards")
             })
             
+   
             
-            Section {
-                
-                Toggle(isOn: $settingsObject.showSeconds.animation(), label: {
-                    Text("Show Seconds")
-                })
-                
-            }
-            
-            Section {
+            Section(content: {
                 
                 Toggle(isOn: $settingsObject.showCurrent.animation(), label: {
                     Text("Show In Progress Events")
@@ -63,22 +62,105 @@ struct CountdownSettingsView: View {
                         
                     }, label: { Text("Event Order") })
                     
+                    
                 }
                 
+                if (settingsObject.listOrderMode == .chronological) || (settingsObject.upcomingMode != .off) {
+                    
+                    Toggle(isOn: $settingsObject.groupEvents.animation(), label: {
+                        Text("Group Events By Date")
+                    })
+                    
+                }
+                
+                
+            }, header: {
+                Text("Event List")
+            }, footer: {
+                if settingsObject.showCurrent == false && settingsObject.upcomingMode == .off {
+                    Text("⚠️ WARNING: You have disabled both in-progress and upcoming events, meaning no events will appear.")
+                        .foregroundColor(.yellow)
+                }
+                
+            })
+            
+            if settingsObject.showCurrent == true || settingsObject.upcomingMode != .off {
+                
+                Section("Event Limits") {
+                    
+                    if settingsObject.showCurrent {
+                        
+                        NavigationLink(destination: { EventLimitEditor(type: .current) }, label: {
+                            
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text("In-Progress Events Limit")
+                                
+                                Group {
+                                    
+                                    if currentValue == 0 {
+                                        Text("No Limit")
+                                    } else {
+                                        Text("\(currentValue) Event\(currentValue == 1 ? "" : "s")")
+                                    }
+                                    
+                                }
+                                    .font(.system(size: 14.3, weight: .regular, design: .default))
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                        })
+                        
+                    }
+                    
+                    if settingsObject.upcomingMode != .off {
+                        
+                        NavigationLink(destination: { EventLimitEditor(type: .upcoming) }, label: {
+                            
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text("Upcoming Events Limit")
+                                
+                                Group {
+                                    
+                                    if upcomingValue == 0 {
+                                        Text("No Limit")
+                                    } else {
+                                        Text("\(upcomingValue) Event\(upcomingValue == 1 ? "" : "s")")
+                                    }
+                                    
+                                }
+                                
+                                    .font(.system(size: 14.3, weight: .regular, design: .default))
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                        })
+                        
+                    }
+                }
                 
             }
             
             
         }
+        .onAppear(perform: {
+            
+            currentValue = HLLDefaults.watch.currentLimit
+            upcomingValue = HLLDefaults.watch.upcomingLimit
+            
+        })
+  
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Countdowns")
+        .navigationTitle("General")
         
     }
 }
 
 struct CountdownSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownSettingsView()
+        NavigationView {
+            CountdownSettingsView()
+        }
+        
     }
 }
 
@@ -107,11 +189,33 @@ class WatchCountdownSettingsObject: ObservableObject {
         
     }
     
+    var groupEvents: Bool = HLLDefaults.watch.groupEventsByDate {
+        
+        willSet {
+            
+            HLLDefaults.watch.groupEventsByDate = newValue
+            objectWillChange.send()
+            
+        }
+        
+    }
+    
     var largeHeaderLocation: Bool = HLLDefaults.watch.largeHeaderLocation {
         
         willSet {
             
             HLLDefaults.watch.largeHeaderLocation = newValue
+            objectWillChange.send()
+            
+        }
+        
+    }
+    
+    var percentages: Bool = HLLDefaults.watch.showPercentage {
+        
+        willSet {
+            
+            HLLDefaults.watch.showPercentage = newValue
             objectWillChange.send()
             
         }

@@ -11,7 +11,7 @@ import Foundation
 
 import Cocoa
 /*
-class MagdaleneModeSetupPresentationManager: NSObject, NSWindowDelegate, EventPoolUpdateObserver {
+class MagdaleneModeSetupPresentationManager: NSObject, NSWindowDelegate, EventSourceUpdateObserver {
     
     static var shared: MagdaleneModeSetupPresentationManager!
     
@@ -25,7 +25,7 @@ class MagdaleneModeSetupPresentationManager: NSObject, NSWindowDelegate, EventPo
     
     override init() {
         super.init()
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
     }
     
@@ -97,7 +97,7 @@ class MagdaleneModeSetupPresentationManager: NSObject, NSWindowDelegate, EventPo
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         presentMagdaleneModeSetupIfNeeded()
     }
     

@@ -111,7 +111,7 @@ class CalendarListInterfaceController: WKInterfaceController, DefaultsTransferOb
         HLLDefaults.calendar.useNewCalendars = value
         
         DispatchQueue.global().async {
-            HLLEventSource.shared.updateEventPool()
+            HLLEventSource.shared.updateEvents()
             HLLDefaultsTransfer.shared.userModifiedPrferences()
         }
         
@@ -186,7 +186,7 @@ class CalendarRow: NSObject {
             
         }
         
-        print("Toggled")
+        // print("Toggled")
 
         HLLDefaultsTransfer.shared.userModifiedPrferences()
             

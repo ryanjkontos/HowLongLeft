@@ -1,6 +1,42 @@
 {
   "pins" : [
     {
+      "identity" : "communicator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/KaneCheshire/Communicator.git",
+      "state" : {
+        "revision" : "3d2b6c9f07902de7e87a5e9af2cff280de7981c9",
+        "version" : "4.1.0"
+      }
+    },
+    {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5cf1178d34291cac3c004aabcad23f11c40b856e"
+      }
+    },
+    {
+      "identity" : "google-api-objectivec-client-for-rest",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/google-api-objectivec-client-for-rest.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "260501c0425e95e038c65436436161266bf548e9"
+      }
+    },
+    {
+      "identity" : "gtm-session-fetcher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/gtm-session-fetcher.git",
+      "state" : {
+        "revision" : "efda500b6d9858d38a76dbfbfa396bd644692e4a",
+        "version" : "3.0.0"
+      }
+    },
+    {
       "identity" : "hotkey",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/soffes/HotKey",
@@ -28,6 +64,15 @@
       }
     },
     {
+      "identity" : "onesignal-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OneSignal/OneSignal-XCFramework",
+      "state" : {
+        "revision" : "b87060d4a77ab6b5e96d6655b2587d3cb05e33e5",
+        "version" : "3.12.3"
+      }
+    },
+    {
       "identity" : "preferences",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/Preferences",
@@ -43,6 +88,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "d3cbf32788250741d397cfb5bcd532c37aa1096d"
+      }
+    },
+    {
+      "identity" : "zephyr",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ArtSabintsev/Zephyr.git",
+      "state" : {
+        "revision" : "0030003a7febe0202b039abda1af111ca0d1b617",
+        "version" : "3.7.1"
       }
     }
   ],

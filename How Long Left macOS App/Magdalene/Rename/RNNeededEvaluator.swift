@@ -10,13 +10,13 @@ import Foundation
 
 
 
-/*class RNNeededEvaluator: EventPoolUpdateObserver {
+/*class RNNeededEvaluator: EventSourceUpdateObserver {
     
     let termFetcher = TermEventFetcher()
     let schoolAnalyser = SchoolAnalyser()
     
     init() {
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
     }
     
     func evaluateRenameNeeded() {
@@ -27,7 +27,7 @@ import Foundation
             
         if SchoolAnalyser.schoolMode == .Magdalene {
                 
-            if !self.schoolAnalyser.magdaleneTitles(from: HLLEventSource.shared.eventPool, includeRenamed: false).isEmpty {
+            if !self.schoolAnalyser.magdaleneTitles(from: HLLEventSource.shared.events, includeRenamed: false).isEmpty {
                     
                     RNUIManager.shared.promptToRenameIfNeeded()
                     
@@ -39,7 +39,7 @@ import Foundation
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         evaluateRenameNeeded()
     }
     

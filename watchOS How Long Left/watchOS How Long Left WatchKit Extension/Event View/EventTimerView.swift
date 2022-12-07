@@ -12,9 +12,7 @@ struct EventTimerView: View {
     
     var event: HLLEvent
     
-    var gen = CountdownStringGenerator()
-    
-    let calc = PercentageCalculator()
+
     
     let date = Date()
     
@@ -48,14 +46,14 @@ struct EventTimerView: View {
                         .foregroundColor(.gray.opacity(0.25))
                     
                     Circle()
-                        .trim(from: 0, to: calc.completionValue(for: event, at: timelineDate))
+                        .trim(from: 0, to: PercentageCalculator.completionValue(for: event, at: timelineDate))
                         .stroke(style: StrokeStyle(lineWidth: isLuminanceReduced ? 5 : 6, lineCap: .round))
                         
                         .shadow(radius: 2)
                         .rotationEffect(.degrees(-90))
-                        .opacity(getHideRingState(at: timelineDate) ? 0.0 : 1.0)
+                       // .opacity(getHideRingState(at: timelineDate) ? 0.0 : 1.0)
                         .foregroundColor(Color(event.color))
-                        .animation(.default, value: getHideRingState(at: timelineDate))
+                       // .animation(.default, value: getHideRingState(at: timelineDate))
                 }
                     .overlay {
                         
@@ -91,7 +89,7 @@ struct EventTimerView: View {
                             
                             if event.completionStatus(at: timelineDate) == .current {
                             
-                                Text("\(calc.calculatePercentageDone(for: event, at: timelineDate))")
+                                Text("\(PercentageCalculator.calculatePercentageDone(for: event, at: timelineDate))")
                                     .monospacedDigit()
                                 .foregroundColor(.secondary)
                                 //.minimumScaleFactor(0.5)
@@ -133,7 +131,7 @@ struct EventTimerView: View {
         }
 
         
-        return gen.generatePositionalCountdown(event: event, at: date, showSeconds: showSeconds)
+        return CountdownStringGenerator.generatePositionalCountdown(event: event, at: date, showSeconds: showSeconds)
         
     }
     

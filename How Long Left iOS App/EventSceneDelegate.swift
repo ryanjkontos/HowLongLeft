@@ -53,7 +53,7 @@ class EventSceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControl
             if configure(window: window, session: session, with: newUserActivity) {
                 scene.userActivity = newUserActivity // Remember this activity for when this app is suspended or quit.
             } else {
-                Swift.debugPrint("Failed to restore scene from \(newUserActivity)")
+                Swift.debug// print("Failed to restore scene from \(newUserActivity)")
             }
             
             // Set the 'can' and 'prefers' predicates for this scene.
@@ -146,7 +146,7 @@ class EventSceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControl
             if let userInfo = session.userInfo {
                 if userInfo["EventID"] as? String == event.persistentIdentifier {
                     // An open session was found that matches the photo to activate.
-                    print("Found existing")
+                    // print("Found existing")
                     foundSceneSession = session
                     break
                 }

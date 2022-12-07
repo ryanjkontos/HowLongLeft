@@ -12,7 +12,7 @@ import Foundation
 import AppKit
 import UserNotifications
 
-class MacEventNotificationScheduler: EventPoolUpdateObserver {
+class MacEventNotificationScheduler: EventSourceUpdateObserver {
     
     static var shared: MacEventNotificationScheduler!
     
@@ -22,7 +22,7 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
     var permissionFalseBecauseUnknown = false
     
     init() {
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         getAccess()
         //scheduleNotificationsForUpcomingEvents()
     }
@@ -42,7 +42,7 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
                       
             })
               
-              if HLLEventSource.shared.neverUpdatedEventPool {
+              if HLLEventSource.shared.neverUpdatedevents {
                   return
               }
               
@@ -53,7 +53,7 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
                       
                   self.hasPermission = granted
                       
-               // print("Noto auth: \(granted)")
+               // // print("Noto auth: \(granted)")
                 
                   if granted != previous {
                     self.scheduleNotificationsForUpcomingEvents()
@@ -91,7 +91,7 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
         
       
             
-            let events = HLLEventSource.shared.eventPool.sorted(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
+            let events = HLLEventSource.shared.events.sorted(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
             let items = self.contentGenerator.generateNotificationContentItems(for: events)
         
             var scheduledIDS = [String]()
@@ -130,7 +130,7 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
                         let request = UNNotificationRequest(identifier: uuidString.uuidString, content: notificationContent, trigger: trigger)
                         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in })
                         
-                     //   print("Scheduling noto for \(item.event?.title) \(item.date)")
+                     //   // print("Scheduling noto for \(item.event?.title) \(item.date)")
                         
                         
                     } else {
@@ -144,14 +144,14 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
                         notification.identifier = notificationIdentifier
                         NSUserNotificationCenter.default.scheduleNotification(notification)
                         
-                        print("Scheduling noto for \(item.date)")
+                        // print("Scheduling noto for \(item.date)")
                 
                     }
                 
                 }
             
             }
-            print("Scheduled \(items.count) notifications!")
+            // print("Scheduled \(items.count) notifications!")
             
             HLLDefaults.defaults.set(scheduledIDS, forKey: "ScheduledEventNotifications")
             
@@ -178,7 +178,7 @@ class MacEventNotificationScheduler: EventPoolUpdateObserver {
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         scheduleNotificationsForUpcomingEvents()
     }
     

@@ -81,10 +81,9 @@ struct CountdownsListWidget: View {
 struct CountdownsListWidget_Previews: PreviewProvider {
     static var previews: some View {
         
-        VStack {
+    
             CountdownsListWidget()
-        }
        
-        //.previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

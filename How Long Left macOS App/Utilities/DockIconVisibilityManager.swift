@@ -33,14 +33,14 @@ class DockIconVisibilityManager {
     
     @objc func didBecomeKey() {
         
-       // print("Became key")
+       // // print("Became key")
         checkWindows()
         
     }
     
     @objc func didClose() {
         
-        //print("Did close")
+        //// print("Did close")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.checkWindows()
             
@@ -59,7 +59,7 @@ class DockIconVisibilityManager {
               
             for window in windows {
                   
-              //  print("Window \(i): \(window.description)")
+              //  // print("Window \(i): \(window.description)")
                 
                 if !window.description.contains(text: "NSStatusBarWindow"), !window.description.contains(text: "NSCarbonMenuWindow"), !window.description.contains(text: "NSMenuWindowManagerWindow") {
                       visible.append(window)
@@ -68,7 +68,7 @@ class DockIconVisibilityManager {
               }
         
         /*for item in visible {
-            print("Visible: \(item.description)")
+            // print("Visible: \(item.description)")
         }*/
               
               if visible.count > 0 {

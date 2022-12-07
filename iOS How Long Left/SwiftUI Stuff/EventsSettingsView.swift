@@ -18,7 +18,7 @@ struct EventsSettingsView: View {
                 
                 Toggle("Show All-Day Events", isOn: Binding(get: { HLLDefaults.general.showAllDay }, set: {
                     HLLDefaults.general.showAllDay = $0
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                 }))
                 
             }
@@ -29,7 +29,7 @@ struct EventsSettingsView: View {
                 
                 Toggle("Combine Back To Back Events", isOn: Binding(get: { HLLDefaults.general.combineDoubles }, set: {
                     HLLDefaults.general.combineDoubles = $0
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                 }))
                 
             }, footer: { Text("Enabling this option will cause How Long Left to display back-to-back events with the same title as a single, combined event.") })

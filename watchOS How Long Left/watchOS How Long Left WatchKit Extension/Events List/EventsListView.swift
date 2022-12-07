@@ -15,8 +15,10 @@ struct EventsListView: View {
     
     var timelineStart: Date!
     
-    @EnvironmentObject var store: Store
    
+    
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
+    
     @State var showComplicationPopover = false
     
     @Environment(\.scenePhase) private var scenePhase
@@ -31,6 +33,8 @@ struct EventsListView: View {
     @State var showOptions = false
     
     @State var showMore = false
+    
+    @State var showMoreCurrent = false
     
   //  @State var location = false
  //   @State var bar = false
@@ -80,13 +84,19 @@ struct EventsListView: View {
         .sheet(isPresented: $showSettings) {
             NavigationView{
             SettingsView(open: $showSettings)
-                .environmentObject(store)
+                
             }
         }
         
         .sheet(isPresented: $showMore) {
             NavigationView{
                 MoreEventsList(openSheet: $showMore)
+            }
+        }
+        
+        .sheet(isPresented: $showMoreCurrent) {
+            NavigationView{
+                InProgressEventsList(openSheet: $showMoreCurrent)
             }
         }
        
@@ -99,9 +109,10 @@ struct EventsListView: View {
     var timelineList: some View {
 
 
-            TimelineView(.periodic(from: date, by: 1)) { context in
+        TimelineView(.periodic(from: date, by: 0.5)) { context in
                 
                 getList(at: context.date, live: context.cadence == .live)
+                
 
                 
             }
@@ -175,7 +186,26 @@ struct EventsListView: View {
                             
                         }
                         
-                        if sectionIndex == groups.count-1 {
+                        
+                        if group.status == .current && dataSource.currentIsOverLimit && isLuminanceReduced == false {
+                            
+                            Button(action: {
+                                
+                                showMoreCurrent.toggle()
+                                
+                            }, label: {
+                                
+                                HStack {
+                                    Spacer()
+                                    Text("More In-Progress...")
+                                    Spacer()
+                                }
+                                
+                            })
+                            
+                        }
+                        
+                        if sectionIndex == groups.count-1 && group.status != .current && isLuminanceReduced == false {
                             
                             Button(action: {
                                 
@@ -190,6 +220,7 @@ struct EventsListView: View {
                                 }
                                 
                             })
+                           
                             
                         }
                         
@@ -273,7 +304,7 @@ struct EventsListView: View {
             CountdownCard(event: event,date: date)
                 
         } else {
-            EventCard(event: event, liveUpdates: true)
+            EventCard(event: event, liveUpdates: true, date: date)
         }
              
     }
@@ -349,7 +380,7 @@ struct EventsListView: View {
 struct EventsListView_Previews: PreviewProvider {
     static var previews: some View {
         EventsListView()
-            .environmentObject(Store())
+            
             .previewAllWatches()
     }
 }

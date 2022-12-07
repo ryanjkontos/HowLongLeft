@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountdownsSettingsTableViewController: UITableViewController {
+class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
 
     enum Section {
         case inProgress
@@ -32,6 +32,8 @@ class CountdownsSettingsTableViewController: UITableViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = "Countdowns"
         
+        
+       // self.tableView.backgroundColor = HLLColors.backgroundColor
         self.isEditing = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: "ToggleCell")
@@ -170,7 +172,8 @@ class CountdownsSettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell", for: indexPath) as! SwitchTableViewCell
-
+       // cell.backgroundColor = HLLColors.groupedCell
+        
         let section = sections[indexPath.section]
         
         switch section {
@@ -207,7 +210,7 @@ class CountdownsSettingsTableViewController: UITableViewController {
                 stepperCell.stepper.minimumValue = 1
                 stepperCell.stepper.maximumValue = 25
                 
-                
+              //  stepperCell.backgroundColor = HLLColors.groupedCell
                 return stepperCell
             }
         case .ordering:
@@ -216,10 +219,11 @@ class CountdownsSettingsTableViewController: UITableViewController {
             var config = UIListContentConfiguration.cell()
             config.text = orderRows[indexPath.row].displayString
             textCell.contentConfiguration = config
+        //    textCell.backgroundColor = HLLColors.groupedCell
             return textCell
         }
        
-
+        
         return cell
     }
     

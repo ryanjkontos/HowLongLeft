@@ -16,7 +16,7 @@ class EventChangeMonitor {
     
     private var timer: Timer!
     
-    private var previousEventPool = [HLLEvent]()
+    private var previousevents = [HLLEvent]()
     
     private var statusDict = [HLLEvent: HLLEvent.CompletionStatus]()
     
@@ -31,12 +31,15 @@ class EventChangeMonitor {
     
     private func run() {
         
-        let prev = previousEventPool
-        let current = HLLEventSource.shared.eventPool
+        let prev = previousevents
+        let current = HLLEventSource.shared.events
         
-        if (prev != current) || statusDict != generateStatusDict(current) {
+        let prevSet = Set(prev.map({$0.infoIdentifier}))
+        let currentSet = Set(current.map({$0.infoIdentifier}))
+        
+        if prevSet == currentSet, statusDict != generateStatusDict(current) {
             
-            print("Current and previous mismatch")
+           // // print("Current and previous mismatch")
             
             DispatchQueue.main.async {
                 
@@ -50,12 +53,13 @@ class EventChangeMonitor {
                 
              
                 self.statusDict = self.generateStatusDict(current)
-                self.previousEventPool = current
+                
             }
         } else {
-           // print("Current and previous match")
+          //  // print("Current and previous match")
         }
         
+        self.previousevents = current
         
     }
     

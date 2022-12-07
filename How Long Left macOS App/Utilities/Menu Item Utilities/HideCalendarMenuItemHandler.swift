@@ -23,7 +23,7 @@ class HideCalendarMenuItemHandler {
         if let calendar = sender.representedObject as? EKCalendar {
             
             CalendarDefaultsModifier.shared.toggle(calendar: calendar)
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
         }
             
@@ -39,7 +39,7 @@ class HideCalendarMenuItemHandler {
             
             CalendarDefaultsModifier.shared.setAllDisabled()
             CalendarDefaultsModifier.shared.setEnabled(calendar: calendar)
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
         }
             

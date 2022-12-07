@@ -60,7 +60,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, UNUserNotificationCenter
         
         DispatchQueue.main.async {
             
-            print("Trig9")
+            // print("Trig9")
             
         if userInfo?[CLKLaunchedTimelineEntryDateKey] as? Date != nil {
             // Handoff from complication

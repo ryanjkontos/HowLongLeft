@@ -362,7 +362,7 @@ struct NotificationGroupEditorView: View {
                 
                 if value.isEmpty == false {
                     
-                    print("Setting name to \(value)")
+                    // print("Setting name to \(value)")
                     self.groupStore.group.name = value
                     groupStore.store.saveGroup(groupStore.group)
                     

@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 
 
-class CalendarSelectTableViewController: UITableViewController, DefaultsTransferObserver, EventPoolUpdateObserver {
+class CalendarSelectTableViewController: UITableViewController, DefaultsTransferObserver, EventSourceUpdateObserver {
 
     var allCalendars = [EKCalendar]()
     var enabledCalendars = [EKCalendar]()
@@ -30,7 +30,7 @@ class CalendarSelectTableViewController: UITableViewController, DefaultsTransfer
         
         self.navigationItem.title = "Calendars"
       //  HLLDefaultsTransfer.shared.addTransferObserver(self)
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,13 +43,13 @@ class CalendarSelectTableViewController: UITableViewController, DefaultsTransfer
   
     func setupData() {
         
-        print("Loading table")
+        // print("Loading table")
         allCalendars = HLLEventSource.shared.getCalendars().sorted { $0.title.lowercased() < $1.title.lowercased() }
 
         setupSelectAllButton()
         tableView.reloadData()
         
-        print("PoolC7")
+        // print("PoolC7")
         
     }
     
@@ -166,7 +166,7 @@ class CalendarSelectTableViewController: UITableViewController, DefaultsTransfer
                 
                 HLLDefaults.calendar.useNewCalendars = value
                 DispatchQueue.global(qos: .default).async {
-                    HLLEventSource.shared.updateEventPool()
+                    HLLEventSource.shared.updateEvents()
                 }
             
             }
@@ -184,7 +184,7 @@ class CalendarSelectTableViewController: UITableViewController, DefaultsTransfer
         }
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
            // self.setupData()
         }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 struct HLLTimeline: Codable {
     
@@ -46,7 +47,7 @@ struct HLLTimeline: Codable {
         return nil
     }
     
-    func getEntryDictionary(after date: Date) -> [String:String] {
+    func getEntryDictionary() -> [String:String] {
         
         var returnArray = [String:String]()
         
@@ -58,6 +59,25 @@ struct HLLTimeline: Codable {
         
     }
     
+    func getEntriesHash() -> String {
+        
+        let dict = getEntryDictionary()
+        let encoded = try! JSONEncoder().encode(dict)
+        let hash = encoded.description.MD5ifPossible
+        return hash
+    }
     
+    func getArchive() -> HLLTimeline.Archive {
+        return HLLTimeline.Archive(state: self.state, appVersion: self.appVersion, creationDate: self.creationDate, entryHash: getEntriesHash())
+    }
+    
+    struct Archive: Codable {
+        
+        var state: TimelineState
+        var appVersion: String
+        var creationDate: Date
+        var entryHash: String
+        
+    }
     
 }

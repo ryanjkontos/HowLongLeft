@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaunchingViewController: UIViewController, EventPoolUpdateObserver {
+class LaunchingViewController: UIViewController, EventSourceUpdateObserver {
 
     var hasSetupView = false
     var timer: Timer?
@@ -16,12 +16,12 @@ class LaunchingViewController: UIViewController, EventPoolUpdateObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         timer = Timer(timeInterval: 0.5, target: self, selector: #selector(setupView), userInfo: nil, repeats: false)
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
        setupView()
     }
     

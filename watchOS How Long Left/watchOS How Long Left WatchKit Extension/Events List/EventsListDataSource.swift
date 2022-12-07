@@ -9,15 +9,18 @@
 import Foundation
 import SwiftUI
 
-class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedEventObserver {
+class EventsListDataSource: ObservableObject, EventSourceUpdateObserver, SelectedEventObserver {
     
     var timer: Timer!
     
     var updates = true
     
-    @Published var neverUpdated = false
+    var neverUpdated = false
     
-    @Published var previous = [TitledEventGroup]()
+    var previous = [TitledEventGroup]()
+    
+    var currentIsOverLimit = false
+     var upcomingIsOverLimit = false
     
     init() {
         
@@ -28,10 +31,10 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
         
         
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         SelectedEventManager.shared.observers.append(self)
         
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         
         
     }
@@ -40,21 +43,20 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
     @objc func checkForChanges() {
         
         
-        
-        if !updates {
-            return
-        }
-        
-       
-        let newGroups = getEventGroups(at: Date()) ?? [TitledEventGroup]()
-        
-        if previous != newGroups {
+        DispatchQueue.global(qos: .background).async {
             
-            DispatchQueue.main.async {
+            if !self.updates { return }
+            let newGroups = self.getEventGroups(at: Date()) ?? [TitledEventGroup]()
+            
+            if self.previous != newGroups {
                 
-                withAnimation {
-                    self.previous = newGroups
-                    self.objectWillChange.send()
+                DispatchQueue.main.async {
+                    
+                    withAnimation {
+                        self.previous = newGroups
+                        self.objectWillChange.send()
+                    }
+                    
                 }
                 
             }
@@ -63,7 +65,7 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
         if !updates {
             return
@@ -90,64 +92,100 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
             return previous
         }
         
-        var returnArray = [TitledEventGroup]()
-        let all = HLLEventSource.shared.eventPool.filter({$0.completionStatus(at: date) != .done})
+        currentIsOverLimit = false
+        upcomingIsOverLimit = false
         
-        let upcomingData =  HLLEventSource.shared.getUpcomingEventsFromNextDayWithEvents(date: date)
+        var returnArray = [TitledEventGroup]()
+        var all = HLLEventSource.shared.events.filter({$0.completionStatus(at: date) != .done})
+        
+        let upcomingData =  HLLEventSource.shared.getAllEventsGroupedByDate(nil, maxCount: HLLDefaults.watch.upcomingLimit, upcomingOnly: true, at: date, excludePinned: true, groupMode: .startDate)
        
-        var upcoming = [HLLEvent]()
+        var upcoming = [TitledEventGroup]()
         var current = [HLLEvent]()
         
         if !(HLLDefaults.watch.upcomingMode == .off) {
-            upcoming = upcomingData.1
-            upcoming.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
+           
+            for dateOf in upcomingData {
+                upcoming.append(TitledEventGroup(title: "Upcoming \(dateOf.date.userFriendlyRelativeString(at: date))", events: dateOf.events))
+            }
+            
+        
+        } else {
+            all.removeAll(where: { $0.completionStatus(at: date) == .upcoming })
         }
+        
+        if (currentIsOverLimit) { currentIsOverLimit = false }
         
         if HLLDefaults.watch.showCurrent {
             current = all.filter({ $0.completionStatus(at: date) == .current })
+            
+            if current.count > HLLDefaults.watch.currentLimit && HLLDefaults.watch.currentLimit != 0 {
+                current = Array(current.prefix(HLLDefaults.watch.currentLimit))
+                if !currentIsOverLimit { currentIsOverLimit = true }
+                
+            }
+            
             current.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
+        } else {
+            all.removeAll(where: { $0.completionStatus(at: date) == .current })
         }
         
-        var pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
+        let pinned = HLLEventSource.shared.getPinnedEventsFromevents()
         current.removeAll(where: { pinned.contains($0) })
-        upcoming.removeAll(where: { pinned.contains($0) })
+        //upcoming.removeAll(where: { pinned.contains($0) })
         
         //pinned.removeAll(where: {$0.completionStatus(at: date) == .done})
         
-        let upcomingText = upcomingData.0.userFriendlyRelativeString(at: date)
+       // let upcomingText = upcomingData.0.userFriendlyRelativeString(at: date)
         
         switch HLLDefaults.watch.listOrderMode {
             
         case .chronological:
             
-            var chronoArray = [HLLEvent]()
-
-            chronoArray.append(contentsOf: current)
-            chronoArray.append(contentsOf: upcoming)
-            chronoArray.sort(by: { $0.countdownDate(at: date).compare($1.countdownDate(at: date)) == .orderedAscending })
+            let chronoData = filterAllEvents(events: all, at: date).groupedByDate(at: date, sortMode: .countdownDate)
             
-            returnArray.append(TitledEventGroup(events: chronoArray))
+            if HLLDefaults.watch.groupEventsByDate {
+                for dateOf in chronoData {
+                    returnArray.append(TitledEventGroup(title: getDateHeader(for: dateOf.date, at: date), events: dateOf.events))
+                }
+            } else {
+                returnArray.append(TitledEventGroup(events: chronoData.flatMap({$0.events})))
+            }
             
-
+           
             
         case .currentFirst:
             
             if !current.isEmpty {
-                returnArray.append(TitledEventGroup(title: "In Progress", events: current))
+                returnArray.append(TitledEventGroup(title: "In-Progress", events: current, status: .current))
             }
             
-            if !upcoming.isEmpty {
-                returnArray.append(TitledEventGroup(title: "Upcoming \(upcomingText)", events: upcoming))
+            if HLLDefaults.watch.groupEventsByDate {
+                
+                if !upcoming.isEmpty {
+                    returnArray.append(contentsOf: upcoming)
+                }
+                
+            } else {
+                returnArray.append(TitledEventGroup(title: "Upcoming", events: upcoming.flatMap({$0.events})))
             }
             
         case .upcomingFirst:
             
-            if !upcoming.isEmpty {
-                returnArray.append(TitledEventGroup(title: "Upcoming \(upcomingText)", events: upcoming))
+            
+            if HLLDefaults.watch.groupEventsByDate {
+                
+                if !upcoming.isEmpty {
+                    returnArray.append(contentsOf: upcoming)
+                }
+                
+            } else {
+                returnArray.append(TitledEventGroup(title: "Upcoming", events: upcoming.flatMap({$0.events})))
             }
             
+            
             if !current.isEmpty {
-                returnArray.append(TitledEventGroup(title: "In Progress", events: current))
+                returnArray.append(TitledEventGroup(title: "In-Progress", events: current, status: .current))
             }
             
         }
@@ -164,6 +202,69 @@ class EventsListDataSource: ObservableObject, EventPoolUpdateObserver, SelectedE
         
     }
     
+    func filterAllEvents(events: [HLLEvent], at date: Date) -> [HLLEvent] {
+        
+        var currentRemovalCount = events.filter({ $0.completionStatus(at: date) == .current }).count - HLLDefaults.watch.currentLimit
+        if currentRemovalCount < 0 { currentRemovalCount = 0 }
+        
+        var upcomingRemovalCount = events.filter({ $0.completionStatus(at: date) == .upcoming }).count - HLLDefaults.watch.upcomingLimit
+        if upcomingRemovalCount < 0 { upcomingRemovalCount = 0 }
+        
+        var currentRemoved = 0
+        var upcomingRemoved = 0
+        
+        let reversed = events.sortedEvents(mode: .countdownDate, at: date).reversed()
+        
+        var newArray = [HLLEvent]()
+        
+        for event in reversed {
+            
+            switch event.completionStatus(at: date) {
+                
+                
+            case .upcoming:
+                
+                if upcomingRemoved >= upcomingRemovalCount {
+                    newArray.append(event)
+                } else {
+                    upcomingRemoved += 1
+                }
+                
+            case .current:
+                
+                if currentRemoved >= currentRemovalCount {
+                    newArray.append(event)
+                } else {
+                    currentRemoved += 1
+                }
+                
+            case .done:
+                break
+            }
+            
+        }
+        
+        return newArray.reversed()
+        
+    }
+    
+    
+    
+    func getDateHeader(for date: Date, at: Date) -> String {
+        
+        let num = date.daysUntil(at: at)
+        
+        if num == 0 {
+            return "Today"
+        }
+        
+        if num == 1 {
+            return "Tomorrow"
+        }
+        
+        return "\(date.userFriendlyRelativeString(at: at)) – in \(num) days"
+        
+    }
     
 }
 

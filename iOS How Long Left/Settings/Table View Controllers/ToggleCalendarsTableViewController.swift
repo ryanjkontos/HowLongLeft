@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToggleCalendarsTableViewController: UITableViewController {
+class ToggleCalendarsTableViewController: HLLAppearenceTableViewController {
 
     let manager = AppEnabledCalendarsManager.shared
     
@@ -53,7 +53,7 @@ class ToggleCalendarsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell", for: indexPath) as! SwitchTableViewCell
-        
+      //  cell.backgroundColor = HLLColors.groupedCell
         if indexPath.section == 0 {
         
            
@@ -65,6 +65,8 @@ class ToggleCalendarsTableViewController: UITableViewController {
             cell.toggleAction = {
                 cal.enabled = $0
                 self.updateToggleAllButton()
+                
+                HLLEventSource.shared.updateEventsAsync(bypassCollation: true)
             }
         
             
@@ -77,7 +79,7 @@ class ToggleCalendarsTableViewController: UITableViewController {
             cell.stateFetcher = { return HLLDefaults.calendar.useNewCalendars }
             cell.toggleAction = {
                 HLLDefaults.calendar.useNewCalendars = $0
-                HLLEventSource.shared.asyncUpdateEventPool()
+                HLLEventSource.shared.updateEventsAsync()
             }
             
         }

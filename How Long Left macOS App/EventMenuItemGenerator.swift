@@ -14,7 +14,6 @@ import Cocoa
 class EventMenuItemGenerator {
     
     let eventSubmenuGenerator = DetailSubmenuGenerator()
-    let countdownStringGenerator = CountdownStringGenerator()
     
     func makeEventInfoMenuItem(for event: HLLEvent, needsDateContextInTitle: Bool, isFollowingOccurence: Bool = false) -> NSMenuItem {
         

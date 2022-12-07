@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SelectedEventManager: EventPoolUpdateObserver {
+class SelectedEventManager: EventSourceUpdateObserver {
     
     var observers = [SelectedEventObserver]()
     
@@ -21,7 +21,7 @@ class SelectedEventManager: EventPoolUpdateObserver {
         
       launchID = HLLDefaults.defaults.string(forKey: "SelectedEvent")
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
        // timer = Timer(timeInterval: 1, target: self, selector: #selector(updateEvent), userInfo: nil, repeats: true)
     }
     
@@ -29,14 +29,14 @@ class SelectedEventManager: EventPoolUpdateObserver {
         
         set (to) {
             
-          //  print("Selected set!")
+          //  // print("Selected set!")
             
             if let event = to {
                 
                 if event.completionStatus == .done {
                     
                     SelectedEventManager.shared.selectedEvent = nil
-                     print("SelectedSet 4")
+                     // print("SelectedSet 4")
                     HLLDefaults.defaults.set(nil, forKey: "SelectedEvent")
                     return
                     
@@ -68,7 +68,7 @@ class SelectedEventManager: EventPoolUpdateObserver {
             
             if let id = HLLDefaults.defaults.string(forKey: "SelectedEvent") {
                 
-                return HLLEventSource.shared.eventPool.first(where: {$0.persistentIdentifier == id})
+                return HLLEventSource.shared.events.first(where: {$0.persistentIdentifier == id})
                 
             }
             
@@ -108,7 +108,7 @@ class SelectedEventManager: EventPoolUpdateObserver {
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.global().async {
             self.updateEvent()
         }

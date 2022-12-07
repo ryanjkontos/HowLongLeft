@@ -37,7 +37,7 @@ class HLLStatusItem {
        
     init(configuration: HLLStatusItemConfiguration) {
          
-      //  print("Creating status item with config: \(configuration)")
+      //  // print("Creating status item with config: \(configuration)")
     
         
         self.configuration = configuration
@@ -53,11 +53,11 @@ class HLLStatusItem {
        
         self.statusItem?.isVisible = true
         self.statusItem?.button?.imagePosition = .imageOnly
-        self.statusItem?.image = StatusItemGlobals.basicIcon
+     //   self.statusItem?.image = StatusItemGlobals.basicIcon
         
         updateContent()
         
-        DispatchQueue.main.async {
+   
         
         self.menuGenerator = StatusItemMenuGenerator()
             
@@ -72,10 +72,10 @@ class HLLStatusItem {
           
                     
             // StatusItem is stored as a class property.
-            self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+           
             self.statusItem?.menu = self.menu
             
-            
+            let item = self.statusItem!
 
             
         switch configuration.type {
@@ -87,7 +87,17 @@ class HLLStatusItem {
             self.statusItem?.behavior = .removalAllowed
         }
         
-        }
+           /* let view = NSHostingView(rootView: StatusItemView().padding(.horizontal, 10).fixedSize())
+                    item.button?.addSubview(view)
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    NSLayoutConstraint.activate([
+                        view.leadingAnchor.constraint(equalTo: item.button!.leadingAnchor),
+                        view.trailingAnchor.constraint(equalTo: item.button!.trailingAnchor),
+                        view.heightAnchor.constraint(equalToConstant: 20),
+                        view.centerYAnchor.constraint(equalTo: item.button!.centerYAnchor)
+                    ]) */
+            
+        updateContent()
         
            
        }
@@ -185,7 +195,7 @@ class HLLStatusItem {
 
     func remove() {
       
-        print("Removing status item")
+        // print("Removing status item")
         
         self.statusItem = nil
         self.statusItemTextHander = nil
@@ -209,14 +219,15 @@ class HLLStatusItem {
 
     private func setStatusItemContent(_ content: HLLStatusItemContent, force: Bool = false) {
         
+        //
+        
        if override {
             if !force {
                return
             }
         }
         
-        DispatchQueue.main.async {
-        
+
             
             
             self.update()
@@ -240,7 +251,7 @@ class HLLStatusItem {
             
             self.currentContent = content
             
-        }
+        
         
         
     }
@@ -283,7 +294,7 @@ class HLLStatusItem {
     }
     
     deinit {
-        print("Deiniting a status item!!")
+        // print("Deiniting a status item!!")
         self.statusItem = nil
     }
     

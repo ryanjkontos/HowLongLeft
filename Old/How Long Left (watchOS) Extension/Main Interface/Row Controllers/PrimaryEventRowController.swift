@@ -19,7 +19,6 @@ class PrimaryEventRowController: NSObject, EventRow {
     
     var event: HLLEvent!
     var rowCompletionStatus: HLLEvent.CompletionStatus!
-    let countdownStringGenerator = CountdownStringGenerator()
     let percentageCalculator = PercentageCalculator()
     
     func setup(event: HLLEvent) {

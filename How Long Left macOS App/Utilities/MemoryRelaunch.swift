@@ -39,19 +39,19 @@ class MemoryRelaunch {
             
             if kerr == KERN_SUCCESS {
                 
-                //  print("Memory in use: \(info.resident_size/100000)")
+                //  // print("Memory in use: \(info.resident_size/100000)")
                 
                 if info.resident_size/1000000 > 2000 {
                     // Roughly idk
                     
-                    print("Relaunching to resolve memory issues...")
+                    // print("Relaunching to resolve memory issues...")
                     // This is the worst thing I have ever done lmao.
                     self.relaunchApp()
                 }
                 
             }
             else {
-                print("Error with task_info(): " +
+                // print("Error with task_info(): " +
                     (String(cString: mach_error_string(kerr), encoding: String.Encoding.ascii) ?? "unknown error"))
             }
             

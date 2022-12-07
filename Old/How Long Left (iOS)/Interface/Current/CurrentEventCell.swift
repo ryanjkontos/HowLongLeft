@@ -20,7 +20,6 @@ class DefaultCurrentEventCell: UITableViewCell, CurrentEventCell {
     
     var event: HLLEvent!
     
-    let countdownStringGenerator = CountdownStringGenerator()
     
     func setup(with event: HLLEvent) {
         
@@ -44,7 +43,7 @@ class DefaultCurrentEventCell: UITableViewCell, CurrentEventCell {
             var height = self.event.completionFraction
             height *= Double(totalHeight)
         
-            //print("Setting bar height for \(event.title) totalH: \(totalHeight)")
+            //// print("Setting bar height for \(event.title) totalH: \(totalHeight)")
         
             self.progressBarHeight.constant = CGFloat(height)
             
@@ -68,8 +67,7 @@ class DetailCurrentEventCell: UITableViewCell, CurrentEventCell {
     
     var event: HLLEvent!
     
-    let countdownStringGenerator = CountdownStringGenerator()
-    
+
     func setup(with event: HLLEvent) {
         
         self.event = event
@@ -91,7 +89,7 @@ class DetailCurrentEventCell: UITableViewCell, CurrentEventCell {
         height *= Double(totalHeight)
         self.progressBarHeight.constant = CGFloat(height)
                        
-        print("Setting bar height for \(event.title) \(height)")
+        // print("Setting bar height for \(event.title) \(height)")
         
         infoLabel.text = "(\(event.completionPercentage) Done)"
         

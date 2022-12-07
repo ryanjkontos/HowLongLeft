@@ -11,7 +11,7 @@ import Foundation
 
 import Cocoa
 
-class LaunchFunctions: EventPoolUpdateObserver, OnboardingCompletionDelegate {
+class LaunchFunctions: EventSourceUpdateObserver, OnboardingCompletionDelegate {
     
     static var shared = LaunchFunctions()
     
@@ -47,13 +47,13 @@ class LaunchFunctions: EventPoolUpdateObserver, OnboardingCompletionDelegate {
     func onboardingComplete() {
         
       //  HLLDefaults.appData.launchedVersion = Version.currentVersion
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         ProOnboardingWindowManager.shared.onboardingComplete()
         
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
         if performedPostOnboardingActions == false {
             

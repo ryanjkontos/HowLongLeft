@@ -14,7 +14,7 @@ class WidgetHLLTimelineStorageManager {
     
     func saveTimeline(_ timeline: HLLTimeline, configID: String?) {
         
-        guard let id = configID else { HLLDefaults.widget.latestTimeline = timeline; return }
+        guard let id = configID else { HLLDefaults.widget.latestTimeline = timeline.getArchive(); return }
         let data = try! JSONEncoder().encode(timeline)
         var dict = [String:Data]()
         if let savedDict = HLLDefaults.defaults.dictionary(forKey: defaultsKey) as? [String:Data] { dict = savedDict }
@@ -23,12 +23,12 @@ class WidgetHLLTimelineStorageManager {
         
     }
     
-    func getTimeline(withID configID: String?) -> HLLTimeline? {
+    func getTimeline(withID configID: String?) -> HLLTimeline.Archive? {
         
         guard let id = configID else { return HLLDefaults.widget.latestTimeline }
         guard let savedDict = HLLDefaults.defaults.dictionary(forKey: defaultsKey) as? [String:Data] else { return nil }
         guard let data = savedDict[id] else { return nil }
-        return try? JSONDecoder().decode(HLLTimeline.self, from: data)
+        return try? JSONDecoder().decode(HLLTimeline.Archive.self, from: data)
         
     }
     

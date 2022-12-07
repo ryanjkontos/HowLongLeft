@@ -14,24 +14,35 @@ struct EventCard: View {
     
     var liveUpdates: Bool
     
+    var date: Date
+    
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 2) {
             
-            VStack(alignment: .leading, spacing: 3) {
+            VStack(alignment: .leading, spacing: 1) {
                 
-                Text("\(event.startDate.formattedTime())-\(event.endDate.formattedTime())")
+                Text(getDateString())
                     .foregroundColor(.secondary)
                     .font(.system(size: 14, weight: .medium, design: .rounded))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 
-                Text("\(event.title)")
-                    .foregroundColor(.white)
-                    .font(.system(size: 17, weight: .medium, design: .rounded))
-                    .lineLimit(2)
-                    .minimumScaleFactor(1)
-                    .truncationMode(.middle)
+                HStack(spacing: 2) {
+ 
+                        
+                        Text("\(event.title)")
+                            .foregroundColor(.white)
+                            .font(.system(size: 18, weight: .medium, design: .rounded))
+                            .lineLimit(2)
+                            .minimumScaleFactor(1)
+                            .truncationMode(.middle)
+                        
+                    
+                    
+                }
+                
+               
                 
             }
             
@@ -39,7 +50,7 @@ struct EventCard: View {
                 if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
                     Text(loc)
                         .foregroundColor(.secondary)
-                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                        .font(.system(size: 15, weight: .medium, design: .rounded))
                         .lineLimit(1)
                     
                 }
@@ -50,10 +61,20 @@ struct EventCard: View {
         .padding(.vertical, 8)
         
     }
+    
+    func getDateString() -> String {
+        
+       
+            return "\(event.startDate.formattedTime()) - \(event.endDate.formattedTime())"
+        
+        
+      //  return event.startDate.userFriendlyRelativeString(at: date)
+        
+    }
 }
 
 struct EventCard_Previews: PreviewProvider {
     static var previews: some View {
-        EventCard(event: .previewEvent(), liveUpdates: true)
+        EventCard(event: .previewEvent(), liveUpdates: true, date: Date())
     }
 }

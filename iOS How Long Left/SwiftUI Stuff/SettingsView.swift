@@ -141,7 +141,7 @@ struct SettingsView: View {
 
         .onAppear() {
             
-            print("On appear")
+            // print("On appear")
             
             complicationPurchased = Store.shared.complicationPurchased
           //  widgetPurchased = Store.shared.widgetPurchased

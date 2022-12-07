@@ -12,7 +12,7 @@ class HLLNTriggerAddHandler {
     
     func requestTrigger(_ request: HLLNNewTriggerRequest) throws {
         
-        print("Requesting trigger")
+        // print("Requesting trigger")
         
         var undoRemovePreviousClosure: (() -> Void)?
         var addTriggerClosure: (() -> Void)?

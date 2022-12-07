@@ -92,9 +92,9 @@ extension NSStatusBarButton {
             
             for url in urls {
                 
-                print("Drag URL: \(url)")
+                // print("Drag URL: \(url)")
                 
-                print("URL Last: \(url.pathComponents.last!)")
+                // print("URL Last: \(url.pathComponents.last!)")
                 
                 if url.absoluteString.contains(text: "ical://occurrence/"), let id = url.pathComponents.last {
 

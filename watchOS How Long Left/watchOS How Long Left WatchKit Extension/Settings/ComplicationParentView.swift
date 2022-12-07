@@ -10,15 +10,19 @@ import SwiftUI
 
 struct ComplicationParentView: View {
     
-    @ObservedObject var store = Store.shared
+  
     
     var body: some View {
         
-        if true {
+        
+        
+        ComplicationPurchaseView()
+        
+       /* if Store.shared.extensionPurchased(oftype: .complication) {
             ComplicationsSettingsView()
         } else {
             ComplicationPurchaseView()
-        }
+        } */
         
     }
 }

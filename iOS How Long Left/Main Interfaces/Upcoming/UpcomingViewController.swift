@@ -9,9 +9,9 @@
 import UIKit
 import SwiftUI
 
-class UpcomingViewController: UIViewController, EventPoolUpdateObserver {
+class UpcomingViewController: UIViewController, EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         loadEvents()
     }
     
@@ -35,7 +35,7 @@ class UpcomingViewController: UIViewController, EventPoolUpdateObserver {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         configureHierarchy()
         configureDataSource()
@@ -138,7 +138,7 @@ extension UpcomingViewController {
 
     func getColumns(from width: CGFloat) -> Int {
         
-        print("Get cols from \(width)")
+        // print("Get cols from \(width)")
         
         if width < 730 { return 1 }
         
@@ -206,7 +206,7 @@ extension UpcomingViewController {
     func configureHierarchy() {
         
         
-        view.backgroundColor = .systemBackground
+      //  view.backgroundColor = .secondarySystemGroupedBackground
         let layout = createLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         //collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -217,7 +217,7 @@ extension UpcomingViewController {
         view.addSubview(collectionView)
         
         eventsCollectionView = collectionView
-
+     //   collectionView.backgroundColor = .secondarySystemGroupedBackground
        
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
        

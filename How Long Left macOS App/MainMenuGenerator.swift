@@ -27,7 +27,7 @@ class MainMenuGenerator {
         
         let upcoming = Array(filtered.prefix(1))
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
+        let pinned = HLLEventSource.shared.getPinnedEventsFromevents()
         
         let menuItems = self.topShelfGen.generateMainMenu(featured: featured, upcoming: upcoming, moreUpcoming: moreUpcoming, pinned: pinned)
         

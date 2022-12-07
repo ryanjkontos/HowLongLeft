@@ -41,7 +41,9 @@ struct Provider: IntentTimelineProvider {
         
         //HLLDataModel.shared = HLLDataModel()
         
-        
+        Task {
+            await CalendarReader.shared.getCalendarAccess()
+        }
         
         #if os(watchOS)
             generator = HLLTimelineGenerator(type: .complication)
@@ -50,7 +52,7 @@ struct Provider: IntentTimelineProvider {
         #endif
         
         
-        while HLLEventSource.shared.access != .Granted { print("Waiting for access ") }
+        while CalendarReader.shared.calendarAccess != .Granted { print("Waiting for access ") }
         
         #if os(iOS)
         
@@ -60,7 +62,7 @@ struct Provider: IntentTimelineProvider {
         #endif
         
         HLLStoredEventManager.shared.loadStoredEventsFromDatabase()
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         
     
         
@@ -87,7 +89,7 @@ struct Provider: IntentTimelineProvider {
         #endif
         
         
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         generator.timelineConfiguration = config
         let newTimeline = generator.generateHLLTimeline()
         let entry = Entry(configuration: configuration, underlyingEntry: newTimeline.entries.first!)
@@ -121,7 +123,7 @@ struct Provider: IntentTimelineProvider {
         }
         
         var entries = [Entry]()
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         generator.timelineConfiguration = config
         let newTimeline = generator.generateHLLTimeline()
         
@@ -165,18 +167,14 @@ struct HLLWidgetTimelineEntry: TimelineEntry {
 struct HLLWidgets: WidgetBundle {
    var body: some Widget {
        
-       #if os(iOS)
-       
+     
        CountdownWidget()
        UpcomingListWidget()
        CountdownAndUpcomingListWidget()
        
       
        // CountdownComplication()
-       
-       
-   
-       #endif
+
        
        
    }
@@ -209,7 +207,7 @@ struct CountdownComplication: Widget {
 
 } */
 
-#if os(iOS)
+
 
 struct CountdownWidget: Widget {
     let kind: String = "CountdownWidget"
@@ -241,7 +239,7 @@ struct UpcomingListWidget: Widget {
         
         IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider()) { entry in
             
-            UpcomingWidgetParentView(entry: entry)
+            WidgetEventListView()
                 .modifier(HLLWidgetBackground())
             
         }
@@ -324,6 +322,6 @@ struct LiveEventActivityWidget: Widget {
     }
 }
 */
-#endif
+
 
 

@@ -20,7 +20,7 @@ class EventLocationStore: ObservableObject {
     
     init() {
         
-       // HLLEventSource.shared.addEventPoolObserver(self)
+       // HLLEventSource.shared.addeventsObserver(self)
         
     }
     
@@ -33,7 +33,7 @@ class EventLocationStore: ObservableObject {
             guard let location = event.location else { continue }
             if locationDict.keys.contains(location) { continue }
             if noResultLocations.contains(location) { continue }
-            print("Attempting geocode for \(location)")
+            // print("Attempting geocode for \(location)")
             
             do {
                 
@@ -77,12 +77,12 @@ class EventLocationStore: ObservableObject {
     
 }
 
-extension EventLocationStore: EventPoolUpdateObserver {
+extension EventLocationStore: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
         Task {
-            await self.processEvents(events: HLLEventSource.shared.eventPool)
+            await self.processEvents(events: HLLEventSource.shared.events)
         }
         
     }

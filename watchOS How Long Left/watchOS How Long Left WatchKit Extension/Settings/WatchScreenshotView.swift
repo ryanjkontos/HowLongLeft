@@ -14,7 +14,7 @@ struct WatchScreenshotView: View {
         Image("CS1")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .cornerRadius(23) // Inner corner radius
+            .cornerRadius(28) // Inner corner radius
             .padding(8) // Width of the border
             .background(Color(UIColor.black))
             .cornerRadius(20)

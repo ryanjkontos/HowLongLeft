@@ -163,7 +163,7 @@ class MenuTopShelfGenerator {
                    
         }
         
-        if HLLEventSource.shared.access == .Denied {
+        if CalendarReader.shared.calendarAccess == .Denied {
                    
             items.removeAll()
             let item = NSMenuItem()
@@ -273,11 +273,11 @@ struct DummyHLLWidgetEntry  {
         
         if let uEvent = event {
         
-            print("Init HLLWidgetEntry with \(uEvent.title) at \(date.formattedDate())")
+            // print("Init HLLWidgetEntry with \(uEvent.title) at \(date.formattedDate())")
             
         } else {
             
-            print("Init HLLWidgetEntry with no event at \(date.formattedDate())")
+            // print("Init HLLWidgetEntry with no event at \(date.formattedDate())")
         }
         
     }

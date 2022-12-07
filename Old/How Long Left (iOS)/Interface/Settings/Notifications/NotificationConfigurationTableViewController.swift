@@ -111,7 +111,7 @@ class NotificationConfigurationTableViewController: UITableViewController, Notif
             if self.allTriggers.contains(where: { trigger.value == $0.value && trigger.userString == $0.userString && trigger.type == $0.type }) == false {
                 
                 history.append(trigger)
-                print("Added \(trigger.userString) to history")
+                // print("Added \(trigger.userString) to history")
                 
             }
             
@@ -184,7 +184,7 @@ class NotificationConfigurationTableViewController: UITableViewController, Notif
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //print("Getting cell for row at section: \(indexPath.section), and row: \(indexPath.row)")
+        //// print("Getting cell for row at section: \(indexPath.section), and row: \(indexPath.row)")
         
         if indexPath.section == 0 {
             
@@ -256,7 +256,7 @@ class NotificationConfigurationTableViewController: UITableViewController, Notif
             
         }
         
-        //print("Ind = \(sections[indexPath.section-1].triggers.count)")
+        //// print("Ind = \(sections[indexPath.section-1].triggers.count)")
         
         if indexPath.row == sections[indexPath.section-1].triggers.count {
             
@@ -487,7 +487,7 @@ class NotificationConfigurationTableViewController: UITableViewController, Notif
             let oldSections = self.sections
             let newCount = oldSections[indexPath.section-1].triggers.count-1
             
-            print("Newcount: \(newCount)")
+            // print("Newcount: \(newCount)")
             
             oldSections[indexPath.section-1].triggers[indexPath.row].removeTriggerAction()
             

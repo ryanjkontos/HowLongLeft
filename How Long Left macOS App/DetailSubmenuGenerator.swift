@@ -7,18 +7,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 import Cocoa
 
 class DetailSubmenuGenerator {
     
-    var countdownStringGen = CountdownStringGenerator()
-    
-    
+
     func generateInfoMenuItemsFor(event: HLLEvent, isFollowingOccurence: Bool = false, isWithinFollowingOccurenceSubmenu: Bool = false, eventStatusItemFor: HLLEvent? = nil) -> [NSMenuItem] {
         
-        //print("Genning submenu")
+        //// print("Genning submenu")
       //  let isEventStatusItemMenu = event == eventStatusItemFor
         
         var items = [NSMenuItem]()
@@ -35,6 +34,15 @@ class DetailSubmenuGenerator {
      let title = event.title.truncated(limit: 30, position: .middle, leader: "...")
         
         let topItem = NSMenuItem()
+        
+       
+        let view = EventMenuInfoView.createFromNib()
+        view.update(for: event)
+        topItem.view = view
+        topItem.target = self
+     
+        
+        items.append(topItem)
         
         switch event.completionStatus {
             
@@ -53,18 +61,20 @@ class DetailSubmenuGenerator {
             topItem.title = "Completed Event: \(title)"
         }
         
-        items.append(topItem)
+      //  items.append(topItem)
         
         if event.isAllDay {
             let allDayItem = NSMenuItem()
             allDayItem.title = "All-Day Event"
             items.append(allDayItem)
         }
+       
+       
         
         let infoData = HLLEventInfoItemGenerator(event)
         let infoArray = infoData.getInfoItems(for: [.completion, .location, .start, .end, .elapsed, .duration])
         
-        items.append(NSMenuItem.separator())
+       items.append(NSMenuItem.separator())
         
         for item in infoArray {
             let menuItem = NSMenuItem()
@@ -349,7 +359,7 @@ class DetailSubmenuGenerator {
             hideAllDayEventsButton.representedObject = {
                 
                 HLLDefaults.general.showAllDay = false
-                HLLEventSource.shared.asyncUpdateEventPool()
+                HLLEventSource.shared.updateEventsAsync()
                 
             }
             actionItems.append(hideAllDayEventsButton)
@@ -365,7 +375,7 @@ class DetailSubmenuGenerator {
                 DispatchQueue.main.async {
                 
                     CalendarDefaultsModifier.shared.toggle(calendar: calendar)
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                     
                 }
                 
@@ -381,7 +391,7 @@ class DetailSubmenuGenerator {
                        
                         CalendarDefaultsModifier.shared.setAllDisabled()
                         CalendarDefaultsModifier.shared.setEnabled(calendar: calendar)
-                        HLLEventSource.shared.asyncUpdateEventPool()
+                        HLLEventSource.shared.updateEventsAsync()
        
                 }
                 
@@ -416,7 +426,7 @@ class DetailSubmenuGenerator {
             hideNextOccurButton.representedObject = {
                            
                 HLLDefaults.general.showNextOccurItems = false
-                HLLEventSource.shared.asyncUpdateEventPool()
+                HLLEventSource.shared.updateEventsAsync()
                            
             }
             actionItems.append(hideNextOccurButton)

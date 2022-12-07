@@ -57,7 +57,7 @@ class RNProcess {
                     
                 }
                 
-                print("SA1")
+                // print("SA1")
                 
                 let startDate = Calendar.current.date(from: Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: CurrentDateFetcher.currentDate)))!
                 
@@ -97,7 +97,7 @@ class RNProcess {
                     
                     for event in breaksArray {
                         
-                        print("Break: \(event.title), \(event.startDate.formattedDate()), \(event.startDate.formattedTime())")
+                        // print("Break: \(event.title), \(event.startDate.formattedDate()), \(event.startDate.formattedTime())")
                         
                     }
                     
@@ -125,7 +125,7 @@ class RNProcess {
                     
                     if self.cancelled == true {
                         
-                        print("Cancelling")
+                        // print("Cancelling")
                         return
                         
                     }
@@ -143,7 +143,7 @@ class RNProcess {
                                 try self.renameEventSource.eventStore.save(oldEk, span: .thisEvent, commit: true)
                             } catch {
                                 
-                                print("it didn't work because \(error)")
+                                // print("it didn't work because \(error)")
                             }
                             
                             let doubleCounter = Double(renamedCount)
@@ -179,7 +179,7 @@ class RNProcess {
                 if self.cancelled == true {
                     
                     self.renameEventSource.eventStore.reset()
-                    print("Cancelling")
+                    // print("Cancelling")
                     return
                     
                 }
@@ -214,7 +214,7 @@ class RNProcess {
                             
                         } catch {
                             
-                            print("Break didn't work cuz \(error)")
+                            // print("Break didn't work cuz \(error)")
                         }
                         
                         let doubleCounter = Double(addedCount)
@@ -250,7 +250,7 @@ class RNProcess {
                 if self.cancelled == true {
                     
                     self.renameEventSource.eventStore.reset()
-                    print("Cancelling")
+                    // print("Cancelling")
                     return
                     
                 }

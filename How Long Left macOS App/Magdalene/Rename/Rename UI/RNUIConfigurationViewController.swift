@@ -66,7 +66,7 @@ class RNUIConfigurationViewController: NSViewController, NSTableViewDelegate, NS
         
         for item in renameableEvents {
             
-            print("Renameable: \(item.oldName), \(item.newName), \(item.selected)")
+            // print("Renameable: \(item.oldName), \(item.newName), \(item.selected)")
             
         }
         

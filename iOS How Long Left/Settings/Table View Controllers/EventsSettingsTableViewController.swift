@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsSettingsTableViewController: UITableViewController {
+class EventsSettingsTableViewController: HLLAppearenceTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class EventsSettingsTableViewController: UITableViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,6 +32,7 @@ class EventsSettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleCell", for: indexPath) as! SwitchTableViewCell
+       // cell.backgroundColor = HLLColors.groupedCell
         if indexPath.section == 0 {
             cell.label.text = "Show All-Day Events"
             cell.stateFetcher = { return HLLDefaults.general.showAllDay }

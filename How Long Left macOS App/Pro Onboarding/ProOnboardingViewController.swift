@@ -72,7 +72,7 @@ class ProOnboardingViewController: NSViewController {
     
     
     func purchaseClicked() {
-        print("Purchase clicked")
+        // print("Purchase clicked")
         ProPurchaseHandler.shared.purchaseMyProduct(index: 0)
         showSpinner(true)
         

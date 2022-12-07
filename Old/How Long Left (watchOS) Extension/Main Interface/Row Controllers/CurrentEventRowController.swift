@@ -17,7 +17,6 @@ class CurrentEventRowController: NSObject, EventRow {
     
     var event: HLLEvent!
     var rowCompletionStatus: HLLEvent.CompletionStatus!
-    let countdownStringGenerator = CountdownStringGenerator()
     
     func setup(event: HLLEvent) {
         

@@ -42,7 +42,7 @@ class ProOnboardingWindowManager: NSObject, NSWindowDelegate, ProPriceDelegate, 
     override init() {
            super.init()
            
-     //   print("Init PWM")
+     //   // print("Init PWM")
         ProPurchaseHandler.shared.addPriceDelegate(self)
         ProStatusManager.shared.addStatusObserver(self)
            

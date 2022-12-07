@@ -20,7 +20,7 @@ class HLLBackgroundTasks {
         if let intervalString = HLLDefaults.defaults.string(forKey: "NextWidgetUpdate"), let interval = TimeInterval(intervalString) {
             
             if Date(timeIntervalSinceReferenceDate: interval) > Date() {
-                print("Too soon bro")
+                // print("Too soon bro")
                 return
             }
             
@@ -36,9 +36,9 @@ class HLLBackgroundTasks {
         do {
             try BGTaskScheduler.shared.submit(request)
             HLLDefaults.defaults.set(String(nextUpdate.timeIntervalSinceReferenceDate), forKey: "NextWidgetUpdate")
-            print("Scheduled app refresh")
+            // print("Scheduled app refresh")
         } catch {
-            print("Could not schedule app refresh: \(error)")
+            // print("Could not schedule app refresh: \(error)")
         }
             
       

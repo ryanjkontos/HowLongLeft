@@ -13,7 +13,7 @@ struct EventPickerView: View {
     
     private var eventSelectionHandler: ((HLLEvent?) -> ())
     
-    let datesOfEvents = HLLEventSource.shared.getAllEventsGroupedByDate()
+    let datesOfEvents = HLLEventSource.shared.getAllEventsGroupedByDate(groupMode: .startDate)
     
     internal init(eventSelectionHandler: @escaping ((HLLEvent?) -> ())) {
         self.eventSelectionHandler = eventSelectionHandler

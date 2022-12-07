@@ -61,7 +61,7 @@ struct EventOptionsButtonsView: View {
                 
                 self.presenting = false
                 
-                HLLEventSource.shared.updateEventPool()
+                HLLEventSource.shared.updateEvents()
                 
             }, label: {
                 

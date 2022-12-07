@@ -26,7 +26,7 @@ class HLLCloudKitPreferences {
         }
         
         
-       // print("Making record for enabled calendars: \(HLLDefaults.calendar.enabledCalendars.count)")
+       // // print("Making record for enabled calendars: \(HLLDefaults.calendar.enabledCalendars.count)")
         
         let record = CKRecord(recordType: recordType, recordID: recordID)
         record["EnabledCalendars"] = HLLDefaults.calendar.enabledCalendars as CKRecordValue
@@ -37,13 +37,13 @@ class HLLCloudKitPreferences {
             
             if let _ = error {
                 
-              //  print("Error saving record: \(existingError)")
+              //  // print("Error saving record: \(existingError)")
                 
                 
                 
             } else {
                 
-               // print("No error saving record")
+               // // print("No error saving record")
                 
             }
             
@@ -74,7 +74,7 @@ class HLLCloudKitPreferences {
             
             if let _ = error as? CKError {
                 
-               // print("Error getting record: \(existingError)")
+               // // print("Error getting record: \(existingError)")
                 
                 
                 
@@ -84,19 +84,19 @@ class HLLCloudKitPreferences {
             
             if let existingRecord = record, let calendarArray = existingRecord["EnabledCalendars"] as? [String] {
                 
-              //  print("Fetched record: \(calendarArray)")
+              //  // print("Fetched record: \(calendarArray)")
                 
                 if calendarArray != previousCalendars {
                     
                     HLLDefaults.calendar.enabledCalendars = calendarArray
-                    HLLEventSource.shared.updateEventPool()
-                    print("PoolC1")
+                    HLLEventSource.shared.updateEvents()
+                    // print("PoolC1")
                     
                 }
                 
             } else {
                 
-              //  print("Error in record unwrapping post error check")
+              //  // print("Error in record unwrapping post error check")
                 
             }
             
@@ -124,11 +124,11 @@ class HLLCloudKitPreferences {
             
             if let _ = error {
                 
-               // print("Error saving subscription: \(existingError)")
+               // // print("Error saving subscription: \(existingError)")
                 
             } else {
                 
-               // print("Successfully saved subscription")
+               // // print("Successfully saved subscription")
                 HLLDefaults.defaults.set(true, forKey: "createdSubscription")
                 
             }
@@ -142,15 +142,15 @@ class HLLCloudKitPreferences {
     
     func handleRemoteUserInfo(_ userInfo: [AnyHashable : Any]) {
         
-     //   print("Got remote notification")
+     //   // print("Got remote notification")
         
         if let noto = CKNotification(fromRemoteNotificationDictionary: userInfo) {
             
-            //print("Unwrapped remote notification")
+            //// print("Unwrapped remote notification")
             
             if noto.containerIdentifier == HLLCloudKitPreferences.shared.container.containerIdentifier {
                 
-               // print("Ids matched for notification")
+               // // print("Ids matched for notification")
                 getRecord()
                 
             }

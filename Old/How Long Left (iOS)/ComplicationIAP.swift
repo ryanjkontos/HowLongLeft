@@ -65,7 +65,7 @@ class IAPHandler: NSObject {
         
         if SchoolAnalyser.privSchoolMode == .Magdalene {
             
-            print("IAPCheck: Magalene user; Getting complication for free.")
+            // print("IAPCheck: Magalene user; Getting complication for free.")
             return true
             
         }
@@ -87,18 +87,18 @@ class IAPHandler: NSObject {
             if newHash == storedHash {
                 
                 returnValue = true
-                //print("IAPCheck: Hashes did match")
+                //// print("IAPCheck: Hashes did match")
                 
             } else {
                 
-                //print("IAPCheck: Hashes did not match")
+                //// print("IAPCheck: Hashes did not match")
                 
             }
             
             
         } else {
             
-            //print("IAPCheck: Defaults contained nil, didn't check hashes")
+            //// print("IAPCheck: Defaults contained nil, didn't check hashes")
             
         }
         
@@ -120,7 +120,7 @@ class IAPHandler: NSObject {
             SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(payment)
             
-            print("PRODUCT TO PURCHASE: \(product.productIdentifier)")
+            // print("PRODUCT TO PURCHASE: \(product.productIdentifier)")
             productID = product.productIdentifier
         }
     }
@@ -129,7 +129,7 @@ class IAPHandler: NSObject {
     func restorePurchase(){
         
         
-        print("Restore called")
+        // print("Restore called")
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
@@ -138,7 +138,7 @@ class IAPHandler: NSObject {
     // MARK: - FETCH AVAILABLE IAP PRODUCTS
     func fetchAvailableProducts(){
         
-        print("Fetch called")
+        // print("Fetch called")
         
         // Put here your IAP Products ID's
         let productIdentifiers = NSSet(objects: "ComplicationIAPHLL")
@@ -176,7 +176,7 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver{
                 numberFormatter.numberStyle = .currency
                 numberFormatter.locale = product.priceLocale
                 let price1Str = numberFormatter.string(from: product.price)
-              //  print("IAP: \(product.localizedDescription) costs \(price1Str!)")
+              //  // print("IAP: \(product.localizedDescription) costs \(price1Str!)")
                 
                 if product.productIdentifier == "ComplicationIAPHLL" {
                     
@@ -218,7 +218,7 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver{
                 
                 switch trans.transactionState {
                 case .purchased:
-                    print("purchased")
+                    // print("purchased")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                   //  purchaseStatusBlock?(.purchased)
                     setPurchasedStatus(true)
@@ -227,7 +227,7 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver{
                     break
                     
                 case .failed:
-                    print("failed")
+                    // print("failed")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     IAPHandler.delegate?.purchaseResult(was: .failed)
                     break

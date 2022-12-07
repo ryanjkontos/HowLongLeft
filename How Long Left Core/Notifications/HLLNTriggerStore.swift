@@ -44,7 +44,7 @@ class HLLNTriggerStore {
 
         triggers.append(contentsOf: percentageTriggers.sorted(by: { $0.value < $1.value }))
         
-      //  print("There are \(triggers.count) triggers")
+      //  // print("There are \(triggers.count) triggers")
         self.triggers = triggers
         
     }
@@ -63,7 +63,7 @@ class HLLNTriggerStore {
             
         case .percentageComplete:
             
-            print("Deleting percentage trigger \(trigger.value)")
+            // print("Deleting percentage trigger \(trigger.value)")
             
             HLLDefaults.notifications.Percentagemilestones.removeAll { $0 == trigger.value }
             

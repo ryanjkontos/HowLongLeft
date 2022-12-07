@@ -61,7 +61,7 @@ class WidgetConfigurationEditorTableViewController: FormViewController {
                     
                     $0.onChange({
                         
-                        print("New value is \($0.value!)")
+                        // print("New value is \($0.value!)")
                         
                     })
                     

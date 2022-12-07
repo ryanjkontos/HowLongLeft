@@ -10,8 +10,6 @@ import Foundation
 
 class HLLNNotificationContentGenerator {
     
-    let countdownStringGenerator = CountdownStringGenerator()
-    let percentageCalculator = PercentageCalculator()
     
     let minutePluraliser = Pluraliser(singular: "minute", plural: "minutes")
     
@@ -99,7 +97,7 @@ class HLLNNotificationContentGenerator {
                     
                 content.title = title
                     
-                let percent = percentageCalculator.calculatePercentageDone(for: event, at: date)
+                let percent = PercentageCalculator.calculatePercentageDone(for: event, at: date)
                     content.subtitle = "(\(percent) done)"
                 
                     
@@ -145,7 +143,7 @@ class HLLNNotificationContentGenerator {
             
             for percentage in percentageMilestones {
                 
-                //print("Genning percent notification for \(percentage)")
+                //// print("Genning percent notification for \(percentage)")
                 
                 let secondsFromStart = Int(event.duration)/100*percentage
                 let date = event.startDate.addingTimeInterval(TimeInterval(secondsFromStart))
@@ -154,7 +152,7 @@ class HLLNNotificationContentGenerator {
                 
                 let content = HLLNotificationContent(date: date)
                 content.title = "\(event.truncatedTitle()) is \(percentage)% done."
-                content.subtitle = "(\(countdownStringGenerator.generateCountdownTextFor(event: event, currentDate: date, force: .End, allowSeconds: true).justCountdown) left)"
+                content.subtitle = "(\(CountdownStringGenerator.generateCountdownTextFor(event: event, currentDate: date, force: .End, allowSeconds: true).justCountdown) left)"
                 let upcomingData = getUpcomingEventData(at: date, from: events, exclude: event)
                 content.body = upcomingData.string
                 content.event = event

@@ -44,17 +44,17 @@ class RNDataStore {
             
         }
     
-        print("SA2")
+        // print("SA2")
         let yearEvents = HLLEventSource.shared.fetchEventsFromPresetPeriod(period: .ThisYear)
         
             for event in yearEvents {
                 
-                print("\(event.title)")
+                // print("\(event.title)")
                 
                 
             }
             
-            print("Initing RNDS with \(yearEvents.count)")
+            // print("Initing RNDS with \(yearEvents.count)")
             
         magdaleneTitles = schoolAnalyser.magdaleneTitles(from: yearEvents)
         

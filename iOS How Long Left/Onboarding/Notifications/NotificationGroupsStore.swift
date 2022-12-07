@@ -54,7 +54,7 @@ class NotificationGroupStore: ObservableObject {
                 }
             }
         } else {
-            print("Creating default group")
+            // print("Creating default group")
             defaultGroup = getNewDefaultGroup()
             saveGroups(allGroups)
         }
@@ -63,7 +63,7 @@ class NotificationGroupStore: ObservableObject {
         
         
         for group in allGroups {
-            print("Group: \(group.name ?? "Nil")")
+            // print("Group: \(group.name ?? "Nil")")
         }
         
         
@@ -71,7 +71,7 @@ class NotificationGroupStore: ObservableObject {
     
     func saveGroup(_ group: NotificationGroup) {
         
-        print("Saving group \(group.name ?? "with no name"), S: \(group.startTrigger  )")
+        // print("Saving group \(group.name ?? "with no name"), S: \(group.startTrigger  )")
         
         var g = allGroups
         g.removeAll(where: { $0.id == group.id })

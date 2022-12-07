@@ -12,36 +12,39 @@ import Marquee
 struct CountdownCard: View {
     
     var event: HLLEvent
-    var gen = CountdownStringGenerator()
-    
+
     var date: Date
     
     @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 2) {
             
-            VStack(alignment: .leading, spacing: 3) {
+            VStack(alignment: .leading, spacing: 0) {
   
                 
                 
-                HStack(alignment: .bottom, spacing:0 ) {
-                    Text("\(event.title)")
-                        .truncationMode(.middle)
-                        .layoutPriority(0)
-                    Text(" \(event.countdownTypeString)")
-                }
-                .font(.system(size: 16, weight: .regular, design: .rounded))
-                .lineLimit(1)
+                HStack(spacing: 2) {
+
+                    
+                    HStack(alignment: .bottom, spacing:0 ) {
+                        Text("\(event.title)")
+                            .truncationMode(.middle)
+                            .layoutPriority(0)
+                        Text(" \(event.countdownTypeString)")
+                    }
+                    .font(.system(size: 16, weight: .regular, design: .rounded))
+                    .lineLimit(1)
                 .foregroundColor(.primary)
+                }
                     
                    
                 
                 Text("\(getTimerText())")
                     .monospacedDigit()
                     .foregroundColor(.primary)
-                    .font(.system(size: 21, weight: .medium, design: .rounded))
+                    .font(.system(size: 23, weight: .medium, design: .rounded))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .opacity(0.9)
@@ -49,10 +52,10 @@ struct CountdownCard: View {
                 
             }
             
-            if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
-                Text(loc)
+            if let info = WatchInfoLabelGenerator.getLabelFor(event: event, at: date) {
+                Text(info)
                     .foregroundColor(.secondary)
-                    .font(.system(size: 13, weight: .regular, design: .rounded))
+                    .font(.system(size: 14, weight: .regular, design: .rounded))
                     .lineLimit(1)
                     //.minimumScaleFactor(0.5)
             }
@@ -70,13 +73,14 @@ struct CountdownCard: View {
             showSeconds = false
         }
         
-        return gen.generatePositionalCountdown(event: event, at: date, showSeconds: showSeconds)
+        return CountdownStringGenerator.generatePositionalCountdown(event: event, at: date, showSeconds: showSeconds)
     }
     
 }
 
 struct CountdownCard_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownCard(event: .previewEvent(), date: Date())
+        CountdownCard(event: .previewEvent(location: "Krispy Kreme Auburn"), date: Date())
+            
     }
 }

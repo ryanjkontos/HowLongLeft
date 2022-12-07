@@ -11,13 +11,12 @@ import Foundation
 
 class SiriResponseGenerator {
     
-    let stringGen = CountdownStringGenerator()
 
     func generateResponseForCurrentEvent() -> String {
         
         if let event = HLLEventSource.shared.getPrimaryEvent() {
             
-            let remaining = stringGen.generateCountdownTextFor(event: event)
+            let remaining = CountdownStringGenerator.generateCountdownTextFor(event: event)
             
             return "\(event.title) \(event.countdownTypeString) \(remaining)."
             

@@ -21,7 +21,7 @@ class EventContextMenuGenerator {
              
             EventPinningManager.shared.togglePinned(event)
             
-            HLLEventSource.shared.updateEventPool()
+            HLLEventSource.shared.updateEvents()
            
             
         }
@@ -55,7 +55,7 @@ class EventContextMenuGenerator {
                 
                 CalendarDefaultsModifier.shared.setDisabled(calendar: event.calendar!)
                 delegate?.closeEventView(event: event)
-                HLLEventSource.shared.updateEventPool()
+                HLLEventSource.shared.updateEvents()
             
             
         }

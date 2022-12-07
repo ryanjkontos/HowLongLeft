@@ -20,9 +20,10 @@ struct How_Long_LeftApp: App {
     let timelineGen = HLLTimelineGenerator(type: .complication)
     
     init() {
+        HLLEventSource.shared = HLLEventSource()
         HLLDataModel.shared = HLLDataModel()
-        HLLEventSource.shared.updateEventPool()
-        EventLocationStore.shared = EventLocationStore()
+        HLLEventSource.shared.updateEvents()
+       // EventLocationStore.shared = EventLocationStore()
     }
     
     var body: some Scene {
@@ -32,7 +33,11 @@ struct How_Long_LeftApp: App {
             }
             
         }
+        
+        WKNotificationScene(controller: HWShiftsNotificationController.self, category: "HWShifts")
     }
+    
+    
     
     
 }

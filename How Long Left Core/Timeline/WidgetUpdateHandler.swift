@@ -11,22 +11,24 @@ import Foundation
 import WidgetKit
 #endif
 
-class WidgetUpdateHandler: EventPoolUpdateObserver {
+class WidgetUpdateHandler: EventSourceUpdateObserver {
     
     
     let widgetStateFetcher = WidgetStateFetcher()
     
     static var shared: WidgetUpdateHandler = WidgetUpdateHandler()
     
-    var timelineGen = HLLTimelineGenerator(type: .widget)
+     var timelineGen = HLLTimelineGenerator(type: .widget)
     
     let configStore = WidgetConfigurationStore()
     
     var configDict = [String: Int]()
  
+    static let queue = CollatingQueue(label: "WidgetUpdateQueue")
+    
     init() {
         
-        HLLEventSource.shared.addEventPoolObserver(self, immediatelyNotify: true)
+        HLLEventSource.shared.addeventsObserver(self, immediatelyNotify: true)
         updateWidget()
         updateConfigDict()
         
@@ -35,38 +37,40 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
     
     func updateWidget(force: Bool = false, background: Bool = false) {
 
-        
-        
-        if force { triggerWidgetUpdate(); return }
-        
-        print("Checking widget update!")
-   
-        configStore.loadGroups()
-        let enabledConfigs = configDict.keys.compactMap({ key in configStore.allGroups.first(where: { $0.id == key })  })
-        
-        for config in enabledConfigs {
+        WidgetUpdateHandler.queue.sync { [unowned self] in
             
-            let newGen  = HLLTimelineGenerator(type: timelineGen.timelineType)
-            newGen.timelineConfiguration = config
+            if force { triggerWidgetUpdate(); return }
             
-            timelineGen = newGen
-            if timelineGen.shouldUpdate() == .needsReloading {
-        
-            print("Reloading Widgets...")
+            // print("Checking widget update!")
+            
+            configStore.loadGroups()
+            let enabledConfigs = configDict.keys.compactMap({ key in configStore.allGroups.first(where: { $0.id == key })  })
+            
+            for config in enabledConfigs {
                 
-                triggerWidgetUpdate()
+                let newGen  = HLLTimelineGenerator(type: timelineGen.timelineType)
+                newGen.timelineConfiguration = config
                 
-                if background {
-                    let count = HLLDefaults.defaults.integer(forKey: "BGCausedWidgetUpdateCount")+1
-                    HLLDefaults.defaults.set(count, forKey: "BGCausedWidgetUpdateCount")
+                timelineGen = newGen
+                if timelineGen.shouldUpdate() == .needsReloading {
+                    
+                    // print("Reloading Widgets...")
+                    
+                    triggerWidgetUpdate()
+                    
+                    if background {
+                        let count = HLLDefaults.defaults.integer(forKey: "BGCausedWidgetUpdateCount")+1
+                        HLLDefaults.defaults.set(count, forKey: "BGCausedWidgetUpdateCount")
+                    }
+                    
+                } else {
+                    // print("Not updating widget")
                 }
                 
-            } else {
-                print("Not updating widget")
             }
             
+            
         }
-        
     }
     
     private func triggerWidgetUpdate() {
@@ -110,11 +114,11 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
                     
                     for item in info {
                         
-                        print(item)
+                        // print(item)
                         
                         if let config = item.id.configuration as? HLLWidgetConfigurationIntent, let widgetConfig = config.config, let id = widgetConfig.identifier {
                             
-                            print("Kind: \(item.kind)")
+                            // print("Kind: \(item.kind)")
                             
                             if let value = dict[id] {
                                 dict[id] = value + 1
@@ -129,7 +133,8 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
                     completion(dict)
                     
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    break
+                    // print(error.localizedDescription)
                     
                 }
             })
@@ -137,9 +142,9 @@ class WidgetUpdateHandler: EventPoolUpdateObserver {
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 3) {
             self.updateWidget()
         }
         

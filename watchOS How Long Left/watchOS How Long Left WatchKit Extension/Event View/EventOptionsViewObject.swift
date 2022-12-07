@@ -36,7 +36,7 @@ class EventOptionsViewObject: ObservableObject {
     
     func update() {
         
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         if let updated = event.getUpdatedInstance() {
             event = updated
             self.objectWillChange.send()

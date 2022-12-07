@@ -15,7 +15,7 @@ class HLLStatusItemManager {
     
     var timerHandler: HLLStatusItemUpdateHandler!
     
-    var mainStatusItem = HLLStatusItem(configuration: .defaultConfiguration())
+    var mainStatusItem: HLLStatusItem?
     var eventStatusItems = [HLLStatusItem]()
     
     var allStatusItems: [HLLStatusItem] {
@@ -23,7 +23,10 @@ class HLLStatusItemManager {
         get {
             
             var returnArray = eventStatusItems
-            returnArray.insert(mainStatusItem, at: 0)
+            if let item = mainStatusItem {
+                returnArray.insert(item, at: 0)
+            }
+           
             return returnArray
             
         }
@@ -32,6 +35,7 @@ class HLLStatusItemManager {
     
     var eventStatusItemEvents = [HLLEvent]()
   
+   
     init() {
         
        
@@ -40,21 +44,26 @@ class HLLStatusItemManager {
         DispatchQueue.main.async {
         
             HLLStoredEventManager.shared.observers.append(self)
-        self.createStatusItems()
+        //self.createStatusItems()
             
         }
         
+        HLLEventSource.shared.addeventsObserver(self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.createStatusItems()
+        }
         
         
     }
     
     func addEventStatusItem(with event: HLLEvent) {
         
-     //   print("ESI: Add with event")
+     //   // print("ESI: Add with event")
         
         if let item = HLLDefaults.defaults.object(forKey: "EventStatusItems") as? [String:[String:String]] {
             
-         //   print("ESI: 1 \(event.persistentIdentifier)")
+         //   // print("ESI: 1 \(event.persistentIdentifier)")
             
             var newItem = item
             newItem[event.persistentIdentifier] = ["":""]
@@ -62,7 +71,7 @@ class HLLStatusItemManager {
             
         } else {
             
-          //  print("ESI: 2 \(event.persistentIdentifier)")
+          //  // print("ESI: 2 \(event.persistentIdentifier)")
             
             var newItem = [String:[String:String]]()
             newItem[event.persistentIdentifier] = ["":""]
@@ -75,6 +84,10 @@ class HLLStatusItemManager {
     }
     
     func removeEventStatusItem(with event: HLLEvent) {
+        
+        if self.allStatusItems.isEmpty {
+            return
+        }
         
         if let item = HLLDefaults.defaults.object(forKey: "EventStatusItems") as? [String:[String:String]] {
             
@@ -106,7 +119,13 @@ class HLLStatusItemManager {
     
     func createStatusItems() {
         
-       // print("ESI: Creating")
+       // // print("ESI: Creating")
+        
+        if mainStatusItem == nil {
+            mainStatusItem = HLLStatusItem(configuration: .defaultConfiguration())
+        }
+        
+        
         
         var tempEventStatusItems = [HLLStatusItem]()
         
@@ -117,15 +136,15 @@ class HLLStatusItemManager {
             var ids = [String]()
             for key in dict.keys { ids.append(key) }
             
-          //  print("ESI Create: Dict \(dict)")
+          //  // print("ESI Create: Dict \(dict)")
             
-            for event in HLLEventSource.shared.eventPool {
+            for event in HLLEventSource.shared.events {
                 
                 if ids.contains(event.persistentIdentifier), !alreadyAdded.contains(event.persistentIdentifier) {
                     
                     alreadyAdded.append(event.persistentIdentifier)
                     tempEventStatusItems.append(HLLStatusItem(configuration: .eventConfiguration(event)))
-                //    print("ESI: Appending \(event.persistentIdentifier)")
+                //    // print("ESI: Appending \(event.persistentIdentifier)")
                     
                 }
                 
@@ -173,11 +192,15 @@ class HLLStatusItemManager {
     
 }
 
-extension HLLStatusItemManager: EventPoolUpdateObserver {
+extension HLLStatusItemManager: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
-        self.timerHandler.activeUpdate()
-        self.createStatusItems()
+    func eventsUpdated() {
+        DispatchQueue.main.async {
+            self.createStatusItems()
+            self.timerHandler.activeUpdate()
+        }
+       
+      
     }
        
     

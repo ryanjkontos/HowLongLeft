@@ -13,7 +13,7 @@ import AppKit
 import Preferences
 
 
-class PreferencesWindowManager: NSObject, NSWindowDelegate, EventPoolUpdateObserver, HLLProStatusObserver {
+class PreferencesWindowManager: NSObject, NSWindowDelegate, EventSourceUpdateObserver, HLLProStatusObserver {
     
     var preferencesWindowIsOpen: Bool {
         
@@ -37,12 +37,12 @@ class PreferencesWindowManager: NSObject, NSWindowDelegate, EventPoolUpdateObser
     
     override init() {
         super.init()
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         ProStatusManager.shared.addStatusObserver(self)
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
 
 
         
@@ -68,7 +68,7 @@ class PreferencesWindowManager: NSObject, NSWindowDelegate, EventPoolUpdateObser
             
             viewControllers.append(GeneralPreferenceViewController())
         
-        if HLLEventSource.shared.access == CalendarAccessState.Denied {
+        if CalendarReader.shared.calendarAccess == CalendarAccessState.Denied {
                       viewControllers.append(CalendarPreferenceViewControllerNoAccess())
                   } else {
                       viewControllers.append(CalendarPreferenceViewController())

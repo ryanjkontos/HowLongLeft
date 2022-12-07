@@ -10,14 +10,11 @@ import SwiftUI
 
 struct MoreEventsList: View {
     
-    var objects = [DateOfEvents]()
+
     
     init(openSheet: Binding<Bool>) {
         
-        let start = Date().startOfDay()
-        let end = start.addDays(100)
-        
-        objects = HLLEventSource.shared.getArraysOfUpcomingEventsForDates(startDate: start, endDate: end, returnEmptyItems: false)
+     
         
         _openSheet = openSheet
         
@@ -31,7 +28,7 @@ struct MoreEventsList: View {
             
             List {
                 
-                ForEach(objects) { object in
+                ForEach(getEvents(at: context.date)) { object in
                     
                     Section(content: {
                         
@@ -48,7 +45,7 @@ struct MoreEventsList: View {
                                 if HLLDefaults.watch.upcomingMode == .withCountdown {
                                     CountdownCard(event: event, date: context.date)
                                 } else {
-                                    EventCard(event: event, liveUpdates: true)
+                                    EventCard(event: event, liveUpdates: true, date: context.date)
                                 }
                                 
                                 
@@ -92,6 +89,12 @@ struct MoreEventsList: View {
         }
     
         
+    }
+    
+    
+    func getEvents(at date: Date) -> [DateOfEvents] {
+  
+        return HLLEventSource.shared.getAllEventsGroupedByDate(nil, maxCount: nil, upcomingOnly: false, at: date, excludePinned: false, groupMode: .countdownDate)
     }
 }
 

@@ -117,7 +117,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 }
             
                 DispatchQueue.global(qos: .default).async {
-                HLLEventSource.shared.updateEventPool()
+                HLLEventSource.shared.updateEvents()
                 }
             }
             
@@ -134,7 +134,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 cell.getAction = { return HLLDefaults.magdalene.useSubjectNames }
                 cell.setAction = { value in
                     HLLDefaults.magdalene.useSubjectNames = value
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                 }
                 
                 return cell
@@ -147,7 +147,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 cell.getAction = { return HLLDefaults.magdalene.showChanges }
                 cell.setAction = { value in
                     HLLDefaults.magdalene.showChanges = value
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                            
                 }
                 
@@ -162,7 +162,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 cell.getAction = { return HLLDefaults.magdalene.showBreaks }
                 cell.setAction = { value in
                     HLLDefaults.magdalene.showBreaks = value
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                 }
                 
                 return cell
@@ -175,7 +175,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 cell.getAction = { return HLLDefaults.magdalene.doTerm }
                 cell.setAction = { value in
                     HLLDefaults.magdalene.doTerm = value
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                 }
                 
                 return cell
@@ -188,7 +188,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 cell.getAction = { return HLLDefaults.magdalene.doHolidays }
                 cell.setAction = { value in
                     HLLDefaults.magdalene.doHolidays = value
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                     
                 }
                 
@@ -200,7 +200,7 @@ class MagdaleneTableViewController: UITableViewController, SwitchCellDelegate, D
                 cell.getAction = { return HLLDefaults.magdalene.showSportAsStudy }
                 cell.setAction = { value in
                     HLLDefaults.magdalene.showSportAsStudy = value
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                 
                 
             }

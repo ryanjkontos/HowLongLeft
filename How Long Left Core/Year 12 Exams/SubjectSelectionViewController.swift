@@ -82,7 +82,7 @@ class SubjectSelectionViewController: NSViewController, NSTableViewDelegate, NST
         updateSelectionString()
         
         
-        print("Selected subjects: \(HLLDefaults.magdalene.hscSubjects.count)")
+        // print("Selected subjects: \(HLLDefaults.magdalene.hscSubjects.count)")
 
     }
     

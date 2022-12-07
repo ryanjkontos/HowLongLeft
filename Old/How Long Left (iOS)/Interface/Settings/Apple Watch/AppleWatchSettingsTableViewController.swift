@@ -31,7 +31,7 @@ class AppleWatchSettingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("AW NoS")
+        // print("AW NoS")
         // #warning Incomplete implementation, return the number of sections
         return 3
     }

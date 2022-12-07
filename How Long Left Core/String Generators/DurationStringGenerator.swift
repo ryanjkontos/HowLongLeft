@@ -10,7 +10,7 @@ import Foundation
 
 class DurationStringGenerator {
     
-    func generateDurationString(for interval: TimeInterval) -> String {
+    func generateDurationString(for interval: TimeInterval, seconds: Bool = false) -> String {
         
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
@@ -36,6 +36,10 @@ class DurationStringGenerator {
                 
             formatter.allowedUnits = [.minute]
                 
+        }
+        
+        if seconds {
+            formatter.allowedUnits.insert(.second)
         }
         
         return formatter.string(from: interval)!

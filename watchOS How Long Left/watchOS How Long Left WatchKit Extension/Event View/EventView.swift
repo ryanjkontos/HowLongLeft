@@ -55,7 +55,7 @@ struct EventView: View {
             
             ToolbarItem(placement: .cancellationAction, content: {
                 
-                if showToolbar {
+                if showToolbar && !isLuminanceReduced {
                     
                     Button(action: {
                         

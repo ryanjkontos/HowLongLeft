@@ -8,11 +8,14 @@
 
 import Foundation
 import WatchKit
+import WatchConnectivity
+import UserNotifications
 
 class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
       
     static var complicationLaunchDelegate: EventsListView?
 
+    
     
     var compileDate: Date? {
         let bundleName = Bundle.main.infoDictionary!["CFBundleName"] as? String ?? "Info.plist"
@@ -23,9 +26,28 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         return nil
     }
     
+    private var wcBackgroundTasks = [WKWatchConnectivityRefreshBackgroundTask]()
+    
+    let wc = HLLWCManager()
+    
+    let stateReceiver = WatchComplicationStateReceiver()
+    
     func applicationDidFinishLaunching() {
         
+       
+        let HWCategory =
+              UNNotificationCategory(identifier: "HWShifts",
+              actions: [],
+              intentIdentifiers: [],
+                                     options: [])
+        // Register the notification type.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.setNotificationCategories([HWCategory])
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ubiquitousKeyValueStoreDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: HLLDefaults.cloudDefaults)
+        HLLDefaults.cloudDefaults.synchronize()
+        
+        stateReceiver.updateForCloud()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             
@@ -37,18 +59,26 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         
     }
     
+    @objc func ubiquitousKeyValueStoreDidChange() {
+        
+        HLLDefaults.cloudDefaults.synchronize()
+        stateReceiver.updateForCloud()
+        
+    }
+    
     func applicationDidBecomeActive() {
-        print("Triggering complication update...")
+        // print("Triggering complication update...")
+        HLLEventSource.shared.shiftLoader.load()
         ComplicationController.updateComplications(forced: false)
         scheduleNextComplicationUpdateTask()
         
         Task {
             
-            Store.shared = Store()
-            
-            await Store.shared.refreshPurchasedProducts()
+          
             
             NicknameManager.shared.loadNicknames()
+            
+            ubiquitousKeyValueStoreDidChange()
             
         }
         
@@ -56,38 +86,67 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
     }
     
     func applicationWillResignActive() {
-        print("Triggering complication update...")
+        // print("Triggering complication update...")
+        HLLEventSource.shared.shiftLoader.load()
         ComplicationController.updateComplications(forced: false)
         scheduleNextComplicationUpdateTask()
+        
     }
     
     func handleUserActivity(_ userInfo: [AnyHashable : Any]?) {
         
         if let _ = userInfo?["CLKLaunchedComplicationIdentifierKey"] {
-            print("Launched from complication")
+            // print("Launched from complication")
             
             ExtensionDelegate.complicationLaunchDelegate?.launchedFromComplication()
+            HLLEventSource.shared.shiftLoader.load()
         }
         
         
     }
     
-    
+    func completeBackgroundTasks() {
+        guard !wcBackgroundTasks.isEmpty else { return }
+
+        guard WCSession.default.activationState == .activated,
+            WCSession.default.hasContentPending == false else { return }
+        
+        wcBackgroundTasks.forEach { $0.setTaskCompletedWithSnapshot(false) }
+        
+        // Use Logger to log tasks for debugging purposes.
+        //
+      
+        // Schedule a snapshot refresh if the UI is updated by background tasks.
+        //
+        
+        wcBackgroundTasks.removeAll()
+    }
     
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         
         for backgroundTask in backgroundTasks {
 
             
-            
-            print("Handling Background Task")
-            
-            ComplicationLogger.log("Running background task: \(backgroundTask.userInfo?.description ?? "No UserInfo")")
-            
-            ComplicationController.updateComplications(forced: false)
-            scheduleNextComplicationUpdateTask()
-            backgroundTask.setTaskCompletedWithSnapshot(false)
+           
+            if let refreshTask = backgroundTask as? WKWatchConnectivityRefreshBackgroundTask {
+                
+                wcBackgroundTasks.append(refreshTask)
+                
+            } else {
+                
+                // print("Handling Background Task")
+                
+                ComplicationLogger.log("Running background task: \(backgroundTask.userInfo?.description ?? "No UserInfo")")
+                
+                ComplicationController.updateComplications(forced: false)
+                scheduleNextComplicationUpdateTask()
+                backgroundTask.setTaskCompletedWithSnapshot(false)
+                
+                
+            }
         }
+        
+        completeBackgroundTasks()
         
     }
     
@@ -95,7 +154,7 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         
         if let last = HLLDefaults.watch.lastScheduledUpdateDate {
             if last.timeIntervalSinceNow > 0 {
-                print("Not scheduling update because another one is scheduled")
+                // print("Not scheduling update because another one is scheduled")
                 return
             }
         }
@@ -107,9 +166,9 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
              
             if let error = error {
                 //ComplicationLogger.log("Error Scheduling Update: \(error.localizedDescription)")
-                print("Error Scheduling Complication Update: \(error.localizedDescription)")
+                // print("Error Scheduling Complication Update: \(error.localizedDescription)")
             } else {
-                print("Scheduled Complication Update")
+                // print("Scheduled Complication Update")
                // ComplicationLogger.log("Scheduled update for \(nextRefreshDate.formattedTime(seconds: true))")
                 HLLDefaults.watch.lastScheduledUpdateDate = nextRefreshDate
             }

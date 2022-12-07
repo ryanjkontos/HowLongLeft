@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, DefaultsTransferObserver {
+class InterfaceController: WKInterfaceController, EventSourceUpdateObserver, DefaultsTransferObserver {
     
     @IBOutlet weak var eventsTable: WKInterfaceTable!
     @IBOutlet weak var noTableLabel: WKInterfaceLabel!
@@ -37,11 +37,11 @@ class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, Defau
     
     let hideablePeriods = ["H", "R", "L"]
     
-    let countdownStringGenerator = CountdownStringGenerator()
+
     
     override func awake(withContext context: Any?) {
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         HLLDefaultsTransfer.shared.addTransferObserver(self)
         
         self.rowUpdateTimer = Timer(timeInterval: 1, target: self, selector: #selector(self.asyncUpdateRows), userInfo: nil, repeats: true)
@@ -64,7 +64,7 @@ class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, Defau
             
             DispatchQueue.global(qos: .default).async {
                 
-                HLLEventSource.shared.updateEventPool()
+                HLLEventSource.shared.updateEvents()
             }
             
         }
@@ -79,7 +79,7 @@ class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, Defau
     
     func updateTable() {
         
-        print("WDB: Updating table")
+        // print("WDB: Updating table")
         var fetchedEvents = HLLEventSource.shared.getTimeline(includeUpcoming: HLLDefaults.watch.showUpcoming, chronological: !HLLDefaults.watch.showCurrentFirst)
 
         moreUpcomingButton.setHidden(fetchedEvents.filter({$0.completionStatus == HLLEvent.CompletionStatus.Upcoming}).isEmpty)
@@ -88,7 +88,7 @@ class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, Defau
 
                  self.setNoTableText(nil)
                  
-             } else if HLLEventSource.shared.neverUpdatedEventPool == false {
+             } else if HLLEventSource.shared.neverUpdatedevents == false {
                  
                  if HLLEventSource.shared.access == .Denied {
                      self.setNoTableText("No Calendar Access")
@@ -264,15 +264,15 @@ class InterfaceController: WKInterfaceController, EventPoolUpdateObserver, Defau
         
     }
     
-    func eventPoolUpdated() {
-        print("WDB: Eventpool changed called")
+    func eventsUpdated() {
+        // print("WDB: events changed called")
         DispatchQueue.main.async {
             self.updateTable()
         }
     }
     
     func defaultsUpdated() {
-        print("WDB: Defaults changed called")
+        // print("WDB: Defaults changed called")
         DispatchQueue.main.async {
             self.updateTable()
         }

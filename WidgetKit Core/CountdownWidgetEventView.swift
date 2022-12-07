@@ -117,7 +117,7 @@ struct CountdownWidgetEventView: View {
         
         get {
             
-            let value = PercentageCalculator().calculateIntPercentDone(of: event, at: displayDate)
+            let value = PercentageCalculator.calculateIntPercentDone(of: event, at: displayDate)
   
             
 
@@ -170,11 +170,11 @@ struct CountdownWidgetEventView: View {
         }
         
       
-        print("Percent is \(percent)")
+        // print("Percent is \(percent)")
         
         let value = Double(100)/Double(percent)
         
-        print("Returning divisor \(value)")
+        // print("Returning divisor \(value)")
         
         return value
     }

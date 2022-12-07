@@ -32,7 +32,7 @@ class BackgroundFunctions {
         }
         catch let error as NSError
         {
-            print(error.localizedDescription)
+            // print(error.localizedDescription)
         }
         
         DispatchQueue.global(qos: .default).async {
@@ -50,13 +50,13 @@ class BackgroundFunctions {
             }
             
             if reachability.connection == .wifi {
-                print("Reachable via WiFi")
+                // print("Reachable via WiFi")
             } else {
-                print("Reachable via Cellular")
+                // print("Reachable via Cellular")
             }
         }
             self.rb?.whenUnreachable = { _ in
-            print("Not reachable")
+            // print("Not reachable")
             
             BackgroundFunctions.isReachable = false
             
@@ -65,7 +65,7 @@ class BackgroundFunctions {
         do {
             try self.rb?.startNotifier()
         } catch {
-            print("Unable to start notifier")
+            // print("Unable to start notifier")
         }
         
         self.run()
@@ -83,7 +83,7 @@ class BackgroundFunctions {
         self.donateInteraction()
 
             
-        print("Start2")
+        // print("Start2")
         
         
         self.notoScheduler.getAccess()
@@ -105,9 +105,9 @@ class BackgroundFunctions {
             interaction.donate { (error) in
                 if error != nil {
                     if let error = error as NSError? {
-                        print("Failed to donate because \(error)")
+                        // print("Failed to donate because \(error)")
                     } else {
-                        print("Successfully donated")
+                        // print("Successfully donated")
                     }
                 }
             }

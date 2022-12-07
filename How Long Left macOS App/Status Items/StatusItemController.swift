@@ -110,7 +110,7 @@ import Cocoa
         if event.type == .rightMouseUp {
             self.statusItem.button?.isHighlighted = false
             SelectedEventManager.shared.selectedEvent = nil
-            print("okay sure m89")
+            // print("okay sure m89")
                 self.statusItemTextHander.updateStatusItem()
         }
         

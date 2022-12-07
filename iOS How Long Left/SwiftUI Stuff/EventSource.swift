@@ -23,9 +23,9 @@ class EventSource: ObservableObject, EventSourceProtocol {
     
     init() {
         
-        print("Init event source")
+        // print("Init event source")
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         update()
         timer = Timer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .common)
@@ -37,7 +37,7 @@ class EventSource: ObservableObject, EventSourceProtocol {
             return
         }
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool()
+        let pinned = HLLEventSource.shared.getPinnedEventsFromevents()
         var current = [HLLEvent]()
         var upcoming = [HLLEvent]()
         
@@ -85,9 +85,9 @@ class EventSource: ObservableObject, EventSourceProtocol {
 }
 
 
-extension EventSource: EventPoolUpdateObserver {
+extension EventSource: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
         DispatchQueue.main.async {
             self.update()

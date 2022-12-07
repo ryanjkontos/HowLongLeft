@@ -75,7 +75,7 @@ struct DefaultMenuListItem_Previews: PreviewProvider {
 @available(OSX 10.15, *)
 struct RightClickableSwiftUIView: NSViewRepresentable {
     func updateNSView(_ nsView: RightClickableView, context: NSViewRepresentableContext<RightClickableSwiftUIView>) {
-        print("Update")
+        // print("Update")
     }
 
     func makeNSView(context: Context) -> RightClickableView {
@@ -86,11 +86,11 @@ struct RightClickableSwiftUIView: NSViewRepresentable {
 
 class RightClickableView : NSView {
     override func mouseDown(with theEvent: NSEvent) {
-        print("left mouse")
+        // print("left mouse")
     }
 
     override func rightMouseDown(with theEvent: NSEvent) {
-        print("right mouse")
+        // print("right mouse")
     }
     
     private var isMouseOverTheView = false {

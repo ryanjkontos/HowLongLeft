@@ -69,7 +69,7 @@ class MagdalenePrompts {
                 if button == NSApplication.ModalResponse.alertFirstButtonReturn {
                     
                     
-                    HLLEventSource.shared.updateEventPool()
+                    HLLEventSource.shared.updateEvents()
                    
                 }
                 

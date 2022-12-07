@@ -24,7 +24,7 @@ class SelectedTabManager: ObservableObject {
             if oldValue != selectedIndex {
                 selectedTab = HLLAppTab(rawValue: selectedIndex)!
             } else {
-                print("Reselect")
+                // print("Reselect")
                 reselected.send()
             }
             

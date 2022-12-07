@@ -10,13 +10,13 @@ import Foundation
 
 /*
 
-class MagdaleneEventDataUploader: EventPoolUpdateObserver {
+class MagdaleneEventDataUploader: EventSourceUpdateObserver {
     
     let eval = SchoolEventDownloadNeededEvaluator()
     
     init() {
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
     }
     
     func run() {
@@ -34,7 +34,7 @@ class MagdaleneEventDataUploader: EventPoolUpdateObserver {
                 var titles = Set<String>()
                 var teachers = Set<String>()
                 
-                let events = HLLEventSource.shared.eventPool
+                let events = HLLEventSource.shared.events
                 
                 for event in events {
                     
@@ -61,7 +61,7 @@ class MagdaleneEventDataUploader: EventPoolUpdateObserver {
             
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         self.run()
     }
     

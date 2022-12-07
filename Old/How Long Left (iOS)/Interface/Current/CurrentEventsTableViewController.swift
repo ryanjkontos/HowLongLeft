@@ -21,7 +21,7 @@ class CurrentEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         updateCells()
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.5), target: self, selector: #selector(self.updateCells), userInfo: nil, repeats: true)
@@ -163,7 +163,7 @@ class CurrentEventsTableViewController: UITableViewController {
     
     func setupBackground() {
         
-        if events.isEmpty == false || HLLEventSource.shared.neverUpdatedEventPool {
+        if events.isEmpty == false || HLLEventSource.shared.neverUpdatedevents {
                    
                    tableView.backgroundView = nil
                    
@@ -267,10 +267,10 @@ extension CurrentEventsTableViewController {
     
 }
 
-extension CurrentEventsTableViewController: EventPoolUpdateObserver {
+extension CurrentEventsTableViewController: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
-        print("CEU")
+    func eventsUpdated() {
+        // print("CEU")
         
         DispatchQueue.main.async {
             

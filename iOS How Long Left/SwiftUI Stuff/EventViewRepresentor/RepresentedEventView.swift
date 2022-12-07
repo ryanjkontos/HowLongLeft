@@ -60,7 +60,7 @@ class RepesentedEventView: LayerContainerView, UIContextMenuInteractionDelegate 
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        print("Preview")
+        // print("Preview")
     }
     
 

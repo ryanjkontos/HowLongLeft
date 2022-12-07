@@ -9,9 +9,10 @@
 import UIKit
 import SwiftUI
 
-class HLLSettingsTableViewController: UITableViewController {
+class HLLSettingsTableViewController: HLLAppearenceTableViewController {
 
     typealias SettingsRow = IconButtonTableViewCell.Configuration
+    
     
     
     
@@ -52,6 +53,10 @@ class HLLSettingsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        47
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return sections.count
@@ -94,6 +99,7 @@ class HLLSettingsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "IconButtonCell", for: indexPath) as! IconButtonTableViewCell
         cell.configure(using: sections[indexPath.section].rows[indexPath.row].asCellConfig())
+       // cell.backgroundColor = HLLColors.groupedCell
         return cell
     }
     

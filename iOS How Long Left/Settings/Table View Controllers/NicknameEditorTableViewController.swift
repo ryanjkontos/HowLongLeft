@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NicknameEditorTableViewController: UITableViewController {
+class NicknameEditorTableViewController: HLLAppearenceTableViewController {
 
     var object: NicknameObject!
     
@@ -104,6 +104,7 @@ class NicknameEditorTableViewController: UITableViewController {
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldCell", for: indexPath) as! TextFieldTableViewCell
+        //    cell.backgroundColor = HLLColors.groupedCell
             self.originalNameField = cell.field
             cell.field.placeholder = "Event Name"
             cell.field.text = object.originalName
@@ -116,6 +117,7 @@ class NicknameEditorTableViewController: UITableViewController {
         if indexPath.section == 1 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldCell", for: indexPath) as! TextFieldTableViewCell
+         //   cell.backgroundColor = HLLColors.groupedCell
             self.nicknameField = cell.field
             cell.field.placeholder = "Nickname"
             cell.field.text = object.nickname
@@ -126,6 +128,7 @@ class NicknameEditorTableViewController: UITableViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+       // cell.backgroundColor = HLLColors.groupedCell
         var config = UIListContentConfiguration.cell()
         config.text = "Delete Nickname"
         config.textProperties.color = .systemRed

@@ -160,7 +160,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
         
         HLLDefaults.magdalene.oldRoomNames = OldRoomNamesSetting(rawValue: index)!
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
         
     }
     
@@ -173,7 +173,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
             
         self.updateButtonsState()
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
         
         
             
@@ -189,7 +189,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
         if sender.state == .on { state = true }
         HLLDefaults.magdalene.showBreaks = state
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
             
         
         }
@@ -204,7 +204,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
             if sender.state == .on { state = true }
             HLLDefaults.magdalene.showPrelims = state
             HLLDefaultsTransfer.shared.userModifiedPrferences()
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
             
         }
@@ -235,7 +235,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
         if sender.state == .on { state = true }
         HLLDefaults.magdalene.doHolidays = state
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
             
         
         }
@@ -250,7 +250,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
                if sender.state == .on { state = true }
                HLLDefaults.magdalene.showHSC = state
             HLLDefaultsTransfer.shared.userModifiedPrferences()
-               HLLEventSource.shared.asyncUpdateEventPool()
+               HLLEventSource.shared.updateEventsAsync()
             
                
                }
@@ -266,7 +266,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
         if sender.state == .on { state = true }
         HLLDefaults.magdalene.showSportAsStudy = state
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
             
         
         }
@@ -282,7 +282,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
             if sender.state == .on { state = true }
             HLLDefaults.magdalene.doTerm = state
             HLLDefaultsTransfer.shared.userModifiedPrferences()
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
             
         }
@@ -298,7 +298,7 @@ final class MagdalenePreferenceViewController: NSViewController, PreferencePane 
             if sender.state == .on { state = true }
             HLLDefaults.magdalene.useSubjectNames = state
             HLLDefaultsTransfer.shared.userModifiedPrferences()
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
             
         }

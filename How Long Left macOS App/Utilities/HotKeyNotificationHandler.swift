@@ -13,7 +13,7 @@ import UserNotifications
 
 class HotKeyNotificationHandler {
     
-    let countdownStringGenerator = CountdownStringGenerator()
+    
     let upcomingEventStringGenerator = UpcomingEventStringGenerator()
     
     func hotKeyPressed() {
@@ -24,7 +24,7 @@ class HotKeyNotificationHandler {
         
         var identifier = ""
         
-        if HLLEventSource.shared.access == .Granted {
+        if CalendarReader.shared.calendarAccess == .Granted {
         
         title = "No events are on right now"
         
@@ -82,7 +82,7 @@ class HotKeyNotificationHandler {
                 content.body = safeBody
             }
             
-            if HLLEventSource.shared.access == CalendarAccessState.Denied {
+            if CalendarReader.shared.calendarAccess == CalendarAccessState.Denied {
             
             content.userInfo = ["Type":"Cal"]
                 

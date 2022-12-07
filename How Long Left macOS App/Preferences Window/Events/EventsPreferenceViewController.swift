@@ -14,7 +14,7 @@ import Preferences
 import LaunchAtLogin
 import EventKit
 
-final class EventsPreferenceViewController: NSViewController, PreferencePane, NSTableViewDataSource, NSTableViewDelegate, EventPoolUpdateObserver, EventHidingObserver {
+final class EventsPreferenceViewController: NSViewController, PreferencePane, NSTableViewDataSource, NSTableViewDelegate, EventSourceUpdateObserver, EventHidingObserver {
     
     let preferencePaneIdentifier = Preferences.PaneIdentifier.events
     var preferencePaneTitle: String = "Hidden"
@@ -41,7 +41,7 @@ final class EventsPreferenceViewController: NSViewController, PreferencePane, NS
      //   askCheckbox.state = HLLDefaults.general.askToHide.controlStateValue
         
         HLLStoredEventManager.shared.observers.append(self)
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         let textCell = NSNib(nibNamed: "EventTableCell", bundle: Bundle.main)
         table.register(textCell, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EventTableCell"))
         
@@ -130,7 +130,7 @@ final class EventsPreferenceViewController: NSViewController, PreferencePane, NS
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.main.async {
             self.update()
         }

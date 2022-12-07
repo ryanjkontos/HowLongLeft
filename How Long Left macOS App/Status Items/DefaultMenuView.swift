@@ -126,7 +126,7 @@ struct DefaultMenuView: View {
 @available(OSX 10.15, *)
 struct ClickableSwiftUIView: NSViewRepresentable {
     func updateNSView(_ nsView: ClickableView, context: NSViewRepresentableContext<ClickableSwiftUIView>) {
-        print("Update")
+        // print("Update")
     }
 
     func makeNSView(context: Context) -> ClickableView {
@@ -137,7 +137,7 @@ struct ClickableSwiftUIView: NSViewRepresentable {
 
 class ClickableView: NSView {
     override func mouseDown(with theEvent: NSEvent) {
-        print("left mouse")
+        // print("left mouse")
     }
 
     

@@ -25,14 +25,15 @@ class DummyEventGenerator {
         var array = [HLLEvent]()
         var date = start
         
-        array.append(HLLEvent(title: "Ending Soon", start: start, end: start.addingTimeInterval(5), location: nil))
+        array.append(HLLEvent(title: "Current 1", start: start, end: start.addingTimeInterval(60), location: nil))
+        array.append(HLLEvent(title: "Current 2", start: start, end: start.addingTimeInterval(100), location: nil))
         
         for i in 1...amount {
             
             
             date.addTimeInterval(30*300)
-            var event = HLLEvent(title: "Compulsory Weekly Submission: Week 9 problems submission box is due \(i)", start: start, end: date, location: nil)
-            event.calendarID = HLLEventSource.shared.getCalendars().randomElement()?.calendarIdentifier
+            var event = HLLEvent(title: "Test Event", start: start, end: date, location: nil)
+            event.calendarID = CalendarReader.shared.getCalendars().randomElement()?.calendarIdentifier
             
             event.location = "Room: 23"
             

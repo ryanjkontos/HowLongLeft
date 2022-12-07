@@ -26,9 +26,9 @@ class UpcomingEventSource: ObservableObject, EventSourceProtocol {
     
     init() {
         
-        print("Init UES")
+        // print("Init UES")
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         update()
         timer = Timer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
@@ -53,9 +53,9 @@ class UpcomingEventSource: ObservableObject, EventSourceProtocol {
 
 }
 
-extension UpcomingEventSource: EventPoolUpdateObserver {
+extension UpcomingEventSource: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
         DispatchQueue.main.async {
             self.update()

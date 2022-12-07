@@ -48,7 +48,7 @@ class HLLMenuItem: NSMenuItem {
         
         if let generatedMenu = submenuClosure?() {
             
-            print("Setting genned menu")
+            // print("Setting genned menu")
             
             self.submenu = generatedMenu
             

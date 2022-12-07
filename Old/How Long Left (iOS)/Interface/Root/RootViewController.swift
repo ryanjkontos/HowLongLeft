@@ -10,7 +10,7 @@ import UIKit
 import StoreKit
 import EventKit
 
-class RootViewController: UITabBarController, UITabBarControllerDelegate, CalendarAccessStateDelegate, EventPoolUpdateObserver {
+class RootViewController: UITabBarController, UITabBarControllerDelegate, CalendarAccessStateDelegate, EventSourceUpdateObserver {
     
     
     var currentVC: UINavigationController!
@@ -115,9 +115,9 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
     
     override func viewDidLoad() {
   
-        print("Root view did load")
+        // print("Root view did load")
         
-        HLLEventSource.shared.addEventPoolObserver(self, immediatelyNotify: true)
+        HLLEventSource.shared.addeventsObserver(self, immediatelyNotify: true)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let current = storyboard.instantiateViewController(withIdentifier: "CurrentView") as! CurrentEventsTableViewController
@@ -175,7 +175,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
         presentFirstTimelineEventInfoView()
         
       
-        print("IDB: Root view loaded")
+        // print("IDB: Root view loaded")
         
     }
     
@@ -186,14 +186,14 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
         super.viewDidAppear(true)
         checkLaunchEvent()
         //HLLDefaultsTransfer.shared.triggerDefaultsTransfer()
-        //print("Trig7")
+        //// print("Trig7")
     }
     
     @objc func showIAPSuggestion() {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 
-                if HLLEventSource.shared.neverUpdatedEventPool == false {
+                if HLLEventSource.shared.neverUpdatedevents == false {
                 
                     if WatchSessionManager.sharedManager.userHasAppleWatch() {
                 
@@ -380,8 +380,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
         
             DispatchQueue.main.async {
             
-            if HLLEventSource.shared.neverUpdatedEventPool {
-                HLLEventSource.shared.updateEventPool()
+            if HLLEventSource.shared.neverUpdatedevents {
+                HLLEventSource.shared.updateEvents()
             }
             
             if let event = HLLEventSource.shared.getTimeline().first {
@@ -401,7 +401,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
                 
                 if let selectedController = self.selectedViewController as? UINavigationController {
                         
-                    print("NotoLaunch 1")
+                    // print("NotoLaunch 1")
                         
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                             
@@ -455,13 +455,13 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
         
         DispatchQueue.main.async {
         
-        if HLLEventSource.shared.neverUpdatedEventPool {
-            HLLEventSource.shared.updateEventPool()
+        if HLLEventSource.shared.neverUpdatedevents {
+            HLLEventSource.shared.updateEvents()
         }
         
         if let id = RootViewController.launchEvent, let event = HLLEventSource.shared.findEventWithIdentifier(id: id) {
             
-            print("NotoLaunch Match")
+            // print("NotoLaunch Match")
             
             var isValid = false
             
@@ -480,13 +480,13 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
             
             if isValid {
                 
-                print("NotoLaunch Is Valid")
+                // print("NotoLaunch Is Valid")
                 
-                print("NotoLaunch Selected DBD: \(self.selectedViewController.debugDescription)")
+                // print("NotoLaunch Selected DBD: \(self.selectedViewController.debugDescription)")
                 
                 if let selectedController = self.selectedViewController as? UINavigationController {
                     
-                    print("NotoLaunch 1")
+                    // print("NotoLaunch 1")
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
                         
@@ -499,7 +499,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
                                 if eventInfoView.event == event {
                                     
                                     matchingEventController = eventInfoView
-                                    print("NotoLaunch 2")
+                                    // print("NotoLaunch 2")
                                     
                                 }
                                 
@@ -513,7 +513,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
                             
                         } else {
                             
-                            print("NotoLaunch 3")
+                            // print("NotoLaunch 3")
                             let newView = EventInfoViewGenerator.shared.generateEventInfoView(for: event)
                             selectedController.popToRootViewController(animated: true)
                             selectedController.pushViewController(newView, animated: true)
@@ -605,9 +605,9 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
  
-        print("Root got event pool updated noto")
+        // print("Root got event pool updated noto")
         
         DispatchQueue.main.async {
         
@@ -641,7 +641,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate, Calend
                    }
 
         
-        if HLLEventSource.shared.neverUpdatedEventPool == false {
+        if HLLEventSource.shared.neverUpdatedevents == false {
         self.doNotificationOnboarding()
         }
         

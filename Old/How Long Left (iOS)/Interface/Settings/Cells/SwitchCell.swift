@@ -19,7 +19,7 @@ class SwitchCell: UITableViewCell {
     var delegate: SwitchCellDelegate?
     
     var triggersDefaultsTransferOnToggle = true
-    var updatesEventPoolOnToggle = true
+    var updateseventsOnToggle = true
     
     override func awakeFromNib() {
         #if targetEnvironment(macCatalyst)
@@ -79,9 +79,9 @@ class SwitchCell: UITableViewCell {
                 }
             }
             
-            if self.updatesEventPoolOnToggle {
+            if self.updateseventsOnToggle {
                 DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 0.5) {
-                    HLLEventSource.shared.updateEventPool()
+                    HLLEventSource.shared.updateEvents()
                 }
             }
             

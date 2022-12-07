@@ -22,7 +22,7 @@ struct EventView: View {
     static var eventViewTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     init(event: HLLEvent) {
-      //  print("Init event view for \(event.title)")
+      //  // print("Init event view for \(event.title)")
        
         self.event = event
         
@@ -160,8 +160,8 @@ struct EventView_Previews: PreviewProvider {
     }
 }
 
-class SelectionStateObject: ObservableObject, EventPoolUpdateObserver {
-    func eventPoolUpdated() {
+class SelectionStateObject: ObservableObject, EventSourceUpdateObserver {
+    func eventsUpdated() {
         DispatchQueue.main.async {
             self.update()
         }
@@ -176,7 +176,7 @@ class SelectionStateObject: ObservableObject, EventPoolUpdateObserver {
         self.isPinned = event.isPinned
         self.isSelected = event.isSelected
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
        
     }
     
@@ -246,7 +246,7 @@ struct EventEditView: UIViewControllerRepresentable {
         controller.editViewDelegate = context.coordinator
         controller.navigationBar.tintColor = .systemOrange
         controller.view.tintColor = .systemOrange
-        controller.eventStore = HLLEventSource.shared.eventStore
+        controller.eventStore = CalendarReader.shared.eventStore
         controller.view.backgroundColor = .systemGroupedBackground
         return controller
     }

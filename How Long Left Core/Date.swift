@@ -10,6 +10,24 @@ import Foundation
 
 extension Date {
     
+    func getMondayOfWeek() -> Date {
+        
+        let cal = Calendar.current
+        var comps = cal.dateComponents([.weekOfYear, .yearForWeekOfYear], from: self)
+        comps.weekday = 2
+        return cal.date(from: comps)!
+        
+    }
+    
+    func mondayOfWeekString() -> String {
+       
+        let mondayInWeek = getMondayOfWeek()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let firstDayString = dateFormatter.string(from: mondayInWeek)
+        return "Week of \(firstDayString)"
+    }
+    
     func idString() -> String {
         
         return "\(self.formattedDate()), \(self.formattedTime())"

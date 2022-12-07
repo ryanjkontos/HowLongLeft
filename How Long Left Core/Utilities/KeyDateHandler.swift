@@ -8,14 +8,14 @@
 
 import Foundation
 
-class KeyDateHandler: EventPoolUpdateObserver {
+/*class KeyDateHandler: EventSourceUpdateObserver {
     
     static var shared = KeyDateHandler()
     
     var keyDates = [Date]()
     
     init() {
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
     }
     
     func updateKeyDates() {
@@ -31,8 +31,8 @@ class KeyDateHandler: EventPoolUpdateObserver {
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         updateKeyDates()
     }
     
-}
+}*/

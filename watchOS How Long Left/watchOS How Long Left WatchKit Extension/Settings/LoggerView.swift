@@ -10,7 +10,9 @@ import SwiftUI
 
 struct LoggerView: View {
     
-    @State var logs = ComplicationLogger.getLogItems()
+    @State var logs = ComplicationStatusLogger.getLogItems()
+    
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
@@ -31,8 +33,18 @@ struct LoggerView: View {
             }
             
         }.onAppear() {
-            logs = ComplicationLogger.getLogItems()
+            logs = ComplicationStatusLogger.getLogItems()
         }
+        .onReceive(timer, perform: { _ in
+            
+            let new = ComplicationStatusLogger.getLogItems()
+            
+            if new != self.logs {
+                self.logs = new
+            }
+            
+            
+        })
         
     }
 }

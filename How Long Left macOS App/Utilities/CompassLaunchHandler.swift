@@ -21,7 +21,7 @@ class CompassLaunchHandler {
         
         if let url = URL(string: "https://mchsdow-nsw.compass.education/Organise/Calendar/") {
             NSWorkspace.shared.open(url)
-            print("Compass was successfully opened")
+            // print("Compass was successfully opened")
         }
             
         }

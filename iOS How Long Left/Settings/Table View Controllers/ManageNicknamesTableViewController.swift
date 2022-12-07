@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManageNicknamesTableViewController: UITableViewController {
+class ManageNicknamesTableViewController: HLLAppearenceTableViewController {
 
     var objects = [NicknameObject]()
     
@@ -42,6 +42,7 @@ class ManageNicknamesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+      //  cell.backgroundColor = HLLColors.groupedCell
         cell.accessoryType = .none
         if indexPath.row != 0 {
             let object = objects[indexPath.row-1]

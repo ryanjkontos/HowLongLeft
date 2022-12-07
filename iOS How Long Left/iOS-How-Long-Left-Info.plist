@@ -27,6 +27,8 @@
 	<array>
 		<string>HLLWidgetConfigurationIntent</string>
 	</array>
+	<key>OneSignal_app_groups_key</key>
+	<string>group.com.ryankontos.How-Long-Left</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

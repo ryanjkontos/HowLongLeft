@@ -57,7 +57,7 @@ class WidgetConfigurationStore: ObservableObject {
                 }
             }
         } else {
-            print("Creating default group")
+            // print("Creating default group")
             defaultGroup = getNewDefaultGroup()
             saveGroups(allGroups)
         }

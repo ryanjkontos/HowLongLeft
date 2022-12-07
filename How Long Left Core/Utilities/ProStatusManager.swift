@@ -39,7 +39,7 @@ class ProStatusManager {
     // MARK: Public Interface
     
     init() {
-      //  HLLEventSource.shared.addEventPoolObserver(self)
+      //  HLLEventSource.shared.addeventsObserver(self)
         
         updateProStatus()
         ProStatusManager.hasFinishedInit = true
@@ -96,7 +96,7 @@ class ProStatusManager {
         DispatchQueue.main.async {
             self.updateProStatus()
         }
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
         
     }
 
@@ -109,19 +109,12 @@ class ProStatusManager {
         var newStatus = false
         
             if let purchase = self.fetchProPurchase().first {
-            
-          //  print("Got first pro purchase")
-            
-            if purchase.isValid() {
-                
                 newStatus = true
-            }
-            
             }
             
         
     
-      //  print("Pro status is now \(newStatus)")
+      //  // print("Pro status is now \(newStatus)")
         
         
         
@@ -142,7 +135,7 @@ class ProStatusManager {
             
             if ProStatusManager.hasFinishedInit {
             
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
                 
             }
             
@@ -172,9 +165,9 @@ class ProStatusManager {
     
 }
 
-extension ProStatusManager: EventPoolUpdateObserver {
+extension ProStatusManager: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         
         if self.hasPurchasedPro != self.isPro {
             

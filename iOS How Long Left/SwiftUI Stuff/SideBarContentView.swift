@@ -54,7 +54,7 @@ struct SideBarContentView: View {
             
         })
         .onAppear {
-                print("Setting selected")
+                // print("Setting selected")
                 selected = selectedTabManager.selectedTab
             
 

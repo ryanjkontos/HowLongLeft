@@ -1,0 +1,24 @@
+{
+  "Simulator Target Bundle": "com.ryankontos.How-Long-Left",
+  "aps": {
+    "alert": {
+      "title": "5 New Shifts for Hannah",
+      "body": "Sat, December 5 (5pm - 9pm)\nSun, December 6 (5pm - 9pm)\nMon, December 7 (5pm - 9pm)\nTue, December 8 (5pm - 9pm)\nWed, December 9 (5pm - 2am)"
+    },
+    "content-available": 1,
+    "content-type": "HWShifts",
+    "mutable-content": 1,
+    "category": "HWShifts"
+  },
+  "custom": {
+    "a": {
+      "Shifts": [
+        [1751547600, 1751583200],
+        [1751623600, 1751659200],
+        [1751700000, 1751735600],
+        [1751817600, 1751853200],
+        [1751939200, 1751974000]
+      ]
+    }
+  }
+}

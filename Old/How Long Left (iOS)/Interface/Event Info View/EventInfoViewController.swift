@@ -73,7 +73,7 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
             
             self.event = newEvent
             
-            print("Pop1")
+            // print("Pop1")
             self.navigationController?.popToRootViewController(animated: true)
             
         }*/
@@ -83,7 +83,7 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
              
             let id = event.persistentIdentifier
         
-                print("Activity id = \(id)")
+                // print("Activity id = \(id)")
         
              activityObject.addUserInfoEntries(from: ["EventID":id])
              activityObject.isEligibleForHandoff = true
@@ -169,7 +169,7 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
             // Matching event no longer exists
             
             DispatchQueue.main.async {
-                print("Pop2")
+                // print("Pop2")
                 self.navigationController?.popViewController(animated: true)
             }
             
@@ -187,7 +187,7 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
                         
                     }
                     
-                    print("Pop3")
+                    // print("Pop3")
                     self.navigationController?.popViewController(animated: true)
                     
                 })

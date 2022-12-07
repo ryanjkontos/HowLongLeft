@@ -19,8 +19,8 @@ public class ProPurchase: NSManagedObject {
         
         #if os(OSX)
         
-      //  print("Stored ID is: \(self.purchaseID!)")
-      //  print("System ID is: \(ProValidator.shared.getProPurchaseID())")
+      //  // print("Stored ID is: \(self.purchaseID!)")
+      //  // print("System ID is: \(ProValidator.shared.getProPurchaseID())")
         
         return self.purchaseID == ProValidator.shared.getProPurchaseID()
         

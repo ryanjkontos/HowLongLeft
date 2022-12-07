@@ -11,39 +11,19 @@ import CoreData
 
 class HLLDataModel {
     
-    static var shared = HLLDataModel()
+    static var shared: HLLDataModel!
+    
+    var storeLoaded = false
     
     init() {
            
+        
         HLLDataModel.migrate()
            
-        let persistentContainer = NSPersistentCloudKitContainer(name: HLLDataModel.databaseName)
-        let storeURL = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
-        let storeDescription = NSPersistentStoreDescription(url: storeURL)
-           
-        let id = "iCloud.ryankontos.howlongleft"
-        
-        let options = NSPersistentCloudKitContainerOptions(containerIdentifier: id)
-        storeDescription.cloudKitContainerOptions = options
-           
-        storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-           
-        persistentContainer.persistentStoreDescriptions = [storeDescription]
-           
-        persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
-               
-            //   print("Store description: \(storeDescription)")
-               
-               
-           })
-           
-           persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-           persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-           
-        self.persistentContainer = persistentContainer
-           
- 
-        
+     
+       
+
+       
     }
     
     static var databaseName = "HLLDataModel"
@@ -52,12 +32,11 @@ class HLLDataModel {
     
     static var oldPersistentContainer: NSPersistentContainer = {
         
-       
         
         let container = NSPersistentContainer(name: "HLLDataModel", managedObjectModel: model)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             
-         //   print("Store description: \(storeDescription)")
+         //   // print("Store description: \(storeDescription)")
             
             if let error = error {
                 fatalError("Unresolved error \(error)")
@@ -68,7 +47,51 @@ class HLLDataModel {
         
     }()
     
-     var persistentContainer: NSPersistentCloudKitContainer
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentCloudKitContainer(name: "HLLDataModel")
+        // Change this variable instead of creating a new NSPersistentStoreDescription object
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("No Descriptions found")
+        }
+
+       // let cloudStoreUrl = applicationDocumentDirectory()!.appendingPathComponent("HLLDataModel.sqlite")
+
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description.setOption(true as NSObject, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        description.url = URL.storeURL(for: GroupURL.current, databaseName: HLLDataModel.databaseName)
+
+        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
+                containerIdentifier: "iCloud.ryankontos.howlongleft")
+        container.persistentStoreDescriptions = [description]
+    
+        container.loadPersistentStores(completionHandler: { storeDescription, error in
+            
+            if let error = error as NSError? {
+                // print("Error loading store. \(error)")
+            }
+            
+            description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
+                    containerIdentifier: "iCloud.ryankontos.howlongleft")
+            
+            DispatchQueue.main.async {
+                
+                //self.storeLoaded = true
+               // HLLEventSource.shared.updateEventsAsync()
+                
+            }
+            
+        })
+
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
+
+        try? container.viewContext.setQueryGenerationFrom(.current)
+        //container.viewContext.transactionAuthor = transactionAuthorName
+        
+        return container
+        
+    }()
     
     
     class func migrate() {
@@ -94,12 +117,12 @@ class HLLDataModel {
           // Handle error
         }
         
-            print("Old store was located at: \(oldStore.url!)")
+            // print("Old store was located at: \(oldStore.url!)")
             
         do {
             try coordinator.destroyPersistentStore(at: oldStore.url!, ofType: "HLLDataModel", options: nil)
         } catch {
-          print("Error destroying old store: \(error)")
+          // print("Error destroying old store: \(error)")
         }
         
             HLLDefaults.appData.migratedCoreData = true

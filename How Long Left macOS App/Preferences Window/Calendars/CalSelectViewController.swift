@@ -20,7 +20,7 @@ class calSelectViewController: NSViewController, NSTableViewDataSource, NSTableV
     override func viewDidAppear() {
         
         
-        cals = HLLEventSource.shared.getCalendars()
+        cals = CalendarReader.shared.getCalendars()
         
         
         for item in HLLDefaults.calendar.enabledCalendars {
@@ -94,7 +94,7 @@ class calSelectViewController: NSViewController, NSTableViewDataSource, NSTableV
         
         for item in selectedCals {
             
-            print("Selected Cal: \(item.title)")
+            // print("Selected Cal: \(item.title)")
             
         }
         
@@ -234,7 +234,7 @@ class calendarItemRow: NSTableCellView {
             self.delegate?.cellClicked(calendar: self.cal, state: self.check.state == .on)
         }
         
-        print("Clicked")
+        // print("Clicked")
         
     }
     

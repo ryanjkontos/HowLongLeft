@@ -42,7 +42,7 @@ class EventInfoInterfaceController: WKInterfaceController {
              
             let id = event.persistentIdentifier
         
-                print("Activity id = \(id)")
+                // print("Activity id = \(id)")
         
              activityObject.addUserInfoEntries(from: ["EventID":id])
              activityObject.isEligibleForHandoff = true
@@ -110,7 +110,7 @@ class EventInfoInterfaceController: WKInterfaceController {
             let row = infoTable.rowController(at: index) as! EventInfoTableRow
             row.setup(with: item)
             
-            print("Setting up \(item.type)")
+            // print("Setting up \(item.type)")
             
         }
         

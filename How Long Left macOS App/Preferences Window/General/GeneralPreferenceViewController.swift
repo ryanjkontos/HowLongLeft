@@ -118,7 +118,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         }
         
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
         
     }
     
@@ -133,7 +133,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
             self.allDayCurrentButton.isEnabled = state
             
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
         }
         
@@ -154,7 +154,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
         
         
         HLLDefaultsTransfer.shared.userModifiedPrferences()
-         HLLEventSource.shared.asyncUpdateEventPool()
+         HLLEventSource.shared.updateEventsAsync()
             
         }
             
@@ -187,7 +187,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
             
         
         
-         HLLEventSource.shared.asyncUpdateEventPool()
+         HLLEventSource.shared.updateEventsAsync()
             
         }
         

@@ -85,7 +85,7 @@ struct CountdownCardContextMenuModifier: ViewModifier {
                     DispatchQueue.main.async {
                     
                         CalendarDefaultsModifier.shared.setDisabled(calendar: event.calendar!)
-                        HLLEventSource.shared.updateEventPool()
+                        HLLEventSource.shared.updateEvents()
                         
                         reloadHandler()
                         

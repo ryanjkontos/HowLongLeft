@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventPickerTableViewController: UITableViewController {
+class EventPickerTableViewController: HLLAppearenceTableViewController {
 
     var datesOfEvents = [DateOfEvents]()
     
@@ -30,7 +30,7 @@ class EventPickerTableViewController: UITableViewController {
         
         self.navigationItem.leftBarButtonItem = cancelItem
         
-        datesOfEvents = HLLEventSource.shared.getAllEventsGroupedByDate(excludeIDs)
+        datesOfEvents = HLLEventSource.shared.getAllEventsGroupedByDate(excludeIDs, groupMode: .startDate)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,6 +63,7 @@ class EventPickerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+     //   cell.backgroundColor = HLLColors.groupedCell
 
         let event = datesOfEvents[indexPath.section].events[indexPath.row]
         

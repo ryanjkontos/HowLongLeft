@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Zephyr
 
 struct GroupURL {
     
@@ -21,23 +22,29 @@ struct GroupURL {
     
 }
 
+let complicationActivatedKey = "ActivateComplication"
+
 class HLLDefaults {
 
     static var shared = HLLDefaults()
     
-    static var defaults = UserDefaults.init(suiteName: "group.com.ryankontos.How-Long-Left")!
     
-   /* #if targetEnvironment(macCatalyst)
-    static var defaults = UserDefaults.init(suiteName: "5AMFX8X5ZN.howlongleft")!
-    #elseif os(OSX)
+    
+    
+    #if os(OSX)
     static var defaults = UserDefaults.init(suiteName: GroupURL.current)!
     #elseif os(watchOS)
     static var defaults = UserDefaults.standard
     #else
     static var defaults = UserDefaults(suiteName: GroupURL.current)!
-    #endif */
+    #endif
     
    
+    static var cloudDefaults = NSUbiquitousKeyValueStore()
+    
+    static func updateCloudDefaults() {
+        cloudDefaults.synchronize()
+    }
     
     struct appData {
         
@@ -122,14 +129,14 @@ class HLLDefaults {
     
     struct widget {
         
-        static var latestTimeline: HLLTimeline? {
+        static var latestTimeline: HLLTimeline.Archive? {
             
             get {
                
                 guard let data = defaults.data(forKey: "WidgetLatestTimeline") else { return nil }
                 
                 let decoder = JSONDecoder()
-                let decoded = try? decoder.decode(HLLTimeline.self, from: data)
+                let decoded = try? decoder.decode(HLLTimeline.Archive.self, from: data)
                 return decoded
                 
             }
@@ -139,7 +146,7 @@ class HLLDefaults {
                 let encoder = JSONEncoder()
                 let encoded = try! encoder.encode(newValue)
                 
-                print("Set widget timeline")
+                // print("Set widget timeline")
                 
                 defaults.set(encoded, forKey: "WidgetLatestTimeline")
                 
@@ -298,14 +305,14 @@ class HLLDefaults {
     
     struct complication {
         
-        static var latestTimeline: HLLTimeline? {
+        static var latestTimeline: HLLTimeline.Archive? {
             
             get {
                
                 guard let data = defaults.data(forKey: "ComplicationLatestTimeline") else { return nil }
                 
                 let decoder = JSONDecoder()
-                let decoded = try? decoder.decode(HLLTimeline.self, from: data)
+                let decoded = try? decoder.decode(HLLTimeline.Archive.self, from: data)
                 return decoded
                 
             }
@@ -786,6 +793,7 @@ class HLLDefaults {
     
     struct watch {
         
+        
         static var largeCell: Bool {
             
             get {
@@ -797,6 +805,38 @@ class HLLDefaults {
             set (to) {
                 
                 defaults.set(to, forKey: "WatchFirstEventLarge")
+                
+            }
+            
+        }
+        
+        static var groupEventsByDate: Bool {
+            
+            get {
+                
+                return !defaults.bool(forKey: "WatchNoDateGrouping")
+                
+            }
+            
+            set (to) {
+                
+                defaults.set(!to, forKey: "WatchNoDateGrouping")
+                
+            }
+            
+        }
+        
+        static var showPercentage: Bool {
+            
+            get {
+                
+                return defaults.bool(forKey: "WatchShowPercentage")
+                
+            }
+            
+            set (to) {
+                
+                defaults.set(to, forKey: "WatchShowPercentage")
                 
             }
             
@@ -997,6 +1037,42 @@ class HLLDefaults {
                    
         }
         
+        static var currentLimit: Int {
+            
+            get {
+                if let limit = defaults.object(forKey: "WatchCurrentLimit") as? Int {
+                    return limit
+                } else {
+                    return 5
+                }
+            }
+            
+            set {
+                
+                defaults.set(newValue, forKey: "WatchCurrentLimit")
+                
+            }
+            
+        }
+        
+        static var upcomingLimit: Int {
+            
+            get {
+                if let limit = defaults.object(forKey: "WatchUpcomingLimit") as? Int {
+                    return limit
+                } else {
+                    return 10
+                }
+            }
+            
+            set {
+                
+                defaults.set(newValue, forKey: "WatchUpcomingLimit")
+                
+            }
+            
+        }
+        
     }
     
     struct menu {
@@ -1063,7 +1139,7 @@ class HLLDefaults {
                     
         
                     
-                  //  print("MakeMode: \(int) \(mode)")
+                  //  // print("MakeMode: \(int) \(mode)")
                     
                     return mode
                     
@@ -1313,7 +1389,7 @@ class HLLDefaults {
                        defaults.set(to, forKey: "SILimit")
                         
                     } else {
-                        print("No!!!")
+                        // print("No!!!")
                         defaults.set(5, forKey: "SILimit")
                     }
                        
@@ -1363,7 +1439,7 @@ class HLLDefaults {
             }
             
             set (to) {
-                print("UFU SET")
+                // print("UFU SET")
                 defaults.set(to, forKey: "useFullUnits")
                 
             }
@@ -1682,7 +1758,7 @@ class HLLDefaults {
             
             set (to) {
                 
-              //  print("Setting Milestones to  \(to)")
+              //  // print("Setting Milestones to  \(to)")
                 
                 var setArray = [String]()
                 
@@ -1733,7 +1809,7 @@ class HLLDefaults {
             
             set (to) {
                 
-              //  print("Setting Milestones to  \(to)")
+              //  // print("Setting Milestones to  \(to)")
                 
                 var setArray = [String]()
                 

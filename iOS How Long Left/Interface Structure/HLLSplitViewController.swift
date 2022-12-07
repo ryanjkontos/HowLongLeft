@@ -75,12 +75,12 @@ class HLLSplitViewController: UISplitViewController, UISplitViewControllerDelega
     func updateTabBar() {
        /* if displayMode == .secondaryOnly && self.displayMode == .oneBesideSecondary {
             DispatchQueue.main.async {
-                print("Transition 1")
+                // print("Transition 1")
                 self.tabController.tabBar.isHidden = false
             }
         } else if displayMode == .oneBesideSecondary && self.displayMode == .secondaryOnly {
             DispatchQueue.main.async {
-                print("Transition 2")
+                // print("Transition 2")
                 self.tabController.tabBar.isHidden = true
             }
         } */

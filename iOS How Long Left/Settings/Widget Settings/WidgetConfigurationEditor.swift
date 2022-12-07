@@ -99,7 +99,7 @@ struct WidgetConfigurationEditor: View {
                 
              
                 
-                ForEach(HLLEventSource.shared.getCalendars()) { calendar in
+                ForEach(CalendarReader.shared.getCalendars()) { calendar in
                     
                     Toggle(isOn: calendarBinding(calendar), label: {
                         HStack {
@@ -156,7 +156,7 @@ struct WidgetConfigurationEditor: View {
             
             DispatchQueue.main.async {
             
-                print("\(model.config.sortMode)")
+                // print("\(model.config.sortMode)")
                 
                 store.saveGroup(model.config)
                 

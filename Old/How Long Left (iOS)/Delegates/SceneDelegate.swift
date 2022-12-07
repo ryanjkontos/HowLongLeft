@@ -210,7 +210,7 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     @objc func toolbarGroupSelectionChanged(sender: NSToolbarItemGroup) {
-        print("testGroup selection changed to index: \(sender.selectedIndex)")
+        // print("testGroup selection changed to index: \(sender.selectedIndex)")
         
         let rootViewController = window?.rootViewController as? UITabBarController
         

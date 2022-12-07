@@ -206,7 +206,7 @@ class CountdownCardSettingsObject: ObservableObject {
         
         willSet {
             
-            print("Didset count to \(upcomingCount)")
+            // print("Didset count to \(upcomingCount)")
             
             HLLDefaults.countdownsTab.upcomingCount = newValue
           

@@ -29,13 +29,13 @@ class CountdownsViewHeaderView: UICollectionReusableView {
         
         text.textColor = .secondaryLabel
         
-        text.font = .systemFont(ofSize: 14, weight: .regular)
+        text.font = .systemFont(ofSize: 17, weight: .medium)
         
         addSubview(text)
         
         NSLayoutConstraint.activate([
             
-            text.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            text.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             text.centerYAnchor.constraint(equalTo: self.centerYAnchor)
             
             

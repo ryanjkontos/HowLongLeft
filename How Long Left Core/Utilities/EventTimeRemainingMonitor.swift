@@ -55,7 +55,7 @@ class EventTimeRemainingMonitor {
         
         for event in events {
             
-           // print("Checking \(event.title)")
+           // // print("Checking \(event.title)")
             
             let timeUntilEnd = event.endDate.timeIntervalSince(CurrentDateFetcher.currentDate)+1
             let secondsUntilEnd = Int(timeUntilEnd)
@@ -74,7 +74,7 @@ class EventTimeRemainingMonitor {
                                 self.coolingDownPercentage.removeAll()
                             }
                             
-                            print("Sending milestone noto at \(CurrentDateFetcher.currentDate)")
+                            // print("Sending milestone noto at \(CurrentDateFetcher.currentDate)")
                             
                             self.delegate.milestoneReached(milestone: milestone, event: event)
                             
@@ -120,7 +120,7 @@ class EventTimeRemainingMonitor {
             
             if timeUntilEnd < 1, timeUntilEnd > -2, self.coolingDownEnded.contains(event) == false {
                     
-                   // print("\(event.title) is ending.")
+                   // // print("\(event.title) is ending.")
                     
                     var endingNow = true
                     if timeUntilEnd < -5 {
@@ -158,7 +158,7 @@ class EventTimeRemainingMonitor {
             
             if secondsUntilStart < 1, secondsUntilStart > -10, self.coolingDownStarted.contains(event) == false, startedAtEndOfEvent == false {
                 
-              print("\(event.title) is starting at \(CurrentDateFetcher.currentDate).")
+              // print("\(event.title) is starting at \(CurrentDateFetcher.currentDate).")
                 
                 self.delegate.eventStarted(event: event)
                 

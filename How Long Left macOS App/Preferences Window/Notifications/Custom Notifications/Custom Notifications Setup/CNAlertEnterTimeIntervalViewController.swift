@@ -226,7 +226,7 @@ class CNAlertEnterTimeIntervalViewController: NSViewController, NSTextFieldDeleg
     
     @IBAction func okClicked(_ sender: NSButton) {
         
-        print("Ok clicked")
+        // print("Ok clicked")
         
         submit()
         

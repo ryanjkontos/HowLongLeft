@@ -25,7 +25,7 @@ class WidgetStateFetcher {
         
         #endif
         
-        if HLLEventSource.shared.access != .Granted {
+        if CalendarReader.shared.calendarAccess != .Granted {
             
             return .noCalendarAccess
             

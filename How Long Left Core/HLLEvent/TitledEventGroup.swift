@@ -28,6 +28,7 @@ struct TitledEventGroup: Equatable, Identifiable, Hashable {
     
     var title: String?
     var events: [HLLEvent]
+    var status: HLLEvent.CompletionStatus?
     
     
 }

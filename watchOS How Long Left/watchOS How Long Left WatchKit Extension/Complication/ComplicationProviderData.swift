@@ -90,8 +90,8 @@ struct ComplicationProviderData {
                     
                     fullTimerProvider = CLKTextProvider(byJoining: ["in".simpleTextProvider(), timerProvider], separator: " ")
                 case .current:
-                    firstRowProvider = "\(event.title.truncated(limit: 12)) ends in".simpleTextProvider()
-                    fullTimerProvider = CLKTextProvider(byJoining: [timerProvider], separator: nil)
+                    firstRowProvider = "\(event.title)".simpleTextProvider()
+                fullTimerProvider = CLKTextProvider(byJoining: [timerProvider, " left".simpleTextProvider()], separator: nil)
                 let tintArray = HLLDefaults.complication.tintComplication ? [event.color] : [UIColor(named: "HLLGradient1")!, UIColor(named: "HLLGradient2")!]
                 
                 gaugeProvider = CLKTimeIntervalGaugeProvider(style: .fill, gaugeColors: tintArray, gaugeColorLocations: nil, start: event.startDate, end: event.endDate)

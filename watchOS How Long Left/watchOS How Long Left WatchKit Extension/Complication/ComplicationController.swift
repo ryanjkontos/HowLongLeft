@@ -21,6 +21,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Complication Configuration
 
+ 
+    
     let enabledDescriptors = [
         
         // Graphic Circular
@@ -95,10 +97,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
        
         if state != .noUpdateNeeded {
             ComplicationController.timeline = timeline
-            HLLDefaults.complication.latestTimeline = timeline
-            
+            HLLDefaults.complication.latestTimeline = timeline.getArchive()
+                
             ComplicationController.updates += 1
-            print("Updating complication now: \(ComplicationController.updates)")
+            // print("Updating complication now: \(ComplicationController.updates)")
             
          //   let activeComplications = CLKComplicationServer.sharedInstance().activeComplications?.first!.
             
@@ -125,7 +127,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     override init() {
         
-        print("Init Complication Controller")
+        // print("Init Complication Controller")
 
         
         super.init()
@@ -137,7 +139,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
         var overrideTemplate: CLKComplicationTemplate?
         
-        if HLLEventSource.shared.access == .Denied {
+        if CalendarReader.shared.calendarAccess == .Denied {
             overrideTemplate = entryGenerator.generateNoCalendarAccessComplicationTemplate(complication: complication)
         }
         
@@ -197,7 +199,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
     
-        print("First entry is at: \(ComplicationController.timeline.entries.first!.getAdjustedShowAt().formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
+        // print("First entry is at: \(ComplicationController.timeline.entries.first!.getAdjustedShowAt().formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
         
         handler(timelineEntries(complication: complication, date: date, limit: limit))
     }

@@ -26,9 +26,9 @@ class LiveActivityManager {
          attributes: eventAttributes,
          contentState: initialContentState,
          pushType: nil)
-         print("Requested an event Live Activity \(eventActivity.id)")
+         // print("Requested an event Live Activity \(eventActivity.id)")
          } catch (let error) {
-         print("Error requesting event Live Activity \(error.localizedDescription)")
+         // print("Error requesting event Live Activity \(error.localizedDescription)")
          }
          
          } */

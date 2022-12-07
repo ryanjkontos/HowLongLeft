@@ -72,13 +72,13 @@ class HLLTimelineDifHandler {
         if let stored = getLatestStoredTimeline(), let timelineInfo = convertTimelineToTimelineInfo(timeline: timeline) {
             
             if timelineInfo.state != stored.state {
-                print("Should update because state mismatch: current was \(timelineInfo.state.rawValue), but stored was \(stored.state.rawValue)")
+                // print("Should update because state mismatch: current was \(timelineInfo.state.rawValue), but stored was \(stored.state.rawValue)")
                 return true
             }
             
             
             if stored.endDate.timeIntervalSinceNow < 30*60 {
-                print("Should update because time dif")
+                // print("Should update because time dif")
                 return true
             }
             
@@ -86,7 +86,7 @@ class HLLTimelineDifHandler {
                 
                 if let storeEvent = HLLEventSource.shared.findEventWithIdentifier(id: item.key) {
                     
-                   // print("Found storeEvent")
+                   // // print("Found storeEvent")
                     
                     if storeEvent.infoIdentifier != item.value {
                         
@@ -97,7 +97,7 @@ class HLLTimelineDifHandler {
                     
                 } else {
                     
-                    print("storeEvent Not Found")
+                    // print("storeEvent Not Found")
                     dif = true
                     
                 }
@@ -109,7 +109,7 @@ class HLLTimelineDifHandler {
             
         }
         
-        print("Not updating because no timelines")
+        // print("Not updating because no timelines")
         return false
         
     }

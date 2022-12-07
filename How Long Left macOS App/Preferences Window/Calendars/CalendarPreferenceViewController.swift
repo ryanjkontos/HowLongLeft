@@ -15,9 +15,9 @@ import LaunchAtLogin
 import EventKit
 
 
-final class CalendarPreferenceViewController: NSViewController, PreferencePane, NSTableViewDelegate, NSTableViewDataSource, CalendarCellDelegate, EventPoolUpdateObserver {
+final class CalendarPreferenceViewController: NSViewController, PreferencePane, NSTableViewDelegate, NSTableViewDataSource, CalendarCellDelegate, EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.main.async {
         self.table.reloadData()
         }
@@ -99,7 +99,7 @@ final class CalendarPreferenceViewController: NSViewController, PreferencePane, 
     
     override func viewDidLoad() {
         
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         super.viewDidLoad()
         self.preferredContentSize = CGSize(width: 421, height: 482)
@@ -112,7 +112,7 @@ final class CalendarPreferenceViewController: NSViewController, PreferencePane, 
     
     func setupCals() {
         
-        cals = HLLEventSource.shared.getCalendars()
+        cals = CalendarReader.shared.getCalendars()
         
         
         for item in HLLDefaults.calendar.enabledCalendars {
@@ -195,7 +195,7 @@ final class CalendarPreferenceViewController: NSViewController, PreferencePane, 
         
         for item in selectedCals {
             
-            print("Selected Cal: \(item.title)")
+            // print("Selected Cal: \(item.title)")
             
         }
         
@@ -282,7 +282,7 @@ final class CalendarPreferenceViewController: NSViewController, PreferencePane, 
         
         HLLDefaults.calendar.enabledCalendars = idArray
         
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
 
         HLLDefaultsTransfer.shared.userModifiedPrferences()
         

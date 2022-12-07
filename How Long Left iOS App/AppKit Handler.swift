@@ -45,7 +45,7 @@ class HLLMacPluginClass: NSObject, HLLAppKitBundleProtocol {
         
        
         for window in NSApp.windows {
-            print(window)
+            // print(window)
         }
         
        // nsWin.styleMask.remove(.resizable)

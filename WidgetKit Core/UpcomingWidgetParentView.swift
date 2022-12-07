@@ -20,21 +20,23 @@ struct UpcomingWidgetParentView: View {
         
         case .normal:
             if entry.underlyingEntry.nextEvents.isEmpty {
+                
                 CountdownWidgetNoEventView().padding(.horizontal, 20)
                     
             } else {
-                UpcomingListView(events: entry.underlyingEntry.nextEvents, showAt: entry.date).padding(.horizontal, 10)
+                UpcomingListView(events: entry.underlyingEntry.nextEvents, showAt: entry.date)
                     
             }
                     
         case .noCalendarAccess:
+            
             WidgetDisabledView(reason: .noCalAccess)
         case .notPurchased:
+            
             WidgetDisabledView(reason: .notPurchased)
         case .notMigrated:
-            
-            
-            WidgetDisabledView(reason: .notMigrated)
+           
+           WidgetDisabledView(reason: .notMigrated)
         }
         
     }

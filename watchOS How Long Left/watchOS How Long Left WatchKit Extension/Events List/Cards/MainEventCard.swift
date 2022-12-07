@@ -11,14 +11,11 @@ import SwiftUI
 struct MainEventCard: View {
     
     @State var event: HLLEvent
-    var gen = CountdownStringGenerator()
     
     var liveUpdates: Bool
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
-    
-    
     
     var date: Date
     
@@ -39,7 +36,7 @@ struct MainEventCard: View {
                     Text("\(event.title)")
                         .font(.system(size: 29, weight: .medium, design: .rounded))
                         .minimumScaleFactor(0.8)
-                        .lineLimit(1)
+                        .lineLimit(2)
                         //.background(.blue)
                        // .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
@@ -84,11 +81,11 @@ struct MainEventCard: View {
                             
                         
                        
-                            if let loc = event.location, HLLDefaults.watch.largeHeaderLocation {
+                            if let text = WatchInfoLabelGenerator.getLabelFor(event: event, at: date) {
                             
                             VStack(alignment: .leading, spacing: 1) {
               
-                                Text("\(loc)")
+                                Text("\(text)")
                                     .foregroundColor(.secondary)
                                     .lineLimit(1)
                                     .font(.system(size: 14, weight: .regular, design: .default))
@@ -123,7 +120,7 @@ struct MainEventCard: View {
         }
 
         
-        return gen.generatePositionalCountdown(event: event, at: date, showSeconds: showSeconds)
+        return CountdownStringGenerator.generatePositionalCountdown(event: event, at: date, showSeconds: showSeconds)
     }
     
 }
@@ -136,7 +133,7 @@ struct MainEventCard_Previews: PreviewProvider {
         GeometryReader { proxy in
         
         ScrollView {
-            MainEventCard(event: .previewUpcomingEvent(), liveUpdates: false, date: .init())
+            MainEventCard(event: .previewEvent(title: "Long Event Titleejjfjdkdkdkdkd"), liveUpdates: false, date: .init())
                 .frame(height: proxy.size.height)
             
         }

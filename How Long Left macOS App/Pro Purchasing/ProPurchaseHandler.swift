@@ -57,7 +57,7 @@ class ProPurchaseHandler: NSObject {
             SKPaymentQueue.default().add(payment)
             //NSApp.activate(ignoringOtherApps: true)
             
-            print("PRODUCT TO PURCHASE: \(product.productIdentifier)")
+            // print("PRODUCT TO PURCHASE: \(product.productIdentifier)")
         } else {
             
         }
@@ -77,7 +77,7 @@ class ProPurchaseHandler: NSObject {
     func restorePurchase(){
         
         
-        print("Restore called")
+        // print("Restore called")
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().restoreCompletedTransactions()
         //NSApp.activate(ignoringOtherApps: true)
@@ -87,7 +87,7 @@ class ProPurchaseHandler: NSObject {
     // MARK: - FETCH AVAILABLE IAP PRODUCTS
     func fetchAvailableProducts(){
         
-    //    print("Fetch called")
+    //    // print("Fetch called")
         
         // Put here your IAP Products ID's
         let productIdentifiers = NSSet(objects: proIdentifier)
@@ -132,7 +132,7 @@ extension ProPurchaseHandler: SKProductsRequestDelegate, SKPaymentTransactionObs
                     priceDelegatess.forEach({ $0.proPriceUpdated() })
                 }
                 
-          //      print("IAP: \(product.localizedTitle) costs \(priceString!) \(locale.currencyCode!)")
+          //      // print("IAP: \(product.localizedTitle) costs \(priceString!) \(locale.currencyCode!)")
                 
             }
         }
@@ -141,7 +141,7 @@ extension ProPurchaseHandler: SKProductsRequestDelegate, SKPaymentTransactionObs
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         
-        print("restore finished")
+        // print("restore finished")
         
         DispatchQueue.main.async {
         
@@ -183,7 +183,7 @@ extension ProPurchaseHandler: SKProductsRequestDelegate, SKPaymentTransactionObs
                 
                 switch trans.transactionState {
                 case .purchased:
-                    print("purchased")
+                    // print("purchased")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
 
                     DispatchQueue.main.async {
@@ -199,7 +199,7 @@ extension ProPurchaseHandler: SKProductsRequestDelegate, SKPaymentTransactionObs
                     break
                     
                 case .failed:
-                    print("failed")
+                    // print("failed")
                     
                     DispatchQueue.main.async {
                     
@@ -252,7 +252,7 @@ extension ProPurchaseHandler: SKProductsRequestDelegate, SKPaymentTransactionObs
                     
                 case .restored:
                     
-                    print("restored")
+                    // print("restored")
                     
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     

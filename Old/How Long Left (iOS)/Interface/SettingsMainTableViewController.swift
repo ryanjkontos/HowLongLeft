@@ -39,7 +39,7 @@ class SettingsMainTableViewController: UITableViewController, ScrollUpDelegate, 
     
     override func viewDidLoad() {
         
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         IAPHandler.shared.fetchAvailableProducts()
         RootViewController.hasFadedIn = true
         HLLDefaultsTransfer.shared.addTransferObserver(self)

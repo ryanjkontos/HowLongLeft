@@ -28,8 +28,18 @@ class HLLStoredEventManager: ObservableObject {
     
     init() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(contextSaved), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
-        loadStoredEventsFromDatabase()
+      
+            
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(type(of: self).contextSaved),
+                name: .NSPersistentStoreRemoteChange,
+                object: nil
+            )
+            
+          //  NotificationCenter.default.addObserver(self, selector: #selector(contextSaved), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
+            loadStoredEventsFromDatabase()
+            
+        
         
     }
     
@@ -37,6 +47,10 @@ class HLLStoredEventManager: ObservableObject {
       
        var returnArray = [HLLStoredEvent]()
                
+        if HLLDataModel.shared.storeLoaded == false {
+            return
+        }
+        
         let managedContext = HLLDataModel.shared.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<HLLStoredEvent> = HLLStoredEvent.fetchRequest()
             if let items = try? managedContext.fetch(fetchRequest) {
@@ -204,10 +218,12 @@ class HLLStoredEventManager: ObservableObject {
     
     @objc func contextSaved() {
         
+        // print("Stored Event Context Saved")
+        
         DispatchQueue.main.async {
             
             self.loadStoredEventsFromDatabase()
-            HLLEventSource.shared.asyncUpdateEventPool()
+            HLLEventSource.shared.updateEventsAsync()
             
         }
         

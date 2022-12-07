@@ -9,16 +9,16 @@
 import Foundation
 
 
-class ComplicationUpdateHandler: EventPoolUpdateObserver, DefaultsTransferObserver {
+class ComplicationUpdateHandler: EventSourceUpdateObserver, DefaultsTransferObserver {
     
     static var shared = ComplicationUpdateHandler()
     
     init() {
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         HLLDefaultsTransfer.shared.addTransferObserver(self)
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         updateComplication()
     }
     
@@ -35,8 +35,8 @@ class ComplicationUpdateHandler: EventPoolUpdateObserver, DefaultsTransferObserv
             
              if ComplicationUpdateHandler.shared.complicationIsUpToDate() == false || force {
                 
-                if HLLEventSource.shared.neverUpdatedEventPool {
-                                   HLLEventSource.shared.updateEventPool()
+                if HLLEventSource.shared.neverUpdatedevents {
+                                   HLLEventSource.shared.updateEvents()
                     }
                                
                 
@@ -106,7 +106,7 @@ class ComplicationUpdateHandler: EventPoolUpdateObserver, DefaultsTransferObserv
     
     private func generateDataString() -> String {
         
-        let events = HLLEventSource.shared.eventPool
+        let events = HLLEventSource.shared.events
         return "\(Version.currentVersion)\(Version.buildVersion)\(events.map { $0.persistentIdentifier }.joined())"
         
     }

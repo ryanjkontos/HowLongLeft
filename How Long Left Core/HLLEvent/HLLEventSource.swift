@@ -10,6 +10,8 @@
 import Foundation
 import EventKit
 import os
+import Combine
+
 
 /**
  * Methods for retriving HLLEvents/
@@ -17,261 +19,135 @@ import os
 
 class HLLEventSource {
     
-    static var shared = HLLEventSource()
+    static var shared: HLLEventSource!
     
-    static var accessToCalendar = CalendarAccessState.Unknown
-    var access = CalendarAccessState.Unknown
-    var eventStore = EKEventStore()
-    
-    
-    var eventPool = [HLLEvent]()
-    var eventPoolKeyDates = [Date]()
-    
+    var events = [HLLEvent]()
+    var eventsKeyDates = [Date]()
     var hiddenEvents = [HLLEvent]()
-    
-    var eventPoolObservers = [EventPoolUpdateObserver]()
-
+    var eventsObservers = [EventSourceUpdateObserver]()
     var addBreaks = true
- 
     var enabledCalendars = [EKCalendar]()
     var lastUpdatedWithCalendars = [String]()
-    static var isRenaming = false
-    var neverUpdatedEventPool = true
-    
+    var neverUpdatedevents = true
     var saCals = [String]()
-    
     private let remover = DoubleEventRemover()
-    
-   
-
-    var eventPoolUpdateTimer: Timer!
-    var eventPoolUpdateRequestedDuringCooldown = false
-
-    var updating: Bool {
-        
-        return eventPoolUpdatingCounter != 0
-        
-    }
-    
+    static let queue = CollatingQueue(label: "HLLEventUpdateQueue")
+    var eventsUpdateTimer: Timer!
+    var eventsUpdateRequestedDuringCooldown = false
+    var updating: Bool { return eventsUpdatingCounter != 0 }
     lazy var dummyGen = DummyEventGenerator()
-   
-    var eventPoolUpdatingCounter = 0
+    var eventsUpdatingCounter = 0
+    let shiftLoader = RemoteHWShiftLoader()
+    
     
     init() {
+       
         
-      /* if let data = HLLDefaults.defaults.data(forKey: "EncodedEventPool"), let decoded = try? JSONDecoder().decode([HLLEvent].self, from: data) {
-            print("Using decoded events")
-            eventPool = decoded
-        } */
+        Task {
+            await CalendarReader.shared.getCalendarAccess()
+        }
+
+        eventsUpdateTimer = Timer(timeInterval: 600, target: self, selector: #selector(updateEventsAsync), userInfo: nil, repeats: true)
         
-       // HLLDefaults.general.showAllDay = false
-        
-        print("Init es")
-        
-        eventPoolUpdateTimer = Timer(timeInterval: 600, target: self, selector: #selector(asyncUpdateEventPool), userInfo: nil, repeats: true)
-        
-        getCalendarAccess()
-        
-       NotificationCenter.default.addObserver(
-        self,
-        selector: #selector(self.eventStoreChanged),
-        name: .EKEventStoreChanged,
-        object: nil)
-        
+        NotificationCenter.default.addObserver(
+         self,
+         selector: #selector(self.eventStoreChanged),
+         name: .EKEventStoreChanged,
+         object: nil)
+         
     }
     
-    func getCalendarAccess() {
-        
-            self.eventStore.requestAccess(to: .event, completion: { (granted: Bool, NSError) -> Void in
-                
-                if let error = NSError {
-                    
-                    print("Cal access \(granted): \(error)")
-                    
-                }
-                
-                self.eventStore = EKEventStore()
-                
-                self.eventStore.reset()
-               // self.eventStore.refreshSourcesIfNecessary()
-                
-                //print("CADB: Prevstate was \(prevState)")
-                
-                if granted == true {
-                    //print("CADB: Granted")
-                    HLLEventSource.accessToCalendar = .Granted
-                    self.access = .Granted
-                } else {
-                    //print("CADB: Denied")
-                    HLLEventSource.accessToCalendar = .Denied
-                    self.access = .Denied
-                }
-    
-                HLLEventSource.shared.updateEventPool()
-                
-            })
-        
-    }
-    
-    @objc func asyncUpdateEventPool() {
+    @objc func updateEventsAsync(bypassCollation: Bool = false) {
         
         DispatchQueue.global(qos: .userInteractive).async {
-        
-    
-          //  os_log("Updating the event pool, asynchronously.")
-            
-                self.updateEventPool()
-      
-            }
+            self.updateEvents(bypassCollation: bypassCollation)
+        }
         
     }
     
     @objc func eventStoreChanged() {
-        
-        
-        print("Event Store Changed")
-        self.asyncUpdateEventPool()
-        
+        // print("Event Store Changed")
+        self.updateEventsAsync()
     }
     
-    static var updatingEventPool = false
-    var goingToDoCatchupUpdate = false
-    
-    func doCatchupEventPoolUpdate() {
+ 
+    func updateEvents(full: Bool = true, bypassCollation: Bool = false) {
         
-        goingToDoCatchupUpdate = false
-        updateEventPool(catchup: true)
-        
-    }
-    
-    func updateEventPool(quick: Bool = false, catchup: Bool = false) {
-        
-        print("Event pool update requested")
-        
-        if access != .Granted {
-            print("Returning bc no access")
+        if full, HLLEventSource.shared.neverUpdatedevents {
             return
         }
         
-        let eventPoolUpdateStart = CurrentDateFetcher.currentDate
-        
-        if neverUpdatedEventPool == false {
-        
-            if HLLEventSource.updatingEventPool {
+        HLLEventSource.queue.sync(bypassCollation: bypassCollation) { [self] in
             
-            if goingToDoCatchupUpdate == false, catchup == false {
+            
+            // print("Updating event store!")
+            
+            if CalendarReader.shared.calendarAccess != .Granted { return }
+            
+            #if os(watchOS)
+                var days = 7
+            #else
+                var days = 14
+            #endif
+            
+            if full {
+                days = 365
+            }
+                        
+            
+            let start = Date()-500
+            let end = Calendar.current.date(byAdding: .day, value: days, to: start)!
+            
+            var add = CalendarReader.shared.getEventsFromCalendar(start: start, end: end)
+            
+            if HLLDefaults.general.showAllDay == false { add = add.filter { !$0.isAllDay } }
+            
+            add.append(contentsOf: dummyGen.events)
+            add = remover.removeDoublesIn(events: add)
+            add = NicknameManager.shared.addNicknames(for: add)
+            addPinnedTo(with: &add)
+            FollowingOccurenceStore.shared.updateNextOccurenceDictionary(events: add)
+            HLLStoredEventManager.shared.updateStoredEvents(from: add)
+            shiftLoader.addShiftEvents(to: &add)
+            
+            add.sortEvents(mode: .startDate)
+            
+            let previousevents = self.events
+            
+            self.events = Array(Set(add))
+            
+            
+            updateHiddenEvents()
+            
+            
+            
+            let prevNeverUpdated = neverUpdatedevents
+            
+            self.neverUpdatedevents = false
+     
+            
+            if previousevents != self.events {
                 
-                goingToDoCatchupUpdate = true
+                notifyEventSourceUpdateObservers()
                 
-                DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
-                    
-                    self.doCatchupEventPoolUpdate()
-                    
+            } else {
+                
+                if prevNeverUpdated {
+                    notifyEventSourceUpdateObservers()
                 }
                 
             }
             
-            return
+           // // print("Updated event pool with \(self.events.count) events")
             
-        }
-            
-        }
-        
-        eventPoolUpdatingCounter += 1
-        
-        HLLEventSource.updatingEventPool = true
-        
-        #if os(watchOS)
-        
-            let days = 7
-        #else
-            let days = 14
-        #endif
-        
-    
-        let start = CurrentDateFetcher.currentDate-500
-        let end = Calendar.current.date(byAdding: .day, value: days, to: start)!
-        
-        var add = self.getEventsFromCalendar(start: start, end: end)
-     
-        if saCals != HLLDefaults.calendar.enabledCalendars {
-            saCals = HLLDefaults.calendar.enabledCalendars
-            
-        }
-        
-        
-        addPinnedTo(with: &add)
-
-            FollowingOccurenceStore.shared.updateNextOccurenceDictionary(events: add)
-        
- 
-            HLLStoredEventManager.shared.updateStoredEvents(from: add)
-            
-            var key = [Date]()
-            
-            let soon = self.fetchEventsFromPresetPeriod(period: .AllTodayPlus24HoursFromNow)
-            for event in soon {
-                key.append(event.startDate)
-                key.append(event.endDate)
-            }
-        
-            self.eventPoolKeyDates = key
-            
-        
-    
-        
-        
-        if HLLDefaults.general.showAllDay == false {
-        
-            add = add.filter { !$0.isAllDay }
-            
-        }
-        
-        let previousEventPool = self.eventPool
-        
-        add.append(contentsOf: dummyGen.events)
-        
-        add = remover.removeDoublesIn(events: add)
-        
-        add = NicknameManager.shared.addNicknames(for: add)
-        
-        self.eventPool = Array(Set(add))
-        
-        /*if let encoded = try? JSONEncoder().encode(add) {
-          //  HLLDefaults.defaults.set(encoded, forKey: "EncodedEventPool")
-        } */
-        
-        eventPoolUpdatingCounter -= 1
-        HLLEventSource.updatingEventPool = false
-        
-        
-        updateHiddenEvents()
-        
-        
-           
-        let prevNeverUpdated = neverUpdatedEventPool
-        
-        self.neverUpdatedEventPool = false
-        
-       /* if HLLDefaults.calendar.enabledCalendars.count == 0 {
-            self.eventPool.removeAll()
-        } */
-        
-        if previousEventPool != self.eventPool {
-        
-        notifyEventPoolUpdateObservers()
-            
-        } else {
-            
-            if prevNeverUpdated {
-                notifyEventPoolUpdateObservers()
+            if full == false {
+                DispatchQueue.global(qos: .background).async {
+                    updateEvents(full: true)
+                }
+                
             }
             
         }
-        
-
-        
-        print("Updated event pool with \(self.eventPool.count) events, in \(CurrentDateFetcher.currentDate.timeIntervalSince(eventPoolUpdateStart))s")
 
     }
     
@@ -306,25 +182,19 @@ class HLLEventSource {
         
     }
     
-    func updateEventPoolPinned() {
+    func updateEventsPinned() {
 
-        
-            var events = self.eventPool
-            self.addPinnedTo(with: &events)
-            self.eventPool = events
-            updateHiddenEvents()
-            notifyEventPoolUpdateObservers()
-        
+        var events = self.events
+        self.addPinnedTo(with: &events)
+        self.events = events
+        updateHiddenEvents()
+        notifyEventSourceUpdateObservers()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        
-            print("Async trigger 2")
-            self.asyncUpdateEventPool()
-            
+            // print("Async trigger 2")
+            self.updateEventsAsync()
         }
-            
-        
-        
+    
     }
     
     func updateHiddenEvents() {
@@ -337,340 +207,94 @@ class HLLEventSource {
         
         #endif
          
-         let ids = HLLStoredEventManager.shared.hiddenEvents.compactMap({$0.identifier})
+        let ids = HLLStoredEventManager.shared.hiddenEvents.compactMap({$0.identifier})
         
-        self.eventPool = eventPool.filter({ event in
+        self.events = events.filter({ event in
                    
-                   if let ekID = event.eventIdentifier {
-                        
-                        if ids.contains(ekID) { return false }
-                                  
-                   } else {
-                    
-                        if ids.contains(event.persistentIdentifier) { return false }
-                    
-                    }
+            if let ekID = event.eventIdentifier {
+                if ids.contains(ekID) { return false }
+            } else {
+                if ids.contains(event.persistentIdentifier) { return false }
+            }
+            
+            return true
                    
-                   return true
-                   
-               })
+        })
         
+    }
 
-    }
     
-    @objc func eventPoolCooldownEnded() {
-        
-        if eventPoolUpdateRequestedDuringCooldown {
-            updateEventPool()
-        }
-        
-        eventPoolUpdateRequestedDuringCooldown = false
-        
-    }
-    
-    func getCalendars() -> [EKCalendar] {
-  
-        let cals = eventStore.calendars(for: .event)
-        //print("\(cals) fetched")
-        return cals
-    }
-    
-    func getCalendarIDS() -> [String] {
-        return getCalendars().map { $0.title }
-        
-    }
-    
-    func getEventsFromEventPool(start: Date, end: Date, includeHidden: Bool = false) -> [HLLEvent] {
+    func getEventsFromStore(start: Date, end: Date) -> [HLLEvent] {
         
         var returnArray = [HLLEvent]()
         
-        if neverUpdatedEventPool {
-            
+        if events.isEmpty {
             return returnArray
-            
         }
         
-        let poolEvents = eventPool
+        let poolEvents = events
         
         for event in poolEvents {
             
             if event.startDate.timeIntervalSince(end) < 0, event.endDate.timeIntervalSince(start) > 0 {
-                
-                if HLLStoredEventManager.shared.hiddenEvents.contains(where: { $0.identifier == event.persistentIdentifier }) {
-                    
-                    if !includeHidden {
-                        
-                        continue
-                        
-                    }
-                    
-                }
-
-                
                 returnArray.append(event)
-                
             }
-            
             
         }
         
-        
-        returnArray.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
-        
+        returnArray.sortEvents(mode: .startDate)
         
         return returnArray
         
     }
     
-    let readQueue = DispatchQueue(label: "readQueue")
-    
-    func getEventsFromCalendar(start: Date, end: Date, useCalendar: EKCalendar? = nil) -> [HLLEvent] {
-        
-        var returnArray = [HLLEvent]()
-        
-      
-        
-        if HLLDefaults.calendar.enabledCalendars.isEmpty, HLLDefaults.calendar.disabledCalendars.isEmpty {
-            HLLDefaults.calendar.enabledCalendars = getCalendarIDS()
-        }
-            
-        let enabledIDS = HLLDefaults.calendar.enabledCalendars
-        let allCalendars = getCalendars()
-            
-        var calendars = [EKCalendar]()
-        var disabledCalendars = [EKCalendar]()
-            
-            if let cal = useCalendar {
-                
-                calendars = [cal]
-                
-            } else {
-        
-        for calendar in allCalendars {
-            
-            if enabledIDS.contains(calendar.calendarIdentifier) {
-                
-                calendars.append(calendar)
-                
-            } else if HLLDefaults.calendar.useNewCalendars, !HLLDefaults.calendar.disabledCalendars.contains(calendar.calendarIdentifier) {
-                
-                calendars.append(calendar)
-
-            } else {
-                
-                disabledCalendars.append(calendar)
-            }
-                
-            
-        }
-        
-        HLLDefaults.calendar.enabledCalendars = calendars.map {$0.calendarIdentifier}
-        HLLDefaults.calendar.disabledCalendars = disabledCalendars.map {$0.calendarIdentifier}
-        
-            }
-            
-        var calendarEvents = [EKEvent]()
-        
-       
-            
-        let predicate = self.eventStore.predicateForEvents(withStart: start, end: end, calendars: calendars)
-            
-        calendarEvents = eventStore.events(matching: predicate)
-
-        var targets = [EKEvent]()
-        
-        
-            
-        for event in calendarEvents {
-            
-            if event.title == "Systems Programming" {
-                targets.append(event)
-            }
-            
-            returnArray.append(HLLEvent(event))
-        }
-        
-        
-        
-        if HLLDefaults.calendar.enabledCalendars.isEmpty, !HLLDefaults.calendar.disabledCalendars.isEmpty {
-            returnArray.removeAll()
-        }
-        
-        return returnArray
-    }
+ 
     
     func getPinnedEvents() -> [HLLEvent] {
-        
-        var returnEvents = [HLLEvent]()
-        
-        for identifier in HLLDefaults.general.pinnedEventIdentifiers {
-            
-            if let calEvent = eventStore.event(withIdentifier: identifier) {
-                
-                var event = HLLEvent(calEvent)
-                
-                event.isUserHideable = false
-                returnEvents.append(event)
-                
-            }
-            
-        }
-        
-        return returnEvents
-        
+        return events.filter({ $0.isPinned })
     }
     
-   /* func getTrials() -> [HLLEvent] {
-        
-        let trials = trialsFetcher.getTrialsExams()
-        let events = trials.map({$0.asHLLEvent()})
-        return events.sorted(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
-    } */
-    
-    func eventStoreContainsEvent(with identifier: String) -> Bool {
-        
-        return eventStore.event(withIdentifier: identifier) != nil
-        
-    }
-    
-    func eventStoreEvent(withIdentifier: String) -> HLLEvent? {
-        
-        if let event = eventStore.event(withIdentifier: withIdentifier) {
-            return HLLEvent(event)
-        }
-        
-        return nil
-        
-    }
-    
-    
+
     func findEventWithIdentifier(id: String) -> HLLEvent? {
     
-        if let event = eventPool.first(where: {
-            
-            
+        if let event = events.first(where: {
             return $0.persistentIdentifier == id}) {
-
             return event
-            
         } else {
-            
-            return eventPool.first(where: {$0.persistentIdentifier == id})
+            return events.first(where: {$0.persistentIdentifier == id})
         }
 
-        
     }
     
     func findEventWithAppIdentifier(id: String) -> HLLEvent? {
-        
-        return eventPool.first(where: {$0.persistentIdentifier == id})
-
-        
+        return events.first(where: {$0.persistentIdentifier == id})
     }
     
     func findEventsWithAppIdentifier(ids: [String]) -> [HLLEvent] {
         
         var returnArray = [HLLEvent]()
-        
         for id in ids {
-            
-            returnArray.append(contentsOf: eventPool.filter({$0.persistentIdentifier == id }))
+            returnArray.append(contentsOf: events.filter({$0.persistentIdentifier == id }))
         }
-
         return returnArray
         
     }
     
-    
     func fetchEventsOnDay(day: Date) -> [HLLEvent] {
-        
         let start = day.startOfDay()
         let end = Calendar.current.date(byAdding: .day, value: 1, to: start)
-        return getEventsFromCalendar(start: start, end: end!)
-        
+        return CalendarReader.shared.getEventsFromCalendar(start: start, end: end!)
     }
     
     func fetchEventsOnDays(days: [Date]) -> [HLLEvent] {
-        
         var returnArray = [HLLEvent]()
-        
         for day in days {
-            
             returnArray.append(contentsOf: fetchEventsOnDay(day: day))
-            
         }
-        
-        returnArray.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
-        
+        returnArray.sortEvents(mode: .startDate)
         return returnArray
-        
     }
-    
-    
-    func fetchEventsFromPresetPeriod(period: EventFetchPeriod) -> [HLLEvent] {
-        
-        // Returns an array of all calendar events occuring in the specified period.
-        
-        var comp: DateComponents = NSCalendar.current.dateComponents([.year, .month, .day], from: CurrentDateFetcher.currentDate)
-        comp.timeZone = TimeZone.current
-        
-        var startDate: Date?
-        var endDate: Date?
-        
-        switch period {
-        case .AllToday:
-            
-            // Return all calendar events occuring today.
-            
-            startDate = NSCalendar.current.date(from: comp)!
-            endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
-            
-        case .UpcomingToday:
-            
-            // Return all calendar events occuring today that have not already started.
-            
-            startDate = CurrentDateFetcher.currentDate
-            endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
-            
-        case .AllTodayPlus24HoursFromNow:
-            
-            // Return all calendar events occuring in the next 24 hours.
-            
-            startDate = CurrentDateFetcher.currentDate.startOfDay()
-            endDate = startDate?.addingTimeInterval(86400)
-            
-        case .Next2Weeks:
-            
-            startDate = NSCalendar.current.date(from: comp)!
-            endDate = Calendar.current.date(byAdding: .day, value: 14, to: startDate!)
-            
-            
-        case .AnalysisPeriod:
-            
-            // Return all calendar events from 2 days ago to 2 days from now.
-            
-            startDate = NSCalendar.current.date(from: comp)!.addingTimeInterval(-604800)
-            endDate = NSCalendar.current.date(from: comp)!.addingTimeInterval(604800)
-            
-        case .ThisYear:
-            
-            startDate = Calendar.current.date(from: Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: CurrentDateFetcher.currentDate)))!
-            
-            endDate = Calendar.current.date(byAdding: DateComponents(year: 1), to: startDate!)!
-            
-            
-            
-        case .OneMonthEachSideOfToday:
-            
-            startDate = NSCalendar.current.date(from: comp)!.addingTimeInterval(-2592000)
-            endDate = NSCalendar.current.date(from: comp)!.addingTimeInterval(2592000)
-            
-        }
-        
-        
-        return getEventsFromEventPool(start: startDate!, end: endDate!)
-        
-    }
+
     
     func getPrimaryEvent(excludeSelected: Bool = false) -> HLLEvent? {
           
@@ -728,13 +352,13 @@ class HLLEventSource {
     
     let getCurrentEventsQueue = DispatchQueue(label: "getCurrentEvents")
     
-    func getCurrentEvents(includeHidden: Bool = false, includeSelected: Bool = true) -> [HLLEvent] {
+    func getCurrentEvents(includeHidden: Bool = false, includeSelected: Bool = true, date: Date = Date()) -> [HLLEvent] {
         
         var currentEvents = [HLLEvent]()
         
-        for event in self.eventPool {
+        for event in self.events {
             
-            if event.completionStatus == .current && (!HLLStoredEventManager.shared.isHidden(event: event) || includeHidden)  {
+            if event.completionStatus(at: date) == .current && (!HLLStoredEventManager.shared.isHidden(event: event) || includeHidden)  {
                 
   
                 if (includeSelected == false && event.isSelected) {
@@ -748,7 +372,7 @@ class HLLEventSource {
         }
         
         
-        currentEvents.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
+        currentEvents.sortEvents(mode: .countdownDate, at: date)
         
         return currentEvents
     }
@@ -801,15 +425,15 @@ class HLLEventSource {
         
     }
     
-    func getPinnedEventsFromEventPool() -> [HLLEvent] {
+    func getPinnedEventsFromevents() -> [HLLEvent] {
         
-        return eventPool.filter({$0.isPinned})
+        return events.filter({$0.isPinned})
         
     }
     
     func getRecentlyEndedEvents() -> [HLLEvent] {
         
-        let events = eventPool.filter { $0.completionStatus == .done && $0.endDate.timeIntervalSince(CurrentDateFetcher.currentDate) > -300 }
+        let events = events.filter { $0.completionStatus == .done && $0.endDate.timeIntervalSince(CurrentDateFetcher.currentDate) > -300 }
         return events.sorted(by: { $0.endDate.compare($1.endDate) == .orderedDescending })
         
     }
@@ -822,7 +446,7 @@ class HLLEventSource {
     
     func getUpcomingEvents(limit: Int) -> [HLLEvent] {
         
-        var allUpcoming = eventPool.filter({$0.completionStatus == .upcoming})
+        var allUpcoming = events.filter({$0.completionStatus == .upcoming})
         allUpcoming.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
         return Array(allUpcoming.prefix(limit))
         
@@ -830,7 +454,10 @@ class HLLEventSource {
     
     func getUpcomingEventsToday() -> [HLLEvent] {
         
-        let eventsToday = fetchEventsFromPresetPeriod(period: EventFetchPeriod.AllToday)
+        let start = Date().startOfDay()
+        let end = start.endOfDay()
+        
+        let eventsToday = getEventsFromStore(start: start, end: end)
         
         var upcomingEvents = [HLLEvent]()
         
@@ -864,7 +491,7 @@ class HLLEventSource {
         events.sort(by: { $0.countdownDate.compare($1.countdownDate) == .orderedAscending })
         }
         
-        //print("Get timeline returning \(events.count) events")
+        //// print("Get timeline returning \(events.count) events")
         
         return events
         
@@ -882,7 +509,7 @@ class HLLEventSource {
         
         outer: for _ in 1...7 {
             
-            upEvents = getEventsFromEventPool(start: loopStart, end: loopEnd!)
+            upEvents = getEventsFromStore(start: loopStart, end: loopEnd!)
             var notStarted = [HLLEvent]()
             
             for event in upEvents {
@@ -928,7 +555,7 @@ class HLLEventSource {
         
         while loopStart < endDate {
             
-            var events = getEventsFromEventPool(start: loopStart, end: loopEnd).sorted(by: {
+            var events = getEventsFromStore(start: loopStart, end: loopEnd).sorted(by: {
                 $0.startDate.compare($1.startDate) == .orderedAscending })
             
            events.removeAll { event in
@@ -994,9 +621,18 @@ class HLLEventSource {
         
     }
     
-    func getAllEventsGroupedByDate(_ excludeIDs: [String]? = nil) -> [DateOfEvents] {
+    func getAllEventsGroupedByDate(_ excludeIDs: [String]? = nil, maxCount: Int? = nil, upcomingOnly: Bool = false, at date: Date = Date(), excludePinned: Bool = false, groupMode: HLLEvent.SortMode) -> [DateOfEvents] {
         
-        var events = eventPool
+        var events = events.sortedEvents(mode: groupMode, at: date)
+        
+        if upcomingOnly {
+            events = events.filter({$0.completionStatus(at: date) == .upcoming})
+        }
+        
+        if excludePinned {
+            events = events.filter({!$0.isPinned})
+        }
+        
         
         if let excludeIDs = excludeIDs {
             events.removeAll(where: { event in
@@ -1004,17 +640,43 @@ class HLLEventSource {
             })
         }
         
-        let dict = Dictionary(grouping: eventPool, by: { $0.startDate.startOfDay() })
-        
-        var returnArray = [DateOfEvents]()
-        
-        for item in dict {
-            returnArray.append(DateOfEvents(date: item.key, events: item.value))
+        if let max = maxCount {
+            events = Array(events.prefix(max))
         }
         
-        returnArray = returnArray.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
         
-        return returnArray
+        
+        var returnArray = events.groupedByDate(at: date,sortMode: groupMode)
+        
+            
+        
+        var currentCount = 0
+        
+     /*   if let maxCount = maxCount {
+            
+            for item in temp {
+                
+                let count = item.events.count
+                
+                let sum = (currentCount + count)
+                
+                if sum <= maxCount || returnArray.isEmpty {
+                    returnArray.append(item)
+                    currentCount = sum
+                }
+                
+            }
+            
+        } else {
+            returnArray = temp
+        } */
+        
+        //returnArray = temp
+        
+       
+        return returnArray.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
+
+
         
     }
     
@@ -1029,50 +691,33 @@ class HLLEventSource {
        return getArraysOfUpcomingEventsForDates(startDate: start, endDate: end, returnEmptyItems: returnEmptyItems)
         
     }
+
     
-    func ekEvent(with id: String?) -> EKEvent? {
+    func addeventsObserver(_ observer: EventSourceUpdateObserver, immediatelyNotify: Bool = false) {
         
-        if let id = id {
-            return self.eventStore.event(withIdentifier: id)
-        }
-        return nil
+        self.eventsObservers.append(observer)
         
-    }
-    
-    func calendarFromID(_ id: String?) -> EKCalendar? {
-        
-        if let safeId = id {
-            
-            return self.eventStore.calendar(withIdentifier: safeId)
-            
-        }
-        
-        return nil
-        
-    }
-    
-    func addEventPoolObserver(_ observer: EventPoolUpdateObserver, immediatelyNotify: Bool = false) {
-        
-        self.eventPoolObservers.append(observer)
-        
-        if immediatelyNotify, !neverUpdatedEventPool {
-            observer.eventPoolUpdated()
+        if immediatelyNotify, !neverUpdatedevents {
+            DispatchQueue.main.async {
+                
+                observer.eventsUpdated()
+            }
         }
         
         
-       // print("There are now \(self.eventPoolObservers.count) evnent pool update observers.")
+       // // print("There are now \(self.eventsObservers.count) evnent pool update observers.")
         
        
         
     }
     
-    func notifyEventPoolUpdateObservers() {
+    func notifyEventSourceUpdateObservers() {
         
-        self.eventPoolObservers.forEach { observer in
+        self.eventsObservers.forEach { observer in
                 
             DispatchQueue.global(qos: .userInteractive).async {
                 
-                observer.eventPoolUpdated()
+                observer.eventsUpdated()
             }
                 
         }
@@ -1086,68 +731,9 @@ protocol CalendarAccessStateDelegate {
 }
 
 
-protocol EventPoolUpdateObserver {
+protocol EventSourceUpdateObserver {
     
-    func eventPoolUpdated()
-    
-}
-
-public class SynchronizedArray<T> {
-private var array: [T] = []
-private let accessQueue = DispatchQueue(label: "SynchronizedArrayAccess", attributes: .concurrent)
-
-public func append(newElement: T) {
-
-    self.accessQueue.async(flags:.barrier) {
-        self.array.append(newElement)
-    }
-}
-
-public func removeAtIndex(index: Int) {
-
-    self.accessQueue.async(flags:.barrier) {
-        self.array.remove(at: index)
-    }
-}
-
-public var count: Int {
-    var count = 0
-
-    self.accessQueue.sync {
-        count = self.array.count
-    }
-
-    return count
-}
-
-public func first() -> T? {
-    var element: T?
-
-    self.accessQueue.sync {
-        if !self.array.isEmpty {
-            element = self.array[0]
-        }
-    }
-
-    return element
-}
-
-public subscript(index: Int) -> T {
-    
-        set {
-            self.accessQueue.async(flags:.barrier) {
-                self.array[index] = newValue
-            }
-        }
-        get {
-            var element: T!
-            self.accessQueue.sync {
-                element = self.array[index]
-            }
-
-            return element
-        }
-    }
+    func eventsUpdated()
     
 }
 

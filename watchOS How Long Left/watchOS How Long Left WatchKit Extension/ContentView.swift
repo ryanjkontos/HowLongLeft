@@ -11,16 +11,16 @@ import ClockKit
 
 struct ContentView: View {
     
-    @ObservedObject var store = Store()
+  
     
     var body: some View {
 
             
-            if HLLEventSource.shared.access == .Denied {
+            if CalendarReader.shared.calendarAccess == .Denied {
                 NoCalendarAccessView()
             } else {
                 EventsListView()
-                    .environmentObject(store)
+                    
                     
             }
             

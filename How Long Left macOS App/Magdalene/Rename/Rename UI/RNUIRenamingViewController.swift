@@ -126,7 +126,7 @@ class RNUIRNProcessViewController: NSViewController, RNProcessDelegate {
             [weak self] in
             
             self?.progressBar.isIndeterminate = false
-            print("Setting prgress to \(to)")
+            // print("Setting prgress to \(to)")
             
             self?.progressBar.doubleValue = to
             
@@ -137,7 +137,7 @@ class RNUIRNProcessViewController: NSViewController, RNProcessDelegate {
     
     func log(_ string: String) {
         
-        print("RNProcess: \(string)")
+        // print("RNProcess: \(string)")
         
         addLineToTextView(string)
         

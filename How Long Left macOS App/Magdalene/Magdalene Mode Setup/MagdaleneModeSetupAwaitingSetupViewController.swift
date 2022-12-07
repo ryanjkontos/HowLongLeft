@@ -39,7 +39,7 @@ class MagdaleneModeSetupAwaitingSetupViewController: NSViewController {
                 
                 DispatchQueue.main.async {
                 
-                print("Magdalene Mode!")
+                // print("Magdalene Mode!")
                 self.timer?.invalidate()
                 self.timer = nil
                 (self.parent as! ControllableTabView).nextPage()
@@ -54,8 +54,8 @@ class MagdaleneModeSetupAwaitingSetupViewController: NSViewController {
     
     func isTimetableInstalled() -> Bool {
         
-        print("Checking Magdalene mode")
-        HLLEventSource.shared.updateEventPool()
+        // print("Checking Magdalene mode")
+        HLLEventSource.shared.updateEvents()
         
         return SchoolAnalyser.privSchoolMode == .Magdalene && self.schoolEventDownloadNeededEvaluator.evaluateSchoolEventDownloadNeeded() == .notNeeded
         

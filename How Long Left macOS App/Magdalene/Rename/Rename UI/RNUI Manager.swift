@@ -51,8 +51,8 @@ class RNUIManager: NSObject, NSWindowDelegate {
             self.renameWindowController!.showWindow(self)
             self.renameWindowController!.window!.center()
             
-            print("Can be key \(self.renameWindowController!.window!.canBecomeKey)")
-            print("Can be main \(self.renameWindowController!.window!.canBecomeMain)")
+            // print("Can be key \(self.renameWindowController!.window!.canBecomeKey)")
+            // print("Can be main \(self.renameWindowController!.window!.canBecomeMain)")
             
         }
         

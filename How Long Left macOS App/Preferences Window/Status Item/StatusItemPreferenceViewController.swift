@@ -365,27 +365,27 @@ final class StatusItemPreferenceViewController: NSViewController, PreferencePane
 		
 		DispatchQueue.main.async {
 		
-			print("Units clicked: \(sender.selectedItem!.title)")
+			// print("Units clicked: \(sender.selectedItem!.title)")
 			
 		let title = sender.selectedItem!.title
 			
 			if title == self.fullUnitsMenuItemText {
-				print("Use full units")
+				// print("Use full units")
 				HLLDefaults.statusItem.useFullUnits = true
 			}
 			
 			if title == self.shortUnitsMenuItemText {
-				print("Don't use full units")
+				// print("Don't use full units")
 				HLLDefaults.statusItem.useFullUnits = false
 			}
 	
 			if title == self.timerShortText {
-				print("Don't show seconds")
+				// print("Don't show seconds")
 				HLLDefaults.statusItem.hideTimerSeconds = true
 			}
 		
 			if title == self.timerFullText {
-				print("Show seconds")
+				// print("Show seconds")
 				HLLDefaults.statusItem.hideTimerSeconds = false
 			}
 			
@@ -534,8 +534,8 @@ final class StatusItemPreferenceViewController: NSViewController, PreferencePane
 			self.statusItemPreviewText.isHidden = false
 			self.previewIcon.isHidden = true
             
-            let stringGenerator = CountdownStringGenerator()
-			let data = stringGenerator.generateStatusItemString(event: preview, mode: HLLDefaults.statusItem.mode)
+            
+			let data = CountdownStringGenerator.generateStatusItemString(event: preview, mode: HLLDefaults.statusItem.mode)
 			
 			self.statusItemPreviewText.stringValue = data!
             
@@ -543,11 +543,9 @@ final class StatusItemPreferenceViewController: NSViewController, PreferencePane
             
 			self.statusItemPreviewText.isHidden = false
 			self.previewIcon.isHidden = true
-            
-            let stringGenerator = CountdownStringGenerator()
+        
 			
-			
-			self.statusItemPreviewText.stringValue = stringGenerator.generateStatusItemMinuteModeString(event: preview)
+			self.statusItemPreviewText.stringValue = CountdownStringGenerator.generateStatusItemMinuteModeString(event: preview)
             
         }
 			
@@ -659,7 +657,7 @@ final class StatusItemPreferenceViewController: NSViewController, PreferencePane
 class SelectView: NSView {
 	
 	override func mouseDown(with event: NSEvent) {
-		print("Selectview")
+		// print("Selectview")
 		NSApp.keyWindow?.makeFirstResponder(nil)
 		
 		

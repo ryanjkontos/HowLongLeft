@@ -60,7 +60,7 @@ extension WatchSessionManager {
     func sendData(_ data: [String:Any]) {
         
         
-        print("Start8")
+        // print("Start8")
             self.session.sendMessage(data, replyHandler: nil, errorHandler: nil)
             self.session.transferUserInfo(data)
         
@@ -70,7 +70,7 @@ extension WatchSessionManager {
                 
         } catch {
             
-           print("Error updating application context")
+           // print("Error updating application context")
             
         }
         

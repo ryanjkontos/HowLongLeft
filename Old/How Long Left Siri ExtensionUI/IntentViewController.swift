@@ -9,7 +9,7 @@
 import IntentsUI
 
 
-class IntentViewController: UIViewController, INUIHostedViewControlling, EventPoolUpdateObserver {
+class IntentViewController: UIViewController, INUIHostedViewControlling, EventSourceUpdateObserver {
     
     @IBOutlet weak var colourBar: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,7 +19,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling, EventPo
     var timer: Timer!
     var event: HLLEvent?
     
-    let countdownStringGenerator = CountdownStringGenerator()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +45,8 @@ class IntentViewController: UIViewController, INUIHostedViewControlling, EventPo
         // Do configuration here, including preparing views and calculating a desired size for presentation.
     
         
-        HLLEventSource.shared.addEventPoolObserver(self)
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.addeventsObserver(self)
+        HLLEventSource.shared.updateEvents()
         setup()
         
         completion(true, parameters, self.desiredSize)
@@ -92,7 +92,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling, EventPo
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.main.async {
             self.setup()
         }

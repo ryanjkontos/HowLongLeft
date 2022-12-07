@@ -27,7 +27,7 @@ class CountdownCellView: RepesentedEventView {
     
     override func configureForEvent(event: HLLEvent) {
         
-        print("Configuring current cell for event")
+        // print("Configuring current cell for event")
         
         self.updateCountdownLabel()
         
@@ -44,7 +44,7 @@ class CountdownCellView: RepesentedEventView {
     
     func updateGradient() {
         
-        guard let col = event?.color else {return}
+         let baseColor = event!.color as UIColor
        
       
         
@@ -53,18 +53,22 @@ class CountdownCellView: RepesentedEventView {
             //gradientLayer.opacity = 0.9
         
         
-        if self.traitCollection.userInterfaceStyle == .light {
-            gradientLayer.colors = [col.darker(by: 0)!.cgColor, col.darker(by: 10)!.cgColor]
-        } else {
-            gradientLayer.colors = [col.darker(by: 3)!.cgColor, col.darker(by: 13)!.cgColor]
-        }
+        gradientLayer.colors = [baseColor.cgColor,
+                                baseColor.lighter(by: 0.5)!.cgColor,
+                           baseColor.lighter(by: 0.25)!.cgColor,
+                           baseColor.darker(by: 0.25)!.cgColor,
+                           baseColor.darker(by: 0.5)!.cgColor]
+
+        // set the gradient locations
+        gradientLayer.locations = [0.0, 0.25, 0.5, 0.75, 1.0]
+
         
     }
     
     override func configure() {
         
         super.configure()
-        print("Configuring current cell")
+        // print("Configuring current cell")
       
         self.alpha = 1
         self.layer.backgroundColor = UIColor.clear.cgColor
@@ -79,8 +83,9 @@ class CountdownCellView: RepesentedEventView {
         let timerLabel = timerLabel!
         
         layer.cornerCurve = .continuous
-        layer.cornerRadius = 30.0
+        layer.cornerRadius = 30
         layer.masksToBounds = true
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .medium)
@@ -156,7 +161,7 @@ class CountdownCellView: RepesentedEventView {
             titleLabel?.text = event.title
             
             statusLabel?.text = "\(event.countdownTypeString())"
-            self.timerLabel?.text = CountdownStringGenerator.shared.generatePositionalCountdown(event: event, at: Date())
+            self.timerLabel?.text = CountdownStringGenerator.generatePositionalCountdown(event: event, at: Date())
             
         } else {
             ac?.cancel()

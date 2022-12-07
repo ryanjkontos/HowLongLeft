@@ -15,13 +15,14 @@ typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 class Store: ObservableObject {
     
-    static var shared: Store!
+    static var shared = Store()
     
     var complicationProduct: Product?
     var widgetProduct: Product?
     
     @Published var widgetPurchased: Bool
     @Published var complicationPurchased: Bool
+    
     
     let complicationPurchasedOldVersionKey = "ComplicationPurchasedOldVersionKey"
     
@@ -55,6 +56,8 @@ class Store: ObservableObject {
         Task {
             await requestProducts()
             await refreshPurchasedProducts()
+            sendComplicationStatusToWatch()
+            
         }
         
     }
@@ -78,7 +81,7 @@ class Store: ObservableObject {
                     await transaction.finish()
                 } catch {
                     //StoreKit has a receipt it can read but it failed verification. Don't deliver content to the user.
-                    print("Transaction failed verification")
+                    // print("Transaction failed verification")
                 }
             }
         }
@@ -107,7 +110,7 @@ class Store: ObservableObject {
             }
            
         } catch {
-            print("Failed product request: \(error)")
+            // print("Failed product request: \(error)")
         }
           
     }
@@ -194,6 +197,7 @@ class Store: ObservableObject {
         
         await checkTransaction(complicationProduct)
         await checkTransaction(widgetProduct)
+        
 
     }
 
@@ -209,13 +213,13 @@ class Store: ObservableObject {
         
         HLLDefaults.defaults.set(false, forKey: complicationPurchasedOldVersionKey)
         
-        print("Transaction type: \(transaction.productType)")
+        // print("Transaction type: \(transaction.productType)")
         
         switch transaction.productType {
         case .nonConsumable:
             let isPurchased = (try? await isPurchased(transaction.productID)) ?? .unsureNo
             
-            print("Is Purchased \(type): \(isPurchased)")
+            // print("Is Purchased \(type): \(isPurchased)")
             
             setPurchased(type: type, isPurchased)
         default:
@@ -259,6 +263,8 @@ class Store: ObservableObject {
         self.widgetPurchased = HLLDefaults.premiumPurchases.widget
         self.complicationPurchased = HLLDefaults.premiumPurchases.complication
         
+        sendComplicationStatusToWatch()
+        
     }
     
     func restore() async {
@@ -272,6 +278,21 @@ class Store: ObservableObject {
         case purchased
         case unsureNo
         case revoked
+    }
+    
+    func sendComplicationStatusToWatch() {
+        
+        let status = true
+        
+        DispatchQueue.main.async {
+            self.complicationPurchased = status
+            HLLDefaults.defaults.set(status, forKey: complicationActivatedKey)
+            HLLDefaults.cloudDefaults.set(status, forKey: complicationActivatedKey)
+            
+           // HLLWCDataSender.send(dict: [complicationActivatedKey:status])
+            
+        }
+        
     }
     
 }

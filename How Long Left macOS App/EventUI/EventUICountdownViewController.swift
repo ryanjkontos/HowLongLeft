@@ -23,7 +23,7 @@ class EventUICountdownViewController: NSViewController {
     var event: HLLEvent?
     
     var timer = Timer()
-    let timerStringGenerator = CountdownStringGenerator()
+  
     
     override func viewDidLoad() {
         
@@ -56,7 +56,7 @@ class EventUICountdownViewController: NSViewController {
             
             self.view.window?.title = "\(safeEvent.title) Countdown"
             
-            print("Ssfe \(safeEvent.title)")
+            // print("Ssfe \(safeEvent.title)")
             
             
             timer = Timer(fireAt: Date(), interval: 0.5, target: self, selector: #selector(mainRun), userInfo: nil, repeats: true)
@@ -67,7 +67,7 @@ class EventUICountdownViewController: NSViewController {
                  
                 let id = safeEvent.persistentIdentifier
             
-                    print("Activity id = \(id)")
+                    // print("Activity id = \(id)")
             
                  activityObject.addUserInfoEntries(from: ["EventID":id])
                  activityObject.isEligibleForHandoff = true

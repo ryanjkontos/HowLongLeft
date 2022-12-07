@@ -107,7 +107,7 @@ class CNAlertEnterPercentageViewController: NSViewController, NSTextFieldDelegat
         currentValue = Int(textField.stringValue)!
         newValue = currentValue
               
-        print("Int value was \(sender.integerValue)")
+        // print("Int value was \(sender.integerValue)")
               
         if sender.integerValue == 1 {
             newValue = currentValue + 1
@@ -133,7 +133,7 @@ class CNAlertEnterPercentageViewController: NSViewController, NSTextFieldDelegat
     
     @IBAction func percentDoneClicked(_ sender: NSButton) {
         
-        print("Ok clicked")
+        // print("Ok clicked")
         submit()
         
     }

@@ -105,11 +105,11 @@ import CoreData
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Registered for remote")
+        // print("Registered for remote")
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("NOT registered for remote, wtf")
+        // print("NOT registered for remote, wtf")
     }
     
    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -125,7 +125,7 @@ import CoreData
            notoGen.scheduleNotificationsForUpcomingEvents()
            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
            HLLDefaultsTransfer.shared.triggerDefaultsTransfer()
-           print("Trig5")
+           // print("Trig5")
            
         
     }
@@ -162,7 +162,7 @@ import CoreData
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         HLLDefaultsTransfer.shared.triggerDefaultsTransfer()
         EventNotificationScheduler.shared.scheduleNotificationsForUpcomingEvents()
-        print("Trig6")
+        // print("Trig6")
             
         }
         
@@ -180,7 +180,7 @@ import CoreData
                       
         }
         
-        print("Got activity")
+        // print("Got activity")
         return true
         
     }
@@ -236,7 +236,7 @@ extension AppDelegate {
         do {
             try BGTaskScheduler.shared.submit(request)
         } catch {
-            print("Could not schedule app refresh: \(error)")
+            // print("Could not schedule app refresh: \(error)")
         }
             
         

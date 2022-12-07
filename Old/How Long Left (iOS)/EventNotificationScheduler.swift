@@ -11,11 +11,11 @@ import Foundation
 import UIKit
 import UserNotifications
 
-class EventNotificationScheduler: EventPoolUpdateObserver {
+class EventNotificationScheduler: EventSourceUpdateObserver {
     
     let contentGenerator = HLLNNotificationContentGenerator()
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         self.scheduleNotificationsForUpcomingEvents()
     }
     
@@ -28,7 +28,7 @@ class EventNotificationScheduler: EventPoolUpdateObserver {
     var permissionFalseBecauseUnknown = false
     
     init() {
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         getAccess()
     }
     
@@ -52,7 +52,7 @@ class EventNotificationScheduler: EventPoolUpdateObserver {
             return
         }
         
-        if HLLEventSource.shared.neverUpdatedEventPool {
+        if HLLEventSource.shared.neverUpdatedevents {
             return
         }
     
@@ -111,7 +111,7 @@ class EventNotificationScheduler: EventPoolUpdateObserver {
             return
         }
         
-        if HLLEventSource.shared.neverUpdatedEventPool {
+        if HLLEventSource.shared.neverUpdatedevents {
             return
         }
         

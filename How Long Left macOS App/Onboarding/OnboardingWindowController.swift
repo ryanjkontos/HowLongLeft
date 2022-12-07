@@ -30,7 +30,7 @@ class OnboardingWindowController: NSWindowController, NSWindowDelegate {
             let width = w.frame.width
             let height = w.frame.height
             
-            print("Window: \(width)*\(height)")
+            // print("Window: \(width)*\(height)")
             
         }
     }

@@ -74,14 +74,14 @@ class HotKeyHandler {
         case .Off:
             hotKey = nil
             hotKeyState = .Off
-            print("Hot Key is now Off.")
+            // print("Hot Key is now Off.")
         case .OptionW:
             hotKey = HotKey(key: .w, modifiers: [.option])
-            print("Hot Key is now OptionW.")
+            // print("Hot Key is now OptionW.")
             hotKeyState = .OptionW
         case .CommandT:
             hotKey = HotKey(key: .t, modifiers: [.command])
-            print("Hot Key is now CommandT.")
+            // print("Hot Key is now CommandT.")
             hotKeyState = .CommandT
         }
             

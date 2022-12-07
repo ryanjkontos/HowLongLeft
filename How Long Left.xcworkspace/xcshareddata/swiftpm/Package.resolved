@@ -1,33 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "alprogressview#swift-package-manager",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/alxrguz/ALProgressView#Swift-Package-Manager",
-      "state" : {
-        "revision" : "54f42cb339924de1b37fe8ecdbe72a3336cbc73d",
-        "version" : "2.0.0"
-      }
-    },
-    {
-      "identity" : "dynamic",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mhdhejazi/Dynamic.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "772883073d044bc754d401cabb6574624eb3778f"
-      }
-    },
-    {
-      "identity" : "eureka",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/xmartlabs/Eureka.git",
-      "state" : {
-        "revision" : "a7523afdfe38478c6d5706a8ac01d26590835493",
-        "version" : "5.3.6"
-      }
-    },
-    {
       "identity" : "hotkey",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/soffes/HotKey",
@@ -43,6 +16,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "e8171b3e38a2816f579f58f3dac1522aa39efe41"
+      }
+    },
+    {
+      "identity" : "marquee",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftUIKit/Marquee",
+      "state" : {
+        "revision" : "69d7b7c6c34ed41d9299cfa8406f91f529c4fef3",
+        "version" : "0.3.0"
       }
     },
     {

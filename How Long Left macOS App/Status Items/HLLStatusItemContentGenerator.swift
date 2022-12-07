@@ -14,7 +14,6 @@ class HLLStatusItemContentGenerator {
     
     var event: HLLEvent?
     
-    let countdownStringGenerator = CountdownStringGenerator()
 
     var configuration: HLLStatusItemConfiguration
     
@@ -27,7 +26,7 @@ class HLLStatusItemContentGenerator {
         
         var returnContent: HLLStatusItemContent
     
-        if HLLEventSource.accessToCalendar == .Denied {
+        if CalendarReader.shared.calendarAccess == .Denied {
             var content = HLLStatusItemContent()
             content.text = "⚠️"
             return content

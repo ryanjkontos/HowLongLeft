@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
     
-class UpcomingEventsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ScrollUpDelegate, EventPoolUpdateObserver {
+class UpcomingEventsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ScrollUpDelegate, EventSourceUpdateObserver {
     
         var events = [HLLEvent]()
         var eventDates = [DateOfEvents]()
@@ -25,7 +25,7 @@ class UpcomingEventsTableViewController: UIViewController, UITableViewDelegate, 
             self.tableView.delegate = self
             self.tableView.dataSource = self
             
-            HLLEventSource.shared.addEventPoolObserver(self)
+            HLLEventSource.shared.addeventsObserver(self)
             
             self.navigationItem.title = "Upcoming"
             
@@ -170,7 +170,7 @@ class UpcomingEventsTableViewController: UIViewController, UITableViewDelegate, 
             }
         
             
-            if areEvents == true || HLLEventSource.shared.neverUpdatedEventPool {
+            if areEvents == true || HLLEventSource.shared.neverUpdatedevents {
                 tableView.separatorStyle = .singleLine
                 tableView.backgroundView = nil
                 
@@ -291,7 +291,7 @@ class UpcomingEventsTableViewController: UIViewController, UITableViewDelegate, 
         
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.main.async {
             
             self.updateCountdownData()

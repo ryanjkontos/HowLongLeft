@@ -40,7 +40,7 @@ struct CustomTextField: UIViewRepresentable {
      func textFieldDidEndEditing(_ textField: UITextField) {
         DispatchQueue.main.async {
             self.onEndEditing(textField.text)
-            print("Ended editing")
+            // print("Ended editing")
             self.isResponder = false
             if self.nextResponder != nil {
                 self.nextResponder = true
@@ -94,7 +94,7 @@ struct CustomTextField: UIViewRepresentable {
       if isResponder {
           uiView.becomeFirstResponder()
       } else {
-          print("Resign")
+          // print("Resign")
           uiView.endEditing(true)
       }
  }

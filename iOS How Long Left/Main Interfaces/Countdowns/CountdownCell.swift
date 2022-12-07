@@ -10,7 +10,7 @@ import UIKit
 class CountdownCell: UICollectionViewCell, UIContextMenuInteractionDelegate {
    
     
-    static let reuseIdentifier = "label-cell-reuse-identifier"
+    static let reuseIdentifier = "hllios.countdowncell"
     
     
     let sub = CountdownCellView()
@@ -46,7 +46,7 @@ extension CountdownCell {
     func configureForEvent(event: HLLEvent) {
         self.event = event
         sub.configureForEvent(event: event)
-        
+        contentView.layer.shadowColor = UIColor.black.cgColor
     }
     
     func configure() {
@@ -59,14 +59,29 @@ extension CountdownCell {
         sub.frame = contentView.bounds
         sub.translatesAutoresizingMaskIntoConstraints = false
         
-      
        
+        NSLayoutConstraint.activate([
         
-        sub.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        sub.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        sub.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        sub.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            sub.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            sub.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            sub.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            sub.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            sub.heightAnchor.constraint(equalToConstant: 123),
+            sub.widthAnchor.constraint(equalTo: contentView.subviews.first!.widthAnchor)
         
+        ])
+      
+       /* contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        //contentView.layer.shadowColor = event?.color.cgColor ?? UIColor.black.cgColor
+        contentView.layer.shadowOpacity = 0.4
+       // contentView.layer.shadowPath = UIBezierPath(roundedRect: contentView.layer.bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 1, height: 1)).cgPath
+        contentView.layer.shadowRadius = 8
+        contentView.layer.shouldRasterize = true
+        contentView.layer.rasterizationScale = UIScreen.main.scale
+        layer.masksToBounds = true
+        */
+  
+        //self.backgroundColor = .red
 
         addContextMenu()
         sub.configure()

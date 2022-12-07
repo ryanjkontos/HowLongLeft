@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController, DefaultsTransferObserver, EventPoolUpdateObserver {
+class SettingsTableViewController: UITableViewController, DefaultsTransferObserver, EventSourceUpdateObserver {
 
     var sections = [[SettingsCell]]()
     var sectionFooters = [String?]()
@@ -18,7 +18,7 @@ class SettingsTableViewController: UITableViewController, DefaultsTransferObserv
     override func viewDidLoad() {
         super.viewDidLoad()
         HLLDefaultsTransfer.shared.addTransferObserver(self)
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         tableView.register(UINib(nibName: "TitleDetailCell", bundle: nil), forCellReuseIdentifier: "TitleDetailCell")
         
@@ -298,7 +298,7 @@ class SettingsTableViewController: UITableViewController, DefaultsTransferObserv
         reloadSections()
     }
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         reloadSections()
     }
     
@@ -332,7 +332,7 @@ extension SettingsTableViewController {
                 
                 CalendarDefaultsModifier.shared.toggleAllCalendars()
                 
-                HLLEventSource.shared.updateEventPool()
+                HLLEventSource.shared.updateEvents()
 
             })
             
@@ -372,7 +372,7 @@ extension SettingsTableViewController {
             let action = UIAction(title: title, image: UIImage(systemName: imageTitle), identifier: nil, discoverabilityTitle: nil, state: .off, handler: { _ in
                 
                // HLLDefaults.magdalene.manuallyDisabled = !HLLDefaults.magdalene.manuallyDisabled
-                HLLEventSource.shared.asyncUpdateEventPool()
+                HLLEventSource.shared.updateEventsAsync()
 
             })
             

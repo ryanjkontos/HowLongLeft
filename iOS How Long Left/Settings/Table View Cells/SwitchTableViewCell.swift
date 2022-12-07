@@ -78,7 +78,7 @@ class SwitchTableViewCell: UITableViewCell {
     
     func updateToggleState(_ animated: Bool = false) {
         
-        print("Toggle")
+        // print("Toggle")
         let on = (self.stateFetcher?()) ?? false
         self.toggle.setOn(on, animated: true)
         

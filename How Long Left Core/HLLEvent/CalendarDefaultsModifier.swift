@@ -13,6 +13,41 @@ class CalendarDefaultsModifier {
     
     static var shared = CalendarDefaultsModifier()
     
+    func getEnabledCalendars() -> [EKCalendar] {
+        
+        if HLLDefaults.calendar.enabledCalendars.isEmpty, HLLDefaults.calendar.disabledCalendars.isEmpty {
+            HLLDefaults.calendar.enabledCalendars = CalendarReader.shared.getCalendarIDS()
+        }
+        
+        if HLLDefaults.calendar.enabledCalendars.isEmpty, !HLLDefaults.calendar.disabledCalendars.isEmpty {
+            return .init()
+        }
+        
+        let enabledIDS = HLLDefaults.calendar.enabledCalendars
+        let allCalendars = CalendarReader.shared.getCalendars()
+        
+        var calendars = [EKCalendar]()
+        var disabledCalendars = [EKCalendar]()
+     
+        for calendar in allCalendars {
+            
+            if enabledIDS.contains(calendar.calendarIdentifier) {
+                calendars.append(calendar)
+            } else if HLLDefaults.calendar.useNewCalendars, !HLLDefaults.calendar.disabledCalendars.contains(calendar.calendarIdentifier) {
+                calendars.append(calendar)
+            } else {
+                disabledCalendars.append(calendar)
+            }
+            
+        }
+        
+        HLLDefaults.calendar.enabledCalendars = calendars.map {$0.calendarIdentifier}
+        HLLDefaults.calendar.disabledCalendars = disabledCalendars.map {$0.calendarIdentifier}
+        
+        return calendars
+        
+    }
+    
     func setEnabled(calendar: EKCalendar) {
         setEnabledWith(identifier: calendar.calendarIdentifier)
     }
@@ -84,7 +119,7 @@ class CalendarDefaultsModifier {
     
     func setAllEnabled() {
         
-        for calendar in HLLEventSource.shared.getCalendars() {
+        for calendar in CalendarReader.shared.getCalendars() {
             setEnabled(calendar: calendar)
         }
         
@@ -92,7 +127,7 @@ class CalendarDefaultsModifier {
     
     func setAllDisabled() {
         
-        for calendar in HLLEventSource.shared.getCalendars() {
+        for calendar in CalendarReader.shared.getCalendars() {
             setDisabled(calendar: calendar)
         }
         
@@ -110,7 +145,7 @@ class CalendarDefaultsModifier {
     
     func allCalendarsEnabled() -> Bool {
         
-        if HLLDefaults.calendar.enabledCalendars.count == HLLEventSource.shared.getCalendarIDS().count {
+        if HLLDefaults.calendar.enabledCalendars.count == CalendarReader.shared.getCalendarIDS().count {
             return true
         } else {
             return false

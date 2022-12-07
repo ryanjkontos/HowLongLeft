@@ -58,7 +58,7 @@ class HLLEventUniversalMenuItemGenerator {
                     }
                    
                 HLLDefaultsTransfer.shared.userModifiedPrferences()
-                HLLEventSource.shared.updateEventPool()
+                HLLEventSource.shared.updateEvents()
                 
                 })
                 
@@ -87,7 +87,7 @@ class HLLEventUniversalMenuItemGenerator {
                     
                     //HLLDefaults.magdalene.showSportAsStudy = !HLLDefaults.magdalene.showSportAsStudy
                     HLLDefaultsTransfer.shared.userModifiedPrferences()
-                    HLLEventSource.shared.asyncUpdateEventPool()
+                    HLLEventSource.shared.updateEventsAsync()
                         
                     })
                     

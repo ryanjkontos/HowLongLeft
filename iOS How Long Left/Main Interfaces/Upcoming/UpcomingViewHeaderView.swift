@@ -53,7 +53,7 @@ class UpcomingViewHeaderView: UICollectionReusableView {
     
     func configure() {
         
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = .clear
         
      //   stack.backgroundColor = .systemGreen
       //  backgroundColor = .systemPink

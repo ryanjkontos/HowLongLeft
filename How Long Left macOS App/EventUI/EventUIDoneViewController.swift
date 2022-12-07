@@ -28,14 +28,14 @@ class EventUIDoneViewController: NSViewController {
         if parentController.event!.completionStatus == .done {
             
             
-            print("evui done")
+            // print("evui done")
             doneAnimation.isHidden = false
            playDoneAnimation()
             eventLabel.stringValue = "\(parentController.event!.title) is done"
             
         } else {
             
-            print("evui not running")
+            // print("evui not running")
             doneAnimation.isHidden = true
             eventLabel.stringValue = "\(parentController.event!.title) is no longer running"
             

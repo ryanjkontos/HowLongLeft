@@ -11,7 +11,6 @@ import UIKit
 class TimerCell: UITableViewCell {
     
     var timer: Timer!
-    let timerStringGenerator = CountdownStringGenerator()
     
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var mainLabel: UILabel!

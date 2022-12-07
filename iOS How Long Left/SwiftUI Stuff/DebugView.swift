@@ -60,7 +60,7 @@ struct DebugView: View {
                     
                 } catch {
                     
-                    print(error)
+                    // print(error)
                     
                 }*/
                 

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var store: Store
+   
     
     @Binding var open: Bool
     
@@ -21,7 +21,7 @@ struct SettingsView: View {
             NavigationLink(destination: { CountdownSettingsView() }, label: {
                 
                 
-                getListLabel(rowName: "Countdowns", foreground: .white , background: .orange, image: "hourglass", size: 13)
+                getListLabel(rowName: "General", foreground: .white , background: .orange, image: "gear", size: 13)
                 
                 
             })
@@ -48,34 +48,29 @@ struct SettingsView: View {
             
                 
             
-            Section {
+            
+            NavigationLink(destination: { PinnedEventsSettingsView() }, label: {
                 
+                getListLabel(rowName: "Pinned Events", foreground: .white , background: .orange, image: "pin.fill", size: 10.5)
                 
-                NavigationLink(destination: { PinnedEventsSettingsView() }, label: {
-                    
-                    getListLabel(rowName: "Pinned Events", foreground: .white , background: .orange, image: "pin.fill", size: 10.5)
-                    
-                })
+            })
+            
+            NavigationLink(destination: { HiddenEventsSettingsView() }, label: {
                 
-                NavigationLink(destination: { HiddenEventsSettingsView() }, label: {
-                    
-                    getListLabel(rowName: "Hidden Events", foreground: .white , background: .orange, image: "eye.slash.fill", size: 10.5)
-                    
-                })
+                getListLabel(rowName: "Hidden Events", foreground: .white , background: .orange, image: "eye.slash.fill", size: 10.5)
                 
-                NavigationLink(destination: { NicknamesListView() }, label: {
-                    
-                    getListLabel(rowName: "Nicknames", foreground: .white , background: .orange, image: "character.cursor.ibeam", size: 10.5)
-                    
-                })
+            })
+            
+            NavigationLink(destination: { NicknamesListView() }, label: {
                 
-            }
-
+                getListLabel(rowName: "Nicknames", foreground: .white , background: .orange, image: "character.cursor.ibeam", size: 10.5)
+                
+            })
 
             Section {
                 
-                NavigationLink(destination: { ComplicationParentView()
-                        .environmentObject(store)
+                NavigationLink(destination: { ComplicationsSettingsView()
+                       
 
                 }, label: {
                     
@@ -103,7 +98,7 @@ struct SettingsView: View {
             
             
         }
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Settings")
         .toolbar(content: {
             
@@ -154,6 +149,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(open: .constant(true))
-            .environmentObject(Store())
+           
     }
 }

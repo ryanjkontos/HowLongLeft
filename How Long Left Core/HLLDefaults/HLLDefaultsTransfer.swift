@@ -26,7 +26,6 @@ class HLLDefaultsTransfer {
         "NamesDictionary",
         "TeachersDictionary",
         "SchoolEventDetailIndex",
-        "MagdaleneModeiOS",
         
     
     ]
@@ -57,7 +56,7 @@ class HLLDefaultsTransfer {
         triggerDefaultsTransfer()
         
         DispatchQueue.global(qos: .default).async {
-        HLLEventSource.shared.updateEventPool()
+        HLLEventSource.shared.updateEvents()
         }
         
     }
@@ -76,7 +75,7 @@ class HLLDefaultsTransfer {
           
             if date == self.dateOfLatestDownload {
             
-      //   print("Downloaded new preferences from paired device")
+      //   // print("Downloaded new preferences from paired device")
          
             for item in prefs {
                 
@@ -114,13 +113,13 @@ class HLLDefaultsTransfer {
              var currentModificationDate = HLLDefaults.defaults.object(forKey: "preferencesLastModifiedByUser") as? Date
          
              if currentModificationDate == nil {
-               //  print("Current modification date was nil, setting to old")
+               //  // print("Current modification date was nil, setting to old")
                  currentModificationDate = Date.distantPast
              }
              
              if newModificationDate.timeIntervalSince(currentModificationDate!) > 0 {
                  
-               //  print("New preferences are more recent than the current ones, replacing them")
+               //  // print("New preferences are more recent than the current ones, replacing them")
                  
                  for item in prefs {
                      
@@ -136,27 +135,27 @@ class HLLDefaultsTransfer {
                  DispatchQueue.main.async {
                      self.transferObservers.forEach { $0.defaultsUpdated() }
                  }
-                HLLEventSource.shared.asyncUpdateEventPool()
-                 print("PoolC4")
+                HLLEventSource.shared.updateEventsAsync()
+                 // print("PoolC4")
                     
                 
                  
              } else {
                  
                 HLLDefaultsTransfer.shared.triggerDefaultsTransfer()
-                 print("New preferences are older than current, keeping the current ones")
+                 // print("New preferences are older than current, keeping the current ones")
                  
              }
              
          } else {
              
-             print("Remote modified date was nil")
+             // print("Remote modified date was nil")
              
          }
                 
             } else {
                 
-                print("Ignoring download because of a newer version")
+                // print("Ignoring download because of a newer version")
                 
             }
          

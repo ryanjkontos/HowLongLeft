@@ -20,12 +20,11 @@ struct EventInfoView: View {
     
     @Binding var presenting: Bool
     
-    let gen = CountdownStringGenerator()
-    
+
     
     init(event inputEvent: HLLEvent, presenting: Binding<Bool>) {
        
-        self.info = LiveEventInfo(event: inputEvent, configuration: [.location, .start, .end, .duration, .calendar])
+        self.info = LiveEventInfo(event: inputEvent, configuration: [.location, .start, .end, .duration, .percentageDuration, .calendar, .remote])
      
         dataObject = .init(inputEvent)
         
@@ -150,7 +149,7 @@ struct EventInfoView: View {
                             
                         }
                         
-                        VStack(alignment: .leading, spacing: 3) {
+                        VStack(alignment: .leading, spacing: 2) {
                             
                             Text("\(dataObject.event.title)")
                                 .truncationMode(.middle)
@@ -160,7 +159,7 @@ struct EventInfoView: View {
                                 .font(.system(size: 19, weight: .medium, design: .default))
                             Text(getTimerText(at: at))
                                 .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .light, design: .default))
+                                .font(.system(size: 16, weight: .regular, design: .default))
                             
                         }
                     }
@@ -191,7 +190,7 @@ struct EventInfoView: View {
         if dataObject.event.completionStatus(at: at) == .done {
             return "Ended"
         } else {
-            return "\(dataObject.event.countdownTypeString(at: at).capitalizingFirstLetter()) \(gen.generateCountdownTextFor(event: dataObject.event).justCountdown)"
+            return "\(dataObject.event.countdownTypeString(at: at).capitalizingFirstLetter()) \(CountdownStringGenerator.generateCountdownTextFor(event: dataObject.event).justCountdown)"
         }
         
     }

@@ -13,7 +13,7 @@ import Cocoa
 
 class MilestoneNotificationGenerator {
     
-    let countdownStringGenerator = CountdownStringGenerator()
+
     let upcomingEventStringGenerator = UpcomingEventStringGenerator()
     
     

@@ -38,8 +38,8 @@ class UtilityRunLoopManager {
         if let date = HLLDefaults.statusItem.hideEventsOn {
             if date.startOfDay() != Date().startOfDay() {
                 HLLDefaults.statusItem.hideEventsOn = nil
-                print("Async trigger 1")
-                HLLEventSource.shared.asyncUpdateEventPool()
+                // print("Async trigger 1")
+                HLLEventSource.shared.updateEventsAsync()
             }
         }
         

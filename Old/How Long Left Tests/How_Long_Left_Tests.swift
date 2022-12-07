@@ -39,7 +39,7 @@ class How_Long_Left_Tests: XCTestCase {
         
         for item in data {
             
-            print("Test: \(item)")
+            // print("Test: \(item)")
             
             let result = model.supportsAlwaysOn(modelString: item.key)
             

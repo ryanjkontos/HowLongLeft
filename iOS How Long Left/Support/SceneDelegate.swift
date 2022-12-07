@@ -15,35 +15,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     
-    let contentView = ContentView()
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-       // let contentView = ContentView()
-
-             // Use a UIHostingController as window root view controller.
-        
         if let windowScene = scene as? UIWindowScene {
-            
             let window = UIWindow(windowScene: windowScene)
-            
             window.tintColor = .systemOrange
-            
             window.rootViewController = HLLSplitViewController(style: .doubleColumn)
-           
-            
-            self.window = window
-            
-            
             window.makeKeyAndVisible()
+            self.window = window
         }
-        Task {
         
+        Task {
             let _ = HLLTimelineGenerator(type: .complication).generateHLLTimeline(forState: .normal)
-            
         }
        
     }
@@ -58,23 +44,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         
         Task.detached {
-            
             await Store.shared.refreshPurchasedProducts()
-            
-            
         }
         
-        
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-        
-     
-        
+        HLLEventSource.shared.shiftLoader.load()
+
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        
-      
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
@@ -85,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Task {
             await Store.shared.refreshPurchasedProducts()
+            HLLEventSource.shared.shiftLoader.load()
         }
         
         DispatchQueue.main.async {
@@ -132,8 +110,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let scheme = url.scheme,
                        scheme.localizedCaseInsensitiveCompare("howlongleft") == .orderedSame, let host = url.host {
             
-            if let event = HLLEventSource.shared.eventPool.first(where: { $0.persistentIdentifier == host }) {
-                print("Got event from host")
+            if let event = HLLEventSource.shared.events.first(where: { $0.persistentIdentifier == host }) {
+                // print("Got event from host")
             }
             
         }

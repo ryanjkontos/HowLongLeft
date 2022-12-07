@@ -229,7 +229,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
                 HLLDefaults.general.showAllDay = state
                 
             HLLDefaultsTransfer.shared.userModifiedPrferences()
-                HLLEventSource.shared.asyncUpdateEventPool()
+                HLLEventSource.shared.updateEventsAsync()
                 
             }
         
@@ -259,7 +259,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
                  
              
              
-              HLLEventSource.shared.asyncUpdateEventPool()
+              HLLEventSource.shared.updateEventsAsync()
                  
         }
         
@@ -280,7 +280,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
              
              
              HLLDefaultsTransfer.shared.userModifiedPrferences()
-              HLLEventSource.shared.asyncUpdateEventPool()
+              HLLEventSource.shared.updateEventsAsync()
                  
              }
                

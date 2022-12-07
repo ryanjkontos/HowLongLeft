@@ -21,9 +21,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func applicationWillFinishLaunching(_ notification: Notification) {
  
+        HLLStatusItemManager.shared = HLLStatusItemManager()
         ProStatusManager.shared = ProStatusManager()
         HLLStoredEventManager.shared.loadStoredEventsFromDatabase()
-        HLLEventSource.shared.updateEventPool()
+        //HLLEventSource.shared.updateEvents()
         //WidgetUpdateHandler.shared = WidgetUpdateHandler()
         
         DispatchQueue.main.async {
@@ -36,14 +37,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let start = Date()
         
          
+      
         
-        HLLStatusItemManager.shared = HLLStatusItemManager()
-        
-        print("Initialised Status Item Manager in \(Date().timeIntervalSince(start)) seconds.")
+        // print("Initialised Status Item Manager in \(Date().timeIntervalSince(start)) seconds.")
             
         }
         
-        HLLEventSource.shared.asyncUpdateEventPool()
+      
         
         
     }
@@ -112,11 +112,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         request.httpBody = payload
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil else { print(error!.localizedDescription); return }
-            guard let data = data else { print("Empty data"); return }
+            guard error == nil else { // print(error!.localizedDescription); return }
+            guard let data = data else { // print("Empty data"); return }
 
             if let str = String(data: data, encoding: .utf8) {
-                print(str)
+                // print(str)
             }
         }.resume()
         
@@ -125,7 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func application(_ application: NSApplication, didReceiveRemoteNotification userInfo: [String : Any]) {
         
         
-        print("Got remote")
+        // print("Got remote")
         
       
     }
@@ -151,9 +151,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                                 didActivate notification: NSUserNotification) {
         if notification.identifier == "Update" {
             if let url = URL(string: "macappstore://showUpdatesPage"), NSWorkspace.shared.open(url) {
-                print("default browser was successfully opened")
+                // print("default browser was successfully opened")
             }
-            print("Update clicked")
+            // print("Update clicked")
         } else if notification.identifier == "Cal" {
             if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars"),
                 
@@ -172,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             
             if let id = userActivity.userInfo?["EventID"] as? String {
                 
-                print("Launching with \(id)")
+                // print("Launching with \(id)")
                 
                 if let event = HLLEventSource.shared.findEventWithAppIdentifier(id: id) {
                     

@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ComplicationPurchaseView: View {
     
-    @State var purchasing = true
+    @State var purchasing = false
     
-    @ObservedObject var store = Store.shared
+    
     
     var body: some View {
 
@@ -27,7 +27,6 @@ struct ComplicationPurchaseView: View {
                             Image(systemName: "watchface.applewatch.case")
                                 .font(.system(size: 53))
                                 .foregroundColor(.orange)
-                                
                                 
                             
                             Spacer()
@@ -144,13 +143,13 @@ struct ComplicationPurchaseView: View {
         }
         
         Task {
-            await Store.shared.purchase(productFor: .complication)
+           // await Store.shared.purchase(productFor: .complication)
         }
     }
     
     func triggerRestore() {
         Task {
-            await Store.shared.refreshPurchasedProducts()
+            //await Store.shared.refreshPurchasedProducts()
         }
     }
     

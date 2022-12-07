@@ -39,7 +39,7 @@ class EnabledCalendarsManager: ObservableObject {
     
     func update() {
         
-        allCalendars = HLLEventSource.shared.getCalendars().map { IdentifiableCalendar(delegate: self, calendar: $0, enabled: toggledCheck($0)) }
+        allCalendars = CalendarReader.shared.getCalendars().map { IdentifiableCalendar(delegate: self, calendar: $0, enabled: toggledCheck($0)) }
         
         var allEnabled = true
         for cal in allCalendars {
@@ -61,7 +61,7 @@ class EnabledCalendarsManager: ObservableObject {
         
         update()
         
-        HLLEventSource.shared.asyncUpdateEventPool()
+        HLLEventSource.shared.updateEventsAsync()
     }
     
     
@@ -91,6 +91,8 @@ class IdentifiableCalendar: Identifiable, Equatable {
             
             delegate.toggleAction(self.calendar, enabled)
             delegate.update()
+            
+            HLLEventSource.shared.updateEventsAsync()
             
         }
     }

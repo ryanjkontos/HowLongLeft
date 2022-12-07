@@ -10,33 +10,20 @@ import Foundation
 
 class PercentDateFetcher {
     
-    
     func fetchPercentDates(for event: HLLEvent, every percent: Int) -> Set<Date> {
         
         var returnDates = Set<Date>()
-        
         let percentInterval = event.duration/100
-        
-        
-        
         var current = event.startDate
-        
         var index = 0
         
         while event.endDate > current {
-            
             if index.isMultiple(of: percent) {
-            
-            returnDates.insert(current)
-            
-                
+                returnDates.insert(current)
             }
             
             current.addTimeInterval(percentInterval)
             index += 1
-                
-            
-    
         }
         
         return returnDates

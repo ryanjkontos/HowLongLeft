@@ -21,8 +21,6 @@ class HLLEventInfoItemGenerator {
     }
     
     private let durationStringGenerator = DurationStringGenerator()
-    private let percentageCalculator = PercentageCalculator()
-    private let countdwonStringGenerator = CountdownStringGenerator()
     
     func getInfoItem(for type: HLLEventInfoItemType, at date: Date = Date()) -> HLLEventInfoItem? {
         
@@ -31,103 +29,107 @@ class HLLEventInfoItemGenerator {
         
         switch type {
             
-        case .completion:
-        
-            if event.completionStatus(at: date) == .current {
-            titleString = "Completion"
-            infoString = percentageCalculator.calculatePercentageDone(for: event, at: date)
-            }
+            case .completion:
             
-        case .location:
-            
-            titleString = "Location"
-            
-            if let location = event.location {
+                if event.completionStatus(at: date) == .current {
+                    titleString = "Completion"
+                    infoString = PercentageCalculator.calculatePercentageDone(for: event, at: date)
+                }
                 
-                infoString = location
-
-            }
+            case .location:
+                
+                titleString = "Location"
             
-        case .start:
+                if let location = event.location {
+                    infoString = location
+                }
+                
+            case .start:
+                
+               titleString = "Start"
+               if event.completionStatus(at: date) != .upcoming {
+                   titleString = "Started"
+               }
+               
+               infoString = "\(event.startDate.userFriendlyRelativeString()), \(event.startDate.formattedTime())"
+                
+            case .end:
+                
+                titleString = "End"
             
-           titleString = "Start"
-           if event.completionStatus(at: date) != .upcoming {
-                titleString = "Started"
-           }
-           
-           infoString = "\(event.startDate.userFriendlyRelativeString()), \(event.startDate.formattedTime())"
+                if event.completionStatus(at: date) == .done {
+                    titleString = "Ended"
+                }
+                
+                infoString = "\(event.endDate.userFriendlyRelativeString()), \(event.endDate.formattedTime())"
+                
+            case .elapsed:
             
-        case .end:
-            
-            titleString = "End"
-            if event.completionStatus(at: date) == .done {
-                titleString = "Ended"
-            }
-            
-            infoString = "\(event.endDate.userFriendlyRelativeString()), \(event.endDate.formattedTime())"
-            
-        case .elapsed:
-        
-            if event.completionStatus(at: date) == .current {
-            
+                if event.completionStatus(at: date) == .current {
                     titleString = "Since Start"
                     let secondsSinceStart = date.timeIntervalSince(event.startDate)
                     infoString = durationStringGenerator.generateDurationString(for: secondsSinceStart)
-                    
                 }
-                
-                if event.completionStatus(at: date) == .done {
                     
+                if event.completionStatus(at: date) == .done {
                     titleString = "Since End"
                     let secondsSinceEnd = CurrentDateFetcher.currentDate.timeIntervalSince(event.endDate)
                     let duration = durationStringGenerator.generateDurationString(for: secondsSinceEnd)
                     infoString = "\(duration)"
-                    
                 }
-            
-        case .duration:
-            
-            titleString = "Duration"
-            infoString = durationStringGenerator.generateDurationString(for: event.duration)
-            
-        case .calendar:
-            
-            titleString = "Calendar"
-            if let calendar = event.calendar {
-                infoString = calendar.title
-            }
-
-        case .nextOccurence:
-            
-            titleString = "Following Occurrence"
-            
-            if HLLDefaults.general.showNextOccurItems == false {
-                return nil
-            }
-
-            
-        case .countdown:
-            
-            if event.completionStatus(at: date) != .done {
-            
-            titleString = "\(event.countdownTypeString.capitalizingFirstLetter())"
-            infoString = countdwonStringGenerator.generatePositionalCountdown(event: event, at: date)
                 
-            }
-   
-        case .status:
-            
-            titleString = "Status"
-            
-            switch event.completionStatus(at: date) {
+            case .duration:
                 
-            case .upcoming:
-                infoString = "Upcoming"
-            case .current:
-                infoString = "In Progress"
-            case .done:
-                infoString = "Completed"
-            }
+                titleString = "Duration"
+                infoString = durationStringGenerator.generateDurationString(for: event.duration)
+                
+            case .calendar:
+                
+                titleString = "Calendar"
+            
+                if let calendar = event.calendar {
+                    infoString = calendar.title
+                }
+
+            case .nextOccurence:
+                
+                titleString = "Following Occurrence"
+            
+                if HLLDefaults.general.showNextOccurItems == false {
+                    return nil
+                }
+
+            case .countdown:
+                
+                if event.completionStatus(at: date) != .done {
+                    titleString = "\(event.countdownTypeString.capitalizingFirstLetter())"
+                    infoString = CountdownStringGenerator.generatePositionalCountdown(event: event, at: date)
+                }
+       
+            case .status:
+                
+                titleString = "Status"
+            
+                switch event.completionStatus(at: date) {
+                    case .upcoming:
+                        infoString = "Upcoming"
+                    case .current:
+                        infoString = "In Progress"
+                    case .done:
+                        infoString = "Completed"
+                }
+                
+            case .percentageDuration:
+                
+                titleString = "Percentage Duration"
+                let mins = durationStringGenerator.generateDurationString(for: (event.duration/100), seconds: true)
+                infoString = "\(mins)"
+                
+            case .remote:
+                if event.isRemote {
+                    titleString = "Remote Event"
+                    infoString = "Yes"
+                }
             
         }
         
@@ -140,21 +142,13 @@ class HLLEventInfoItemGenerator {
     }
     
     func getInfoItems(for types: [HLLEventInfoItemType], at date: Date = Date()) -> [HLLEventInfoItem] {
-        
         var returnArray = [HLLEventInfoItem]()
-        
         for type in types {
-            
             if let item = getInfoItem(for: type, at: date) {
-               
                 returnArray.append(item)
-                
             }
-            
         }
-        
         return returnArray
-        
     }
 
 }

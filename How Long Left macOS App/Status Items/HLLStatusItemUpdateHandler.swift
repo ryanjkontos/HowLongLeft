@@ -18,37 +18,43 @@ class HLLStatusItemUpdateHandler {
     
     var delegate: HLLStatusItemManager?
     
+    let queue = DispatchQueue(label: "HLLTimerQueue", qos: .userInteractive)
     
+    var timer: DispatchSourceTimer!
+    
+    var lastSecond: String?
+    
+    let formatter = DateFormatter()
     
     init(delegate: HLLStatusItemManager) {
         
+        formatter.dateFormat = "ss"
         
         
         self.delegate = delegate
         
-        HLLEventSource.shared.addEventPoolObserver(self, immediatelyNotify: true)
+        HLLEventSource.shared.addeventsObserver(self, immediatelyNotify: true)
         
-        setActiveMode(true)
+        setActiveMode()
         self.mainUpdate()
         
-        DispatchQueue.global(qos: .userInteractive).async {
+ 
         
             let main = Timer(timeInterval: 4, target: self, selector: #selector(self.mainUpdate), userInfo: nil, repeats: true)
             main.tolerance = 1.5
             RunLoop.main.add(main, forMode: .common)
              self.mainTimer = main
             
-        }
-        
+    
        
     }
     
+
+    
     @objc func mainUpdate() {
         
-        setActiveMode(shouldUseActiveTimerMode())
-        
+   
        
-            
             if let delegate = self.delegate {
                 for statusItem in delegate.allStatusItems {
                     statusItem.contentGen.updateEvent()
@@ -61,6 +67,18 @@ class HLLStatusItemUpdateHandler {
     
     @objc func activeUpdate() {
         
+      
+        
+        let cur = formatter.string(from: Date())
+        
+        if let s = lastSecond {
+            if s == cur {
+                return
+            }
+        }
+        
+        lastSecond = cur
+
         
             if let delegate = self.delegate {
                 for statusItem in delegate.allStatusItems {
@@ -70,52 +88,36 @@ class HLLStatusItemUpdateHandler {
             
     }
     
-    func setActiveMode(_ to: Bool) {
-    
+    func setActiveMode() {
+
         
-        if to {
-            
-            if self.activeTimer == nil {
-            
-                DispatchQueue.main.async {
-                
+        activeTimer?.invalidate()
+        activeTimer = nil
+        
+        let date = Calendar.current.date(bySetting: .nanosecond, value: 0, of: Date().addingTimeInterval(1))!
                     
-                    let date = Calendar.current.date(bySetting: .nanosecond, value: 0, of: Date())!
-                    
-                    let active = Timer(fireAt: date, interval: 1, target: self, selector: #selector(self.activeUpdate), userInfo: nil, repeats: true)
-                    active.tolerance = 0
-                    RunLoop.main.add(active, forMode: .common)
-                    self.activeTimer = active
-                
-                    self.activeUpdate()
-                    
-                }
-                
-            }
+        queue.async {
             
-           //  print("Active mode is now enabled")
-                
+            let active = Timer(fireAt: date, interval: 0.1, target: self, selector: #selector(self.activeUpdate), userInfo: nil, repeats: true)
+            active.tolerance = 0
             
-        } else {
+            RunLoop.main.add(active, forMode: .common)
             
-            if self.activeTimer != nil {
+            self.activeTimer = active
             
-           // print("Active mode is now disabled")
-            self.activeTimer?.invalidate()
-            self.activeTimer = nil
-            RunLoop.main.cancelPerform(#selector(activeUpdate), target: self, argument: nil)
-    
+            self.activeUpdate()
             
-            activeUpdate()
-                
-            }
         }
-        
+                    
+                
+                
     }
+            
+
     
     func shouldUseActiveTimerMode() -> Bool {
         
-        if HLLEventSource.shared.neverUpdatedEventPool {
+        if HLLEventSource.shared.neverUpdatedevents {
             return true
         }
         
@@ -158,7 +160,7 @@ class HLLStatusItemUpdateHandler {
             
         }
         
-        for date in HLLEventSource.shared.eventPoolKeyDates {
+        for date in HLLEventSource.shared.eventsKeyDates {
             
             // 0 = right now
             // 1 = in 1 second
@@ -185,9 +187,9 @@ class HLLStatusItemUpdateHandler {
     
 }
 
-extension HLLStatusItemUpdateHandler: EventPoolUpdateObserver {
+extension HLLStatusItemUpdateHandler: EventSourceUpdateObserver {
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         mainUpdate()
         activeUpdate()
     }
@@ -198,7 +200,7 @@ extension HLLStatusItemUpdateHandler: HLLProStatusObserver {
     
     
     func proStatusChanged(from previousStatus: Bool, to newStatus: Bool) {
-        setActiveMode(true)
+        //setActiveMode()
     }
     
     

@@ -84,7 +84,7 @@ struct ExtensionPurchaseView: View, Sendable {
             
             Spacer()
         
-            if !store.extensionPurchased(oftype: type) {
+            if true {
             
                 VStack(spacing: 20) {
                     VStack(spacing: 6.5) {
@@ -100,6 +100,8 @@ struct ExtensionPurchaseView: View, Sendable {
                             Button(action: {
                                 
                                 Task {
+                                    
+                                    Store.shared.sendComplicationStatusToWatch()
                                     
                                     purchasing = true
                                     let purchased = await store.purchase(productFor: type)
@@ -270,7 +272,7 @@ struct ExtensionPurchaseView: View, Sendable {
     
     func getTopTextSize(viewHeight height: CGFloat) -> CGFloat {
         
-        print("Height: \(height)")
+        // print("Height: \(height)")
         
         
         if height < 550 {

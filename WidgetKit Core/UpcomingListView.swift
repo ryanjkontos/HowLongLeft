@@ -58,13 +58,14 @@ struct UpcomingListView: View {
                     
                 }
             
-                VStack(spacing: 6) {
+                VStack(spacing: 4) {
             
                     
                     ForEach(limitedEvents, id: \.id) { value in
                        
-                        Link(destination: URL(string: "howlongleft://\( (value as? HLLEvent)?.persistentIdentifier ?? "null" )")!) {
+                       Link(destination: URL(string: "howlongleft://event/\(value.id)")!) {
                             EventListItem(event: value, showAt: showAt)
+                                .frame(height: 44)
                                 
                         }
                         .disabled(isPreview)
@@ -88,7 +89,8 @@ struct UpcomingListView: View {
              
             }
             .colorScheme(colorScheme)
-            .padding(.vertical, 20)
+           
+            .padding(.horizontal, 7)
         
         } else {
             
@@ -104,77 +106,16 @@ struct UpcomingListView: View {
 
 
 
-struct EventListItem: View {
+struct UpcomingListView_Previews: PreviewProvider {
     
-    @Environment(\.colorScheme) var systemColorScheme: ColorScheme
+    static var upcomingEvents = [PreviewEvent.upcomingPreviewEvent(minsStartingIn: 60, color: .systemCyan), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 120, color: .systemGreen), PreviewEvent.upcomingPreviewEvent(minsStartingIn: 180, color: .systemOrange)]
     
-    var colorScheme: ColorScheme {
-        
-        if HLLDefaults.widget.theme == .system {
-            return systemColorScheme
-        }
-        
-        if HLLDefaults.widget.theme == .dark {
-            return .dark
-        }
-        
-        return .light
-    }
+    var current = PreviewEvent.inProgressPreviewEvent(color: .systemCyan)
     
-    var event: EventUIObject
-    var showAt: Date
-    
-    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "network")
-    
-
-    
-    var body: some View {
-    
-        
-        HStack(alignment: .center ,spacing: 6) {
-            
-        Rectangle()
-            .frame(width: 4.5)
-            .foregroundColor(Color(event.color))
-            
-            VStack {
-            
-            Spacer()
-                
-                VStack(alignment: .leading, spacing: 0.2) {
-                        
-                Text("\(event.title)")
-                        
-                    .lineLimit(1)
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(Color.primary)
-                  
-                VStack(alignment: .leading, spacing: 0) {
-                    
-                Text("\(event.startDate.userFriendlyRelativeString(at: showAt)), \(event.startDate.formattedTime())")
-                    .font(.system(size: 11.2, weight: .medium))
-                    .foregroundColor(.secondary)
-                    .lineLimit(1)
-        
-                        
-                }
-                
-                }
-                
-                Spacer()
-                
-                        
-            }
-            
-            
-            
-            Spacer()
-      
-        }
-        .colorScheme(colorScheme)
-        .frame(height: 40)
-        .background(Color(event.color).opacity(0.15))
-        .clipShape(RoundedRectangle(cornerRadius: 6))
+    static var previews: some View {
+        UpcomingListView(events: upcomingEvents, showAt: Date(), isPreview: false)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .modifier(HLLWidgetBackground())
             
     }
 }

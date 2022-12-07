@@ -32,7 +32,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
         if let error = error {
-            print("session activation failed with error: \(error.localizedDescription)")
+            // print("session activation failed with error: \(error.localizedDescription)")
             return
         }
 
@@ -132,8 +132,8 @@ extension WatchSessionManager {
         
         
         
-        print("Sendd")
-            print("Start3")
+        // print("Sendd")
+            // print("Start3")
             self.validSession?.sendMessage(data, replyHandler: nil, errorHandler: nil)
             self.validSession?.transferUserInfo(data)
         
@@ -143,7 +143,7 @@ extension WatchSessionManager {
                 
         } catch {
             
-           print("Error updating application context")
+           // print("Error updating application context")
             
         }
         

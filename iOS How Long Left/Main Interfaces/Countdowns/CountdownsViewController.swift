@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class CountdownsViewController: UIViewController, EventPoolUpdateObserver {
+class CountdownsViewController: UIViewController, EventSourceUpdateObserver {
     
     var lastResizeID = UUID()
     var resizing = false
@@ -58,7 +58,7 @@ class CountdownsViewController: UIViewController, EventPoolUpdateObserver {
     
 
     
-    func eventPoolUpdated() {
+    func eventsUpdated() {
         DispatchQueue.main.async {
             self.loadEvents()
         }
@@ -81,6 +81,7 @@ class CountdownsViewController: UIViewController, EventPoolUpdateObserver {
         super.viewDidLoad()
         
         
+       
         
         self.navigationItem.title = "Countdowns"
         
@@ -89,7 +90,7 @@ class CountdownsViewController: UIViewController, EventPoolUpdateObserver {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        HLLEventSource.shared.addEventPoolObserver(self)
+        HLLEventSource.shared.addeventsObserver(self)
         
         configureHierarchy()
         configureDataSource()
@@ -107,7 +108,14 @@ class CountdownsViewController: UIViewController, EventPoolUpdateObserver {
         
         
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCountdowns), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer, forMode: .common)
+        
+        #if targetEnvironment(macCatalyst)
+            RunLoop.main.add(timer, forMode: .default)
+        #else
+            RunLoop.main.add(timer, forMode: .common)
+        #endif
+        
+        
         
     }
 
@@ -130,7 +138,7 @@ class CountdownsViewController: UIViewController, EventPoolUpdateObserver {
             
             if self.lastResizeID == id {
                 
-                print("Done Resizing")
+                // print("Done Resizing")
                 self.resizing = false
                 
                 self.updateCountdowns(force: true)
@@ -163,6 +171,7 @@ extension CountdownsViewController {
             cell.configureForEvent(event: event.event)
             cell.sub.updateCountdownLabel()
             cell.menuDelegate = self
+            //cell.contentView.backgroundColor = [UIColor.blue, .red, .green].randomElement()!
         }
         
        
@@ -175,7 +184,7 @@ extension CountdownsViewController {
         
         let globalHeaderRegistration = UICollectionView.SupplementaryRegistration<CountdownsViewHeaderView>(elementKind: UICollectionView.elementKindSectionHeader) { (header, elementKind, indexPath) in
            
-            header.text.text = self.currentSections[indexPath.section].title.uppercased()
+            header.text.text = self.currentSections[indexPath.section].title
             
            
         }
@@ -195,12 +204,12 @@ extension CountdownsViewController {
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection in
             let contentSize = layoutEnvironment.container.effectiveContentSize
             let columns = self.getColumns(from: contentSize.width)
-            let spacing = CGFloat(15)
+            let spacing = CGFloat(0)
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .absolute(125))
+                                                   heightDimension: .absolute(140))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
             group.interItemSpacing = .fixed(spacing)
             
@@ -217,7 +226,7 @@ extension CountdownsViewController {
             
             
             section.interGroupSpacing = spacing
-            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
 
             return section
         }
@@ -226,7 +235,7 @@ extension CountdownsViewController {
 
     func getColumns(from width: CGFloat) -> Int {
         
-        print("Get cols from \(width)")
+        // print("Get cols from \(width)")
         
         if width < 730 { return 1 }
         
@@ -237,7 +246,7 @@ extension CountdownsViewController {
     
     func loadEvents() {
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromEventPool().map({  EventItem(event: $0 )})
+        let pinned = HLLEventSource.shared.getPinnedEventsFromevents().map({  EventItem(event: $0 )})
         
         
         var events = HLLEventSource.shared.getCurrentEvents().map({  EventItem(event: $0 )})
@@ -322,7 +331,7 @@ extension CountdownsViewController {
         
         DispatchQueue.main.async {
             
-            let currentSections = self.currentSections
+            
             let paths = self.eventsCollectionView.indexPathsForVisibleItems
             
             let date = Date()
@@ -381,11 +390,12 @@ extension CountdownsViewController {
     }
     
     func getCountdownText(for event: HLLEvent, at date: Date) -> String {
-        CountdownStringGenerator.shared.generatePositionalCountdown(event: event, at: date, showSeconds: HLLDefaults.countdownsTab.showSeconds)
+        CountdownStringGenerator.generatePositionalCountdown(event: event, at: date, showSeconds: HLLDefaults.countdownsTab.showSeconds)
     }
     
     func configureHierarchy() {
-        view.backgroundColor = .systemBackground
+       // view.backgroundColor = .secondarySystemGroupedBackground
+        
         let layout = createLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         //collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -403,6 +413,8 @@ extension CountdownsViewController {
         
         eventsCollectionView = collectionView
         
+      //  self.collectionView.backgroundColor = .secondarySystemGroupedBackground
+        
 
        
     }
@@ -415,11 +427,23 @@ extension CountdownsViewController: UICollectionViewDelegate, UIScrollViewDelega
         
         let event = currentSections[indexPath.section].events[indexPath.row].event
     
+        //formNC.modalPresentationStyle = UIModalPresentationStyle.pageSheet
+        
         let controller = EventTableViewController(style: .insetGrouped)
     
         controller.event = event
         
+        let cell = collectionView.cellForItem(at: indexPath) as! CountdownCell
+        
+        
+        let eventCard = cell.sub
+        let detailEventCard = controller.card
+
+    
+
+        
         self.navigationController?.pushViewController(controller, animated: true)
+       
      
        
         

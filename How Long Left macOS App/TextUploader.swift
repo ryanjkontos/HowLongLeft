@@ -35,7 +35,7 @@ class TextUploader {
                 
             case .success(_):
                 
-                print("Upload successful")
+                // print("Upload successful")
                 
                 if let key = setTrueOnSuccess {
                     
@@ -46,7 +46,7 @@ class TextUploader {
                 
             case .failure(let error):
                 
-                print("Upload failed due to \(error)")
+                // print("Upload failed due to \(error)")
 
             }
             

@@ -38,7 +38,7 @@ class EKEventViewControllerManager: NSObject, EKEventEditViewDelegate {
         }
         
         DispatchQueue.main.async {
-            HLLEventSource.shared.updateEventPool()
+            HLLEventSource.shared.updateEvents()
         }
         
     }
