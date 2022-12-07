@@ -99,6 +99,7 @@
 		BF3288E62940C12E00AD9DD1 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
 		BF3288E72940C12F00AD9DD1 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
 		BF3288E92940C13200AD9DD1 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
+		BF3288EC2940CCA400AD9DD1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4475E5293DAA1800AB86D9 /* MainInterface.storyboard */; };
 		BF32B518249875E200B8F339 /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
 		BF32B519249875E200B8F339 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
 		BF32B51D2498765200B8F339 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
@@ -271,7 +272,6 @@
 		BF4400642574E9CA0061ED6E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4400542574E6AC0061ED6E /* ProgressBar.swift */; };
 		BF4475E0293DAA1700AB86D9 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4475C7293DA45200AB86D9 /* UserNotifications.framework */; };
 		BF4475E1293DAA1700AB86D9 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4475C9293DA45200AB86D9 /* UserNotificationsUI.framework */; };
-		BF4475E7293DAA1800AB86D9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4475E5293DAA1800AB86D9 /* MainInterface.storyboard */; };
 		BF4475EB293DAA1800AB86D9 /* HowLongLeftiOSNotificationContentExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF4475DF293DAA1700AB86D9 /* HowLongLeftiOSNotificationContentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF4475F4293DB00200AB86D9 /* HWShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4475F2293DAF5A00AB86D9 /* HWShift.swift */; };
 		BF4475F6293DC2C100AB86D9 /* HWiOSNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4475F0293DAA8A00AB86D9 /* HWiOSNotificationView.swift */; };
@@ -3993,8 +3993,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4475E7293DAA1800AB86D9 /* MainInterface.storyboard in Resources */,
 				BF4475FF293DC4B800AB86D9 /* iOSNCEAssets.xcassets in Resources */,
+				BF3288EC2940CCA400AD9DD1 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
