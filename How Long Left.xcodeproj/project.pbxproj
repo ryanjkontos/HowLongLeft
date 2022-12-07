@@ -100,6 +100,7 @@
 		BF3288E72940C12F00AD9DD1 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
 		BF3288E92940C13200AD9DD1 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
 		BF3288EC2940CCA400AD9DD1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4475E5293DAA1800AB86D9 /* MainInterface.storyboard */; };
+		BF3288EE2940E58500AD9DD1 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = BF3288ED2940E58500AD9DD1 /* OneSignal */; };
 		BF32B518249875E200B8F339 /* ProPurchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B516249875E200B8F339 /* ProPurchase+CoreDataClass.swift */; };
 		BF32B519249875E200B8F339 /* ProPurchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B517249875E200B8F339 /* ProPurchase+CoreDataProperties.swift */; };
 		BF32B51D2498765200B8F339 /* HLLHiddenEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B51A2498765100B8F339 /* HLLHiddenEvent+CoreDataProperties.swift */; };
@@ -1799,6 +1800,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3288EE2940E58500AD9DD1 /* OneSignal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3745,6 +3747,7 @@
 			);
 			name = HowLongLeftiOSNotificationServiceExtension;
 			packageProductDependencies = (
+				BF3288ED2940E58500AD9DD1 /* OneSignal */,
 			);
 			productName = HowLongLeftiOSNotificationServiceExtension;
 			productReference = BF92D9D6293B66DE00076CBA /* HowLongLeftiOSNotificationServiceExtension.appex */;
@@ -5154,7 +5157,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "How Long Left watch App WatchKit Extension/How Long Left watch App WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_ASSET_PATHS = "\"How Long Left watch App WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
@@ -5190,7 +5193,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "How Long Left watch App WatchKit Extension/How Long Left watch App WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_ASSET_PATHS = "\"How Long Left watch App WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
@@ -5229,7 +5232,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "How Long Left watch App/How Long Left watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = How_Long_Left_watch_App_WatchKit_Extension;
@@ -5258,7 +5261,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "How Long Left watch App/How Long Left watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = How_Long_Left_watch_App_WatchKit_Extension;
@@ -5283,7 +5286,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = HowLongLeftiOSNotificationContentExtension/HowLongLeftiOSNotificationContentExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HowLongLeftiOSNotificationContentExtension/Info.plist;
@@ -5312,7 +5315,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = HowLongLeftiOSNotificationContentExtension/HowLongLeftiOSNotificationContentExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HowLongLeftiOSNotificationContentExtension/Info.plist;
@@ -5345,7 +5348,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOS How Long Left/iOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5384,7 +5387,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOS How Long Left/iOS How Long Left.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5545,7 +5548,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = HowLongLeftiOSNotificationServiceExtension/HowLongLeftiOSNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5576,7 +5579,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = HowLongLeftiOSNotificationServiceExtension/HowLongLeftiOSNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5655,7 +5658,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOSWidget Intents/iOSWidget Intents.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOSWidget Intents/Info.plist";
@@ -5684,7 +5687,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "iOSWidget Intents/iOSWidget Intents.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOSWidget Intents/Info.plist";
@@ -5715,7 +5718,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = iOSWidget/iOSWidgetExt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSWidget/Info.plist;
@@ -5746,7 +5749,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = iOSWidget/iOSWidgetExt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSWidget/Info.plist;
@@ -5913,7 +5916,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Mac WidgetKit/Mac_WidgetKit.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 176;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Mac WidgetKit/Info.plist";
@@ -5940,7 +5943,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Mac WidgetKit/Mac_WidgetKit.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 176;
+				CURRENT_PROJECT_VERSION = 244;
 				DEVELOPMENT_TEAM = 5AMFX8X5ZN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Mac WidgetKit/Info.plist";
@@ -6241,6 +6244,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF3288AD2940541400AD9DD1 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */;
 			productName = GoogleAPIClientForRESTCore;
+		};
+		BF3288ED2940E58500AD9DD1 /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF92D9CF293B668600076CBA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
 		};
 		BF4956A529323D350049E7B3 /* Communicator */ = {
 			isa = XCSwiftPackageProductDependency;
