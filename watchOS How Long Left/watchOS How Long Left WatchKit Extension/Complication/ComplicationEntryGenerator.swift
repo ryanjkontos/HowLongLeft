@@ -16,10 +16,10 @@ class ComplicationEntryGenerator {
         
         if let data = ComplicationProviderData(timelineEntry) {
             guard let template = generateComplicationTemplate(complication: complication, data: data) else { return nil }
-            return CLKComplicationTimelineEntry(date: timelineEntry.getAdjustedShowAt(), complicationTemplate: template)
+            return CLKComplicationTimelineEntry(date: timelineEntry.getAdjustedDate(), complicationTemplate: template)
         } else {
             guard let template = generateNoEventComplicationTemplate(complication: complication) else { return nil }
-            return CLKComplicationTimelineEntry(date: timelineEntry.getAdjustedShowAt(), complicationTemplate: template)
+            return CLKComplicationTimelineEntry(date: timelineEntry.getAdjustedDate(), complicationTemplate: template)
         }
         
     }
@@ -191,22 +191,19 @@ class ComplicationEntryGenerator {
             
         case .graphicRectangular:
             
-            let complicationType = ComplicationIdentifier.GraphicRectangular(rawValue: complication.identifier) ?? .progressBar
+            let complicationType = ComplicationIdentifier.GraphicRectangular(rawValue: complication.identifier) ?? .eventPlusInfo
             
             let secondRowProvider: CLKTextProvider = data.fullTimerProvider
             
-            var gaugeAllowed = true
-            if let underlying = data.underlyingTimelineEntry {
-                if underlying.showInfoIfAvaliable {
-                    gaugeAllowed = false
-                }
-            }
+            let gaugeAllowed = HLLDefaults.complication.progressBar
         
+            
             if complicationType == .largeCountdown {
                 
                 template = CLKComplicationTemplateGraphicRectangularLargeView(headerTextProvider: data.firstRowProvider, content: LargeCountdownComplicationView(provider: data.timerProvider))
                 
-            } else if let gaugeProvider = data.gaugeProvider, complicationType == .progressBar, gaugeAllowed {
+            } else if let gaugeProvider = data.gaugeProvider, complicationType == .eventPlusInfo, gaugeAllowed, (data.hideProgressBar == false) {
+                
                 template = CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: data.firstRowProvider, body1TextProvider: secondRowProvider, gaugeProvider: gaugeProvider)
             } else {
                 template = CLKComplicationTemplateGraphicRectangularStandardBody(headerTextProvider: data.firstRowProvider, body1TextProvider: secondRowProvider, body2TextProvider: data.infoTextProvider)

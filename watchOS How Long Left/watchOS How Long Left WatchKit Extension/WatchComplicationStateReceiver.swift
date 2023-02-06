@@ -17,7 +17,7 @@ class WatchComplicationStateReceiver: HLLWCDataObserver {
         HLLWCDataReceiver.shared.register(self, forKey: complicationActivatedKey)
     }
     
-    func handle(object: Any, for key: String) {
+    func handleWCData(object: Any, for key: String) {
         
         guard key == complicationActivatedKey else { return }
         guard let result = object as? Bool else { return }
@@ -30,12 +30,12 @@ class WatchComplicationStateReceiver: HLLWCDataObserver {
     
     func updateForCloud() {
         
-        if HLLDefaults.cloudDefaults.bool(forKey: complicationActivatedKey) == true {
+       /* if HLLDefaults.cloudDefaults.bool(forKey: complicationActivatedKey) == true {
             HLLDefaults.complication.complicationPurchased = true
             ComplicationStatusLogger.log("\(Date().formattedTime()): Enabled complication from cloud!")
-        }
-        
-        ComplicationController.updateComplications(forced: false)
+        } */
+         
+        //ComplicationController.updateComplications(forced: false)
     }
     
     

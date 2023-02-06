@@ -154,6 +154,8 @@ struct HLLTimelineConfiguration: Equatable, Hashable, Codable, Identifiable {
     
     var showCurrent = true
     
+    var alwaysShowPinned = true
+    
     var enabledCalendarIDs = Set<String>()
     
     var sortMode: TimelineSortMode = .chronological

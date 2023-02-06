@@ -41,7 +41,7 @@ struct WidgetsPreviewView: View {
             
             VStack {
            
-                UpcomingListView(events: upcomingEvents, showAt: Date())
+                UpcomingListView(events: upcomingEvents, Date: Date())
                     .disabled(true)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 22)
@@ -60,7 +60,7 @@ struct WidgetsPreviewView: View {
                 CountdownWidgetEventView(event: current, displayDate: Date(), barEnabled: true)
                 
                 
-                    UpcomingListView(events: upcomingEvents, showAt: Date())
+                    UpcomingListView(events: upcomingEvents, Date: Date())
            
              
         }

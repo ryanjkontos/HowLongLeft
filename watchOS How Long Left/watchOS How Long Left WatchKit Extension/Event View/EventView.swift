@@ -46,9 +46,13 @@ struct EventView: View {
                 
                 EventInfoView(event: event, presenting: passPresentingBinding)
                     .tag(0)
+                
+                
+                
                 EventTimerView(event: event)
                     .tag(1)
             }
+            
 
             
             .toolbar(content: {

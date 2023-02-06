@@ -39,7 +39,7 @@ struct Provider: IntentTimelineProvider {
     
     init() {
         
-        //HLLDataModel.shared = HLLDataModel()
+        HLLDataModel.shared = HLLDataModel()
         
         Task {
             await CalendarReader.shared.getCalendarAccess()
@@ -57,7 +57,7 @@ struct Provider: IntentTimelineProvider {
         #if os(iOS)
         
         WidgetUpdateHandler.shared = WidgetUpdateHandler()
-        ProStatusManager.shared = ProStatusManager()
+        //ProStatusManager.shared = ProStatusManager()
         
         #endif
         
@@ -150,7 +150,7 @@ struct Provider: IntentTimelineProvider {
 struct HLLWidgetTimelineEntry: TimelineEntry {
     
     var date: Date {
-        return underlyingEntry.showAt
+        return underlyingEntry.date
     }
     
     let configuration: Provider.Intent

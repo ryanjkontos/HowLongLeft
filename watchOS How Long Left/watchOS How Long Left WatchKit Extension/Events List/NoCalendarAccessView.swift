@@ -15,43 +15,47 @@ struct NoCalendarAccessView: View {
         
  
 
-            VStack(spacing: 10) {
+     
+            VStack(spacing: 15) {
 
-                    Spacer()
-                    
-                    VStack(spacing: 4) {
-                    
-                        Image(systemName: "calendar.badge.exclamationmark")
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.red, .secondary)
-                            .font(.system(size: 55, weight: .regular, design: .default))
-                            
-                        
-                 
-                
-                        Text("How Long Left does not have access to your calendar.")
-                                .multilineTextAlignment(.center)
-                        
-                    }
-                            
-                           
-                            NavigationLink(destination: { Text("You can resolve this by navigating to Privacy > Calendars in the Settings app on your Apple Watch or iPhone.") }, label: {
-                                
-                                Text("How To Resolve...")
-                                
-                            })
-                            .foregroundStyle(.blue)
-                            .buttonStyle(.plain)
-                        
-                        
-                        
                         Spacer()
-                    
                         
-            }
-            .navigationTitle("How Long Left")
-            .navigationBarTitleDisplayMode(.inline)
+                        VStack(spacing: 7) {
+                        
+                            Image(systemName: "calendar.badge.exclamationmark")
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(.red, .secondary)
+                                .font(.system(size: 52, weight: .regular, design: .default))
+                                
+                            
+                     
+                    
+                            Text("How Long Left does not have access to your calendar.")
+                                    .multilineTextAlignment(.center)
+                            
+                        }
+                                
+                               
+                                NavigationLink(destination: { Text("You can resolve this by navigating to Privacy > Calendars in the Settings app on your Apple Watch or iPhone.") }, label: {
+                                    
+                                    Text("How To Fix...")
+                                    
+                                })
+                                .foregroundStyle(.blue)
+                                .buttonStyle(.plain)
+                            
+                            
+                            
+                            Spacer()
+                        
+                            
+                }
+                .frame(maxWidth: .infinity)
+                .navigationTitle("How Long Left")
+                .navigationBarTitleDisplayMode(.inline)
             .edgesIgnoringSafeArea(.bottom)
+          
+        
             
             
       
@@ -76,5 +80,6 @@ struct NoCalendarAccessView: View {
 struct NoCalendarAccessView_Previews: PreviewProvider {
     static var previews: some View {
         NoCalendarAccessView()
+            .previewAllWatches()
     }
 }

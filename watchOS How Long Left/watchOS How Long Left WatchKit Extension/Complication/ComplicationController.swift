@@ -7,6 +7,7 @@
 //
 
 import ClockKit
+import WidgetKit
 
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
@@ -21,7 +22,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Complication Configuration
 
- 
     
     let enabledDescriptors = [
         
@@ -34,9 +34,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
         // Graphic Rectangular
         
-        CLKComplicationDescriptor(identifier: ComplicationIdentifier.GraphicRectangular.progressBar.rawValue, displayName: "Countdown + Progress Bar", supportedFamilies: [CLKComplicationFamily.graphicRectangular]),
-        
-        CLKComplicationDescriptor(identifier: ComplicationIdentifier.GraphicRectangular.eventLocation.rawValue, displayName: "Countdown + Info", supportedFamilies: [CLKComplicationFamily.graphicRectangular]),
+        CLKComplicationDescriptor(identifier: ComplicationIdentifier.GraphicRectangular.eventPlusInfo.rawValue, displayName: "Countdown + Info", supportedFamilies: [CLKComplicationFamily.graphicRectangular]),
         
         CLKComplicationDescriptor(identifier: ComplicationIdentifier.GraphicRectangular.largeCountdown.rawValue, displayName: "Large Countdown", supportedFamilies: [CLKComplicationFamily.graphicRectangular]),
         
@@ -85,6 +83,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     static func updateComplications(forced: Bool) {
         
+        
         let timeline = ComplicationController.timelineGen.generateHLLTimeline(fast: false, percentages: false, forState: .normal)
         
         var state: HLLTimelineGenerator.TimelineValidity
@@ -97,7 +96,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
        
         if state != .noUpdateNeeded {
             ComplicationController.timeline = timeline
-            HLLDefaults.complication.latestTimeline = timeline.getArchive()
+           
                 
             ComplicationController.updates += 1
             // print("Updating complication now: \(ComplicationController.updates)")
@@ -106,12 +105,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
             ComplicationLogger.log("Reloading Complication")
             CLKComplicationServer.sharedInstance().activeComplications?.forEach({ CLKComplicationServer.sharedInstance().reloadTimeline(for: $0) })
-            
-            
-            
+          
         }
-        
-            
       
     }
     
@@ -126,12 +121,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     override init() {
-        
-        // print("Init Complication Controller")
-
-        
         super.init()
-        
         
     }
     
@@ -152,6 +142,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         }
         
         var timelineEntries = ComplicationController.timeline.entriesAfterDate(date)
+        HLLDefaults.complication.latestTimeline = ComplicationController.timeline.getArchive()
         if let limit = limit {
             timelineEntries = Array(timelineEntries.prefix(limit))
         }
@@ -175,7 +166,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         
         if HLLDefaults.watch.complicationEnabled {
-            handler(ComplicationController.timeline.entries.last!.getAdjustedShowAt())
+            handler(ComplicationController.timeline.entries.last!.getAdjustedDate())
         } else {
             handler(Date().addDays(365))
         }
@@ -193,13 +184,17 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
         
+        print("Get current timeline entry")
+        
         handler(timelineEntries(complication: complication, date: Date()).first)
         
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
     
-        // print("First entry is at: \(ComplicationController.timeline.entries.first!.getAdjustedShowAt().formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
+        // print("First entry is at: \(ComplicationController.timeline.entries.first!.getAdjustedDate().formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
+        
+        print("\(Date()): Get current timeline entries after \(date)")
         
         handler(timelineEntries(complication: complication, date: date, limit: limit))
     }
@@ -216,3 +211,4 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         handler(template)
     }
 }
+

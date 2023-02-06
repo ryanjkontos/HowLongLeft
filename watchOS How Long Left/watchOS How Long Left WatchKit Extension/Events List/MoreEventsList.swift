@@ -42,11 +42,9 @@ struct MoreEventsList: View {
                                 
                             }, label: {
                                 
-                                if HLLDefaults.watch.upcomingMode == .withCountdown {
-                                    CountdownCard(event: event, date: context.date)
-                                } else {
-                                    EventCard(event: event, liveUpdates: true, date: context.date)
-                                }
+                              
+                                    EventCard(event: event, liveUpdates: true, date: context.date, referenceDate: .constant(Date()))
+                                
                                 
                                 
                             })

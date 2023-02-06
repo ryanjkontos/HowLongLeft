@@ -50,9 +50,11 @@ class EventTableViewController: UITableViewController {
     //    self.view.backgroundColor = HLLColors.backgroundColor
      //   self.tableView.backgroundColor = HLLColors.backgroundColor
         
+        
        // card = CountdownCellView()
         card.configure()
         card.configureForEvent(event: event)
+        card.updateGradient()
         menu = EventContextMenuGenerator.shared.getContextMenu(for: event, delegate: self)
         
         card.updateCountdownLabel()

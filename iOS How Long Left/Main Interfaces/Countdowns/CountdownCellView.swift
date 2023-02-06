@@ -18,6 +18,8 @@ class CountdownCellView: RepesentedEventView {
     
     var ac: AnyCancellable?
     
+    let background = UIView()
+    let progressOverlay = UIView()
   
     
     static let shadowOpacity: Float = 0.3
@@ -44,23 +46,10 @@ class CountdownCellView: RepesentedEventView {
     
     func updateGradient() {
         
-         let baseColor = event!.color as UIColor
-       
+        background.backgroundColor = event!.color.darker(by: 10)?.withAlphaComponent(0.7)
+        
       
-        
-        guard let gradientLayer = self.layer as? CAGradientLayer else { return }
-           
-            //gradientLayer.opacity = 0.9
-        
-        
-        gradientLayer.colors = [baseColor.cgColor,
-                                baseColor.lighter(by: 0.5)!.cgColor,
-                           baseColor.lighter(by: 0.25)!.cgColor,
-                           baseColor.darker(by: 0.25)!.cgColor,
-                           baseColor.darker(by: 0.5)!.cgColor]
 
-        // set the gradient locations
-        gradientLayer.locations = [0.0, 0.25, 0.5, 0.75, 1.0]
 
         
     }
@@ -70,6 +59,23 @@ class CountdownCellView: RepesentedEventView {
         super.configure()
         // print("Configuring current cell")
       
+        
+     
+        //background.alpha = 0.5
+        self.addSubview(background)
+        
+        background.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            background.heightAnchor.constraint(equalTo: heightAnchor),
+            background.widthAnchor.constraint(equalTo: widthAnchor),
+            background.centerXAnchor.constraint(equalTo: centerXAnchor),
+            background.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            
+        ])
+        
         self.alpha = 1
         self.layer.backgroundColor = UIColor.clear.cgColor
         
@@ -83,7 +89,7 @@ class CountdownCellView: RepesentedEventView {
         let timerLabel = timerLabel!
         
         layer.cornerCurve = .continuous
-        layer.cornerRadius = 30
+        layer.cornerRadius = 25
         layer.masksToBounds = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +103,7 @@ class CountdownCellView: RepesentedEventView {
         titleLabel.layer.shadowColor = UIColor.black.cgColor
         titleLabel.layer.shouldRasterize = true
         
-        addSubview(titleLabel)
+       // addSubview(titleLabel)
         
         statusLabel.alpha = CountdownCellView.labelAlpha
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -111,7 +117,7 @@ class CountdownCellView: RepesentedEventView {
         statusLabel.layer.shouldRasterize = true
         
         
-        addSubview(statusLabel)
+       // addSubview(statusLabel)
         
         timerLabel.alpha = CountdownCellView.labelAlpha
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -124,20 +130,23 @@ class CountdownCellView: RepesentedEventView {
         timerLabel.layer.shadowColor = UIColor.black.cgColor
         timerLabel.layer.shouldRasterize = true
         
+        let stack = UIStackView(arrangedSubviews: [titleLabel, statusLabel])
+        stack.axis = .vertical
         
-        addSubview(timerLabel)
-        let inset = CGFloat(25)
+        stack.spacing = 6
+        background.addSubview(stack)
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        background.addSubview(timerLabel)
+        let inset = CGFloat(20)
         let verticalInset = CGFloat(12)
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalInset),
-            statusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            statusLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 1),
-            timerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            timerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            timerLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalInset),
+            stack.heightAnchor.constraint(equalToConstant: 50),
+            stack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            timerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            timerLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
         
     }

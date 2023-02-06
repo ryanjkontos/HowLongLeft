@@ -8,40 +8,32 @@
 
 import Foundation
 import SwiftUI
+import EventKit
 
 class EventsListDataSource: ObservableObject, EventSourceUpdateObserver, SelectedEventObserver {
     
     var timer: Timer!
-    
     var updates = true
-    
     var neverUpdated = false
-    
     var previous = [TitledEventGroup]()
-    
     var currentIsOverLimit = false
-     var upcomingIsOverLimit = false
+    var upcomingIsOverLimit = false
     
-    init() {
+    var filterCalendar: EKCalendar?
+    
+    init(filterCalendar: EKCalendar? = nil) {
         
+        self.filterCalendar = filterCalendar
         checkForChanges()
-        
         timer = Timer(timeInterval: 1, target: self, selector: #selector(checkForChanges), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .common)
-        
-        
-        
         HLLEventSource.shared.addeventsObserver(self)
         SelectedEventManager.shared.observers.append(self)
-        
         HLLEventSource.shared.updateEvents()
-        
         
     }
     
-    
     @objc func checkForChanges() {
-        
         
         DispatchQueue.global(qos: .background).async {
             
@@ -67,16 +59,11 @@ class EventsListDataSource: ObservableObject, EventSourceUpdateObserver, Selecte
     
     func eventsUpdated() {
         
-        if !updates {
-            return
-        }
+        if !updates { return }
         
         DispatchQueue.main.async {
-        
-           
             withAnimation {
-            self.objectWillChange.send()
-                
+                self.objectWillChange.send()
             }
         }
         
@@ -98,12 +85,16 @@ class EventsListDataSource: ObservableObject, EventSourceUpdateObserver, Selecte
         var returnArray = [TitledEventGroup]()
         var all = HLLEventSource.shared.events.filter({$0.completionStatus(at: date) != .done})
         
-        let upcomingData =  HLLEventSource.shared.getAllEventsGroupedByDate(nil, maxCount: HLLDefaults.watch.upcomingLimit, upcomingOnly: true, at: date, excludePinned: true, groupMode: .startDate)
+        if let id = filterCalendar?.calendarIdentifier {
+            all = all.filter({ $0.calendarID == id })
+        }
+        
+        let upcomingData =  HLLEventSource.shared.getAllEventsGroupedByDate(nil, maxCount: HLLDefaults.watch.upcomingLimit, upcomingOnly: true, at: date, excludePinned: true, groupMode: .startDate, focusedCalendarID: filterCalendar?.calendarIdentifier)
        
         var upcoming = [TitledEventGroup]()
         var current = [HLLEvent]()
         
-        if !(HLLDefaults.watch.upcomingMode == .off) {
+        if HLLDefaults.watch.showUpcoming {
            
             for dateOf in upcomingData {
                 upcoming.append(TitledEventGroup(title: "Upcoming \(dateOf.date.userFriendlyRelativeString(at: date))", events: dateOf.events))
@@ -132,13 +123,14 @@ class EventsListDataSource: ObservableObject, EventSourceUpdateObserver, Selecte
         
         let pinned = HLLEventSource.shared.getPinnedEventsFromevents()
         current.removeAll(where: { pinned.contains($0) })
-        //upcoming.removeAll(where: { pinned.contains($0) })
         
-        //pinned.removeAll(where: {$0.completionStatus(at: date) == .done})
+        var orderMode = HLLDefaults.watch.listOrderMode
         
-       // let upcomingText = upcomingData.0.userFriendlyRelativeString(at: date)
+        if HLLDefaults.watch.showCurrent == false || HLLDefaults.watch.showUpcoming == false {
+            orderMode = .currentFirst
+        }
         
-        switch HLLDefaults.watch.listOrderMode {
+        switch orderMode {
             
         case .chronological:
             

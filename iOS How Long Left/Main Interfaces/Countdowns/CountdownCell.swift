@@ -66,7 +66,7 @@ extension CountdownCell {
             sub.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             sub.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             sub.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            sub.heightAnchor.constraint(equalToConstant: 123),
+            sub.heightAnchor.constraint(equalToConstant: 90),
             sub.widthAnchor.constraint(equalTo: contentView.subviews.first!.widthAnchor)
         
         ])
@@ -112,7 +112,7 @@ extension CountdownCell {
         
         let parameters = UIPreviewParameters()
              parameters.backgroundColor = UIColor.clear
-             parameters.visiblePath = UIBezierPath(roundedRect: sub.bounds , cornerRadius: 30)
+             parameters.visiblePath = UIBezierPath(roundedRect: sub.bounds , cornerRadius: 25)
              var targetedPreview: UITargetedPreview? = nil
              targetedPreview = UITargetedPreview(view: sub, parameters: parameters)
 

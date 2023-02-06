@@ -23,10 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize and configure objects and services
         
     
+        initializeHWEventFinder()
         
         initializeEventSource()
         initializeDataModel()
-        initializeHWEventFinder()
+        
         initializeOneSignal(with: launchOptions)
         registerBackgroundTask()
         
@@ -50,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initializeHWEventFinder() {
-        hwFinder = HWEventFinder(onEventFound: { value in
+        HWEventFinder.shared = HWEventFinder(onEventFound: { value in
             print("HWEventFinder: \(value)")
             OneSignal.disablePush(!value)
             if value {

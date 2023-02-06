@@ -22,37 +22,24 @@ struct CountdownSettingsView: View {
         
         Form {
         
-            Section(content: {
-                
-                Toggle(isOn: $settingsObject.largeHeader, label: {
-                    Text("Show First Event Full Screen")
-                })
-                
-                Toggle(isOn: $settingsObject.largeHeaderLocation, label: { Text("Show Locations") })
-                Toggle(isOn: $settingsObject.percentages, label: { Text("Show Percentage Done") })
-                Toggle(isOn: $settingsObject.showSeconds.animation(), label: { Text("Show Seconds") })
-
-            }, header: {
-                Text("Event Cards")
-            })
-            
-   
+         
             
             Section(content: {
+                
+                
                 
                 Toggle(isOn: $settingsObject.showCurrent.animation(), label: {
-                    Text("Show In Progress Events")
+                    Text("Show In-Progress Events")
                 })
+            
+        
                 
-                Picker(selection: $settingsObject.upcomingMode.animation(), content: {
-                    
-                    ForEach(WatchUpcomingEventsDisplayMode.allCases, id: \.self) { option in
-                        Text(option.displayName)
-                    }
-                    
-                }, label: { Text("Show Upcoming Events") })
+                Toggle(isOn: $settingsObject.upcomingMode.animation(), label: {
+                    Text("Show Upcoming Events")
+                })
+              
                 
-                if settingsObject.showCurrent == true && settingsObject.upcomingMode != .off {
+                if settingsObject.showCurrent == true && settingsObject.upcomingMode == true{
                   
                     Picker(selection: $settingsObject.listOrderMode, content: {
                         
@@ -60,32 +47,62 @@ struct CountdownSettingsView: View {
                             Text(option.displayName)
                         }
                         
-                    }, label: { Text("Event Order") })
+                    }, label: { Text("Sort Events...") })
                     
                     
                 }
                 
-                if (settingsObject.listOrderMode == .chronological) || (settingsObject.upcomingMode != .off) {
-                    
-                    Toggle(isOn: $settingsObject.groupEvents.animation(), label: {
-                        Text("Group Events By Date")
-                    })
-                    
-                }
+         
                 
                 
             }, header: {
-                Text("Event List")
+                Text("Main Event List")
             }, footer: {
-                if settingsObject.showCurrent == false && settingsObject.upcomingMode == .off {
-                    Text("⚠️ WARNING: You have disabled both in-progress and upcoming events, meaning no events will appear.")
-                        .foregroundColor(.yellow)
-                }
+
+                    Text("Pinned events will always appear at the top of the main event list.")
+                        
+                
                 
             })
             
-            if settingsObject.showCurrent == true || settingsObject.upcomingMode != .off {
+             
+            
+            
+            Section(content: {
+        
                 
+                Toggle(isOn: $settingsObject.largeHeaderLocation, label: { Text("Show Locations") })
+                Toggle(isOn: $settingsObject.percentages, label: { Text("Show Percentage Done") })
+               
+
+            }, header: {
+                Text("Event Cards")
+            })
+            
+            Section(content: {
+                
+                
+                Toggle(isOn: $settingsObject.largeCurrentCard, label: {
+                    Text("In-Progress Events")
+                })
+                
+                Toggle(isOn: $settingsObject.largeUpcomingCard, label: {
+                    Text("Upcoming Events")
+                })
+            
+
+            }, header: {
+                Text("Show Countdown Card For:")
+            }, footer: {
+                Text("Enable to use a taller event card that always displays a countdown. Otherwise, a more compact card that displays a smaller coutndown as part of a rotation between pieces of informational text will be used.")
+            })
+            
+   
+            
+            
+            if settingsObject.showCurrent == true || settingsObject.upcomingMode {
+                
+               
                 Section("Event Limits") {
                     
                     if settingsObject.showCurrent {
@@ -112,7 +129,7 @@ struct CountdownSettingsView: View {
                         
                     }
                     
-                    if settingsObject.upcomingMode != .off {
+                    if settingsObject.upcomingMode {
                         
                         NavigationLink(destination: { EventLimitEditor(type: .upcoming) }, label: {
                             
@@ -244,11 +261,35 @@ class WatchCountdownSettingsObject: ObservableObject {
         
     }
     
-    var upcomingMode = HLLDefaults.watch.upcomingMode {
+    var upcomingMode = HLLDefaults.watch.showUpcoming {
         
         willSet {
             
-            HLLDefaults.watch.upcomingMode = newValue
+            HLLDefaults.watch.showUpcoming = newValue
+            objectWillChange.send()
+            
+        }
+        
+    }
+    
+    
+    var largeCurrentCard = HLLDefaults.watch.largeCurrentCard {
+        
+        willSet {
+            
+            HLLDefaults.watch.largeCurrentCard = newValue
+            objectWillChange.send()
+            
+        }
+        
+    }
+    
+    
+    var largeUpcomingCard = HLLDefaults.watch.largeUpcomingCard {
+        
+        willSet {
+            
+            HLLDefaults.watch.largeUpcomingCard = newValue
             objectWillChange.send()
             
         }

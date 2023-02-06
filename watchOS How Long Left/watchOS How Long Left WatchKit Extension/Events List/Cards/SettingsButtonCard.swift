@@ -11,8 +11,6 @@ import SwiftUI
 struct SettingsButtonCard: View {
     var body: some View {
         
-        
-            
             HStack {
                 Spacer()
                 Text("Settings")
@@ -26,6 +24,11 @@ struct SettingsButtonCard: View {
 
 struct SettingsButtonCard_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsButtonCard()
+        List {
+            Button(action: {  }) {
+                SettingsButtonCard()
+            }
+            .listItemTint(.orange)
+        }
     }
 }

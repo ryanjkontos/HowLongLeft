@@ -24,7 +24,7 @@ struct UpcomingWidgetParentView: View {
                 CountdownWidgetNoEventView().padding(.horizontal, 20)
                     
             } else {
-                UpcomingListView(events: entry.underlyingEntry.nextEvents, showAt: entry.date)
+                UpcomingListView(events: entry.underlyingEntry.nextEvents, Date: entry.date)
                     
             }
                     

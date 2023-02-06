@@ -31,10 +31,10 @@ struct ComplicationDisabledHeader: View {
                     
             
                     Text("Watch Complication")
-                    .font(.system(size: 17))
+                    .font(.system(size: 17, weight: .semibold))
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .fontWeight(.semibold)
+                   
                     
                 Text("How Long Left, on your Watch face. Avaliable for purchase in the iPhone app.")
                     .font(.system(size: 16))

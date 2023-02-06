@@ -21,6 +21,7 @@ struct EventInfoView: View {
     @Binding var presenting: Bool
     
 
+    @State private var isVisible: Bool = true
     
     init(event inputEvent: HLLEvent, presenting: Binding<Bool>) {
        
@@ -137,6 +138,9 @@ struct EventInfoView: View {
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
                         .foregroundColor(Color(dataObject.event.color))
                         .frame(width: 5)
+                        .opacity(isVisible ? 1 : 0.3)
+                                    .animation(Animation.linear(duration: 1).repeatForever(autoreverses: true))
+                                    .onAppear { self.isVisible.toggle() }
                     
                     VStack(alignment: .leading, spacing: 3) {
                         

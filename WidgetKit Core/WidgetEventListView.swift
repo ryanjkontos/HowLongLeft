@@ -18,15 +18,15 @@ struct WidgetEventListView: View {
         
         LazyVGrid(columns: [cols], spacing: 5) {
             
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
-            EventListItem(event: HLLEvent.previewUpcomingEvent(), showAt: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
+            EventListItem(event: HLLEvent.previewUpcomingEvent(), Date: Date())
             
         }
         .padding(.horizontal, 10)

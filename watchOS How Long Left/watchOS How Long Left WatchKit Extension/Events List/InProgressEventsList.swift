@@ -36,7 +36,7 @@ struct InProgressEventsList: View {
                         EventView(event: event, open: .constant(nil), showToolbar: false)
                         
                     }, label: {
-                        CountdownCard(event: event, date: context.date)
+                        CountdownCard(event: event, date: context.date, referenceDate: .constant(Date()))
                     })
                     
                     .listItemTint(Color(uiColor: event.color).opacity(0.25))

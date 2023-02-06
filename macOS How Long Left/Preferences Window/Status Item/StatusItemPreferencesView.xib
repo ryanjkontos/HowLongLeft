@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StatusItemPreferenceViewController" customModule="How_Long_Left_Mac_macOS" customModuleProvider="target">
+            <connections>
+                <outlet property="configButton" destination="1Lh-li-E44" id="yVs-PC-B6H"/>
+                <outlet property="showEndTimeCheckbox" destination="Ty2-sc-IRE" id="zIM-Nd-kZ8"/>
+                <outlet property="showPercentageCheckbox" destination="fFO-cE-VQl" id="cBw-8I-aol"/>
+                <outlet property="showTitleCheckbox" destination="MIq-Hd-Xr9" id="vTL-uo-5Ib"/>
+                <outlet property="view" destination="0CW-dO-GEY" id="7Fu-R4-NRj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="GeneralPreferenceView" id="0CW-dO-GEY" customClass="SelectView" customModule="How_Long_Left_Mac_macOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="554" height="352"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usu-m2-awY">
+                    <rect key="frame" x="18" y="169" width="4" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" id="OWg-fg-Zuh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shi-QO-4ed">
+                    <rect key="frame" x="46" y="219" width="164" height="78"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MIq-Hd-Xr9">
+                            <rect key="frame" x="-2" y="61" width="140" height="18"/>
+                            <buttonCell key="cell" type="check" title="Show event names" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nd0-aK-xzF">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-cE-VQl">
+                            <rect key="frame" x="-2" y="30" width="166" height="18"/>
+                            <buttonCell key="cell" type="check" title="Show percentage done" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="AMi-T5-KMX">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ty2-sc-IRE">
+                            <rect key="frame" x="-2" y="-1" width="148" height="18"/>
+                            <buttonCell key="cell" type="check" title="Show start/end time" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BOV-i7-SUW">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYk-M1-lKe">
+                    <rect key="frame" x="28" y="314" width="63" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="General:" id="6Pg-fO-uqY">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-li-E44">
+                    <rect key="frame" x="44" y="135" width="267" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Current &amp; Upcoming (Prefer Soonest)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jF5-7K-5jy" id="oNE-fa-dD4">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="PkG-hQ-LKx">
+                            <items>
+                                <menuItem isSeparatorItem="YES" id="RbD-k8-RJ6"/>
+                                <menuItem title="Current &amp; Upcoming (Prefer Soonest)" state="on" id="jF5-7K-5jy"/>
+                                <menuItem title="Current &amp; Upcoming (Prefer Current)" id="B8g-Mr-uDn"/>
+                                <menuItem isSeparatorItem="YES" id="I9Y-ZV-F0a"/>
+                                <menuItem title="Only Current Events" id="HWW-zF-QHw"/>
+                                <menuItem title="Only Upcoming Events" id="g6W-Vy-Cgm"/>
+                                <menuItem isSeparatorItem="YES" id="7WO-v4-5XR"/>
+                                <menuItem title="Only Selected Events" id="whD-uI-Hgi">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="eventConfigClicked:" target="-2" id="HLa-a0-atb"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3K-vi-6T6">
+                    <rect key="frame" x="30" y="175" width="252" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Main Status Item Event Display Mode:" id="LW3-Ov-TQh">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdy-nA-5kc">
+                    <rect key="frame" x="45" y="95" width="481" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" id="dmn-Ah-61X">
+                        <font key="font" metaFont="cellTitle"/>
+                        <string key="title">Choose how How Long Left decides which event to show in the main status item. Events that have been selected in the app's menu will always be displayed.</string>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgY-Xk-bjQ">
+                    <rect key="frame" x="45" y="60" width="289" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Only show events from specific calendars..." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Roq-1B-uyA">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GvY-MH-UqQ">
+                    <rect key="frame" x="58" y="21" width="94" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Manage..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNX-9g-Ffw">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="85" y="175"/>
+        </customView>
+    </objects>
+</document>

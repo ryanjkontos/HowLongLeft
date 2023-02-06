@@ -61,7 +61,7 @@ class ToggleCalendarsTableViewController: HLLAppearenceTableViewController {
             let cal = cals[indexPath.row]
             cell.label.text = cal.calendar.title
             cell.indicator.backgroundColor = cal.calendar.getColor()
-            cell.stateFetcher = { return cal.calendar.isToggled }
+            cell.stateFetcher = { return cal.enabled }
             cell.toggleAction = {
                 cal.enabled = $0
                 self.updateToggleAllButton()

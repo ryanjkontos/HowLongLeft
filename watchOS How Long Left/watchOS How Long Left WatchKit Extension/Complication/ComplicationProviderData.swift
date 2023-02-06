@@ -27,6 +27,8 @@ struct ComplicationProviderData {
     
     var fullColorTint: UIColor?
     
+    var hideProgressBar = false
+    
     internal init(eventTitleText: String, firstRowText: String, timerText: String, countdownTimeText: String, gaugeFillFraction: Float?, countdownPrefixText: String?, tint: UIColor, oneLineText: String) {
         
         self.eventTitleProvider = CLKSimpleTextProvider(text: eventTitleText)
@@ -56,13 +58,15 @@ struct ComplicationProviderData {
         
         if let event = data.event {
             
+            let isInStartPeriod = data.date.timeIntervalSince(event.startDate) < (5*60)
+            
             let tint = HLLDefaults.complication.tintComplication ? event.color : .orange
             
             if HLLDefaults.complication.tintComplication {
                 fullColorTint = tint
             }
             
-            let countdownDate = event.countdownDate(at: data.getAdjustedShowAt())
+            let countdownDate = event.countdownDate(at: data.getAdjustedDate())
         
             
             var units: NSCalendar.Unit
@@ -85,7 +89,7 @@ struct ComplicationProviderData {
             firstRowProvider = CLKSimpleTextProvider(text: "\(event.title)")
             
             
-            switch event.completionStatus(at: data.getAdjustedShowAt()) {
+            switch event.completionStatus(at: data.getAdjustedDate()) {
                 case .upcoming:
                     
                     fullTimerProvider = CLKTextProvider(byJoining: ["in".simpleTextProvider(), timerProvider], separator: " ")
@@ -104,12 +108,42 @@ struct ComplicationProviderData {
             eventTitleProvider.tintColor = tint
             firstRowProvider.tintColor = tint
            
-            if let location = event.location {
-                infoTextProvider = location.simpleTextProvider()
+            let locationTextProvider = (event.location ?? "No location").simpleTextProvider()
+            let countdownDateProvider = CLKTimeTextProvider(date: countdownDate)
+            
+            let nextTextProvider: CLKTextProvider
+            if let next = data.nextEvent {
+                nextTextProvider = CLKTextProvider(byJoining: ["Next: ".simpleTextProvider(), next.title.simpleTextProvider()], separator: nil)
             } else {
-                infoTextProvider = CLKTimeTextProvider(date: countdownDate)
+                nextTextProvider = "Nothing Next".simpleTextProvider()
             }
             
+            if isInStartPeriod, let altMode = HLLDefaults.complication.alternateThirdRowMode {
+                
+                hideProgressBar = true
+                
+                switch altMode {
+                case .nextEvent:
+                    infoTextProvider = nextTextProvider
+                case .location:
+                    infoTextProvider = locationTextProvider
+                case .time:
+                    infoTextProvider = countdownDateProvider
+                }
+                
+            } else {
+                switch HLLDefaults.complication.mainThirdRowMode {
+                    
+                case .nextEvent:
+                    infoTextProvider = nextTextProvider
+                case .location:
+                    infoTextProvider = locationTextProvider
+                case .time:
+                    infoTextProvider = countdownDateProvider
+                }
+            }
+
+     
             var array: [CLKTextProvider] = [eventTitleProvider, ": ".simpleTextProvider()]
             array.append(fullTimerProvider)
             titleAndCountdownProvider = CLKTextProvider(byJoining: array, separator: nil)

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Complication Widget ExtensionExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>Complication watchOS How Long Left.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>DayRater.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -56,11 +66,6 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>HLLAppKitBundle.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
-		</dict>
 		<key>HLLCore.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -70,16 +75,6 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
-		</dict>
-		<key>How Long Left (iOS).xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>How Long Left (macOS).xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>How Long Left Helper.xcscheme_^#shared#^_</key>
 		<dict>
@@ -126,30 +121,10 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>How Long Left iOS App.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
 		<key>How Long Left macOS Today Widget.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>15</integer>
-		</dict>
-		<key>How Long Left watch App (Complication).xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
-		</dict>
-		<key>How Long Left watch App (Notification).xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
-		</dict>
-		<key>How Long Left watch App.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>HowLongLeftHelper.xcscheme_^#shared#^_</key>
 		<dict>
@@ -159,17 +134,17 @@
 		<key>HowLongLeftMacWidget.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 		<key>HowLongLeftiOSNotificationContentExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>6</integer>
 		</dict>
 		<key>HowLongLeftiOSNotificationServiceExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Mac Widget Intents Extension.xcscheme_^#shared#^_</key>
 		<dict>
@@ -201,11 +176,6 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
-		<key>OG iOS App.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
 		<key>PageNav.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -234,7 +204,7 @@
 		<key>iOS How Long Left.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
 		</dict>
 		<key>iOS WIdget.xcscheme_^#shared#^_</key>
 		<dict>
@@ -259,17 +229,27 @@
 		<key>iOSWidget Intents.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>7</integer>
 		</dict>
 		<key>iOSWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
+		</dict>
+		<key>macOS How Long Left.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 		<key>t.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>24</integer>
+		</dict>
+		<key>watchOS How Long Left.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -284,12 +264,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BF2527EB298CF2F40078FF3F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BF3652B728A29B0300668462</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BF3B12C028904B4F00154493</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF4475DE293DAA1700AB86D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -339,12 +329,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BF92D9D5293B66DE00076CBA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BFA8AD7A28E0464E007B0018</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BFB3BD422526262B0022E882</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFB51CFC28A01D8E00808C8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -375,6 +375,11 @@
 			<true/>
 		</dict>
 		<key>BFEA0CE521788D0100FAF2F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFF29551298D1C7C00BF69FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

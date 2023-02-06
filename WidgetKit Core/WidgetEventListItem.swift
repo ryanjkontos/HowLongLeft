@@ -26,7 +26,7 @@ struct EventListItem: View {
     }
     
     var event: EventUIObject
-    var showAt: Date
+    var Date: Date
     
 
     
@@ -59,7 +59,7 @@ struct EventListItem: View {
                         Text("Starts: ") + Text(event.startDate, style: .relative)
                         
                     }
-               // Text("\(event.startDate.userFriendlyRelativeString(at: showAt)), \(event.startDate.formattedTime())")
+               // Text("\(event.startDate.userFriendlyRelativeString(at: Date)), \(event.startDate.formattedTime())")
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(.secondary)
                     .lineLimit(1)

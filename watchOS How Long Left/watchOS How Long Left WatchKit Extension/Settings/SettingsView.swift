@@ -37,8 +37,8 @@ struct SettingsView: View {
                 
             })
             
-            NavigationLink(destination: { EnabledCalendarsView()
-                    .environmentObject(AppEnabledCalendarsManager.shared)
+            NavigationLink(destination: { EnabledCalendarsView(calendarsManager: AppEnabledCalendarsManager.shared, contextWord: "app")
+                    
             }, label: {
                 
                 

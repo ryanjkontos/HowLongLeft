@@ -27,7 +27,7 @@ struct ComboWidgetView: View {
                     CountdownWidgetParentView(entry: entry, progressBarEnabled: true)
                     
                     
-                        UpcomingListView(events: entry.underlyingEntry.nextEvents, showAt: entry.date)
+                        UpcomingListView(events: entry.underlyingEntry.nextEvents, Date: entry.date)
                
                  
             }

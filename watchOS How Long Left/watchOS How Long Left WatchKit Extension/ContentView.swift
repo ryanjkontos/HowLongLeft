@@ -11,8 +11,6 @@ import ClockKit
 
 struct ContentView: View {
     
-  
-    
     var body: some View {
 
             
@@ -20,6 +18,7 @@ struct ContentView: View {
                 NoCalendarAccessView()
             } else {
                 EventsListView()
+            
                     
                     
             }

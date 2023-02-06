@@ -10,6 +10,7 @@ import Foundation
 import WatchKit
 import WatchConnectivity
 import UserNotifications
+import WidgetKit
 
 class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
       
@@ -44,8 +45,8 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.setNotificationCategories([HWCategory])
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ubiquitousKeyValueStoreDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: HLLDefaults.cloudDefaults)
-        HLLDefaults.cloudDefaults.synchronize()
+      //  NotificationCenter.default.addObserver(self, selector: #selector(ubiquitousKeyValueStoreDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: HLLDefaults.cloudDefaults)
+      //  HLLDefaults.cloudDefaults.synchronize()
         
         stateReceiver.updateForCloud()
         
@@ -55,13 +56,13 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
             
         })
         
-       // ComplicationController.updateComplications(forced: true)
+        ComplicationController.updateComplications(forced: true)
         
     }
     
     @objc func ubiquitousKeyValueStoreDidChange() {
         
-        HLLDefaults.cloudDefaults.synchronize()
+       // HLLDefaults.cloudDefaults.synchronize()
         stateReceiver.updateForCloud()
         
     }
@@ -98,7 +99,7 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         if let _ = userInfo?["CLKLaunchedComplicationIdentifierKey"] {
             // print("Launched from complication")
             
-            ExtensionDelegate.complicationLaunchDelegate?.launchedFromComplication()
+            
             HLLEventSource.shared.shiftLoader.load()
         }
         

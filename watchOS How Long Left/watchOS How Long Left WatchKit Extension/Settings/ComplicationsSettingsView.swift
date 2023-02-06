@@ -14,16 +14,24 @@ struct ComplicationsSettingsView: View {
     
     @State var sortMode: TimelineSortMode = .chronological
     
+    @State var enabledCount = CalendarDefaultsModifier.privateComplicationShared.enabledCalendars.count
+    
     var body: some View {
         
         Form {
             
-            Section {
+            if HLLDefaults.complication.complicationPurchased {
                 
-                ComplicationDisabledHeader()
+                Section {
+                    
+                    
+                    
+                    ComplicationDisabledHeader()
                     //.padding(.top, 20)
                     //.padding(.bottom, 40)
-                    .listItemTint(.clear)
+                        .listItemTint(.clear)
+                    
+                }
                 
             }
             
@@ -37,11 +45,13 @@ struct ComplicationsSettingsView: View {
                     Text("You have not purchased the complication, so the options in this menu are disabled.")
                     
                 })
-                .disabled(true)
+               // .disabled(true)
                 
                 if model.complicationEnabled {
                     
                     Section("Events") {
+                        
+                        Toggle("Always Show Pinned Event", isOn: $model.config.alwaysShowPinned.animation())
                         
                         Toggle("Show In Progress Events", isOn: $model.config.showCurrent.animation())
                         Toggle("Show Upcoming Events", isOn:  $model.config.showUpcoming.animation())
@@ -50,7 +60,7 @@ struct ComplicationsSettingsView: View {
                         
                         
                     }
-                    .disabled(true)
+                  //  .disabled(true)
                     
                     if model.config.showCurrent, model.config.showUpcoming {
                         
@@ -66,23 +76,55 @@ struct ComplicationsSettingsView: View {
                         }
                         
                     }
-                    
-                    Section("Appearance") {
-                        
-                        Toggle(isOn: $model.showUnits, label: { Text("Show Time Units") })
-                        Toggle(isOn: $model.showSeconds, label: { Text("Show Seconds") })
-                        
-                        Toggle(isOn: $model.tint, label: { Text("Tint Complication") })
-                        
-                    }
+               
+              
                     
                 }
                 
                 
             }
-            .disabled(true)
+           // .disabled(true)
+           
+            Section("Calendars", content: {
+                
+                Toggle("Mirror App Calendars", isOn: $model.mirrorCalendars.animation())
+                
+                if !model.mirrorCalendars {
+                    
+                    NavigationLink(destination: { EnabledCalendarsView(calendarsManager: ComplicationEnabledCalendarsManager.shared, contextWord: "complication")
+                            .environmentObject(ComplicationEnabledCalendarsManager.shared)
+                    }, label: {
+                  
+                        VStack(alignment: .leading) {
+                            
+                            Text("Choose Calendars...")
+                            Text("\(enabledCount) Enabled")
+                                
+                                .foregroundColor(.secondary)
+                        }
+                       
+                        
+                    })
+                    .onAppear() {
+                        enabledCount = CalendarDefaultsModifier.privateComplicationShared.enabledCalendars.count
+                    }
+                    
+                }
+                
+            })
+            
+            Section(content: {
+                NavigationLink(destination: {
+                    ComplicationInfoTextSettingsView()
+                }, label: {
+                    Text("Large Rectangular Complication Settings")
+                })
+            }, footer: {
+                Text("Options specific to the Large Rectangular complication avaliable on some watch faces, such as the Modular face.")
+            })
             
         }
+        
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Complication")
@@ -92,7 +134,9 @@ struct ComplicationsSettingsView: View {
 
 struct ComplicationsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ComplicationsSettingsView()
+        NavigationView {
+            ComplicationsSettingsView()
+        }
     }
 }
 
@@ -151,6 +195,18 @@ class ComplicationSettingsObject: ObservableObject {
         willSet {
             
             HLLDefaults.complication.unitLabels = newValue
+            objectWillChange.send()
+            ComplicationController.updateComplications(forced: true)
+                
+        }
+        
+    }
+    
+    var mirrorCalendars: Bool = HLLDefaults.complication.mirrorCalendars {
+        
+        willSet {
+            
+            HLLDefaults.complication.mirrorCalendars = newValue
             objectWillChange.send()
             ComplicationController.updateComplications(forced: true)
                 

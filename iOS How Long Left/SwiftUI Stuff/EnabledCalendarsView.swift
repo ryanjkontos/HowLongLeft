@@ -10,7 +10,9 @@ import SwiftUI
 
 struct EnabledCalendarsView: View {
     
-    @ObservedObject var calendarsManager = AppEnabledCalendarsManager.shared
+    @ObservedObject var calendarsManager: EnabledCalendarsManager
+    
+    var contextWord: String
     
     var body: some View {
         
@@ -26,7 +28,7 @@ struct EnabledCalendarsView: View {
 
             #endif
             
-            Section(header: Text("Enabled Calendars"), footer: Text("Events from enabled calendars will appear in the app")) {
+            Section(header: Text("Enabled Calendars"), footer: Text("Events from enabled calendars will appear in the \(contextWord)")) {
             
             ForEach($calendarsManager.allCalendars) { $calendar in
                 
@@ -128,7 +130,8 @@ struct EnabledCalendarsView: View {
 
 struct EnabledCalendarsView_Previews: PreviewProvider {
     static var previews: some View {
-        EnabledCalendarsView()
+        EnabledCalendarsView(calendarsManager: AppEnabledCalendarsManager.shared, contextWord: "app")
+
     }
 }
 

@@ -42,8 +42,7 @@ struct ComplicationIdentifier {
     
     enum GraphicRectangular: String {
         case largeCountdown = "HLLComplication.graphicRectangular.largeCountdown"
-        case progressBar = "HLLComplication.graphicRectangular.progressBar"
-        case eventLocation = "HLLComplication.graphicRectangular.eventLocation"
+        case eventPlusInfo = "HLLComplication.graphicRectangular.eventPlusInfo"
     }
     
     enum ModularSmall: String {

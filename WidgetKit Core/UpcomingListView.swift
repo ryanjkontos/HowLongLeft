@@ -14,7 +14,7 @@ import os
 struct UpcomingListView: View {
     
     var events: [EventUIObject]
-    var showAt: Date
+    var Date: Date
 
     var isPreview = false
     
@@ -38,7 +38,7 @@ struct UpcomingListView: View {
         get {
             
             
-            return Array(events.filter({ $0.completionStatus(at: showAt) == .upcoming }).prefix(3))
+            return Array(events.filter({ $0.completionStatus(at: Date) == .upcoming }).prefix(3))
             
         }
         
@@ -64,7 +64,7 @@ struct UpcomingListView: View {
                     ForEach(limitedEvents, id: \.id) { value in
                        
                        Link(destination: URL(string: "howlongleft://event/\(value.id)")!) {
-                            EventListItem(event: value, showAt: showAt)
+                            EventListItem(event: value, Date: Date)
                                 .frame(height: 44)
                                 
                         }
@@ -113,7 +113,7 @@ struct UpcomingListView_Previews: PreviewProvider {
     var current = PreviewEvent.inProgressPreviewEvent(color: .systemCyan)
     
     static var previews: some View {
-        UpcomingListView(events: upcomingEvents, showAt: Date(), isPreview: false)
+        UpcomingListView(events: upcomingEvents, Date: Date(), isPreview: false)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
             .modifier(HLLWidgetBackground())
             
