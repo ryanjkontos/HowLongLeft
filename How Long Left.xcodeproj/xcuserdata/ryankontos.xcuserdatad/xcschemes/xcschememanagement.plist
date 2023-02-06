@@ -181,6 +181,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>Test Widget w intentExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>WidgerCalendarSelectionInteny.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -216,10 +221,15 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>iOS Widget Intent Handler.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>iOS Widget Intents.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>13</integer>
 		</dict>
 		<key>iOS WidgetKitExtension.xcscheme_^#shared#^_</key>
 		<dict>
