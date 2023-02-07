@@ -35,9 +35,14 @@ class CalendarReader {
         
         eventFetchQueue.sync {
             
-            #if os(iOS)
-                eventStore.refreshSourcesIfNecessary()
-            #endif
+            
+            DispatchQueue.main.async {
+                #if os(iOS)
+                self.eventStore.refreshSourcesIfNecessary()
+                #endif
+            }
+            
+       
             
             let calendars = CalendarDefaultsModifier.shared.getEnabledCalendars()
             let predicate = self.eventStore.predicateForEvents(withStart: start, end: end, calendars: calendars)

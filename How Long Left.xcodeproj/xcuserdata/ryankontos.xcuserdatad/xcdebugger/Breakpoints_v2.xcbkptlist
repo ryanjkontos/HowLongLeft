@@ -1259,8 +1259,8 @@
             filePath = "Shared/HLLEvent/HLLEventSource.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "updateEvents(full:bypassCollation:)"
             landmarkType = "7">
             <Locations>

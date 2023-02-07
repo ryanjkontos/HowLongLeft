@@ -67,11 +67,7 @@ class HLLEventSource {
     
     
     init() {
-       
-        
-        Task {
-            await CalendarReader.shared.getCalendarAccess()
-        }
+
 
         eventsUpdateTimer = Timer(timeInterval: 600, target: self, selector: #selector(updateEventsAsync), userInfo: nil, repeats: true)
         
@@ -97,7 +93,7 @@ class HLLEventSource {
     }
     
  
-    func updateEvents(full: Bool = true, bypassCollation: Bool = false) {
+    func updateEvents(full: Bool = true, bypassCollation: Bool = false) async {
         
    
         
@@ -127,8 +123,6 @@ class HLLEventSource {
             #endif
             
            
-                        
-            
             let start = Date()-500
             let end = Calendar.current.date(byAdding: .day, value: days, to: start)!
             
