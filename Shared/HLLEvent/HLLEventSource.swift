@@ -17,7 +17,7 @@ import Combine
  * Methods for retriving HLLEvents/
  */
 
-let CXLogger = Logger(subsystem: "HLL", category: "ComplicationLogger")
+
 
 class HLLEventSource {
     
@@ -50,11 +50,11 @@ class HLLEventSource {
        func addClosure(closure: @escaping () -> Void) {
            
            if neverUpdatedevents {
-               CXLogger.log("Adding never updated closure")
+           //    CXLogger.log("Adding never updated closure")
                closures.append(closure)
            } else {
                DispatchQueue.main.async {
-                   CXLogger.log("Adding immediate closure")
+                 //  CXLogger.log("Adding immediate closure")
                    closure()
                }
               
@@ -68,6 +68,7 @@ class HLLEventSource {
     
     init() {
 
+        
 
         eventsUpdateTimer = Timer(timeInterval: 600, target: self, selector: #selector(updateEventsAsync), userInfo: nil, repeats: true)
         
@@ -76,6 +77,9 @@ class HLLEventSource {
          selector: #selector(self.eventStoreChanged),
          name: .EKEventStoreChanged,
          object: nil)
+        
+        
+        
          
     }
     
@@ -93,19 +97,22 @@ class HLLEventSource {
     }
     
  
-    func updateEvents(full: Bool = true, bypassCollation: Bool = false) async {
+    func updateEvents(full: Bool = true, bypassCollation: Bool = false) {
         
    
         
         HLLEventSource.queue.sync(bypassCollation: bypassCollation) { [self] in
             
             
-            // print("Updating event store!")
             
-            CXLogger.log("Updating Events")
             
-            if CalendarReader.shared.calendarAccess != .Granted {
-                CXLogger.log("No calendar access")
+             print("EVS: Updating event store!")
+            
+           // CXLogger.log("Updating Events")
+            
+            if CalendarReader.shared.calendarAccess != .Granted
+            {
+               print("EVS: Aborting event update because no calendar access")
                 return }
             
             
@@ -122,6 +129,8 @@ class HLLEventSource {
                 days = 14
             #endif
             
+            
+            days = 14
            
             let start = Date()-500
             let end = Calendar.current.date(byAdding: .day, value: days, to: start)!
@@ -141,6 +150,8 @@ class HLLEventSource {
             add.sortEvents(mode: .startDate)
             
             let previousevents = self.events
+            
+            print("EVS: Finished updating event store with \(add.count)")
             
             self.events = Array(Set(add))
             
@@ -168,7 +179,7 @@ class HLLEventSource {
             
            // // print("Updated event pool with \(self.events.count) events")
             
-            CXLogger.log("Updated event pool with \(self.events.count) events")
+           // CXLogger.log("Updated event pool with \(self.events.count) events")
             
             if full == false {
                 DispatchQueue.global(qos: .background).async {

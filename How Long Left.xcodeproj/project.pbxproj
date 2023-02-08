@@ -479,6 +479,7 @@
 		BF73679B27BE73D500F76BF9 /* WidgetConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679A27BE73D500F76BF9 /* WidgetConfigurationStore.swift */; };
 		BF73679D27BE773C00F76BF9 /* WidgetConfigListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73679C27BE773C00F76BF9 /* WidgetConfigListView.swift */; };
 		BF76053927C38F37007FCC21 /* TextFieldLis.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76053827C38F37007FCC21 /* TextFieldLis.swift */; };
+		BF79A14329925CC10012A582 /* WatchExtensionAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1C20A32882C33D006088CB /* WatchExtensionAssets.xcassets */; };
 		BF7BB5AD22BE4923001D2E86 /* RNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7BB5AC22BE4923001D2E86 /* RNEvent.swift */; };
 		BF7BB5AF22BF104C001D2E86 /* RNProcessUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7BB5AE22BF104C001D2E86 /* RNProcessUI.swift */; };
 		BF7F6D76247BD3B900B85ED7 /* PurchasePro.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7F6D74247BD3B900B85ED7 /* PurchasePro.xib */; };
@@ -855,7 +856,6 @@
 		BFDE4A6B21B660AF00CD50BC /* CalendarPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE4A6A21B660AF00CD50BC /* CalendarPreferenceViewController.swift */; };
 		BFDE4A6D21B67E3C00CD50BC /* MemoryRelaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE4A6C21B67E3C00CD50BC /* MemoryRelaunch.swift */; };
 		BFDE998823EE3A3E00BB3816 /* EventTimeRemainingMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE984223EE3A3D00BB3816 /* EventTimeRemainingMonitor.swift */; };
-		BFE1316A24D172CA008723E2 /* SubjectSelectionWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE1316924D172CA008723E2 /* SubjectSelectionWindow.storyboard */; };
 		BFE1D36728A0D7C400B210D5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFF6F0C2506742D00BF6054 /* WidgetKit.framework */; };
 		BFE1D36828A0D7C400B210D5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFF6F0E2506742D00BF6054 /* SwiftUI.framework */; };
 		BFE1D36E28A0D7C400B210D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE1D36D28A0D7C400B210D5 /* Assets.xcassets */; };
@@ -3358,6 +3358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF79A14329925CC10012A582 /* WatchExtensionAssets.xcassets in Resources */,
 				BF2527F6298CF2F50078FF3F /* Preview Assets.xcassets in Resources */,
 				BFF29546298D0AB900BF69FF /* Colours.xcassets in Resources */,
 				BF2528AC298CF42B0078FF3F /* Assets.xcassets in Resources */,
@@ -3430,7 +3431,6 @@
 				BF5F945722DA013400AB9FF3 /* MenuPreferencesView.xib in Resources */,
 				BFD3D10E28A0DBEC009A774E /* EventUIStoryboard.storyboard in Resources */,
 				BF93AEA221BDD60B0035CE7F /* MagdalenePreferencesView.xib in Resources */,
-				BFE1316A24D172CA008723E2 /* SubjectSelectionWindow.storyboard in Resources */,
 				BF5F945922DA026900AB9FF3 /* CalendarPreferencesViewNoAccess.xib in Resources */,
 				BF3921BC2465726D00CFF635 /* ProInfoMenuDetailView.xib in Resources */,
 				BF9688E522CDD9AB000FA86F /* RenamePreferencesView.xib in Resources */,
@@ -4997,8 +4997,9 @@
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CODE_SIGN_ENTITLEMENTS = "How Long Left macOS App/How Long Left.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "macOS How Long Left/How Long Left.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 176;
@@ -5021,7 +5022,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "How Long Left macOS App/Info.plist";
+				INFOPLIST_FILE = "macOS How Long Left/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left Mac";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5064,8 +5065,9 @@
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CODE_SIGN_ENTITLEMENTS = "How Long Left macOS App/How Long Left.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "macOS How Long Left/How Long Left.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 176;
@@ -5088,7 +5090,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "How Long Left macOS App/Info.plist";
+				INFOPLIST_FILE = "macOS How Long Left/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "How Long Left Mac";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

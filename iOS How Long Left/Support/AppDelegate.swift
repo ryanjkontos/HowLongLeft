@@ -23,10 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize and configure objects and services
         
     
+        Task {
+            await CalendarReader.shared.getCalendarAccess()
+        }
+        initializeDataModel()
+        
         initializeHWEventFinder()
         
-        initializeEventSource()
-        initializeDataModel()
+
+       
         
         initializeOneSignal(with: launchOptions)
         registerBackgroundTask()
@@ -42,9 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Initialization
     
-    private func initializeEventSource() {
-        HLLEventSource.shared = HLLEventSource()
-    }
+
     
     private func initializeDataModel() {
         HLLDataModel.shared = HLLDataModel()

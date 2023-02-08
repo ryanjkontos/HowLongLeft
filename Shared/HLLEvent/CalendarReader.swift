@@ -20,7 +20,7 @@ class CalendarReader {
     
 
     let eventFetchQueue = DispatchQueue(label: "EventFetchQueue", qos: .default)
-    let calendarFetchQueue = DispatchQueue(label: "CalendarFetchQueue", qos: .default)
+    let calendarFetchQueue = DispatchQueue(label: "CalendarFetchQueue", qos: .userInteractive)
     
     
     init() {
@@ -36,12 +36,7 @@ class CalendarReader {
         eventFetchQueue.sync {
             
             
-            DispatchQueue.main.async {
-                #if os(iOS)
-                self.eventStore.refreshSourcesIfNecessary()
-                #endif
-            }
-            
+  
        
             
             let calendars = CalendarDefaultsModifier.shared.getEnabledCalendars()
@@ -64,15 +59,20 @@ class CalendarReader {
         
     func getCalendarAccess() async {
         
+        if self.calendarAccess == .Granted {
+            return
+        }
+        
+        print("EVS: Getting calendar access")
             
             do {
-                CXLogger.log("Getting cal access")
+             //   CXLogger.log("Getting cal access")
                 
                 
-                eventStore.reset()
+                //eventStore.reset()
                 let result = try await eventStore.requestAccess(to: .event)
                 
-                self.eventStore.reset()
+               print("EVS: Got calendar access")
                 
                 if result == true {
                     self.calendarAccess = .Granted
@@ -80,17 +80,17 @@ class CalendarReader {
                     self.calendarAccess = .Denied
                 }
                 
-                CXLogger.log("Got cal access: \(self.calendarAccess == .Granted)")
+          //      CXLogger.log("Got cal access: \(self.calendarAccess == .Granted)")
                 
-                HLLEventSource.shared.updateEvents(full: false)
+                HLLEventSource.shared.updateEvents(full: false, bypassCollation: true)
                 
             } catch {
                  print("Cal access error: \(error)")
-                CXLogger.log("Cal access error \(error)")
+              //  CXLogger.log("Cal access error \(error)")
             }
             
         
-        
+       
         
     }
     

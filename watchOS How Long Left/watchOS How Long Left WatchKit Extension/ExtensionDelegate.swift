@@ -137,7 +137,7 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
                 
                 // print("Handling Background Task")
                 
-                ComplicationLogger.log("Running background task: \(backgroundTask.userInfo?.description ?? "No UserInfo")")
+                //ComplicationLogger.log("Running background task: \(backgroundTask.userInfo?.description ?? "No UserInfo")")
                 
                 ComplicationController.updateComplications(forced: false)
                 scheduleNextComplicationUpdateTask()

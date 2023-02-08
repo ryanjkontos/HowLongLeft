@@ -16,7 +16,7 @@ struct ComplicationWidgetTimelineProvider: TimelineProvider {
     
     init() {
         
-        CXLogger.log("Initting CWTP")
+       // CXLogger.log("Initting CWTP")
         
         HLLEventSource.shared = HLLEventSource()
         HLLDataModel.shared = HLLDataModel()
@@ -37,7 +37,7 @@ struct ComplicationWidgetTimelineProvider: TimelineProvider {
         
         DispatchQueue.main.async {
             
-            CXLogger.log("Get snapshot")
+          //  CXLogger.log("Get snapshot")
 
                // let timeline = timelineGen.generateHLLTimeline()
                 let entry = HLLTimelineEntry(date: Date(), event: .previewEvent(title: "Lolz", status: .current, location: nil))
@@ -55,10 +55,10 @@ struct ComplicationWidgetTimelineProvider: TimelineProvider {
             
             
             
-            CXLogger.log("Get timeline")
+          //  CXLogger.log("Get timeline")
      
             HLLEventSource.shared.addClosure {
-                CXLogger.log("Closure called for get timelien")
+                //CXLogger.log("Closure called for get timelien")
          
             }
             
