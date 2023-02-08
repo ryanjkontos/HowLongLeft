@@ -40,7 +40,7 @@ struct ComplicationInfoTextSettingsView: View {
             Section(content: {
                 
             
-                Picker("Show Alternate Info Text for First 5 minutes of an event",selection: $model.altThirdRowMode, content: {
+                Picker("Show Alternate Info Text for First 5 Minutes of an Event",selection: $model.altThirdRowMode, content: {
                     Text(ThirdRowSettingsListItem.off.rawValue)
                         .tag(ThirdRowSettingsListItem.off)
                     Text(ThirdRowSettingsListItem.nextEvent.rawValue)

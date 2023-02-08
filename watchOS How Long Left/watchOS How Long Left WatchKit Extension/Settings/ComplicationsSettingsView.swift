@@ -38,20 +38,13 @@ struct ComplicationsSettingsView: View {
             
             Group {
                 
-                Section(content: {
-                    Toggle(isOn: $model.complicationEnabled.animation(), label: { Text("Show Events") })
-                }, footer: {
-                    
-                    Text("You have not purchased the complication, so the options in this menu are disabled.")
-                    
-                })
                // .disabled(true)
                 
                 if model.complicationEnabled {
                     
                     Section("Events") {
                         
-                        Toggle("Always Show Pinned Event", isOn: $model.config.alwaysShowPinned.animation())
+                        Toggle("Prefer Showing Pinned Events", isOn: $model.config.alwaysShowPinned.animation())
                         
                         Toggle("Show In Progress Events", isOn: $model.config.showCurrent.animation())
                         Toggle("Show Upcoming Events", isOn:  $model.config.showUpcoming.animation())

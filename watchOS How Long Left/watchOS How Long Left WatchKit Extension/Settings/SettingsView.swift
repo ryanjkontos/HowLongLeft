@@ -47,7 +47,14 @@ struct SettingsView: View {
             })
             
                 
-            
+            NavigationLink(destination: { ComplicationsSettingsView()
+                   
+
+            }, label: {
+                
+                getListLabel(rowName: "Complication", foreground: .white , background: .orange, image: "watchface.applewatch.case", size: 13)
+                
+            })
             
             NavigationLink(destination: { PinnedEventsSettingsView() }, label: {
                 
@@ -67,20 +74,7 @@ struct SettingsView: View {
                 
             })
 
-            Section {
-                
-                NavigationLink(destination: { ComplicationsSettingsView()
-                       
-
-                }, label: {
-                    
-                    getListLabel(rowName: "Complication", foreground: .orange , background: .white, image: "watchface.applewatch.case", size: 13)
-                    
-                })
-                
-            }
-            
-            
+            /*
          
             
             Section {
@@ -94,7 +88,7 @@ struct SettingsView: View {
                 })
                 
             }
-            
+            */
             
             
         }
