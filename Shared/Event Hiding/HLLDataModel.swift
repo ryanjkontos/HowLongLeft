@@ -98,7 +98,7 @@ class HLLDataModel {
             }
             
             self.storeLoaded = true
-            HLLEventSource.shared.updateEventsAsync(bypassCollation: true)
+            HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
         })
         
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy

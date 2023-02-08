@@ -45,6 +45,8 @@ struct HLLTimelineConfiguration: Equatable, Hashable, Codable, Identifiable {
         
     }
     
+
+    
 }
 
 enum TimelineSortMode: CaseIterable, Identifiable, Codable {

@@ -24,7 +24,7 @@ class WidgetUpdateHandler: EventSourceUpdateObserver {
     
     var configDict = [String: Int]()
  
-    static let queue = CollatingQueue(label: "WidgetUpdateQueue")
+    static let queue = DebouncingQueue(label: "WidgetUpdateQueue")
     
     init() {
         

@@ -8,9 +8,13 @@
 
 import ClockKit
 import WidgetKit
+import os.log
+
 
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
+    
+    static let logger = Logger(subsystem: "ComplicationController", category: "Info")
     
     static let timelineGen = HLLTimelineGenerator(type: .complication)
     
@@ -84,7 +88,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     static func updateComplications(forced: Bool) {
         
         
-        let timeline = ComplicationController.timelineGen.generateHLLTimeline(fast: false, percentages: false, forState: .normal)
+         timeline = ComplicationController.timelineGen.generateHLLTimeline(fast: false, percentages: false, forState: .normal)
         
         var state: HLLTimelineGenerator.TimelineValidity
         if forced {
@@ -93,7 +97,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             state = ComplicationController.timelineGen.shouldUpdate()
         }
         
-       
+        
         if state != .noUpdateNeeded {
             ComplicationController.timeline = timeline
            
@@ -106,6 +110,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             ComplicationLogger.log("Reloading Complication")
             CLKComplicationServer.sharedInstance().activeComplications?.forEach({ CLKComplicationServer.sharedInstance().reloadTimeline(for: $0) })
           
+        } else {
+            print("No complication update needed")
         }
       
     }
@@ -122,10 +128,15 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     override init() {
         super.init()
+        ComplicationController.logger.log("Init complicationcontroller")
+        
+        
         
     }
     
     func timelineEntries(complication: CLKComplication, date: Date?, limit: Int? = nil) -> [CLKComplicationTimelineEntry] {
+        
+        
         
         var overrideTemplate: CLKComplicationTemplate?
         
@@ -141,6 +152,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return [(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))]
         }
         
+        
         var timelineEntries = ComplicationController.timeline.entriesAfterDate(date)
         HLLDefaults.complication.latestTimeline = ComplicationController.timeline.getArchive()
         if let limit = limit {
@@ -149,7 +161,16 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let complicationEntires = timelineEntries.compactMap({
             entryGenerator.getTimelineEntryComplicationEntry(complication: complication,timelineEntry: $0)
         })
+        
+        
+       
+        ComplicationController.logger.log("Returned \(complicationEntires.count) complication entires")
+        ComplicationController.logger.log("Timeline generated: \(ComplicationController.timeline.creationDate.timeIntervalSinceNow)")
+        
         return complicationEntires
+        
+        
+        
     }
     
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
@@ -185,6 +206,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // Call the handler with the current timeline entry
         
         print("Get current timeline entry")
+        ComplicationController.logger.log("Asked for current entry")
+    
         
         handler(timelineEntries(complication: complication, date: Date()).first)
         
@@ -195,6 +218,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // print("First entry is at: \(ComplicationController.timeline.entries.first!.getAdjustedDate().formattedTime(seconds: true)), reuqested: \(date.formattedTime(seconds: true))")
         
         print("\(Date()): Get current timeline entries after \(date)")
+        
+        ComplicationController.logger.log("Asked for all entries")
         
         handler(timelineEntries(complication: complication, date: date, limit: limit))
     }

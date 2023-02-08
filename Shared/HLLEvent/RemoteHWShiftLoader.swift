@@ -48,7 +48,7 @@ class RemoteHWShiftLoader {
               self.shifts = eventsArray.map({ HWShift(start: $0.start!.dateTime!.date, end: $0.end!.dateTime!.date) })
               
               if self.shifts != prev {
-                  HLLEventSource.shared.updateEventsAsync(bypassCollation: true)
+                  HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
               }
              
               

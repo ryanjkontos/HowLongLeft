@@ -8,12 +8,16 @@
 
 import Foundation
 import EventKit
+import os.log
 
 class CalendarReader {
+    
+    
     
     static var shared = CalendarReader()
     
     
+    static let logger = Logger(subsystem: "CalendarReader", category: "Info")
     
     var eventStore = EKEventStore()
     var calendarAccess: CalendarAccessState = .Unknown
@@ -31,15 +35,12 @@ class CalendarReader {
         
     }
     
-    func getEventsFromCalendar(start: Date, end: Date, usingCalendars: [EKCalendar]) -> [HLLEvent] {
+    func getEventsFromCalendar(start: Date, end: Date, usingCalendars calendars: [EKCalendar]) -> [HLLEvent] {
         
         eventFetchQueue.sync {
             
+            CalendarReader.logger.log("Asking calendar for events between \(start) and \(end) from \(calendars.count) calendar(s)")
             
-  
-       
-            
-            let calendars = CalendarDefaultsModifier.shared.getEnabledCalendars()
             let predicate = self.eventStore.predicateForEvents(withStart: start, end: end, calendars: calendars)
             return eventStore.events(matching: predicate).map({ HLLEvent($0) })
             
@@ -82,7 +83,7 @@ class CalendarReader {
                 
           //      CXLogger.log("Got cal access: \(self.calendarAccess == .Granted)")
                 
-                HLLEventSource.shared.updateEvents(full: false, bypassCollation: true)
+                HLLEventSource.shared.updateEvents(full: false, bypassDebouncing: true)
                 
             } catch {
                  print("Cal access error: \(error)")

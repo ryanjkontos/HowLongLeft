@@ -66,7 +66,7 @@ class ToggleCalendarsTableViewController: HLLAppearenceTableViewController {
                 cal.enabled = $0
                 self.updateToggleAllButton()
                 
-                HLLEventSource.shared.updateEventsAsync(bypassCollation: true)
+                HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
             }
         
             

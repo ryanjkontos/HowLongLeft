@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import os.log
 
 class HLLTimelineGenerator {
     
@@ -29,11 +30,10 @@ class HLLTimelineGenerator {
     
     var timelineType: TimelineType
     
+    static let logger = Logger(subsystem: "TimelineBasedExtensions", category: "Timeline Generation")
+    
     init(type: TimelineType) {
         self.timelineType = type
-        
-      
-        
         
         if HLLTimelineGenerator.doneReset {
             return
@@ -65,6 +65,8 @@ class HLLTimelineGenerator {
 
         print("Updating \(timelineType) with \(eventSource)")
         
+        eventSource.updateEvents(bypassDebouncing: true)
+        
             #if !os(macOS)
             
             if timelineType == .complication {
@@ -73,7 +75,10 @@ class HLLTimelineGenerator {
             
             #endif
             
+        
+        
             var events = Array(eventSource.events.filter({HLLStoredEventManager.shared.isHidden(event: $0) == false})).filter({ $0.completionStatus != .done })
+        HLLTimelineGenerator.logger.log("Got \(events.count) events(s) for timeline")
            
             if let config = timelineConfiguration {
                 

@@ -17,17 +17,23 @@ struct How_Long_LeftApp: App {
     
     //let communicationManager = CommunicationManager()
     
-    let timelineGen = HLLTimelineGenerator(type: .complication)
+    let timelineGen: HLLTimelineGenerator
     
     init() {
+        
+        
         
         Task {
             await CalendarReader.shared.getCalendarAccess()
         }
         
-        HLLEventSource.shared = HLLEventSource()
+        
         HLLDataModel.shared = HLLDataModel()
+        HLLEventSource.shared = HLLEventSource()
+        
         HLLEventSource.shared.updateEvents()
+        
+        timelineGen = HLLTimelineGenerator(type: .complication)
        // EventLocationStore.shared = EventLocationStore()
     }
     

@@ -15,7 +15,9 @@ class DummyEventGenerator {
     
     init() {
         
-        #if !(DEBUG)
+        return
+
+        #if (DEBUG)
         return
         #endif
         

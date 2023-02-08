@@ -17,8 +17,7 @@ class NotificationService: UNNotificationServiceExtension {
     
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         
-          
-        
+
         
         self.receivedRequest = request
         self.contentHandler = contentHandler

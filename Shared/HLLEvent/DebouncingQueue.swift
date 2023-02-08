@@ -1,5 +1,5 @@
 //
-//  CollatingDispatchQueue.swift
+//  DebouncingQueue.swift
 //  How Long Left
 //
 //  Created by Ryan Kontos on 30/11/2022.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CollatingQueue {
+class DebouncingQueue {
     
     private let queue: DispatchQueue
     private var executing = false
@@ -20,10 +20,10 @@ class CollatingQueue {
         queue = DispatchQueue(label: label)
     }
 
-    func sync(bypassCollation: Bool = false, execute closure: @escaping (() -> Void)) {
+    func sync(bypassDebouncing: Bool = false, execute closure: @escaping (() -> Void)) {
         queue.sync {
             
-            if bypassCollation {
+            if bypassDebouncing {
                 execute(closure)
                 return
             }

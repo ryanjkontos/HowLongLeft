@@ -34,7 +34,7 @@ struct HLLTimeline: Codable {
         
         guard let date = date else { return entries}
         
-        return self.entries.filter({$0.date >= date})
+        return self.entries
     }
     
     func eventBeingShownAt(date: Date) -> String? {

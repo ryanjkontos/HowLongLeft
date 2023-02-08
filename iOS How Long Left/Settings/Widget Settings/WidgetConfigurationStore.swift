@@ -48,7 +48,7 @@ class WidgetConfigurationStore: ObservableObject {
         var tempNamedGroups = [HLLTimelineConfiguration]()
         if let groupDict = HLLDefaults.defaults.dictionary(forKey: WidgetConfigurationStore.defaultsKey) as? [String:Data] {
             for groupData in groupDict.values {
-                let group = decodeGroup(groupData)
+                guard let group = decodeGroup(groupData) else { continue }
                 switch group.groupType {
                     case .defaultGroup:
                         defaultGroup = group
@@ -122,10 +122,10 @@ class WidgetConfigurationStore: ObservableObject {
         
     }
     
-    func decodeGroup(_ data: Data) -> HLLTimelineConfiguration {
+    func decodeGroup(_ data: Data) -> HLLTimelineConfiguration? {
         
         let decoder = JSONDecoder()
-        let decoded = try! decoder.decode(HLLTimelineConfiguration.self, from: data)
+        let decoded = try? decoder.decode(HLLTimelineConfiguration.self, from: data)
         return decoded
         
     }

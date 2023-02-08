@@ -54,7 +54,7 @@
 		BF252804298CF33D0078FF3F /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BF252805298CF33D0078FF3F /* EventChangesMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A49F22891A5DC00FFB115 /* EventChangesMonitor.swift */; };
 		BF252806298CF33D0078FF3F /* TitledEventGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42C28028D6F18100FB4070 /* TitledEventGroup.swift */; };
-		BF252807298CF33D0078FF3F /* CollatingDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */; };
+		BF252807298CF33D0078FF3F /* DebouncingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* DebouncingQueue.swift */; };
 		BF252808298CF33D0078FF3F /* RemoteHWShiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288B22940548200AD9DD1 /* RemoteHWShiftLoader.swift */; };
 		BF252809298CF33D0078FF3F /* HWEventFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4476B2293DFB7200AB86D9 /* HWEventFinder.swift */; };
 		BF25280A298CF33D0078FF3F /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
@@ -225,7 +225,7 @@
 		BF26C341299132E800059442 /* EventLocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5781328831CFD00250A3A /* EventLocationStore.swift */; };
 		BF26C342299132E800059442 /* EventChangesMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A49F22891A5DC00FFB115 /* EventChangesMonitor.swift */; };
 		BF26C343299132E800059442 /* TitledEventGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42C28028D6F18100FB4070 /* TitledEventGroup.swift */; };
-		BF26C344299132E800059442 /* CollatingDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */; };
+		BF26C344299132E800059442 /* DebouncingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* DebouncingQueue.swift */; };
 		BF26C345299132E800059442 /* RemoteHWShiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288B22940548200AD9DD1 /* RemoteHWShiftLoader.swift */; };
 		BF26C346299132E800059442 /* HWEventFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4476B2293DFB7200AB86D9 /* HWEventFinder.swift */; };
 		BF26C347299132E800059442 /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */; };
@@ -414,10 +414,10 @@
 		BF4477A8293E4E5100AB86D9 /* HWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4477A6293E4E5100AB86D9 /* HWViewController.swift */; };
 		BF44FFF22573ED460061ED6E /* HLLOrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44FFF12573ED460061ED6E /* HLLOrange.swift */; };
 		BF451AC1293663ED000C367E /* HLLWCDataReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451ABB29365A0C000C367E /* HLLWCDataReceiver.swift */; };
-		BF451AC62937772C000C367E /* CollatingDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */; };
-		BF451AC8293781FC000C367E /* CollatingDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */; };
-		BF451AC9293781FC000C367E /* CollatingDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */; };
-		BF451ACB293781FD000C367E /* CollatingDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */; };
+		BF451AC62937772C000C367E /* DebouncingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* DebouncingQueue.swift */; };
+		BF451AC8293781FC000C367E /* DebouncingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* DebouncingQueue.swift */; };
+		BF451AC9293781FC000C367E /* DebouncingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* DebouncingQueue.swift */; };
+		BF451ACB293781FD000C367E /* DebouncingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF451AC52937772C000C367E /* DebouncingQueue.swift */; };
 		BF46DD6D248B5E9C000AE42F /* ProPurchaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46DD6C248B5E9C000AE42F /* ProPurchaseHandler.swift */; };
 		BF4989022733A14A00024295 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4989012733A14A00024295 /* ContentView.swift */; };
 		BF4989042733A14C00024295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4989032733A14C00024295 /* Assets.xcassets */; };
@@ -1255,7 +1255,7 @@
 		BF451ABB29365A0C000C367E /* HLLWCDataReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLLWCDataReceiver.swift; sourceTree = "<group>"; };
 		BF451ABE2936628F000C367E /* ComplicationStatusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationStatusLogger.swift; sourceTree = "<group>"; };
 		BF451AC229376D6F000C367E /* ComplicationDisabledHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationDisabledHeader.swift; sourceTree = "<group>"; };
-		BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatingDispatchQueue.swift; sourceTree = "<group>"; };
+		BF451AC52937772C000C367E /* DebouncingQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncingQueue.swift; sourceTree = "<group>"; };
 		BF46DD6C248B5E9C000AE42F /* ProPurchaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProPurchaseHandler.swift; sourceTree = "<group>"; };
 		BF46DD6E248D2939000AE42F /* ProStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProStatusManager.swift; sourceTree = "<group>"; };
 		BF4988FD2733A14A00024295 /* How Long Left.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "How Long Left.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2747,7 +2747,7 @@
 				BFA5781328831CFD00250A3A /* EventLocationStore.swift */,
 				BF3A49F22891A5DC00FFB115 /* EventChangesMonitor.swift */,
 				BF42C28028D6F18100FB4070 /* TitledEventGroup.swift */,
-				BF451AC52937772C000C367E /* CollatingDispatchQueue.swift */,
+				BF451AC52937772C000C367E /* DebouncingQueue.swift */,
 				BF3288B22940548200AD9DD1 /* RemoteHWShiftLoader.swift */,
 				BF4476B2293DFB7200AB86D9 /* HWEventFinder.swift */,
 				BF3288E12940C10500AD9DD1 /* PrivateKeys.swift */,
@@ -3552,7 +3552,7 @@
 				BF2528B7298CFEB30078FF3F /* NickNameEditorView.swift in Sources */,
 				BF252805298CF33D0078FF3F /* EventChangesMonitor.swift in Sources */,
 				BF252806298CF33D0078FF3F /* TitledEventGroup.swift in Sources */,
-				BF252807298CF33D0078FF3F /* CollatingDispatchQueue.swift in Sources */,
+				BF252807298CF33D0078FF3F /* DebouncingQueue.swift in Sources */,
 				BF26C39D299133DB00059442 /* HLLTimelineConfiguration.swift in Sources */,
 				BF252808298CF33D0078FF3F /* RemoteHWShiftLoader.swift in Sources */,
 				BF252809298CF33D0078FF3F /* HWEventFinder.swift in Sources */,
@@ -3653,7 +3653,7 @@
 				BF26C341299132E800059442 /* EventLocationStore.swift in Sources */,
 				BF26C342299132E800059442 /* EventChangesMonitor.swift in Sources */,
 				BF26C343299132E800059442 /* TitledEventGroup.swift in Sources */,
-				BF26C344299132E800059442 /* CollatingDispatchQueue.swift in Sources */,
+				BF26C344299132E800059442 /* DebouncingQueue.swift in Sources */,
 				BF26C345299132E800059442 /* RemoteHWShiftLoader.swift in Sources */,
 				BF26C346299132E800059442 /* HWEventFinder.swift in Sources */,
 				BF26C347299132E800059442 /* PrivateKeys.swift in Sources */,
@@ -3860,7 +3860,7 @@
 				BFFF6054273DFCED00C5EB1A /* NicknameManager.swift in Sources */,
 				BFBFBA5B27B27A8F00072537 /* UpcomingListView.swift in Sources */,
 				BFD0EDD428DCBC5700A3D8D3 /* CountdownsViewController.swift in Sources */,
-				BF451AC62937772C000C367E /* CollatingDispatchQueue.swift in Sources */,
+				BF451AC62937772C000C367E /* DebouncingQueue.swift in Sources */,
 				BFE8727B275CC66100059C47 /* CountdownSectionOrderEditView.swift in Sources */,
 				BFFF6055273DFCED00C5EB1A /* KeyDateHandler.swift in Sources */,
 				BFFF6056273DFCED00C5EB1A /* EventVisibiltyActionHandler.swift in Sources */,
@@ -3998,7 +3998,7 @@
 				BF8683EA2901A20D005A9E55 /* CalendarReader.swift in Sources */,
 				BFD3D07428A0DA46009A774E /* CKError.swift in Sources */,
 				BFD3D07528A0DA46009A774E /* TimeInterval.swift in Sources */,
-				BF451ACB293781FD000C367E /* CollatingDispatchQueue.swift in Sources */,
+				BF451ACB293781FD000C367E /* DebouncingQueue.swift in Sources */,
 				BF68855428E07418008563EC /* Calendar.swift in Sources */,
 				BFD3D07628A0DA46009A774E /* EKEvent.swift in Sources */,
 				BFD3D07728A0DA46009A774E /* HLLEventInfoItem.swift in Sources */,
@@ -4184,7 +4184,7 @@
 				BF20E97424A983E8007F2614 /* HLLStatusItemConfiguration.swift in Sources */,
 				BF2713DC22BD1EAF006A4B37 /* RNUIRenamingViewController.swift in Sources */,
 				BF7BB5AF22BF104C001D2E86 /* RNProcessUI.swift in Sources */,
-				BF451AC8293781FC000C367E /* CollatingDispatchQueue.swift in Sources */,
+				BF451AC8293781FC000C367E /* DebouncingQueue.swift in Sources */,
 				BF99A6DF23D53EE70070D3C2 /* MagdaleneModeSetupAwaitingSetupViewController.swift in Sources */,
 				BF3288D92940A37B00AD9DD1 /* HWEventFinder.swift in Sources */,
 				BF32B51F2498765200B8F339 /* HLLHiddenEvent+CoreDataClass.swift in Sources */,
@@ -4350,7 +4350,7 @@
 				BFD0EDD128DCB71900A3D8D3 /* HLLTimelineGenerator.swift in Sources */,
 				BFCB6A9E27B14A44004CA311 /* iOS_Widget_How_Long_Left.intentdefinition in Sources */,
 				BFC7304D256F9CAA009F289E /* EventVisibiltyActionHandler.swift in Sources */,
-				BF451AC9293781FC000C367E /* CollatingDispatchQueue.swift in Sources */,
+				BF451AC9293781FC000C367E /* DebouncingQueue.swift in Sources */,
 				BFC7304E256F9CAA009F289E /* VisibilityString.swift in Sources */,
 				BF3288B5294060CF00AD9DD1 /* RemoteHWShiftLoader.swift in Sources */,
 				BFC7304F256F9CAA009F289E /* Version.swift in Sources */,

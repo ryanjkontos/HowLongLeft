@@ -26,7 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Task {
             await CalendarReader.shared.getCalendarAccess()
         }
+        
+        
+        
         initializeDataModel()
+        
+        //HLLEventSource.shared = HLLEventSource()
         
         initializeHWEventFinder()
         

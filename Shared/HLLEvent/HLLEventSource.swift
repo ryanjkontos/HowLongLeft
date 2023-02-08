@@ -21,7 +21,7 @@ import Combine
 
 class HLLEventSource {
     
-    static var shared: HLLEventSource! = HLLEventSource()
+    static var shared = HLLEventSource()
     
     var events = [HLLEvent]()
     var eventsKeyDates = [Date]()
@@ -32,7 +32,7 @@ class HLLEventSource {
     var neverUpdatedevents = true
     var saCals = [String]()
     private let remover = DoubleEventRemover()
-    static let queue = CollatingQueue(label: "HLLEventUpdateQueue")
+    static let queue = DebouncingQueue(label: "HLLEventUpdateQueue")
     var eventsUpdateTimer: Timer!
     var eventsUpdateRequestedDuringCooldown = false
     var updating: Bool { return eventsUpdatingCounter != 0 }
@@ -83,10 +83,10 @@ class HLLEventSource {
          
     }
     
-    @objc func updateEventsAsync(bypassCollation: Bool = false) {
+    @objc func updateEventsAsync(bypassDebouncing: Bool = false) {
         
         DispatchQueue.global(qos: .userInteractive).async {
-            self.updateEvents(bypassCollation: bypassCollation)
+            self.updateEvents(bypassDebouncing: bypassDebouncing)
         }
         
     }
@@ -97,16 +97,15 @@ class HLLEventSource {
     }
     
  
-    func updateEvents(full: Bool = true, bypassCollation: Bool = false) {
+    func updateEvents(full: Bool = true, bypassDebouncing: Bool = false) {
         
    
         
-        HLLEventSource.queue.sync(bypassCollation: bypassCollation) { [self] in
+        HLLEventSource.queue.sync(bypassDebouncing: bypassDebouncing) { [self] in
             
+            let cals = calendarFetcher()
             
-            
-            
-             print("EVS: Updating event store!")
+            print("EVS: Updating event store with \(calendarFetcher().count) cals")
             
            // CXLogger.log("Updating Events")
             
@@ -135,7 +134,7 @@ class HLLEventSource {
             let start = Date()-500
             let end = Calendar.current.date(byAdding: .day, value: days, to: start)!
             
-            var add = CalendarReader.shared.getEventsFromCalendar(start: start, end: end, usingCalendars: calendarFetcher())
+            var add = CalendarReader.shared.getEventsFromCalendar(start: start, end: end, usingCalendars: cals)
             
             if HLLDefaults.general.showAllDay == false { add = add.filter { !$0.isAllDay } }
             
@@ -145,8 +144,13 @@ class HLLEventSource {
             addPinnedTo(with: &add)
             FollowingOccurenceStore.shared.updateNextOccurenceDictionary(events: add)
             HLLStoredEventManager.shared.updateStoredEvents(from: add)
-            shiftLoader.addShiftEvents(to: &add)
             
+            if let hwCal = HWEventFinder.shared.hwCalendar, cals.contains(hwCal) {
+                shiftLoader.addShiftEvents(to: &add)
+                
+            }
+            
+           
             add.sortEvents(mode: .startDate)
             
             let previousevents = self.events
