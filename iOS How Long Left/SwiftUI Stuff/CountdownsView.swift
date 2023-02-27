@@ -23,7 +23,7 @@ struct CountdownsView: View {
     
     @Binding var launchEvent: HLLEvent?
     
-    @State var overlayEvent: HLLEvent?
+  //  @State var overlayEvent: HLLEvent?
     
     @State var eventView = false
     
@@ -31,7 +31,7 @@ struct CountdownsView: View {
     
     @State var id = 0
     
-    @State var activeEvent: HLLEvent?
+  //  @State var activeEvent: HLLEvent?
     
     var body: some View {
         

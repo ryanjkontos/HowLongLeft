@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="CustomNotificationPreferencesViewController" customModule="How_Long_Left__Beta__macOS" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner">
             <connections>
                 <outlet property="addTriggerButton" destination="Vs3-Wv-xKz" id="XTX-wA-5gt"/>
                 <outlet property="descriptionColumn" destination="5lr-em-IUs" id="giq-JZ-KA5"/>
@@ -74,12 +73,12 @@
                             <subviews>
                                 <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yww-uM-VsJ">
                                     <rect key="frame" x="0.0" y="11" width="421" height="250"/>
-                                    <clipView key="contentView" id="EN3-Lp-aza">
+                                    <clipView key="contentView" ambiguous="YES" id="EN3-Lp-aza">
                                         <rect key="frame" x="1" y="1" width="419" height="248"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="23" headerView="SsL-6M-x0S" viewBased="YES" id="0Ur-EB-gRT" customClass="TableResignDeselect" customModule="How_Long_Left__Beta__macOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="421" height="220"/>
+                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="23" headerView="SsL-6M-x0S" viewBased="YES" id="0Ur-EB-gRT" customClass="TableResignDeselect" customModule="How_Long_Left__Beta__macOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="430" height="220"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -98,11 +97,11 @@
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                         <prototypeCellViews>
                                                             <tableCellView id="QZp-tJ-o1l">
-                                                                <rect key="frame" x="1" y="1" width="418" height="17"/>
+                                                                <rect key="frame" x="1" y="1" width="427" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-9P-fIO">
-                                                                        <rect key="frame" x="1" y="20" width="418" height="17"/>
+                                                                        <rect key="frame" x="1" y="20" width="427" height="17"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="17" id="8Aa-mQ-enH"/>
                                                                         </constraints>
@@ -141,7 +140,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <tableHeaderView key="headerView" wantsLayer="YES" id="SsL-6M-x0S">
-                                        <rect key="frame" x="0.0" y="0.0" width="421" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="430" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </tableHeaderView>
                                 </scrollView>

@@ -38,7 +38,7 @@ class EventTableViewController: UITableViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         
 
-    
+        
     
         
         let eventView = UIView()
@@ -77,22 +77,27 @@ class EventTableViewController: UITableViewController {
             trailing,
             leading,
             width,
-            card.heightAnchor.constraint(equalToConstant: 125),
+            card.heightAnchor.constraint(equalToConstant: 100),
             card.centerYAnchor.constraint(equalTo: eventView.centerYAnchor),
             card.centerXAnchor.constraint(equalTo: eventView.centerXAnchor),
             
             
         ])
         
-    
+        updateMenu()
         
         self.tableView.tableHeaderView = eventView
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: buildMenu())
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        HLLEventSource.shared.addeventsObserver(self)
         
         updateInfoItems()
         self.card.updateCountdownLabel()
@@ -104,11 +109,24 @@ class EventTableViewController: UITableViewController {
             }
             
            
-            
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        HLLEventSource.shared.removeEventsObserver(self)
     }
 
     
+    func buildMenu() -> UIMenu {
+        return EventContextMenuGenerator.shared.getContextMenu(for: event, delegate: self)
+    }
+    
+    func updateMenu() {
+        
+        navigationItem.rightBarButtonItem?.menu = buildMenu()
+        
+        
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -120,24 +138,20 @@ class EventTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 0 {
+       
             return infoItems.count
-        } else {
-            return menu.children.count
-        }
+        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+        
             return "Info"
-        } else {
-            return "Options"
-        }
+        
     }
     
 
@@ -147,7 +161,7 @@ class EventTableViewController: UITableViewController {
 
         // Configure the cell...
 
-        if indexPath.section == 0 {
+        
             
             let item = self.infoItems[indexPath.row]
             
@@ -158,21 +172,6 @@ class EventTableViewController: UITableViewController {
             cell.contentConfiguration = config
             cell.selectionStyle = .none
             
-        } else {
-           
-            let item = menu.children[indexPath.row]
-            
-            var config = UIListContentConfiguration.cell()
-            config.text = item.title
-            config.textProperties.color = .systemOrange
-            
-            cell.contentConfiguration = config
-            cell.selectionStyle = .default
-            
-        }
-        
-
- //       cell.backgroundColor = HLLColors.groupedCell
        
         
         return cell
@@ -182,25 +181,7 @@ class EventTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 1 {
-            
-            let item = menu.children[indexPath.row] as! UIAction
-            
-            
-            DispatchQueue.main.async {
-                item.handler(item)
-                
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.menu = EventContextMenuGenerator.shared.getContextMenu(for: self.event, delegate: self)
-                    tableView.reloadData()
-                    
-                }
-                    
-                
-            }
-            
-        }
+
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -272,6 +253,18 @@ class EventTableViewController: UITableViewController {
 
 }
 
+extension EventTableViewController: EventSourceUpdateObserver {
+    
+    func eventsUpdated()
+    {
+        DispatchQueue.main.async {
+            self.updateMenu()
+        }
+        
+    }
+    
+}
+
 extension EventTableViewController: EventContextMenuDelegate {
     func closeEventView(event: HLLEvent) {
         
@@ -291,14 +284,10 @@ extension EventTableViewController: EventContextMenuDelegate {
         
     }
     
+    func menuClosed() {
+        updateMenu()
+    }
+    
 }
 
-extension UIAction {
-    var handler: UIActionHandler {
-        get {
-            typealias ActionHandlerBlock = @convention(block) (UIAction) -> Void
-            let handler = value(forKey: "handler") as AnyObject
-            return unsafeBitCast(handler, to: ActionHandlerBlock.self)
-        }
-    }
-}
+

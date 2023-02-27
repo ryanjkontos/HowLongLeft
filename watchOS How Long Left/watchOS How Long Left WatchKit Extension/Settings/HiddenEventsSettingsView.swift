@@ -27,7 +27,7 @@ struct HiddenEventsSettingsView: View {
                     
                     Button(action: { selectingEvent = true }, label: {
                         
-                        Text("Hide Event")
+                        Text("Choose Event")
                         
                     })
                     

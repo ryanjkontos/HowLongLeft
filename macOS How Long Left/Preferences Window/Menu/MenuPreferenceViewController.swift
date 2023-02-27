@@ -48,14 +48,14 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
     }
     
     override func viewWillAppear() {
-        
+        super.viewWillAppear()
         PreferencesWindowManager.shared.currentIdentifier = preferencePaneIdentifier
         
     }
     
     override func viewDidLoad() {
-        
-        self.preferredContentSize = CGSize(width: 515, height: 403)
+        super.viewDidLoad()
+       // self.preferredContentSize = CGSize(width: 515, height: 403)
         
         // Menu
         

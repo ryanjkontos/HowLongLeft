@@ -52,7 +52,7 @@ struct WidgetSettingsView: View {
             
         }
         .listStyle(.insetGrouped)
-       // .navigationTitle("Widget")
+        .navigationTitle("Widget & Live Activity")
         .navigationBarTitleDisplayMode(.inline)
         
     }

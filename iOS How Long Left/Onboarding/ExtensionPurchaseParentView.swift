@@ -19,7 +19,7 @@ struct ExtensionPurchaseParentView: View {
             if proxy.size.width > proxy.size.height {
                 ExtensionPurchaseViewLandscape(type: type)
             } else {
-                ExtensionPurchaseView(type: type, presentSheet: .constant(false))
+                ExtensionPurchaseView(type: type)
             }
             
             

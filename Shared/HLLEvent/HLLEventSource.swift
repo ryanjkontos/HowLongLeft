@@ -116,20 +116,13 @@ class HLLEventSource {
             
             
             
-            var days: Int
+            var days = 365
             
-            if full {
-                days = 365
-            }
+
             
             #if os(watchOS)
-                days = 7
-            #else
                 days = 14
             #endif
-            
-            
-            days = 14
            
             let start = Date()-500
             let end = Calendar.current.date(byAdding: .day, value: days, to: start)!
@@ -142,7 +135,9 @@ class HLLEventSource {
             add = remover.removeDoublesIn(events: add)
             add = NicknameManager.shared.addNicknames(for: add)
             addPinnedTo(with: &add)
+            #if !os(watchOS)
             FollowingOccurenceStore.shared.updateNextOccurenceDictionary(events: add)
+            #endif
             HLLStoredEventManager.shared.updateStoredEvents(from: add)
             
             if let hwCal = HWEventFinder.shared.hwCalendar, cals.contains(hwCal) {
@@ -470,7 +465,7 @@ class HLLEventSource {
         
     }
     
-    func getPinnedEventsFromevents() -> [HLLEvent] {
+    func getPinnedEventsFromEvents() -> [HLLEvent] {
         
         return events.filter({$0.isPinned})
         
@@ -492,7 +487,7 @@ class HLLEventSource {
     func getUpcomingEvents(limit: Int) -> [HLLEvent] {
         
         var allUpcoming = events.filter({$0.completionStatus == .upcoming})
-        allUpcoming.sort(by: { $0.startDate.compare($1.startDate) == .orderedAscending })
+        allUpcoming.sortEvents(mode: .startDate)
         return Array(allUpcoming.prefix(limit))
         
     }
@@ -600,8 +595,7 @@ class HLLEventSource {
         
         while loopStart < endDate {
             
-            var events = getEventsFromStore(start: loopStart, end: loopEnd).sorted(by: {
-                $0.startDate.compare($1.startDate) == .orderedAscending })
+            var events = getEventsFromStore(start: loopStart, end: loopEnd).sortedEvents(mode: .startDate)
             
            events.removeAll { event in
                 
@@ -737,9 +731,17 @@ class HLLEventSource {
         
     }
     
+    func removeEventsObserver(_ observer: EventSourceUpdateObserver) {
+        
+        self.eventsObservers.removeAll(where: { $0 === observer })
+        
+    }
+    
     func notifyEventSourceUpdateObservers() {
         
-        self.eventsObservers.forEach { observer in
+        let observers = eventsObservers
+        
+        observers.forEach { observer in
                 
             DispatchQueue.global(qos: .userInteractive).async {
                 
@@ -757,7 +759,7 @@ protocol CalendarAccessStateDelegate {
 }
 
 
-protocol EventSourceUpdateObserver {
+protocol EventSourceUpdateObserver: AnyObject {
     
     func eventsUpdated()
     

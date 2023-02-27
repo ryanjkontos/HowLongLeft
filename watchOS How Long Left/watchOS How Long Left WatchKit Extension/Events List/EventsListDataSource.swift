@@ -121,7 +121,7 @@ class EventsListDataSource: ObservableObject, EventSourceUpdateObserver, Selecte
             all.removeAll(where: { $0.completionStatus(at: date) == .current })
         }
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromevents()
+        let pinned = HLLEventSource.shared.getPinnedEventsFromEvents()
         current.removeAll(where: { pinned.contains($0) })
         
         var orderMode = HLLDefaults.watch.listOrderMode

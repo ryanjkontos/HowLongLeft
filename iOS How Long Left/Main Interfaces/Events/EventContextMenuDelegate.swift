@@ -12,5 +12,6 @@ protocol EventContextMenuDelegate {
     
     func nicknameEvent(event: HLLEvent)
     func closeEventView(event: HLLEvent)
+    func menuClosed()
     
 }

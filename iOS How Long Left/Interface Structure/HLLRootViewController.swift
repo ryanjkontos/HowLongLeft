@@ -1,5 +1,5 @@
 //
-//  HLLSplitViewController.swift
+//  HLLRootViewController.swift
 //  How Long Left iOS App
 //
 //  Created by Ryan Kontos on 29/7/2022.
@@ -7,20 +7,29 @@
 //
 
 import UIKit
+import SwiftUI
 
-class HLLSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
+class HLLRootViewController: UISplitViewController, UISplitViewControllerDelegate {
 
+    let appSheetManager = AppSheetOverlayManager()
+    
     let tabController = HLLTabViewController()
     let sidebarController = SidebarViewController()
     
+    var systemIsChangingViewSize = false
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.primaryBackgroundStyle = .sidebar
         
+        InfoAlertBox.shared = InfoAlertBox(tabController: tabController)
+        
         sidebarController.tabController = tabController
         
         self.delegate = self
+        
         
         self.setViewController(sidebarController, for: .primary)
         self.setViewController(tabController, for: .secondary)
@@ -32,31 +41,23 @@ class HLLSplitViewController: UISplitViewController, UISplitViewControllerDelega
             self.presentsWithGesture = true
             self.preferredSplitBehavior = .tile
             
-          
             #if targetEnvironment(macCatalyst)
-            
             self.presentsWithGesture = false
-            
             #endif
             
-            
         } else {
-           
+            self.displayModeButtonVisibility = .never
+            self.presentsWithGesture = false
             self.preferredDisplayMode = .secondaryOnly
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
+         //   self.showOverlay()
             
         }
         
-        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateTabBar()
-    }
-    
-
-    var systemIsChangingViewSize = false
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         systemIsChangingViewSize = true
@@ -64,26 +65,14 @@ class HLLSplitViewController: UISplitViewController, UISplitViewControllerDelega
         systemIsChangingViewSize = false
     }
 
-    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
-       // navigationDelegate?.navigationSplitViewController(self, willChangeDisplayMode: displayMode)
-        if !systemIsChangingViewSize {
-            updateTabBar()
-            
-        }
-    }
     
-    func updateTabBar() {
-       /* if displayMode == .secondaryOnly && self.displayMode == .oneBesideSecondary {
-            DispatchQueue.main.async {
-                // print("Transition 1")
-                self.tabController.tabBar.isHidden = false
-            }
-        } else if displayMode == .oneBesideSecondary && self.displayMode == .secondaryOnly {
-            DispatchQueue.main.async {
-                // print("Transition 2")
-                self.tabController.tabBar.isHidden = true
-            }
-        } */
+    func showOverlay() {
+        
+        if let sheetController = appSheetManager.getSheetViewControllerIfNeeded() {
+            self.present(sheetController, animated: true)
+        }
+       
+       
     }
 
     /*

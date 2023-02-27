@@ -44,13 +44,7 @@ class EventChangeMonitor {
             DispatchQueue.main.async {
                 
                 
-                self.observers.forEach({ observer in
-                    
-                    observer.eventsChanged()
-                    
-                })
-                
-                
+                self.updateAppForChanges()
              
                 self.statusDict = self.generateStatusDict(current)
                 
@@ -80,7 +74,6 @@ class EventChangeMonitor {
     func setupTimer() {
         
         
-        
         DispatchQueue.main.async {
             let timer = Timer(timeInterval: 1, repeats: true) { _ in
                 
@@ -91,6 +84,14 @@ class EventChangeMonitor {
             runLoop.add(timer, forMode: .common)
             self.run()
         }
+        
+    }
+    
+    func updateAppForChanges() {
+        
+        self.observers.forEach({ observer in
+            observer.eventsChanged()
+        })
         
     }
     

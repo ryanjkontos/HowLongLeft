@@ -12,6 +12,7 @@ struct WelcomeView: View {
     
     @EnvironmentObject var store: Store
     
+       
     var body: some View {
         
         GeometryReader { proxy in
@@ -28,7 +29,7 @@ struct WelcomeView: View {
                 
                     Spacer()
                   
-                    NavigationLink(destination: { ExtensionPurchaseView(type: .widget, presentSheet: .constant(true)).navigationBarHidden(true).environmentObject(store) }, label: {
+                    NavigationLink(destination: { WelcomeRoutingView(source: .welcome) }, label: {
                         
                         Text("Next")
                             .font(.headline)
@@ -48,6 +49,7 @@ struct WelcomeView: View {
                 .padding(.horizontal, 20)
                 
             }
+            
             .frame(width: proxy.size.width, height: proxy.size.height)
             
         }

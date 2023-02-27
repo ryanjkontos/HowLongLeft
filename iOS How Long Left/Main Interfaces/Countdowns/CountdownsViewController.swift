@@ -79,8 +79,10 @@ class CountdownsViewController: UIViewController, EventSourceUpdateObserver {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HLLEventSource.shared.addeventsObserver(self)
         
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(presentOptions))
        
         
         self.navigationItem.title = "Countdowns"
@@ -90,7 +92,7 @@ class CountdownsViewController: UIViewController, EventSourceUpdateObserver {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        HLLEventSource.shared.addeventsObserver(self)
+       
         
         configureHierarchy()
         configureDataSource()
@@ -107,7 +109,7 @@ class CountdownsViewController: UIViewController, EventSourceUpdateObserver {
         updateCountdowns()
         
         
-        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCountdowns), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCountdowns), userInfo: nil, repeats: true)
         
         #if targetEnvironment(macCatalyst)
             RunLoop.main.add(timer, forMode: .default)
@@ -156,6 +158,16 @@ class CountdownsViewController: UIViewController, EventSourceUpdateObserver {
             super.viewSafeAreaInsetsDidChange()
             self.biggestTopSafeAreaInset = max(self.collectionView.safeAreaInsets.top, biggestTopSafeAreaInset)
         }
+    
+    
+    @objc func presentOptions() {
+        
+        let controller = CountdownTabSettingsHostNavigationController(rootViewController: CountdownsSettingsTableViewController(style: .insetGrouped))
+        
+        self.present(controller, animated: true)
+        
+    }
+    
 }
 
 
@@ -204,12 +216,12 @@ extension CountdownsViewController {
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection in
             let contentSize = layoutEnvironment.container.effectiveContentSize
             let columns = self.getColumns(from: contentSize.width)
-            let spacing = CGFloat(0)
+            let spacing = CGFloat(12)
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .absolute(103))
+                                                   heightDimension: .absolute(97))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
             group.interItemSpacing = .fixed(spacing)
             
@@ -226,7 +238,7 @@ extension CountdownsViewController {
             
             
             section.interGroupSpacing = spacing
-            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15)
 
             return section
         }
@@ -246,7 +258,7 @@ extension CountdownsViewController {
     
     func loadEvents() {
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromevents().map({  EventItem(event: $0 )})
+        let pinned = HLLEventSource.shared.getPinnedEventsFromEvents().sortedEvents(mode: .countdownDate).map({  EventItem(event: $0 )})
         
         
         var events = HLLEventSource.shared.getCurrentEvents().map({  EventItem(event: $0 )})
@@ -292,6 +304,10 @@ extension CountdownsViewController {
         }
         
         noDataLabel.isHidden = !sections.isEmpty
+        
+        if HLLEventSource.shared.neverUpdatedevents {
+            noDataLabel.isHidden = true
+        }
         
         if sections.isEmpty {
             
@@ -344,11 +360,11 @@ extension CountdownsViewController {
             
             
             
-            if let prevString = self.lastUpdateTime, force == false {
+           /* if let prevString = self.lastUpdateTime, force == false {
                 if str == prevString && paths == self.previousPaths {
                     return
                 }
-            }
+            } */
   
             self.previousPaths = paths
             self.lastUpdateTime = str
@@ -436,10 +452,7 @@ extension CountdownsViewController: UICollectionViewDelegate, UIScrollViewDelega
         let cell = collectionView.cellForItem(at: indexPath) as! CountdownCell
         
         
-        let eventCard = cell.sub
-        let detailEventCard = controller.card
-
-    
+      
 
         
         self.navigationController?.pushViewController(controller, animated: true)
@@ -450,7 +463,7 @@ extension CountdownsViewController: UICollectionViewDelegate, UIScrollViewDelega
         
         
     }
-    
+  /*
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.resizing = true
         self.updateCountdowns(force: true)
@@ -461,7 +474,7 @@ extension CountdownsViewController: UICollectionViewDelegate, UIScrollViewDelega
         self.updateCountdowns(force: true)
     }
     
- 
+ */
 
     
 }
@@ -491,6 +504,10 @@ extension CountdownsViewController: EventContextMenuDelegate {
         let vc = NicknameEditorTableViewController(style: .insetGrouped)
         vc.object = object
         self.present(HLLNavigationController(rootViewController: vc), animated: true)
+    }
+    
+    func menuClosed() {
+        
     }
     
     

@@ -19,8 +19,6 @@ struct ContentView: View {
             } else {
                 EventsListView()
             
-                    
-                    
             }
             
         

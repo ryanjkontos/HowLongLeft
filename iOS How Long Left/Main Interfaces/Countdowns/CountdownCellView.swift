@@ -11,7 +11,7 @@ import Combine
 
 class CountdownCellView: RepesentedEventView {
 
-    var titleLabel: UILabel?
+    var titleLabel: MarqueeLabel?
     var statusLabel: UILabel?
     
     var timerLabel: UILabel?
@@ -20,7 +20,8 @@ class CountdownCellView: RepesentedEventView {
     
     let background = UIView()
     let progressOverlay = UIView()
-  
+    var widthContraint: NSLayoutConstraint?
+    
     
     static let shadowOpacity: Float = 0.3
     static let shadowRadius: CGFloat = 5
@@ -47,7 +48,7 @@ class CountdownCellView: RepesentedEventView {
     func updateGradient() {
         
         background.backgroundColor = event!.color.darker(by: 10)?.withAlphaComponent(0.7)
-        
+        progressOverlay.backgroundColor = event!.color.darker(by: 10)?.withAlphaComponent(0.7)
       
 
 
@@ -76,11 +77,26 @@ class CountdownCellView: RepesentedEventView {
             
         ])
         
+        background.addSubview(progressOverlay)
+        
+        progressOverlay.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            progressOverlay.leadingAnchor.constraint(equalTo: background.leadingAnchor),
+            progressOverlay.topAnchor.constraint(equalTo: background.topAnchor),
+            progressOverlay.bottomAnchor.constraint(equalTo: background.bottomAnchor),
+        ])
+        
+       // self.widthContraint = progressOverlay.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.5)
+       // self.widthContraint?.isActive = true
+        
         self.alpha = 1
         self.layer.backgroundColor = UIColor.clear.cgColor
         
-        titleLabel = UILabel()
+        titleLabel = MarqueeLabel()
         let titleLabel = titleLabel!
+        titleLabel.fadeLength = 10
+        
  
         statusLabel = UILabel()
         let statusLabel = statusLabel!
@@ -142,12 +158,23 @@ class CountdownCellView: RepesentedEventView {
         let inset = CGFloat(20)
         let verticalInset = CGFloat(12)
         NSLayoutConstraint.activate([
-            stack.heightAnchor.constraint(equalToConstant: 50),
+            stack.heightAnchor.constraint(equalToConstant: 56),
             stack.centerYAnchor.constraint(equalTo: centerYAnchor),
             stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            timerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             timerLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stack.trailingAnchor.constraint(equalTo: timerLabel.leadingAnchor, constant: -10),
         ])
+        
+        let timerTrailing = timerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        timerTrailing.isActive = true
+        timerTrailing.priority = .defaultHigh
+        
+        timerLabel.setContentHuggingPriority(.required, for: .horizontal)
+        timerLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+
+        stack.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        stack.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
         
     }
     
@@ -171,6 +198,26 @@ class CountdownCellView: RepesentedEventView {
             
             statusLabel?.text = "\(event.countdownTypeString())"
             self.timerLabel?.text = CountdownStringGenerator.generatePositionalCountdown(event: event, at: Date())
+            
+            if event.completionStatus == .current {
+                progressOverlay.isHidden = false
+                
+                let completion = event.completionFraction
+                
+                self.widthContraint?.isActive = false
+                
+               
+                    self.widthContraint = self.progressOverlay.widthAnchor.constraint(equalTo: self.background.widthAnchor, multiplier: completion)
+                    
+                    
+                    self.widthContraint?.isActive = true
+                    
+                
+                
+                
+            } else {
+                progressOverlay.isHidden = true
+            }
             
         } else {
             ac?.cancel()

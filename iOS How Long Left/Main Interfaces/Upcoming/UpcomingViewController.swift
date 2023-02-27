@@ -18,7 +18,7 @@ class UpcomingViewController: UIViewController, EventSourceUpdateObserver {
 
     var data = [DateOfEvents]()
     
-    var eventsCollectionView: UICollectionView!
+    var eventsCollectionView: UICollectionView?
     var dataSource: UICollectionViewDiffableDataSource<DateOfEvents, HLLEvent>!
     var nameFilter: String?
 
@@ -74,7 +74,7 @@ extension UpcomingViewController {
         
     
         
-        dataSource = UICollectionViewDiffableDataSource<DateOfEvents, HLLEvent>(collectionView: eventsCollectionView) {
+        dataSource = UICollectionViewDiffableDataSource<DateOfEvents, HLLEvent>(collectionView: eventsCollectionView!) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: HLLEvent) -> UICollectionViewCell? in
             // Return the cell.
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: identifier)
@@ -82,7 +82,7 @@ extension UpcomingViewController {
         
         dataSource.supplementaryViewProvider = { (view, kind, indexPath) in
             
-            return self.eventsCollectionView.dequeueConfiguredReusableSupplementary(using: globalHeaderRegistration, for: indexPath)
+            return self.eventsCollectionView?.dequeueConfiguredReusableSupplementary(using: globalHeaderRegistration, for: indexPath)
             
         }
         
@@ -242,6 +242,10 @@ extension UpcomingViewController: UICollectionViewDelegate {
 }
 
 extension UpcomingViewController: EventContextMenuDelegate {
+    func menuClosed() {
+        
+    }
+    
     func closeEventView(event: HLLEvent) {
         return
     }

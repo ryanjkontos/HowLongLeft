@@ -131,6 +131,8 @@ class EventPinningManager {
                 self.pinEvent(event)
             }
             
+            EventChangeMonitor.shared.updateAppForChanges()
+            
         }
         
     }

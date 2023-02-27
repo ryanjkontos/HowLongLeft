@@ -92,8 +92,12 @@ struct EventSectionsView: View {
                     }, header: {
                         if let title = group.title {
                             Text(title)
-                                .foregroundColor(.secondary)
+                                .fontWeight(.medium)
+                                .textCase(.none)
+                                .headerProminence(.increased)
+                                .foregroundColor(.white)
                                 .listRowPlatterColor(.clear)
+                                .padding(.bottom, 0.5)
                         }
                     })
                    

@@ -259,7 +259,7 @@ class HLLTimelineGenerator {
         if HLLDefaults.widget.showSelected { doSelected = true }
             
         if doSelected {
-            if let selected = eventSource.getPinnedEventsFromevents().first {
+            if let selected = eventSource.getPinnedEventsFromEvents().first {
                 
                 // print("Selected: \(selected)")
                 

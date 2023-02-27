@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
+    private var hllRoot = HLLRootViewController(style: .doubleColumn)
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -23,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.tintColor = .systemOrange
-            window.rootViewController = HLLSplitViewController(style: .doubleColumn)
+            window.rootViewController = hllRoot
             window.makeKeyAndVisible()
             self.window = window
         }
@@ -47,6 +48,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             await Store.shared.refreshPurchasedProducts()
         }
         
+        
+        
         HLLEventSource.shared.shiftLoader.load()
 
     }
@@ -64,6 +67,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             await Store.shared.refreshPurchasedProducts()
             HLLEventSource.shared.shiftLoader.load()
         }
+        
+        
         
         DispatchQueue.main.async {
             WidgetUpdateHandler.shared.updateConfigDict()

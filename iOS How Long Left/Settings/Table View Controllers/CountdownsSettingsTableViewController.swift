@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
 
@@ -14,6 +15,7 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
         case inProgress
         case upcoming
         case ordering
+        case offset
     }
 
     
@@ -24,7 +26,7 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
     
     var sections = [Section]()
     
-    var orderRows = [CountdownTabSection]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +36,12 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
         
         
        // self.tableView.backgroundColor = HLLColors.backgroundColor
-        self.isEditing = true
+        //self.isEditing = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: "ToggleCell")
         tableView.register(StepperTableViewCell.self, forCellReuseIdentifier: "StepperCell")
         
-        orderRows = HLLDefaults.countdownsTab.sectionOrder
+        
         
         update()
         
@@ -49,40 +51,25 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
     
     func update() {
         sections = [.inProgress, .upcoming]
-        self.showInProgress = HLLDefaults.countdownsTab.showInProgress
         self.showEndingTodayOnly = HLLDefaults.countdownsTab.onlyEndingToday
+        self.showInProgress = HLLDefaults.countdownsTab.showInProgress
+        
         self.showUpcoming = HLLDefaults.countdownsTab.showUpcoming
         
         if (showInProgress || showUpcoming) {
             sections.append(.ordering)
         }
         
-       
-        
-        if !orderRows.contains(.pinned) {
-            orderRows.insert(.pinned, at: 0)
-        }
-        
-        
-        if showInProgress {
-            if !orderRows.contains(.inProgress) { orderRows.append(.inProgress) }
-        } else {
-            if orderRows.contains(.inProgress) { orderRows.removeAll(where: { $0 == .inProgress }) }
-        }
-        
-
-        if showUpcoming {
-            if !orderRows.contains(.upcoming) { orderRows.append(.upcoming) }
-        } else {
-            if orderRows.contains(.upcoming) { orderRows.removeAll(where: { $0 == .upcoming }) }
-        }
+        sections.append(.offset)
         
     }
     
     func updateOnStateChange() {
         
-            
-            let oldRows = self.orderRows
+        DispatchQueue.main.async {
+            EventChangeMonitor.shared.updateAppForChanges()
+        }
+           
             let oldSections = self.sections
             let oldInProgress = self.showInProgress
             let oldUpcoming = self.showUpcoming
@@ -118,25 +105,7 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
                 
                 }
                 
-                if self.sections.count == 3 {
-                    
-                    if oldRows.contains(.inProgress), !showInProgress {
-                        self.tableView.deleteRows(at: [IndexPath(row: oldRows.firstIndex(of: .inProgress)!, section: 2)], with: .automatic)
-                    }
-                    
-                    if !oldRows.contains(.inProgress), showInProgress {
-                        self.tableView.insertRows(at: [IndexPath(row: orderRows.firstIndex(of: .inProgress)!, section: 2)], with: .automatic)
-                    }
-                    
-                    if oldRows.contains(.upcoming), !showUpcoming {
-                        self.tableView.deleteRows(at: [IndexPath(row: oldRows.firstIndex(of: .upcoming)!, section: 2)], with: .automatic)
-                    }
-                    
-                    if !oldRows.contains(.upcoming), showUpcoming {
-                        self.tableView.insertRows(at: [IndexPath(row: orderRows.firstIndex(of: .upcoming)!, section: 2)], with: .automatic)
-                    }
-                    
-                }
+             
                 
             })
             
@@ -163,8 +132,9 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
         case .upcoming:
             return showUpcoming ? 2 : 1
         case .ordering:
-            return orderRows.count
-            
+            return 1
+        case .offset:
+            return 1
         }
     
     }
@@ -201,6 +171,11 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
                 stepperCell.stepper.value = Double(HLLDefaults.countdownsTab.upcomingCount)
                 stepperCell.updateAction = { value in
                     HLLDefaults.countdownsTab.upcomingCount = value
+                    
+                    DispatchQueue.main.async {
+                        EventChangeMonitor.shared.updateAppForChanges()
+                    }
+                    
                 }
                 stepperCell.labelUpdator = {
                     
@@ -217,9 +192,18 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
             
             let textCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             var config = UIListContentConfiguration.cell()
-            config.text = orderRows[indexPath.row].displayString
+            config.text = "Section Order"
             textCell.contentConfiguration = config
+            textCell.accessoryType = .disclosureIndicator
         //    textCell.backgroundColor = HLLColors.groupedCell
+            return textCell
+        case .offset:
+            
+            let textCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            var config = UIListContentConfiguration.cell()
+            config.text = "Shift Countdown Times"
+            textCell.contentConfiguration = config
+            textCell.accessoryType = .disclosureIndicator
             return textCell
         }
        
@@ -238,16 +222,42 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
             return "Upcoming"
         case .ordering:
             return "Ordering"
+        case .offset:
+            return nil
         }
         
     }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        let section = sections[section]
+        
+        if section == .offset {
+            return "Shift event countdowns from their actual date by a few seconds."
+        }
+        
+        return nil
+    }
 
 
-   
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return indexPath.section == 2
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if sections[indexPath.section] == .ordering {
+            self.navigationController?.pushViewController(CountdownTabOrderingTableViewController(style: .insetGrouped), animated: true)
+        }
+        
+        if sections[indexPath.section] == .offset {
+            
+            let controller = UIHostingController(rootView: EventDateOffsetSettingsView())
+            controller.navigationItem.largeTitleDisplayMode = .never
+            controller.title = "Calendar Offsets"
+            controller.loadViewIfNeeded()
+            controller.loadView()
+            controller.viewWillAppear(false)
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
     }
     
 
@@ -258,36 +268,14 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
     }
     */
     
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-            return false
-    }
-
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
 
     
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-        if fromIndexPath.section == 2 && to.section == 2 {
-            let item = orderRows[fromIndexPath.row]
-            orderRows.removeAll(where: { $0 == item })
-            orderRows.insert(item, at: to.row)
-        }
-        
-        HLLDefaults.countdownsTab.sectionOrder = orderRows
-        
-    }
-    
 
     
     // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return indexPath.section == 2
-    }
-    
+ 
 
     /*
     // MARK: - Navigation
@@ -298,16 +286,6 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if sourceIndexPath.section != proposedDestinationIndexPath.section {
-            var row = 0
-            if sourceIndexPath.section < proposedDestinationIndexPath.section {
-                row = self.tableView(tableView, numberOfRowsInSection: sourceIndexPath.section) - 1
-            }
-            return IndexPath(row: row, section: sourceIndexPath.section)
-        }
-        return proposedDestinationIndexPath
-    }
+
 
 }

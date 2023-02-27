@@ -17,16 +17,17 @@ struct How_Long_LeftApp: App {
     
     //let communicationManager = CommunicationManager()
     
+   
+     
     let timelineGen: HLLTimelineGenerator
     
+    @State var complicationPurchased = false
+    
     init() {
-        
-        
         
         Task {
             await CalendarReader.shared.getCalendarAccess()
         }
-        
         
         HLLDataModel.shared = HLLDataModel()
         HLLEventSource.shared = HLLEventSource()
@@ -41,6 +42,21 @@ struct How_Long_LeftApp: App {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .alert("Complication is now \(ComplicationStateManager.shared.complicationPurchased.description)", isPresented: $complicationPurchased, actions: {
+                        
+                        Button("Dismiss", action: {
+                            complicationPurchased = false
+                        })
+                        
+                    })
+                    .onAppear() {
+                        ComplicationStateManager.shared.addClosure(closure: { state in
+                            
+                            self.complicationPurchased = state
+                            
+                        })
+                        
+                    }
             }
             
         }

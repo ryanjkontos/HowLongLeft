@@ -71,7 +71,7 @@ struct ComplicationInfoTextSettingsView: View {
             didSet {
                 
                 HLLDefaults.complication.progressBar = progressBars
-                ComplicationController.updateComplications(forced: true)
+                update()
                 
             }
         }
@@ -80,7 +80,8 @@ struct ComplicationInfoTextSettingsView: View {
             didSet {
                 
                 HLLDefaults.complication.mainThirdRowMode = ThirdRowSettingsListItem.convertToThirdRowMode(thirdRowMode) ?? .nextEvent
-                ComplicationController.updateComplications(forced: true)
+                
+                update()
                 
             }
         }
@@ -89,13 +90,24 @@ struct ComplicationInfoTextSettingsView: View {
             didSet {
                 
                 HLLDefaults.complication.alternateThirdRowMode = ThirdRowSettingsListItem.convertToThirdRowMode(altThirdRowMode)
-                ComplicationController.updateComplications(forced: true)
+                update()
                 
             }
         }
         
+        func update() {
+            
+            #if os(watchOS)
+                ComplicationController.updateComplications(forced: true)
+            #else
+            #endif
+            
+        }
+        
         
     }
+    
+   
     
     enum ThirdRowSettingsListItem: String {
         case nextEvent = "Next Event"

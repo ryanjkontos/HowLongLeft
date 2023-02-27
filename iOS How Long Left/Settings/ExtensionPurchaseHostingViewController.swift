@@ -14,7 +14,8 @@ class ExtensionPurchaseHostingViewController: UIViewController {
         super.viewDidLoad()
 
         
-        let controller = UIHostingController(rootView: ExtensionPurchaseView(type: .widget, presentSheet: .constant(false)))
+        let controller = UIHostingController(rootView: ExtensionPurchaseView(type: .widget))
+        
         
         
         self.view.addSubview(controller.view)

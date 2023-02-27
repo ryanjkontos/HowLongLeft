@@ -71,6 +71,8 @@ class MacEventNotificationScheduler: EventSourceUpdateObserver {
     
     func scheduleNotificationsForUpcomingEvents() {
         
+        return
+        
         DispatchQueue.global(qos: .background).async {
             
            

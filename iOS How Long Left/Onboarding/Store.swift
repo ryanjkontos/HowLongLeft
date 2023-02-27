@@ -289,7 +289,9 @@ class Store: ObservableObject {
             HLLDefaults.defaults.set(status, forKey: complicationActivatedKey)
             HLLDefaults.cloudDefaults.set(status, forKey: complicationActivatedKey)
             
-           // HLLWCDataSender.send(dict: [complicationActivatedKey:status])
+            HLLDefaults.cloudDefaults.synchronize()
+            
+            HLLWCDataSender.send(dict: [complicationActivatedKey:status])
             
         }
         

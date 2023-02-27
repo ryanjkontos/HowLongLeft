@@ -175,7 +175,11 @@ struct HLLWidgets: WidgetBundle {
       
        // CountdownComplication()
 
-       
+    #if !targetEnvironment(macCatalyst)
+       if #available(iOS 16.1, *) {
+           LiveEventActivityWidget()
+       }
+       #endif
        
    }
     
@@ -272,36 +276,79 @@ struct CountdownAndUpcomingListWidget: Widget {
     }
 }
 
+#if !targetEnvironment(macCatalyst)
 
-/*@available(iOSApplicationExtension 16.0, *)
+@available(iOSApplicationExtension 16.1, *)
 struct LiveEventActivityWidget: Widget {
+    
+    
     var body: some WidgetConfiguration {
         
-        ActivityConfiguration<LiveEventAttributes> { context in
+        
+        
+        ActivityConfiguration(for: LiveEventAttributes.self) { context in
             
             CountdownWidgetEventView(event: context.attributes.event, displayDate: Date(), barEnabled: false)
                 .padding(.horizontal, 20)
-                .activityBackgroundTint(Color(#colorLiteral(red: 0.07201712472, green: 0.07201712472, blue: 0.07201712472, alpha: 1)))
+                .activityBackgroundTint(Color(UIColor.systemBackground))
             
         } dynamicIsland: { context in
             
+            
+            
             DynamicIsland(expanded: {
                
-                DynamicIslandExpandedRegion(.center) {
+                DynamicIslandExpandedRegion(.leading) {
                     
-                    Text("Event ends in 10:00")
+                    CountdownWidgetEventView(event: context.attributes.event, displayDate: Date(), barEnabled: false)
+                        .padding(.horizontal, 20)
+                        .activityBackgroundTint(Color(#colorLiteral(red: 0.07201712472, green: 0.07201712472, blue: 0.07201712472, alpha: 1)))
+                    
                     
                 }
                 
+                
             }, compactLeading: {
                 
-                Circle()
-                    .foregroundColor(.red)
+                Text(context.attributes.event.title)
+                   // .foregroundColor(Color(context.state.event.color))
+                    .minimumScaleFactor(0.5)
+                    
                 
             }, compactTrailing: {
                 
-                Circle()
-                    .foregroundColor(.orange)
+                HStack(alignment: .center) {
+                    
+                 
+                    
+                    let event = context.attributes.event
+                    
+                    let range = Date()...event.countdownDate
+                    
+                    if event.completionStatus == .upcoming {
+                        (Text("in ") + Text(timerInterval: range, pauseTime: range.lowerBound))
+                   
+                            .foregroundColor(Color(context.attributes.event.color))
+                            .minimumScaleFactor(0.5)
+                            .fontWeight(.bold)
+                    } else {
+                        Text(timerInterval: range, pauseTime: range.lowerBound)
+                            
+                            .foregroundColor(Color(context.attributes.event.color))
+                            .minimumScaleFactor(0.5)
+                            .fontWeight(.bold)
+                    }
+                    
+                   
+                    
+                    Spacer()
+                    
+                  
+                    
+                    
+                }
+                
+               
                 
             }, minimal: {
                 
@@ -313,7 +360,7 @@ struct LiveEventActivityWidget: Widget {
         
       
     }
-} */
+}
 
 /*struct iOSWidget_Previews: PreviewProvider {
     static var previews: some View {
@@ -325,3 +372,4 @@ struct LiveEventActivityWidget: Widget {
 
 
 
+#endif

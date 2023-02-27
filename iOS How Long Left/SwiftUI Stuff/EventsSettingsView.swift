@@ -34,9 +34,20 @@ struct EventsSettingsView: View {
                 
             }, footer: { Text("Enabling this option will cause How Long Left to display back-to-back events with the same title as a single, combined event.") })
             
+            
+            Section {
+                
+                NavigationLink("Shift Event Times", destination: {
+                    EventDateOffsetSettingsView()
+                })
+                
+            }
+            
         }
         .navigationTitle("Events")
         .navigationBarTitleDisplayMode(.inline)
+        
+        
         
     }
 }

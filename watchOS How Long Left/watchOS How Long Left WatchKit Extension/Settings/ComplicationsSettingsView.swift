@@ -20,6 +20,14 @@ struct ComplicationsSettingsView: View {
         
         Form {
             
+            #if os(iOS)
+            
+            Section(content: {EmptyView()}, footer: {
+                Text("This menu currently does nothing on iOS. Please use the Complication settings menu on your Apple Watch.")
+            })
+            
+            #endif
+            
             if HLLDefaults.complication.complicationPurchased {
                 
                 Section {
@@ -84,8 +92,8 @@ struct ComplicationsSettingsView: View {
                 
                 if !model.mirrorCalendars {
                     
-                    NavigationLink(destination: { EnabledCalendarsView(calendarsManager: ComplicationEnabledCalendarsManager.shared, contextWord: "complication")
-                            .environmentObject(ComplicationEnabledCalendarsManager.shared)
+                    NavigationLink(destination: { NavigationLazyView(EnabledCalendarsView(calendarsManager: ComplicationEnabledCalendarsManager.shared, contextWord: "complication")
+                            .environmentObject(ComplicationEnabledCalendarsManager.shared))
                     }, label: {
                   
                         VStack(alignment: .leading) {
@@ -108,7 +116,7 @@ struct ComplicationsSettingsView: View {
             
             Section(content: {
                 NavigationLink(destination: {
-                    ComplicationInfoTextSettingsView()
+                    NavigationLazyView(ComplicationInfoTextSettingsView())
                 }, label: {
                     Text("Large Rectangular Complication Settings")
                 })
@@ -141,7 +149,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             ComplicatonConfigurationManager().saveConfig(newValue)
             objectWillChange.send()
-            ComplicationController.updateComplications(forced: true)
+            update()
                 
         }
         
@@ -153,7 +161,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.watch.complicationEnabled = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications(forced: true)
+            update()
                 
         }
         
@@ -165,7 +173,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.tintComplication = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications(forced: true)
+            update()
                 
         }
         
@@ -177,7 +185,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.showSeconds = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications(forced: true)
+            update()
                 
         }
         
@@ -189,7 +197,7 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.unitLabels = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications(forced: true)
+            update()
                 
         }
         
@@ -201,10 +209,17 @@ class ComplicationSettingsObject: ObservableObject {
             
             HLLDefaults.complication.mirrorCalendars = newValue
             objectWillChange.send()
-            ComplicationController.updateComplications(forced: true)
-                
+            update()
         }
         
+    }
+    
+    func update() {
+        #if os(watchOS)
+        ComplicationController.updateComplications(forced: true)
+            
+        #else
+        #endif
     }
     
 }

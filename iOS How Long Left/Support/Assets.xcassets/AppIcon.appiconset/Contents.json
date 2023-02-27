@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "filename" : "How_Long_Left_(iOS)-1024.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

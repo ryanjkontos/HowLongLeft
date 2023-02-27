@@ -15,11 +15,7 @@ class DummyEventGenerator {
     
     init() {
         
-        return
 
-        #if (DEBUG)
-        return
-        #endif
         
         if !ProcessInfo.processInfo.arguments.contains("EnableDummyEvents") {
             return
@@ -31,7 +27,7 @@ class DummyEventGenerator {
         var array = [HLLEvent]()
         var date = start
         
-        array.append(HLLEvent(title: "Current 1", start: start, end: start.addingTimeInterval(60), location: nil))
+        array.append(HLLEvent(title: "Current 1", start: start, end: start.addingTimeInterval(30), location: nil))
         array.append(HLLEvent(title: "Current 2", start: start, end: start.addingTimeInterval(100), location: nil))
         
         for i in 1...amount {

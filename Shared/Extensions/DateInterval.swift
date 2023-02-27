@@ -29,4 +29,17 @@ extension DateInterval {
         
     }
     
+    
+    func getShortIntervalString() -> String {
+        
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .short
+        formatter.allowedUnits = [.minute, .hour, .day]
+
+        return formatter.string(from: self.duration)!
+           
+        
+        
+    }
+    
 }

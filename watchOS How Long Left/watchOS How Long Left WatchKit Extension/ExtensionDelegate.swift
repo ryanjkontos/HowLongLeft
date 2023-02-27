@@ -31,11 +31,14 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
     
     let wc = HLLWCManager()
     
-    let stateReceiver = WatchComplicationStateReceiver()
+    let stateReceiver = ComplicationStateManager()
     
     func applicationDidFinishLaunching() {
         
-       
+        Task {
+            await CalendarReader.shared.getCalendarAccess()
+        }
+        
         let HWCategory =
               UNNotificationCategory(identifier: "HWShifts",
               actions: [],
@@ -74,11 +77,8 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
         scheduleNextComplicationUpdateTask()
         
         Task {
-            
           
-            
             NicknameManager.shared.loadNicknames()
-            
             ubiquitousKeyValueStoreDidChange()
             
         }
@@ -113,13 +113,7 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
             WCSession.default.hasContentPending == false else { return }
         
         wcBackgroundTasks.forEach { $0.setTaskCompletedWithSnapshot(false) }
-        
-        // Use Logger to log tasks for debugging purposes.
-        //
-      
-        // Schedule a snapshot refresh if the UI is updated by background tasks.
-        //
-        
+
         wcBackgroundTasks.removeAll()
     }
     
@@ -138,6 +132,8 @@ class ExtensionDelegate: NSObject, ObservableObject, WKExtensionDelegate {
                 // print("Handling Background Task")
                 
                 //ComplicationLogger.log("Running background task: \(backgroundTask.userInfo?.description ?? "No UserInfo")")
+                
+                
                 
                 ComplicationController.updateComplications(forced: false)
                 scheduleNextComplicationUpdateTask()

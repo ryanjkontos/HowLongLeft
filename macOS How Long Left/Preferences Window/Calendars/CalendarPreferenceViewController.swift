@@ -82,7 +82,7 @@ final class CalendarPreferenceViewController: NSViewController, PreferencePane, 
     
     override func viewWillAppear() {
         
-        
+        super.viewWillAppear()
         
         PreferencesWindowManager.shared.currentIdentifier = preferencePaneIdentifier
         
@@ -102,12 +102,11 @@ final class CalendarPreferenceViewController: NSViewController, PreferencePane, 
         HLLEventSource.shared.addeventsObserver(self)
         
         super.viewDidLoad()
-        self.preferredContentSize = CGSize(width: 421, height: 482)
+       // self.preferredContentSize = CGSize(width: 421, height: 482)
         
         table.delegate = self
         table.dataSource = self
         
-       
         
     }
     

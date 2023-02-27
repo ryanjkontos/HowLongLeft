@@ -366,7 +366,7 @@ class DetailSubmenuGenerator {
             
         }
         
-        if let calendar = event.calendar, HLLDefaults.calendar.enabledCalendars.contains(calendar.calendarIdentifier) {
+        if let calendar = event.calendar, CalendarDefaultsModifier.shared.enabledCalendars.contains(calendar.calendarIdentifier) {
             
             let calendarButton = HLLMenuItem()
             calendarButton.title = "Disable \"\(calendar.title)\""

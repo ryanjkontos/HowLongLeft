@@ -39,7 +39,7 @@ class HLLDefaults {
     #endif
     
    
-    static var cloudDefaults = NSUbiquitousKeyValueStore()
+    static var cloudDefaults = NSUbiquitousKeyValueStore.default
     
     static func updateCloudDefaults() {
         cloudDefaults.synchronize()
@@ -1537,7 +1537,7 @@ class HLLDefaults {
             
         }
         
-        static var enabledCalendars: [String] {
+       static var enabledCalendars: [String] {
             
             get {
                 

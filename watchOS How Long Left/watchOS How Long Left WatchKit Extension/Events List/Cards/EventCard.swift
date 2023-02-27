@@ -16,7 +16,7 @@ struct EventCard: View {
          var returnArray = [(() -> String)]()
          
          let relative = { "\(event.countdownTypeString(at: self.date).capitalizingFirstLetter()) " + CountdownStringGenerator.generateCountdownTextFor(event: self.event, currentDate: self.date).justCountdown }
-        let dates = { return "\(event.startDate.formattedTime()) - \(event.endDate.formattedTime())" }
+         let dates = { return event.getIntervalString(at: self.date) }
          
          let location = { event.location ?? relative() }
         
@@ -61,8 +61,8 @@ struct EventCard: View {
                     .animation(.easeInOut(duration: 0.5), value: date)
                     .foregroundColor(.secondary)
                     .font(.system(size: 13, weight: .regular, design: .rounded))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
                     
                     
            

@@ -37,7 +37,7 @@ class EventSource: ObservableObject, EventSourceProtocol {
             return
         }
         
-        let pinned = HLLEventSource.shared.getPinnedEventsFromevents()
+        let pinned = HLLEventSource.shared.getPinnedEventsFromEvents()
         var current = [HLLEvent]()
         var upcoming = [HLLEvent]()
         

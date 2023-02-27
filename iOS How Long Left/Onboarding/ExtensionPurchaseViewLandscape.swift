@@ -99,9 +99,7 @@ struct ExtensionPurchaseViewLandscape: View {
                 .aspectRatio(contentMode: .fit)
                 .shadow(radius: 5)
                 .padding(.vertical, 15)
-                //.matchedGeometryEffect(id: "W1", in: ExtensionPurchaseParentView.animation)
                 
-            
             
         }
         
@@ -121,6 +119,7 @@ struct ExtensionPurchaseViewLandscape: View {
                 .foregroundColor(.secondary)
                 .font(.system(size: 19, weight: .regular, design: .default))
                 .multilineTextAlignment(.center)
+            
         }
         
     }

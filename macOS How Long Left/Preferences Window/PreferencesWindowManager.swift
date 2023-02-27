@@ -48,24 +48,6 @@ class PreferencesWindowManager: NSObject, NSWindowDelegate, EventSourceUpdateObs
         
     }
     
-    private lazy var settingsWindowController = SettingsWindowController(
-        panes: [
-            Preferences.Pane(
-                identifier: .calendars,
-                 title: "Calendar",
-                 toolbarIcon: NSImage()
-            ) {
-                CalendarPane()
-            },
-            Preferences.Pane(
-                identifier: .about,
-                 title: "About",
-                 toolbarIcon: NSImage()
-            ) {
-                CalendarPane()
-            },
-        ]
-    )
     
     static var shared = PreferencesWindowManager()
     
@@ -125,14 +107,12 @@ class PreferencesWindowManager: NSObject, NSWindowDelegate, EventSourceUpdateObs
         NSApp.setActivationPolicy(.regular)
         NSApp.activate(ignoringOtherApps: true)
         
-
         
         preferencesWindowController?.window?.close()
         
         
         
-        preferencesWindowController = PreferencesWindowController(preferencePanes: getPanes())
-        
+        preferencesWindowController = SettingsWindowController(preferencePanes: getPanes(), style: .toolbarItems, animated: true, hidesToolbarForSingleItem: true)
         preferencesWindowController?.window?.delegate = self
         //preferencesWindowController?.window?.collectionBehavior = [.fullScreenAllowsTiling]
         

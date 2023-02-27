@@ -62,11 +62,11 @@ extension CountdownCell {
        
         NSLayoutConstraint.activate([
         
-            sub.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            sub.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            sub.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            sub.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             sub.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             sub.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            sub.heightAnchor.constraint(equalToConstant: 90),
+            sub.heightAnchor.constraint(equalTo: contentView.heightAnchor),
             sub.widthAnchor.constraint(equalTo: contentView.subviews.first!.widthAnchor)
         
         ])

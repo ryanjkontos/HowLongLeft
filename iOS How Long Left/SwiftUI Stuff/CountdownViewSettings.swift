@@ -120,8 +120,8 @@ struct CountdownViewSettings: View {
     func move(from source: IndexSet, to destination: Int) {
         settingsObject.sectionOrder.move(fromOffsets: source, toOffset: destination)
     }
-    
-    func incrementStep() {
+  
+  /*  func incrementStep() {
         settingsObject.upcomingCount += 1
          
      }
@@ -129,7 +129,7 @@ struct CountdownViewSettings: View {
      func decrementStep() {
          settingsObject.upcomingCount -= 1
          if settingsObject.upcomingCount < 1 { settingsObject.upcomingCount = 1 }
-     }
+     } */
 }
 
 struct CountdownCardSettings_Previews: PreviewProvider {

@@ -17,8 +17,15 @@ class HLLSettingsTableViewController: HLLAppearenceTableViewController {
     
     
     var sections = [SettingsSection]()
+   
+    var complicationSettingsVC: UIViewController!
+    var widgetSettingsVC: UIViewController!
     
     override func viewDidLoad() {
+        
+     
+       
+        
         super.viewDidLoad()
         tableView.register(IconButtonTableViewCell.self, forCellReuseIdentifier: "IconButtonCell")
             
@@ -74,6 +81,21 @@ class HLLSettingsTableViewController: HLLAppearenceTableViewController {
         interactiveDeselect(animated: animated)
         
         
+        DispatchQueue.main.async { [self] in
+            widgetSettingsVC = UIHostingController(rootView: WidgetSettingsView())
+            widgetSettingsVC.navigationItem.largeTitleDisplayMode = .never
+            widgetSettingsVC.title = "Widget & Live Activity"
+            widgetSettingsVC.loadViewIfNeeded()
+            widgetSettingsVC.loadView()
+            widgetSettingsVC.viewWillAppear(false)
+            
+            complicationSettingsVC = UIHostingController(rootView: ComplicationsSettingsView())
+            complicationSettingsVC.navigationItem.largeTitleDisplayMode = .never
+            complicationSettingsVC.title = "Complication"
+            
+            widgetSettingsVC.viewWillAppear(false)
+            
+        }
         
         
     }
@@ -128,15 +150,21 @@ class HLLSettingsTableViewController: HLLAppearenceTableViewController {
             
         case .widget:
             
+           /* if Store.shared.widgetPurchased {
+                return
+            }
+            
             let hc = UIHostingController(rootView: ExtensionPurchaseParentView(type: .widget))
-            self.present(hc, animated: true)
+            self.present(hc, animated: true) */
+           
+            navigationController?.pushViewController(widgetSettingsVC, animated: true)
+            
             self.tableView.deselectRow(at: indexPath, animated: true)
             
         case .complication:
             
-            let hc = UIHostingController(rootView: ExtensionPurchaseParentView(type: .complication))
-            self.present(hc, animated: true)
-            self.tableView.deselectRow(at: indexPath, animated: true)
+        
+            navigationController?.pushViewController(complicationSettingsVC, animated: true)
             
         case .siri:
             break
@@ -210,7 +238,7 @@ class HLLSettingsTableViewController: HLLAppearenceTableViewController {
                 case .calendars:
                     return "Calendars"
                 case .widget:
-                    return "Home Screen Widget"
+                    return "Widget and Live Activity"
                 case .complication:
                     return "Watch Complication"
                 case .siri:

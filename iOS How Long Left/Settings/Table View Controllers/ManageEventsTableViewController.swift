@@ -99,7 +99,7 @@ class ManageEventsTableViewController: HLLAppearenceTableViewController {
             
             
             var config = UIListContentConfiguration.cell()
-            config.text = "\(dataSource.addActionWord) Event"
+            config.text = "Choose Event"
             config.textProperties.color = .systemOrange
             
             cell.contentConfiguration = config

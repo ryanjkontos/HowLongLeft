@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferenceViewController" customModule="How_Long_Left_macOS" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner">
             <connections>
                 <outlet property="groupFollowingOccurencesButton" destination="Ofb-MS-5WW" id="Ct4-Ix-cdj"/>
                 <outlet property="groupFollowingOccurencesDescription" destination="0y3-bH-4M4" id="QMO-ro-hMC"/>
@@ -23,9 +22,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="MenuPreferenceView" id="0CW-dO-GEY">
+        <customView identifier="MenuPreferenceView" translatesAutoresizingMaskIntoConstraints="NO" id="0CW-dO-GEY">
             <rect key="frame" x="0.0" y="0.0" width="515" height="403"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tabView translatesAutoresizingMaskIntoConstraints="NO" id="nyI-fG-or3">
                     <rect key="frame" x="13" y="10" width="489" height="293"/>
@@ -388,6 +386,7 @@
             <constraints>
                 <constraint firstItem="l50-W1-UNH" firstAttribute="top" secondItem="0CW-dO-GEY" secondAttribute="top" constant="30" id="BxP-Tr-ZOZ"/>
                 <constraint firstItem="nyI-fG-or3" firstAttribute="leading" secondItem="0CW-dO-GEY" secondAttribute="leading" constant="20" symbolic="YES" id="FDK-H0-Kcn"/>
+                <constraint firstAttribute="bottom" secondItem="nyI-fG-or3" secondAttribute="bottom" constant="20" symbolic="YES" id="T0z-y1-r0h"/>
                 <constraint firstItem="l50-W1-UNH" firstAttribute="centerX" secondItem="0CW-dO-GEY" secondAttribute="centerX" id="kTi-zw-gDq"/>
                 <constraint firstAttribute="bottom" secondItem="nyI-fG-or3" secondAttribute="bottom" constant="20" symbolic="YES" id="l2d-rt-cAm"/>
                 <constraint firstAttribute="trailing" secondItem="nyI-fG-or3" secondAttribute="trailing" constant="20" symbolic="YES" id="oBQ-z6-73D"/>

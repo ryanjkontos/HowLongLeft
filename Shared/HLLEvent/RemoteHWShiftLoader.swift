@@ -10,6 +10,9 @@ import Foundation
 
 import GoogleAPIClientForRESTCore
 import GoogleAPIClientForREST_Calendar
+#if os(watchOS)
+import WatchKit
+#endif
 
 class RemoteHWShiftLoader {
     
@@ -22,6 +25,11 @@ class RemoteHWShiftLoader {
     
     func load() {
         
+        #if os(watchOS)
+        if WKApplication.shared().applicationState != .active {
+            return
+        }
+        #endif
         
         if HWEventFinder.shared.hasFoundHWEvent == false {
             return

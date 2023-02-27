@@ -85,7 +85,7 @@ class HLLStoredEventManager: ObservableObject {
             self.objectWillChange.send()
             
         
-        
+        HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
     }
     
     func unpinEvent(_ event: HLLEvent) {
@@ -96,23 +96,25 @@ class HLLStoredEventManager: ObservableObject {
         
     }
     
-    func unpinEvent(_ event: HLLStoredEvent) {
+    func unpinEvent(_ event: HLLStoredEvent, _ update: Bool = true) {
         
         event.isPinned = false
         HLLDataModel.shared.persistentContainer.viewContext.delete(event)
         HLLDataModel.shared.save()
-        
+        HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
     }
     
     func unpinEvents(_ events: [HLLStoredEvent]) {
         
         for event in events {
-            unpinEvent(event)
+            unpinEvent(event, false)
         }
         
     }
     
-    func hideEvent(_ event: HLLEvent) {
+    
+    
+    func hideEvent(_ event: HLLEvent, update: Bool = true) {
         
        
         
@@ -124,23 +126,38 @@ class HLLStoredEventManager: ObservableObject {
             
             self.observers.forEach({$0.eventWasHidden(event: event)})
             
-        
+        if update {
+            HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
+        }
         
     }
+    
+    
 
     
     func unhideEvent(_ event: HLLStoredEvent) {
         
-        event.isHidden = false
-        HLLDataModel.shared.persistentContainer.viewContext.delete(event)
-       HLLDataModel.shared.save()
+        unhideEventWithoutUpdate(event)
+        HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
         
     }
     
-    func unhideEvents(_ events: [HLLStoredEvent]) {
+    private func unhideEventWithoutUpdate(_ event: HLLStoredEvent) {
+        event.isHidden = false
+        HLLDataModel.shared.persistentContainer.viewContext.delete(event)
+       HLLDataModel.shared.save()
+    }
+    
+    func unhideEvents(_ events: [HLLStoredEvent], _ update: Bool = true) {
         
         for event in events {
-            unhideEvent(event)
+            unhideEventWithoutUpdate(event)
+        }
+        
+        if update {
+            
+            HLLEventSource.shared.updateEventsAsync(bypassDebouncing: true)
+            
         }
         
     }
@@ -210,7 +227,11 @@ class HLLStoredEventManager: ObservableObject {
             
         }
         
-        unhideEvents(delete)
+        if delete.isEmpty == false {
+            unhideEvents(delete, false)
+        }
+        
+        
         
     }
     

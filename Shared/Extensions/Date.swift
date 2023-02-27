@@ -114,17 +114,7 @@ extension Date {
         dateFormatter.dateFormat = "EEEE"
         returnText = dateFormatter.string(from: self)
         
-        if self.daysUntil() == 0, returnTodayIfToday {
-            
-            returnText = "Today"
-            
-        }
         
-        if self.daysUntil() == 1, returnTodayIfToday {
-            
-            returnText = "Tomorrow"
-            
-        }
         
         return returnText
         
@@ -138,6 +128,24 @@ extension Date {
         
     }
     
+    func getRelativeString() -> String? {
+        
+        if self.daysUntil() == -1 {
+            return "Yesterday"
+        }
+        
+        if self.daysUntil() == 0 {
+            return "Today"
+        }
+        
+        if self.daysUntil() == 1 {
+            return "Tomorrow"
+        }
+        
+        return nil
+        
+    }
+    
     
     private func is24Hour() -> Bool {
         let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)!
@@ -146,8 +154,6 @@ extension Date {
     }
     
     func formattedTime(seconds: Bool = false) -> String {
-        
-        
         
         let dateFormatter  = DateFormatter()
         
@@ -184,6 +190,19 @@ extension Date {
         dateFormatter.dateFormat = "d MMMM yyyy"
         return dateFormatter.string(from: self)
         
+    }
+    
+    func shortDate() -> String {
+        
+        if let string = getRelativeString() {
+            return string
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: self)
+
     }
     
     func year() -> Int {

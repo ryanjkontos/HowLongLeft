@@ -19,6 +19,8 @@ class NicknameEditorTableViewController: HLLAppearenceTableViewController {
     
     var dismissedDelegate: SheetDismissedDelegate?
     
+    var showAlertOnSave = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,6 +65,11 @@ class NicknameEditorTableViewController: HLLAppearenceTableViewController {
             showErrorAlert()
         } else {
             NicknameManager.shared.saveNicknameObject(object)
+            
+            if dismissedDelegate == nil {
+                InfoAlertBox.shared.showAlert(text: "Nickname Saved")
+            }
+            
             self.dismissSheet()
         }
         
@@ -167,6 +174,8 @@ class NicknameEditorTableViewController: HLLAppearenceTableViewController {
     }
     
     func dismissSheet() {
+        
+        
         
         self.dismissedDelegate?.sheetDismissed()
         self.dismiss(animated: true)

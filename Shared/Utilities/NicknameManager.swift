@@ -45,11 +45,11 @@ class NicknameManager: ObservableObject {
         let oldNicknameObjects = nicknameObjects
         
        var returnArray = [NicknameEntity]()
-               
-        let managedContext = HLLDataModel.shared.persistentContainer.performBackgroundTask { managedContext in
+
+        let context = HLLDataModel.shared.persistentContainer.viewContext
             
             let fetchRequest: NSFetchRequest<NicknameEntity> = NicknameEntity.fetchRequest()
-            if let items = try? managedContext.fetch(fetchRequest) {
+            if let items = try? context.fetch(fetchRequest) {
                 returnArray = items
             }
             
@@ -64,7 +64,7 @@ class NicknameManager: ObservableObject {
             }
             
             
-        }
+        
        
         
      
@@ -85,7 +85,7 @@ class NicknameManager: ObservableObject {
                 
                 var nicknamed = event
                 nicknamed.title = nickname
-                nicknamed.isNicknamed = true
+                
                 returnArray.append(nicknamed)
                 
             } else {

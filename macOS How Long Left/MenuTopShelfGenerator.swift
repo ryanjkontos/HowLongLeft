@@ -151,7 +151,7 @@ class MenuTopShelfGenerator {
         
        
         
-        if HLLDefaults.calendar.enabledCalendars.isEmpty {
+        if CalendarDefaultsModifier.shared.getEnabledCalendars().isEmpty {
                    
             items.removeAll()
             let item = NSMenuItem()
@@ -265,7 +265,7 @@ class MenuTopShelfGenerator {
     
 }
 
-struct DummyHLLWidgetEntry  {
+/*struct DummyHLLWidgetEntry  {
     internal init(date: Date, event: HLLEvent?, events: [HLLEvent]) {
         self.date = date
         self.event = event
@@ -289,3 +289,4 @@ struct DummyHLLWidgetEntry  {
     let event: HLLEvent?
     let events: [HLLEvent]
 }
+*/

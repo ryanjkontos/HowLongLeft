@@ -14,7 +14,7 @@ struct ExtensionPurchaseView: View, Sendable {
 
     var type: ExtensionType
     
-    @Binding var presentSheet: Bool
+
     
     @State var purchasing = false
     
@@ -27,9 +27,9 @@ struct ExtensionPurchaseView: View, Sendable {
     
     @State var vc: UIViewController?
     
-    init(type: ExtensionType, presentSheet: Binding<Bool>) {
+    init(type: ExtensionType) {
         
-        _presentSheet = presentSheet
+       
         self.type = type
         
         UIPageControl.appearance().currentPageIndicatorTintColor = .label.withAlphaComponent(0.99)
@@ -108,7 +108,7 @@ struct ExtensionPurchaseView: View, Sendable {
                                     
                                     if purchased {
                                         DispatchQueue.main.async {
-                                            self.presentSheet = false
+                                            vc?.dismiss(animated: true)
                                         }
                                     }
                                     
@@ -132,11 +132,6 @@ struct ExtensionPurchaseView: View, Sendable {
                         }
                         
                 
-                    
-                    
-                    
-                    
-                    
                     }
                     
                     Button(action: { restore() }, label: { Text("Restore...") })
@@ -171,7 +166,7 @@ struct ExtensionPurchaseView: View, Sendable {
                 HStack {
                     Spacer()
                     
-                    Button(action: { presentSheet = false
+                    Button(action: {
                         
                         vc?.dismiss(animated: true)
                         
@@ -300,6 +295,6 @@ struct ExtensionPurchaseView: View, Sendable {
 
 struct ComplicationPurchaseView_Previews: PreviewProvider {
     static var previews: some View {
-        ExtensionPurchaseView(type: .widget, presentSheet: .constant(true))
+        ExtensionPurchaseView(type: .widget)
     }
 }

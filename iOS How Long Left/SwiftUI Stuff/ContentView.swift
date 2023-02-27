@@ -40,16 +40,7 @@ struct ContentView: View {
         EventView(event: event)
         
     })
-   .sheet(isPresented: $showOnboarding, content: {
-        
-        NavigationView {
-            WelcomeView()
-             //   .environmentObject(store)
-        }
-       
-        .environment(\.colorScheme, getColorScheme())
-        
-    })
+
   
     .environment(\.colorScheme, getColorScheme())
    

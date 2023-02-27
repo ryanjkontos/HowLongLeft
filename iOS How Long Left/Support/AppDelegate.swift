@@ -12,6 +12,7 @@ import BackgroundTasks
 import Defaults
 import Zephyr
 import OneSignal
+import DeviceKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,13 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var hwFinder: HWEventFinder?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         // Initialize and configure objects and services
         
-    
-        Task {
-            await CalendarReader.shared.getCalendarAccess()
-        }
-        
+       // if HLLDefaults.defaults.bool(forKey: "RequestedCalendarAccess") {
+            
+            Task {
+                await CalendarReader.shared.getCalendarAccess()
+            }
+            
+        //}
         
         
         initializeDataModel()
@@ -35,17 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeHWEventFinder()
         
-
-       
-        
         initializeOneSignal(with: launchOptions)
         registerBackgroundTask()
         
-        // Set default values
-        HLLDefaults.general.showAllDay = true
-        
         // Update events
-        HLLEventSource.shared.updateEvents()
+      //  HLLEventSource.shared.updateEvents()
         
         return true
     }
@@ -90,6 +88,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if task {
             HLLDefaults.defaults.set(true, forKey: "RegisteredWidgetTask")
         }
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        
+        let device = Device.current
+        
+        if [Device.iPhoneSE, .iPodTouch7].contains(device) {
+            return .portrait
+        }
+        
+        if [Device.simulator(.iPhoneSE), .simulator(.iPodTouch7)].contains(device) {
+            return .portrait
+        }
+        
+        return .all
     }
     
     // MARK: UISceneSession Lifecycle

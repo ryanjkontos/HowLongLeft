@@ -38,7 +38,9 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var isUserHideable = false
     
-    var isNicknamed = false
+    var isNicknamed: Bool {
+        return NicknameManager.shared.isNicknamed(event: self)
+    }
     
     var isBirthday = false
     
@@ -60,13 +62,22 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
     
     var duration: TimeInterval { endDate.timeIntervalSince(startDate) }
     
+    var interval: DateInterval {
+        return DateInterval(start: self.startDate, end: self.endDate)
+    }
+    
     var isSelected: Bool { SelectedEventManager.shared.selectedEvent == self }
     
     var modified: Date
     
     var isPinned: Bool {
         //HLLDefaults.general.pinnedEventIdentifiers.contains(where: { $0 == persistentIdentifier})
-        HLLStoredEventManager.shared.isPinned(event: self)
+        
+        if self.completionStatus == .done {
+            return false
+        }
+        
+       return HLLStoredEventManager.shared.isPinned(event: self)
     }
     
     var isRemote: Bool = false
@@ -185,6 +196,44 @@ struct HLLEvent: EventUIObject, Equatable, Hashable, Codable, Identifiable {
         HLLEvent(title: "Upcoming", start: Date().addingTimeInterval(600), end: Date().addingTimeInterval(45*60), location: nil)
     }
     
+
+    func getIntervalString(at date: Date) -> String {
+        
+        if self.isAllDay {
+            
+            if self.startDate.startOfDay() == endDate.startOfDay() {
+                return "All Day, \(startDate.shortDate())"
+            } else {
+                return "All Day. \(startDate.shortDate()) - \(endDate.shortDate())"
+            }
+            
+            
+        }
+        
+        if self.startDate.startOfDay() == date.startOfDay(), self.endDate.startOfDay() == date.startOfDay() {
+            return "\(self.startDate.formattedTime()) - \(self.endDate.formattedTime())"
+        }
+        
+        var startString: String
+        
+        if self.startDate.startOfDay() == date.startOfDay() {
+            startString = "\(self.startDate.formattedTime())"
+        } else {
+            startString = "\(self.startDate.shortDate()), \(self.startDate.formattedTime())"
+        }
+        
+        var endString: String
+        
+        if self.endDate.startOfDay() == date.startOfDay() {
+            endString = "\(self.endDate.formattedTime())"
+        } else {
+            endString = "\(self.endDate.shortDate()), \(self.endDate.formattedTime())"
+        }
+        
+        return "\(startString) - \(endString) (\(self.interval.getShortIntervalString()))"
+        
+        
+    }
     
    /* var userActivity: NSUserActivity {
         let userActivity = NSUserActivity(activityType: UserActivity.viewEventKey)
@@ -321,6 +370,9 @@ extension EKCalendar {
         
         
     }
+    
+    
+    
     
 }
 

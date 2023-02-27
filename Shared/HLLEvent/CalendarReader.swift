@@ -27,13 +27,7 @@ class CalendarReader {
     let calendarFetchQueue = DispatchQueue(label: "CalendarFetchQueue", qos: .userInteractive)
     
     
-    init() {
-        
-        Task {
-            await CalendarReader.shared.getCalendarAccess()
-        }
-        
-    }
+   
     
     func getEventsFromCalendar(start: Date, end: Date, usingCalendars calendars: [EKCalendar]) -> [HLLEvent] {
         
@@ -58,10 +52,10 @@ class CalendarReader {
         return getCalendars().map { $0.title }
     }
         
-    func getCalendarAccess() async {
+    func getCalendarAccess() async -> Bool {
         
         if self.calendarAccess == .Granted {
-            return
+            return true
         }
         
         print("EVS: Getting calendar access")
@@ -83,10 +77,14 @@ class CalendarReader {
                 
           //      CXLogger.log("Got cal access: \(self.calendarAccess == .Granted)")
                 
+                
                 HLLEventSource.shared.updateEvents(full: false, bypassDebouncing: true)
+                
+                return result
                 
             } catch {
                  print("Cal access error: \(error)")
+                return false
               //  CXLogger.log("Cal access error \(error)")
             }
             
