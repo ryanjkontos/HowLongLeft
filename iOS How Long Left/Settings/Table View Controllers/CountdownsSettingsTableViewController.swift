@@ -60,7 +60,7 @@ class CountdownsSettingsTableViewController: HLLAppearenceTableViewController {
             sections.append(.ordering)
         }
         
-        sections.append(.offset)
+        //sections.append(.offset)
         
     }
     

@@ -12,7 +12,7 @@ class WidgetHLLTimelineStorageManager {
     
     private let defaultsKey = "WidgetTimelines"
     
-    func saveTimeline(_ timeline: HLLTimeline, configID: String?) {
+    func saveTimeline(_ timeline: HLLTimeline, configID: String? = nil) {
         
         guard let id = configID else { HLLDefaults.widget.latestTimeline = timeline.getArchive(); return }
         let data = try! JSONEncoder().encode(timeline)

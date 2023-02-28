@@ -87,6 +87,13 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "XCODE_CLOUD_BUILD_NOTES"
+            value = "- Added a Lock Screen widget.&#10;- Fixed an issue where the watchOS complication would display the current event as the next event."
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../iOS How Long Left/Onboarding/StoreKitDebug.storekit">
       </StoreKitConfigurationFileReference>

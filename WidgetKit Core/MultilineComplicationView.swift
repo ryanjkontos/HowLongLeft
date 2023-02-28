@@ -8,7 +8,7 @@
 
 import SwiftUI
 import WidgetKit
-/*
+
 @available(iOSApplicationExtension 16.0, *)
 struct MultilineComplicationView: View {
     
@@ -26,14 +26,12 @@ struct MultilineComplicationView: View {
                     Text(event.title)
                         .font(.headline)
                         .widgetAccentable()
-                    Text("Ends in")
-                    
+                    Text("\(event.countdownTypeString(at: date)) in ") + Text(event.countdownDate(at: date), style: .timer)
                     
                     Gauge(value: 0.5, label: {
-                        
-                       
-                        
+                        EmptyView()
                     })
+                    
                     
                 }.frame(maxWidth: .infinity, alignment: .leading)
                
@@ -66,4 +64,4 @@ struct MultilineComplicationView_Previews: PreviewProvider {
     }
 }
 
-*/
+

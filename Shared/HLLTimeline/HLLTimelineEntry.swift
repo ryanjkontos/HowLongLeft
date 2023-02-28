@@ -48,7 +48,18 @@ struct HLLTimelineEntry: Codable, CustomDebugStringConvertible, Equatable, Timel
     init(date: Date, event currentEvent: HLLEvent?, nextEvents: [HLLEvent] = [HLLEvent]()) {
         self.date = date
         event = currentEvent
-        self.nextEvents = nextEvents
+        self.nextEvents = nextEvents.filter({ current in
+            
+            if let event = currentEvent {
+                if current.persistentIdentifier == event.persistentIdentifier {
+                    return false
+                }
+            }
+            
+            return true
+            
+        })
+        
         
     }
     

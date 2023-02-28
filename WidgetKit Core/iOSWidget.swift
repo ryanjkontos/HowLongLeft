@@ -32,7 +32,7 @@ struct Provider: IntentTimelineProvider {
   
     
     
-    let configStore = WidgetConfigurationStore()
+   
     var generator: HLLTimelineGenerator
 
     let storageManager = WidgetHLLTimelineStorageManager()
@@ -78,19 +78,11 @@ struct Provider: IntentTimelineProvider {
         
         generator.reset()
         
-        var config: HLLTimelineConfiguration?
-        
-        #if os(iOS)
-        
-        if let intentConfig = configuration.config {
-            config = configStore.getConfigFromIntent(intent: intentConfig)
-        }
-        
-        #endif
+
         
         
         HLLEventSource.shared.updateEvents()
-        generator.timelineConfiguration = config
+        
         let newTimeline = generator.generateHLLTimeline()
         let entry = Entry(configuration: configuration, underlyingEntry: newTimeline.entries.first!)
         completion(entry)
@@ -102,32 +94,15 @@ struct Provider: IntentTimelineProvider {
         
         generator.reset()
         
-        var config: HLLTimelineConfiguration?
-        
-        if configuration.useConfig?.boolValue ?? true {
-            
-            config = configStore.defaultGroup
-            
-            if let intentConfig = configuration.config, let match = configStore.getConfigFromIntent(intent: intentConfig) {
-                config = match
-            }
-            
-        } else {
-            
-            if let widgetEvent = configuration.enabledEvents {
-                generator.onlyShowEventID = widgetEvent.identifier
-            } else {
-                generator.onlyShowEventID = ""
-            }
-            
-        }
+      
+
         
         var entries = [Entry]()
         HLLEventSource.shared.updateEvents()
-        generator.timelineConfiguration = config
+     
         let newTimeline = generator.generateHLLTimeline()
         
-        storageManager.saveTimeline(newTimeline, configID: config?.id)
+        storageManager.saveTimeline(newTimeline)
         
         for entry in newTimeline.entries {
             
@@ -172,9 +147,10 @@ struct HLLWidgets: WidgetBundle {
        UpcomingListWidget()
        CountdownAndUpcomingListWidget()
        
-      
-       // CountdownComplication()
-
+       if #available(iOS 16.0, *) {
+           CountdownComplication()
+       }
+       
     #if !targetEnvironment(macCatalyst)
        if #available(iOS 16.1, *) {
            LiveEventActivityWidget()
@@ -189,7 +165,7 @@ struct HLLWidgets: WidgetBundle {
 
 
 
-/*@available(iOSApplicationExtension 16.0, *)
+@available(iOSApplicationExtension 16.0, *)
 struct CountdownComplication: Widget {
     
    
@@ -200,7 +176,7 @@ struct CountdownComplication: Widget {
         
         IntentConfiguration(kind: kind, intent: Provider.Intent.self, provider: Provider(), content: { entry in
             
-            MultilineComplicationView(event: entry.underlyingEntry.event, date: entry.date)
+            AccessoryRectangularComplicationView(entry: entry.underlyingEntry)
             
         })
         .description("Shows a countdown for a current or upcoming event.")
@@ -209,7 +185,7 @@ struct CountdownComplication: Widget {
         
     }
 
-} */
+}
 
 
 

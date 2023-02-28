@@ -332,18 +332,18 @@ class HLLTimelineGenerator {
         let timeline = generateHLLTimeline(forState: .normal).getArchive()
         let newTimeline = timeline
         
-        guard let currentTimeline = getStoredTimeline(withID: timelineConfiguration?.id) else {
-          //   print("Needs reloading because no stored timeline.")
+        guard let currentTimeline = getStoredTimeline() else {
+             print("Needs reloading because no stored timeline.")
             return .needsReloading
         }
         
         if newTimeline.appVersion != currentTimeline.appVersion {
-         //    print("Needs reloading because app versions were different")
+             print("Needs reloading because app versions were different")
             return .needsReloading
         }
         
         if newTimeline.state != currentTimeline.state {
-          //   print("Needs reloading because states were different")
+             print("Needs reloading because states were different")
             return .needsReloading
         }
         
@@ -354,16 +354,16 @@ class HLLTimelineGenerator {
         let newHash = newTimeline.entryHash
         let currentHash = currentTimeline.entryHash
         
-        // print("Comparing timelines \(newTimeline.creationDate.timeIntervalSinceReferenceDate) and \(currentTimeline.creationDate.timeIntervalSinceReferenceDate)")
+         print("Comparing timelines \(newTimeline.creationDate.timeIntervalSinceReferenceDate) and \(currentTimeline.creationDate.timeIntervalSinceReferenceDate)")
         
-      //  print("New has \(newTimeline.entryCount) and current has \(currentTimeline.entryCount)")
+        print("New has \(newTimeline.entryCount) and current has \(currentTimeline.entryCount)")
         
         if newHash != currentHash {
-        //     print("Timeline dicts did not match, should reload.")
+             print("Timeline dicts did not match, should reload.")
             return .needsReloading
         }
         
-        // print("Timeline dicts matched, no need to reload.")
+         print("Timeline dicts matched, no need to reload.")
         
         return .noUpdateNeeded
         

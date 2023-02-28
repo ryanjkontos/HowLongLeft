@@ -9,16 +9,16 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>88xZPY</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21F79</string>
+	<string>22D68</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14A5270f</string>
+	<string>14C18</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.0</string>
+	<string>14.2</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
-			<string>information</string>
+			<string>set</string>
 			<key>INIntentDescriptionID</key>
 			<string>tVvJ9c</string>
 			<key>INIntentEligibleForWidgets</key>
@@ -26,7 +26,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>37</integer>
+			<integer>42</integer>
 			<key>INIntentName</key>
 			<string>HLLWidgetConfiguration</string>
 			<key>INIntentParameters</key>
@@ -79,9 +79,9 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Use Configuration</string>
+					<string>Show In Progress Events</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>EptOnJ</string>
+					<string>DiZGTr</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
 					<key>INIntentParameterMetadata</key>
@@ -89,16 +89,16 @@
 						<key>INIntentParameterMetadataDefaultValue</key>
 						<true/>
 						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
+						<string>Off</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>ajw27k</string>
+						<string>3dDsPN</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
+						<string>On</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>utYHAe</string>
+						<string>v51eAM</string>
 					</dict>
 					<key>INIntentParameterName</key>
-					<string>useConfig</string>
+					<string>ShowInProgress</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -115,7 +115,7 @@
 						</dict>
 					</array>
 					<key>INIntentParameterTag</key>
-					<integer>33</integer>
+					<integer>39</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -123,65 +123,26 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Configuration</string>
+					<string>Show Upcoming Events</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>zMGEOz</string>
+					<string>pRzMP2</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>3</integer>
-					<key>INIntentParameterName</key>
-					<string>config</string>
-					<key>INIntentParameterObjectType</key>
-					<string>WidgetConfigType</string>
-					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>88xZPY</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterRelationship</key>
+					<key>INIntentParameterMetadata</key>
 					<dict>
-						<key>INIntentParameterRelationshipParentName</key>
-						<string>useConfig</string>
-						<key>INIntentParameterRelationshipPredicateName</key>
-						<string>BooleanHasExactValue</string>
-						<key>INIntentParameterRelationshipPredicateValue</key>
+						<key>INIntentParameterMetadataDefaultValue</key>
 						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>false</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>4moatO</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>true</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>RWrhxG</string>
 					</dict>
-					<key>INIntentParameterSupportsDynamicEnumeration</key>
-					<true/>
-					<key>INIntentParameterSupportsSearch</key>
-					<true/>
-					<key>INIntentParameterTag</key>
-					<integer>29</integer>
-					<key>INIntentParameterType</key>
-					<string>Object</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Event To Show</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>9wpgNr</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>4</integer>
 					<key>INIntentParameterName</key>
-					<string>enabledEvents</string>
-					<key>INIntentParameterObjectType</key>
-					<string>WidgetEvent</string>
-					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>88xZPY</string>
+					<string>ShowUpcoming</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -197,21 +158,10 @@
 							<string>Primary</string>
 						</dict>
 					</array>
-					<key>INIntentParameterRelationship</key>
-					<dict>
-						<key>INIntentParameterRelationshipParentName</key>
-						<string>useConfig</string>
-						<key>INIntentParameterRelationshipPredicateName</key>
-						<string>BooleanHasExactValue</string>
-					</dict>
-					<key>INIntentParameterSupportsDynamicEnumeration</key>
-					<true/>
-					<key>INIntentParameterSupportsSearch</key>
-					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>37</integer>
+					<integer>42</integer>
 					<key>INIntentParameterType</key>
-					<string>Object</string>
+					<string>Boolean</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
@@ -237,137 +187,10 @@
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
-			<string>View</string>
+			<string>Set</string>
 		</dict>
 	</array>
 	<key>INTypes</key>
-	<array>
-		<dict>
-			<key>INTypeDisplayName</key>
-			<string>Widget Config Type</string>
-			<key>INTypeDisplayNameID</key>
-			<string>gUdsK4</string>
-			<key>INTypeLastPropertyTag</key>
-			<integer>99</integer>
-			<key>INTypeName</key>
-			<string>WidgetConfigType</string>
-			<key>INTypeProperties</key>
-			<array>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>1</integer>
-					<key>INTypePropertyName</key>
-					<string>identifier</string>
-					<key>INTypePropertyTag</key>
-					<integer>1</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>2</integer>
-					<key>INTypePropertyName</key>
-					<string>displayString</string>
-					<key>INTypePropertyTag</key>
-					<integer>2</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>3</integer>
-					<key>INTypePropertyName</key>
-					<string>pronunciationHint</string>
-					<key>INTypePropertyTag</key>
-					<integer>3</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>4</integer>
-					<key>INTypePropertyName</key>
-					<string>alternativeSpeakableMatches</string>
-					<key>INTypePropertySupportsMultipleValues</key>
-					<true/>
-					<key>INTypePropertyTag</key>
-					<integer>4</integer>
-					<key>INTypePropertyType</key>
-					<string>SpeakableString</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>INTypeDisplayName</key>
-			<string>Widget Event</string>
-			<key>INTypeDisplayNameID</key>
-			<string>sImQXn</string>
-			<key>INTypeLastPropertyTag</key>
-			<integer>99</integer>
-			<key>INTypeName</key>
-			<string>WidgetEvent</string>
-			<key>INTypeProperties</key>
-			<array>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>1</integer>
-					<key>INTypePropertyName</key>
-					<string>identifier</string>
-					<key>INTypePropertyTag</key>
-					<integer>1</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>2</integer>
-					<key>INTypePropertyName</key>
-					<string>displayString</string>
-					<key>INTypePropertyTag</key>
-					<integer>2</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>3</integer>
-					<key>INTypePropertyName</key>
-					<string>pronunciationHint</string>
-					<key>INTypePropertyTag</key>
-					<integer>3</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>4</integer>
-					<key>INTypePropertyName</key>
-					<string>alternativeSpeakableMatches</string>
-					<key>INTypePropertySupportsMultipleValues</key>
-					<true/>
-					<key>INTypePropertyTag</key>
-					<integer>4</integer>
-					<key>INTypePropertyType</key>
-					<string>SpeakableString</string>
-				</dict>
-			</array>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>

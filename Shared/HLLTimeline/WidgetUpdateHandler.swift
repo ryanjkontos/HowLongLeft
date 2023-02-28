@@ -7,9 +7,8 @@
 //
 
 import Foundation
-#if canImport(WidgetKit)
+
 import WidgetKit
-#endif
 
 class WidgetUpdateHandler: EventSourceUpdateObserver {
     
@@ -20,7 +19,7 @@ class WidgetUpdateHandler: EventSourceUpdateObserver {
     
      var timelineGen = HLLTimelineGenerator(type: .widget)
     
-    let configStore = WidgetConfigurationStore()
+    //let configStore = WidgetConfigurationStore()
     
     var configDict = [String: Int]()
  
@@ -39,22 +38,24 @@ class WidgetUpdateHandler: EventSourceUpdateObserver {
 
         WidgetUpdateHandler.queue.sync { [unowned self] in
             
-            if force { triggerWidgetUpdate(); return }
+            
+            
+            if force {
+                triggerWidgetUpdate()
+                return
+                
+            }
             
             // print("Checking widget update!")
-            
-            configStore.loadGroups()
-            let enabledConfigs = configDict.keys.compactMap({ key in configStore.allGroups.first(where: { $0.id == key })  })
-            
-            for config in enabledConfigs {
-                
+   
+
                 let newGen  = HLLTimelineGenerator(type: timelineGen.timelineType)
-                newGen.timelineConfiguration = config
+                
                 
                 timelineGen = newGen
                 if timelineGen.shouldUpdate() == .needsReloading {
                     
-                    // print("Reloading Widgets...")
+                     print("Reloading Widgets...")
                     
                     triggerWidgetUpdate()
                     
@@ -64,10 +65,10 @@ class WidgetUpdateHandler: EventSourceUpdateObserver {
                     }
                     
                 } else {
-                    // print("Not updating widget")
+                    print("Not Reloading Widgets...")
                 }
                 
-            }
+            
             
             
         }
@@ -106,7 +107,7 @@ class WidgetUpdateHandler: EventSourceUpdateObserver {
         var dict = [String: Int]()
         
         if #available(macOS 11, *) {
-            WidgetCenter.shared.getCurrentConfigurations({ (result) in
+           /* WidgetCenter.shared.getCurrentConfigurations({ (result) in
                 
                 switch result {
                     
@@ -137,7 +138,7 @@ class WidgetUpdateHandler: EventSourceUpdateObserver {
                     // print(error.localizedDescription)
                     
                 }
-            })
+            }) */
         }
         
     }

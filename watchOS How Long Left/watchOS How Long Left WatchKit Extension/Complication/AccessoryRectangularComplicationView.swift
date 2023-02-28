@@ -9,28 +9,34 @@
 import SwiftUI
 import ClockKit
 
+@available(iOS 16.0, *)
 struct AccessoryRectangularComplicationView: View {
     
     var entry: HLLTimelineEntry
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(entry.event?.title ?? "No Events")
-                    .widgetAccentable()
-                    .fontWeight(.bold)
-                    .foregroundColor(.blue)
-                    //.font(.system(size: 21))
-                Text("ends: ") + Text(entry.date, style: .timer)
-                    //.font(.system(size: 19))
-            }
-            
-            generateThirdRowView()
-                
-            
-        }
         
-        .frame(maxWidth: .infinity, alignment: .leading)
+        if let event = entry.event {
+        
+            VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(event.title)
+                        .widgetAccentable()
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                    //.font(.system(size: 21))
+                    Text("\(event.countdownTypeString(at: entry.date)) ") + Text(event.countdownDate(at: entry.date), style: .timer)
+                    //.font(.system(size: 19))
+                }
+                
+                generateThirdRowView()
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+                
+            } else {
+                Text("No Events")
+            }
         
     }
     
@@ -46,9 +52,12 @@ struct AccessoryRectangularComplicationView: View {
             thirdRowMode = startThirdRowMode
         } else if HLLDefaults.complication.progressBar && event.completionStatus(at: entry.date) == .current {
             
-            return AnyView(Gauge(value: 0.2, label: {EmptyView()})
+            return AnyView(Gauge(value: 0.2, label: {
+               EmptyView()
+                
+            })
                 .gaugeStyle(.accessoryLinearCapacity)
-                .padding(.top, 10)
+                .padding(.top, 7)
                 .tint(.blue)
                 .widgetAccentable())
             
@@ -59,7 +68,14 @@ struct AccessoryRectangularComplicationView: View {
         switch thirdRowMode {
             
         case .nextEvent:
-            text = "Next: \(event.title)"
+            
+            if let next = entry.nextEvent {
+                text = "Next: \(next.title)"
+            } else {
+                text = "Nothing Next"
+            }
+            
+            
         case .location:
             text = "\(event.location ?? "No Location")"
         case .time:
@@ -77,13 +93,14 @@ struct AccessoryRectangularComplicationView: View {
     
 }
 
-struct AccessoryRectangularComplicationView_Previews: PreviewProvider {
+/*struct AccessoryRectangularComplicationView_Previews: PreviewProvider {
     static var previews: some View {
         
-        CLKComplicationTemplateGraphicRectangularFullView(AccessoryRectangularComplicationView(entry: .init(date: Date(), event: .previewEvent(title: "Current", status: .upcoming, location: nil)))).previewContext()
+      //  CLKComplicationTemplateGraphicRectangularFullView(AccessoryRectangularComplicationView(entry: .init(date: Date(), event: .previewEvent(title: "Current", status: .upcoming, location: nil)))).previewContext()
         
         
             
     }
 }
 
+*/

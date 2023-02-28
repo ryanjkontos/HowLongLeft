@@ -22,7 +22,7 @@ class CalendarTimeOffsetStore: ObservableObject {
     struct CalendarOffsetObject: Identifiable {
         
         var id: String {
-            return calendar.id
+            return calendar.calendarIdentifier
         }
         
         var calendar: EKCalendar
